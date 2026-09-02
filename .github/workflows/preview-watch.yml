@@ -24,6 +24,11 @@ on:
     # off-peak minutes: GitHub throttles on-the-hour and */N schedules
     - cron: "7,37 * * * *"
   workflow_dispatch:
+    inputs:
+      test_alert:
+        description: "Send a test push + mail through the configured channels instead of probing"
+        type: boolean
+        default: false
 
 concurrency:
   group: preview-watch
@@ -53,7 +58,12 @@ jobs:
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
           PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-        run: python3 .github/preview_watch.py --state .watch-state/state.json
+        run: |
+          if [ "${{ github.event.inputs.test_alert }}" = "true" ]; then
+            python3 .github/preview_watch.py --test-alert
+          else
+            python3 .github/preview_watch.py --state .watch-state/state.json
+          fi
 
       - name: Save watch state
         if: always()

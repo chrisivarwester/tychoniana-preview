@@ -224,7 +224,17 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--state", help="JSON state file persisted between runs (actions/cache)")
     ap.add_argument("--local", action="store_true", help="dry run: no state, no alerts; exit code = status")
+    ap.add_argument("--test-alert", action="store_true",
+                    help="send a low-priority test push + mail through the configured channels and exit "
+                         "(proves the secrets and the transport; no probes, no state)")
     a = ap.parse_args()
+
+    if a.test_alert:
+        now = dt.datetime.now(dt.timezone.utc)
+        fake = [("channel test", True, f"sent {now:%Y-%m-%d %H:%M UTC} from the preview watch — no site problem")]
+        ok = alert("OK", "TEST", fake, now.isoformat())
+        print("test alert delivered" if ok else "test alert: NO channel configured (set the three secrets)")
+        return 0 if ok else 1
 
     status, results = run_probes()
     now = dt.datetime.now(dt.timezone.utc)
