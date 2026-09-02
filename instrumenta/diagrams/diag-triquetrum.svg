@@ -1,0 +1,85 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="16" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">The triquetrum (parallactic rules)</text>
+
+  <!-- Layout:
+       Vertical rule: from T=(120,22) to B=(120,192) — the mast
+       Horizontal base rule: from B=(120,192) to R=(280,192)
+       Alidade: from T=(120,22) to a point on the base rule
+       The alidade points at the star at zenith-distance z.
+       z=40°: alidade goes to (120+170·sin40°, 22+170·cos40°) = (229,152)
+       Plumb-line from T falls to base at (120,192) — but really to a scale.
+       Reading: on the base, sin(z) is read off where the alidade meets the base rule scale.
+
+       Let alidade end = star direction at z=40° from vertical
+       A = T + len·(sin40°, cos40°) = (120 + 130·0.643, 22 + 130·0.766) = (203.6, 121.6) ≈ (204,122)
+
+       The base rule has a sine scale from T's foot at B=(120,192) to R=(280,192)
+       Where alidade crosses base rule: project down from alidade end → horizontal at y=192
+       Alidade line: from (120,22) through (204,122) extended to y=192:
+         slope = (122-22)/(204-120) = 100/84 = 1.190
+         At y=192: x = 120 + (192-22)/1.190 = 120 + 142.9 = 262.9 ≈ 263
+       So alidade hits base at (263, 192)
+       sin(40°) = 0.643; scale width=160; reading = 120+160·0.643 = 222.9 ≈ 223
+       Actually let's draw it simply: alidade from T to the alidade reading point on the base.
+  -->
+
+  <!-- Vertical rule (mast) -->
+  <line x1="120" y1="22" x2="120" y2="192" stroke="#1a2238" stroke-width="2.5"/>
+
+  <!-- Horizontal base rule -->
+  <line x1="120" y1="192" x2="290" y2="192" stroke="#1a2238" stroke-width="2.5"/>
+
+  <!-- Pivot at top T -->
+  <circle cx="120" cy="22" r="5" fill="#1a2238"/>
+  <text x="108" y="20" font-size="9.5" fill="#3a3028" text-anchor="end">T</text>
+
+  <!-- Pivot at base B -->
+  <circle cx="120" cy="192" r="4" fill="#8090a0"/>
+  <text x="108" y="197" font-size="9.5" fill="#3a3028" text-anchor="end">B</text>
+
+  <!-- Alidade (from T to point on base rule) — z=40° from vertical -->
+  <!-- Alidade arm direction: (sin40°, cos40°) = (0.643, 0.766)
+       Length to base: y goes from 22 to 192 = 170px; step=170/0.766=221.9; x-step=0.643·221.9=142.7
+       End point: (120+143, 22+170) = (263, 192) — on base rule -->
+  <line x1="120" y1="22" x2="263" y2="192" stroke="#9a7b32" stroke-width="2"/>
+
+  <!-- Alidade reading point on base -->
+  <circle cx="263" cy="192" r="5" fill="#9a7b32"/>
+
+  <!-- Plumb-line from T (dashed, falls vertically to B) -->
+  <line x1="120" y1="22" x2="120" y2="192" stroke="#8090a0" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Star above T in the direction of the alidade -->
+  <!-- Star direction from T: 40° from zenith (vertical), so position above T in that direction -->
+  <text x="60" y="45" font-size="15" fill="#9a7b32" text-anchor="middle">★</text>
+  <text x="52" y="60" font-size="9" fill="#9a7b32" text-anchor="middle">Star</text>
+  <!-- Sight line from alidade through T up to star -->
+  <line x1="63" y1="43" x2="120" y2="22" stroke="#9a7b32" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+  <!-- Zenith angle z at T -->
+  <path d="M 120,48 A 26,26 0 0,1 136,36" fill="none" stroke="#9a7b32" stroke-width="1.5"/>
+  <text x="141" y="52" font-size="11" fill="#9a7b32" font-style="italic">z</text>
+  <text x="141" y="63" font-size="9" fill="#3a3028">(zenith</text>
+  <text x="141" y="74" font-size="9" fill="#3a3028">distance)</text>
+
+  <!-- Sine scale label on base -->
+  <text x="190" y="185" font-size="9.5" fill="#6070a0" text-anchor="middle" font-style="italic">sine scale</text>
+
+  <!-- Reading value label -->
+  <text x="263" y="186" font-size="10" fill="#9a7b32" text-anchor="middle" font-weight="bold">sin z</text>
+
+  <!-- Scale end label -->
+  <text x="290" y="186" font-size="10" fill="#3a3028" text-anchor="end">sin 90°=1</text>
+
+  <!-- Formula box -->
+  <rect x="20" y="140" width="88" height="40" fill="#f8f4ec" stroke="#9a7b32" stroke-width="1" rx="3"/>
+  <text x="64" y="157" font-size="10" fill="#3a3028" text-anchor="middle">altitude</text>
+  <text x="64" y="171" font-size="11" fill="#9a7b32" text-anchor="middle" font-style="italic">h = 90° &#x2212; z</text>
+
+  <!-- Caption -->
+  <text x="160" y="210" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Alidade from pivot T; sine of zenith distance read directly off base rule</text>
+</svg>

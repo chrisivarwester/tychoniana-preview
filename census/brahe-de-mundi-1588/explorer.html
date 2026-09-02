@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Census Explorer · De mundi aetherei recentioribus phaenomenis liber secundus (v0.5)</title>
+<link rel="stylesheet" href="../../vendor/leaflet/leaflet.css">
+<script src="../../vendor/leaflet/leaflet.js"></script>
+<style>
+:root {
+  --bg: #f6f1e6; --surface: #fffdf8; --fg: #1a2238; --muted: #6b6450;
+  --border: #ddd3bf; --rule: #e8e0d0;
+  --accent: #9a7b32; --accent-soft: #f3ead2;
+  /* A-D grade canon — docs/tychoniana/PRESENTATION_DOCTRINE.md 5a.2 */
+  --grade-A: #9a7b32; --grade-B: #5070a0; --grade-C: #8b6030; --grade-D: #808080;
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+:root{
+  --grade-X: #9e9e9e;  /* ungraded — should not occur in a gated build */
+  --status-lost: #8a8a8a; --status-market: #6a1b9a; --status-damaged: #7e5a1f;
+  --status-inferred: #7a7f93;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+/* Column layout, order-independent: main takes the remaining height
+   explicitly (flex:1). A bar injected as an extra body child (e.g. the
+   Tychoniana breadcrumb the portal mirror adds) just stacks — unlike a
+   positional grid, where it would shift every row's sizing. */
+body {
+  font: 14px/1.5 var(--sans); color: var(--fg); background: var(--bg);
+  display: flex; flex-direction: column;
+}
+
+/* TOPBAR */
+header.topbar {
+  padding: 14px 18px; border-bottom: 4px solid var(--accent);
+  background: linear-gradient(135deg, #1a2238, #2c3a63); color: #f6f1e6;
+  display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap;
+}
+header.topbar h1 {
+  font: normal 19px/1.3 var(--serif); letter-spacing: .5px; color: #f6f1e6;
+}
+header.topbar h1 .work-title { color: #c9a23f; }
+header.topbar h1 small {
+  font: 400 12px/1 var(--sans); color: #aeb4c6; margin-left: 8px;
+}
+header.topbar .meta-info {
+  color: #aeb4c6; font-size: 12px; display: flex; gap: 14px;
+}
+header.topbar .badges { display: flex; gap: 6px; margin-left: auto; align-items: center; }
+header.topbar .report-link {
+  color: #c9a23f; font-size: 12px; text-decoration: none;
+  border: 1px solid #4a5578; border-radius: 12px; padding: 3px 11px;
+  white-space: nowrap;
+}
+header.topbar .report-link:hover { text-decoration: underline; }
+.grade-badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 9px; border-radius: 11px; font-size: 11px; font-weight: 600;
+  color: white; cursor: help;
+}
+.grade-badge.A { background: var(--grade-A); }
+.grade-badge.B { background: var(--grade-B); }
+.grade-badge.C { background: var(--grade-C); }
+.grade-badge.D { background: var(--grade-D); }
+.grade-badge.X { background: var(--grade-X); }
+.grade-badge .count { font-weight: 700; }
+
+/* FILTER BAR */
+nav.filters {
+  padding: 8px 18px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  background: var(--surface);
+}
+nav.filters .group-label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--muted); margin-right: 2px;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border: 1px solid var(--border); border-radius: 12px;
+  font-size: 12px; cursor: pointer; user-select: none;
+  background: var(--surface); transition: all 0.12s;
+  /* chips are real <button>s (keyboard access, E3) — neutralise UA button styling */
+  font-family: inherit; color: inherit; line-height: inherit; margin: 0;
+}
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip:hover { background: #f3eee4; }
+.chip.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip.confidence-A.active { background: var(--grade-A); border-color: var(--grade-A); }
+.chip.confidence-B.active { background: var(--grade-B); border-color: var(--grade-B); }
+.chip.confidence-C.active { background: var(--grade-C); border-color: var(--grade-C); }
+.chip.confidence-D.active { background: var(--grade-D); border-color: var(--grade-D); }
+.chip .ico { font-size: 10px; opacity: 0.7; }
+.chip.cluster-active {
+  background: var(--accent-soft); border-color: #c9b69a; color: var(--accent);
+  font-weight: 600;
+}
+nav.filters .search {
+  flex: 1; max-width: 260px;
+  padding: 4px 10px; border: 1px solid var(--border); border-radius: 4px;
+  font: inherit; background: var(--surface);
+}
+nav.filters .count-text {
+  margin-left: auto; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums;
+}
+
+/* MAIN GRID */
+main.layout {
+  display: grid; grid-template-columns: minmax(360px, 1fr) minmax(420px, 1.4fr);
+  overflow: hidden;
+  flex: 1; min-height: 0;   /* fill whatever height the bars above leave */
+}
+section.left {
+  display: grid; grid-template-rows: 3fr auto 4fr;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+#map { width: 100%; height: 100%; background: #cfd6c5; }
+.leaflet-control-attribution { font-size: 9px; }
+/* One slim honesty line UNDER the map: what the map does NOT show.
+   Markers are national flags (self-explanatory), so no legend is needed. */
+.map-strip {
+  padding: 4px 14px 5px; background: var(--surface);
+  border-top: 1px solid var(--rule);
+  font-size: 11px; line-height: 1.5;
+}
+
+/* COPY LIST */
+ol.copy-list {
+  overflow-y: auto; list-style: none; padding: 0; background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+ol.copy-list .empty {
+  padding: 14px 18px; color: var(--muted); font-style: italic; font-size: 13px;
+}
+.list-item {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 9px; align-items: center;
+  padding: 7px 14px; border-bottom: 1px solid var(--rule);
+  cursor: pointer; font-size: 13px;
+}
+.list-item:hover { background: #f7f2e6; }
+.list-item.active {
+  background: #efe2c8;
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.list-item .label-block {
+  display: flex; flex-direction: column; min-width: 0;
+}
+.list-item .label-block .title {
+  font-size: 13px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.list-item .label-block .city {
+  font-size: 11px; color: var(--muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.list-item .label-block .assoc {
+  font: italic 11px/1.4 var(--serif); color: #6b6455;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.list-item.status-lost .label-block .title {
+  text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.25);
+  color: var(--status-lost);
+}
+.list-item.status-inferred .label-block .title {
+  font-style: italic; color: var(--status-inferred);
+}
+.list-item.status-attested .label-block .title { color: #6b6455; }
+.list-item .indicators {
+  display: flex; gap: 4px; align-items: center;
+}
+.list-item .indicators .tag {
+  font: 600 9px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 3px 6px; border-radius: 8px;
+  background: #edf1ea; color: var(--grade-A); white-space: nowrap;
+}
+.list-item .indicators .tag.st {
+  background: #f0eee8; color: var(--muted);
+}
+/* Country group headers — the list reads like a printed census. */
+li.country-head {
+  padding: 8px 14px 4px 14px; border-bottom: 1px solid var(--rule);
+  font: 600 10px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--muted); background: var(--surface);
+  position: sticky; top: 0; z-index: 5;
+}
+li.country-head .n { font-weight: 400; margin-left: 4px; }
+/* Small inline national flag (list country headers, overview table) */
+.flag-ico {
+  display: inline-block; width: 16px; height: 11px; margin-right: 7px;
+  vertical-align: -1px; border-radius: 2px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12); line-height: 0;
+}
+.flag-ico svg { display: block; width: 100%; height: 100%; }
+
+/* MAP MARKERS — one uniform house-gold dot per located copy. Grade and
+   status stay in the tooltip, the filter chips, and the copy card; the map
+   itself carries no colour code that would need a legend. */
+.dot-marker {
+  border-radius: 50%; border: 2.5px solid white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.4);
+  background: var(--accent);
+}
+.dot-marker.status-lost {
+  opacity: 0.55; border-style: dashed; border-color: #d8d3c8;
+}
+.dot-marker.active {
+  transform: scale(1.55); z-index: 1000 !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.9), 0 0 8px rgba(0,0,0,0.6);
+}
+
+/* CARD */
+section.right {
+  overflow-y: auto; padding: 24px 32px;
+  background: var(--surface);
+}
+.empty-state {
+  padding: 80px 20px; text-align: center; color: var(--muted);
+  font: italic 14px/1.6 var(--serif);
+}
+.empty-state .hint { font-size: 12px; margin-top: 10px; font-style: normal; }
+
+/* OVERVIEW (default right panel) */
+.overview { max-width: 560px; margin: 0 auto; padding: 12px 0; text-align: left; font-style: normal; }
+.overview h2 {
+  font: 600 19px/1.3 var(--serif); color: var(--fg); margin-bottom: 4px;
+}
+/* Citation head: author and imprint lines sit smaller around the title */
+.overview h2.cite-head { font-weight: 400; line-height: 1.45; }
+.overview h2.cite-head i { font-weight: 600; }
+.overview h2.cite-head .cite-author,
+.overview h2.cite-head .cite-imprint { font-size: 14px; }
+.overview .lede { font-size: 13px; color: var(--fg); line-height: 1.65; margin: 10px 0 4px; }
+/* Provisional-census banner — shown when the census is not yet exhaustive
+   (an unreached mandatory channel, or located < a stated survival target). */
+.overview .prov-banner {
+  margin: 0 0 14px; padding: 8px 12px; border-radius: 5px;
+  background: #f6ecd6; border: 1px solid #d9c9a0; color: #6b5836;
+  font: 400 12px/1.55 var(--sans);
+}
+.overview .prov-banner strong { color: #7a5c1f; }
+/* Total-copies headline — the census's clear count, above the country table */
+.overview .ov-count {
+  margin: 18px 0 2px; font: 400 15px/1.35 var(--serif); color: var(--fg);
+}
+.overview .ov-count .n { font-weight: 700; font-size: 21px; }
+.overview .ov-count .split {
+  display: block; margin-top: 3px;
+  font: 400 11px/1.5 var(--sans); color: var(--muted);
+}
+/* Bibliographical anchors from census.toml [work] — gold labels, compact */
+.overview .ov-bib { margin: 12px 0 2px; font-size: 12px; line-height: 1.65; }
+.overview .ov-bib dt {
+  font: 600 10px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--accent); margin-top: 11px;
+}
+.overview .ov-bib dd { margin: 3px 0 0; color: var(--fg); }
+.overview h3 {
+  font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); margin: 22px 0 10px 0;
+}
+table.ov-countries {
+  border-collapse: collapse; font-size: 13px; width: 100%;
+}
+table.ov-countries td {
+  padding: 4px 10px 4px 0; border-bottom: 1px solid var(--rule);
+}
+table.ov-countries td.n { text-align: right; width: 40px; font-variant-numeric: tabular-nums; }
+.ov-grades { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.ov-grades .g { font-weight: 700; }
+ul.untraced { list-style: none; padding: 0; }
+ul.untraced li {
+  padding: 7px 0 7px 14px; border-bottom: 1px solid var(--rule);
+  font-size: 13px; line-height: 1.5; position: relative;
+}
+ul.untraced li::before {
+  content: ""; position: absolute; left: 0; top: 14px;
+  width: 7px; height: 7px; border-radius: 50%;
+  border: 1.5px dashed #a89f8d; background: transparent;
+}
+ul.untraced li .place { color: var(--muted); }
+ul.untraced li .why {
+  display: block; font: italic 11.5px/1.5 var(--serif); color: #6b6455;
+}
+/* Discrete disclosure — reference detail folded away until the reader asks
+   (grade breakdown, scope & method). */
+.overview details.fold { margin-top: 20px; }
+.overview details.fold summary {
+  cursor: pointer; font: 600 11px/1 var(--sans); text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted); padding: 4px 0;
+}
+.overview details.fold .body {
+  font-size: 12px; color: var(--muted); line-height: 1.65; margin-top: 10px;
+}
+.overview details.fold .body strong { color: var(--fg); }
+.overview .permalink-hint {
+  margin-top: 20px; font-size: 11px; color: var(--muted); font-style: italic;
+}
+.map-note { color: var(--muted); }
+.explorer-foot {
+  padding: 8px 18px; border-top: 1px solid var(--border); background: var(--surface);
+  font-size: 11px; color: var(--muted);
+}
+.copy-card .nav-row {
+  display: flex; justify-content: space-between; gap: 8px;
+  margin: -8px -4px 16px -4px; padding: 0 4px;
+}
+.copy-card .nav-row button {
+  padding: 5px 12px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; cursor: pointer; font: inherit; font-size: 11px;
+  color: var(--muted); max-width: 38%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.copy-card .nav-row button:hover:not(:disabled) {
+  background: #f5f0e2; color: var(--fg);
+}
+.copy-card .nav-row button:disabled { opacity: 0.35; cursor: default; }
+.copy-card .nav-row .keyboard-hint { font-size: 10px; color: var(--muted); align-self: center; }
+
+.copy-card .header-row {
+  display: flex; gap: 12px; align-items: flex-start; margin-bottom: 6px;
+}
+.copy-card h2 {
+  font: 600 23px/1.25 var(--serif); flex: 1; color: var(--fg);
+}
+.copy-card .status-row {
+  display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+}
+.copy-card .status-pill {
+  display: inline-block; padding: 2px 9px; border-radius: 10px;
+  font-size: 11px; font-weight: 600;
+}
+.copy-card .status-pill.status-extant { background: #e0eee2; color: var(--grade-A); }
+.copy-card .status-pill.status-lost { background: #ebebe8; color: var(--status-lost); }
+.copy-card .status-pill.status-market { background: #ece5f2; color: var(--status-market); }
+.copy-card .status-pill.status-damaged { background: #f4ead7; color: var(--status-damaged); }
+.copy-card .status-pill.status-inferred { background: #e9eaf1; color: var(--status-inferred); font-style: italic; }
+.copy-card .status-pill.status-attested { background: #f0ede4; color: #6b6455; font-style: italic; }
+.copy-card .subtitle {
+  color: var(--muted); margin-bottom: 14px; font-size: 13px; line-height: 1.5;
+}
+.copy-card .subtitle strong { color: var(--fg); font-weight: 600; }
+.copy-card .actions {
+  display: flex; gap: 8px; margin: 14px 0 22px 0; flex-wrap: wrap;
+}
+.copy-card .actions a {
+  display: inline-flex; gap: 6px; align-items: center;
+  padding: 5px 12px; border-radius: 4px;
+  background: #f3efe2; color: var(--fg);
+  text-decoration: none; font-size: 12px;
+  border: 1px solid var(--border);
+}
+.copy-card .actions a:hover { background: #e8e1c7; }
+.copy-card .actions a.primary {
+  background: var(--accent); color: white; border-color: var(--accent);
+}
+.copy-card .actions a.primary:hover { background: #5e1717; }
+.copy-card .actions a .ico { font-size: 10px; opacity: 0.6; }
+
+.copy-card section { margin-bottom: 24px; }
+.copy-card section h3 {
+  font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); margin-bottom: 10px;
+}
+
+/* PROVENANCE TIMELINE */
+ul.provenance {
+  list-style: none; padding-left: 4px; position: relative;
+}
+ul.provenance li {
+  padding: 0 0 14px 22px; position: relative;
+  border-left: 2px solid var(--border); margin-left: 5px;
+}
+ul.provenance li:last-child { border-left-color: transparent; }
+ul.provenance li::before {
+  content: ""; position: absolute; left: -7px; top: 4px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--surface); border: 2.5px solid var(--accent);
+}
+ul.provenance li.kind-loss::before { border-color: var(--grade-D); background: var(--grade-D); }
+ul.provenance li.kind-theft::before { border-color: var(--grade-D); background: var(--grade-D); }
+ul.provenance li.kind-bequest::before { border-color: var(--grade-A); }
+ul.provenance li.kind-sale::before, ul.provenance li.kind-auction::before {
+  border-color: var(--status-market);
+}
+ul.provenance .owner { font-weight: 600; font-size: 14px; line-height: 1.3; }
+ul.provenance .meta-line { font-size: 11px; color: var(--muted); margin-top: 3px; }
+ul.provenance .meta-line .kind-tag {
+  display: inline-block; padding: 1px 7px; border-radius: 8px;
+  background: #f0eee8; color: var(--muted); font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px;
+}
+ul.provenance .evidence {
+  font: italic 12px/1.4 var(--serif); margin-top: 5px; color: #444;
+  background: #faf8f1; padding: 5px 9px; border-radius: 3px;
+  border-left: 2px solid var(--border);
+}
+
+/* PHYSICAL */
+.physical-grid {
+  display: grid; grid-template-columns: 90px 1fr; gap: 4px 14px;
+  font-size: 13px;
+}
+.physical-grid dt { color: var(--muted); font-size: 12px; font-weight: 600; }
+.physical-grid dd { line-height: 1.5; }
+.physical-grid dd .meta-note {
+  display: block; font-size: 11px; color: var(--muted);
+  margin-top: 3px; font-style: italic;
+}
+
+/* COPY IMAGES */
+.copy-images-grid {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.copy-image-fig {
+  margin: 0; width: 150px; cursor: zoom-in;
+}
+.copy-image-fig img {
+  width: 150px; height: 112px; object-fit: cover;
+  border: 1px solid var(--border); border-radius: 4px;
+  background: #f0eee8; display: block;
+  transition: box-shadow 0.12s;
+}
+.copy-image-fig:hover img { box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.copy-image-fig figcaption {
+  font-size: 10.5px; line-height: 1.35; color: var(--muted);
+  margin-top: 4px;
+}
+.lightbox {
+  position: fixed; inset: 0; z-index: 99999;
+  background: rgba(20,18,14,0.88);
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px; padding: 28px; cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92vw; max-height: 82vh; object-fit: contain;
+  border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+  background: #fff;
+}
+.lightbox .lb-caption {
+  color: #f4f0e6; font-size: 12px; line-height: 1.5;
+  max-width: 720px; text-align: center;
+}
+.lightbox .lb-caption .lb-source { color: #b9b2a3; font-size: 11px; }
+
+/* SURROGATES */
+.surrogate-row {
+  display: flex; gap: 8px; align-items: center; padding: 5px 0;
+  font-size: 12px; border-bottom: 1px dotted var(--rule);
+}
+.surrogate-row:last-child { border-bottom: none; }
+.surrogate-row .kind-tag {
+  display: inline-block; padding: 2px 7px; border-radius: 3px;
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.04em; white-space: nowrap;
+  background: #e3edf6; color: var(--grade-B);
+}
+.surrogate-row.kind-iiif-manifest .kind-tag { background: #e3edf6; color: var(--grade-B); }
+.surrogate-row.kind-viewer .kind-tag { background: #e3f1e3; color: var(--grade-A); }
+.surrogate-row.kind-ocr-pdf .kind-tag { background: #f0eee8; color: var(--muted); }
+.surrogate-row.kind-facsimile-record .kind-tag { background: #f0e9d8; color: var(--accent); }
+.surrogate-row.kind-absent .kind-tag { background: #fbe9e7; color: var(--grade-D); }
+.surrogate-row.kind-needs_lookup .kind-tag { background: #fff4e0; color: var(--grade-C); }
+.surrogate-row a { color: var(--accent); text-decoration: none; }
+.surrogate-row a:hover { text-decoration: underline; }
+.surrogate-row .notes {
+  font-size: 11px; color: var(--muted); font-style: italic;
+  flex: 1 1 100%; padding-left: 0; margin-top: 2px;
+}
+
+/* CLUSTERS */
+.cluster-pill {
+  display: inline-block; padding: 3px 11px; border-radius: 11px;
+  background: var(--accent-soft); font-size: 11px;
+  border: 1px solid #c9b69a; color: #5e1717;
+  cursor: pointer; margin: 0 4px 5px 0;
+}
+.cluster-pill:hover { background: #e0cdb1; }
+/* Standing COLLECTIONS filter chips in the nav bar (one per named cluster). */
+.chip.cluster-filter-chip { background: var(--accent-soft); border-color: #c9b69a; color: #5e1717; }
+.chip.cluster-filter-chip:hover { background: #e0cdb1; }
+.chip.cluster-filter-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* REFERENCES */
+ul.references {
+  list-style: none; padding-left: 0;
+}
+ul.references li {
+  padding: 6px 0; border-bottom: 1px dotted var(--rule);
+  font-size: 12px; line-height: 1.5;
+}
+ul.references li:last-child { border-bottom: none; }
+ul.references .ref-kind {
+  display: inline-block; padding: 1px 7px; border-radius: 3px;
+  background: #f0eee8; font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-right: 6px; color: var(--muted);
+  white-space: nowrap;
+}
+ul.references .ref-name { font-weight: 600; }
+ul.references .ref-text { color: #333; }
+ul.references .ref-truncated { color: var(--muted); cursor: pointer; }
+ul.references .ref-truncated:hover { color: var(--fg); }
+
+/* CONFIDENCE HISTORY */
+.conf-history {
+  margin-top: 8px; padding: 8px 12px; background: #fafaf6;
+  border-left: 3px solid var(--grade-A); border-radius: 3px;
+  font-size: 12px; line-height: 1.5;
+}
+.conf-history .arrow { color: var(--accent); font-weight: 700; margin: 0 4px; }
+
+/* OPEN QUESTIONS */
+ul.open-questions {
+  list-style: none; padding-left: 0;
+}
+ul.open-questions li {
+  padding: 6px 0 6px 22px; position: relative; font-size: 13px;
+}
+ul.open-questions li::before {
+  content: "?"; position: absolute; left: 0; top: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--grade-C); color: white; font-weight: 700;
+  text-align: center; line-height: 16px; font-size: 11px;
+}
+
+/* SCOPE PANEL */
+.scope-panel {
+  background: #fbf8ee; border: 1px solid #e6dec4; border-radius: 4px;
+  padding: 14px 18px; margin-bottom: 16px; font-size: 12px; line-height: 1.55;
+}
+.scope-panel h4 { font: 600 11px/1.4 var(--sans); text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--muted); margin-bottom: 4px; }
+.scope-panel p { margin-bottom: 10px; color: #3a3a3a; }
+.scope-panel p:last-child { margin-bottom: 0; }
+
+/* HELP TOOLTIP */
+.tooltip-host { position: relative; cursor: help; }
+.tooltip-host::after {
+  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px);
+  left: 50%; transform: translateX(-50%);
+  padding: 6px 10px; background: var(--fg); color: var(--bg);
+  border-radius: 4px; font-size: 11px; line-height: 1.4; width: max-content;
+  max-width: 240px; text-align: left;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s;
+  z-index: 9999;
+}
+.tooltip-host:hover::after { opacity: 1; }
+/* ---------------------------------------------------------------------------
+   NARROW VIEWPORTS (phones, small tablets)
+
+   The desktop explorer is a fixed-viewport app shell: a two-column grid whose
+   panes scroll independently inside 100vh. Below ~860px that model breaks —
+   the grid's own minimum width (360+420px) exceeds the viewport, so the right
+   panel is clipped off-screen and the body scrolls sideways (observed on an
+   iPhone, 2026-07-20). Here the shell unwinds into ONE column that scrolls as
+   an ordinary page: map, then copy list, then the copy card beneath them.
+   Every rule below only relaxes a desktop constraint; none restyles the
+   census's visual identity, which stays as specified in spec section 4.bis.
+   --------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  /* release the 100vh app-shell so the page scrolls normally */
+  html, body { height: auto; }
+  body { display: block; overflow-x: hidden; }
+
+  main.layout {
+    display: block; overflow: visible; flex: none; min-height: 0;
+  }
+  section.left {
+    display: block; overflow: visible; border-right: none;
+  }
+  section.right {
+    overflow: visible; padding: 20px 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* the map needs an explicit height once its grid track is gone */
+  #map { height: 44vh; min-height: 250px; }
+
+  ol.copy-list { overflow-y: visible; }
+
+  /* let long institution names and shelfmarks wrap instead of being
+     ellipsed to nothing in a narrow column */
+  .list-item { padding: 11px 14px; }
+  .list-item .label-block .title,
+  .list-item .label-block .city,
+  .list-item .label-block .assoc {
+    white-space: normal; overflow: visible; text-overflow: clip;
+  }
+
+  header.topbar { padding: 12px 14px; gap: 10px; }
+  header.topbar h1 { font-size: 17px; }
+  header.topbar .badges { margin-left: 0; }
+  nav.filters { padding: 10px 14px; gap: 8px; }
+  nav.filters .count-text { margin-left: 0; width: 100%; }
+
+  .overview { max-width: none; }
+
+  /* wide content scrolls inside itself, never the page body */
+  .copy-card table, .overview table, pre { display: block; overflow-x: auto; max-width: 100%; }
+  .copy-card { max-width: 100%; }
+
+  /* The card header is a flex row (title | status chips). At this width the
+     chip group gets crushed to ~80px while needing ~198px, and overflows the
+     page. Give the title its own line and let the chips sit beneath it. */
+  .copy-card .header-row { flex-wrap: wrap; }
+  .copy-card .header-row h2 { flex: 1 1 100%; min-width: 0; }
+  .copy-card .status-row { flex: 0 0 auto; max-width: 100%; }
+
+  /* shelfmarks, URLs and citation lines must break rather than push the page */
+  .copy-card, .copy-card a, .copy-card code, .overview, .overview a {
+    overflow-wrap: anywhere;
+  }
+  .copy-card dl { grid-template-columns: 1fr; gap: 2px 0; }
+  .copy-card dl dt { margin-top: 8px; }
+}
+</style>
+</head>
+<body>
+<style id="tychoniana-nav-style">
+.tychoniana-nav {
+  background: #1a2238;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.tychoniana-nav a {
+  color: #c9a23f;
+  text-decoration: none;
+  font-weight: 500;
+}
+.tychoniana-nav a:hover { text-decoration: underline; }
+.tychoniana-nav .sep { color: #5a6a88; }
+.tychoniana-nav .cur { color: #cdd6e8; }
+</style>
+<div class="tychoniana-nav">
+  <a href="../../index.html">&#8592; Tychoniana</a>
+  <span class="sep">&#8250;</span><a href="../../typographica/index.html#ln428">De mundi … liber secundus (1588)</a>
+  <span class="sep">&#8250;</span><span class="cur">Census</span>
+</div>
+<header class="topbar">
+  <h1>
+    Census · <span class="work-title" id="title-text"></span>
+    <small id="edition-text"></small>
+  </h1>
+  <div class="meta-info" id="version-text"></div>
+  <div class="badges" id="grade-badges"></div>
+  <a class="report-link" href="index.html"
+     title="The full citation-grade census report — the same copies as narrative prose, with methodology, provenance graph, and bibliography.">Full census report</a>
+</header>
+<nav class="filters" id="filters">
+  <span class="group-label">CONFIDENCE</span>
+  <button type="button" class="chip confidence-A active tooltip-host" data-filter="confidence" data-val="A"
+        data-tooltip="A — Verified: examined first-hand, confirmed by a live institutional record, or anchored by a documented dated dispatch.">A</button>
+  <button type="button" class="chip confidence-B active tooltip-host" data-filter="confidence" data-val="B"
+        data-tooltip="B — Documented: recorded by a named scholar or an institutional catalogue, but not independently examined.">B</button>
+  <button type="button" class="chip confidence-C active tooltip-host" data-filter="confidence" data-val="C"
+        data-tooltip="C — Reported: attested in a source that has not been re-verified.">C</button>
+  <button type="button" class="chip confidence-D active tooltip-host" data-filter="confidence" data-val="D"
+        data-tooltip="D — Contested: rumoured, or the evidence conflicts.">D</button>
+  <span class="group-label" style="margin-left:6px">STATUS</span>
+  <button type="button" class="chip active" data-filter="status" data-val="extant">extant</button>
+  <button type="button" class="chip active" data-filter="status" data-val="lost">lost</button>
+  <button type="button" class="chip active" data-filter="status" data-val="market">market</button>
+  <button type="button" class="chip active" data-filter="status" data-val="damaged">defective</button>
+  <button type="button" class="chip active tooltip-host" data-filter="status" data-val="attested"
+        data-tooltip="Recorded by a prior census or scholarship at some past date, but with no live evidence today — not counted among located copies.">recorded, untraced</button>
+  <button type="button" class="chip active tooltip-host" data-filter="status" data-val="inferred"
+        data-tooltip="Inferred recipient copy — supposed to have existed from documentary evidence; no physical exemplar has ever been located.">inferred</button>
+  <button type="button" class="chip tooltip-host" id="surr-chip" data-filter="onlySurrogate"
+        data-tooltip="Show only copies that can be read online — a digital facsimile or IIIF manifest is on record.">readable online</button>
+  <span class="group-label" id="cluster-grouplabel" style="margin-left:6px;display:none">COLLECTIONS</span>
+  <span id="cluster-chips"></span>
+  <button type="button" class="chip" id="cluster-clear" style="display:none;background:var(--accent-soft);color:var(--accent);border-color:#c9b69a;">
+    cluster: <span id="cluster-name"></span> &nbsp;✕
+  </button>
+  <input type="search" class="search" id="search-input"
+         placeholder="search owners, shelfmarks, institutions…" />
+  <span class="count-text" id="count-text"></span>
+</nav>
+<main class="layout">
+  <section class="left">
+    <div id="map" aria-label="World map of census copies"></div>
+    <div class="map-strip">
+      <div class="map-note" id="map-note" style="display:none"></div>
+    </div>
+    <ol class="copy-list" id="copy-list" aria-label="List of census copies"></ol>
+  </section>
+  <section class="right" id="card-container">
+    <div class="empty-state" id="empty-state">
+      <div class="hint" id="empty-state-hint"></div>
+    </div>
+  </section>
+</main>
+<footer class="explorer-foot" id="explorer-foot"></footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" alt="">
+  <div class="lb-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+"use strict";
+const DATA = {"meta": {"title": "De mundi aetherei recentioribus phaenomenis liber secundus", "title_short": "De mundi (Liber II)", "edition": "First edition (Uraniborg 1588)", "key": "brahe-de-mundi-1588", "author": "Tycho Brahe", "author_surname": "Brahe", "author_given": "Tycho", "place": "Uraniborg", "printer": "Christopher Weida", "year": 1588, "version": "0.5", "last_built": "2026-08-09", "n": 30, "grade_counts": {"A": 11, "B": 16, "C": 3, "D": 0}, "status_counts": {"extant": 24, "attested": 4, "damaged": 1, "inferred": 1}, "country_counts": {"DE": 8, "GB": 4, "DK": 4, "SE": 4, "PL": 2, "CZ": 1}, "scope_inclusion": "All physical copies of the 1588 Uraniborg first edition of De mundi aetherei recentioribus phaenomenis liber secundus (Tycho Brahe's treatise on the comet of 1577), printed at his own press on Hven by Christopher Weida — the only Tycho imprint whose colophon names Weida ('VRANIBVRGI In Insula Hellesponti Danici Hvenna imprimebat Authoris Typographus Christophorus Vveida ANNO DOMINI M.D.LXXXVIII'). Both title-page settings are in scope: the standard 10-chapter setting and the earlier rejected 8-chapter setting (the latter known only from one Berlin Staatsbibliothek copy per Nielsen).", "scope_excluded": "The 1603 Prague (Schumann) re-issue and the 1610 Frankfurt (Tampach) re-issue — separate issues with new preliminary leaves, each warranting its own census key if pursued. CRITICAL bibliographic caveat: most surviving 'Liber II' copies bound with a 1603 or 1610 title-leaf are in fact 1588 Uraniborg sheets re-issued; a copy is judged by its quire signatures and body sheets, NOT by the title-page year. A 1588-sheets copy in a 1603/1610 binding IS in scope (flag the binding state); a genuine reset 1603/1610 sheet is OUT. Facsimiles, photographic reproductions, and manuscript copies are excluded.", "counted_as_copy": "Any physical exemplar preserving at least half of the original leaves, or an identifiable fragment (at least one original leaf) with documented institutional or named-private provenance. Heavily-annotated association copies, like Maestlin's, count as ordinary copies in the headline number; their special status is recorded on the copy's own record and in the survival analysis.", "work": {"about": "Tycho Brahe's treatise on the great comet of 1577 — the second book (<i>liber secundus</i>) of his projected <i>Astronomiae instauratae progymnasmata</i> — proving comets supralunary, demolishing the solid celestial spheres, and introducing the Tychonic world-system. Printed at Tycho's own press on Hven; the colophon, the only Tycho imprint to name his printer, credits Christopher Weida, 1588. Nielsen, <i>Dansk Bibliografi 1551–1600</i>, no. 428.", "collation": "4°. 238 leaves. Signatures: ✱ A²–Z⁴ AA²–ZZ⁴ AAA⁴–MMM⁴ NNN⁴. Paginated [8] 1–465 [3]. Type-area 185 × 124 mm. Woodcut figures and tables. Bl. 237 colophon; 237b errata; 238a the author's emblem."}, "status": {"provisional": true, "unreached": ["Österreichischer Bibliothekenverbund / ÖNB", "CASLIN / Souborný katalog ČR (Czech union)", "K10plus (GBV+SWB German union catalogue)", "B3Kat (BVB+KOBV: Bavaria, Berlin, Brandenburg — incl. BSB München; NOT in K10plus)", "HeBIS (Hessian union catalogue — NOT in K10plus)", "CCFr Base Patrimoine (French municipal / heritage)", "Jisc Library Hub Discover (UK & IE union catalogue)", "WorldCat (OCLC global holdings)", "NUKAT (Polish union catalogue)", "LIBRIS (Swedish national union catalogue)"], "shortfall": 0, "channels_swept": 10, "channels_total": 20, "pending_candidates": 160, "identity_pairs": 0, "sample": null}}, "untraced": [{"institution": "Bibliothèque nationale de France", "city": "Paris", "country": "FR", "note": "Recorded by Nielsen (1931-33); not yet located to a shelfmark."}, {"institution": "Österreichische Nationalbibliothek", "city": "Vienna", "country": "AT", "note": "Recorded by Nielsen (1931-33); not yet located to a shelfmark."}, {"institution": "Niedersächsische Staats- und Universitätsbibliothek", "city": "Göttingen", "country": "DE", "note": "Recorded by Nielsen (1931-33); not yet located to a shelfmark."}, {"institution": "Landesbibliothek Altenburg", "city": "Altenburg", "country": "DE", "note": "Recorded by Nielsen (1931-33); not yet located to a shelfmark."}, {"institution": "Magdalen College, Oxford", "city": "Oxford", "country": "GB", "note": "Recorded by Nielsen (1931-33) — distinct from the located Bodleian (Savile) copy. Norlind 1970 p. 123 checked: 'i ifrågavarande bibliotek finns endast upplagan 1610' — Magdalen holds only the 1610 re-issue, so Nielsen's 1588 attribution likely fails; confirm against the Magdalen OPAC (edition gate), then retire this entry with a dated negative check."}, {"institution": "National Library of Scotland", "city": "Edinburgh", "country": "GB", "note": "Nielsen records two Edinburgh holdings; the University Library (Craig) copy is located, this one is not."}, {"institution": "Universiteitsbibliotheek Leiden", "city": "Leiden", "country": "NL", "note": "Recorded by Nielsen (1931-33); not yet located to a shelfmark."}, {"institution": "Universitätsbibliothek Königsberg", "city": "Kaliningrad", "country": "RU", "note": "Recorded by Nielsen (1931-33); the collection was largely dispersed or destroyed in 1944-45 — survival uncertain."}, {"institution": "Copenhagen University Library", "city": "Copenhagen", "country": "DK", "note": "Recorded by Nielsen as a holding separate from the Royal Library's; the two libraries merged in 2006, so this may be one of the three located Copenhagen copies — not yet disentangled."}], "copies": [{"slug": "aberdeen-ul-liddel", "display_label": "Aberdeen UL — Duncan Liddel presentation copy", "institution": "Aberdeen University Library (Special Collections; ex Marischal College)", "siglum": "", "city": "Aberdeen", "country": "GB", "shelfmark": "pi 5204 Bra 1", "catalogue_url": "https://abdn.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma990011966820205941&context=L&vid=44ABE_INST:44ABE_VU1", "lat": 57.149, "lng": -2.094, "confidence": "A", "status": "extant", "recipient": "Duncan Liddel (c.1561–1613)", "provenance_chain": [{"kind": "ownership", "owner": "Duncan Liddel (c.1561–1613)", "confidence": "B", "source": {"kind": "scholarly-work", "ref": "Mosley 2007 Appendix; Norlind 1970, 124"}, "evidence": "presentation copy; Liddel thought to have visited Hven June 1587; library bequeathed to Marischal College, Aberdeen"}], "physical": {"binding": {"period": "contemporary", "style": "Vellum on pasteboard, made from a manuscript fragment (gradual/antiphonary with music notation and rubrication)", "notes": "Sammelband: bound with Brahe, Epistolarum astronomicarum libri (Uraniborg 1596). A manuscript annotation by Liddel at p. 125 is separately catalogued."}}, "references": [{"kind": "scholarly-work", "name": "Mosley, Bearing the Heavens (2007), Appendix", "ref": "recipient × work presentation-copy census (DRP = De mundi)"}, {"kind": "scholarly-work", "name": "Norlind 1970", "number": "p.124"}, {"kind": "institutional-catalogue", "name": "Aberdeen Primo", "ref": "MMS 990011966820205941; cites Adams B2651; Drummond 732; Wightman 94(a). Collation [8], 465, [3] p., 4to, signatures ✱4 A-3M4 3N2."}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Duncan Liddel (c.1561–1613)", "open_questions": ["Resolved (2026-07-15): shelfmark pi 5204 Bra 1 captured from the live Primo record; Liddel inscriptions catalogued. The companion Epistolae 1596 is BOUND IN THE SAME VOLUME (Sammelband) — reconcile with brahe-epistolae-1596 (one physical volume, two census entries; Aberdeen also holds two 1610 De mundi reissue copies, pi 5236 Bra 1, distinct)."], "confidence_history": [{"from": "B", "to": "A", "date": "2026-07-15", "reason": "Live Aberdeen Primo record located: shelfmark pi 5204 Bra 1; catalogued Liddel inscriptions ('Duncanus Liddelius Scotus' on title, 'D Lidd. Scot.' at colophon, 'Liber Acad. Marischallanae Abredonensis'); Adams B2651, Wightman 94(a), Drummond 732.", "source": "OPAC live-record workflow, 2026-07-15"}], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "Aberdeen Primo MMS 990011966820205941"}, "checks": [{"date": "2026-07-15", "channel": "Aberdeen Primo VE (pnxs REST API + fulldisplay permalink)", "result": "found", "note": "Record carries the Liddel provenance point for point; five superseded historical shelfmarks also listed (10B 42Sc.; I. 3. 25.; p.I. Sh. S. no. 25.; T. 4. 40.; W. 25. 10.)."}], "images": []}, {"slug": "berlin-sb-oi-1602", "display_label": "Berlin, Staatsbibliothek — Oi 1602 (the rejected 8-chapter title-setting)", "institution": "Staatsbibliothek zu Berlin — Preußischer Kulturbesitz", "siglum": "SBB", "city": "Berlin", "country": "DE", "shelfmark": "Oi 1602 (8° HDRR, Rara reading room)", "catalogue_url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=354628666", "lat": 52.52, "lng": 13.405, "confidence": "B", "status": "extant", "recipient": "Staatsbibliothek zu Berlin — Preußischer Kulturbesitz", "provenance_chain": [], "physical": {}, "references": [{"kind": "institutional-catalogue", "name": "K10plus", "ref": "MARC 924 exemplar row on PPN 354628666; THE key bibliographic discriminator of the edition: Nielsen records the earlier, rejected 8-chapter title-setting ('De novis aetherei mundi generationibus') only in this Berlin copy. Located via the K10plus sweep on a live record carrying that exact title."}, {"kind": "institutional-catalogue", "name": "K10plus", "ref": "Three linked records for the Berlin holding: PPN 354628666 — title 'De novis aetherei mundi generationibus hoc aevo conspectis' (the REJECTED 8-CHAPTER title-setting Nielsen records as unique to Berlin); PPN 354628704 — 'Qui est de stella candata ingenti…' (part record, shelfmark 8:HDRR @Oi 1602); PPN 354642936 — set record 'Astronomiae instaurandae progymnasmata libris 3' (1592, 8:HDRR Oi 1602)."}, {"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Disentangle the Oi 1602 Sammelband: how many physical De mundi exemplars does Berlin hold, and which title-setting(s)? The K10plus record 354628666 carries the rejected 8-chapter title verbatim — Nielsen's unique Berlin setting — but the exemplar structure (set record + part records) needs first-hand or StaBiKat confirmation.", "Capture the exact StaBiKat shelfmark string and request collation photos of the title-leaf."], "confidence_history": [], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=354628666"}, "checks": [{"date": "2026-07-15", "channel": "K10plus SRU (sru.k10plus.de)", "result": "found", "query": "pica.all=\"brahe mundi aetherei\"", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=354628666"}], "images": []}, {"slug": "copenhagen-kb-astr18425", "display_label": "Copenhagen, Royal Danish Library — 4° Astr. 18425", "institution": "Det Kongelige Bibliotek (Royal Danish Library)", "siglum": "KB", "city": "Copenhagen", "country": "DK", "shelfmark": "4° Astr. 18425", "catalogue_url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122349183605763", "lat": 55.688, "lng": 12.569, "confidence": "A", "status": "extant", "recipient": "Det Kongelige Bibliotek (Royal Danish Library)", "provenance_chain": [], "physical": {}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": [], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "copenhagen-kb-hielmst1590", "display_label": "Copenhagen, Royal Danish Library — Hielmst. 1590 4°", "institution": "Det Kongelige Bibliotek (Royal Danish Library)", "siglum": "KB", "city": "Copenhagen", "country": "DK", "shelfmark": "Hielmst. 1590 4°", "catalogue_url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99121990542805763", "lat": 55.676, "lng": 12.581000000000001, "confidence": "A", "status": "extant", "recipient": "Det Kongelige Bibliotek (Royal Danish Library)", "provenance_chain": [], "physical": {}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "USTC", "number": "302830"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Locate the Hielmstierne copy's own digitisation, if any (the previously linked scan belonged to LN 428 ex. 1).", "Reconcile the KB holdings at refresh: Norlind p. 122 counts THREE old-KB copies (LN 428 ex. 1 + ex. 2 + one more; plus the old-UB copy with the 'Uraniburgi anno 1591 Mens. Decembr.' note, KB since 2006). Which is Hielmst. 1590 4°, and which record is the 1591-note copy? Gigas 1900 S. 31-34 is the source to absorb."], "confidence_history": [], "evidence": {}, "checks": [{"date": "2026-08-10", "channel": "barcode->shelfmark reconciliation (IA scan footers + pastedown stamps)", "result": "inconclusive", "query": "which IA barcode is the Hielmstierne copy?", "note": "CORRECTION: the surrogate formerly attached here (den-kbd-pil-130018110610-001) is footer-labelled 'LN 428 4° copy 1' and pastedown-stamped 'LN 428 ex. 1' - it is the Sascerides copy, now its own record. The Hielmstierne copy's own surrogate (if digitised) is unlocated; verify at soeg.kb.dk (alma99121990542805763)."}], "images": []}, {"slug": "copenhagen-kb-ln428-ex1-sascerides", "display_label": "Copenhagen, Royal Danish Library - LN 428 4° copy 1 (ex Gellius Sascerides; the earliest dated De mundi presentation, 20 March 1588)", "institution": "Det Kongelige Bibliotek (Royal Danish Library)", "siglum": "KB", "city": "Copenhagen", "country": "DK", "shelfmark": "LN 428 4° ex. 1", "catalogue_url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122053693005763", "lat": 55.664, "lng": 12.569, "confidence": "A", "status": "extant", "recipient": "Tycho Brahe (donor) -> Gellius Sascerides (Tycho's Hven assistant, later betrothed for a time to Magdalene Brahe)", "provenance_chain": [{"kind": "gift", "owner": "Tycho Brahe (donor) -> Gellius Sascerides (Tycho's Hven assistant, later betrothed for a time to Magdalene Brahe)", "date": "1588-03-20", "confidence": "A", "source": {"kind": "first-hand", "ref": "Autograph dedication read on the IA surrogate 2026-08-10; Norlind 1970 p. 122; Gigas, Bogvennen 1900, S. 31-34"}, "evidence": "'Erudito & Honesto Juveni Gellio Saceridi suo... Tijcho Brahe 1588 Martij 20.' The earliest dated De mundi presentation known. NB the irony the record layer should keep straight: Sascerides was also the COURIER of the (distinct) Rothmann presentation copy to Kassel, 11 July 1588."}, {"kind": "ownership", "owner": "H. Stubenrauch, V.D.M. (unidentified 18th-c. clergyman-owner or annotator)", "date": "18th century (post-Clement)", "confidence": "B", "source": {"kind": "first-hand", "ref": "His signed Latin note on the dedication leaf (IA surrogate, leaf 10)"}, "evidence": "Connoisseur's note on the edition's rarity ('D. Clement illam nesciverit') and the copy's ovals + autograph. Identify Stubenrauch; route into KB unknown."}, {"kind": "transfer", "owner": "Det Kongelige Bibliotek, Copenhagen", "date": "by 1900", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "Gigas, Bogvennen 1900, S. 31-34 (the KB trio); Nielsen §428"}, "evidence": "Among the three KB copies Gigas describes in 1900; KB stamps on the pastedown."}], "physical": {"binding": {"period": "contemporary", "style": "Hven presentation binding: worn parchment/vellum, gilt double-fillet frames, small gilt cornerpieces and side fleurons, remains of green silk ties, text-block edges stained blue-green", "decoration": "Gilt PORTRAIT oval supralibros at centre of front cover (ring-motto heavily rubbed in the scan; contours of the bust with book clear) - leaf 0. Gilt ARMS oval with helm and mantling + ring inscription on the back cover - leaf 2. Full portrait+arms livery, per Norlind/Gigas 'originalband med Tychos portraett och vapen'.", "notes": "DIE-PROGRAMME KEYSTONE: the autograph dedication dates the presentation 20 March 1588 - the earliest dated De mundi presentation known (Norlind p. 122), superseding the BL Maestlin copy (14 May 1588, portrait terminus) and the Goerlitz Scultetus copy (8 May 1588, previously 'the earliest dated arms attestation', 2026-07-18 dossier). Caveat for the die table: the dedication dates the GIFT; the binding is the contemporary presentation livery - enter as 'both ovals by 20 Mar 1588' with that one-step inference stated."}, "marginalia": {"density": "sparse", "hands_identified": ["Tycho Brahe (autograph dedication, preliminary leaf recto)", "H. Stubenrauch, V.D.M. (18th-c. Latin owner's note, foot of the dedication leaf)"], "languages": ["la"], "character": "Dedication leaf recto, autograph: 'Erudito & Honesto Juveni | Gellio Saceridi [sic] suo | [deleted: dd] | Tijcho Brahe | 1588 | Martij 20.' (examined 2026-08-10 on the IA scan; show-through documented on the facing verso). Below, an 18th-c. note: 'Est me judice haec editio prima Uranib. 588. tam eximiae raritatis, ut proinde D. Clement illam nesciverit. Praeterea non solum Autoris effigies et insignia auro impressa, sed etiam manu propria supra inscriptum nomen huic volumini majus acquirunt pretium affectionis. H. Stubenrauch VDM.' - citing David Clement (Bibliotheque curieuse, mid-18th c.) and confirming both gold ovals + the autograph as valued features. Pastedown: KB stamps 'LN 428 ex. 1 M', crowned-monogram and Bibliotheca Regia Hafniensis stamps; pencil 'DA.box', '120,-4°'.", "significance": "high"}}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428", "ref": "the KB copies; apparatus cites Gigas, Bogvennen 1900, S. 31-34 with facsimile at S. 32"}, {"kind": "scholarly-work", "name": "Norlind 1970", "number": "p. 122 (= PDF p. 125)", "ref": "'Det ena har tillhoert Gellius Sascerides... Dedikationen aer den tidigast kaenda av alla, Uraniborg d. 20 mars 1588.'"}, {"kind": "scholarly-work", "name": "Gigas, 'Nogle Boeger fra Tycho Brahes Bogbinderi', Bogvennen 1900", "number": "S. 31-34", "ref": ".pdf - absorb the KB-trio pages at next refresh"}, {"kind": "institutional-catalogue", "name": "archive.org (KB digitization / Early European Books)", "ref": "barcode 130018110610; every image footer-labelled 'LN 428 4° copy 1'"}, {"kind": "institutional-catalogue", "name": "UAM Poznan record alma991013222929709340", "ref": "cites this copy's scan as its digital-access link and dates the printing '[przed 20 III] 1588' from this dedication (the note's 'Rothmann' recipient is a wire-crossing - the dedication is to Sascerides)"}], "digital_surrogates": [{"kind": "viewer", "label": "archive.org", "url": "https://archive.org/details/den-kbd-pil-130018110610-001"}, {"kind": "iiif-manifest", "url": "https://iiif.archive.org/iiif/den-kbd-pil-130018110610-001/manifest.json", "host": "iiif.archive.org", "label": "IIIF Presentation API manifest", "accessed_at": "2026-08-10", "openness": "public"}], "primary_surrogate": {"kind": "iiif-manifest", "url": "https://iiif.archive.org/iiif/den-kbd-pil-130018110610-001/manifest.json", "host": "iiif.archive.org", "label": "IIIF Presentation API manifest", "accessed_at": "2026-08-10", "openness": "public"}, "has_surrogate": true, "has_iiif": true, "clusters": [], "assoc_note": "Tycho Brahe (donor) -> Gellius Sascerides (Tycho's Hven assistant, later betrothed for a time to Magdalene Brahe) · H. Stubenrauch, V.D.M. (unidentified 18th-c. clergyman-owner or annotator)", "open_questions": ["Identify H. Stubenrauch V.D.M. and the copy's route into KB (Gigas 1900 S. 31-34 may say - absorb at refresh).", "Portrait ring-motto legibility: heavily rubbed in the scan - raking-light photography at KB would serve the die table; ex. 2's legible motto partly substitutes.", "The deleted word(s) under the dedication's second line (reads like a struck 'dd') - check at higher zoom.", "Verify the KB catalogue_url covers both exemplars or has per-exemplar records (soeg.kb.dk, at refresh)."], "confidence_history": [], "evidence": {"last_verified": "2026-08-10", "method": "digital-surrogate", "ref": "IA scan examined leaf-by-leaf 2026-08-10 (leaves 0-11): dedication leaf, both covers, pastedown stamps. Norlind 1970 p. 122 independently records the copy and calls its dedication 'den tidigast kaenda av alla' (the earliest known of all)."}, "checks": [{"date": "2026-08-10", "channel": "archive.org IA surrogate (den-kbd-pil-130018110610-001), leaves 0-11 examined", "result": "found", "query": "dedication + binding autopsy via IIIF image API", "note": "Autograph dedication to Gellius Sascerides, 20 March 1588, read directly; both supralibros ovals confirmed visually; Stubenrauch note transcribed; pastedown stamp 'LN 428 ex. 1' fixes the barcode->shelfmark mapping."}], "images": []}, {"slug": "copenhagen-kb-ln428", "display_label": "Copenhagen, Royal Danish Library - LN 428 4° copy 2 (undedicated Hven presentation binding, lozenge scheme)", "institution": "Det Kongelige Bibliotek (Royal Danish Library)", "siglum": "KB", "city": "Copenhagen", "country": "DK", "shelfmark": "LN 428 4° ex. 2", "catalogue_url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122053693005763", "lat": 55.676, "lng": 12.557, "confidence": "A", "status": "extant", "recipient": "Det Kongelige Bibliotek (Royal Danish Library)", "provenance_chain": [], "physical": {"binding": {"period": "contemporary", "style": "Hven presentation binding: parchment/vellum with gilt fillet borders, a large gilt LOZENGE (diamond) frame with fleuron finials, gilt corner rosettes, remains of green silk ties", "decoration": "Tycho's gilt PORTRAIT oval supralibros at the centre of the lozenge on the front cover, ring-motto LEGIBLE in the scan: 'HIC PATET EXTERIOR TYCHONIS FORMA BRAHEI...' - examined 2026-08-10 on the IA surrogate (leaf 0). Back cover to be checked (arms oval expected per Norlind/Gigas: 'originalband med Tychos portraett och vapen').", "notes": "Norlind 1970 p. 122 (= PDF p. 125): the second of the two KB originalbind, 'saknar dedikation' - a full presentation binding without a dedication. Decorative scheme DIFFERS from ex. 1 (plain double gilt frame): lozenge + rosettes. Die-programme value: the portrait ring-motto is legible in the public scan."}}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "archive.org (KB digitization)", "ref": "barcode 130018110637"}, {"kind": "institutional-catalogue", "name": "USTC", "number": "302830"}, {"kind": "scholarly-work", "name": "Norlind 1970", "number": "p. 122 (= PDF p. 125)", "ref": "'Tre exemplar finnas i Det kgl. Bibliotek... Tva aro originalband med Tychos portraett och vapen... Det andra originalbandet saknar dedikation.' Cites E. Gigas, Bogvennen 1900, S. 31-34."}], "digital_surrogates": [{"kind": "viewer", "label": "archive.org", "url": "https://archive.org/details/den-kbd-pil-130018110637-001/mode/2up"}, {"kind": "iiif-manifest", "url": "https://iiif.archive.org/iiif/den-kbd-pil-130018110637-001/manifest.json", "host": "iiif.archive.org", "label": "IIIF Presentation API manifest", "accessed_at": "2026-06-01", "openness": "public"}], "primary_surrogate": {"kind": "iiif-manifest", "url": "https://iiif.archive.org/iiif/den-kbd-pil-130018110637-001/manifest.json", "host": "iiif.archive.org", "label": "IIIF Presentation API manifest", "accessed_at": "2026-06-01", "openness": "public"}, "has_surrogate": true, "has_iiif": true, "clusters": [], "assoc_note": "", "open_questions": ["Back cover autopsy on the IA scan (arms oval + motto legibility) - leaf index toward the end of the scan; serve the die programme.", "Collate quire signatures to confirm 1588 sheets vs later re-issue (surrogate makes this a desk check).", "Why does an undedicated copy carry full presentation livery? (Presentation stock bound ahead of recipients - bears on the binding-shop workflow; cf. Gigas 1900.)"], "confidence_history": [], "evidence": {}, "checks": [{"date": "2026-08-10", "channel": "archive.org IA surrogate (den-kbd-pil-130018110637-001), leaves 0+6 examined", "result": "found", "query": "barcode->shelfmark verification + binding autopsy", "note": "Scan footer reads 'LN 428 4° copy 2' - the barcode 130018110637 = ex. 2 mapping is now AUTOPSY-GRADE. This record previously stood for 'LN 428 4°' generically; re-scoped to ex. 2 (whose surrogate it always linked). Ex. 1 (Sascerides) materialised separately 2026-08-10 as copenhagen-kb-ln428-ex1-sascerides."}], "images": []}, {"slug": "dresden-slub-1588", "display_label": "Dresden, SLUB — De mundi 1588", "institution": "Sächsische Landesbibliothek — Staats- und Universitätsbibliothek Dresden", "siglum": "SLUB", "city": "Dresden", "country": "DE", "shelfmark": "", "catalogue_url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1105640795", "lat": 51.05, "lng": 13.738, "confidence": "B", "status": "extant", "recipient": "Sächsische Landesbibliothek — Staats- und Universitätsbibliothek Dresden", "provenance_chain": [], "physical": {}, "references": [{"kind": "institutional-catalogue", "name": "K10plus", "ref": "MARC 924 exemplar row on PPN 1105640795; Recorded by Nielsen (untraced until 2026-07-15)."}, {"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Capture the SLUB shelfmark from the record page (the K10plus exemplar row carries no call number).", "Confirm 1588 Uraniborg sheets by quire signatures; SLUB also lists 1603/1610 digital reproductions — keep the physical exemplar distinct."], "confidence_history": [], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1105640795"}, "checks": [{"date": "2026-07-15", "channel": "K10plus SRU (sru.k10plus.de)", "result": "found", "query": "pica.all=\"brahe mundi aetherei\"", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1105640795"}], "images": []}, {"slug": "edinburgh-ul-dd-5-50", "display_label": "Edinburgh UL — John Craig presentation copy (Dd.5.50)", "institution": "Edinburgh University Library (Centre for Research Collections)", "siglum": "", "city": "Edinburgh", "country": "GB", "shelfmark": "Dd.5.50", "catalogue_url": "https://discovered.ed.ac.uk/permalink/44UOE_INST/7g3mt6/alma9911782123502466", "lat": 55.953, "lng": -3.188, "confidence": "A", "status": "extant", "recipient": "John Craig (c.1550–1620)", "provenance_chain": [{"kind": "ownership", "owner": "John Craig (c.1550–1620)", "confidence": "A", "source": {"kind": "institutional-catalogue", "ref": "DiscoverEd record alma9911782123502466 (also Book Owners Online; Mosley 2007)"}, "evidence": "Presentation inscription to Craig dated 2 November 1588, with Craig's manuscript annotations throughout — Tycho's disputant on the comet question", "date": "1588-11-02"}, {"kind": "gift", "owner": "Edinburgh University Library", "confidence": "A", "source": {"kind": "institutional-catalogue", "ref": "DiscoverEd record alma9911782123502466"}, "evidence": "Donated by James Douglas of Whittingehame (catalogued former owner/donor); 19th-century full-morocco gilt binding."}], "physical": {}, "references": [{"kind": "scholarly-work", "name": "Mosley, Bearing the Heavens (2007), Appendix", "ref": "recipient × work presentation-copy census (DRP = De mundi)"}, {"kind": "scholarly-work", "name": "Book Owners Online"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "John Craig (c.1550–1620) · Edinburgh University Library", "open_questions": ["A Tycho autograph presentation copy is necessarily the 1588 Hven edition; confirm the title-page setting on inspection.", "our internal census draft flags a SECOND Edinburgh copy at the Royal Observatory (Crawford Library, CR.C1.142) — likely Nielsen's second Edinburgh holding; verify live and materialise separately (do not conflate with this UL copy)."], "confidence_history": [{"from": "B", "to": "A", "date": "2026-07-15", "reason": "Live DiscoverEd record located (permalink alma9911782123502466): shelfmark Dd.5.50 confirmed; catalogued presentation inscription to John Craig dated 2 November 1588; Craig's annotations throughout; donor James Douglas of Whittingehame; 19th-century full-morocco gilt binding.", "source": "OPAC live-record workflow, 2026-07-15"}], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://discovered.ed.ac.uk/permalink/44UOE_INST/7g3mt6/alma9911782123502466"}, "checks": [{"date": "2026-07-15", "channel": "DiscoverEd / Primo VE (pnxs REST API + permalink)", "result": "found", "note": "Record independently corroborates the Craig presentation (2 Nov 1588) and supplies the Douglas of Whittingehame donor detail."}], "images": []}, {"slug": "frederiksborg-de-mundi", "display_label": "Frederiksborg (Det Nationalhistoriske Museum) — De mundi 1588", "institution": "Det Nationalhistoriske Museum på Frederiksborg", "siglum": "", "city": "Hillerød", "country": "DK", "shelfmark": "", "catalogue_url": "", "lat": null, "lng": null, "confidence": "A", "status": "attested", "recipient": "Harald Mortensen", "provenance_chain": [{"kind": "ownership", "owner": "Harald Mortensen", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "FoF 5-6/1959 Paulli/Dal pp. 15-16; Frederiksborg årsberetning 1949-50"}, "evidence": "Owned by the Tycho-bibliographer Harald Mortensen; donated to Frederiksborgmuseet 1950."}, {"kind": "gift", "owner": "Det Nationalhistoriske Museum på Frederiksborg", "date": "1950", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "Frederiksborg årsberetning 1949-50"}, "evidence": "Mortensen gift, 1950."}], "physical": {"condition": "Per Mortensen/FoF: a De mundi 1588 with the Frankfurt 1610 titeloplag title-page — i.e. 1588 Uraniborg sheets under the later general title (in scope per the quire-signature rule; binding-state flag). Confirm by collation."}, "references": [{"kind": "scholarly-work", "name": "Fund og Forskning"}, {"kind": "scholarly-work", "name": "FoF 5-6 (1959), Paulli/Dal", "ref": "pp. 15-16; via docs/research/2026-06-01-fund-og-forskning-tycho-stores-utilization.md"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Harald Mortensen · Det Nationalhistoriske Museum på Frederiksborg", "open_questions": ["Resolved (2026-06-04): The brahe-progymnasmata-1592-uraniborg census now exists, so the cross-reference target is live: the Frederiksborg holding's rare UNFINISHED Progymnasmata issue (Uraniborg 1592) is out of scope for this De mundi census but is a candidate copy for that census — a census proposal has been filed. No De-mundi action needed. Basis: cross-census reference."], "confidence_history": [], "evidence": {"last_verified": "1959", "method": "prior-census-only", "ref": "FoF 5-6/1959 (Paulli/Dal) documenting the 1950 Mortensen gift — scholarly documentation of the accession, but no live collection record found (the museum's holdings are not machine-searchable; KID/dnm.dk probed 2026-07-15 without result)."}, "checks": [{"date": "2026-07-15", "channel": "Kunstindeks Danmark (kulturarv.dk) + dnm.dk site search", "result": "inconclusive", "note": "No machine-searchable collection database covers the museum's book holdings. A gift accessioned by a national museum in 1950 is very likely still in place — one enquiry to Det Nationalhistoriske Museum confirms it and restores status extant with method correspondence."}], "images": []}, {"slug": "goerlitz-olb-e4-132b", "display_label": "Görlitz, Oberlausitzische Bibliothek der Wissenschaften — E 4° 132 b", "institution": "Oberlausitzische Bibliothek der Wissenschaften bei den Görlitzer Sammlungen", "siglum": "OLB", "city": "Görlitz", "country": "DE", "shelfmark": "E 4° 132 b", "catalogue_url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1105640795", "lat": 51.153, "lng": 14.987, "confidence": "B", "status": "extant", "recipient": "Oberlausitzische Bibliothek der Wissenschaften bei den Görlitzer Sammlungen", "provenance_chain": [], "physical": {}, "references": [{"kind": "institutional-catalogue", "name": "K10plus", "ref": "MARC 924 exemplar row on PPN 1105640795; NOT in Nielsen's §428 list and cited by no prior census — an original-research discovery of the K10plus sweep."}, {"kind": "scholarly-work", "name": "Norlind 1970", "ref": "p. 124 lists a Görlitz copy ('Görlitz, Städt. Kunstsammlungen' — the collections the Oberlausitzische Bibliothek absorbed): independent prior-scholarship corroboration of the K10plus find, recovered the same day by the Praetorius forensics workflow."}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm 1588 Uraniborg sheets by quire signatures.", "Provenance: the OLB grew from the Milich library and Upper Lusatian learned societies — check for early owners (the region had strong Tycho reception via the Wittich and Craig circles)."], "confidence_history": [], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1105640795"}, "checks": [{"date": "2026-07-15", "channel": "K10plus SRU (sru.k10plus.de)", "result": "found", "query": "pica.all=\"brahe mundi aetherei\"", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1105640795"}], "images": []}, {"slug": "gotha-fb-math-4-123", "display_label": "Gotha, Forschungsbibliothek — Math 4° 00123/02", "institution": "Forschungsbibliothek Gotha (Universität Erfurt)", "siglum": "FBG", "city": "Gotha", "country": "DE", "shelfmark": "Math 4° 00123/02", "catalogue_url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=505354853", "lat": 50.948, "lng": 10.704, "confidence": "B", "status": "extant", "recipient": "Forschungsbibliothek Gotha (Universität Erfurt)", "provenance_chain": [], "physical": {}, "references": [{"kind": "institutional-catalogue", "name": "K10plus", "ref": "MARC 924 exemplar row on PPN 505354853; Recorded by Nielsen (untraced until 2026-07-15); the digital record PPN 1972359096 carries the exemplar shelfmark."}, {"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}], "digital_surrogates": [{"kind": "facsimile-record", "label": "Digitised exemplar (K10plus digital record PPN 1972359096)", "url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1972359096"}], "primary_surrogate": {"kind": "facsimile-record", "label": "Digitised exemplar (K10plus digital record PPN 1972359096)", "url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=1972359096"}, "has_surrogate": true, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm 1588 Uraniborg sheets by quire signatures (the digitised exemplar makes this a desk check).", "Capture the direct Digitale Historische Bibliothek Erfurt/Gotha viewer URL for the digitisation."], "confidence_history": [], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=505354853"}, "checks": [{"date": "2026-07-15", "channel": "K10plus SRU (sru.k10plus.de)", "result": "found", "query": "pica.all=\"brahe mundi aetherei\"", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=505354853"}], "images": []}, {"slug": "halle-ulb-alvensleben", "display_label": "Halle, ULB Sachsen-Anhalt — Alv. Mh 182 (Bibliotheca Alvenslebeniana)", "institution": "Universitäts- und Landesbibliothek Sachsen-Anhalt", "siglum": "ULB Halle", "city": "Halle (Saale)", "country": "DE", "shelfmark": "ALV Alv. Mh 182", "catalogue_url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=15106332X", "lat": 51.483, "lng": 11.969, "confidence": "B", "status": "extant", "recipient": "Universitäts- und Landesbibliothek Sachsen-Anhalt", "provenance_chain": [], "physical": {}, "references": [{"kind": "institutional-catalogue", "name": "K10plus", "ref": "MARC 924 exemplar row on PPN 15106332X; NOT in Nielsen's §428 list — an original-research discovery of the K10plus sweep, in a named historical collection (Alvensleben)."}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm 1588 Uraniborg sheets by quire signatures.", "Provenance: the 'Alv.' class is the Alvensleben family library (Hundisburg) deposited at Halle — check for early Alvensleben ownership marks (Joachim I von Alvensleben, 1514-1588, was a noted book collector)."], "confidence_history": [], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=15106332X"}, "checks": [{"date": "2026-07-15", "channel": "K10plus SRU (sru.k10plus.de)", "result": "found", "query": "pica.all=\"brahe mundi aetherei\"", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=15106332X"}], "images": []}, {"slug": "krakow-bj-brozek", "display_label": "Kraków, Biblioteka Jagiellońska — Jan Brożek copy", "institution": "Kraków, Biblioteka Jagiellońska (BJ)", "siglum": "", "city": "Kraków", "country": "PL", "shelfmark": "St. Dr. Cim. 6166–6167", "catalogue_url": "", "lat": 50.062, "lng": 19.937, "confidence": "B", "status": "extant", "recipient": "Jan Brożek (Joannes Broscius Curzelouiensis)", "provenance_chain": [{"kind": "ownership", "owner": "Jan Brożek (Joannes Broscius Curzelouiensis)", "confidence": "B", "source": {"kind": "first-hand", "ref": "acquisition inscription on the copy"}, "evidence": "'M. Joannes Broscius Curzelouiensis anno 1610 comparauit'"}], "physical": {"binding": {"period": "unknown", "notes": "Sammelband (klocek) with Brahe, Epistolarum astronomicarum libri (Uraniborg 1596) — shelfmarks 6166–6167. An OLD Jagiellonian holding, NOT an ex-Berlin 'Berlinka' volume. Bears no Apologia/Craig material (confirmed while resolving the Apologia Berlin/Kraków question)."}}, "references": [{"kind": "scholarly-work", "name": "tycho-brahe-library reconstruction"}, {"kind": "institutional-catalogue", "name": "Biblioteka Jagiellońska catalogue + Jagiellońska Biblioteka Cyfrowa", "ref": "a browser-based catalogue session kb.dk-logged session, 2026-06-01 (tycho-thesaurus Apologia/Kraków task T5)"}], "digital_surrogates": [{"kind": "viewer", "label": "Jagiellońska Biblioteka Cyfrowa — the digitised edition (dLibra publication 960012, edition 921017)", "url": "https://jbc.bj.uj.edu.pl/en/dlibra/publication/960012/edition/921017"}], "primary_surrogate": {"kind": "viewer", "label": "Jagiellońska Biblioteka Cyfrowa — the digitised edition (dLibra publication 960012, edition 921017)", "url": "https://jbc.bj.uj.edu.pl/en/dlibra/publication/960012/edition/921017"}, "has_surrogate": true, "has_iiif": false, "clusters": [], "assoc_note": "Jan Brożek (Joannes Broscius Curzelouiensis)", "open_questions": ["EDITION GATE acquired 1610 (not a presentation copy) — could be 1588 Hven sheets OR a 1603/1610 re-issue; confirm by quire signatures from the JBC surrogate. Sibling 1603 klocek at BJ St. Dr. Cim. 6169–6171 ('M. Weieri')."], "confidence_history": [{"from": "C", "to": "B", "date": "2026-07-15", "reason": "Shelfmark (St. Dr. Cim. 6166–6167), digitisation (Jagiellońska Biblioteka Cyfrowa) and the Brożek acquisition inscription verified via the BJ catalogue (a browser-based catalogue session sweep 2026-06-01); the 1588-sheets-vs-reissue edition gate remains an open question.", "source": "/census add merge 2026-07-15 (prop-20260601T130000Z-demundi1588-krakow-brozek)"}], "evidence": {"last_verified": "2026-07-15", "method": "digital-surrogate", "ref": "https://jbc.bj.uj.edu.pl/en/dlibra/publication/960012/edition/921017"}, "checks": [{"date": "2026-07-15", "channel": "JBC dLibra (in-browser, Christian Westergaard)", "result": "found", "note": "Direct edition URL located manually after the earlier platform-root link (jbc.bj.uj.edu.pl) proved useless — that root-link error is now a validator-blocked class (root-url gate). Machine re-verification pending (JBC served a bot-check page to automated fetch)."}], "images": []}, {"slug": "london-bl-maestlin", "display_label": "London, British Library — Michael Maestlin's annotated copy", "institution": "British Library", "siglum": "BL", "city": "London", "country": "GB", "shelfmark": "(shelfmark to confirm; BL record alma990004505250109251)", "catalogue_url": "https://catalogue.bl.uk/nde/fulldisplay?docid=alma990004505250109251&vid=44BL_MAIN:BLL01_NDE", "lat": 51.529, "lng": -0.127, "confidence": "A", "status": "extant", "recipient": "Michael Maestlin", "provenance_chain": [{"kind": "ownership", "owner": "Michael Maestlin", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "identified as Maestlin's own copy"}, "evidence": "extensive autograph marginalia"}], "physical": {"binding": {"period": "contemporary", "style": "Uraniborg gilt-vellum presentation binding", "decoration": "Upper cover with Tycho's gilt PORTRAIT-oval supralibros, legend fully legible", "originality": "original", "notes": "CW photographs at the BL: Censuses/Mundi/brahe_maestlin/IMG_1118–1140.JPG (IMG_1118 = the portrait oval). The copy's dispatch to Maestlin is documented 14 May 1588 (Mosley, Bearing the Heavens) — the keystone dated anchor proving the portrait die existed by May 1588, re-dating the die to [late 1586 → 14 May 1588]."}, "marginalia": {"density": "dense", "character": "Maestlin's working annotations", "significance": "high", "scribe_suite_ref": null}}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "scholarly-work", "ref": "Brahe–Maestlin exchange; Norlind / Mosley"}, {"kind": "scholarly-work", "name": "Supralibros binding census 2026-07-15", "ref": "docs/research/2026-07-15-tycho-supralibros-binding-census.md (Addendum) — CW's own BL photographs"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Capture BL shelfmark.", "Transcribe/collate Maestlin's marginalia (scribe-suite candidate).", "Confirm 1588 sheets by quire signature."], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "luebeck-zhb-imgwf", "display_label": "Lübeck, Zentrale Hochschulbibliothek — IMGWF collection", "institution": "Zentrale Hochschulbibliothek Lübeck (Institut für Medizin- und Wissenschaftsgeschichte)", "siglum": "ZHB Lübeck", "city": "Lübeck", "country": "DE", "shelfmark": "IMGWF LOS o.S. (no call number assigned)", "catalogue_url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=15106332X", "lat": 53.836, "lng": 10.702, "confidence": "B", "status": "extant", "recipient": "Zentrale Hochschulbibliothek Lübeck (Institut für Medizin- und Wissenschaftsgeschichte)", "provenance_chain": [], "physical": {}, "references": [{"kind": "institutional-catalogue", "name": "K10plus", "ref": "MARC 924 exemplar row on PPN 15106332X; NOT in Nielsen's §428 list — an original-research discovery of the K10plus sweep."}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm this is an original 1588 exemplar in hand (the holding is marked 'o.S.' — no call number; verify it is not a reproduction) and collate quire signatures."], "confidence_history": [], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=15106332X"}, "checks": [{"date": "2026-07-15", "channel": "K10plus SRU (sru.k10plus.de)", "result": "found", "query": "pica.all=\"brahe mundi aetherei\"", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=15106332X"}], "images": []}, {"slug": "magini-presentation-candidate", "display_label": "Decorated-binding copy (candidate Magini presentation copy) — untraced/private", "institution": "Private collection (untraced)", "siglum": "priv", "city": "", "country": "", "shelfmark": "(none / private)", "catalogue_url": "", "lat": null, "lng": null, "confidence": "C", "status": "extant", "recipient": "Tycho Brahe (donor)", "provenance_chain": [{"kind": "gift", "owner": "Tycho Brahe (donor)", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "Magini to Tycho, Bologna 13 Sept 1590 (Dreyer OO VII)"}, "evidence": "Documentary fact (not copy-specific): Tycho sent Giovanni Antonio Magini a copy of De mundi (1588) before September 1590; Magini's letter acknowledges receipt. This establishes that a Magini presentation copy existed; it does NOT by itself prove the present photographed copy is that copy."}, {"kind": "ownership", "owner": "Giovanni Antonio Magini", "confidence": "C", "source": {"kind": "inference"}, "evidence": "Working hypothesis (this census): the decorated gilt-medallion binding is the Magini presentation copy attested by the 1590 correspondence. Unverified — the medallion owner is not legible and the copy's modern history is undocumented in the photographic record available to this census."}], "physical": {"binding": {"period": "contemporary", "style": "vellum over boards, gilt-tooled", "decoration": "Triple-fillet border; central gilt lozenge frame with corner fleur tools; a central gilt oval medallion supralibros (portrait or armorial — lettering around the oval not legible in the photographs); scattered small gilt rosette/floral tools at the corners; gilt-tooled spine with raised bands and fleuron tools in the compartments; an old ink shelfmark/inscription at the spine head.", "originality": "unknown", "notes": "A decorated, presentation-grade binding. Only the binding is photographed (IMG_8253-8255); no leaves, title page, or quire signatures are imaged."}}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "scholarly-work", "name": "Magini to Tycho Brahe, Bologna, 13 September 1590 (Bononiae Idib. Septembris 1590)", "ref": "Dreyer, Tychonis Brahe Opera Omnia VII (correspondence); acknowledges receipt of 'primum tuum de mundi aetherei phaenomenis librum'"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Tycho Brahe (donor) · Giovanni Antonio Magini", "open_questions": [" Identifying the central gilt oval supralibros medallion (portrait vs armorial; Magini's, a dedicatee's, or a later owner's) requires close visual inspection of the binding — image/object-dependent, not resolvable from text sources.", "Document the current holder/location of this photographed copy — and reconcile against the open Sotheby's market-appearance lead for this edition.", "Confirm the copy is genuinely 1588 Uraniborg sheets (quire signatures) and which title-setting (10-chapter standard vs 8-chapter) — no title page or text leaf is photographed.", " Conditional on the supralibros identification above (a browser-based catalogue session): if the medallion confirms a Magini presentation, the grade would be upgraded and any documented sale added as a market history row — but the trigger is the image-dependent ID."], "confidence_history": [], "evidence": {"last_verified": "2026-05-31", "method": "first-hand", "ref": "Three binding photographs in the record available to this census (IMG_8253-8255) — the physical copy was in view of the photographer; existence is first-hand, the Magini identification remains grade C."}, "checks": [], "images": []}, {"slug": "munich-bsb", "display_label": "Augsburg, Staats- und Stadtbibliothek — 4 Gs 1738a (digitised on MDZ)", "institution": "Augsburg, Staats- und Stadtbibliothek (surrogate digitised on the BSB-run MDZ platform digitale-sammlungen.de)", "siglum": "BSB", "city": "Augsburg", "country": "DE", "shelfmark": "4 Gs 1738a (Beiband)", "catalogue_url": "https://www.digitale-sammlungen.de/en/view/bsb11211989", "lat": 48.371, "lng": 10.898, "confidence": "B", "status": "extant", "recipient": "Augsburg, Staats- und Stadtbibliothek (surrogate digitised on the BSB-run MDZ platform digitale-sammlungen.de)", "provenance_chain": [], "physical": {}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "WorldCat", "number": "630966874"}, {"kind": "institutional-catalogue", "name": "MDZ / digitale-sammlungen.de IIIF manifest", "ref": "IIIF manifest bsb11211989 records the holding as 'Augsburg, Staats- und Stadtbibliothek -- 4 Gs 1738a#(Beibd.' — the MDZ (Muenchener DigitalisierungsZentrum) digitises partner Bavarian libraries under bsb-prefixed object IDs, so the prefix is the platform namespace, not the holding library."}], "digital_surrogates": [{"kind": "viewer", "label": "MDZ digitale-sammlungen", "url": "https://www.digitale-sammlungen.de/en/view/bsb11211989"}, {"kind": "iiif-manifest", "url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb11211989/manifest", "host": "api.digitale-sammlungen.de", "label": "IIIF Presentation API manifest", "accessed_at": "2026-06-01", "openness": "public"}], "primary_surrogate": {"kind": "iiif-manifest", "url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb11211989/manifest", "host": "api.digitale-sammlungen.de", "label": "IIIF Presentation API manifest", "accessed_at": "2026-06-01", "openness": "public"}, "has_surrogate": true, "has_iiif": true, "clusters": [], "assoc_note": "", "open_questions": ["Resolved (2026-06-04): Superseded by the re-attribution: the digitised copy is Augsburg SuStB 4 Gs 1738a (Beiband), not a BSB-Munich copy (see the IIIF-mismatch resolution). The 1588 De mundi sheets are confirmed by the MDZ surrogate. Basis: IIIF manifest bsb11211989.", "Resolved (2026-06-04): Reconciled: the digitised IIIF surrogate (MDZ object bsb11211989, digitale-sammlungen.de) is the AUGSBURG Staats- und Stadtbibliothek copy, shelfmark 4 Gs 1738a (a Beiband/bound-with), NOT a Bayerische Staatsbibliothek (Munich) copy. The MDZ platform digitises many Bavarian partner libraries under bsb-prefixed IDs (the prefix is the platform namespace, not a holding indicator), and the manifest's location metadata names Augsburg explicitly. This record had no independent BSB-Munich evidence (only the surrogate), so it is re-attributed to Augsburg SuStB; a genuine BSB-Munich copy, if one exists, would be a separate record. Basis: IIIF manifest holding metadata.", "LABEL CORRECTED 2026-07-15: the record was displayed as 'Munich, Bayerische Staatsbibliothek' although the repository fields have always said Augsburg, Staats- und Stadtbibliothek (the surrogate lives on the BSB-run MDZ platform — hence the slug). This is Nielsen §428's 'Augsburg, Staats-, Kreis- u. Stadtbibl.' holding; copy_id kept for permalink stability."], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "oxford-bodleian-savile", "display_label": "Oxford, Bodleian Library — 4° T 2 Art.Seld. (Savile copy)", "institution": "Bodleian Library, University of Oxford", "siglum": "Bodl", "city": "Oxford", "country": "GB", "shelfmark": "4° T 2 Art.Seld.", "catalogue_url": "https://solo.bodleian.ox.ac.uk/permalink/44OXF_INST/35n82s/alma990141137650107026", "lat": 51.754, "lng": -1.255, "confidence": "A", "status": "extant", "recipient": "Tycho Brahe (donor)", "provenance_chain": [{"kind": "gift", "owner": "Tycho Brahe (donor)", "date": "1590-12-01", "place": "Uraniborg → England", "confidence": "B", "source": {"kind": "scholarly-work", "ref": "TBOO VII 283-85; SOLO alma990141137650107026 (David Rogers's suggestion)"}, "evidence": "Tycho's letter of 1 Dec 1590 sent two copies to Thomas Savile, one as Savile's own gift ('hunc, quo nunc te dono'). Identification of THIS exemplar as that gift copy: David Rogers apud SOLO ('though uninscribed, this is prob. the' copy sent by Tycho) — the copy is uninscribed, so the identification rests on the Savile provenance plus the documented dispatch, hence B not A."}, {"kind": "ownership", "owner": "Thomas Savile (d. 1593)", "date": "1590-1593", "confidence": "B", "source": {"kind": "institutional-catalogue", "ref": "SOLO alma990141137650107026; Norlind 1970 p. 123 ('otvivelaktigt ett av de två exemplar som Tycho skickade... Thomas Savile, yngre bror till Sir Henry Savile')"}, "evidence": "SOLO provenance name: 'Savile, Thomas, -1593, former owner'; Norlind states the dispatch identification without reservation ('otvivelaktigt'). Earlier drafts of this census carried Henry Savile here — corrected 2026-08-09: the documented consignee and catalogued former owner is Thomas, Henry's brother (TBOO VIII register: 'SAVILE, Thomas... Henrici Savilii frater... mortuus 1593')."}, {"kind": "transfer", "owner": "Sir Henry Savile (probably, on Thomas's death)", "date": "1593", "confidence": "C", "source": {"kind": "scholarly-work", "ref": "Norlind 1970, p. 123 (= PDF p. 126)"}, "evidence": "Norlind: after Thomas's death in 1593 his library probably ('sannolikt') passed to Henry — who, per David Rogers's communication to Norlind, is the annotating hand in this copy; Heilbronner 1742 p. 620 lists the volume as 'Notae H. S. in Tychonis Brahei libros de Phaenomenis coelestibus'. Norlind's further account (Henry's astronomical/mathematical books handed over for the Savilian professorships) TENSIONS with the present Art.Seld. shelfmark — see the next event; the two routes into the Bodleian cannot both be right as stated."}, {"kind": "transfer", "owner": "John Selden (1584-1654) — inferred from the shelfmark", "date": "by 1659", "confidence": "C", "source": {"kind": "inference"}, "evidence": "'4° T 2 Art.Seld.' places the volume in the Bodleian's Selden collection (Selden bequest, received 1659). This contradicts Norlind's Savilian-library route (p. 123): Savilian-foundation books carry 'Savile' shelfmarks (cf. Savile X 15 in the Gilbert census), not Art.Seld. Either the copy left the Savile orbit to Selden before 1654, or Norlind's route (or the shelfmark reading) is wrong — unresolved; part of the standing Bodleian Rare Books query."}], "physical": {"binding": {"period": "period", "style": "Brown calf, English-style (Savile-era or early Bodleian)", "decoration": "Gilt laurel-wreath oval centrepiece; spine with quatrefoil tools; painted shelfmark letters on the upper cover. NOT a Tycho supralibros — a documented negative for the supralibros census (2026-07-18 dossier, settled against SOLO's binding field).", "notes": "CW photographs 2025-01-22: Censuses/Mundi/Bodleian/20250122_091901602_iOS.jpg (upper cover), 20250122_091912325_iOS.jpg (spine). Dispatched 1 Dec 1590 (one of the two copies of the Savile consignment); the copy evidently travelled plain or in sheets — a livery datum (supralibros not universal on scholarly dispatches), not a die datum."}, "marginalia": {"density": "moderate", "hands_count": 1, "hands_identified": ["Sir Henry Savile — per David Rogers's communication to Norlind (1970, p. 123: 'marginalanteckningar av Sir Henry Saviles hand')", "'perhaps Savile's' [the catalogued former owner, i.e. Thomas] (SOLO provenance note)"], "languages": ["el", "la"], "character": "Marginal annotations in Greek and Latin throughout the work in black ink in a single 16th-century hand; also underlining in the text in black ink (SOLO). TWO competing attributions of the one hand stand unresolved: Henry Savile (David Rogers apud Norlind p. 123 — the same identification behind Heilbronner 1742's 'Notae H. S.') vs SOLO's hedged 'perhaps [Thomas] Savile's'.", "significance": "high"}}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "Bodleian SOLO, alma990141137650107026", "ref": "cached export:.pdf ('Presentation copy from Tycho Brahe. Provenance name: Savile, Thomas, -1593, former owner... David Rogers suggests that, though uninscribed, this is prob. the' copy sent by Tycho); binding field assessed as unanchored to the object (2026-07-18 dossier)"}, {"kind": "scholarly-work", "name": "TBOO VII", "number": "pp. 283-85 (at 284.15-16, 285)", "ref": "Tycho to Thomas Savile, Uraniborg, 1 Dec 1590 (E codice Londinensi Musei Britannici Harleiano 6995,40): 'Mitto siquidem bina Exemplaria... hunc, quo nunc te dono';.pdf"}, {"kind": "scholarly-work", "name": "Mosley, Bearing the Heavens (2007), Appendix I", "ref": "'Savile: DRP (Bodleian Library), d. 1 December 1590. Tycho sent two copies of the work to Savile, and asked him to solicit the opinion of others regarding it, particularly Dee and Thomas Digges. See TBOO VII, 284.15-16, 285' — reference/censuses/brahe-mechanica-1598-wandsbek/sources/mosley_appendix_i_full.txt"}, {"kind": "scholarly-work", "name": "Feingold, The Mathematicians' Apprenticeship (CUP 1984)", "number": "pp. 132-3", "ref": "corpus: Bibliography\\Book sources\\Feingold - The Mathematicians' Apprenticeship (CUP 1984).pdf (printed page = PDF page - 7); Thomas Savile's continental network (Dudith, Wittich, Wacker, Blotius, Praetorius) at pp. 124-33"}, {"kind": "scholarly-work", "name": "Norlind 1970", "number": "p. 123 (= PDF p. 126)", "ref": ".pdf — 'otvivelaktigt ett av de två exemplar som Tycho skickade... Thomas Savile'; original binding, no dedication; annotations attributed to Henry Savile's hand on David Rogers's communication; the Thomas→Henry→Savilian-professorships route"}, {"kind": "scholarly-work", "name": "Heilbronner, Historia matheseos universae (Leipzig 1742)", "number": "p. 620", "ref": "18th-century sighting: listed among the mathematical manuscripts of the Bodleian as 'Notae H. S. in Tychonis Brahei libros de Phaenomenis coelestibus' (per Norlind p. 123) — H. S. = Henricus Savilius, supporting the Henry-hand attribution"}, {"kind": "scholarly-work", "name": "Supralibros binding census 2026-07-15", "ref": "docs/research/2026-07-15-tycho-supralibros-binding-census.md — CW's own Bodleian photographs (2025-01-22)"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Tycho Brahe (donor) · Thomas Savile (d. 1593)", "open_questions": ["Annotator identity — HENRY vs THOMAS Savile: David Rogers (apud Norlind p. 123) attributes the Greek/Latin marginalia to Sir Henry Savile's hand; SOLO hedges 'perhaps [Thomas] Savile's'. A comparison against documented specimens of BOTH brothers (T. Savile: BL Harley 6995 letters; H. Savile: Bodleian Savilian papers) would settle it.", "Route into the Bodleian — SELDEN vs SAVILIAN LIBRARY: the Art.Seld. shelfmark says Selden bequest (1659); Norlind p. 123 says Henry's astronomical/mathematical books went to the Savilian professorships. Both cannot stand as stated — part of the standing Bodleian Rare Books query (2026-07-18 dossier follow-up: binding-field origin; Epistolae Savile shelfmark; any third Savile Tycho volume).", "Locate Heilbronner 1742 p. 620 ('Notae H. S. in Tychonis Brahei libros de Phaenomenis coelestibus') and capture the entry verbatim — the earliest known sighting of the annotated copy.", "Collate quire signatures. (Binding recorded 2026-07-15 from CW photographs — see physical.binding.)"], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "poznan-ub-scheibel", "display_label": "Poznań, Biblioteka Uniwersytecka (ex Scheibel; John Dee inscription, Kassel 1589) — Hven presentation binding", "institution": "Biblioteka Uniwersytecka w Poznaniu", "siglum": "", "city": "Poznań", "country": "PL", "shelfmark": "SD 478 II", "catalogue_url": "https://katalog.amu.edu.pl/discovery/fulldisplay?docid=alma991013222929709340&context=L&vid=48OMNIS_AMU:AMU&lang=pl", "lat": 52.406, "lng": 16.925, "confidence": "B", "status": "extant", "recipient": "Tycho Brahe (donor); recipient CONTESTED — Christoph Rothmann (Scheibel 1787, with the May-1588 autograph dedication he transcribes) vs unidentified (Norlind 1970, dedication absent by his inspection)", "provenance_chain": [{"kind": "gift", "owner": "Tycho Brahe (donor); recipient CONTESTED — Christoph Rothmann (Scheibel 1787, with the May-1588 autograph dedication he transcribes) vs unidentified (Norlind 1970, dedication absent by his inspection)", "date": "1588-05 (dedication date per Scheibel); delivered Kassel 1588-07-11 if the Rothmann identification holds", "confidence": "B", "source": {"kind": "scholarly-work", "ref": "Scheibel 1787, S. 152-154; Norlind 1970, pp. 124-25 (PDF pp. 127-28)"}, "evidence": "Hven presentation binding (portrait/arms oval pair) marks it as a dedication exemplar bound on Hven. Scheibel 1787 asserts this copy IS the Rothmann copy of Gassendi's account and transcribes Tycho's autograph title dedication ('...D. Christophoro Rothmanno... dono misit Tycho Brahe Danus Anno 1588. mense Majo'). Norlind 1970, finding no dedication, ruled it NOT Rothmann's and assigned the dedication to Scheibel's lost second copy. The rival post-1787 excision/washing reading keeps the Rothmann identification alive — unresolved; see open questions for the deciding test. Either way the copy was physically at Kassel by 26 March 1589 (Dee note)."}, {"kind": "ownership", "owner": "'Christoph: ab Hirschenberg' (unidentified; inscription 'Chat. Eccles: M: T & H. Can.')", "date": "before 1787", "confidence": "C", "source": {"kind": "scholarly-work", "ref": "Scheibel 1787, S. 154"}, "evidence": "Inscription of an unknown Christoph ab Hirschenberg below the Dee note (Scheibel: 'die Handschrift eines unbekannten Christoph: ab Hirschenberg'); the abbreviations suggest a cathedral canonry. Hirschberg is Silesian — consistent with the copy's route toward Scheibel's Breslau. Ownership (vs mere inscription) not established; not mentioned by Norlind."}, {"kind": "ownership", "owner": "Johann Ephraim Scheibel (Breslau)", "date": "by 1787", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "Scheibel, Einleitung zur mathematischen Bücherkenntniss, 3 (1787), S. 152-154, apud Norlind 1970 p. 124"}, "evidence": "One of the two De mundi copies Scheibel owned and described in print; his signature is one of the two in the volume. Caveat: Scheibel's printed description conflated his two exemplars (the Rothmann dedication belongs to the other, lost copy)."}, {"kind": "transfer", "owner": "Biblioteka Uniwersytecka w Poznaniu", "date": "by 1970", "confidence": "B", "source": {"kind": "scholarly-work", "ref": "Norlind 1970, p. 124 (PDF p. 127)"}, "evidence": "Norlind records the copy at Poznań UB; the route from Scheibel's Breslau collection is undocumented here."}], "physical": {"binding": {"period": "contemporary", "style": "Parchment/vellum, very worn (Norlind: 'mycket nött')", "decoration": "Tycho's gilt oval supralibros on BOTH covers — portrait (front), arms (back). The Latin inscription around both ovals is transcribed on the front pastedown, with the note that the stamped text is nearly illegible (Norlind p. 124).", "notes": "IDENTITY CONTESTED. SCHEIBEL: 'Ich besitze zwey Exemplare... Das eine ist das nehmliche, dessen Gassendi Meldung thut, welches Tycho an Rothmann geschickt hat' — ONE copy carrying everything: parchment, portrait oval front + arms oval back ('Umschriften noch leserlich' 1787), Tycho's AUTOGRAPH dedication to Rothmann beside the title (dated May 1588, text preserved verbatim), Dee's album note after the last leaf, a 'Christoph: ab Hirschenberg' inscription, and underlinings/annotations 'vermuthlich von Rothmann'. NORLIND 1970 p. 124: the dedication is absent (only two signatures, one Scheibel's), so Scheibel described the wrong exemplar and the real Rothmann copy is his other, now-lost one. RIVAL READING (reopened): the autograph dedication was excised or washed from the title after 1787 — which explains the same absence without requiring an eyewitness to misdescribe his own two books, and explains why the ovals, the Dee note and the reading-marks all sit in the surviving copy exactly as Scheibel describes. Kassel dispatch history per Norlind p. 125: received by Rothmann 11 July 1588 via Gellius Sascerides (TBOO VI, 149); Landgrave Wilhelm IV coveted it; Tycho, Feb 1589 (TBOO VI, 180): it was Rothmann's."}, "marginalia": {"density": "moderate", "hands_identified": ["John Dee (autograph amicorum note, last leaf)", "Christoph Rothmann (?) — underlinings and some annotations, 'vermuthlich von Rothmann' (Scheibel 1787)", "'Christoph: ab Hirschenberg' (unidentified; inscription below the Dee note, per Scheibel 1787)"], "languages": ["la"], "character": "Last leaf: John Dee's autograph amicorum note receiving Christoph Rothmann into his friendship, dated Kassel 26 March 1589 (Scheibel reads 'Locrobytanus', Norlind 'Locobrytanus'; Dee signs twice, once with the mark ∴). Below it an inscription of an unknown 'Christoph: ab Hirschenberg. Chat. Eccles: M: T & H. Can.' (Scheibel 1787 — not in Norlind). Noteworthy passages underlined here and there with some added annotations, presumably Rothmann's, the copy 'diligently read' yet clean (Scheibel). By 1970 also two signatures on/near the title, one Scheibel's (Norlind).", "significance": "high"}}, "references": [{"kind": "scholarly-work", "name": "Norlind 1970", "number": "pp. 123-25 (= PDF pp. 126-28)", "ref": ".pdf — the De mundi exemplar survey; Poznań entry and wrong-exemplar analysis at p. 124, the Rothmann/Kassel dispatch mechanics at p. 125. Printed page = PDF page - 3 in this section."}, {"kind": "scholarly-work", "name": "Scheibel, Einleitung zur mathematischen Bücherkenntniss, 3 (1787)", "number": "S. 152-154", "ref": "OBTAINED 2026-08-09 (CW screenshots of Google Books 4H9cAAAAcAAJ) — full transcription + translation + Norlind collation: sources/scheibel_1787_s152-155.md. Scheibel asserts this copy IS the Rothmann copy; transcribes the May-1588 autograph dedication, both supralibros ring-mottoes ('still legible' 1787), the Dee note, and the Hirschenberg inscription; attributes the underlinings/annotations to Rothmann; cites Gassendi (Vita Tychonis pp. 81, 201) for the Sascerides delivery and the Landgrave's three hours of reading"}, {"kind": "scholarly-work", "name": "Gassendi, Vita Tychonis", "number": "pp. 81, 201 (Scheibel's edition)", "ref": "apud Scheibel 1787: the 1588 friends-and-mathematicians distribution; the copy sent to Rothmann at Kassel via Gellius Sascerides; Landgrave Wilhelm's three hours of pleased reading; 'proper' publication Prague 1603"}, {"kind": "scholarly-work", "name": "TBOO III, pp. 203-04 + editorial note ad p. 204,12", "ref": "Tycho's own Progymnasmata passage on Dee (praise of the Nucleus parallaticus; Rothmann's Hven-visit report of Dee's Kassel conversation 'quando Casellas, redeundo in Patriam, transiisset' and Dee's straight-line-recession opinion on the 1572 nova, which Tycho refutes) — Dreyer dates the Kassel transit 'hoc mense Martio a. 1589' citing Scheibel, i.e. by THIS copy's inscription..pdf, PDF pp. 217-18 (printed 203-04) and PDF p. 412ff (annotationes)."}, {"kind": "scholarly-work", "name": "TBOO VI, annotationes p. 363 (Rothmann to Tycho, MS)", "ref": "Dreyer quotes a Rothmann letter: Rothmann wrote 'superiore Mense Maio' to 'amicum meum singularem... D. Ioannem Dee' about Ursus attributing his clocks to the 'illiterate' clockmaker [Bürgi] and stealing Tycho's world-system — a documented (lost) Rothmann→Dee letter of May [1589], corroborating the live Rothmann–Dee friendship this copy's inscription records. Corpus: brahe-t_opera_06.pdf, PDF p. 380."}, {"kind": "scholarly-work", "name": "supralibros census 2026-07-15 / 2026-07-18", "ref": "docs/research/2026-07-15-tycho-supralibros-binding-census.md; docs/research/2026-07-18-icon-arms-supralibros.md — this copy in the confirmed portrait+arms carrier list"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Tycho Brahe (donor); recipient CONTESTED — Christoph Rothmann (Scheibel 1787, with the May-1588 autograph dedication he transcribes) vs unidentified (Norlind 1970, dedication absent by his inspection) · 'Christoph: ab Hirschenberg' (unidentified; inscription 'Chat. Eccles: M: T & H. Can.')", "open_questions": ["LIVE VERIFICATION DONE 2026-08-10 (see checks): shelfmark SD 478 II, extant. No digital surrogate exists in any Polish digital library (WBC + FBC not-found). REMAINING PATH for the supralibros ovals, the title-leaf dedication test (autopsy/UV) and the Dee note: photograph order / correspondence with Biblioteka Uniwersytecka w Poznaniu, Oddzial Zbiorow Specjalnych (on-site use only).", "IDENTITY — IS THIS THE ROTHMANN COPY? Scheibel 1787 says YES and transcribes Tycho's autograph title dedication (May 1588); Norlind 1970 says NO because the dedication was gone by his inspection (only two signatures, one Scheibel's) and assigns it to the lost second Scheibel copy. The rival reading — dedication excised or washed after 1787 — explains the absence without requiring Scheibel to misdescribe his own books. DECIDING TEST: autopsy or photographs of the Poznań title leaf — supplied/repaired paper, washing ghosts, UV fluorescence for removed ink (UV recovers faded ink), and where exactly the 'two signatures' sit. Until decided, the Rothmann provenance stays CONTESTED and the 'lost Rothmann copy' candidate (manual-9f6a7b8c0d1e) stays contingent on Norlind's reading.", "Identify 'Christoph: ab Hirschenberg. Chat. Eccles: M: T & H. Can.' (Scheibel S. 154) — an unknown pre-1787 inscriber, plausibly a Silesian cathedral canon (Hirschberg); a resolved identity would bridge the copy's route from Kassel to Breslau.", "Chase the Bose lead for the Epistolae census: Scheibel S. 153 — 'Bose besass ein ähnlich verziertes Exemplar von Tychos Briefen, s. Otia Wittemb. crit. phys. p. 29. sq.' — a supralibros-decorated Epistolae copy in the Bose collection, candidate carrier for brahe-epistolae-1596 and the die programme.", "Norlind's aside that Dee 'probably visited Hven in Sept. 1588' (his reading of the postscript at TBOO VII 141) is now CONTRADICTED by three independent lines (adjudicated 2026-08-09, proposal filed): (1) Dee was resident at Třeboň in Sept 1588; (2) Tycho's own Progymnasmata (TBOO III 204) knows Dee's nova opinion only via Rothmann's report, at Hven 1590, of the Kassel conversation 'quando Casellas, redeundo in Patriam, transiisset' — inexplicable had Dee visited Hven two years earlier; (3) the VII 141 postscript ('Hae literae lectae mittantur statim ad D. Ioannem à Dee, quem cras mane ante abitum, Deo volente, conveniemus') survives on a COPY (Vienna codex lat. 10686) and reads as a forwarding note by an unidentified carrier a day's distance from Dee, not as Tycho's own words. Do not repeat the Hven claim.", "The Dee inscription's syntax (Dee receiving Rothmann into HIS friends) reads as Dee writing in a book he did not own — an album-amicorum-style attestation for the owner. Whether Dee ever OWNED this copy is therefore doubtful; treat as a Dee ASSOCIATION copy unless new evidence emerges (bears on the dee-john-mortlake bibliotheca: association, not entry/survivor)."], "confidence_history": [], "evidence": {"last_verified": "2026-08-10", "method": "live-catalogue", "ref": "UAM Primo (katalog.amu.edu.pl) alma991013222929709340, captured via CW in-browser pass 2026-08-10: 1588 Uraniborg edition ('Vraniobvrgi:... Christophorus Uveida, [przed 20 III] 1588'), Biblioteka Uniwersytecka w Poznaniu, Magazyn Zbiorow Specjalnych, on-site use only; record note cites 'Egzemplarz opisany w: J. E. Scheibel, Einleitung zur mathematischen Buecherkenntniss, Bd. 3, Breslau: J. E. Meyer, 1786, s.152-154' - the explicit Scheibel linkage. NB: record gives Scheibel Bd. 3 as 1786; our direct reading of the Google Books digitisation says 1787 - date discrepancy unresolved, keep 1787 pending title-page check. Record's two 'digital access' links are RED HERRINGS: both resolve to Internet Archive scans of the Copenhagen KB LN 428 4-to copies 1-2 (different physical exemplars), cited by the cataloguer because the KB ex.1 Sascerides dedication of 20 Mar 1588 dates the printing."}, "checks": [{"date": "2026-08-09", "channel": "NUKAT (katalog.nukat.edu.pl), automated query", "result": "inconclusive", "query": "Brahe mundi aetherei", "note": "Bot-blocked (Anubis 'Access Denied'). Live verification of the Poznań UB holding requires a manual or in-browser pass over NUKAT + the UAM Primo OPAC; until then the copy remains attested-1970, not extant."}, {"date": "2026-08-10", "channel": "WBC - Wielkopolska Biblioteka Cyfrowa (dLibra), server-side query", "result": "not-found", "query": "Brahe mundi; \"mundi aetherei\"", "note": "54 hits, top 25 relevance-ranked reviewed in full: no Brahe-authored work, nothing dated 1588/1603/1610 - NO digital surrogate of this copy at WBC (Poznan UB's digitisation host). FBC aggregator is JS-only server-side (unverified there); KVK redesign likewise JS-only, so no side-route into NUKAT."}, {"date": "2026-08-10", "channel": "NUKAT (katalog.nukat.edu.pl), automated query", "result": "inconclusive", "query": "Brahe de mundi aetherei", "note": "Still Anubis-blocked ('Access Denied', Anubis v1.25.0). Remains an in-browser task (_poznan_ub_in-browser.md)."}, {"date": "2026-08-10", "channel": "UAM Primo / biblioteka.amu.edu.pl, server-side", "result": "inconclusive", "query": "(homepage fetch to locate OPAC)", "note": "Connection refused (ECONNREFUSED 150.254.65.213:443). Remains an in-browser task."}, {"date": "2026-08-10", "channel": "UAM Primo (katalog.amu.edu.pl), CW via an in-browser", "result": "found", "query": "Brahe De mundi aetherei recentioribus phaenomenis", "note": "LIVE RECORD CAPTURED - shelfmark SD 478 II, Magazyn Zbiorow Specjalnych, 'do korzystania na miejscu'. Status upgraded attested->extant. Record note cites Scheibel s.152-154 explicitly. No supralibros/Dee-note detail in the MARC note (expected). Digital-access links = KB Copenhagen scans, NOT this copy."}, {"date": "2026-08-10", "channel": "NUKAT (katalog.nukat.edu.pl), CW via an in-browser", "result": "not-found", "query": "Brahe mundi aetherei; au:Brahe (all 35 records reviewed)", "note": "Anubis passed in live browser. NUKAT does NOT carry the Poznan UB 1588 holding at all; its only De mundi record is the 1603 Prague reissue at Biblioteka Gdanska PAN (biblionumber 4470770 - ledgered as candidate cfc-4d5e6f7a8b9c). Union-catalogue coverage gap for Poznan UB old prints - a NUKAT miss is not evidence of absence."}, {"date": "2026-08-10", "channel": "FBC (fbc.pionier.net.pl), CW via an in-browser", "result": "not-found", "query": "Brahe mundi aetherei; \"mundi aetherei\" (phrase, 0 hits); Tycho Brahe (broad, 103 hits reviewed)", "note": "No FBC-aggregated Polish digital library holds a scan of this work. Combined with the WBC not-found (2026-08-10, server-side): NO digital surrogate of the Poznan copy exists online."}], "images": []}, {"slug": "prague-nkp-rudolf", "display_label": "Prague, National Library of the Czech Republic — 49 B 60 (adl. 1)", "institution": "Národní knihovna České republiky (Klementinum)", "siglum": "NKP", "city": "Prague", "country": "CZ", "shelfmark": "49 B 000060/adl.1 (first adligát in Sammelband 49 B 60)", "catalogue_url": "https://aleph.nkp.cz/F?func=direct&doc_number=000032656&local_base=STT", "lat": 50.087, "lng": 14.421, "confidence": "A", "status": "extant", "recipient": "Jesuit College, Jindřichův Hradec (Neuhaus)", "provenance_chain": [{"kind": "ownership", "owner": "Jesuit College, Jindřichův Hradec (Neuhaus)", "confidence": "A", "source": {"kind": "institutional-catalogue", "ref": "NKP Aleph doc 000032656 / host 000032655, MARC 982 (role fmo)"}, "evidence": "Catalogued former owner of the Sammelband; presumably absorbed into the Klementinum stock after the suppression of the Jesuits (1773), as with much of NKP's early-print holdings."}], "physical": {"binding": {"period": "unknown", "notes": "Sammelband: this 1588 De mundi is the first adligát; the host work is Brahe, Epistolarum astronomicarum libri (Uraniborg 1596), shelfmark 49 B 000060 — cross-referenced in both records' MARC 787."}}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "NKP Aleph (STT)", "ref": "doc 000032656 (1588 work) + doc 000032655 (1596 host); shelfmark from MARC 910."}], "digital_surrogates": [{"kind": "facsimile-record", "label": "Manuscriptorium record for the bound volume", "url": "http://www.manuscriptorium.com/apps/index.php?direct=record&pid=NKCR__-NKCR__49_B_000060_0IHFUT3-cs"}, {"kind": "viewer", "label": "Google Books mirror of the NKP volume (1588 item)", "url": "http://books.google.cz/books?vid=NKP:1002303910-001&printsec=frontcover"}], "primary_surrogate": {"kind": "viewer", "label": "Google Books mirror of the NKP volume (1588 item)", "url": "http://books.google.cz/books?vid=NKP:1002303910-001&printsec=frontcover"}, "has_surrogate": true, "has_iiif": false, "clusters": [], "assoc_note": "Jesuit College, Jindřichův Hradec (Neuhaus)", "open_questions": ["RETIRED LABEL: the local draft's 'Rudolf' tag has no support in the NKP record (former owner = Jindřichův Hradec Jesuit college). If the tag meant anything beyond a filing label, re-derive it from the source draft; the copy_id keeps the historical slug for permalink stability.", "Confirm the 1588 title-page setting (10-chapter vs 8-chapter) from the Google Books/Manuscriptorium surrogate."], "confidence_history": [{"from": "B", "to": "A", "date": "2026-07-15", "reason": "Live NKP Aleph record located (STT early-print base, doc 000032656): shelfmark 49 B 000060/adl.1, bound as first item with the Epistolarum astronomicarum libri (1596, doc 000032655, host shelfmark 49 B 000060); Manuscriptorium + Google Books surrogates on the record's MARC 856.", "source": "OPAC live-record workflow, 2026-07-15"}], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://aleph.nkp.cz/F?func=direct&doc_number=000032656&local_base=STT"}, "checks": [{"date": "2026-07-15", "channel": "NKP Aleph (STT base — staré tisky; NKC general base returns zero, use STT)", "result": "found", "note": "MARC 982 former-owner note: Jezuitská kolej (Jindřichův Hradec) — NO Rudolfine provenance anywhere in the record; the draft's 'Rudolf' label is unsupported and retired to an open question."}], "images": []}, {"slug": "private-dudith-fragment-leaf", "display_label": "Dudith presentation copy — fragment (autograph dedication leaf)", "institution": "private (excised leaf, last sold at auction; inserted in a copy of Gassendi, Vita 1654)", "siglum": "", "city": "", "country": "", "shelfmark": "", "catalogue_url": "", "lat": null, "lng": null, "confidence": "C", "status": "damaged", "recipient": "Andreas Dudith", "provenance_chain": [{"kind": "ownership", "owner": "Andreas Dudith", "confidence": "B", "source": {"kind": "auction-catalogue", "ref": "RBH sweep"}, "evidence": "Tycho autograph: 'dono misit, Tycho Brahe de Kundtsdorp & Uraniborg Anno 1588 Cal: Maij'"}, {"kind": "ownership", "owner": "Owen Gingerich", "confidence": "A", "source": {"kind": "auction-catalogue", "ref": "ex-libris"}}], "physical": {"completeness": "fragment", "condition": "Only the excised autograph DEDICATION LEAF survives; host 1588 copy lost; leaf now inserted in a copy of Gassendi, Vita (Paris 1654)."}, "references": [{"kind": "auction-catalogue", "name": "Swann Galleries, 2025-04-22, lot 305", "ref": "via RareBookHub record"}, {"kind": "auction-catalogue", "name": "RareBookHub sweep"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Andreas Dudith · Owen Gingerich", "open_questions": ["Authenticate the leaf; trace the excised host copy. Tycho later (1599–1600) tried to acquire Dudith's library via Jacob Monaw (Mosley 2007)."], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "savile-dispatch-dee-digges", "display_label": "Second exemplar of the 1 Dec 1590 Savile dispatch (for Dee and Digges to examine) — never located", "institution": "Untraced (dispatched to England via Thomas Savile, December 1590)", "siglum": "", "city": "", "country": "", "shelfmark": "", "catalogue_url": "", "lat": null, "lng": null, "confidence": "B", "status": "inferred", "recipient": "Tycho Brahe (donor) → Thomas Savile (consignee), for the examination of John Dee and Thomas Digges", "provenance_chain": [{"kind": "gift", "owner": "Tycho Brahe (donor) → Thomas Savile (consignee), for the examination of John Dee and Thomas Digges", "date": "1590-12-01", "place": "Uraniborg → England", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "TBOO VII, pp. 283-85 (E codice Londinensi Musei Britannici Harleiano 6995,40);.pdf"}, "evidence": "Tycho's own letter documents the dispatch of two copies with the same consignment as the four de Gheyn portrait impressions ('Addidi quaterna Exemplaria meae Effigiei nuper Amsterodami cupro insculptae'). The dispatch is A-grade documentary fact; everything after receipt is undocumented."}], "physical": {}, "references": [{"kind": "scholarly-work", "name": "TBOO VII", "number": "pp. 283-85 (at 284.15-16, 285)", "ref": "Tycho to Thomas Savile, Uraniborg, 1 Dec 1590;.pdf"}, {"kind": "scholarly-work", "name": "Mosley, Bearing the Heavens (2007), Appendix I", "ref": "'Savile: DRP (Bodleian Library), d. 1 December 1590. Tycho sent two copies of the work to Savile, and asked him to solicit the opinion of others regarding it, particularly Dee and Thomas Digges.' — census source file reference/censuses/brahe-mechanica-1598-wandsbek/sources/mosley_appendix_i_full.txt"}, {"kind": "scholarly-work", "name": "Feingold, The Mathematicians' Apprenticeship (CUP 1984)", "number": "pp. 132-3", "ref": "corpus: Bibliography\\Book sources\\Feingold - The Mathematicians' Apprenticeship (CUP 1984).pdf (printed page = PDF page - 7); the Thomas Savile continental network context at pp. 124-33"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Tycho Brahe (donor) → Thomas Savile (consignee), for the examination of John Dee and Thomas Digges", "open_questions": ["Did the copy reach Dee and/or Digges? Dee was back in England (Mortlake) from December 1589 and Tycho's letter congratulates him on the return; check Dee's diary and correspondence 1591-95 for any acknowledgement of De mundi; Digges died August 1595 — his books' fate is undocumented here.", "If the copy stayed with Thomas Savile (d. 1593): part of his books went to Eton College Library (Feingold 1984 p. 132 n. 88, citing Birley, 'The history of Eton College Library', The Library 5th ser. XI (1956) 244) — check Eton for a De mundi (Jisc Library Hub automated query 403-blocked 2026-08-09; a browser-based catalogue session or manual task).", "Henry Savile's books are also a candidate destination (his brother's papers passed to him); note the Savile cross-census cluster already includes a Bodleian Epistolae 1596 copy (Thomas/Henry Savile) and Bodleian Savile X 15 (Gilbert De magnete).", "Any unprovenanced extant GB copy (e.g. the untraced Magdalen College, Oxford holding recorded by Nielsen) could in principle be this exemplar — no basis for identification at present."], "confidence_history": [], "evidence": {"last_verified": "1590-12-01", "method": "correspondence", "ref": "TBOO VII 284.15-16: 'Mitto siquidem bina Exemplaria libri nostri secundi de recentioribus coeli Phaenomenis'; of the pair, one was Savile's own gift copy ('hunc, quo nunc te dono, evolve, disquire, dijudica', 284) — identified with probability as Bodleian 4° T 2 Art.Seld. — and the second was to be shown to Dee and Digges: 'Utrique autem horum librum nostrum transmissum ostende, ut et illi in eum disquirant atque suam de eius contentis sententiam libere pronuntient' (285). No later trace of the second exemplar."}, "checks": [{"date": "2026-08-09", "channel": "Cross-census provenance graph + this census's copy set and candidate ledger", "result": "not-found", "query": "census_provenance_search 'Dee' / 'Digges' (all censuses); De mundi copy records", "note": "No extant De mundi copy carries a Dee or Digges provenance anywhere in our censuses. The Poznań ex-Scheibel copy bears a Dee autograph note, but that note is dated Kassel 26 March 1589 — before this dispatch — so that copy cannot be this exemplar."}], "images": []}, {"slug": "stockholm-kb", "display_label": "Stockholm, National Library of Sweden", "institution": "Kungliga biblioteket (National Library of Sweden)", "siglum": "KBS", "city": "Stockholm", "country": "SE", "shelfmark": "RAR: 106 A", "catalogue_url": "https://regina.kb.se/permalink/f/1bic3f/46KBS_ALEPH_DS001278480", "lat": 59.362, "lng": 18.057, "confidence": "A", "status": "extant", "recipient": "unidentified early collection (red-ink shelf list)", "provenance_chain": [{"kind": "ownership", "owner": "unidentified early collection (red-ink shelf list)", "confidence": "C", "source": {"kind": "first-hand", "ref": "weburn.kb.se/dig/tryck/480/001278480,1.pdf p. 4 (front pastedown)"}, "evidence": "Front pastedown carries an early red-ink shelf list ('188. Astronomia integra Tychonis / 189. Noua coelest. orb. hypot.') — possibly a war-booty-era collection catalogue; unidentified."}], "physical": {"binding": {"period": "contemporary", "style": "Full Uraniborg presentation livery: white parchment gilt", "decoration": "PORTRAIT-oval supralibros on the upper cover (legend legible), gilt frame + corner fleurons, green silk ties", "originality": "original", "notes": "weburn.kb.se scan 001278480, p. 2 — the sixth confirmed De mundi portrait-oval copy. Die-size anomaly: the oval measures ~6.3–6.5 × ~5.9 cm against the in-frame ruler (scan p. 494), matching neither of Mortensen's stated die sizes (7.6 × 5.8 / 5.9 × 4.3 cm); Mortensen's die dimensions flagged for object re-verification."}}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "scholarly-work", "name": "Supralibros binding census 2026-07-15", "ref": "docs/research/2026-07-15-tycho-supralibros-binding-census.md, Addendum 2 — verified from the weburn.kb.se full scan (001278480)"}, {"kind": "institutional-catalogue", "name": "LIBRIS", "ref": "Shelfmark RAR: 106 A independently corroborated by the LIBRIS holdings record on the 1588 edition (union-catalogue sweep 2026-07-15): Placering Magasin, ENDAST LÄSESALSLÅN."}, {"kind": "institutional-catalogue", "name": "KB WEBURN (digitized print)", "ref": "Direct scan PDF https://weburn.kb.se/dig/tryck/480/001278480,1.pdf (record 001278480 = Regina DS001278480, confirming this copy); metadata page urn:nbn:se:kb:tumnagel-k6lv1ghthbtwdc5z (~1.49 GB total)"}], "digital_surrogates": [{"kind": "viewer", "label": "KB WEBURN full scan — direct PDF (part 1; '...,1.pdf' may be one of several parts)", "url": "https://weburn.kb.se/dig/tryck/480/001278480,1.pdf"}, {"kind": "facsimile-record", "label": "KB WEBURN metadata landing page", "url": "https://weburn.kb.se/metadata/c5z/digtryck_k6lv1ghthbtwdc5z.htm"}, {"kind": "raster-images", "label": "Local scan PDF — full copy (offline photographic record)", "url": "[local surrogate withheld]"}], "primary_surrogate": {"kind": "viewer", "label": "KB WEBURN full scan — direct PDF (part 1; '...,1.pdf' may be one of several parts)", "url": "https://weburn.kb.se/dig/tryck/480/001278480,1.pdf"}, "has_surrogate": true, "has_iiif": false, "clusters": [], "assoc_note": "unidentified early collection (red-ink shelf list)", "open_questions": ["Resolved (2026-07-15): shelfmark RAR: 106 A, read from the weburn full scan (Supralibros binding census 2026-07-15, Addendum 2).", "Identify the early red-ink shelf list on the front pastedown ('188. Astronomia integra Tychonis / 189. Noua coelest. orb. hypot.') — provenance lead, possibly a war-booty-era collection catalogue.", "No autograph dedication found in the scanned front matter — Mosley's Dudith identification unconfirmed. If this copy is ever tied to the Dudith dispatch (by 17 Aug 1588), it becomes a second dated-1588 anchor for the portrait die.", " Determining the title-setting (10- vs 8-chapter) from the WEBURN scan and checking for sibling PDF parts ('...,2.pdf') requires opening and collating the digital surrogate (weburn.kb.se) — image/file inspection.", "Resolved (2026-06-04): Distinct: Nielsen records two separate Stockholm holdings — this Kungliga biblioteket (KB) copy (Regina DS001278480) and a Kungliga Vetenskapsakademien (KVA, Royal Swedish Academy of Sciences) copy. KB and KVA are different institutions, so there is no conflation. The KVA copy is referenced in this census's provenance-cluster definition (slug 'stockholm-kva') but does NOT yet have its own copy record — a census proposal has been filed. Basis: Nielsen; census cluster def."], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "stockholm-kva", "display_label": "Stockholm, Kungliga Vetenskapsakademien", "institution": "Kungliga Vetenskapsakademien (Royal Swedish Academy of Sciences)", "siglum": "", "city": "Stockholm", "country": "SE", "shelfmark": "", "catalogue_url": "", "lat": null, "lng": null, "confidence": "C", "status": "attested", "recipient": "Kungliga Vetenskapsakademien (Royal Swedish Academy of Sciences)", "provenance_chain": [], "physical": {}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["KVA's pre-1800 books have been DEPOSITED at Stockholm University Library since 1978 (still KVA property, per SUB's special-collections page) — the deposit may be incompletely retro-catalogued in LIBRIS, so the copy could sit there uncatalogued. A written enquiry to SUB Special Collections / KVA Centrum för vetenskapshistoria is the single decisive next step.", "Context making the Nielsen attribution plausible: KVA historically held major early astronomica under its own library (e.g. the Wargentin-purchased Basel 1566 De revolutionibus, per Gingerich's Census)."], "confidence_history": [], "evidence": {"last_verified": "1931", "method": "prior-census-only", "ref": "Nielsen §428: 'Stockholm, Kgl. Bibl., Vetenskapsakademiens Bibl.' — the KVA holding named alongside (and distinct from) the KB copy."}, "checks": [{"date": "2026-07-15", "channel": "LIBRIS union-catalogue sweep", "result": "not-found", "query": "brahe mundi aetherei", "note": "No KVA and no Stockholm University Library holding on any De mundi record (1588/1603/1610). All traceable Swedish holdings: KB Stockholm, Uppsala UB ×3, Linköping (1603-titled)."}, {"date": "2026-07-15", "channel": "Web sweep, English + Swedish (Sotheby's sale hypothesis)", "result": "not-found", "note": "No Sotheby's or other de-accession sale of KVA books involving a Brahe title could be documented — the sale hypothesis is now a twice-documented negative (also the v0.1 acquisition-queue Sotheby's item)."}], "images": []}, {"slug": "uppsala-ub-danica-vet-10", "display_label": "Uppsala, Universitetsbibliotek — Danica vet. 10", "institution": "Uppsala universitetsbibliotek (Carolina Rediviva, Special Collections)", "siglum": "UUB", "city": "Uppsala", "country": "SE", "shelfmark": "Danica vet. 10 (2)", "catalogue_url": "https://libris.kb.se/m4xlsd2z2rdlrgk", "lat": 59.87, "lng": 17.638, "confidence": "B", "status": "extant", "recipient": "Uppsala universitetsbibliotek (Carolina Rediviva, Special Collections)", "provenance_chain": [], "physical": {}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "LIBRIS", "ref": "1588 Uraniborg record m4xlsd2z2rdlrgk; UUB holding lists three exemplars. Placering: Carolina Rediviva Special Collections, closed stacks."}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm 1588 Uraniborg sheets by quire signatures (vs 1603/1610 re-issue).", "The shelfmark's '(2)' suggests the second item in a bound tract volume (Sammelband) — record the binding companions; the Danica vet. class is Uppsala's old-Danish-imprints series."], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "uppsala-ub-danica-vet-189", "display_label": "Uppsala, Universitetsbibliotek — Danica vet. 189", "institution": "Uppsala universitetsbibliotek (Carolina Rediviva, Special Collections)", "siglum": "UUB", "city": "Uppsala", "country": "SE", "shelfmark": "Danica vet. 189 (2)", "catalogue_url": "https://libris.kb.se/m4xlsd2z2rdlrgk", "lat": 59.852, "lng": 17.648392304845416, "confidence": "B", "status": "extant", "recipient": "Uppsala universitetsbibliotek (Carolina Rediviva, Special Collections)", "provenance_chain": [], "physical": {}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "LIBRIS", "ref": "1588 Uraniborg record m4xlsd2z2rdlrgk; UUB holding lists three exemplars. Placering: Carolina Rediviva Special Collections, closed stacks."}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm 1588 Uraniborg sheets by quire signatures (vs 1603/1610 re-issue).", "The shelfmark's '(2)' suggests the second item in a bound tract volume (Sammelband) — record the binding companions."], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "uppsala-ub-obr-w344", "display_label": "Uppsala, Universitetsbibliotek — Obr. W:344", "institution": "Uppsala universitetsbibliotek (Carolina Rediviva, Special Collections)", "siglum": "UUB", "city": "Uppsala", "country": "SE", "shelfmark": "Obr. W:344", "catalogue_url": "https://libris.kb.se/m4xlsd2z2rdlrgk", "lat": 59.852, "lng": 17.627607695154587, "confidence": "B", "status": "extant", "recipient": "Uppsala universitetsbibliotek (Carolina Rediviva, Special Collections)", "provenance_chain": [], "physical": {}, "references": [{"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}, {"kind": "institutional-catalogue", "name": "LIBRIS", "ref": "1588 Uraniborg record m4xlsd2z2rdlrgk; UUB holding lists three exemplars (Obr. W:344; Danica vet. 10 (2); Danica vet. 189 (2)). Placering: Carolina Rediviva Special Collections, closed stacks."}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm 1588 Uraniborg sheets by quire signatures (vs 1603/1610 re-issue) — the LIBRIS bibliographic record is the 1588 edition, but the exemplar must be collated.", "Capture provenance: Uppsala's early holdings are rich in Swedish war-booty (1620s–1640s) — check for 17th-century marks."], "confidence_history": [], "evidence": {}, "checks": [], "images": []}, {"slug": "wolfenbuettel-hab-a12-astron", "display_label": "Wolfenbüttel, Herzog August Bibliothek — A: 12 Astron.", "institution": "Herzog August Bibliothek", "siglum": "HAB", "city": "Wolfenbüttel", "country": "DE", "shelfmark": "A: 12 Astron.", "catalogue_url": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=505354853", "lat": 52.162, "lng": 10.535, "confidence": "B", "status": "extant", "recipient": "Herzog August Bibliothek", "provenance_chain": [], "physical": {}, "references": [{"kind": "institutional-catalogue", "name": "K10plus", "ref": "MARC 924 exemplar row on PPN 505354853; Recorded by Nielsen (untraced until 2026-07-15)."}, {"kind": "prior-census", "name": "Nielsen 1931", "number": "§428"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "", "open_questions": ["Confirm 1588 Uraniborg sheets by quire signatures; note HAB's OPAC + Wolfenbüttel digital library for a surrogate.", "HAB also holds the 1610 reissue two-part set (A: 9.1 Astron. (1)-(2)) — keep the exemplars distinct."], "confidence_history": [], "evidence": {"last_verified": "2026-07-15", "method": "live-catalogue", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=505354853"}, "checks": [{"date": "2026-07-15", "channel": "K10plus SRU (sru.k10plus.de)", "result": "found", "query": "pica.all=\"brahe mundi aetherei\"", "ref": "https://opac.k10plus.de/DB=2.299/PPNSET?PPN=505354853"}], "images": []}, {"slug": "wroclaw-bu-praetorius", "display_label": "Praetorius presentation copy — last recorded Breslau/Wrocław UB", "institution": "Wrocław, Biblioteka Uniwersytecka", "siglum": "", "city": "Wrocław", "country": "PL", "shelfmark": "", "catalogue_url": "", "lat": null, "lng": null, "confidence": "B", "status": "attested", "recipient": "Johannes Praetorius (Altdorf)", "provenance_chain": [{"kind": "ownership", "owner": "Johannes Praetorius (Altdorf)", "confidence": "B", "source": {"kind": "scholarly-work", "ref": "Mosley 2007 Appendix; Norlind 1970, 124"}, "evidence": "presentation copy, despatched 18 September 1588 (Norlind 1970, 124)"}], "physical": {}, "references": [{"kind": "scholarly-work", "name": "Mosley, Bearing the Heavens (2007), Appendix", "ref": "recipient × work presentation-copy census (DRP = De mundi)"}, {"kind": "scholarly-work", "name": "Norlind 1970", "number": "p.124"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Johannes Praetorius (Altdorf)", "open_questions": ["The last actual sighting chain is L. Cohn (early 20th c.) → Norlind 1970 → Mosley 2007; whether anyone saw the copy after 1945 is unestablished. Likely lost or displaced in 1945 (the Breslau 'Staats- u. Univ. Bibl.' Nielsen records suffered heavy wartime losses); check the BUWr old-print card catalogue / wartime-loss literature and Glombiowski's 1955 study of Breslau book provenance.", "If the copy survives displaced, candidate traps: post-war redistribution channels of Breslau stock. A dated presentation (18 Sept 1588 dispatch per Mosley) would identify it anywhere it surfaces."], "confidence_history": [], "evidence": {"last_verified": "1970", "method": "prior-census-only", "ref": "Norlind 1970, p. 124: 'Wroclaw (Breslau), UB. Har tillhört prof. J. Pretorius' — itself resting on L. Cohn's early-20th-century article; Mosley 2007 Appendix p. 302 repeats Norlind ('Praetorius: DRP (Wroclaw Biblioteka Uniwersytecka), d. 18 September 1588')."}, "checks": [{"date": "2026-07-15", "channel": "BUWr Primo (katalog.uwr.edu.pl, live REST query)", "result": "not-found", "query": "title contains 'mundi aetherei'", "note": "Zero De mundi records of any issue year. The catalogue is live and demonstrably holds other early-modern astronomica (two field-verified Copernicus copies per Gingerich 2002), so the absence is meaningful, not a cataloguing artefact."}, {"date": "2026-07-15", "channel": "Ossolineum Primo (omnis-zno)", "result": "not-found", "note": "Creator 'Tycho Brahe' returns one record only (Kepler, Astronomia nova 1609, with a Progymnasmata fragment); title 'mundi aetherei' returns zero."}, {"date": "2026-07-15", "channel": "Manual BUWr catalogue search (Christian Westergaard)", "result": "not-found"}], "images": []}, {"slug": "wroclaw-bu-wacker", "display_label": "Wacker von Wackenfels copy (identification = Glombiowski's guess) — last recorded Breslau/Wrocław UB", "institution": "Wrocław, Biblioteka Uniwersytecka", "siglum": "", "city": "Wrocław", "country": "PL", "shelfmark": "", "catalogue_url": "", "lat": null, "lng": null, "confidence": "B", "status": "attested", "recipient": "Matthias Wacker von Wackenfels", "provenance_chain": [{"kind": "ownership", "owner": "Matthias Wacker von Wackenfels", "confidence": "B", "source": {"kind": "scholarly-work", "ref": "Mosley 2007 Appendix; Norlind 1970, 124"}, "evidence": "presentation copy, presented July 1599 (Norlind 1970, 124)"}], "physical": {}, "references": [{"kind": "scholarly-work", "name": "Mosley, Bearing the Heavens (2007), Appendix", "ref": "recipient × work presentation-copy census (DRP = De mundi)"}, {"kind": "scholarly-work", "name": "Norlind 1970", "number": "p.124"}], "digital_surrogates": [], "primary_surrogate": null, "has_surrogate": false, "has_iiif": false, "clusters": [], "assoc_note": "Matthias Wacker von Wackenfels", "open_questions": ["Two independent uncertainties: (1) whether the Breslau UB copy Norlind records still exists anywhere (no live trace; likely 1945 loss/displacement); (2) whether it was Wacker's at all — Norlind marks the identification as Glombiowski's (1955) guess. Neither may be silently sharpened.", "Wacker (d. 1619, Vienna) — his library's dispersal path is unestablished here; if the presentation copy (July 1599, per Mosley) survives elsewhere, a dated inscription would identify it."], "confidence_history": [], "evidence": {"last_verified": "1970", "method": "prior-census-only", "ref": "Mosley 2007 Appendix: 'Wacker von Wackenfels: DRP (Wroclaw Biblioteka Uniwersytecka), presented July 1599. See Norlind 1970, 124.' Norlind's own text hedges: the Wacker identification is a GUESS by Glombiowski (1955) — a qualifier the earlier census record had silently dropped, restored here."}, "checks": [{"date": "2026-07-15", "channel": "BUWr Primo (katalog.uwr.edu.pl, live REST query)", "result": "not-found", "query": "title contains 'mundi aetherei'", "note": "Zero De mundi records of any issue year."}, {"date": "2026-07-15", "channel": "Ossolineum Primo (omnis-zno)", "result": "not-found"}, {"date": "2026-07-15", "channel": "Manual BUWr catalogue search (Christian Westergaard)", "result": "not-found"}], "images": []}], "clusters": {}};
+
+// ---------------------------------------------------------------------------
+// State
+// ---------------------------------------------------------------------------
+const state = {
+  activeSlug: null,
+  filters: {
+    confidence: new Set(["A", "B", "C", "D", "X"]),
+    status: new Set(["extant", "lost", "market", "damaged", "inferred", "attested", "borderline"]),
+    onlySurrogate: false,
+    cluster: null,
+    search: "",
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Map setup
+// ---------------------------------------------------------------------------
+const map = L.map("map", { worldCopyJump: true, zoomControl: true, attributionControl: false, minZoom: 2 })
+  .setView([50.5, 14], 4);   // fallback frame; replaced by fitBounds once markers exist
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution: "© OpenStreetMap, © CARTO",
+  subdomains: "abcd",
+  maxZoom: 18,
+}).addTo(map);
+
+// Initial-view state: fit to the located copies, and keep refitting on
+// container resizes until the user takes over the map themselves.
+let mapBounds = null;
+let autoView = true;
+function fitToCopies() {
+  if (mapBounds) map.fitBounds(mapBounds, { padding: [24, 24], maxZoom: 6 });
+}
+
+// National flags, inline SVG (the explorer must stay self-contained, and
+// emoji flags do not render on Windows). Simplified drawings, legible at
+// 16 × 11 px — used in the list's country headers and the overview table.
+// Extend as new censuses surface new countries; no flag → no icon.
+const FLAGS = {
+  AT: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#ED2939"/><rect y="6.7" width="30" height="6.6" fill="#fff"/></svg>`,
+  AU: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#00247D"/><svg width="15" height="10" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40m0-40L0 40" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7.8"/></svg><g fill="#fff"><circle cx="7.5" cy="15" r="1.7"/><circle cx="22" cy="4" r="1.1"/><circle cx="26" cy="8" r="1.1"/><circle cx="21" cy="10.5" r="1.1"/><circle cx="23.5" cy="16.5" r="1.1"/><circle cx="24.8" cy="11.5" r="0.7"/></g></svg>`,
+  BE: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#000"/><rect x="10" width="10" height="20" fill="#FDDA24"/><rect x="20" width="10" height="20" fill="#EF3340"/></svg>`,
+  CA: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="7.5" height="20" fill="#D80621"/><rect x="22.5" width="7.5" height="20" fill="#D80621"/><path fill="#D80621" d="M15 3.5l1.1 2.2 2-1-.4 2.3 2.3-.4-1 2 2.2 1.4-2.2 1.1 1 2-2.3-.4.4 2.3-2-1-1.1 2.2-1.1-2.2-2 1 .4-2.3-2.3.4 1-2-2.2-1.1 2.2-1.4-1-2 2.3.4-.4-2.3 2 1z"/></svg>`,
+  CH: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#DA291C"/><rect x="13.2" y="4.5" width="3.6" height="11" fill="#fff"/><rect x="9.5" y="8.2" width="11" height="3.6" fill="#fff"/></svg>`,
+  CZ: `<svg viewBox="0 0 30 20"><rect width="30" height="10" fill="#fff"/><rect y="10" width="30" height="10" fill="#D7141A"/><path d="M0 0l15 10L0 20z" fill="#11457E"/></svg>`,
+  DE: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#FFCE00"/><rect width="30" height="13.4" fill="#D00"/><rect width="30" height="6.7" fill="#000"/></svg>`,
+  DK: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#C8102E"/><rect x="8.5" width="4" height="20" fill="#fff"/><rect y="8" width="30" height="4" fill="#fff"/></svg>`,
+  ES: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>`,
+  FR: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>`,
+  GB: `<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40m0-40L0 40" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7.8"/></svg>`,
+  HU: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#436F4D"/><rect width="30" height="13.4" fill="#fff"/><rect width="30" height="6.7" fill="#CD2A3E"/></svg>`,
+  IE: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#169B62"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#FF883E"/></svg>`,
+  IL: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect y="2.2" width="30" height="2.6" fill="#0038B8"/><rect y="15.2" width="30" height="2.6" fill="#0038B8"/><path d="M15 6.4l2.9 5h-5.8zm0 7.2l-2.9-5h5.8z" fill="none" stroke="#0038B8" stroke-width="1.1"/></svg>`,
+  IT: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE2B37"/></svg>`,
+  MX: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#006847"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE1126"/><circle cx="15" cy="10" r="2.1" fill="#8C6D2F"/></svg>`,
+  NL: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#21468B"/><rect width="30" height="13.4" fill="#fff"/><rect width="30" height="6.7" fill="#AE1C28"/></svg>`,
+  NO: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#BA0C2F"/><rect x="7.5" width="6" height="20" fill="#fff"/><rect y="7" width="30" height="6" fill="#fff"/><rect x="9" width="3" height="20" fill="#00205B"/><rect y="8.5" width="30" height="3" fill="#00205B"/></svg>`,
+  PL: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#DC143C"/><rect width="30" height="10" fill="#fff"/></svg>`,
+  PT: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#DA291C"/><rect width="12" height="20" fill="#046A38"/><circle cx="12" cy="10" r="3.4" fill="#FFE900"/><circle cx="12" cy="10" r="2" fill="#DA291C"/></svg>`,
+  RO: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#002B7F"/><rect x="10" width="10" height="20" fill="#FCD116"/><rect x="20" width="10" height="20" fill="#CE1126"/></svg>`,
+  RU: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#D52B1E"/><rect width="30" height="13.4" fill="#0039A6"/><rect width="30" height="6.7" fill="#fff"/></svg>`,
+  SE: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#006AA7"/><rect x="8.5" width="4" height="20" fill="#FECC02"/><rect y="8" width="30" height="4" fill="#FECC02"/></svg>`,
+  US: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#B22234"/><g fill="#fff"><rect y="1.54" width="30" height="1.54"/><rect y="4.62" width="30" height="1.54"/><rect y="7.69" width="30" height="1.54"/><rect y="10.77" width="30" height="1.54"/><rect y="13.85" width="30" height="1.54"/><rect y="16.92" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2" cy="2" r=".55"/><circle cx="4.5" cy="2" r=".55"/><circle cx="7" cy="2" r=".55"/><circle cx="9.5" cy="2" r=".55"/><circle cx="3.2" cy="4" r=".55"/><circle cx="5.8" cy="4" r=".55"/><circle cx="8.3" cy="4" r=".55"/><circle cx="2" cy="6" r=".55"/><circle cx="4.5" cy="6" r=".55"/><circle cx="7" cy="6" r=".55"/><circle cx="9.5" cy="6" r=".55"/><circle cx="3.2" cy="8" r=".55"/><circle cx="5.8" cy="8" r=".55"/><circle cx="8.3" cy="8" r=".55"/></g></svg>`,
+};
+function flagIco(cc) {
+  const fl = FLAGS[cc];
+  return fl ? `<span class="flag-ico">${fl}</span>` : "";
+}
+
+const markersBySlug = {};
+function buildMarker(copy) {
+  if (copy.lat == null || copy.lng == null) return null;
+  const icon = L.divIcon({
+    className: `dot-marker status-${copy.status}`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+  const m = L.marker([copy.lat, copy.lng], { icon });
+  m.bindTooltip(
+    `<strong>${escapeHtml(copy.display_label)}</strong><br><span style="color:#888">${escapeHtml(copy.city || "")}${copy.country ? ", " + escapeHtml(countryName(copy.country)) : ""} · grade ${copy.confidence}</span>`,
+    { direction: "top", offset: [0, -6] }
+  );
+  m.on("click", () => setActive(copy.slug));
+  return m;
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+function escapeHtml(s) {
+  if (s == null) return "";
+  return String(s).replace(/[&<>"']/g, ch => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]
+  ));
+}
+
+function truncate(s, n) {
+  if (!s) return "";
+  if (s.length <= n) return s;
+  return s.slice(0, n - 1) + "…";
+}
+
+function filteredCopies() {
+  const f = state.filters;
+  return DATA.copies.filter(c => {
+    if (!f.confidence.has(c.confidence)) return false;
+    if (!f.status.has(c.status)) return false;
+    if (f.onlySurrogate && !(c.has_surrogate || c.has_iiif)) return false;
+    if (f.cluster && !c.clusters.includes(f.cluster)) return false;
+    if (f.search) {
+      const blob = [
+        c.display_label, c.shelfmark, c.institution, c.recipient,
+        c.city, c.country, c.siglum,
+        ...(c.clusters || []),
+      ].join(" ").toLowerCase();
+      if (!blob.includes(f.search)) return false;
+    }
+    return true;
+  });
+}
+
+// Plain-language country names for the grouped list (ISO 3166-1 alpha-2).
+// Fallback: the code itself, so an unmapped code degrades readably.
+const COUNTRY_NAMES = {
+  AT: "Austria", AU: "Australia", BE: "Belgium", CA: "Canada", CH: "Switzerland",
+  CZ: "Czech Republic", DE: "Germany", DK: "Denmark", EE: "Estonia", ES: "Spain",
+  FI: "Finland", FR: "France", GB: "Great Britain", GR: "Greece", HU: "Hungary",
+  IE: "Ireland", IT: "Italy", JP: "Japan", NL: "Netherlands", NO: "Norway",
+  PL: "Poland", PT: "Portugal", RU: "Russia", SE: "Sweden", UA: "Ukraine",
+  US: "United States", VA: "Vatican City",
+};
+function countryName(code) { return COUNTRY_NAMES[code] || code || "Location unrecorded"; }
+
+// Reader-facing label for a status value. The stored/schema value stays
+// canonical (e.g. "damaged"); only the display text changes.
+const STATUS_LABELS = { attested: "recorded, untraced", damaged: "defective" };
+function statusLabel(s) { return STATUS_LABELS[s] || s; }
+
+// Display ordering: country (by located-copy count) → city → label,
+// the printed-census convention.
+function orderCopies(arr) {
+  const countryRank = {};
+  Object.keys(DATA.meta.country_counts).forEach((cc, i) => { countryRank[cc] = i; });
+  arr.sort((a, b) => {
+    let ra = a.country ? (countryRank[a.country] ?? 500) : 900;
+    let rb = b.country ? (countryRank[b.country] ?? 500) : 900;
+    if (a.status === "attested") ra = 990;   // trailing "not located today" group
+    if (b.status === "attested") rb = 990;
+    if (ra !== rb) return ra - rb;
+    const cc = (a.city || "").localeCompare(b.city || "");
+    if (cc !== 0) return cc;
+    return a.display_label.localeCompare(b.display_label);
+  });
+  return arr;
+}
+
+// ---------------------------------------------------------------------------
+// Init
+// ---------------------------------------------------------------------------
+function init() {
+  document.getElementById("title-text").textContent = DATA.meta.title_short;
+  document.getElementById("edition-text").textContent = DATA.meta.edition;
+  document.getElementById("version-text").innerHTML =
+    `<span>${DATA.meta.author} · ${escapeHtml(DATA.meta.place)} ${DATA.meta.year || ""}</span>`;
+
+  // Version and build date live in the footer, next to the citation guidance,
+  // where the citing reader needs them.
+  document.getElementById("explorer-foot").innerHTML =
+    `Census version ${escapeHtml(DATA.meta.version)} · built ${escapeHtml(DATA.meta.last_built)} · ` +
+    `every copy card carries a stable <code style="background:#f0eee8;padding:1px 4px;border-radius:3px">?copy=…</code> permalink and a ready-made citation line.`;
+
+  const GRADE_GLOSS = {
+    A: "Verified: examined first-hand, confirmed by a live institutional record, or anchored by a documented dated dispatch",
+    B: "Documented: recorded by a named scholar or an institutional catalogue, but not independently examined",
+    C: "Reported: attested in a source that has not been re-verified",
+    D: "Contested: rumoured, or the evidence conflicts",
+  };
+  const badges = document.getElementById("grade-badges");
+  for (const g of ["A", "B", "C", "D"]) {
+    if (!(DATA.meta.grade_counts[g] || 0)) continue;   // a zero grade is noise, not information
+    const b = document.createElement("span");
+    b.className = "grade-badge " + g + " tooltip-host";
+    b.dataset.tooltip = GRADE_GLOSS[g];
+    b.innerHTML = `${g}&nbsp;<span class="count">${DATA.meta.grade_counts[g]}</span>`;
+    badges.appendChild(b);
+  }
+  const nInferred = DATA.meta.status_counts["inferred"] || 0;
+  const nAttested = DATA.meta.status_counts["attested"] || 0;
+  const nTomlUntraced = (DATA.untraced || []).length;
+  const nVerified = DATA.meta.n - nInferred - nAttested;
+  const tot = document.createElement("span");
+  tot.style.fontSize = "12px"; tot.style.color = "var(--muted)"; tot.style.marginLeft = "8px";
+  // Copy-record tiers first; library-level attestations ([[untraced]] blocks,
+  // which are not copy records) appended as their own figure.
+  const parts = [`${nVerified} verified`];
+  if (nAttested) parts.push(`${nAttested} recorded, untraced`);
+  if (nInferred) parts.push(`${nInferred} inferred (no exemplar)`);
+  let headline = `· ${DATA.meta.n} ${DATA.meta.n === 1 ? "copy" : "copies"} documented`
+    + (parts.length > 1 || nAttested || nInferred ? ` (${parts.join(" · ")})` : "");
+  if (nTomlUntraced) headline += ` · ${nTomlUntraced} further recorded ${nTomlUntraced === 1 ? "holding" : "holdings"} untraced`;
+  tot.textContent = headline;
+  badges.appendChild(tot);
+
+  // Adaptive filter bar: a chip that matches zero copies filters nothing —
+  // hide it rather than teach the reader to distrust the controls.
+  for (const chip of document.querySelectorAll('.chip[data-filter="confidence"]')) {
+    if (!(DATA.meta.grade_counts[chip.dataset.val] || 0)) chip.style.display = "none";
+  }
+  for (const chip of document.querySelectorAll('.chip[data-filter="status"]')) {
+    if (!(DATA.meta.status_counts[chip.dataset.val] || 0)) chip.style.display = "none";
+  }
+  if (!DATA.copies.some(c => c.has_surrogate || c.has_iiif)) {
+    document.getElementById("surr-chip").style.display = "none";
+  }
+
+  // Under-map note: what the map does NOT show — the guard against reading
+  // the marker count as the census count. One short muted line.
+  const unmapped = DATA.copies.filter(c => (c.lat == null || c.lng == null)
+    && c.status !== "inferred" && c.status !== "attested").length;
+  const noteParts = [];
+  if (unmapped) noteParts.push(`${unmapped} in private hands or unlocalised`);
+  if (nAttested) noteParts.push(`${nAttested} recorded but untraced`);
+  if (nInferred) noteParts.push(`${nInferred} inferred, never located`);
+  if (noteParts.length) {
+    const note = document.getElementById("map-note");
+    note.textContent = "Not on the map: " + noteParts.join(" · ");
+    note.style.display = "";
+  }
+
+  for (const c of DATA.copies) {
+    const m = buildMarker(c);
+    if (m) markersBySlug[c.slug] = m;
+  }
+
+  // Open on the copies themselves, not a hard-coded frame: fit the view to
+  // every located marker (a Scandinavian census frames Scandinavia; a census
+  // with American copies frames the Atlantic). maxZoom caps a one-city
+  // census at a readable regional scale.
+  const pts = Object.values(markersBySlug).map(m => m.getLatLng());
+  if (pts.length) { mapBounds = L.latLngBounds(pts); fitToCopies(); }
+
+  // Leaflet measures its container once; keep tiles + view honest across
+  // layout changes. Auto-refit stops as soon as the user touches the map.
+  const mapEl = document.getElementById("map");
+  for (const ev of ["pointerdown", "wheel"]) {
+    mapEl.addEventListener(ev, () => { autoView = false; },
+      { capture: true, passive: true });
+  }
+  new ResizeObserver(() => {
+    map.invalidateSize();
+    if (autoView) fitToCopies();
+  }).observe(mapEl);
+
+  // Default right panel: the census overview — what a scholar arriving at
+  // this page wants first. The scope contract stays available, folded.
+  const countryRows = Object.entries(DATA.meta.country_counts)
+    .map(([cc, n]) => `<tr><td>${flagIco(cc)}${escapeHtml(countryName(cc))}</td><td class="n">${n}</td></tr>`)
+    .join("");
+  const gradeLine = ["A", "B", "C", "D"]
+    .filter(g => DATA.meta.grade_counts[g])
+    .map(g => `<span class="g">${g}</span> ${DATA.meta.grade_counts[g]} — ${escapeHtml(GRADE_GLOSS[g].split(":")[1].trim())}`)
+    .join("<br>");
+  let untracedHtml = "";
+  const attestedCopies = DATA.copies.filter(c => c.status === "attested");
+  if (nTomlUntraced || attestedCopies.length) {
+    // Two kinds of remainder, one strip: attested COPY RECORDS (rich — they
+    // carry provenance and dated negative checks; click through to the card)
+    // first, then library-level attestations from [[untraced]].
+    const copyItems = attestedCopies.map(c => `
+      <li><strong><a href="#" data-untraced-slug="${escapeHtml(c.slug)}" style="color:inherit">${escapeHtml(c.display_label)}</a></strong>
+        <span class="place"> · last recorded ${escapeHtml(c.city || "—")}${c.country ? ", " + escapeHtml(countryName(c.country)) : ""}</span>
+        <span class="why">A documented copy record with no live evidence today — open its card for the provenance and the dated search results behind that judgement.</span>
+      </li>`).join("");
+    const tomlItems = (DATA.untraced || []).map(u => `
+      <li><strong>${escapeHtml(u.institution)}</strong>
+        ${u.city ? `<span class="place"> · ${escapeHtml(u.city)}${u.country ? ", " + escapeHtml(countryName(u.country)) : ""}</span>` : ""}
+        ${u.note ? `<span class="why">${escapeHtml(u.note)}</span>` : ""}
+      </li>`).join("");
+    untracedHtml = `
+      <h3>Recorded, but not traced today (${attestedCopies.length + nTomlUntraced})</h3>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">
+        Copies and holdings recorded by the prior literature for which no live
+        evidence exists today. Absence from the located list does not mean
+        absence of a copy — these are the census&rsquo;s open leads.
+      </div>
+      <ul class="untraced">${copyItems}${tomlItems}</ul>`;
+  }
+  // The work itself, before the census statistics: full title (shown
+  // nowhere else on the page — the topbar carries only the short title),
+  // a short intro, and the proper collation from [work]. (No "Points" list —
+  // issue-points belong in the copy records and the report, not the panel.)
+  const work = DATA.meta.work || {};
+  let workHtml = "";
+  if (work.about) workHtml += `<div class="lede">${work.about}</div>`;
+  if (work.collation) {
+    workHtml += `<dl class="ov-bib"><dt>Collation</dt><dd>${work.collation}</dd></dl>`;
+  }
+  // Total-copies headline: the census's one clear count. The bold number is
+  // the documented copy records; any untraced tier (attested/inferred copies,
+  // plus [[untraced]] library holdings) is spelled out in the muted split.
+  const nUntracedCopies = nAttested + nInferred;
+  const splitBits = [];
+  if (nUntracedCopies || nTomlUntraced) {
+    if (nVerified) splitBits.push(`${nVerified} located`);
+    if (nAttested) splitBits.push(`${nAttested} recorded, untraced`);
+    if (nInferred) splitBits.push(`${nInferred} inferred`);
+    if (nTomlUntraced) splitBits.push(`${nTomlUntraced} recorded ${nTomlUntraced === 1 ? "holding" : "holdings"} not yet traced`);
+  }
+  let countHtml = `<div class="ov-count"><span class="n">${DATA.meta.n}</span> ${DATA.meta.n === 1 ? "copy" : "copies"} censused`;
+  if (splitBits.length) countHtml += `<span class="split">${splitBits.join(" · ")}</span>`;
+  countHtml += `</div>`;
+
+  // Reliability fold — the census MEASURES its verification state and
+  // shows the reader, instead of stamping "census" and hoping.
+  function reliabilityFold() {
+    const s = DATA.meta.status || {};
+    if (!s.channels_total && !s.sample) return "";
+    const bits = [];
+    if (s.channels_total) {
+      bits.push(`<strong>Catalogue coverage.</strong> ${s.channels_swept} of ${s.channels_total} mandatory catalogue channels swept${(s.channels_total - s.channels_swept) ? ` — ${s.channels_total - s.channels_swept} still to reach` : ""}.`);
+    }
+    if (s.sample) {
+      const rest = s.sample.n - s.sample.confirmed;
+      bits.push(`<strong>Spot-check.</strong> ${s.sample.confirmed} of ${s.sample.n} randomly sampled verified copies re-confirmed at their stated location (${escapeHtml(s.sample.date || "")})${rest ? ` — the remaining ${rest} could not be machine-checked (none contradicted)` : ""}.`);
+    }
+    if (s.pending_candidates) {
+      bits.push(`<strong>Under review.</strong> ${s.pending_candidates} candidate ${s.pending_candidates === 1 ? "sighting" : "sightings"} from the catalogue sweeps still await a verdict.`);
+    }
+    if (s.identity_pairs) {
+      bits.push(`<strong>Identity questions.</strong> ${s.identity_pairs} ${s.identity_pairs === 1 ? "pair" : "pairs"} of records may describe the same physical copy and await adjudication.`);
+    }
+    if (!bits.length) return "";
+    return `<details class="fold">
+        <summary>Verification state — how settled this census is</summary>
+        <div class="body">${bits.join("<br><br>")}</div>
+      </details>`;
+  }
+
+  // Provisional banner — honest "not yet exhaustive" flag from the audit.
+  const st = DATA.meta.status || {};
+  let provBanner = "";
+  if (st.provisional) {
+    const bits = [];
+    if (st.shortfall) bits.push(`${st.shortfall} known ${st.shortfall === 1 ? "copy" : "copies"} not yet located`);
+    if ((st.unreached || []).length) bits.push(`catalogues not yet swept: ${st.unreached.map(escapeHtml).join(", ")}`);
+    provBanner = `<div class="prov-banner"><strong>Provisional census — not yet exhaustive.</strong> ${bits.join(" · ")}. Further copies may exist.</div>`;
+  }
+
+  // Citation head: SURNAME, Given. / <i>Title.</i> / Place: Printer, Year.
+  const citeImprint = [
+    [DATA.meta.place, DATA.meta.printer].filter(Boolean).join(": "),
+    DATA.meta.year,
+  ].filter(Boolean).join(", ");
+  document.getElementById("empty-state-hint").innerHTML = `
+    <div class="overview">
+      ${provBanner}
+      <h2 class="cite-head">
+        <span class="cite-author">${escapeHtml((DATA.meta.author_surname || "").toUpperCase())}, ${escapeHtml(DATA.meta.author_given || "")}.</span><br>
+        <i>${escapeHtml(DATA.meta.title)}.</i><br>
+        <span class="cite-imprint">${escapeHtml(citeImprint)}.</span>
+      </h2>
+      ${workHtml}
+      ${countHtml}
+      <h3>Where the located copies are</h3>
+      <table class="ov-countries">${countryRows}</table>
+      ${untracedHtml}
+      <details class="fold">
+        <summary>How securely each copy is attested</summary>
+        <div class="body"><div class="ov-grades">${gradeLine}</div></div>
+      </details>
+      <details class="fold">
+        <summary>Scope &amp; method — what this census counts</summary>
+        <div class="body">
+          <strong>In scope.</strong> ${escapeHtml(DATA.meta.scope_inclusion)}<br><br>
+          <strong>Counted as a copy.</strong> ${escapeHtml(DATA.meta.counted_as_copy)}<br><br>
+          <strong>Excluded.</strong> ${escapeHtml(DATA.meta.scope_excluded)}
+        </div>
+      </details>
+      ${reliabilityFold()}
+      <div class="permalink-hint">
+        Share any copy with its permalink
+        <code style="font-style:normal;background:#f0eee8;padding:1px 4px;border-radius:3px">?copy=&lt;slug&gt;</code>
+        — links stay stable across census versions.
+      </div>
+      <div class="permalink-hint">
+        Corrections and additions are welcome — a copy this census misses,
+        a record it misstates:
+        <a href="mailto:chris@sophiarb.com?subject=${encodeURIComponent("Census correction: " + (DATA.meta.key || ""))}">chris@sophiarb.com</a>.
+      </div>
+    </div>
+  `;
+  // The untraced strip's attested-copy links open the copy card.
+  for (const a of document.querySelectorAll("[data-untraced-slug]")) {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      setActive(a.dataset.untracedSlug);
+    });
+  }
+
+  // Wire chips
+  for (const chip of document.querySelectorAll(".chip[data-filter]")) {
+    chip.addEventListener("click", () => {
+      const f = chip.dataset.filter;
+      const v = chip.dataset.val;
+      if (v) {
+        if (state.filters[f].has(v)) state.filters[f].delete(v);
+        else state.filters[f].add(v);
+      } else {
+        state.filters[f] = !state.filters[f];
+      }
+      chip.classList.toggle("active");
+      render();
+    });
+  }
+  document.getElementById("cluster-clear").addEventListener("click", () => {
+    state.filters.cluster = null;
+    render();
+  });
+
+  // Standing COLLECTIONS chips — one per named cluster, so any grouping
+  // (e.g. presentation copies) is one click from the top bar rather than
+  // reachable only via a pill on a member's card.
+  {
+    const names = Object.keys(DATA.clusters || {});
+    if (names.length) {
+      document.getElementById("cluster-grouplabel").style.display = "";
+      const box = document.getElementById("cluster-chips");
+      for (const name of names) {
+        const n = (DATA.clusters[name] || []).length;
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "chip cluster-filter-chip";
+        chip.dataset.cluster = name;
+        chip.textContent = `${name} (${n})`;
+        chip.title = "Show only this collection";
+        chip.addEventListener("click", () => {
+          state.filters.cluster = (state.filters.cluster === name) ? null : name;
+          render();
+        });
+        box.appendChild(chip);
+      }
+    }
+  }
+  document.getElementById("search-input").addEventListener("input", e => {
+    state.filters.search = e.target.value.toLowerCase().trim();
+    render();
+  });
+
+  // Keyboard nav
+  document.addEventListener("keydown", e => {
+    if (document.activeElement && document.activeElement.tagName === "INPUT") return;
+    if (e.key === "ArrowDown" || e.key === "j") { nav(1); e.preventDefault(); }
+    if (e.key === "ArrowUp" || e.key === "k") { nav(-1); e.preventDefault(); }
+    if (e.key === "Escape") { state.filters.cluster = null; render(); }
+  });
+
+  render();
+
+  // ?copy=... deep link. Accepts the bare local slug OR the fully-qualified
+  // copy reference (<census_key>/<copy_id>, or the hyphen-flattened
+  // <census_key>-<copy_id>), so cross-census citations resolve here too.
+  const params = new URLSearchParams(location.search);
+  let requested = params.get("copy");
+  if (requested) {
+    if (requested.includes("/")) requested = requested.split("/").pop();
+    else if (requested.startsWith(DATA.meta.key + "-")) requested = requested.slice(DATA.meta.key.length + 1);
+    if (DATA.copies.some(c => c.slug === requested)) {
+      setActive(requested);
+    } else {
+      // Stale / renamed permalink — say so rather than silently no-op.
+      document.getElementById("card-container").innerHTML =
+        `<div class="empty-state">
+           <div>Copy <code>${escapeHtml(requested)}</code> is not in this census.</div>
+           <div class="hint">The slug may have been renamed since this link was made.
+           Pick a copy from the list or map.</div>
+         </div>`;
+    }
+  }
+}
+
+function nav(delta) {
+  const visible = orderCopies([...filteredCopies()]);
+  if (!visible.length) return;
+  let idx = visible.findIndex(c => c.slug === state.activeSlug);
+  idx = (idx === -1) ? 0 : (idx + delta + visible.length) % visible.length;
+  setActive(visible[idx].slug);
+}
+
+// ---------------------------------------------------------------------------
+// Render: filter chips → map, list, count
+// ---------------------------------------------------------------------------
+function render() {
+  const visible = orderCopies([...filteredCopies()]);
+  const visibleSet = new Set(visible.map(c => c.slug));
+
+  // Map visibility
+  for (const [slug, m] of Object.entries(markersBySlug)) {
+    if (visibleSet.has(slug)) {
+      if (!map.hasLayer(m)) m.addTo(map);
+    } else {
+      if (map.hasLayer(m)) m.removeFrom(map);
+    }
+  }
+
+  // Count
+  document.getElementById("count-text").textContent =
+    `${visible.length} of ${DATA.copies.length} copies visible`;
+
+  // Cluster indicator
+  const clusterIndicator = document.getElementById("cluster-clear");
+  if (state.filters.cluster) {
+    clusterIndicator.style.display = "inline-flex";
+    document.getElementById("cluster-name").textContent = state.filters.cluster;
+  } else {
+    clusterIndicator.style.display = "none";
+  }
+  // Sync active state on the standing COLLECTIONS chips.
+  for (const chip of document.querySelectorAll(".cluster-filter-chip")) {
+    chip.classList.toggle("active", state.filters.cluster === chip.dataset.cluster);
+  }
+
+  // List
+  const list = document.getElementById("copy-list");
+  list.innerHTML = "";
+  if (!visible.length) {
+    list.innerHTML = '<li class="empty">No copies match these filters. Try toggling a confidence band.</li>';
+    return;
+  }
+  // Attested copies (recorded historically, no live evidence) never sit
+  // under a country header — a header would assert a present-day location.
+  // They close the list under their own honest heading in place mode.
+  const located = visible.filter(c => c.status !== "attested");
+  const attestedRows = visible.filter(c => c.status === "attested");
+
+  const appendRow = (c) => {
+    const li = document.createElement("li");
+    li.className = `list-item status-${c.status}` + (c.slug === state.activeSlug ? " active" : "");
+    li.dataset.slug = c.slug;
+    const indicators = [];
+    if (c.has_surrogate || c.has_iiif) indicators.push('<span class="tag" title="A digital facsimile of this copy can be read online">digitised</span>');
+    if (c.status !== "extant") {
+      const stLabel = c.status === "attested" ? "untraced" : statusLabel(c.status);
+      indicators.push(`<span class="tag st">${escapeHtml(stLabel)}</span>`);
+    }
+    const cityLine = c.status === "attested"
+      ? `last recorded ${escapeHtml(c.city || "—")}${c.country ? " · " + escapeHtml(countryName(c.country)) : ""}`
+      : `${escapeHtml(c.city || "—")}${c.country ? " · " + escapeHtml(countryName(c.country)) : ""}`;
+    li.innerHTML = `
+      <span class="label-block">
+        <span class="title">${escapeHtml(c.display_label)}</span>
+        <span class="city">${cityLine}</span>
+        ${c.assoc_note ? `<span class="assoc">${escapeHtml(c.assoc_note)}</span>` : ""}
+      </span>
+      <span class="indicators">${indicators.join("")}</span>
+    `;
+    li.addEventListener("click", () => setActive(c.slug));
+    list.appendChild(li);
+  };
+
+  let lastCountry = null;
+  for (const c of located) {
+    if (c.country !== lastCountry) {
+      lastCountry = c.country;
+      const n = located.filter(v => v.country === c.country).length;
+      const head = document.createElement("li");
+      head.className = "country-head";
+      head.innerHTML = `${flagIco(c.country)}${escapeHtml(countryName(c.country))}<span class="n">· ${n}</span>`;
+      list.appendChild(head);
+    }
+    appendRow(c);
+  }
+  if (attestedRows.length) {
+    const head = document.createElement("li");
+    head.className = "country-head";
+    head.innerHTML = `Recorded, not located today<span class="n">· ${attestedRows.length}</span>`;
+    list.appendChild(head);
+    for (const c of attestedRows) appendRow(c);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Active copy
+// ---------------------------------------------------------------------------
+function setActive(slug) {
+  const copy = DATA.copies.find(c => c.slug === slug);
+  if (!copy) return;
+  state.activeSlug = slug;
+
+  // Update URL ?copy= without reload
+  const u = new URL(location);
+  u.searchParams.set("copy", slug);
+  history.replaceState(null, "", u);
+
+  // Update list active state
+  for (const li of document.querySelectorAll(".list-item")) {
+    li.classList.remove("active");
+  }
+  // Match by slug, not display text — copies can share a display_label.
+  const currentLi = document.querySelector(
+    `.list-item[data-slug="${CSS.escape(slug)}"]`);
+  if (currentLi) {
+    currentLi.classList.add("active");
+    currentLi.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  // Update map: highlight + fly
+  for (const [s, m] of Object.entries(markersBySlug)) {
+    const el = m._icon;
+    if (el) el.classList.toggle("active", s === slug);
+  }
+  const marker = markersBySlug[slug];
+  if (marker) {
+    autoView = false;   // the user picked a copy; stop auto-refitting on resize
+    map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 5), { duration: 0.6 });
+  }
+
+  // Render card
+  renderCard(copy);
+
+  // On the stacked narrow layout the card renders BELOW the map and the
+  // full copy list, so a tap would otherwise appear to do nothing. Bring
+  // it into view. Desktop keeps its side-by-side panes and needs no scroll.
+  if (window.matchMedia("(max-width: 860px)").matches) {
+    const card = document.getElementById("card-container");
+    if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Card rendering
+// ---------------------------------------------------------------------------
+function renderCard(c) {
+  const container = document.getElementById("card-container");
+  const visible = orderCopies([...filteredCopies()]);
+  const idx = visible.findIndex(x => x.slug === c.slug);
+  const prev = (idx > 0) ? visible[idx - 1] : null;
+  const next = (idx >= 0 && idx < visible.length - 1) ? visible[idx + 1] : null;
+
+  // Actions
+  const actions = [];
+  if (c.catalogue_url) {
+    actions.push(`<a href="${escapeHtml(c.catalogue_url)}" target="_blank" rel="noopener">
+      Catalogue <span class="ico">↗</span></a>`);
+  }
+  for (const s of (c.digital_surrogates || [])) {
+    if (s.url && s.kind !== "absent" && s.kind !== "needs_lookup") {
+      const label = s.kind === "iiif-manifest"
+        ? "IIIF manifest"
+        : (s.label || s.kind);
+      actions.push(`<a class="primary" href="${escapeHtml(s.url)}" target="_blank" rel="noopener">
+        ${escapeHtml(label)} <span class="ico">↗</span></a>`);
+    }
+  }
+
+  // Copy images (base64-embedded; click to open lightbox)
+  let imagesHtml = "";
+  if ((c.images || []).length) {
+    const figs = c.images.map((im, i) => {
+      const cap = im.caption ? escapeHtml(im.caption) : "";
+      return `<figure class="copy-image-fig" data-img-idx="${i}">
+        <img src="${im.data_uri}" alt="${cap}" loading="lazy">
+        ${cap ? `<figcaption>${cap}</figcaption>` : ""}
+      </figure>`;
+    }).join("");
+    imagesHtml = `<section><h3>Images (${c.images.length})</h3>
+      <div class="copy-images-grid">${figs}</div></section>`;
+  }
+
+  // Clusters
+  let clustersHtml = "";
+  if ((c.clusters || []).length) {
+    clustersHtml = `<section><h3>Provenance clusters</h3>
+      ${c.clusters.map(cl => `<span class="cluster-pill" data-cluster="${escapeHtml(cl)}">${escapeHtml(cl)}</span>`).join("")}
+    </section>`;
+  }
+
+  // Provenance
+  let provHtml = "";
+  if ((c.provenance_chain || []).length) {
+    const items = c.provenance_chain.map(p => {
+      const kindClass = p.kind ? `kind-${p.kind}` : "";
+      return `
+        <li class="${kindClass}">
+          <div class="owner">${escapeHtml(p.owner || p.event || "—")}</div>
+          <div class="meta-line">
+            ${p.kind ? `<span class="kind-tag">${escapeHtml(p.kind)}</span>` : ""}
+            ${p.date ? escapeHtml(p.date) : "(undated)"}
+            ${p.confidence ? ` · confidence ${escapeHtml(p.confidence)}` : ""}
+          </div>
+          ${p.evidence ? `<div class="evidence">${escapeHtml(p.evidence)}</div>` : ""}
+        </li>`;
+    }).join("");
+    provHtml = `<section><h3>Provenance chain</h3><ul class="provenance">${items}</ul></section>`;
+  }
+
+  // Physical
+  let physHtml = "";
+  const ph = c.physical || {};
+  const physRows = [];
+  if (ph.completeness) physRows.push(["Completeness", escapeHtml(ph.completeness)]);
+  if (ph.binding) {
+    const b = ph.binding;
+    // A store value of "unknown" (binding period or originality not yet
+    // determined) is a data placeholder, not a fact worth printing — showing
+    // the bare word beside the style reads as a cryptic label ("broadsheet,
+    // as issued · unknown"). Render only the determined values.
+    const bits = [b.style, b.period, b.originality]
+      .filter(v => v && String(v).toLowerCase() !== "unknown")
+      .map(escapeHtml).join(" · ");
+    let v = bits;
+    if (b.notes) v += `<span class="meta-note">${escapeHtml(b.notes)}</span>`;
+    physRows.push(["Binding", v]);
+  }
+  if (ph.marginalia) {
+    const m = ph.marginalia;
+    const bits = [];
+    if (m.density) bits.push(escapeHtml(m.density));
+    if (m.hands_count) bits.push(`${m.hands_count} hand(s)`);
+    if (m.character) bits.push(escapeHtml(m.character));
+    let v = bits.join(" · ");
+    if (m.hands_identified && m.hands_identified.length) {
+      v += `<span class="meta-note">Identified: ${m.hands_identified.map(escapeHtml).join("; ")}</span>`;
+    }
+    physRows.push(["Marginalia", v]);
+  }
+  if (ph.notes) physRows.push(["Notes", escapeHtml(ph.notes)]);
+  if (physRows.length) {
+    physHtml = `<section><h3>Physical</h3>
+      <dl class="physical-grid">
+        ${physRows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}
+      </dl></section>`;
+  }
+
+  // Surrogates
+  let surrHtml = "";
+  if ((c.digital_surrogates || []).length) {
+    const rows = c.digital_surrogates.map(s => {
+      let main;
+      if (s.url) {
+        const link = `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.host || s.label || s.url)}</a>`;
+        main = link;
+      } else {
+        main = `<span style="color:var(--muted)">${escapeHtml(s.label || "(no URL captured)")}</span>`;
+      }
+      const note = s.notes ? `<div class="notes">${escapeHtml(s.notes)}</div>` : "";
+      return `<div class="surrogate-row kind-${s.kind}">
+        <span class="kind-tag">${escapeHtml(s.kind)}</span>
+        ${main}
+        ${note}
+      </div>`;
+    }).join("");
+    surrHtml = `<section><h3>Digital surrogates</h3>${rows}</section>`;
+  }
+
+  // References
+  let refsHtml = "";
+  if ((c.references || []).length) {
+    const items = c.references.map(r => {
+      const parts = [];
+      if (r.name) parts.push(`<span class="ref-name">${escapeHtml(r.name)}</span>`);
+      if (r.entry) parts.push(escapeHtml(r.entry));
+      if (r.canon) parts.push(`canon ${escapeHtml(r.canon)}`);
+      if (r.number) parts.push(escapeHtml(r.number));
+      const refText = r.ref ? escapeHtml(r.ref) : "";
+      const refTruncated = refText.length > 320;
+      return `<li>
+        <span class="ref-kind">${escapeHtml(r.kind || "ref")}</span>
+        ${parts.join(", ")}
+        ${refText ? (refTruncated ? `<span class="ref-text" data-full="${refText.replace(/"/g, "&quot;")}">: ${refText.slice(0, 320)}<span class="ref-truncated" onclick="this.parentElement.innerHTML=':' + this.parentElement.dataset.full;"> …(more)</span></span>` : `<span class="ref-text">: ${refText}</span>`) : ""}
+      </li>`;
+    }).join("");
+    refsHtml = `<section><h3>References (${c.references.length})</h3><ul class="references">${items}</ul></section>`;
+  }
+
+  // Confidence history
+  let confHistHtml = "";
+  if ((c.confidence_history || []).length) {
+    const items = c.confidence_history.map(h =>
+      `<div><strong>${escapeHtml(h.from)}<span class="arrow">→</span>${escapeHtml(h.to)}</strong> · ${escapeHtml(h.date)}<br><span style="font-size:11px;color:var(--muted)">${escapeHtml(h.reason)}</span></div>`
+    ).join("<hr style='border:none;border-top:1px solid var(--rule);margin:8px 0'>");
+    confHistHtml = `<section><h3>Confidence-grade history</h3><div class="conf-history">${items}</div></section>`;
+  }
+
+  // Verification history — dated positive AND negative checks. For an
+  // attested (untraced) copy this section IS the justification: it shows
+  // what was searched, when, and what was not found.
+  let checksHtml = "";
+  if ((c.checks || []).length || (c.evidence || {}).method) {
+    const evLine = (c.evidence || {}).method
+      ? `<div style="font-size:12px;margin-bottom:8px"><strong>Strongest evidence:</strong> ${escapeHtml(c.evidence.method)}${c.evidence.last_verified ? ` · last verified ${escapeHtml(c.evidence.last_verified)}` : ""}${c.evidence.ref ? `<br><span style="color:var(--muted);font-size:11px">${escapeHtml(c.evidence.ref)}</span>` : ""}</div>`
+      : "";
+    const rows = (c.checks || []).map(ch => {
+      const mark = ch.result === "found" ? "✓" : ch.result === "not-found" ? "✗" : "?";
+      const color = ch.result === "found" ? "var(--grade-A)" : ch.result === "not-found" ? "var(--grade-D)" : "var(--muted)";
+      return `<div style="font-size:12px;padding:3px 0;border-bottom:1px solid var(--rule)">
+        <span style="color:${color};font-weight:700">${mark}</span>
+        ${escapeHtml(ch.date)} · ${escapeHtml(ch.channel)} — <strong>${escapeHtml(ch.result)}</strong>
+        ${ch.note ? `<br><span style="color:var(--muted);font-size:11px">${escapeHtml(ch.note)}</span>` : ""}
+      </div>`;
+    }).join("");
+    checksHtml = `<section><h3>Verification history</h3>${evLine}${rows}</section>`;
+  }
+
+  // Open questions
+  let questHtml = "";
+  if ((c.open_questions || []).length) {
+    const items = c.open_questions.map(q => `<li>${escapeHtml(q)}</li>`).join("");
+    questHtml = `<section><h3>Open questions</h3><ul class="open-questions">${items}</ul></section>`;
+  }
+
+  // Citation hint.
+  // Canonical citable identifier = fully-qualified copy reference
+  // (<census_key>/<copy_id>), from which author · title · year · holding · copy
+  // can all be read. The bare slug stays the short, stable, local id.
+  const url = location.origin + location.pathname + "?copy=" + encodeURIComponent(c.slug);
+  const fqid = DATA.meta.key + "/" + c.slug;
+  const humanLabel = `${DATA.meta.author}, ${DATA.meta.title_short} (${DATA.meta.year || "n.d."}) — ${c.display_label}`;
+  const codeStyle = "background:#f0eee8;padding:1px 5px;border-radius:3px";
+  // Ready-to-paste citation (Darwin/e-rara pattern): record + corpus + build + permalink + accessed date
+  const accDate = new Date().toISOString().slice(0, 10);
+  const citeText = "“" + humanLabel + "”, Tychoniana — Census "
+    + DATA.meta.key + " (build " + (DATA.meta.last_built || "") + "), " + url
+    + ", accessed " + accDate + ".";
+  const citationHtml = `<section><h3>Citation</h3>
+    <div style="font-size:12px;line-height:1.6">
+      <strong>Reference:</strong> ${escapeHtml(humanLabel)}<br>
+      <strong>Full ID:</strong> <code style="${codeStyle}">${escapeHtml(fqid)}</code><br>
+      <strong>Local slug:</strong> <code style="${codeStyle}">${escapeHtml(c.slug)}</code><br>
+      <strong>Permalink:</strong>
+      <a href="${escapeHtml(url)}" style="color:var(--accent);font-size:11px;word-break:break-all">${escapeHtml(url)}</a><br>
+      <strong>Cite:</strong> <span class="cite-line">${escapeHtml(citeText)}</span>
+      <button class="cite-copy" style="font-size:10px;margin-left:6px;padding:1px 7px;border:1px solid var(--border);border-radius:3px;background:#f0eee8;cursor:pointer"
+        onclick="try{navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied';}catch(e){}">copy</button>
+    </div>
+  </section>`;
+
+  container.innerHTML = `
+    <div class="copy-card">
+      <div class="nav-row">
+        <button ${prev ? "" : "disabled"} onclick="${prev ? `setActive('${prev.slug}')` : ''}">
+          ← ${prev ? escapeHtml(truncate(prev.display_label, 32)) : "(start)"}
+        </button>
+        <span class="keyboard-hint">↑ ↓ to navigate</span>
+        <button ${next ? "" : "disabled"} onclick="${next ? `setActive('${next.slug}')` : ''}">
+          ${next ? escapeHtml(truncate(next.display_label, 32)) : "(end)"} →
+        </button>
+      </div>
+      <div class="header-row">
+        <h2>${escapeHtml(c.display_label)}</h2>
+        <div class="status-row">
+          <span class="status-pill status-${c.status}">${escapeHtml(statusLabel(c.status))}</span>
+          <span class="grade-badge ${c.confidence} tooltip-host" data-tooltip="${
+            ({ A: 'Verified: examined first-hand, confirmed by a live institutional record, or anchored by a documented dated dispatch',
+               B: 'Documented: recorded by a named scholar or an institutional catalogue, but not independently examined',
+               C: 'Reported: attested in a source that has not been re-verified',
+               D: 'Contested: rumoured, or the evidence conflicts' })[c.confidence] || ''
+          }">${escapeHtml(c.confidence)}</span>
+        </div>
+      </div>
+      <div class="subtitle">
+        <strong>${escapeHtml(c.institution)}</strong>
+        ${c.shelfmark ? `<br>${escapeHtml(c.shelfmark)}` : ""}
+        ${c.city ? ` · ${escapeHtml(c.city)}` : ""}${c.country ? `, ${escapeHtml(c.country)}` : ""}
+        ${c.siglum ? `<br><span style="font-size:11px;color:var(--muted)">${escapeHtml(c.siglum)}</span>` : ""}
+      </div>
+      <div class="actions">${actions.join("")}</div>
+      ${imagesHtml}
+      ${clustersHtml}
+      ${provHtml}
+      ${physHtml}
+      ${surrHtml}
+      ${refsHtml}
+      ${confHistHtml}
+      ${checksHtml}
+      ${questHtml}
+      ${citationHtml}
+    </div>
+  `;
+
+  // Wire cluster pills
+  for (const pill of container.querySelectorAll(".cluster-pill")) {
+    pill.addEventListener("click", () => {
+      state.filters.cluster = pill.dataset.cluster;
+      render();
+    });
+  }
+
+  // Wire image thumbnails → lightbox
+  for (const fig of container.querySelectorAll(".copy-image-fig")) {
+    fig.addEventListener("click", () => {
+      const im = c.images[Number(fig.dataset.imgIdx)];
+      if (!im) return;
+      const lb = document.getElementById("lightbox");
+      document.getElementById("lightbox-img").src = im.data_uri;
+      document.getElementById("lightbox-caption").innerHTML =
+        (im.caption ? escapeHtml(im.caption) : "") +
+        (im.source ? `<br><span class="lb-source">${escapeHtml(im.source)}</span>` : "");
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden", "false");
+    });
+  }
+}
+
+// Lightbox dismissal (click anywhere / Escape)
+(function wireLightbox() {
+  const lb = document.getElementById("lightbox");
+  if (!lb) return;
+  const close = () => { lb.classList.remove("open"); lb.setAttribute("aria-hidden", "true"); };
+  lb.addEventListener("click", close);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+})();
+
+window.setActive = setActive;
+init();
+</script>
+</body>
+</html>

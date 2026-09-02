@@ -1,0 +1,89 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="16" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">The mural quadrant</text>
+
+  <!-- South wall (vertical thick line at x=88), hatching on LEFT (exterior/south side) -->
+  <line x1="88" y1="22" x2="88" y2="200" stroke="#1a2238" stroke-width="3"/>
+  <g stroke="#8090a0" stroke-width="0.8" opacity="0.65">
+    <line x1="88" y1="42"  x2="70" y2="60"/>
+    <line x1="88" y1="72"  x2="70" y2="90"/>
+    <line x1="88" y1="102" x2="70" y2="120"/>
+    <line x1="88" y1="132" x2="70" y2="150"/>
+    <line x1="88" y1="162" x2="70" y2="180"/>
+  </g>
+  <text x="56" y="115" font-size="9" fill="#7080a8" text-anchor="middle" transform="rotate(-90 56 115)">South wall</text>
+
+  <!-- Horizon reference line (dashed) -->
+  <line x1="78" y1="75" x2="310" y2="75" stroke="#8090a0" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="313" y="79" font-size="9" fill="#7080a8">Hz</text>
+
+  <!-- C: sight-hole in the wall at (88, 75) -->
+  <circle cx="88" cy="75" r="5" fill="#f8f4ec" stroke="#1a2238" stroke-width="1.5"/>
+  <circle cx="88" cy="75" r="2" fill="#1a2238"/>
+  <text x="96" y="70" font-size="9.5" fill="#3a3028">C</text>
+
+  <!-- Plumb-line from C downward (dashed) -->
+  <line x1="88" y1="75" x2="88" y2="197" stroke="#8090a0" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="96" y="200" font-size="9" fill="#7080a8">Plumb</text>
+
+  <!-- Quadrant arc: centre (88,75) radius 115
+       from (203,75) [0°, horizontal right] clockwise to (88,190) [90°, plumb-line below C]
+       Wennberg p17: "graderad uppifrån och nedåt från 0° till 90°" —
+       0° at the upper/horizontal end, 90° at the plumb-line below the centre -->
+  <path d="M 203,75 A 115,115 0 0,1 88,190" fill="none" stroke="#1a2238" stroke-width="2"/>
+
+  <!-- Tick marks at 30° and 60° CW from 0° along the arc -->
+  <!-- 30° CW: (88+115·cos30°, 75+115·sin30°) = (187.6, 132.5) -->
+  <line x1="188" y1="133" x2="182" y2="124" stroke="#1a2238" stroke-width="1"/>
+  <!-- 60° CW: (88+115·cos60°, 75+115·sin60°) = (145.5, 174.6) -->
+  <line x1="146" y1="175" x2="139" y2="170" stroke="#1a2238" stroke-width="1"/>
+
+  <!-- Scale labels -->
+  <text x="206" y="79" font-size="10" fill="#3a3028">0°</text>
+  <text x="94" y="200" font-size="10" fill="#3a3028" dy="-11">90°</text>
+
+  <!-- Observation line: from star (upper-left, south side) THROUGH C to sight on arc (lower-right, north side).
+       This is a straight line — the two ends are vertical angles at C.
+       Sight at 40° CW from 0°:
+         (88+115·cos40°, 75+115·sin40°) = (176.1, 148.9) ≈ (176, 149)
+       Star (opposite direction from C, scaled to distance 80):
+         (88-80·cos40°/1, 75-80·sin40°/1) = (88-61.3, 75-51.4) = (26.7, 23.6) ≈ (27, 24)
+  -->
+  <line x1="27" y1="24" x2="176" y2="149" stroke="#9a7b32" stroke-width="1.8"/>
+
+  <!-- Star symbol (south side of wall) -->
+  <text x="24" y="21" font-size="16" fill="#9a7b32" text-anchor="middle">★</text>
+  <text x="18" y="36" font-size="9" fill="#3a3028">Star</text>
+
+  <!-- Sight on arc at 40° CW: (176, 149) -->
+  <circle cx="176" cy="149" r="5" fill="#9a7b32"/>
+  <text x="181" y="163" font-size="9.5" fill="#9a7b32">Sight</text>
+
+  <!-- Gold arc from 0° to sight position (= "arc above the sight-line", Wennberg p17)
+       "den del av bågen som är över siktlinjen" = the part of the arc above the sight,
+       i.e. the arc from 0° (top/horizontal) down to the sight position = α -->
+  <path d="M 203,75 A 115,115 0 0,1 176,149" fill="none" stroke="#9a7b32" stroke-width="2.5"/>
+
+  <!-- Label α on gold arc (at ~20° CW): (88+115·cos20°, 75+115·sin20°) = (196.1, 114.3) -->
+  <text x="206" y="110" font-size="13" fill="#9a7b32" font-style="italic">α</text>
+
+  <!-- Altitude angle arc at C on the STAR side (left of C):
+       radius 32, from (56,75) [horizontal-left] CCW to the star direction (64,54).
+       Direction to star: (-88.1,-73.9)/115 = (-0.766,-0.643); ×32 → (-24.5,-20.6)
+       End: (88-24.5, 75-20.6) = (63.5, 54.4) ≈ (64, 54) -->
+  <path d="M 56,75 A 32,32 0 0,0 64,54" fill="none" stroke="#9a7b32" stroke-width="1.6"/>
+  <text x="40" y="60" font-size="13" fill="#9a7b32" font-style="italic">α</text>
+
+  <!-- "Both α" callout -->
+  <text x="254" y="112" font-size="10" fill="#3a3028" text-anchor="middle">Both angles</text>
+  <text x="254" y="125" font-size="13" fill="#9a7b32" font-weight="bold" text-anchor="middle">equal α</text>
+  <text x="254" y="140" font-size="9" fill="#6070a0" text-anchor="middle">(vertical angles)</text>
+  <line x1="236" y1="121" x2="210" y2="107" stroke="#9a7b32" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.6"/>
+  <line x1="236" y1="121" x2="67" y2="60" stroke="#9a7b32" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.5"/>
+
+  <!-- Caption -->
+  <text x="160" y="210" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Graduated 0° at top (horizontal), 90° at plumb-line &#x2014; arc above sight = altitude directly</text>
+</svg>

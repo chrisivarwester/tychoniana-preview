@@ -1,0 +1,120 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="15" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">Equatorial vs. ecliptic coordinates</text>
+
+  <!--
+    Celestial sphere: cx=142, cy=108, r=70
+    N celestial pole:  (142, 38) — top of sphere
+    S celestial pole:  (142, 178) — bottom
+    Equatorial axis: vertical gold line, direction (0, -1)
+
+    Ecliptic pole E_p: 23.5° from N, offset to the right:
+      x_Ep = 142 + 70·sin(23.5°) = 142 + 27.9 ≈ 170
+      y_Ep = 108 − 70·cos(23.5°) = 108 − 64.2 ≈ 44
+    Ecliptic axis: dashed grey from centre (142,108) through E_p (170,44)
+
+    Equator ellipse:  cx=142, cy=108, rx=70, ry=21 (navy, solid)
+    Ecliptic ellipse: same ellipse, rotated −23.5° around (142,108) (grey dashed)
+
+    Star: on sphere surface, upper right
+      x=180: y_surface = 108 − sqrt(70² − 38²) = 108 − sqrt(4900−1444) = 108 − 58.8 = 49.2 ≈ 49
+      Star at (180, 52) → glyph y=60 (baseline 8px below glyph centre)
+
+    Equator point at star's RA (same x):
+      On front half (below midline) of equator ellipse:
+      cos(θ) = (180−142)/70 = 38/70 = 0.543  →  θ = 57.1°
+      y = 108 + 21·sin(57.1°) = 108 + 17.6 = 125.6 ≈ 126
+      Equator point: (180, 126)
+
+    ε angle arc: from gold axis at r=30 → (142, 78) to ecliptic axis at r=30:
+      dir_ecl = (28/70, −64/70) = (0.400, −0.914)
+      Point on ecliptic axis at r=30: (142+12.0, 108−27.4) = (154, 80.6) ≈ (154, 81)
+  -->
+
+  <!-- Sphere outline (light grey circle) -->
+  <circle cx="142" cy="108" r="70" fill="none" stroke="#c8d0d8" stroke-width="1.2"/>
+
+  <!-- === ECLIPTIC SYSTEM (grey) === -->
+
+  <!-- Ecliptic great circle (dashed, grey) -->
+  <ellipse cx="142" cy="108" rx="70" ry="21" fill="none" stroke="#8090a0" stroke-width="1.3"
+           stroke-dasharray="5,3" transform="rotate(-23.5, 142, 108)"/>
+
+  <!-- Ecliptic axis: dashed line from centre through E_p and beyond -->
+  <!-- Extended: from centre (142,108) in direction (0.400, −0.914), scale to y≈14:
+       t = (108−14)/0.914 = 102.8  →  x = 142+102.8·0.400 = 183.1 ≈ 183 -->
+  <line x1="142" y1="108" x2="183" y2="14" stroke="#8090a0" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Ecliptic pole E_p marker -->
+  <circle cx="170" cy="44" r="4.5" fill="#8090a0"/>
+  <text x="177" y="39" font-size="9" fill="#6070a0">Ecliptic</text>
+  <text x="177" y="50" font-size="9" fill="#6070a0">pole E&#x2099;</text>
+
+  <!-- Ecliptic label on the ring -->
+  <text x="88" y="63" font-size="8.5" fill="#8090a0" font-style="italic">Ecliptic</text>
+
+  <!-- === EQUATORIAL SYSTEM (gold) === -->
+
+  <!-- Celestial equator (navy solid ellipse) -->
+  <ellipse cx="142" cy="108" rx="70" ry="21" fill="none" stroke="#1a2238" stroke-width="1.8"/>
+
+  <!-- Equatorial / Earth's polar axis (gold vertical line) -->
+  <line x1="142" y1="20" x2="142" y2="190" stroke="#9a7b32" stroke-width="2.2"/>
+
+  <!-- North celestial pole -->
+  <circle cx="142" cy="38" r="5.5" fill="#9a7b32"/>
+  <text x="116" y="36" font-size="9" fill="#9a7b32" text-anchor="end">N pole</text>
+  <text x="116" y="47" font-size="9" fill="#9a7b32" text-anchor="end">= Earth's</text>
+  <text x="116" y="58" font-size="9" fill="#9a7b32" text-anchor="end">rotation axis</text>
+
+  <!-- South celestial pole (small) -->
+  <circle cx="142" cy="178" r="3.5" fill="#9a7b32" opacity="0.5"/>
+
+  <!-- Equator label -->
+  <text x="88" y="100" font-size="8.5" fill="#1a2238" font-style="italic">Equator</text>
+
+  <!-- === ε ANGLE ARC (between the two axes) === -->
+  <!-- Arc from gold axis point (142,78) to ecliptic axis point (154,81), sweeping CW (ε=23.5°) -->
+  <path d="M 142,78 A 30,30 0 0,1 154,81" fill="none" stroke="#8090a0" stroke-width="1.3"/>
+  <text x="158" y="77" font-size="8.5" fill="#6070a0" font-style="italic">&#x3b5;&#xa0;=&#xa0;23&#xbd;&#xb0;</text>
+
+  <!-- === STAR === -->
+  <text x="182" y="60" font-size="15" fill="#9a7b32" text-anchor="middle">&#x2605;</text>
+
+  <!-- === DECLINATION ARC δ (equatorial measurement, gold) === -->
+  <!-- Equator point at (180, 126); star at approx (182, 52) (glyph centre)
+       Quadratic bezier, control point slightly left (toward N pole) to suggest meridian curve -->
+  <circle cx="180" cy="126" r="2.5" fill="#9a7b32"/>
+  <path d="M 180,126 Q 171,90 182,52" fill="none" stroke="#9a7b32" stroke-width="2"/>
+  <text x="196" y="95" font-size="12" fill="#9a7b32" font-style="italic">&#x3b4;</text>
+  <text x="203" y="96" font-size="8.5" fill="#9a7b32">= decl.</text>
+
+  <!-- Vernal equinox point (right intersection of equator + ecliptic) -->
+  <circle cx="212" cy="108" r="2.5" fill="#1a2238"/>
+  <text x="213" y="119" font-size="8.5" fill="#3a3028">&#x2648; equinox</text>
+
+  <!-- === RIGHT PANEL (comparative annotations) === -->
+
+  <!-- Equatorial block (gold) -->
+  <text x="233" y="68" font-size="9.5" fill="#9a7b32" font-weight="bold">Equatorial:</text>
+  <text x="233" y="80" font-size="8.5" fill="#9a7b32">Axis &#x2225; Earth&#x2019;s</text>
+  <text x="233" y="91" font-size="8.5" fill="#9a7b32">rotation</text>
+  <text x="233" y="104" font-size="8.5" fill="#9a7b32">&#x2192; RA + &#x3b4; read</text>
+  <text x="233" y="115" font-size="8.5" fill="#9a7b32">directly off ring</text>
+
+  <!-- Divider -->
+  <line x1="230" y1="121" x2="318" y2="121" stroke="#c8d0d8" stroke-width="0.8"/>
+
+  <!-- Ecliptic block (grey) -->
+  <text x="233" y="133" font-size="9.5" fill="#6070a0" font-weight="bold">Ecliptic:</text>
+  <text x="233" y="145" font-size="8.5" fill="#6070a0">Axis 23&#xbd;&#xb0; off</text>
+  <text x="233" y="156" font-size="8.5" fill="#6070a0">Earth&#x2019;s rotation</text>
+  <text x="233" y="169" font-size="8.5" fill="#6070a0">&#x2192; &#x3bb;, &#x3b2; indirect</text>
+  <text x="233" y="180" font-size="8.5" fill="#6070a0">(Ptolemy&#x2019;s system)</text>
+
+  <!-- Caption -->
+  <text x="160" y="206" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Tycho&#x2019;s insight: align the axle with Earth &#x2014; coordinates fall out directly</text>
+</svg>

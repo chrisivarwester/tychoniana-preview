@@ -1,0 +1,67 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="16" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">The astronomical sextant</text>
+
+  <!-- Layout: sextant arc 60° centred at pivot C=(130,115)
+       0° = right-horizontal, 60° = upper-right direction
+       Arc from 0° to 60° (CW from 0° up to 60° above horizontal)
+       Pivot C at (130,115); radius R=90
+       At 0°: (130+90, 115) = (220, 115) — Observer 1 (fixed sight on Star A)
+       At 30° CCW: (130+90·cos30°, 115−90·sin30°) = (208, 70) — alidade midway
+       At 60° CCW: (130+90·cos60°, 115−90·sin60°) = (175, 37) — Observer 2 (Star B) -->
+
+  <!-- Central cylinder / pivot at C -->
+  <circle cx="130" cy="115" r="7" fill="#8090a0" stroke="#1a2238" stroke-width="1.5"/>
+  <text x="116" y="133" font-size="10" fill="#3a3028">C</text>
+
+  <!-- Sextant arc 0° to 60° CCW, R=90 -->
+  <path d="M 220,115 A 90,90 0 0,0 175,37" fill="none" stroke="#1a2238" stroke-width="2.5"/>
+
+  <!-- Fixed arm (0°) to Star A, continuing beyond arc -->
+  <line x1="130" y1="115" x2="228" y2="115" stroke="#1a2238" stroke-width="1.5"/>
+
+  <!-- Alidade arm (60°) to Star B -->
+  <line x1="130" y1="115" x2="175" y2="37" stroke="#9a7b32" stroke-width="1.8"/>
+
+  <!-- Star A at end of fixed arm -->
+  <text x="235" y="112" font-size="15" fill="#1a2238" text-anchor="middle">★</text>
+  <text x="235" y="127" font-size="9" fill="#3a3028" text-anchor="middle">Star A</text>
+
+  <!-- Star B at end of alidade arm -->
+  <text x="176" y="28" font-size="15" fill="#9a7b32" text-anchor="middle">★</text>
+  <text x="176" y="19" font-size="9" fill="#9a7b32" text-anchor="middle">Star B</text>
+
+  <!-- Observer 1 (fixed sight on Star A) — eye icon near fixed arm end -->
+  <ellipse cx="210" cy="115" rx="5" ry="4" fill="#f8f4ec" stroke="#1a2238" stroke-width="1.2"/>
+  <circle cx="210" cy="115" r="2" fill="#1a2238"/>
+  <text x="200" y="107" font-size="9" fill="#1a2238" text-anchor="middle">Obs. 1</text>
+
+  <!-- Observer 2 (alidade) — eye icon near alidade end -->
+  <ellipse cx="165" cy="52" rx="5" ry="4" fill="#f8f4ec" stroke="#9a7b32" stroke-width="1.2"/>
+  <circle cx="165" cy="52" r="2" fill="#9a7b32"/>
+  <text x="148" y="52" font-size="9" fill="#9a7b32" text-anchor="end">Obs. 2</text>
+
+  <!-- Angular distance arc highlight (gold) at C between the two arms -->
+  <path d="M 220,115 A 90,90 0 0,0 175,37" fill="none" stroke="#9a7b32" stroke-width="3" opacity="0.35"/>
+  <!-- Inner arc for angle label -->
+  <path d="M 155,115 A 25,25 0 0,0 142.5,93" fill="none" stroke="#9a7b32" stroke-width="1.5"/>
+  <text x="163" y="98" font-size="12" fill="#9a7b32" font-style="italic">θ</text>
+
+  <!-- Scale labels on arc -->
+  <text x="224" y="106" font-size="10" fill="#3a3028">0°</text>
+  <text x="180" y="32" font-size="10" fill="#3a3028">60°</text>
+
+  <!-- Tick at 30° on arc -->
+  <line x1="208" y1="70" x2="201" y2="76" stroke="#1a2238" stroke-width="1"/>
+
+  <!-- Explanation text -->
+  <text x="50" y="160" font-size="10" fill="#3a3028">Both observers sight</text>
+  <text x="50" y="173" font-size="10" fill="#3a3028">from the same pivot C —</text>
+  <text x="50" y="186" font-size="10" fill="#3a3028">arc between sights = <tspan fill="#9a7b32" font-style="italic">θ</tspan></text>
+
+  <!-- Caption -->
+  <text x="160" y="210" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">60° arc &#x2014; two observers share pivot C; arc between sights = star separation</text>
+</svg>

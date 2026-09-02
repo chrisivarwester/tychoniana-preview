@@ -1,0 +1,176 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="16" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">The nonius (auxiliary arc method)</text>
+
+  <!-- Concept: main arc on top, below it N auxiliary arcs.
+       Main arc: divided into degrees (show 5 divisions = 5°, 1° each)
+       Below: show 5 nonius arcs, each spanning 4 of those 5 main divisions but divided into 5 parts
+       A nonius arc spanning N-1 main divisions but divided into N parts gives 1/(N) of a main division.
+
+       Here: main scale = 5 intervals of 1° each; interval width = 40px
+       Main scale from x=60 to x=260, top at y=55; tick marks every 40px.
+       Ticks at: 60, 100, 140, 180, 220, 260 → 0°, 1°, 2°, 3°, 4°, 5°
+
+       Nonius arcs below (y=80 to y=165):
+       5 auxiliary arcs, arc i (0..4) spans (5-1)×40 = 160px but is divided into 5 intervals.
+       Arc i is a straight line at y = 85 + i×17, from x=60 to x=60+(5-1)×40=220
+       Each has 5 division marks at 160/5=32px apart: at 60, 92, 124, 156, 188, 220
+
+       Reading: alidade at x=148 (between main ticks at 140 and 180 → between 3° and 4°)
+       We want to read ~3°48' (= 3.8°). The 4th nonius arc (i=3) will align:
+       For the alidade at x=148:
+         - Main reading floor: 3° at x=140
+         - Fraction = (148-140)/40 = 0.2 = 12'/60
+         Actually let's pick a cleaner example.
+       Simplify: show the concept clearly.
+
+       Main arc: x from 55 to 255; 5 main divisions, each 40px wide.
+       Nonius arcs: 5 arcs. Each is the same width (4 main divs = 160px) but with 5 subdivisions.
+       Alidade at a specific position x_a.
+       The nonius arc i aligns when (x_a - 55) mod 40 = i × 40/5 = i×8.
+
+       Let's say x_a = 55 + 3×40 + 2×8 = 55+120+16 = 191.
+       → Main reading: 3°; fraction: 2 nonius arcs in = 2×(1°/5) = 2×12' = 24'.
+       → Reading = 3°24'.
+
+       Alidade at x=191.
+       Main arc ticks at 55, 95, 135, 175, 215, 255 → 0°,1°,2°,3°,4°,5°
+       Alidade between 3° (x=175) and 4° (x=215).
+
+       Nonius arcs at y=90,105,120,135,150 (i=0..4)
+       Arc i: from x=55 to x=55+4×40=215; 5 divisions → marks at 55+j×32 for j=0..5.
+       Arc 0 (i=0): marks at 55,87,119,151,183,215 — aligns at x=191? No.
+         183+8=191 — no match.
+       Arc 2 (i=2): The 2nd nonius arc aligns at x_a:
+         For arc i, the j-th mark is at x=55 + j×32.
+         We want 55 + j×32 = 191 → j = 136/32 = 4.25 — not integer.
+
+       Let me try a cleaner example: x_a = 55 + 3×40 + 3×8 = 55+120+24 = 199.
+       Arc i: mark at 55+j×32; we want 55+j×32 = 199 → j = 144/32 = 4.5 — not integer.
+
+       OK, let me just show the concept schematically without exact alignment math.
+       I'll show: main arc, several nonius arcs, an alidade, and indicate which nonius aligns.
+       The exact pixel positions can be slightly illustrative.
+
+       Final layout:
+       Main arc: y=58, ticks at x = 55+k×36 for k=0..5 → 55,91,127,163,199,235
+       Width = 5 × 36 = 180px (from 55 to 235)
+       Nonius arcs (5): span 4 main divs = 144px; 5 divisions each = 28.8px/div
+       Nonius arc i at y = 80+i×18
+
+       Alidade at x=163+α. For nonius i=3 to align: 55+j×28.8=x_a → j=3: 55+86.4=141.4; j=4: 55+115.2=170.2; j=5: 55+144=199.
+       Let x_a=170.2 ≈ 170. Main floor: k=3 at x=163 (=3°). Fraction: (170-163)/36 = 0.194 = 3×(1/5) of 1° → nonius 3 aligns.
+       Actually: 170-163=7. Each nonius div = 36/5=7.2, so nonius i=1: 163+1×7=170 (off by 0.2). OK close enough.
+
+       Let me try: nonius arc i alignment at x_a:
+       The i-th arc has marks at 55 + j×(4×36/5) = 55 + j×28.8
+       The i-th arc aligns (approximately) when x_a ≈ 55 + (some integer multiple of 28.8) that falls within [163,199].
+       163+28.8 = 191.8 ≈ 192; alidade at x=192, nonius div offset = (192-163)/36 = 0.806... = 4×(1/5) arc 4 reading.
+
+       Just draw it nicely. Let alidade x=176. Floor=163 (3°). Offset = 13px. Nonius i=2 mark: 55+k×28.8=176 → k=(121)/28.8=4.2 — not exact.
+
+       I'll just draw a clean schematic showing the CONCEPT, labelling it clearly. The exact pixel alignment of nonius subdivisions just needs to be visually plausible.
+  -->
+
+  <!-- Main arc (top) -->
+  <line x1="50" y1="55" x2="270" y2="55" stroke="#1a2238" stroke-width="2.5"/>
+
+  <!-- Main arc tick marks (6 ticks = 5 intervals = 5°) -->
+  <!-- Every 44px: 50, 94, 138, 182, 226, 270 -->
+  <line x1="50"  y1="47" x2="50"  y2="63" stroke="#1a2238" stroke-width="1.5"/>
+  <line x1="94"  y1="50" x2="94"  y2="63" stroke="#1a2238" stroke-width="1"/>
+  <line x1="138" y1="50" x2="138" y2="63" stroke="#1a2238" stroke-width="1"/>
+  <line x1="182" y1="50" x2="182" y2="63" stroke="#1a2238" stroke-width="1"/>
+  <line x1="226" y1="50" x2="226" y2="63" stroke="#1a2238" stroke-width="1"/>
+  <line x1="270" y1="47" x2="270" y2="63" stroke="#1a2238" stroke-width="1.5"/>
+
+  <!-- Main arc degree labels -->
+  <text x="50"  y="44" font-size="9.5" fill="#3a3028" text-anchor="middle">0°</text>
+  <text x="94"  y="44" font-size="9.5" fill="#3a3028" text-anchor="middle">1°</text>
+  <text x="138" y="44" font-size="9.5" fill="#3a3028" text-anchor="middle">2°</text>
+  <text x="182" y="44" font-size="9.5" fill="#3a3028" text-anchor="middle">3°</text>
+  <text x="226" y="44" font-size="9.5" fill="#3a3028" text-anchor="middle">4°</text>
+  <text x="270" y="44" font-size="9.5" fill="#3a3028" text-anchor="middle">5°</text>
+  <text x="160" y="35" font-size="9" fill="#6070a0" text-anchor="middle">Main arc  (1° divisions)</text>
+
+  <!-- 5 Nonius arcs below, each spanning 4° (=4×44=176px), divided into 5 parts (35.2px each) -->
+  <!-- Arc i at y=78+i×19; from x=50 to x=50+176=226 -->
+  <g stroke="#8090a0" stroke-width="0.8">
+    <!-- Arc 0 at y=78 -->
+    <line x1="50" y1="78" x2="226" y2="78"/>
+    <line x1="50"  y1="73" x2="50"  y2="83"/>
+    <line x1="85"  y1="74" x2="85"  y2="82"/>
+    <line x1="120" y1="74" x2="120" y2="82"/>
+    <line x1="155" y1="74" x2="155" y2="82"/>
+    <line x1="190" y1="74" x2="190" y2="82"/>
+    <line x1="226" y1="73" x2="226" y2="83"/>
+    <text x="36" y="81" font-size="9" fill="#6070a0" text-anchor="end">0</text>
+
+    <!-- Arc 1 at y=97 -->
+    <line x1="50" y1="97" x2="226" y2="97"/>
+    <line x1="50"  y1="92" x2="50"  y2="102"/>
+    <line x1="85"  y1="93" x2="85"  y2="101"/>
+    <line x1="120" y1="93" x2="120" y2="101"/>
+    <line x1="155" y1="93" x2="155" y2="101"/>
+    <line x1="190" y1="93" x2="190" y2="101"/>
+    <line x1="226" y1="92" x2="226" y2="102"/>
+    <text x="36" y="100" font-size="9" fill="#6070a0" text-anchor="end">1</text>
+
+    <!-- Arc 2 at y=116 -->
+    <line x1="50" y1="116" x2="226" y2="116"/>
+    <line x1="50"  y1="111" x2="50"  y2="121"/>
+    <line x1="85"  y1="112" x2="85"  y2="120"/>
+    <line x1="120" y1="112" x2="120" y2="120"/>
+    <line x1="155" y1="112" x2="155" y2="120"/>
+    <line x1="190" y1="112" x2="190" y2="120"/>
+    <line x1="226" y1="111" x2="226" y2="121"/>
+    <text x="36" y="119" font-size="9" fill="#6070a0" text-anchor="end">2</text>
+  </g>
+
+  <!-- Arc 3 (ALIGNING — highlight in gold) at y=135 -->
+  <line x1="50" y1="135" x2="226" y2="135" stroke="#9a7b32" stroke-width="1.5"/>
+  <line x1="50"  y1="129" x2="50"  y2="141" stroke="#9a7b32" stroke-width="1.5"/>
+  <line x1="85"  y1="130" x2="85"  y2="140" stroke="#9a7b32" stroke-width="1.5"/>
+  <line x1="120" y1="130" x2="120" y2="140" stroke="#9a7b32" stroke-width="1.5"/>
+  <line x1="155" y1="130" x2="155" y2="140" stroke="#9a7b32" stroke-width="1.5"/>
+  <line x1="190" y1="130" x2="190" y2="140" stroke="#9a7b32" stroke-width="1.5"/>
+  <line x1="226" y1="129" x2="226" y2="141" stroke="#9a7b32" stroke-width="1.5"/>
+  <text x="36" y="138" font-size="9" fill="#9a7b32" text-anchor="end" font-weight="bold">3</text>
+
+  <!-- Arc 4 at y=154 -->
+  <g stroke="#8090a0" stroke-width="0.8">
+    <line x1="50" y1="154" x2="226" y2="154"/>
+    <line x1="50"  y1="149" x2="50"  y2="159"/>
+    <line x1="85"  y1="150" x2="85"  y2="158"/>
+    <line x1="120" y1="150" x2="120" y2="158"/>
+    <line x1="155" y1="150" x2="155" y2="158"/>
+    <line x1="190" y1="150" x2="190" y2="158"/>
+    <line x1="226" y1="149" x2="226" y2="159"/>
+    <text x="36" y="157" font-size="9" fill="#6070a0" text-anchor="end">4</text>
+  </g>
+
+  <!-- "Nonius arcs" label -->
+  <text x="36" y="76" font-size="9" fill="#6070a0" text-anchor="end">Arc</text>
+
+  <!-- Alidade (dashed vertical) at x=190 — aligns with arc 3's 4th mark = 3° 48' reading -->
+  <line x1="190" y1="30" x2="190" y2="165" stroke="#1a2238" stroke-width="1.4" stroke-dasharray="5,3"/>
+  <text x="190" y="26" font-size="9" fill="#3a3028" text-anchor="middle">Alidade</text>
+
+  <!-- Alignment dot on arc 3 -->
+  <circle cx="190" cy="135" r="5" fill="#9a7b32"/>
+
+  <!-- Reading callout -->
+  <text x="248" y="95" font-size="10" fill="#3a3028" text-anchor="start">Arc 3 aligns</text>
+  <text x="248" y="108" font-size="10" fill="#9a7b32" text-anchor="start" font-weight="bold">→ 3° 36′</text>
+  <line x1="246" y1="104" x2="200" y2="132" stroke="#9a7b32" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+  <!-- Nonius arcs label -->
+  <text x="160" y="172" font-size="9.5" fill="#6070a0" text-anchor="middle">5 arcs each span 4° but have 5 divisions (= 12′ each)</text>
+  <text x="160" y="184" font-size="9.5" fill="#3a3028" text-anchor="middle">Where a nonius mark aligns with the alidade = fractional reading</text>
+
+  <!-- Caption -->
+  <text x="160" y="210" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Hard to engrave precisely; the transversal (diagonal) scale proved more reliable</text>
+</svg>

@@ -1,0 +1,547 @@
+{
+ "id": "brahe-tycho",
+ "version": "1.0",
+ "generated": "2026-06-06",
+ "description": "Catalogue of Tycho Brahe's astrological practice: natal horoscopes for Danish royals, astrological judgments for Rudolf II, the meteorological diarium, and the astrological practice of the Hven press.",
+ "sources": [
+  {
+   "id": "S_KB",
+   "label": "Royal Library, Copenhagen (KB)"
+  },
+  {
+   "id": "S_ONB",
+   "label": "Austrian National Library, Vienna (ONB)"
+  },
+  {
+   "id": "S_DREYER",
+   "label": "Dreyer, Tycho Brahe (1890)"
+  },
+  {
+   "id": "S_TBOO_III",
+   "label": "TBOO vol. III (Dreyer ed., 1916)"
+  },
+  {
+   "id": "S_NIELSEN_BT",
+   "label": "Nielsen, Bogtrykkeri paa Hveen (1921)"
+  },
+  {
+   "id": "S_TRUFFA2002",
+   "label": "Truffa (2002)"
+  },
+  {
+   "id": "S_ZEEBERG1994",
+   "label": "Zeeberg, Tycho Brahes »Urania Titani« (Museum Tusculanum, 1994)"
+  }
+ ],
+ "type_colours": {
+  "natal": "#c9a23f",
+  "mundane": "#2d5a8b",
+  "judgment": "#8b3a3a",
+  "meteorological": "#3a7a4a",
+  "literary": "#5a3d7a"
+ },
+ "items": [
+  {
+   "id": "HORO_C4",
+   "type": "natal",
+   "type_label": "Natal horoscope",
+   "title": "Horoscope of Christian IV",
+   "title_latin": "Horoscopus Regis Christiani IV",
+   "subject": "Christian IV of Denmark",
+   "subject_role": "Future King of Denmark; Frederik II's son",
+   "year_cast": 1577,
+   "subject_birth_year": 1577,
+   "autograph_status": "lost",
+   "autograph_note": "Autograph original lost; survives in multiple scribal copies",
+   "note": "Cast by Tycho at the order of Frederik II when Prince Christian (the future Christian IV) was born. The nativity text is on tekstnet.dk. Six copies survive at KB; NKS 296 is a 17th-c. German-language Urtheil version.",
+   "surviving_copies": [
+    {
+     "shelfmark": "GKS 1820 kvart",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": false,
+     "digitized": false,
+     "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122875875405763",
+     "note": "Copy"
+    },
+    {
+     "shelfmark": "GKS 1821 kvart",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": false,
+     "digitized": false,
+     "url": "",
+     "note": "Copy; no individual record traced in the KB online catalogue (July 2026)"
+    },
+    {
+     "shelfmark": "NKS 620 c folio",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": false,
+     "digitized": false,
+     "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122876145705763",
+     "note": "Copy"
+    },
+    {
+     "shelfmark": "Thott 831 folio",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": false,
+     "digitized": false,
+     "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122748893305763",
+     "note": "Copy"
+    },
+    {
+     "shelfmark": "Thott 1611 kvart",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": false,
+     "digitized": false,
+     "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122593145905763",
+     "note": "Ex autographo (catalogued)"
+    },
+    {
+     "shelfmark": "NKS 296 kvart",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": false,
+     "digitized": false,
+     "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122876001105763",
+     "note": "German-language Urtheil; 17th-c. scribal copy"
+    }
+   ],
+   "tekstnet_url": "https://tekstnet.dk/books/brahe-t_horoscopus-principis-christiani/",
+   "thesaurus_work": "W_HORO_C4",
+   "confidence": "A",
+   "sources": [
+    "S_KB",
+    "S_DREYER"
+   ]
+  },
+  {
+   "id": "HORO_ULRIK",
+   "type": "natal",
+   "type_label": "Natal horoscope",
+   "title": "Horoscope of Prince Ulrik",
+   "title_latin": "Genethliacon … Huldarico",
+   "subject": "Prince Ulrik of Denmark",
+   "subject_role": "Son of Frederik II",
+   "year_cast": 1579,
+   "subject_birth_year": 1579,
+   "autograph_status": "yes",
+   "autograph_note": "Written in Tycho's own hand (GKS 1822)",
+   "note": "Autograph natal horoscope for Prince Ulrik, cast in 1579. GKS 1822 is in Tycho's own hand and bound in green velvet — a presentation object.",
+   "surviving_copies": [
+    {
+     "shelfmark": "GKS 1822 kvart",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": true,
+     "digitized": false,
+     "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122192378105763",
+     "note": "Autograph; green velvet binding"
+    }
+   ],
+   "tekstnet_url": "https://tekstnet.dk/books/brahe-t_horoscopus-principis-huldarici/",
+   "thesaurus_work": "W_HORO_ULRIK",
+   "confidence": "A",
+   "sources": [
+    "S_KB"
+   ]
+  },
+  {
+   "id": "HORO_HANS",
+   "type": "natal",
+   "type_label": "Natal horoscope",
+   "title": "Horoscope of Duke Hans",
+   "title_latin": "[Nativitet] Herzog Hans",
+   "subject": "Duke Hans (Hans the Younger) of Denmark",
+   "subject_role": "Son of Frederik II; died 1602",
+   "year_cast": 1583,
+   "subject_birth_year": 1583,
+   "autograph_status": "partial",
+   "autograph_note": "Partly in Tycho's hand (GKS 1823)",
+   "note": "Natal horoscope for the youngest Danish prince; partly autograph. Bound in green velvet, matching the Ulrik horoscope — probably produced at the same time as a royal commission.",
+   "surviving_copies": [
+    {
+     "shelfmark": "GKS 1823 kvart",
+     "inst": "KB",
+     "city": "Copenhagen",
+     "autograph": "partial",
+     "digitized": false,
+     "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122876056805763",
+     "note": "Partly Tycho's hand; green velvet"
+    }
+   ],
+   "tekstnet_url": "https://tekstnet.dk/books/brahe-t_horoscopus-principis-johannis/",
+   "thesaurus_work": "W_HORO_HANS",
+   "confidence": "A",
+   "sources": [
+    "S_NIELSEN_BT",
+    "S_KB"
+   ]
+  },
+  {
+   "id": "HORO_ONB_29",
+   "type": "natal",
+   "type_label": "Natal horoscope (unidentified subject)",
+   "title": "Iudicium astrologicum huius geniturae",
+   "title_latin": "Iudicium astrologicum huius geniturae",
+   "subject": "Unknown",
+   "subject_role": "",
+   "year_cast": null,
+   "subject_birth_year": null,
+   "autograph_status": "unknown",
+   "autograph_note": "",
+   "note": "Astrological judgement of a nativity; subject unidentified. Vienna, ÖNB Cod. 10689/29. 4 leaves. Among Tycho's Prague papers.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. 10689/29",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": null,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13961751",
+     "note": "Attribution to Tycho"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "A",
+   "sources": [
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "HORO_ONB_36",
+   "type": "natal",
+   "type_label": "Natal horoscope — German draft (unidentified)",
+   "title": "Primae lineae germanicae alicuius genethliaci",
+   "title_latin": "Primae lineae germanicae alicuius genethliaci",
+   "subject": "Unknown",
+   "subject_role": "",
+   "year_cast": null,
+   "subject_birth_year": null,
+   "autograph_status": "uncertain",
+   "autograph_note": "Attribution unclear in ONB catalogue",
+   "note": "German draft of a nativity; subject unidentified; attribution uncertain. 37 leaves. Vienna, ÖNB Cod. 10689/36.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. 10689/36",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": null,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13961755",
+     "note": "Attribution uncertain"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "B",
+   "sources": [
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "HORO_RUDOLF_STAR_APPENDIX",
+   "type": "mundane",
+   "type_label": "Astrological appendix for Rudolf II",
+   "title": "Stellarum inerrantium Restitutionis Appendix",
+   "title_latin": "Stellarum inerrantium Restitutionis Appendix",
+   "subject": "Rudolf II, Holy Roman Emperor",
+   "subject_role": "Emperor; Tycho's patron from 1597",
+   "year_cast": 1600,
+   "subject_birth_year": 1552,
+   "autograph_status": "no",
+   "autograph_note": "Scribal apograph with autograph dedication inscription by Tycho",
+   "note": "A unique supplement to the 1004-star catalogue restitution: 36 star positions adapted to Emperor Rudolf II's nativity as a deliberate act of Habsburg adulation. Found ONLY in Cod. 10707 — the longest of the three copies (31 leaves). Autograph dedication inscription by Tycho: 'Illustri & Generoso Domino RVDOLPHO CORADVCIO ... ddt Tycho Brahe Anno 1600 Mense Martio'. First published by Dreyer (TBOO III, pp. 379-389).",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. 10707",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": false,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13947088",
+     "note": "Unique apograph with Tycho's autograph dedication to Corraduz"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "W_STARCAT",
+   "confidence": "A",
+   "sources": [
+    "S_ONB",
+    "S_TBOO_III"
+   ]
+  },
+  {
+   "id": "HORO_RESPONSIO_CAESAR",
+   "type": "judgment",
+   "type_label": "Astrological judgment — imperial question",
+   "title": "Responsio ad quaestionem astrologicam Caesareae Maiestati",
+   "title_latin": "Responsio ad questionem an iuxta astrologiam Caesareae Maiestati",
+   "subject": "Rudolf II, Holy Roman Emperor",
+   "subject_role": "Emperor",
+   "year_cast": null,
+   "subject_birth_year": 1552,
+   "autograph_status": "unknown",
+   "autograph_note": "",
+   "note": "Tycho's reply to an astrological question put to his Imperial Majesty. Digitised. Vienna, ÖNB Cod. 10689/50.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. 10689/50",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": null,
+     "digitized": true,
+     "url": "https://digital.onb.ac.at/rep/access/open/1323DE8B",
+     "note": "Digitised"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "A",
+   "sources": [
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "HORO_NOVA_1572",
+   "type": "judgment",
+   "type_label": "Astrological judgment — celestial portent",
+   "title": "Astrological judgment on the new star (or comet) of 1572",
+   "title_latin": "Quae genera eventuum portendat crinita a. 1572",
+   "subject": "The new star or comet of 1572",
+   "subject_role": "Event",
+   "year_cast": 1572,
+   "subject_birth_year": null,
+   "autograph_status": "unknown",
+   "autograph_note": "",
+   "note": "Astrological judgment on what events the nova/comet of 1572 portends. 8 bundled items; ties to the De nova stella thread. Vienna, ÖNB Cod. 10689/41-46. The ÖNB title's word 'crinita' — the standard Latin epithet for a comet — leaves the object's identification open.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. 10689/41-46",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": null,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13964463",
+     "note": "8 bundled items"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "A",
+   "sources": [
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "METEO_DIARIUM",
+   "type": "meteorological",
+   "type_label": "Meteorological astrology",
+   "title": "Meteorological diary (1582-97)",
+   "title_latin": "Diarium astrologicum et meteorologicum",
+   "subject": "Weather and atmospheric observations",
+   "subject_role": "Environmental/predictive",
+   "year_cast": 1582,
+   "subject_birth_year": null,
+   "autograph_status": "yes",
+   "autograph_note": "Kept continuously at Uraniborg 1582-1597",
+   "note": "The meteorological-astrological diary kept daily at Uraniborg 1582-97. Combines weather observations with the astrological theory that planetary configurations govern atmospheric conditions. Printed 1876 from the Vienna original as an appendix to the Royal Danish Academy's Collectanea Meteorologica (prepared by Paul la Cour); the tekstnet edition gives the preface fragment.",
+   "surviving_copies": [
+    {
+     "shelfmark": "ÖNB (original)",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": true,
+     "digitized": false,
+     "url": "",
+     "note": "Original observation diary"
+    }
+   ],
+   "tekstnet_url": "https://tekstnet.dk/books/brahe-t_astrologiae-meteorologicae-fragmentum/",
+   "thesaurus_work": "W_METEO",
+   "confidence": "A",
+   "sources": [
+    "S_DREYER",
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "METEO_MORSING",
+   "type": "meteorological",
+   "type_label": "Annual meteorological almanac — Hven press",
+   "title": "Diarium astrologicum et metheorologicum (1586)",
+   "title_latin": "Diarium astrologicum et metheorologicum anni 1586",
+   "subject": "Meteorological-astrological predictions for 1586",
+   "subject_role": "Annual almanac",
+   "year_cast": 1585,
+   "subject_birth_year": null,
+   "autograph_status": "no",
+   "autograph_note": "By Tycho's assistant Morsing under his imprimatur",
+   "note": "The first true book printed on Tycho's Hven press (Nielsen LN 1170). Authored by Tycho's assistant Elias Olsen Morsing but issued under Tycho's editorial imprimatur and with his preface. A practical almanac combining astronomical tables with astrological weather predictions.",
+   "surviving_copies": [],
+   "tekstnet_url": "https://tekstnet.dk/books/brahe-t_diarii-astrologici-et-meteorologici-praefatio/",
+   "thesaurus_work": "W_DIARIUM1586",
+   "confidence": "A",
+   "sources": [
+    "S_NIELSEN_BT"
+   ]
+  },
+  {
+   "id": "FLEMLOESE_ASTROLOGIA",
+   "type": "meteorological",
+   "type_label": "Popular astrology — Danish language",
+   "title": "Astrologia — En Elementisch oc Jordisch Astrologia (1591)",
+   "title_latin": "Astrologia",
+   "subject": "Popular meteorological-natural astrology",
+   "subject_role": "Vernacular treatise",
+   "year_cast": 1591,
+   "subject_birth_year": null,
+   "autograph_status": "no",
+   "autograph_note": "By Peder Jacobsen Flemløs; Tycho wrote the preface",
+   "note": "The ONLY Danish-language book from the Uraniborg press (Nielsen LN 606). By Tycho's assistant Flemløs; Tycho wrote the preface. A popular work explaining natural/meteorological astrology in the vernacular for a Danish readership.",
+   "surviving_copies": [],
+   "tekstnet_url": "https://tekstnet.dk/books/brahe-t_flemloese-indl/",
+   "thesaurus_work": "W_FLEMLOES",
+   "confidence": "A",
+   "sources": [
+    "S_NIELSEN_BT"
+   ]
+  },
+  {
+   "id": "HORO_UT_TITAN",
+   "type": "literary",
+   "type_label": "Literary horoscope — embedded in verse",
+   "group": "Urania Titani (1594)",
+   "title": "Horoscope of Titan (Erik Lange) in Urania Titani",
+   "title_latin": "Genethliacon Titani in 'Urania Titani'",
+   "subject": "Erik Lange",
+   "subject_role": "Sophie Brahe's fiancé; Tycho's friend; pseudonym Titan in the Uraniborg circle",
+   "year_cast": 1594,
+   "subject_birth_year": 1554,
+   "autograph_status": "no",
+   "autograph_note": "Embedded in the poem text; reconstructed from verse by Ove von Späth (appendix in Zeeberg 1994)",
+   "note": "The first horoscope Urania/Sophie examines in the poem: she tries to find proof of Titan's constancy in the stars, but the same configuration that promises eloquence and love undermines it. Mercury at the ascendant (18°56' Gemini) near Venus (17°6' Gemini) signifies natural eloquence and charm — but Mercury is retrograde and in House 1 without a stabilising benefic, which in classical astrology signals inconstancy and unreliability. Tycho constructs the literary argument so that Urania's attempt to reassure herself fails: the very planets she invokes as tokens of Titan's fidelity simultaneously expose his instability. Birth date: 27 May 1554; ASC 14°24' Gemini; MC 3°10' Aquarius.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. Vindob. Lat. 10686/12",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": false,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13961728",
+     "note": "Primary witness (V); horoscope embedded in poem lines 235–270 (approx.)"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "A",
+   "sources": [
+    "S_ZEEBERG1994",
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "HORO_UT_URANIA",
+   "type": "literary",
+   "type_label": "Literary horoscope — embedded in verse",
+   "group": "Urania Titani (1594)",
+   "title": "Horoscope of Urania (Sophie Brahe) in Urania Titani",
+   "title_latin": "Genethliacon Uraniae in 'Urania Titani'",
+   "subject": "Sophie Brahe",
+   "subject_role": "Tycho's sister; alchemist and astrologer; pseudonym Urania in the Uraniborg circle",
+   "year_cast": 1594,
+   "subject_birth_year": null,
+   "autograph_status": "no",
+   "autograph_note": "Embedded in the poem text; two reconstructions (A and B) by Ove von Späth correspond to Sophie's two disputed birth dates (Zeeberg 1994, appendix)",
+   "note": "Sophie Brahe's birth date is uncertain — either 22 September 1556 (reconstruction A: ASC 29°58' Virgo, MC 29°57' Gemini; Sun 8°49' Libra in H1) or 24 August 1559 (reconstruction B: ASC 9°42' Virgo, MC 1°30' Gemini; Sun 9°42' Virgo conjunct ASC). Both reconstructions give a Virgo ascendant, consistent with the poem's characterisation of Urania as precise, discriminating, scientifically gifted, and devoted to service. The Virgo ascendant is the load-bearing astrological signature regardless of which date is correct.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. Vindob. Lat. 10686/12",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": false,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13961728",
+     "note": "Primary witness (V); horoscope embedded in poem"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "A",
+   "sources": [
+    "S_ZEEBERG1994",
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "HORO_UT_THOTT",
+   "type": "literary",
+   "type_label": "Literary horoscope — embedded in verse",
+   "group": "Urania Titani (1594)",
+   "title": "Horoscope of Tage Thott in Urania Titani",
+   "title_latin": "Genethliacon Tagonis Thotii in 'Urania Titani'",
+   "subject": "Tage Thott",
+   "subject_role": "Sophie Brahe's only child, her son by Otte Thott of Eriksholm (d. 1588); courier between Sophie and Erik Lange in the poem's narrative",
+   "year_cast": 1594,
+   "subject_birth_year": 1580,
+   "autograph_status": "no",
+   "autograph_note": "Embedded in the poem text; reconstructed from verse by Ove von Späth (appendix in Zeeberg 1994)",
+   "note": "Tage Thott (born 28 May 1580) appears in the poem as the bearer of news from the outside world — a structural role that occasions a brief horoscope. ASC 8°3' Leo; MC 12°17' Aries. The Leo ascendant signals nobility and a commanding nature; the poem uses this to characterise him as a trusted young nobleman whose loyalty to Sophie is beyond question. He was the only child of Sophie Brahe and her first husband, Otte Thott of Eriksholm, whose death in 1588 left Sophie the widow the poem depicts.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. Vindob. Lat. 10686/12",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": false,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13961728",
+     "note": "Primary witness (V); horoscope embedded in poem"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "A",
+   "sources": [
+    "S_ZEEBERG1994",
+    "S_ONB"
+   ]
+  },
+  {
+   "id": "HORO_UT_APOLLO",
+   "type": "literary",
+   "type_label": "Literary horoscope — embedded in verse",
+   "group": "Urania Titani (1594)",
+   "title": "Horoscope of Apollo (Tycho Brahe) in Urania Titani",
+   "title_latin": "Genethliacon Apollinis / Tychonis Brahe in 'Urania Titani'",
+   "subject": "Tycho Brahe",
+   "subject_role": "Author of the poem; Sophie's brother; pseudonym Apollo in the Uraniborg circle",
+   "year_cast": 1594,
+   "subject_birth_year": 1546,
+   "autograph_status": "no",
+   "autograph_note": "Embedded in the poem text; Tycho writes his own horoscope in Urania's voice — a remarkable act of self-characterisation under the veil of the epistolary fiction",
+   "note": "The most remarkable of the four: Tycho writes his own horoscope in the voice of his sister, as a counterweight to Titan's unstable chart. ASC 22°32' Aquarius; Mars 11°1' Aries in House 1 (Mars in its own sign and angular house: martial courage and mastery of precision instruments); MC 17°37' Sagittarius. The Aquarius ascendant aligns Apollo with intellectual vision and unconventional genius. This reconstruction agrees with the known Tycho birth data (14 December 1546), confirming the poem's internal astrological consistency and lending additional authority to the Tycho authorship case.",
+   "surviving_copies": [
+    {
+     "shelfmark": "Cod. Vindob. Lat. 10686/12",
+     "inst": "ONB",
+     "city": "Vienna",
+     "autograph": false,
+     "digitized": false,
+     "url": "http://data.onb.ac.at/rec/AC13961728",
+     "note": "Primary witness (V); horoscope embedded in poem"
+    }
+   ],
+   "tekstnet_url": "",
+   "thesaurus_work": "",
+   "confidence": "A",
+   "sources": [
+    "S_ZEEBERG1994",
+    "S_ONB"
+   ]
+  }
+ ]
+}

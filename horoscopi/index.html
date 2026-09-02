@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en"><head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Horoscopi — Tychoniana</title>
+<style>
+.build-stamp{border-top:1px solid #ddd3bf;padding:10px 26px 18px;font-size:10.5px;color:#6b6450;line-height:1.6;font-family:-apple-system,'Segoe UI',sans-serif}.build-stamp b{color:#6b6450;font-weight:600}.build-stamp a{color:#7d6428}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+:root{--ink:#1a2238;--gold:#9a7b32;--gold2:#c9a23f;--parch:#f6f1e6;
+      --card:#fffdf8;--line:#ddd3bf;--muted:#6b6450;--navy:#0f1525}
+*{box-sizing:border-box}
+body{margin:0;background:var(--parch);color:var(--ink);
+     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:#7d6428;text-decoration:none}a:hover{text-decoration:underline}
+.topbar{background:var(--navy);color:#8090b0;font-size:12px;padding:5px 26px;
+        font-family:-apple-system,sans-serif}
+.topbar a{color:var(--gold2);text-decoration:none}.topbar a:hover{text-decoration:underline}
+header{background:linear-gradient(160deg,#1b2a47,#0f1a2e);color:#f6f1e6;
+       padding:28px 40px 24px;border-bottom:4px solid var(--gold)}
+.hdr-brand{font-size:10px;font-family:ui-monospace,Consolas,monospace;letter-spacing:4px;
+           text-transform:uppercase;color:var(--gold2);opacity:.6;margin-bottom:10px}
+header h1{margin:0 0 4px;font-family:Georgia,serif;font-size:34px;font-weight:normal;letter-spacing:.5px}
+header h1 em{font-style:italic;color:var(--gold2)}
+.hdr-divider{width:44px;height:1px;background:var(--gold);opacity:.4;margin:8px 0 12px}
+header p{margin:0;color:#b0bbcf;font-size:13.5px}
+.controls{background:#ede8da;padding:12px 26px;display:flex;gap:12px;flex-wrap:wrap;
+           align-items:center;border-bottom:1px solid var(--line)}
+.controls input{width:100%;padding:7px 28px 7px 34px;border:1px solid #bbb;
+                border-radius:6px;font-size:13.5px;background:#fff;color:var(--ink)}
+.srch-wrap{position:relative;flex:1;min-width:180px}
+.srch-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);
+           opacity:.4;pointer-events:none;display:flex;color:var(--ink)}
+.srch-key{position:absolute;right:9px;top:50%;transform:translateY(-50%);
+          font-size:11px;font-family:monospace;color:#aaa;
+          pointer-events:none;transition:opacity .15s}
+.srch-wrap input:focus~.srch-key{opacity:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{cursor:pointer;font-size:11.5px;padding:4px 11px;border-radius:14px;
+      background:#e0d9cc;color:var(--ink);border:1px solid #c4bbac;user-select:none}
+.chip.active{background:var(--ink);color:#f6f1e6;border-color:var(--ink)}
+.chip-clr::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--tag-clr,#9a7b32);margin-right:5px;vertical-align:middle;opacity:.6;flex-shrink:0}
+.chip-clr.active{background:var(--tag-clr,var(--ink));color:#f6f1e6;border-color:var(--tag-clr,var(--ink))}
+.chip-clr.active::before{background:rgba(255,255,255,.4);opacity:1}
+.chip-clr.on{background:var(--tag-clr,#c9a23f);color:#fff;border-color:var(--tag-clr,#c9a23f)}
+.chip-clr.on::before{background:rgba(255,255,255,.4);opacity:1}
+.chip.all{font-weight:700}
+.sort-select{font-size:12.5px;padding:5px 10px;border:1px solid #bbb;
+             border-radius:5px;background:#fff;color:var(--ink)}
+main{max-width:1280px;margin:0 auto;padding:20px 28px 56px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+      padding:14px 16px 12px;cursor:pointer;user-select:none;
+      box-shadow:0 1px 6px rgba(26,34,56,.06);transition:box-shadow .12s,transform .1s}
+.card:hover{box-shadow:0 3px 14px rgba(26,34,56,.13);transform:translateY(-1px)}
+.card h3{margin:0 0 4px;font-family:Georgia,serif;font-size:17px;font-weight:normal}
+.card .sub{font-size:11.5px;color:var(--muted);margin:0 0 8px}
+.card-chevron{float:right;font-size:15px;line-height:1;color:var(--muted);opacity:.4;
+              margin:2px 0 0 6px;transition:transform .15s,opacity .15s}
+.card.card-open .card-chevron{transform:rotate(90deg);opacity:.7}
+.card-body{display:none;padding-top:10px;margin-top:10px;border-top:1px solid var(--line)}
+.card.card-open .card-body{display:block}
+.card-body p{margin:0 0 10px;font-size:13px;color:var(--muted);line-height:1.55}
+.card-teaser{font-size:11px;color:var(--muted);margin-top:6px;opacity:.7}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.tag{font-size:10.5px;padding:2px 8px;border-radius:10px;font-weight:600;
+     color:#fff;white-space:nowrap}
+.card-foot{font-size:11.5px;color:var(--muted);margin-top:auto}
+.badge{display:inline-block;background:#ede8da;border-radius:10px;
+       padding:2px 8px;font-size:11px;color:var(--ink);margin-right:4px}
+.badge.autograph{background:#c9a23f;color:#1a2238}
+.badge.digitized{background:#2d6a4a;color:#fff}
+.empty{text-align:center;padding:48px;color:var(--muted);font-size:15px;grid-column:1/-1}
+.count-line{font-size:12.5px;color:var(--muted);margin:8px 0 14px}
+.also-footer{border-top:1px solid var(--line);padding:14px 26px 16px;
+             display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.also-lbl{font-size:10px;text-transform:uppercase;letter-spacing:2px;
+          color:var(--muted);font-family:monospace;flex-shrink:0;margin-right:8px;white-space:nowrap}
+.also-chip{display:inline-block;padding:4px 12px;border-radius:12px;
+           border:1px solid var(--line);color:var(--muted);font-size:12px;
+           text-decoration:none;transition:border-color .13s,color .13s}
+.also-chip:hover{border-color:var(--gold);color:var(--ink);text-decoration:none}
+.also-chip.portal{border-color:var(--gold);color:var(--gold)}
+.also-chip.portal:hover{background:var(--gold);color:#f6f1e6}
+@media(max-width:640px){
+  header{padding:18px 18px 16px}header h1{font-size:26px}
+  main{padding:12px 14px 40px}
+  .controls{padding:10px 14px}
+}
+
+/* ── view switcher ── */
+.view-switcher{background:#ede8da;border-bottom:1px solid var(--line);
+               padding:0 26px;display:flex;gap:0;align-items:stretch}
+.hvbtn{cursor:pointer;border:none;background:transparent;color:var(--muted);
+        font-size:13px;font-weight:600;padding:10px 18px;
+        border-bottom:3px solid transparent;font-family:inherit;
+        transition:color .12s,border-color .12s}
+.hvbtn.on{color:var(--ink);border-bottom-color:var(--gold2)}
+.hvbtn:hover:not(.on){color:var(--ink)}
+/* ── register view ── */
+.copies{margin-top:10px;font-size:12px}
+.copy-row{padding:4px 0;border-top:1px solid var(--line);color:var(--muted)}
+.copy-row a{color:var(--gold2)}
+.conf-A{border-left:3px solid #3a7a4a}
+.conf-B{border-left:3px solid #c9a23f}
+/* ── practices view ── */
+.prac-intro{max-width:820px;margin:22px auto 6px;padding:0 28px;
+             font-size:14px;color:var(--muted);line-height:1.65}
+.prac-intro b{color:var(--ink)}
+.prac-bands{max-width:820px;margin:0 auto;padding:14px 28px 56px;
+             display:flex;flex-direction:column;gap:18px}
+.prac-band{background:var(--card);border:1px solid var(--line);
+            border-left:4px solid #888;border-radius:8px;padding:18px 20px 14px}
+.prac-bandhead{display:flex;align-items:center;justify-content:space-between;
+               margin-bottom:12px}
+.prac-badge{font-size:11.5px;font-weight:700;padding:3px 12px;
+             border-radius:14px;color:#fff;white-space:nowrap}
+.prac-count{font-size:11.5px;color:var(--muted)}
+.prac-def{margin:0 0 12px;font-size:13.5px;color:var(--ink);line-height:1.65}
+.prac-rows{border-top:1px solid var(--line)}
+.prac-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.prac-year{font-size:12px;color:var(--muted);width:80px;flex-shrink:0;
+            padding-top:2px;font-variant-numeric:tabular-nums}
+.prac-detail{flex:1;min-width:0}
+.prac-rtitle{font-size:13.5px;color:var(--ink);font-family:Georgia,serif;
+              line-height:1.35}
+.prac-rsubj{font-size:11.5px;color:var(--muted);margin-top:2px}
+.prac-rbadges{margin-top:5px;display:flex;gap:5px;flex-wrap:wrap}
+.prac-abadge{font-size:10.5px;padding:2px 8px;border-radius:10px;
+              background:#c9a23f;color:#1a2238;font-weight:600}
+.prac-mbadge{font-size:10.5px;padding:2px 8px;border-radius:10px;
+              background:#ede8da;color:var(--ink)}
+.prac-tbadge{font-size:10.5px;padding:2px 8px;border-radius:10px;
+              background:#dde8d8;color:#1a3a20;text-decoration:none}
+.prac-tbadge:hover{text-decoration:underline}
+.prac-grp{font-size:10.5px;color:var(--muted);font-style:italic;
+           margin-left:6px;font-family:-apple-system,sans-serif}
+.prac-bridge{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);
+              font-size:12px;color:var(--muted)}
+.prac-bridge a{color:var(--gold2)}
+@media(max-width:640px){
+  header{padding:18px 18px 16px}header h1{font-size:26px}
+  .prac-intro{padding:0 14px}
+  .prac-bands{padding:10px 14px 40px}
+  .prac-year{width:60px}
+}
+</style>
+</head><body>
+<div class="topbar"><a href="../index.html">&#8592; Tychoniana</a><span class="sep">&#8250;</span><span class="cur">Horoscopi</span></div>
+<header>
+  <h1>Horoscopi <em>&mdash; Astrological Work</em></h1>
+  <div class="hdr-divider"></div>
+  <p>Tycho Brahe&#8217;s astrological practice &#8212; 15 documents:
+     royal nativities, astrological judgments, a sixteen-year weather diary,
+     and verse horoscopes &#8212; surviving in 18 manuscript witnesses
+     across 15 manuscripts and two printed works;
+     two wholly and one partly in Tycho&#8217;s own hand</p>
+</header>
+<div class="view-switcher">
+  <button class="hvbtn on" data-view="register">The Register</button>
+  <button class="hvbtn" data-view="practices">The Five Practices</button>
+</div>
+<div class="hview" data-view="register">
+<p class="prac-intro">A catalogue of Tycho&#8217;s astrological documents &#8212; the royal nativities he cast as a duty of his court appointment, his annual prognostications, and the horoscopes embedded in verse. Each entry gives the subject, the year it was cast, whether it survives in Tycho&#8217;s own hand, and where its manuscript copies are held; search or filter by type below.</p>
+<div class="controls">
+  <div class="srch-wrap">
+    <span class="srch-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="4"/><line x1="8.8" y1="8.8" x2="13" y2="13"/></svg></span>
+    <input type="search" id="srch" placeholder="Search subject, title…" oninput="render()">
+    <span class="srch-key">/</span>
+  </div>
+  <div class="chips">
+    <span class="chip all active" data-type="">All types</span>
+<span class="chip" data-type="judgment" style="--tag-clr:#8b3a3a">Judgment</span>
+<span class="chip" data-type="literary" style="--tag-clr:#5a3d7a">Literary</span>
+<span class="chip" data-type="meteorological" style="--tag-clr:#3a7a4a">Meteorological</span>
+<span class="chip" data-type="mundane" style="--tag-clr:#2d5a8b">Mundane</span>
+<span class="chip" data-type="natal" style="--tag-clr:#c9a23f">Natal</span>
+  </div>
+  <select class="sort-select" id="srt" onchange="render()">
+    <option value="year">By year</option>
+    <option value="type">By type</option>
+    <option value="copies">By copies</option>
+  </select>
+</div>
+<main>
+  <div class="count-line" id="cnt"></div>
+  <div class="grid" id="grid"></div>
+</main>
+</div><!-- /register -->
+<div class="hview" data-view="practices" hidden>
+<div class="prac-intro"><b>Tycho Brahe&#8217;s astrological practice fell into five distinct modes &#8212; each with its own audience, function, and method.</b> Most Renaissance astronomers treated celestial observation and astrological interpretation as inseparable; Tycho was no exception. The 15 documents gathered here span the main forms that practice took: private birth charts for the Danish royal family, a meteorological diary kept for sixteen years on Hven, a direct response to an imperial question, and technically-computed horoscopes embedded in a Latin poem.</div><div class="prac-bands"><div class="prac-band" style="border-left-color:#c9a23f"><div class="prac-bandhead"><span class="prac-badge" style="background:#c9a23f">Natal Horoscopes</span><span class="prac-count">5 works</span></div><p class="prac-def">A birth chart cast for a named individual — the configuration of planets at the moment of birth read to characterise destiny, temperament, and life's course. The three royal nativities were court commissions — two survive as presentation objects bound in green velvet; two further nativities, subjects unidentified, survive among the Prague papers in Vienna.</p><div class="prac-rows"><div class="prac-row"><div class="prac-year">1577</div><div class="prac-detail"><div class="prac-rtitle">Horoscope of Christian IV</div><div class="prac-rsubj">Christian IV of Denmark</div><div class="prac-rbadges"><span class="prac-mbadge">6 MSS</span><a class="prac-tbadge" href="https://tekstnet.dk/books/brahe-t_horoscopus-principis-christiani/" target="_blank">tekstnet.dk</a><a class="prac-tbadge" href="../scripta/index.html?text=brahe-t_horoscopus-principis-christiani">Read here — Scripta</a></div></div></div><div class="prac-row"><div class="prac-year">1579</div><div class="prac-detail"><div class="prac-rtitle">Horoscope of Prince Ulrik</div><div class="prac-rsubj">Prince Ulrik of Denmark</div><div class="prac-rbadges"><span class="prac-abadge">Autograph</span><span class="prac-mbadge">1 MS</span><a class="prac-tbadge" href="https://tekstnet.dk/books/brahe-t_horoscopus-principis-huldarici/" target="_blank">tekstnet.dk</a><a class="prac-tbadge" href="../scripta/index.html?text=brahe-t_horoscopus-principis-huldarici">Read here — Scripta</a></div></div></div><div class="prac-row"><div class="prac-year">1583</div><div class="prac-detail"><div class="prac-rtitle">Horoscope of Duke Hans</div><div class="prac-rsubj">Duke Hans (Hans the Younger) of Denmark</div><div class="prac-rbadges"><span class="prac-abadge">Partly autograph</span><span class="prac-mbadge">1 MS</span><a class="prac-tbadge" href="https://tekstnet.dk/books/brahe-t_horoscopus-principis-johannis/" target="_blank">tekstnet.dk</a><a class="prac-tbadge" href="../scripta/index.html?text=brahe-t_horoscopus-principis-johannis">Read here — Scripta</a></div></div></div><div class="prac-row"><div class="prac-year">date unknown</div><div class="prac-detail"><div class="prac-rtitle">Iudicium astrologicum huius geniturae</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div><div class="prac-row"><div class="prac-year">date unknown</div><div class="prac-detail"><div class="prac-rtitle">Primae lineae germanicae alicuius genethliaci</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div></div></div><div class="prac-band" style="border-left-color:#8b3a3a"><div class="prac-bandhead"><span class="prac-badge" style="background:#8b3a3a">Astrological Judgments</span><span class="prac-count">2 works</span></div><p class="prac-def">A specific question put to Tycho and answered astrologically — the <i>judicial</i> mode, which reads planetary configurations to advise on outcomes or interpret portents of particular events. The two surviving judgments concern the new star (or comet) of 1572 — the &Ouml;NB title reads <i>crinita</i> — and a direct question from Rudolf II.</p><div class="prac-rows"><div class="prac-row"><div class="prac-year">date unknown</div><div class="prac-detail"><div class="prac-rtitle">Responsio ad quaestionem astrologicam Caesareae Maiestati</div><div class="prac-rsubj">Rudolf II, Holy Roman Emperor</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div><div class="prac-row"><div class="prac-year">1572</div><div class="prac-detail"><div class="prac-rtitle">Astrological judgment on the new star (or comet) of 1572</div><div class="prac-rsubj">The new star or comet of 1572</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div></div></div><div class="prac-band" style="border-left-color:#2d5a8b"><div class="prac-bandhead"><span class="prac-badge" style="background:#2d5a8b">Mundane Astrology</span><span class="prac-count">1 work</span></div><p class="prac-def">The application of planetary positions to public affairs and imperial concerns — astrology at the scale of kingdoms rather than individuals. Tycho's sole mundane document is a unique appendix to his 1,004-star catalogue, adapting the stellar restitution to Rudolf II's imperial nativity: a deliberate act of court allegiance written into a scientific instrument.</p><div class="prac-rows"><div class="prac-row"><div class="prac-year">1600</div><div class="prac-detail"><div class="prac-rtitle">Stellarum inerrantium Restitutionis Appendix</div><div class="prac-rsubj">Rudolf II, Holy Roman Emperor</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div></div></div><div class="prac-band" style="border-left-color:#3a7a4a"><div class="prac-bandhead"><span class="prac-badge" style="background:#3a7a4a">Meteorological Astrology</span><span class="prac-count">3 works</span></div><p class="prac-def">The systematic correlation of planetary configurations with atmospheric conditions — Tycho's longest-running astrological practice, kept daily at Uraniborg 1582–97. The three works span the Hven period: his own autograph observation diary (the longest-running); Morsing's annual almanac for 1586, the first book off the Hven press; and Flemløs's Danish-language <i>Astrologia</i> (1591), the only vernacular book the Uraniborg press ever produced.</p><div class="prac-rows"><div class="prac-row"><div class="prac-year">1582</div><div class="prac-detail"><div class="prac-rtitle">Meteorological diary (1582-97)</div><div class="prac-rsubj">Weather and atmospheric observations</div><div class="prac-rbadges"><span class="prac-abadge">Autograph</span><span class="prac-mbadge">1 MS</span><a class="prac-tbadge" href="https://tekstnet.dk/books/brahe-t_astrologiae-meteorologicae-fragmentum/" target="_blank">tekstnet.dk</a><a class="prac-tbadge" href="../scripta/index.html?text=brahe-t_astrologiae-meteorologicae-fragmentum">Read here — Scripta</a></div></div></div><div class="prac-row"><div class="prac-year">1585</div><div class="prac-detail"><div class="prac-rtitle">Diarium astrologicum et metheorologicum (1586)</div><div class="prac-rsubj">Meteorological-astrological predictions for 1586</div><div class="prac-rbadges"><a class="prac-tbadge" href="https://tekstnet.dk/books/brahe-t_diarii-astrologici-et-meteorologici-praefatio/" target="_blank">tekstnet.dk</a><a class="prac-tbadge" href="../scripta/index.html?text=brahe-t_diarii-astrologici-et-meteorologici-praefatio">Read here — Scripta</a></div></div></div><div class="prac-row"><div class="prac-year">1591</div><div class="prac-detail"><div class="prac-rtitle">Astrologia — En Elementisch oc Jordisch Astrologia (1591)</div><div class="prac-rsubj">Popular meteorological-natural astrology</div><div class="prac-rbadges"><a class="prac-tbadge" href="https://tekstnet.dk/books/brahe-t_flemloese-indl/" target="_blank">tekstnet.dk</a><a class="prac-tbadge" href="../scripta/index.html?text=brahe-t_flemloese-indl">Read here — Scripta</a></div></div></div></div><div class="prac-bridge">→ <a href="../diarium/index.html">Diarium</a> — the meteorological-astrological diary in the visitor-register context</div></div><div class="prac-band" style="border-left-color:#5a3d7a"><div class="prac-bandhead"><span class="prac-badge" style="background:#5a3d7a">Literary Horoscopes</span><span class="prac-count">4 works</span></div><p class="prac-def">Technically-computed birth charts embedded as fictional moments in the Latin elegiac poem (a heroide, after Ovid's <i>Heroides</i>) <i>Urania Titani</i> (1594): the poem's characters are defined by their planetary configurations, and the argument turns on what the stars reveal. Urania (Sophie Brahe) examines Titan's (Erik Lange's) nativity to find proof of his constancy — and the very planets she invokes simultaneously expose his instability. Attributed to Tycho; the largest and most ambitious of his Latin poems (Zeeberg).</p><div class="prac-rows"><div class="prac-row"><div class="prac-year">1594</div><div class="prac-detail"><div class="prac-rtitle">Horoscope of Titan (Erik Lange) in Urania Titani <span class="prac-grp">Urania Titani (1594)</span></div><div class="prac-rsubj">Erik Lange</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div><div class="prac-row"><div class="prac-year">1594</div><div class="prac-detail"><div class="prac-rtitle">Horoscope of Urania (Sophie Brahe) in Urania Titani <span class="prac-grp">Urania Titani (1594)</span></div><div class="prac-rsubj">Sophie Brahe</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div><div class="prac-row"><div class="prac-year">1594</div><div class="prac-detail"><div class="prac-rtitle">Horoscope of Tage Thott in Urania Titani <span class="prac-grp">Urania Titani (1594)</span></div><div class="prac-rsubj">Tage Thott</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div><div class="prac-row"><div class="prac-year">1594</div><div class="prac-detail"><div class="prac-rtitle">Horoscope of Apollo (Tycho Brahe) in Urania Titani <span class="prac-grp">Urania Titani (1594)</span></div><div class="prac-rsubj">Tycho Brahe</div><div class="prac-rbadges"><span class="prac-mbadge">1 MS</span></div></div></div></div><div class="prac-bridge">→ <a href="../typographica/index.html?view=works#inedita-urania-titani">Typographica</a> — Urania Titani in the catalogue of Tycho's printed and unprinted works</div></div></div>
+</div><!-- /practices -->
+<script>
+const ITEMS = [{"id": "HORO_C4", "type": "natal", "type_label": "Natal horoscope", "title": "Horoscope of Christian IV", "title_latin": "Horoscopus Regis Christiani IV", "subject": "Christian IV of Denmark", "subject_role": "Future King of Denmark; Frederik II's son", "year_cast": 1577, "subject_birth_year": 1577, "autograph_status": "lost", "autograph_note": "Autograph original lost; survives in multiple scribal copies", "note": "Cast by Tycho at the order of Frederik II when Prince Christian (the future Christian IV) was born. The nativity text is on tekstnet.dk. Six copies survive at KB; NKS 296 is a 17th-c. German-language Urtheil version.", "surviving_copies": [{"shelfmark": "GKS 1820 kvart", "inst": "KB", "city": "Copenhagen", "autograph": false, "digitized": false, "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122875875405763", "note": "Copy"}, {"shelfmark": "GKS 1821 kvart", "inst": "KB", "city": "Copenhagen", "autograph": false, "digitized": false, "url": "", "note": "Copy; no individual record traced in the KB online catalogue (July 2026)"}, {"shelfmark": "NKS 620 c folio", "inst": "KB", "city": "Copenhagen", "autograph": false, "digitized": false, "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122876145705763", "note": "Copy"}, {"shelfmark": "Thott 831 folio", "inst": "KB", "city": "Copenhagen", "autograph": false, "digitized": false, "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122748893305763", "note": "Copy"}, {"shelfmark": "Thott 1611 kvart", "inst": "KB", "city": "Copenhagen", "autograph": false, "digitized": false, "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122593145905763", "note": "Ex autographo (catalogued)"}, {"shelfmark": "NKS 296 kvart", "inst": "KB", "city": "Copenhagen", "autograph": false, "digitized": false, "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122876001105763", "note": "German-language Urtheil; 17th-c. scribal copy"}], "tekstnet_url": "https://tekstnet.dk/books/brahe-t_horoscopus-principis-christiani/", "thesaurus_work": "W_HORO_C4", "confidence": "A", "sources": ["S_KB", "S_DREYER"]}, {"id": "HORO_ULRIK", "type": "natal", "type_label": "Natal horoscope", "title": "Horoscope of Prince Ulrik", "title_latin": "Genethliacon … Huldarico", "subject": "Prince Ulrik of Denmark", "subject_role": "Son of Frederik II", "year_cast": 1579, "subject_birth_year": 1579, "autograph_status": "yes", "autograph_note": "Written in Tycho's own hand (GKS 1822)", "note": "Autograph natal horoscope for Prince Ulrik, cast in 1579. GKS 1822 is in Tycho's own hand and bound in green velvet — a presentation object.", "surviving_copies": [{"shelfmark": "GKS 1822 kvart", "inst": "KB", "city": "Copenhagen", "autograph": true, "digitized": false, "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122192378105763", "note": "Autograph; green velvet binding"}], "tekstnet_url": "https://tekstnet.dk/books/brahe-t_horoscopus-principis-huldarici/", "thesaurus_work": "W_HORO_ULRIK", "confidence": "A", "sources": ["S_KB"]}, {"id": "HORO_HANS", "type": "natal", "type_label": "Natal horoscope", "title": "Horoscope of Duke Hans", "title_latin": "[Nativitet] Herzog Hans", "subject": "Duke Hans (Hans the Younger) of Denmark", "subject_role": "Son of Frederik II; died 1602", "year_cast": 1583, "subject_birth_year": 1583, "autograph_status": "partial", "autograph_note": "Partly in Tycho's hand (GKS 1823)", "note": "Natal horoscope for the youngest Danish prince; partly autograph. Bound in green velvet, matching the Ulrik horoscope — probably produced at the same time as a royal commission.", "surviving_copies": [{"shelfmark": "GKS 1823 kvart", "inst": "KB", "city": "Copenhagen", "autograph": "partial", "digitized": false, "url": "https://soeg.kb.dk/permalink/45KBDK_KGL/1o797oc/alma99122876056805763", "note": "Partly Tycho's hand; green velvet"}], "tekstnet_url": "https://tekstnet.dk/books/brahe-t_horoscopus-principis-johannis/", "thesaurus_work": "W_HORO_HANS", "confidence": "A", "sources": ["S_NIELSEN_BT", "S_KB"]}, {"id": "HORO_ONB_29", "type": "natal", "type_label": "Natal horoscope (unidentified subject)", "title": "Iudicium astrologicum huius geniturae", "title_latin": "Iudicium astrologicum huius geniturae", "subject": "Unknown", "subject_role": "", "year_cast": null, "subject_birth_year": null, "autograph_status": "unknown", "autograph_note": "", "note": "Astrological judgement of a nativity; subject unidentified. Vienna, ÖNB Cod. 10689/29. 4 leaves. Among Tycho's Prague papers.", "surviving_copies": [{"shelfmark": "Cod. 10689/29", "inst": "ONB", "city": "Vienna", "autograph": null, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13961751", "note": "Attribution to Tycho"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "A", "sources": ["S_ONB"]}, {"id": "HORO_ONB_36", "type": "natal", "type_label": "Natal horoscope — German draft (unidentified)", "title": "Primae lineae germanicae alicuius genethliaci", "title_latin": "Primae lineae germanicae alicuius genethliaci", "subject": "Unknown", "subject_role": "", "year_cast": null, "subject_birth_year": null, "autograph_status": "uncertain", "autograph_note": "Attribution unclear in ONB catalogue", "note": "German draft of a nativity; subject unidentified; attribution uncertain. 37 leaves. Vienna, ÖNB Cod. 10689/36.", "surviving_copies": [{"shelfmark": "Cod. 10689/36", "inst": "ONB", "city": "Vienna", "autograph": null, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13961755", "note": "Attribution uncertain"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "B", "sources": ["S_ONB"]}, {"id": "HORO_RUDOLF_STAR_APPENDIX", "type": "mundane", "type_label": "Astrological appendix for Rudolf II", "title": "Stellarum inerrantium Restitutionis Appendix", "title_latin": "Stellarum inerrantium Restitutionis Appendix", "subject": "Rudolf II, Holy Roman Emperor", "subject_role": "Emperor; Tycho's patron from 1597", "year_cast": 1600, "subject_birth_year": 1552, "autograph_status": "no", "autograph_note": "Scribal apograph with autograph dedication inscription by Tycho", "note": "A unique supplement to the 1004-star catalogue restitution: 36 star positions adapted to Emperor Rudolf II's nativity as a deliberate act of Habsburg adulation. Found ONLY in Cod. 10707 — the longest of the three copies (31 leaves). Autograph dedication inscription by Tycho: 'Illustri & Generoso Domino RVDOLPHO CORADVCIO ... ddt Tycho Brahe Anno 1600 Mense Martio'. First published by Dreyer (TBOO III, pp. 379-389).", "surviving_copies": [{"shelfmark": "Cod. 10707", "inst": "ONB", "city": "Vienna", "autograph": false, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13947088", "note": "Unique apograph with Tycho's autograph dedication to Corraduz"}], "tekstnet_url": "", "thesaurus_work": "W_STARCAT", "confidence": "A", "sources": ["S_ONB", "S_TBOO_III"]}, {"id": "HORO_RESPONSIO_CAESAR", "type": "judgment", "type_label": "Astrological judgment — imperial question", "title": "Responsio ad quaestionem astrologicam Caesareae Maiestati", "title_latin": "Responsio ad questionem an iuxta astrologiam Caesareae Maiestati", "subject": "Rudolf II, Holy Roman Emperor", "subject_role": "Emperor", "year_cast": null, "subject_birth_year": 1552, "autograph_status": "unknown", "autograph_note": "", "note": "Tycho's reply to an astrological question put to his Imperial Majesty. Digitised. Vienna, ÖNB Cod. 10689/50.", "surviving_copies": [{"shelfmark": "Cod. 10689/50", "inst": "ONB", "city": "Vienna", "autograph": null, "digitized": true, "url": "https://digital.onb.ac.at/rep/access/open/1323DE8B", "note": "Digitised"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "A", "sources": ["S_ONB"]}, {"id": "HORO_NOVA_1572", "type": "judgment", "type_label": "Astrological judgment — celestial portent", "title": "Astrological judgment on the new star (or comet) of 1572", "title_latin": "Quae genera eventuum portendat crinita a. 1572", "subject": "The new star or comet of 1572", "subject_role": "Event", "year_cast": 1572, "subject_birth_year": null, "autograph_status": "unknown", "autograph_note": "", "note": "Astrological judgment on what events the nova/comet of 1572 portends. 8 bundled items; ties to the De nova stella thread. Vienna, ÖNB Cod. 10689/41-46. The ÖNB title's word 'crinita' — the standard Latin epithet for a comet — leaves the object's identification open.", "surviving_copies": [{"shelfmark": "Cod. 10689/41-46", "inst": "ONB", "city": "Vienna", "autograph": null, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13964463", "note": "8 bundled items"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "A", "sources": ["S_ONB"]}, {"id": "METEO_DIARIUM", "type": "meteorological", "type_label": "Meteorological astrology", "title": "Meteorological diary (1582-97)", "title_latin": "Diarium astrologicum et meteorologicum", "subject": "Weather and atmospheric observations", "subject_role": "Environmental/predictive", "year_cast": 1582, "subject_birth_year": null, "autograph_status": "yes", "autograph_note": "Kept continuously at Uraniborg 1582-1597", "note": "The meteorological-astrological diary kept daily at Uraniborg 1582-97. Combines weather observations with the astrological theory that planetary configurations govern atmospheric conditions. Printed 1876 from the Vienna original as an appendix to the Royal Danish Academy's Collectanea Meteorologica (prepared by Paul la Cour); the tekstnet edition gives the preface fragment.", "surviving_copies": [{"shelfmark": "ÖNB (original)", "inst": "ONB", "city": "Vienna", "autograph": true, "digitized": false, "url": "", "note": "Original observation diary"}], "tekstnet_url": "https://tekstnet.dk/books/brahe-t_astrologiae-meteorologicae-fragmentum/", "thesaurus_work": "W_METEO", "confidence": "A", "sources": ["S_DREYER", "S_ONB"]}, {"id": "METEO_MORSING", "type": "meteorological", "type_label": "Annual meteorological almanac — Hven press", "title": "Diarium astrologicum et metheorologicum (1586)", "title_latin": "Diarium astrologicum et metheorologicum anni 1586", "subject": "Meteorological-astrological predictions for 1586", "subject_role": "Annual almanac", "year_cast": 1585, "subject_birth_year": null, "autograph_status": "no", "autograph_note": "By Tycho's assistant Morsing under his imprimatur", "note": "The first true book printed on Tycho's Hven press (Nielsen LN 1170). Authored by Tycho's assistant Elias Olsen Morsing but issued under Tycho's editorial imprimatur and with his preface. A practical almanac combining astronomical tables with astrological weather predictions.", "surviving_copies": [], "tekstnet_url": "https://tekstnet.dk/books/brahe-t_diarii-astrologici-et-meteorologici-praefatio/", "thesaurus_work": "W_DIARIUM1586", "confidence": "A", "sources": ["S_NIELSEN_BT"]}, {"id": "FLEMLOESE_ASTROLOGIA", "type": "meteorological", "type_label": "Popular astrology — Danish language", "title": "Astrologia — En Elementisch oc Jordisch Astrologia (1591)", "title_latin": "Astrologia", "subject": "Popular meteorological-natural astrology", "subject_role": "Vernacular treatise", "year_cast": 1591, "subject_birth_year": null, "autograph_status": "no", "autograph_note": "By Peder Jacobsen Flemløs; Tycho wrote the preface", "note": "The ONLY Danish-language book from the Uraniborg press (Nielsen LN 606). By Tycho's assistant Flemløs; Tycho wrote the preface. A popular work explaining natural/meteorological astrology in the vernacular for a Danish readership.", "surviving_copies": [], "tekstnet_url": "https://tekstnet.dk/books/brahe-t_flemloese-indl/", "thesaurus_work": "W_FLEMLOES", "confidence": "A", "sources": ["S_NIELSEN_BT"]}, {"id": "HORO_UT_TITAN", "type": "literary", "type_label": "Literary horoscope — embedded in verse", "group": "Urania Titani (1594)", "title": "Horoscope of Titan (Erik Lange) in Urania Titani", "title_latin": "Genethliacon Titani in 'Urania Titani'", "subject": "Erik Lange", "subject_role": "Sophie Brahe's fiancé; Tycho's friend; pseudonym Titan in the Uraniborg circle", "year_cast": 1594, "subject_birth_year": 1554, "autograph_status": "no", "autograph_note": "Embedded in the poem text; reconstructed from verse by Ove von Späth (appendix in Zeeberg 1994)", "note": "The first horoscope Urania/Sophie examines in the poem: she tries to find proof of Titan's constancy in the stars, but the same configuration that promises eloquence and love undermines it. Mercury at the ascendant (18°56' Gemini) near Venus (17°6' Gemini) signifies natural eloquence and charm — but Mercury is retrograde and in House 1 without a stabilising benefic, which in classical astrology signals inconstancy and unreliability. Tycho constructs the literary argument so that Urania's attempt to reassure herself fails: the very planets she invokes as tokens of Titan's fidelity simultaneously expose his instability. Birth date: 27 May 1554; ASC 14°24' Gemini; MC 3°10' Aquarius.", "surviving_copies": [{"shelfmark": "Cod. Vindob. Lat. 10686/12", "inst": "ONB", "city": "Vienna", "autograph": false, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13961728", "note": "Primary witness (V); horoscope embedded in poem lines 235–270 (approx.)"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "A", "sources": ["S_ZEEBERG1994", "S_ONB"]}, {"id": "HORO_UT_URANIA", "type": "literary", "type_label": "Literary horoscope — embedded in verse", "group": "Urania Titani (1594)", "title": "Horoscope of Urania (Sophie Brahe) in Urania Titani", "title_latin": "Genethliacon Uraniae in 'Urania Titani'", "subject": "Sophie Brahe", "subject_role": "Tycho's sister; alchemist and astrologer; pseudonym Urania in the Uraniborg circle", "year_cast": 1594, "subject_birth_year": null, "autograph_status": "no", "autograph_note": "Embedded in the poem text; two reconstructions (A and B) by Ove von Späth correspond to Sophie's two disputed birth dates (Zeeberg 1994, appendix)", "note": "Sophie Brahe's birth date is uncertain — either 22 September 1556 (reconstruction A: ASC 29°58' Virgo, MC 29°57' Gemini; Sun 8°49' Libra in H1) or 24 August 1559 (reconstruction B: ASC 9°42' Virgo, MC 1°30' Gemini; Sun 9°42' Virgo conjunct ASC). Both reconstructions give a Virgo ascendant, consistent with the poem's characterisation of Urania as precise, discriminating, scientifically gifted, and devoted to service. The Virgo ascendant is the load-bearing astrological signature regardless of which date is correct.", "surviving_copies": [{"shelfmark": "Cod. Vindob. Lat. 10686/12", "inst": "ONB", "city": "Vienna", "autograph": false, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13961728", "note": "Primary witness (V); horoscope embedded in poem"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "A", "sources": ["S_ZEEBERG1994", "S_ONB"]}, {"id": "HORO_UT_THOTT", "type": "literary", "type_label": "Literary horoscope — embedded in verse", "group": "Urania Titani (1594)", "title": "Horoscope of Tage Thott in Urania Titani", "title_latin": "Genethliacon Tagonis Thotii in 'Urania Titani'", "subject": "Tage Thott", "subject_role": "Sophie Brahe's only child, her son by Otte Thott of Eriksholm (d. 1588); courier between Sophie and Erik Lange in the poem's narrative", "year_cast": 1594, "subject_birth_year": 1580, "autograph_status": "no", "autograph_note": "Embedded in the poem text; reconstructed from verse by Ove von Späth (appendix in Zeeberg 1994)", "note": "Tage Thott (born 28 May 1580) appears in the poem as the bearer of news from the outside world — a structural role that occasions a brief horoscope. ASC 8°3' Leo; MC 12°17' Aries. The Leo ascendant signals nobility and a commanding nature; the poem uses this to characterise him as a trusted young nobleman whose loyalty to Sophie is beyond question. He was the only child of Sophie Brahe and her first husband, Otte Thott of Eriksholm, whose death in 1588 left Sophie the widow the poem depicts.", "surviving_copies": [{"shelfmark": "Cod. Vindob. Lat. 10686/12", "inst": "ONB", "city": "Vienna", "autograph": false, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13961728", "note": "Primary witness (V); horoscope embedded in poem"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "A", "sources": ["S_ZEEBERG1994", "S_ONB"]}, {"id": "HORO_UT_APOLLO", "type": "literary", "type_label": "Literary horoscope — embedded in verse", "group": "Urania Titani (1594)", "title": "Horoscope of Apollo (Tycho Brahe) in Urania Titani", "title_latin": "Genethliacon Apollinis / Tychonis Brahe in 'Urania Titani'", "subject": "Tycho Brahe", "subject_role": "Author of the poem; Sophie's brother; pseudonym Apollo in the Uraniborg circle", "year_cast": 1594, "subject_birth_year": 1546, "autograph_status": "no", "autograph_note": "Embedded in the poem text; Tycho writes his own horoscope in Urania's voice — a remarkable act of self-characterisation under the veil of the epistolary fiction", "note": "The most remarkable of the four: Tycho writes his own horoscope in the voice of his sister, as a counterweight to Titan's unstable chart. ASC 22°32' Aquarius; Mars 11°1' Aries in House 1 (Mars in its own sign and angular house: martial courage and mastery of precision instruments); MC 17°37' Sagittarius. The Aquarius ascendant aligns Apollo with intellectual vision and unconventional genius. This reconstruction agrees with the known Tycho birth data (14 December 1546), confirming the poem's internal astrological consistency and lending additional authority to the Tycho authorship case.", "surviving_copies": [{"shelfmark": "Cod. Vindob. Lat. 10686/12", "inst": "ONB", "city": "Vienna", "autograph": false, "digitized": false, "url": "http://data.onb.ac.at/rec/AC13961728", "note": "Primary witness (V); horoscope embedded in poem"}], "tekstnet_url": "", "thesaurus_work": "", "confidence": "A", "sources": ["S_ZEEBERG1994", "S_ONB"]}];
+const TYPE_CLR = {"natal": "#c9a23f", "mundane": "#2d5a8b", "judgment": "#8b3a3a", "meteorological": "#3a7a4a", "literary": "#5a3d7a"};
+const DEFAULT_CLR = "#6b6450";
+let activeType = "";
+
+document.querySelectorAll(".chip").forEach(ch => {
+  ch.addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+    ch.classList.add("active");
+    activeType = ch.dataset.type || "";
+    render();
+  });
+});
+document.getElementById("srt").addEventListener("change", render);
+
+function render() {
+  const q = document.getElementById("srch").value.toLowerCase();
+  const sort = document.getElementById("srt").value;
+  let list = ITEMS.filter(it => {
+    const inType = !activeType || it.type === activeType;
+    const inQ = !q || it.title.toLowerCase().includes(q)
+                   || (it.subject||"").toLowerCase().includes(q)
+                   || (it.title_latin||"").toLowerCase().includes(q)
+                   || (it.note||"").toLowerCase().includes(q);
+    return inType && inQ;
+  });
+  if (sort === "year") list.sort((a,b) => (a.year_cast||9999)-(b.year_cast||9999));
+  else if (sort === "type") list.sort((a,b) => a.type.localeCompare(b.type));
+  else list.sort((a,b) => (b.surviving_copies||[]).length - (a.surviving_copies||[]).length);
+
+  const cnt = document.getElementById("cnt");
+  cnt.textContent = list.length + " " + (list.length === 1 ? "document" : "documents");
+
+  const grid = document.getElementById("grid");
+  if (!list.length) {
+    grid.innerHTML = "<div class=\"empty\">No items match the current filter.</div>";
+    return;
+  }
+  grid.innerHTML = list.map(it => {
+    const typeClr = TYPE_CLR[it.type] || DEFAULT_CLR;
+    const typeTag = `<span class="tag" style="background:${typeClr}">${escH(it.type_label||it.type)}</span>`;
+    const yearStr = it.year_cast ? String(it.year_cast) : "";
+    const subStr  = it.subject || "";
+    const conf    = it.confidence || "";
+
+    const badges = [];
+    if (it.autograph_status === "yes")     badges.push('<span class="badge autograph">Autograph</span>');
+    if (it.autograph_status === "partial") badges.push('<span class="badge autograph">Partly autograph</span>');
+    const n_copies = (it.surviving_copies||[]).length;
+    if (n_copies) badges.push(`<span class="badge">${n_copies} MS${n_copies > 1 ? "S" : ""}</span>`);
+    if (it.tekstnet_url) {
+      badges.push(`<a class="badge" href="${escH(it.tekstnet_url)}" target="_blank">tekstnet.dk</a>`);
+      const sm = it.tekstnet_url.match(/books\/(brahe-t_[\w.\-]+?)\/?$/);
+      if (sm) badges.push(`<a class="badge" href="../scripta/index.html?text=${escH(sm[1])}">Read here — Scripta</a>`);
+    }
+
+    const copies = (it.surviving_copies||[]).map(c => {
+      const dig = c.digitized ? ' <span class="badge digitized">Digitised</span>' : "";
+      const link = c.url
+        ? `<a href="${escH(c.url)}" target="_blank">${escH(c.shelfmark)}</a>`
+        : escH(c.shelfmark);
+      return `<div class="copy-row">${link} · ${escH(c.inst)}, ${escH(c.city)}${c.note ? " — " + escH(c.note) : ""}${dig}</div>`;
+    }).join("");
+
+    return `<div class="card conf-${conf}">
+  <div class="tags">${typeTag}</div>
+  <h3>${escH(it.title)}</h3>
+  <div class="sub">${yearStr ? escH(yearStr) + (subStr ? " · " : "") : ""}${escH(subStr)}</div>
+  ${it.note ? `<p>${escH(it.note)}</p>` : ""}
+  ${copies ? `<div class="copies">${copies}</div>` : ""}
+  <div class="card-foot" style="margin-top:10px">${badges.join(" ")}</div>
+</div>`;
+  }).join("\n");
+}
+
+function escH(s) {
+  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;")
+                      .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+render();
+document.addEventListener('keydown',function(e){if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();document.getElementById('srch').focus();}});
+
+function hSetView(v){
+  document.querySelectorAll('.hview').forEach(function(s){s.hidden=s.dataset.view!==v;});
+  document.querySelectorAll('.hvbtn').forEach(function(b){b.classList.toggle('on',b.dataset.view===v);});
+  if(history.replaceState) history.replaceState(null,'','?view='+v);
+}
+document.querySelectorAll('.hvbtn').forEach(function(b){
+  b.addEventListener('click',function(){hSetView(b.dataset.view);});
+});
+(function(){
+  var p=new URLSearchParams(location.search).get('view');
+  hSetView(['register','practices'].indexOf(p)>=0?p:'register');
+})();
+
+</script>
+<footer class="also-footer">
+  <span class="also-lbl">Also in Tychoniana</span>
+  <a class="also-chip" href="../familia/index.html">Familia</a>
+  <a class="also-chip" href="../typographica/index.html">Typographica</a>
+  <a class="also-chip" href="../diarium/index.html">Diarium</a>
+  <a class="also-chip portal" href="../index.html">&larr; Portal</a>
+</footer>
+<div class="build-stamp">Horoscopi &middot; <a href="data.json" download style="color:#7d6428">data (JSON)</a><br><b>Cite:</b> Westergaard, C., &ldquo;Horoscopi — Astrological Work&rdquo;, <i>Tychoniana</i> (build 2026-08-04), accessed <span class="acc-date"></span>.<script>document.querySelectorAll(".acc-date").forEach(function(e){e.textContent=new Date().toISOString().slice(0,10);});</script></div>
+</body></html>

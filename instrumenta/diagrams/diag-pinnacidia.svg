@@ -1,0 +1,70 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="16" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">Pinnacidium sights</text>
+
+  <!-- Layout: eye at left, rear sight plate, front sight plate, star at right.
+       Eye at (35,108).
+       Rear pinnacidium: square plate at x=100, centred at y=108, side=40
+         → rect from (100,88) to (140,128); slit at centre: line from (120,96) to (120,120)
+       Front pinnacidium: square plate at x=210, centred at y=108, side=40
+         → rect from (210,88) to (250,128); slit at centre
+       Star at (295, 108).
+
+       The key point: the two slits must be parallel and aligned for a centred reading.
+       Show the sight lines through both slits to the star.
+  -->
+
+  <!-- === Rear pinnacidium plate === -->
+  <rect x="100" y="83" width="42" height="50" fill="#d8d4c8" stroke="#1a2238" stroke-width="1.5" rx="2"/>
+  <!-- Rear slit (adjustable brass strip) -->
+  <rect x="118" y="89" width="6" height="38" fill="#f8f4ec" stroke="#9a7b32" stroke-width="1"/>
+  <text x="121" y="143" font-size="9" fill="#3a3028" text-anchor="middle">Rear</text>
+  <text x="121" y="154" font-size="9" fill="#3a3028" text-anchor="middle">sight</text>
+
+  <!-- === Front pinnacidium plate === -->
+  <rect x="200" y="83" width="42" height="50" fill="#d8d4c8" stroke="#1a2238" stroke-width="1.5" rx="2"/>
+  <!-- Front slit -->
+  <rect x="218" y="89" width="6" height="38" fill="#f8f4ec" stroke="#9a7b32" stroke-width="1"/>
+  <text x="221" y="143" font-size="9" fill="#3a3028" text-anchor="middle">Front</text>
+  <text x="221" y="154" font-size="9" fill="#3a3028" text-anchor="middle">sight</text>
+
+  <!-- Eye -->
+  <ellipse cx="40" cy="108" rx="9" ry="7" fill="#f8f4ec" stroke="#1a2238" stroke-width="1.5"/>
+  <circle cx="40" cy="108" r="3.5" fill="#1a2238"/>
+  <text x="40" y="125" font-size="9.5" fill="#3a3028" text-anchor="middle">Eye</text>
+
+  <!-- Star at right -->
+  <text x="298" y="112" font-size="17" fill="#9a7b32" text-anchor="middle">★</text>
+  <text x="298" y="126" font-size="9" fill="#3a3028" text-anchor="middle">Star</text>
+
+  <!-- Sight lines from eye, through both slits, to star (4 lines for the 4 slit edges) -->
+  <!-- Top edges of slits: rear at (118,89), (124,89); front at (218,89), (224,89) -->
+  <!-- Bottom edges: rear at (118,127), (124,127); front at (218,127), (224,127) -->
+  <!-- Lines through the slit centres = the main sight line -->
+  <!-- Upper sight line through upper slit edges: from eye (40,108) → rear top (118,89) → front top (218,89) → star -->
+  <line x1="40" y1="108" x2="118" y2="94" stroke="#9a7b32" stroke-width="0.9" stroke-dasharray="4,2"/>
+  <line x1="118" y1="94" x2="218" y2="94" stroke="#9a7b32" stroke-width="1.2"/>
+  <line x1="218" y1="94" x2="295" y2="108" stroke="#9a7b32" stroke-width="0.9" stroke-dasharray="4,2"/>
+  <!-- Lower sight line -->
+  <line x1="40" y1="108" x2="118" y2="122" stroke="#9a7b32" stroke-width="0.9" stroke-dasharray="4,2"/>
+  <line x1="118" y1="122" x2="218" y2="122" stroke="#9a7b32" stroke-width="1.2"/>
+  <line x1="218" y1="122" x2="295" y2="108" stroke="#9a7b32" stroke-width="0.9" stroke-dasharray="4,2"/>
+
+  <!-- Central sight line (the optical axis) -->
+  <line x1="40" y1="108" x2="295" y2="108" stroke="#1a2238" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+
+  <!-- "Parallel slits" callout -->
+  <text x="160" y="72" font-size="10" fill="#9a7b32" text-anchor="middle" font-weight="bold">Both slits parallel &#x2192; no parallax</text>
+  <line x1="119" y1="89" x2="119" y2="76" stroke="#9a7b32" stroke-width="0.8"/>
+  <line x1="219" y1="89" x2="219" y2="76" stroke="#9a7b32" stroke-width="0.8"/>
+
+  <!-- Slit width note -->
+  <text x="160" y="168" font-size="9.5" fill="#3a3028" text-anchor="middle">Slit width matched to star brightness &#x2014;</text>
+  <text x="160" y="180" font-size="9.5" fill="#3a3028" text-anchor="middle">centre slit on star point to eliminate eye-parallax</text>
+
+  <!-- Caption -->
+  <text x="160" y="209" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Square brass plates with adjustable slits &#x2014; four edges aligned on star = centred</text>
+</svg>

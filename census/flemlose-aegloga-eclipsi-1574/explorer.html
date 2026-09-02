@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Census Explorer · Ægloga de Eclipsi Solari Anno 1574 mense Novembri futura (v0.1)</title>
+<link rel="stylesheet" href="../../vendor/leaflet/leaflet.css">
+<script src="../../vendor/leaflet/leaflet.js"></script>
+<style>
+:root {
+  --bg: #f6f1e6; --surface: #fffdf8; --fg: #1a2238; --muted: #6b6450;
+  --border: #ddd3bf; --rule: #e8e0d0;
+  --accent: #9a7b32; --accent-soft: #f3ead2;
+  /* A-D grade canon — docs/tychoniana/PRESENTATION_DOCTRINE.md 5a.2 */
+  --grade-A: #9a7b32; --grade-B: #5070a0; --grade-C: #8b6030; --grade-D: #808080;
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+:root{
+  --grade-X: #9e9e9e;  /* ungraded — should not occur in a gated build */
+  --status-lost: #8a8a8a; --status-market: #6a1b9a; --status-damaged: #7e5a1f;
+  --status-inferred: #7a7f93;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+/* Column layout, order-independent: main takes the remaining height
+   explicitly (flex:1). A bar injected as an extra body child (e.g. the
+   Tychoniana breadcrumb the portal mirror adds) just stacks — unlike a
+   positional grid, where it would shift every row's sizing. */
+body {
+  font: 14px/1.5 var(--sans); color: var(--fg); background: var(--bg);
+  display: flex; flex-direction: column;
+}
+
+/* TOPBAR */
+header.topbar {
+  padding: 14px 18px; border-bottom: 4px solid var(--accent);
+  background: linear-gradient(135deg, #1a2238, #2c3a63); color: #f6f1e6;
+  display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap;
+}
+header.topbar h1 {
+  font: normal 19px/1.3 var(--serif); letter-spacing: .5px; color: #f6f1e6;
+}
+header.topbar h1 .work-title { color: #c9a23f; }
+header.topbar h1 small {
+  font: 400 12px/1 var(--sans); color: #aeb4c6; margin-left: 8px;
+}
+header.topbar .meta-info {
+  color: #aeb4c6; font-size: 12px; display: flex; gap: 14px;
+}
+header.topbar .badges { display: flex; gap: 6px; margin-left: auto; align-items: center; }
+header.topbar .report-link {
+  color: #c9a23f; font-size: 12px; text-decoration: none;
+  border: 1px solid #4a5578; border-radius: 12px; padding: 3px 11px;
+  white-space: nowrap;
+}
+header.topbar .report-link:hover { text-decoration: underline; }
+.grade-badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 9px; border-radius: 11px; font-size: 11px; font-weight: 600;
+  color: white; cursor: help;
+}
+.grade-badge.A { background: var(--grade-A); }
+.grade-badge.B { background: var(--grade-B); }
+.grade-badge.C { background: var(--grade-C); }
+.grade-badge.D { background: var(--grade-D); }
+.grade-badge.X { background: var(--grade-X); }
+.grade-badge .count { font-weight: 700; }
+
+/* FILTER BAR */
+nav.filters {
+  padding: 8px 18px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  background: var(--surface);
+}
+nav.filters .group-label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--muted); margin-right: 2px;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border: 1px solid var(--border); border-radius: 12px;
+  font-size: 12px; cursor: pointer; user-select: none;
+  background: var(--surface); transition: all 0.12s;
+  /* chips are real <button>s (keyboard access, E3) — neutralise UA button styling */
+  font-family: inherit; color: inherit; line-height: inherit; margin: 0;
+}
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip:hover { background: #f3eee4; }
+.chip.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip.confidence-A.active { background: var(--grade-A); border-color: var(--grade-A); }
+.chip.confidence-B.active { background: var(--grade-B); border-color: var(--grade-B); }
+.chip.confidence-C.active { background: var(--grade-C); border-color: var(--grade-C); }
+.chip.confidence-D.active { background: var(--grade-D); border-color: var(--grade-D); }
+.chip .ico { font-size: 10px; opacity: 0.7; }
+.chip.cluster-active {
+  background: var(--accent-soft); border-color: #c9b69a; color: var(--accent);
+  font-weight: 600;
+}
+nav.filters .search {
+  flex: 1; max-width: 260px;
+  padding: 4px 10px; border: 1px solid var(--border); border-radius: 4px;
+  font: inherit; background: var(--surface);
+}
+nav.filters .count-text {
+  margin-left: auto; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums;
+}
+
+/* MAIN GRID */
+main.layout {
+  display: grid; grid-template-columns: minmax(360px, 1fr) minmax(420px, 1.4fr);
+  overflow: hidden;
+  flex: 1; min-height: 0;   /* fill whatever height the bars above leave */
+}
+section.left {
+  display: grid; grid-template-rows: 3fr auto 4fr;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+#map { width: 100%; height: 100%; background: #cfd6c5; }
+.leaflet-control-attribution { font-size: 9px; }
+/* One slim honesty line UNDER the map: what the map does NOT show.
+   Markers are national flags (self-explanatory), so no legend is needed. */
+.map-strip {
+  padding: 4px 14px 5px; background: var(--surface);
+  border-top: 1px solid var(--rule);
+  font-size: 11px; line-height: 1.5;
+}
+
+/* COPY LIST */
+ol.copy-list {
+  overflow-y: auto; list-style: none; padding: 0; background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+ol.copy-list .empty {
+  padding: 14px 18px; color: var(--muted); font-style: italic; font-size: 13px;
+}
+.list-item {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 9px; align-items: center;
+  padding: 7px 14px; border-bottom: 1px solid var(--rule);
+  cursor: pointer; font-size: 13px;
+}
+.list-item:hover { background: #f7f2e6; }
+.list-item.active {
+  background: #efe2c8;
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.list-item .label-block {
+  display: flex; flex-direction: column; min-width: 0;
+}
+.list-item .label-block .title {
+  font-size: 13px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.list-item .label-block .city {
+  font-size: 11px; color: var(--muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.list-item .label-block .assoc {
+  font: italic 11px/1.4 var(--serif); color: #6b6455;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.list-item.status-lost .label-block .title {
+  text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.25);
+  color: var(--status-lost);
+}
+.list-item.status-inferred .label-block .title {
+  font-style: italic; color: var(--status-inferred);
+}
+.list-item.status-attested .label-block .title { color: #6b6455; }
+.list-item .indicators {
+  display: flex; gap: 4px; align-items: center;
+}
+.list-item .indicators .tag {
+  font: 600 9px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 3px 6px; border-radius: 8px;
+  background: #edf1ea; color: var(--grade-A); white-space: nowrap;
+}
+.list-item .indicators .tag.st {
+  background: #f0eee8; color: var(--muted);
+}
+/* Country group headers — the list reads like a printed census. */
+li.country-head {
+  padding: 8px 14px 4px 14px; border-bottom: 1px solid var(--rule);
+  font: 600 10px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--muted); background: var(--surface);
+  position: sticky; top: 0; z-index: 5;
+}
+li.country-head .n { font-weight: 400; margin-left: 4px; }
+/* Small inline national flag (list country headers, overview table) */
+.flag-ico {
+  display: inline-block; width: 16px; height: 11px; margin-right: 7px;
+  vertical-align: -1px; border-radius: 2px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12); line-height: 0;
+}
+.flag-ico svg { display: block; width: 100%; height: 100%; }
+
+/* MAP MARKERS — one uniform house-gold dot per located copy. Grade and
+   status stay in the tooltip, the filter chips, and the copy card; the map
+   itself carries no colour code that would need a legend. */
+.dot-marker {
+  border-radius: 50%; border: 2.5px solid white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.4);
+  background: var(--accent);
+}
+.dot-marker.status-lost {
+  opacity: 0.55; border-style: dashed; border-color: #d8d3c8;
+}
+.dot-marker.active {
+  transform: scale(1.55); z-index: 1000 !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.9), 0 0 8px rgba(0,0,0,0.6);
+}
+
+/* CARD */
+section.right {
+  overflow-y: auto; padding: 24px 32px;
+  background: var(--surface);
+}
+.empty-state {
+  padding: 80px 20px; text-align: center; color: var(--muted);
+  font: italic 14px/1.6 var(--serif);
+}
+.empty-state .hint { font-size: 12px; margin-top: 10px; font-style: normal; }
+
+/* OVERVIEW (default right panel) */
+.overview { max-width: 560px; margin: 0 auto; padding: 12px 0; text-align: left; font-style: normal; }
+.overview h2 {
+  font: 600 19px/1.3 var(--serif); color: var(--fg); margin-bottom: 4px;
+}
+/* Citation head: author and imprint lines sit smaller around the title */
+.overview h2.cite-head { font-weight: 400; line-height: 1.45; }
+.overview h2.cite-head i { font-weight: 600; }
+.overview h2.cite-head .cite-author,
+.overview h2.cite-head .cite-imprint { font-size: 14px; }
+.overview .lede { font-size: 13px; color: var(--fg); line-height: 1.65; margin: 10px 0 4px; }
+/* Provisional-census banner — shown when the census is not yet exhaustive
+   (an unreached mandatory channel, or located < a stated survival target). */
+.overview .prov-banner {
+  margin: 0 0 14px; padding: 8px 12px; border-radius: 5px;
+  background: #f6ecd6; border: 1px solid #d9c9a0; color: #6b5836;
+  font: 400 12px/1.55 var(--sans);
+}
+.overview .prov-banner strong { color: #7a5c1f; }
+/* Total-copies headline — the census's clear count, above the country table */
+.overview .ov-count {
+  margin: 18px 0 2px; font: 400 15px/1.35 var(--serif); color: var(--fg);
+}
+.overview .ov-count .n { font-weight: 700; font-size: 21px; }
+.overview .ov-count .split {
+  display: block; margin-top: 3px;
+  font: 400 11px/1.5 var(--sans); color: var(--muted);
+}
+/* Bibliographical anchors from census.toml [work] — gold labels, compact */
+.overview .ov-bib { margin: 12px 0 2px; font-size: 12px; line-height: 1.65; }
+.overview .ov-bib dt {
+  font: 600 10px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--accent); margin-top: 11px;
+}
+.overview .ov-bib dd { margin: 3px 0 0; color: var(--fg); }
+.overview h3 {
+  font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); margin: 22px 0 10px 0;
+}
+table.ov-countries {
+  border-collapse: collapse; font-size: 13px; width: 100%;
+}
+table.ov-countries td {
+  padding: 4px 10px 4px 0; border-bottom: 1px solid var(--rule);
+}
+table.ov-countries td.n { text-align: right; width: 40px; font-variant-numeric: tabular-nums; }
+.ov-grades { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.ov-grades .g { font-weight: 700; }
+ul.untraced { list-style: none; padding: 0; }
+ul.untraced li {
+  padding: 7px 0 7px 14px; border-bottom: 1px solid var(--rule);
+  font-size: 13px; line-height: 1.5; position: relative;
+}
+ul.untraced li::before {
+  content: ""; position: absolute; left: 0; top: 14px;
+  width: 7px; height: 7px; border-radius: 50%;
+  border: 1.5px dashed #a89f8d; background: transparent;
+}
+ul.untraced li .place { color: var(--muted); }
+ul.untraced li .why {
+  display: block; font: italic 11.5px/1.5 var(--serif); color: #6b6455;
+}
+/* Discrete disclosure — reference detail folded away until the reader asks
+   (grade breakdown, scope & method). */
+.overview details.fold { margin-top: 20px; }
+.overview details.fold summary {
+  cursor: pointer; font: 600 11px/1 var(--sans); text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted); padding: 4px 0;
+}
+.overview details.fold .body {
+  font-size: 12px; color: var(--muted); line-height: 1.65; margin-top: 10px;
+}
+.overview details.fold .body strong { color: var(--fg); }
+.overview .permalink-hint {
+  margin-top: 20px; font-size: 11px; color: var(--muted); font-style: italic;
+}
+.map-note { color: var(--muted); }
+.explorer-foot {
+  padding: 8px 18px; border-top: 1px solid var(--border); background: var(--surface);
+  font-size: 11px; color: var(--muted);
+}
+.copy-card .nav-row {
+  display: flex; justify-content: space-between; gap: 8px;
+  margin: -8px -4px 16px -4px; padding: 0 4px;
+}
+.copy-card .nav-row button {
+  padding: 5px 12px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; cursor: pointer; font: inherit; font-size: 11px;
+  color: var(--muted); max-width: 38%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.copy-card .nav-row button:hover:not(:disabled) {
+  background: #f5f0e2; color: var(--fg);
+}
+.copy-card .nav-row button:disabled { opacity: 0.35; cursor: default; }
+.copy-card .nav-row .keyboard-hint { font-size: 10px; color: var(--muted); align-self: center; }
+
+.copy-card .header-row {
+  display: flex; gap: 12px; align-items: flex-start; margin-bottom: 6px;
+}
+.copy-card h2 {
+  font: 600 23px/1.25 var(--serif); flex: 1; color: var(--fg);
+}
+.copy-card .status-row {
+  display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+}
+.copy-card .status-pill {
+  display: inline-block; padding: 2px 9px; border-radius: 10px;
+  font-size: 11px; font-weight: 600;
+}
+.copy-card .status-pill.status-extant { background: #e0eee2; color: var(--grade-A); }
+.copy-card .status-pill.status-lost { background: #ebebe8; color: var(--status-lost); }
+.copy-card .status-pill.status-market { background: #ece5f2; color: var(--status-market); }
+.copy-card .status-pill.status-damaged { background: #f4ead7; color: var(--status-damaged); }
+.copy-card .status-pill.status-inferred { background: #e9eaf1; color: var(--status-inferred); font-style: italic; }
+.copy-card .status-pill.status-attested { background: #f0ede4; color: #6b6455; font-style: italic; }
+.copy-card .subtitle {
+  color: var(--muted); margin-bottom: 14px; font-size: 13px; line-height: 1.5;
+}
+.copy-card .subtitle strong { color: var(--fg); font-weight: 600; }
+.copy-card .actions {
+  display: flex; gap: 8px; margin: 14px 0 22px 0; flex-wrap: wrap;
+}
+.copy-card .actions a {
+  display: inline-flex; gap: 6px; align-items: center;
+  padding: 5px 12px; border-radius: 4px;
+  background: #f3efe2; color: var(--fg);
+  text-decoration: none; font-size: 12px;
+  border: 1px solid var(--border);
+}
+.copy-card .actions a:hover { background: #e8e1c7; }
+.copy-card .actions a.primary {
+  background: var(--accent); color: white; border-color: var(--accent);
+}
+.copy-card .actions a.primary:hover { background: #5e1717; }
+.copy-card .actions a .ico { font-size: 10px; opacity: 0.6; }
+
+.copy-card section { margin-bottom: 24px; }
+.copy-card section h3 {
+  font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); margin-bottom: 10px;
+}
+
+/* PROVENANCE TIMELINE */
+ul.provenance {
+  list-style: none; padding-left: 4px; position: relative;
+}
+ul.provenance li {
+  padding: 0 0 14px 22px; position: relative;
+  border-left: 2px solid var(--border); margin-left: 5px;
+}
+ul.provenance li:last-child { border-left-color: transparent; }
+ul.provenance li::before {
+  content: ""; position: absolute; left: -7px; top: 4px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--surface); border: 2.5px solid var(--accent);
+}
+ul.provenance li.kind-loss::before { border-color: var(--grade-D); background: var(--grade-D); }
+ul.provenance li.kind-theft::before { border-color: var(--grade-D); background: var(--grade-D); }
+ul.provenance li.kind-bequest::before { border-color: var(--grade-A); }
+ul.provenance li.kind-sale::before, ul.provenance li.kind-auction::before {
+  border-color: var(--status-market);
+}
+ul.provenance .owner { font-weight: 600; font-size: 14px; line-height: 1.3; }
+ul.provenance .meta-line { font-size: 11px; color: var(--muted); margin-top: 3px; }
+ul.provenance .meta-line .kind-tag {
+  display: inline-block; padding: 1px 7px; border-radius: 8px;
+  background: #f0eee8; color: var(--muted); font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px;
+}
+ul.provenance .evidence {
+  font: italic 12px/1.4 var(--serif); margin-top: 5px; color: #444;
+  background: #faf8f1; padding: 5px 9px; border-radius: 3px;
+  border-left: 2px solid var(--border);
+}
+
+/* PHYSICAL */
+.physical-grid {
+  display: grid; grid-template-columns: 90px 1fr; gap: 4px 14px;
+  font-size: 13px;
+}
+.physical-grid dt { color: var(--muted); font-size: 12px; font-weight: 600; }
+.physical-grid dd { line-height: 1.5; }
+.physical-grid dd .meta-note {
+  display: block; font-size: 11px; color: var(--muted);
+  margin-top: 3px; font-style: italic;
+}
+
+/* COPY IMAGES */
+.copy-images-grid {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.copy-image-fig {
+  margin: 0; width: 150px; cursor: zoom-in;
+}
+.copy-image-fig img {
+  width: 150px; height: 112px; object-fit: cover;
+  border: 1px solid var(--border); border-radius: 4px;
+  background: #f0eee8; display: block;
+  transition: box-shadow 0.12s;
+}
+.copy-image-fig:hover img { box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.copy-image-fig figcaption {
+  font-size: 10.5px; line-height: 1.35; color: var(--muted);
+  margin-top: 4px;
+}
+.lightbox {
+  position: fixed; inset: 0; z-index: 99999;
+  background: rgba(20,18,14,0.88);
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px; padding: 28px; cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92vw; max-height: 82vh; object-fit: contain;
+  border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+  background: #fff;
+}
+.lightbox .lb-caption {
+  color: #f4f0e6; font-size: 12px; line-height: 1.5;
+  max-width: 720px; text-align: center;
+}
+.lightbox .lb-caption .lb-source { color: #b9b2a3; font-size: 11px; }
+
+/* SURROGATES */
+.surrogate-row {
+  display: flex; gap: 8px; align-items: center; padding: 5px 0;
+  font-size: 12px; border-bottom: 1px dotted var(--rule);
+}
+.surrogate-row:last-child { border-bottom: none; }
+.surrogate-row .kind-tag {
+  display: inline-block; padding: 2px 7px; border-radius: 3px;
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.04em; white-space: nowrap;
+  background: #e3edf6; color: var(--grade-B);
+}
+.surrogate-row.kind-iiif-manifest .kind-tag { background: #e3edf6; color: var(--grade-B); }
+.surrogate-row.kind-viewer .kind-tag { background: #e3f1e3; color: var(--grade-A); }
+.surrogate-row.kind-ocr-pdf .kind-tag { background: #f0eee8; color: var(--muted); }
+.surrogate-row.kind-facsimile-record .kind-tag { background: #f0e9d8; color: var(--accent); }
+.surrogate-row.kind-absent .kind-tag { background: #fbe9e7; color: var(--grade-D); }
+.surrogate-row.kind-needs_lookup .kind-tag { background: #fff4e0; color: var(--grade-C); }
+.surrogate-row a { color: var(--accent); text-decoration: none; }
+.surrogate-row a:hover { text-decoration: underline; }
+.surrogate-row .notes {
+  font-size: 11px; color: var(--muted); font-style: italic;
+  flex: 1 1 100%; padding-left: 0; margin-top: 2px;
+}
+
+/* CLUSTERS */
+.cluster-pill {
+  display: inline-block; padding: 3px 11px; border-radius: 11px;
+  background: var(--accent-soft); font-size: 11px;
+  border: 1px solid #c9b69a; color: #5e1717;
+  cursor: pointer; margin: 0 4px 5px 0;
+}
+.cluster-pill:hover { background: #e0cdb1; }
+/* Standing COLLECTIONS filter chips in the nav bar (one per named cluster). */
+.chip.cluster-filter-chip { background: var(--accent-soft); border-color: #c9b69a; color: #5e1717; }
+.chip.cluster-filter-chip:hover { background: #e0cdb1; }
+.chip.cluster-filter-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* REFERENCES */
+ul.references {
+  list-style: none; padding-left: 0;
+}
+ul.references li {
+  padding: 6px 0; border-bottom: 1px dotted var(--rule);
+  font-size: 12px; line-height: 1.5;
+}
+ul.references li:last-child { border-bottom: none; }
+ul.references .ref-kind {
+  display: inline-block; padding: 1px 7px; border-radius: 3px;
+  background: #f0eee8; font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-right: 6px; color: var(--muted);
+  white-space: nowrap;
+}
+ul.references .ref-name { font-weight: 600; }
+ul.references .ref-text { color: #333; }
+ul.references .ref-truncated { color: var(--muted); cursor: pointer; }
+ul.references .ref-truncated:hover { color: var(--fg); }
+
+/* CONFIDENCE HISTORY */
+.conf-history {
+  margin-top: 8px; padding: 8px 12px; background: #fafaf6;
+  border-left: 3px solid var(--grade-A); border-radius: 3px;
+  font-size: 12px; line-height: 1.5;
+}
+.conf-history .arrow { color: var(--accent); font-weight: 700; margin: 0 4px; }
+
+/* OPEN QUESTIONS */
+ul.open-questions {
+  list-style: none; padding-left: 0;
+}
+ul.open-questions li {
+  padding: 6px 0 6px 22px; position: relative; font-size: 13px;
+}
+ul.open-questions li::before {
+  content: "?"; position: absolute; left: 0; top: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--grade-C); color: white; font-weight: 700;
+  text-align: center; line-height: 16px; font-size: 11px;
+}
+
+/* SCOPE PANEL */
+.scope-panel {
+  background: #fbf8ee; border: 1px solid #e6dec4; border-radius: 4px;
+  padding: 14px 18px; margin-bottom: 16px; font-size: 12px; line-height: 1.55;
+}
+.scope-panel h4 { font: 600 11px/1.4 var(--sans); text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--muted); margin-bottom: 4px; }
+.scope-panel p { margin-bottom: 10px; color: #3a3a3a; }
+.scope-panel p:last-child { margin-bottom: 0; }
+
+/* HELP TOOLTIP */
+.tooltip-host { position: relative; cursor: help; }
+.tooltip-host::after {
+  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px);
+  left: 50%; transform: translateX(-50%);
+  padding: 6px 10px; background: var(--fg); color: var(--bg);
+  border-radius: 4px; font-size: 11px; line-height: 1.4; width: max-content;
+  max-width: 240px; text-align: left;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s;
+  z-index: 9999;
+}
+.tooltip-host:hover::after { opacity: 1; }
+/* ---------------------------------------------------------------------------
+   NARROW VIEWPORTS (phones, small tablets)
+
+   The desktop explorer is a fixed-viewport app shell: a two-column grid whose
+   panes scroll independently inside 100vh. Below ~860px that model breaks —
+   the grid's own minimum width (360+420px) exceeds the viewport, so the right
+   panel is clipped off-screen and the body scrolls sideways (observed on an
+   iPhone, 2026-07-20). Here the shell unwinds into ONE column that scrolls as
+   an ordinary page: map, then copy list, then the copy card beneath them.
+   Every rule below only relaxes a desktop constraint; none restyles the
+   census's visual identity, which stays as specified in spec section 4.bis.
+   --------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  /* release the 100vh app-shell so the page scrolls normally */
+  html, body { height: auto; }
+  body { display: block; overflow-x: hidden; }
+
+  main.layout {
+    display: block; overflow: visible; flex: none; min-height: 0;
+  }
+  section.left {
+    display: block; overflow: visible; border-right: none;
+  }
+  section.right {
+    overflow: visible; padding: 20px 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* the map needs an explicit height once its grid track is gone */
+  #map { height: 44vh; min-height: 250px; }
+
+  ol.copy-list { overflow-y: visible; }
+
+  /* let long institution names and shelfmarks wrap instead of being
+     ellipsed to nothing in a narrow column */
+  .list-item { padding: 11px 14px; }
+  .list-item .label-block .title,
+  .list-item .label-block .city,
+  .list-item .label-block .assoc {
+    white-space: normal; overflow: visible; text-overflow: clip;
+  }
+
+  header.topbar { padding: 12px 14px; gap: 10px; }
+  header.topbar h1 { font-size: 17px; }
+  header.topbar .badges { margin-left: 0; }
+  nav.filters { padding: 10px 14px; gap: 8px; }
+  nav.filters .count-text { margin-left: 0; width: 100%; }
+
+  .overview { max-width: none; }
+
+  /* wide content scrolls inside itself, never the page body */
+  .copy-card table, .overview table, pre { display: block; overflow-x: auto; max-width: 100%; }
+  .copy-card { max-width: 100%; }
+
+  /* The card header is a flex row (title | status chips). At this width the
+     chip group gets crushed to ~80px while needing ~198px, and overflows the
+     page. Give the title its own line and let the chips sit beneath it. */
+  .copy-card .header-row { flex-wrap: wrap; }
+  .copy-card .header-row h2 { flex: 1 1 100%; min-width: 0; }
+  .copy-card .status-row { flex: 0 0 auto; max-width: 100%; }
+
+  /* shelfmarks, URLs and citation lines must break rather than push the page */
+  .copy-card, .copy-card a, .copy-card code, .overview, .overview a {
+    overflow-wrap: anywhere;
+  }
+  .copy-card dl { grid-template-columns: 1fr; gap: 2px 0; }
+  .copy-card dl dt { margin-top: 8px; }
+}
+</style>
+</head>
+<body>
+<style id="tychoniana-nav-style">
+.tychoniana-nav {
+  background: #1a2238;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.tychoniana-nav a {
+  color: #c9a23f;
+  text-decoration: none;
+  font-weight: 500;
+}
+.tychoniana-nav a:hover { text-decoration: underline; }
+.tychoniana-nav .sep { color: #5a6a88; }
+.tychoniana-nav .cur { color: #cdd6e8; }
+</style>
+<div class="tychoniana-nav">
+  <a href="../../index.html">&#8592; Tychoniana</a>
+  
+  <span class="sep">&#8250;</span><span class="cur">Census</span>
+</div>
+<header class="topbar">
+  <h1>
+    Census · <span class="work-title" id="title-text"></span>
+    <small id="edition-text"></small>
+  </h1>
+  <div class="meta-info" id="version-text"></div>
+  <div class="badges" id="grade-badges"></div>
+  <a class="report-link" href="index.html"
+     title="The full citation-grade census report — the same copies as narrative prose, with methodology, provenance graph, and bibliography.">Full census report</a>
+</header>
+<nav class="filters" id="filters">
+  <span class="group-label">CONFIDENCE</span>
+  <button type="button" class="chip confidence-A active tooltip-host" data-filter="confidence" data-val="A"
+        data-tooltip="A — Verified: examined first-hand, confirmed by a live institutional record, or anchored by a documented dated dispatch.">A</button>
+  <button type="button" class="chip confidence-B active tooltip-host" data-filter="confidence" data-val="B"
+        data-tooltip="B — Documented: recorded by a named scholar or an institutional catalogue, but not independently examined.">B</button>
+  <button type="button" class="chip confidence-C active tooltip-host" data-filter="confidence" data-val="C"
+        data-tooltip="C — Reported: attested in a source that has not been re-verified.">C</button>
+  <button type="button" class="chip confidence-D active tooltip-host" data-filter="confidence" data-val="D"
+        data-tooltip="D — Contested: rumoured, or the evidence conflicts.">D</button>
+  <span class="group-label" style="margin-left:6px">STATUS</span>
+  <button type="button" class="chip active" data-filter="status" data-val="extant">extant</button>
+  <button type="button" class="chip active" data-filter="status" data-val="lost">lost</button>
+  <button type="button" class="chip active" data-filter="status" data-val="market">market</button>
+  <button type="button" class="chip active" data-filter="status" data-val="damaged">defective</button>
+  <button type="button" class="chip active tooltip-host" data-filter="status" data-val="attested"
+        data-tooltip="Recorded by a prior census or scholarship at some past date, but with no live evidence today — not counted among located copies.">recorded, untraced</button>
+  <button type="button" class="chip active tooltip-host" data-filter="status" data-val="inferred"
+        data-tooltip="Inferred recipient copy — supposed to have existed from documentary evidence; no physical exemplar has ever been located.">inferred</button>
+  <button type="button" class="chip tooltip-host" id="surr-chip" data-filter="onlySurrogate"
+        data-tooltip="Show only copies that can be read online — a digital facsimile or IIIF manifest is on record.">readable online</button>
+  <span class="group-label" id="cluster-grouplabel" style="margin-left:6px;display:none">COLLECTIONS</span>
+  <span id="cluster-chips"></span>
+  <button type="button" class="chip" id="cluster-clear" style="display:none;background:var(--accent-soft);color:var(--accent);border-color:#c9b69a;">
+    cluster: <span id="cluster-name"></span> &nbsp;✕
+  </button>
+  <input type="search" class="search" id="search-input"
+         placeholder="search owners, shelfmarks, institutions…" />
+  <span class="count-text" id="count-text"></span>
+</nav>
+<main class="layout">
+  <section class="left">
+    <div id="map" aria-label="World map of census copies"></div>
+    <div class="map-strip">
+      <div class="map-note" id="map-note" style="display:none"></div>
+    </div>
+    <ol class="copy-list" id="copy-list" aria-label="List of census copies"></ol>
+  </section>
+  <section class="right" id="card-container">
+    <div class="empty-state" id="empty-state">
+      <div class="hint" id="empty-state-hint"></div>
+    </div>
+  </section>
+</main>
+<footer class="explorer-foot" id="explorer-foot"></footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" alt="">
+  <div class="lb-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+"use strict";
+const DATA = {"meta": {"title": "Ægloga de Eclipsi Solari Anno 1574 mense Novembri futura", "title_short": "Ægloga de Eclipsi Solari", "edition": "First and only edition (Copenhagen 1574)", "key": "flemlose-aegloga-eclipsi-1574", "author": "Peder Jacobsen Flemløse", "author_surname": "Flemløse", "author_given": "Peder Jacobsen", "place": "Hafniæ (Copenhagen)", "printer": "Laurentius Benedicti (Lorentz Benedict)", "year": 1574, "version": "0.1", "last_built": "2026-07-19", "n": 1, "grade_counts": {"A": 1, "B": 0, "C": 0, "D": 0}, "status_counts": {"extant": 1}, "country_counts": {"DK": 1}, "scope_inclusion": "Any surviving copy or documented fragment of the single 1574 Copenhagen printing of Peder Jacobsen Flemløse's 'Ægloga de Eclipsi Solari Anno 1574 mense Novembri futura', printed by Laurentius Benedicti (Lorentz Benedict), Hafniæ 1574 — a 4to in two gatherings (A–B, 16 pp of text) comprising the prose dedication to Tycho Brahe, the verse eclogue 'Moeris et Meliboeus', the appended 'Precatio ad Deum', and the closing Greek epigram. Both complete copies and identifiable fragments/binder's-waste leaves count, as do digital-surrogate-only attestations of a physical copy at a named repository.", "scope_excluded": "Later reprints, anthology re-settings, modern facsimiles/editions, and bibliographic ghosts with no located physical copy. Flemløse's other works (notably the 1591 Uraniborg Astrologia, Danish + German) are out of scope — they are separate edition-level census subjects. Manuscript copies of the poem, if any, are noted in the borderline register, not counted as copies of this edition.", "counted_as_copy": ">=50 percent of the original leaves present, OR an identifiable fragment / binder's-waste leaf with documented institutional provenance. A digital surrogate (e.g. Early European Books / ProQuest) counts only as evidence of the underlying physical copy it reproduces, keyed to that copy's repository + shelfmark.", "work": {"about": "Peder Jacobsen Flemløse's verse eclogue 'Moeris et Meliboeus' on the solar eclipse expected in November 1574, with a prose dedication to the young Tycho Brahe (whose service Flemløse entered in 1578), an appended 'Precatio ad Deum', and a closing Greek epigram — printed at Copenhagen by Lorentz Benedicht, 1574. Nielsen, <i>Dansk Bibliografi 1551–1600</i>, registers a single surviving copy.", "collation": "4°. Two gatherings (A–B), 16 pages of text."}, "status": {"provisional": true, "unreached": ["WorldCat (OCLC global holdings — 'view all holdings')"], "shortfall": 0, "channels_swept": 5, "channels_total": 6, "pending_candidates": 7, "identity_pairs": 0, "sample": null}}, "untraced": [], "copies": [{"slug": "copenhagen-kb-hielmst-1226", "display_label": "Copenhagen, Royal Danish Library — Hielmst. 1226 4° (unicum)", "institution": "Det Kongelige Bibliotek (Royal Danish Library)", "siglum": "KB", "city": "Copenhagen", "country": "DK", "shelfmark": "Hielmst. 1226 4° (LN 608; old shelfmark \"= 2 N. 608\")", "catalogue_url": "https://soeg.kb.dk/discovery/fulldisplay?docid=alma99122482174605763&vid=45KBDK_KGL:KGL", "lat": 55.676, "lng": 12.569, "confidence": "A", "status": "extant", "recipient": "Henrik Hielmstierne (1715–1780), Danish jurist and Danica collector", "provenance_chain": [{"kind": "ownership", "owner": "Henrik Hielmstierne (1715–1780), Danish jurist and Danica collector", "evidence": "armorial bookplate lettered 'No. 1226', signed 'M. Tuscher fecit' (C. M. Tuscher worked in Copenhagen Nov 1743 – Jan 1751, fixing the copy in its present form to a mid-18th-century acquisition)", "date": "1743–1780", "place": "Copenhagen", "confidence": "A", "source": {"kind": "first-hand", "ref": "EEB scan, front pastedown; prior dossier 2026-06-04", "note": "Bookplate + 'No. 1226' shelf number on flyleaf and spine label."}}, {"kind": "bequest", "owner": "Det Kongelige Bibliotek (Royal Danish Library)", "event": "Hielmstierne-Rosencrone gift to the Royal Library, 1807", "evidence": "blue oval 'BIBLIOTHECA REGIA HAFNIENSIS' stamp; old ink shelfmark '= 2 N. 608'; pencil 'DA BOX'", "date": "1807", "place": "Copenhagen", "confidence": "A", "source": {"kind": "scholarly-work", "ref": "On Parchment, Paper and Palm Leaves (KB institutional history), p. 134"}}], "physical": {"completeness": "complete", "binding": {"period": "later", "style": "sprinkled-paper boards, gilt-tooled leather spine and corners", "originality": "rebound", "notes": "18th-century binding contemporaneous with the Hielmstierne acquisition; consistent across his Danica (cf. De nova stella Hielmst. 1612 4° and Diarium Astrologicum Hielmst. 1617 4°)."}, "condition": "Complete and clean 4to of [10] leaves (KB collation; observed signatures A–B with a final Greek-epigram leaf): prose dedication to Tycho Brahe, the verse eclogue 'Moeris et Meliboeus', the appended 'Precatio ad Deum', and a closing Greek epigram. Title-page woodcut of an anthropomorphic eclipsed sun.", "marginalia": {"density": "none", "hands_count": 0, "character": "Ownership marks only (bookplate, stamp, shelfmarks); no reader's annotation. Crucially, NO Tycho Brahe ownership mark of any kind — no portrait/arms supralibros, no T.B.O. cipher, no autograph, no 'Ex Bibliotheca Tychoniana 1642' inscription.", "significance": "low"}}, "references": [{"kind": "scholarly-work", "name": "Lauritz Nielsen, Dansk Bibliografi 1551–1600", "number": "608", "ref": "LN 608; registers the work and names the sole surviving copy at KB Copenhagen (Hielmst. 1226 4°)"}, {"kind": "institutional-catalogue", "name": "USTC", "number": "303006", "ref": "https://www.ustc.ac.uk/editions/303006; cites LN 608; lists KB Copenhagen as the single copy"}, {"kind": "institutional-catalogue", "name": "Bibliotheca Danica (Chr. V. Bruun)", "number": "II, col. 70"}, {"kind": "scholarly-work", "ref": "Thesaurus Librorum Danicorum (KB), p. 251"}, {"kind": "scholarly-work", "ref": "J. L. E. Dreyer, Tycho Brahe (1890), pp. 117–118 + n. 1–3 (full Latin title; content summary)"}, {"kind": "scholarly-work", "ref": "Wilhelm Norlind, Tycho Brahe: En levnadsteckning (1970), pp. 98, 345 (sole-copy statement, quoting Nielsen)"}, {"kind": "scholarly-work", "ref": "Peter Zeeberg (ed.), critical edition with Danish translation, Det Danske Sprog- og Litteraturselskab / tekstnet.dk (2021)"}], "digital_surrogates": [{"kind": "viewer", "url": "https://archive.org/details/den-kbd-pil-130018116392-001", "host": "archive.org", "label": "KB Copenhagen scan on Internet Archive (full 32-image colour copy) — public", "accessed_at": "2026-06-05", "openness": "public"}, {"kind": "ocr-pdf", "url": "https://archive.org/download/den-kbd-pil-130018116392-001/den-kbd-pil-130018116392-001.pdf", "host": "archive.org", "label": "Downloadable PDF", "accessed_at": "2026-06-05", "openness": "public"}, {"kind": "iiif-manifest", "url": "https://iiif.archive.org/iiif/den-kbd-pil-130018116392-001/manifest.json", "host": "iiif.archive.org", "label": "IIIF Presentation API manifest", "accessed_at": "2026-06-05", "openness": "public"}, {"kind": "raster-images", "label": "Local EEB scan — full 32-image colour copy of Hielmst. 1226 4° (Sophia D: drive)", "url": "[local surrogate withheld]"}, {"kind": "facsimile-record", "host": "proquest.com", "label": "Source: Early European Books (ProQuest), Collection 1 (Royal Library Copenhagen) — full colour scan of Hielmst. 1226 4°", "accessed_at": "2026-06-04", "openness": "paywalled", "notes": "© 2017 ProQuest LLC; images by courtesy of Det Kongelige Bibliotek. Origin of the local copy above. EEB is subscription-only and exposes no public per-item URL or document ID."}, {"kind": "viewer", "url": "https://tekstnet.dk/books/flemloese-pj_ecloga-de-eclipsi-solari/", "host": "tekstnet.dk", "label": "DSL critical text edition (Latin + Danish translation), ed. Peter Zeeberg", "accessed_at": "2026-06-04", "openness": "public", "notes": "Scholarly text edition based on this copy, not a photographic surrogate."}], "primary_surrogate": {"kind": "iiif-manifest", "url": "https://iiif.archive.org/iiif/den-kbd-pil-130018116392-001/manifest.json", "host": "iiif.archive.org", "label": "IIIF Presentation API manifest", "accessed_at": "2026-06-05", "openness": "public"}, "has_surrogate": true, "has_iiif": true, "clusters": ["Hielmstierne Danica → Royal Danish Library (KB)"], "assoc_note": "Henrik Hielmstierne (1715–1780), Danish jurist and Danica collector · Det Kongelige Bibliotek (Royal Danish Library)", "open_questions": [], "confidence_history": [], "evidence": {}, "checks": [], "images": []}], "clusters": {"Hielmstierne Danica → Royal Danish Library (KB)": ["copenhagen-kb-hielmst-1226"]}};
+
+// ---------------------------------------------------------------------------
+// State
+// ---------------------------------------------------------------------------
+const state = {
+  activeSlug: null,
+  filters: {
+    confidence: new Set(["A", "B", "C", "D", "X"]),
+    status: new Set(["extant", "lost", "market", "damaged", "inferred", "attested", "borderline"]),
+    onlySurrogate: false,
+    cluster: null,
+    search: "",
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Map setup
+// ---------------------------------------------------------------------------
+const map = L.map("map", { worldCopyJump: true, zoomControl: true, attributionControl: false, minZoom: 2 })
+  .setView([50.5, 14], 4);   // fallback frame; replaced by fitBounds once markers exist
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution: "© OpenStreetMap, © CARTO",
+  subdomains: "abcd",
+  maxZoom: 18,
+}).addTo(map);
+
+// Initial-view state: fit to the located copies, and keep refitting on
+// container resizes until the user takes over the map themselves.
+let mapBounds = null;
+let autoView = true;
+function fitToCopies() {
+  if (mapBounds) map.fitBounds(mapBounds, { padding: [24, 24], maxZoom: 6 });
+}
+
+// National flags, inline SVG (the explorer must stay self-contained, and
+// emoji flags do not render on Windows). Simplified drawings, legible at
+// 16 × 11 px — used in the list's country headers and the overview table.
+// Extend as new censuses surface new countries; no flag → no icon.
+const FLAGS = {
+  AT: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#ED2939"/><rect y="6.7" width="30" height="6.6" fill="#fff"/></svg>`,
+  AU: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#00247D"/><svg width="15" height="10" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40m0-40L0 40" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7.8"/></svg><g fill="#fff"><circle cx="7.5" cy="15" r="1.7"/><circle cx="22" cy="4" r="1.1"/><circle cx="26" cy="8" r="1.1"/><circle cx="21" cy="10.5" r="1.1"/><circle cx="23.5" cy="16.5" r="1.1"/><circle cx="24.8" cy="11.5" r="0.7"/></g></svg>`,
+  BE: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#000"/><rect x="10" width="10" height="20" fill="#FDDA24"/><rect x="20" width="10" height="20" fill="#EF3340"/></svg>`,
+  CA: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="7.5" height="20" fill="#D80621"/><rect x="22.5" width="7.5" height="20" fill="#D80621"/><path fill="#D80621" d="M15 3.5l1.1 2.2 2-1-.4 2.3 2.3-.4-1 2 2.2 1.4-2.2 1.1 1 2-2.3-.4.4 2.3-2-1-1.1 2.2-1.1-2.2-2 1 .4-2.3-2.3.4 1-2-2.2-1.1 2.2-1.4-1-2 2.3.4-.4-2.3 2 1z"/></svg>`,
+  CH: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#DA291C"/><rect x="13.2" y="4.5" width="3.6" height="11" fill="#fff"/><rect x="9.5" y="8.2" width="11" height="3.6" fill="#fff"/></svg>`,
+  CZ: `<svg viewBox="0 0 30 20"><rect width="30" height="10" fill="#fff"/><rect y="10" width="30" height="10" fill="#D7141A"/><path d="M0 0l15 10L0 20z" fill="#11457E"/></svg>`,
+  DE: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#FFCE00"/><rect width="30" height="13.4" fill="#D00"/><rect width="30" height="6.7" fill="#000"/></svg>`,
+  DK: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#C8102E"/><rect x="8.5" width="4" height="20" fill="#fff"/><rect y="8" width="30" height="4" fill="#fff"/></svg>`,
+  ES: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>`,
+  FR: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>`,
+  GB: `<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40m0-40L0 40" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7.8"/></svg>`,
+  HU: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#436F4D"/><rect width="30" height="13.4" fill="#fff"/><rect width="30" height="6.7" fill="#CD2A3E"/></svg>`,
+  IE: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#169B62"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#FF883E"/></svg>`,
+  IL: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect y="2.2" width="30" height="2.6" fill="#0038B8"/><rect y="15.2" width="30" height="2.6" fill="#0038B8"/><path d="M15 6.4l2.9 5h-5.8zm0 7.2l-2.9-5h5.8z" fill="none" stroke="#0038B8" stroke-width="1.1"/></svg>`,
+  IT: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE2B37"/></svg>`,
+  MX: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#006847"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE1126"/><circle cx="15" cy="10" r="2.1" fill="#8C6D2F"/></svg>`,
+  NL: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#21468B"/><rect width="30" height="13.4" fill="#fff"/><rect width="30" height="6.7" fill="#AE1C28"/></svg>`,
+  NO: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#BA0C2F"/><rect x="7.5" width="6" height="20" fill="#fff"/><rect y="7" width="30" height="6" fill="#fff"/><rect x="9" width="3" height="20" fill="#00205B"/><rect y="8.5" width="30" height="3" fill="#00205B"/></svg>`,
+  PL: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#DC143C"/><rect width="30" height="10" fill="#fff"/></svg>`,
+  PT: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#DA291C"/><rect width="12" height="20" fill="#046A38"/><circle cx="12" cy="10" r="3.4" fill="#FFE900"/><circle cx="12" cy="10" r="2" fill="#DA291C"/></svg>`,
+  RO: `<svg viewBox="0 0 30 20"><rect width="10" height="20" fill="#002B7F"/><rect x="10" width="10" height="20" fill="#FCD116"/><rect x="20" width="10" height="20" fill="#CE1126"/></svg>`,
+  RU: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#D52B1E"/><rect width="30" height="13.4" fill="#0039A6"/><rect width="30" height="6.7" fill="#fff"/></svg>`,
+  SE: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#006AA7"/><rect x="8.5" width="4" height="20" fill="#FECC02"/><rect y="8" width="30" height="4" fill="#FECC02"/></svg>`,
+  US: `<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#B22234"/><g fill="#fff"><rect y="1.54" width="30" height="1.54"/><rect y="4.62" width="30" height="1.54"/><rect y="7.69" width="30" height="1.54"/><rect y="10.77" width="30" height="1.54"/><rect y="13.85" width="30" height="1.54"/><rect y="16.92" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2" cy="2" r=".55"/><circle cx="4.5" cy="2" r=".55"/><circle cx="7" cy="2" r=".55"/><circle cx="9.5" cy="2" r=".55"/><circle cx="3.2" cy="4" r=".55"/><circle cx="5.8" cy="4" r=".55"/><circle cx="8.3" cy="4" r=".55"/><circle cx="2" cy="6" r=".55"/><circle cx="4.5" cy="6" r=".55"/><circle cx="7" cy="6" r=".55"/><circle cx="9.5" cy="6" r=".55"/><circle cx="3.2" cy="8" r=".55"/><circle cx="5.8" cy="8" r=".55"/><circle cx="8.3" cy="8" r=".55"/></g></svg>`,
+};
+function flagIco(cc) {
+  const fl = FLAGS[cc];
+  return fl ? `<span class="flag-ico">${fl}</span>` : "";
+}
+
+const markersBySlug = {};
+function buildMarker(copy) {
+  if (copy.lat == null || copy.lng == null) return null;
+  const icon = L.divIcon({
+    className: `dot-marker status-${copy.status}`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+  const m = L.marker([copy.lat, copy.lng], { icon });
+  m.bindTooltip(
+    `<strong>${escapeHtml(copy.display_label)}</strong><br><span style="color:#888">${escapeHtml(copy.city || "")}${copy.country ? ", " + escapeHtml(countryName(copy.country)) : ""} · grade ${copy.confidence}</span>`,
+    { direction: "top", offset: [0, -6] }
+  );
+  m.on("click", () => setActive(copy.slug));
+  return m;
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+function escapeHtml(s) {
+  if (s == null) return "";
+  return String(s).replace(/[&<>"']/g, ch => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]
+  ));
+}
+
+function truncate(s, n) {
+  if (!s) return "";
+  if (s.length <= n) return s;
+  return s.slice(0, n - 1) + "…";
+}
+
+function filteredCopies() {
+  const f = state.filters;
+  return DATA.copies.filter(c => {
+    if (!f.confidence.has(c.confidence)) return false;
+    if (!f.status.has(c.status)) return false;
+    if (f.onlySurrogate && !(c.has_surrogate || c.has_iiif)) return false;
+    if (f.cluster && !c.clusters.includes(f.cluster)) return false;
+    if (f.search) {
+      const blob = [
+        c.display_label, c.shelfmark, c.institution, c.recipient,
+        c.city, c.country, c.siglum,
+        ...(c.clusters || []),
+      ].join(" ").toLowerCase();
+      if (!blob.includes(f.search)) return false;
+    }
+    return true;
+  });
+}
+
+// Plain-language country names for the grouped list (ISO 3166-1 alpha-2).
+// Fallback: the code itself, so an unmapped code degrades readably.
+const COUNTRY_NAMES = {
+  AT: "Austria", AU: "Australia", BE: "Belgium", CA: "Canada", CH: "Switzerland",
+  CZ: "Czech Republic", DE: "Germany", DK: "Denmark", EE: "Estonia", ES: "Spain",
+  FI: "Finland", FR: "France", GB: "Great Britain", GR: "Greece", HU: "Hungary",
+  IE: "Ireland", IT: "Italy", JP: "Japan", NL: "Netherlands", NO: "Norway",
+  PL: "Poland", PT: "Portugal", RU: "Russia", SE: "Sweden", UA: "Ukraine",
+  US: "United States", VA: "Vatican City",
+};
+function countryName(code) { return COUNTRY_NAMES[code] || code || "Location unrecorded"; }
+
+// Reader-facing label for a status value. The stored/schema value stays
+// canonical (e.g. "damaged"); only the display text changes.
+const STATUS_LABELS = { attested: "recorded, untraced", damaged: "defective" };
+function statusLabel(s) { return STATUS_LABELS[s] || s; }
+
+// Display ordering: country (by located-copy count) → city → label,
+// the printed-census convention.
+function orderCopies(arr) {
+  const countryRank = {};
+  Object.keys(DATA.meta.country_counts).forEach((cc, i) => { countryRank[cc] = i; });
+  arr.sort((a, b) => {
+    let ra = a.country ? (countryRank[a.country] ?? 500) : 900;
+    let rb = b.country ? (countryRank[b.country] ?? 500) : 900;
+    if (a.status === "attested") ra = 990;   // trailing "not located today" group
+    if (b.status === "attested") rb = 990;
+    if (ra !== rb) return ra - rb;
+    const cc = (a.city || "").localeCompare(b.city || "");
+    if (cc !== 0) return cc;
+    return a.display_label.localeCompare(b.display_label);
+  });
+  return arr;
+}
+
+// ---------------------------------------------------------------------------
+// Init
+// ---------------------------------------------------------------------------
+function init() {
+  document.getElementById("title-text").textContent = DATA.meta.title_short;
+  document.getElementById("edition-text").textContent = DATA.meta.edition;
+  document.getElementById("version-text").innerHTML =
+    `<span>${DATA.meta.author} · ${escapeHtml(DATA.meta.place)} ${DATA.meta.year || ""}</span>`;
+
+  // Version and build date live in the footer, next to the citation guidance,
+  // where the citing reader needs them.
+  document.getElementById("explorer-foot").innerHTML =
+    `Census version ${escapeHtml(DATA.meta.version)} · built ${escapeHtml(DATA.meta.last_built)} · ` +
+    `every copy card carries a stable <code style="background:#f0eee8;padding:1px 4px;border-radius:3px">?copy=…</code> permalink and a ready-made citation line.`;
+
+  const GRADE_GLOSS = {
+    A: "Verified: examined first-hand, confirmed by a live institutional record, or anchored by a documented dated dispatch",
+    B: "Documented: recorded by a named scholar or an institutional catalogue, but not independently examined",
+    C: "Reported: attested in a source that has not been re-verified",
+    D: "Contested: rumoured, or the evidence conflicts",
+  };
+  const badges = document.getElementById("grade-badges");
+  for (const g of ["A", "B", "C", "D"]) {
+    if (!(DATA.meta.grade_counts[g] || 0)) continue;   // a zero grade is noise, not information
+    const b = document.createElement("span");
+    b.className = "grade-badge " + g + " tooltip-host";
+    b.dataset.tooltip = GRADE_GLOSS[g];
+    b.innerHTML = `${g}&nbsp;<span class="count">${DATA.meta.grade_counts[g]}</span>`;
+    badges.appendChild(b);
+  }
+  const nInferred = DATA.meta.status_counts["inferred"] || 0;
+  const nAttested = DATA.meta.status_counts["attested"] || 0;
+  const nTomlUntraced = (DATA.untraced || []).length;
+  const nVerified = DATA.meta.n - nInferred - nAttested;
+  const tot = document.createElement("span");
+  tot.style.fontSize = "12px"; tot.style.color = "var(--muted)"; tot.style.marginLeft = "8px";
+  // Copy-record tiers first; library-level attestations ([[untraced]] blocks,
+  // which are not copy records) appended as their own figure.
+  const parts = [`${nVerified} verified`];
+  if (nAttested) parts.push(`${nAttested} recorded, untraced`);
+  if (nInferred) parts.push(`${nInferred} inferred (no exemplar)`);
+  let headline = `· ${DATA.meta.n} ${DATA.meta.n === 1 ? "copy" : "copies"} documented`
+    + (parts.length > 1 || nAttested || nInferred ? ` (${parts.join(" · ")})` : "");
+  if (nTomlUntraced) headline += ` · ${nTomlUntraced} further recorded ${nTomlUntraced === 1 ? "holding" : "holdings"} untraced`;
+  tot.textContent = headline;
+  badges.appendChild(tot);
+
+  // Adaptive filter bar: a chip that matches zero copies filters nothing —
+  // hide it rather than teach the reader to distrust the controls.
+  for (const chip of document.querySelectorAll('.chip[data-filter="confidence"]')) {
+    if (!(DATA.meta.grade_counts[chip.dataset.val] || 0)) chip.style.display = "none";
+  }
+  for (const chip of document.querySelectorAll('.chip[data-filter="status"]')) {
+    if (!(DATA.meta.status_counts[chip.dataset.val] || 0)) chip.style.display = "none";
+  }
+  if (!DATA.copies.some(c => c.has_surrogate || c.has_iiif)) {
+    document.getElementById("surr-chip").style.display = "none";
+  }
+
+  // Under-map note: what the map does NOT show — the guard against reading
+  // the marker count as the census count. One short muted line.
+  const unmapped = DATA.copies.filter(c => (c.lat == null || c.lng == null)
+    && c.status !== "inferred" && c.status !== "attested").length;
+  const noteParts = [];
+  if (unmapped) noteParts.push(`${unmapped} in private hands or unlocalised`);
+  if (nAttested) noteParts.push(`${nAttested} recorded but untraced`);
+  if (nInferred) noteParts.push(`${nInferred} inferred, never located`);
+  if (noteParts.length) {
+    const note = document.getElementById("map-note");
+    note.textContent = "Not on the map: " + noteParts.join(" · ");
+    note.style.display = "";
+  }
+
+  for (const c of DATA.copies) {
+    const m = buildMarker(c);
+    if (m) markersBySlug[c.slug] = m;
+  }
+
+  // Open on the copies themselves, not a hard-coded frame: fit the view to
+  // every located marker (a Scandinavian census frames Scandinavia; a census
+  // with American copies frames the Atlantic). maxZoom caps a one-city
+  // census at a readable regional scale.
+  const pts = Object.values(markersBySlug).map(m => m.getLatLng());
+  if (pts.length) { mapBounds = L.latLngBounds(pts); fitToCopies(); }
+
+  // Leaflet measures its container once; keep tiles + view honest across
+  // layout changes. Auto-refit stops as soon as the user touches the map.
+  const mapEl = document.getElementById("map");
+  for (const ev of ["pointerdown", "wheel"]) {
+    mapEl.addEventListener(ev, () => { autoView = false; },
+      { capture: true, passive: true });
+  }
+  new ResizeObserver(() => {
+    map.invalidateSize();
+    if (autoView) fitToCopies();
+  }).observe(mapEl);
+
+  // Default right panel: the census overview — what a scholar arriving at
+  // this page wants first. The scope contract stays available, folded.
+  const countryRows = Object.entries(DATA.meta.country_counts)
+    .map(([cc, n]) => `<tr><td>${flagIco(cc)}${escapeHtml(countryName(cc))}</td><td class="n">${n}</td></tr>`)
+    .join("");
+  const gradeLine = ["A", "B", "C", "D"]
+    .filter(g => DATA.meta.grade_counts[g])
+    .map(g => `<span class="g">${g}</span> ${DATA.meta.grade_counts[g]} — ${escapeHtml(GRADE_GLOSS[g].split(":")[1].trim())}`)
+    .join("<br>");
+  let untracedHtml = "";
+  const attestedCopies = DATA.copies.filter(c => c.status === "attested");
+  if (nTomlUntraced || attestedCopies.length) {
+    // Two kinds of remainder, one strip: attested COPY RECORDS (rich — they
+    // carry provenance and dated negative checks; click through to the card)
+    // first, then library-level attestations from [[untraced]].
+    const copyItems = attestedCopies.map(c => `
+      <li><strong><a href="#" data-untraced-slug="${escapeHtml(c.slug)}" style="color:inherit">${escapeHtml(c.display_label)}</a></strong>
+        <span class="place"> · last recorded ${escapeHtml(c.city || "—")}${c.country ? ", " + escapeHtml(countryName(c.country)) : ""}</span>
+        <span class="why">A documented copy record with no live evidence today — open its card for the provenance and the dated search results behind that judgement.</span>
+      </li>`).join("");
+    const tomlItems = (DATA.untraced || []).map(u => `
+      <li><strong>${escapeHtml(u.institution)}</strong>
+        ${u.city ? `<span class="place"> · ${escapeHtml(u.city)}${u.country ? ", " + escapeHtml(countryName(u.country)) : ""}</span>` : ""}
+        ${u.note ? `<span class="why">${escapeHtml(u.note)}</span>` : ""}
+      </li>`).join("");
+    untracedHtml = `
+      <h3>Recorded, but not traced today (${attestedCopies.length + nTomlUntraced})</h3>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">
+        Copies and holdings recorded by the prior literature for which no live
+        evidence exists today. Absence from the located list does not mean
+        absence of a copy — these are the census&rsquo;s open leads.
+      </div>
+      <ul class="untraced">${copyItems}${tomlItems}</ul>`;
+  }
+  // The work itself, before the census statistics: full title (shown
+  // nowhere else on the page — the topbar carries only the short title),
+  // a short intro, and the proper collation from [work]. (No "Points" list —
+  // issue-points belong in the copy records and the report, not the panel.)
+  const work = DATA.meta.work || {};
+  let workHtml = "";
+  if (work.about) workHtml += `<div class="lede">${work.about}</div>`;
+  if (work.collation) {
+    workHtml += `<dl class="ov-bib"><dt>Collation</dt><dd>${work.collation}</dd></dl>`;
+  }
+  // Total-copies headline: the census's one clear count. The bold number is
+  // the documented copy records; any untraced tier (attested/inferred copies,
+  // plus [[untraced]] library holdings) is spelled out in the muted split.
+  const nUntracedCopies = nAttested + nInferred;
+  const splitBits = [];
+  if (nUntracedCopies || nTomlUntraced) {
+    if (nVerified) splitBits.push(`${nVerified} located`);
+    if (nAttested) splitBits.push(`${nAttested} recorded, untraced`);
+    if (nInferred) splitBits.push(`${nInferred} inferred`);
+    if (nTomlUntraced) splitBits.push(`${nTomlUntraced} recorded ${nTomlUntraced === 1 ? "holding" : "holdings"} not yet traced`);
+  }
+  let countHtml = `<div class="ov-count"><span class="n">${DATA.meta.n}</span> ${DATA.meta.n === 1 ? "copy" : "copies"} censused`;
+  if (splitBits.length) countHtml += `<span class="split">${splitBits.join(" · ")}</span>`;
+  countHtml += `</div>`;
+
+  // Reliability fold — the census MEASURES its verification state and
+  // shows the reader, instead of stamping "census" and hoping.
+  function reliabilityFold() {
+    const s = DATA.meta.status || {};
+    if (!s.channels_total && !s.sample) return "";
+    const bits = [];
+    if (s.channels_total) {
+      bits.push(`<strong>Catalogue coverage.</strong> ${s.channels_swept} of ${s.channels_total} mandatory catalogue channels swept${(s.channels_total - s.channels_swept) ? ` — ${s.channels_total - s.channels_swept} still to reach` : ""}.`);
+    }
+    if (s.sample) {
+      const rest = s.sample.n - s.sample.confirmed;
+      bits.push(`<strong>Spot-check.</strong> ${s.sample.confirmed} of ${s.sample.n} randomly sampled verified copies re-confirmed at their stated location (${escapeHtml(s.sample.date || "")})${rest ? ` — the remaining ${rest} could not be machine-checked (none contradicted)` : ""}.`);
+    }
+    if (s.pending_candidates) {
+      bits.push(`<strong>Under review.</strong> ${s.pending_candidates} candidate ${s.pending_candidates === 1 ? "sighting" : "sightings"} from the catalogue sweeps still await a verdict.`);
+    }
+    if (s.identity_pairs) {
+      bits.push(`<strong>Identity questions.</strong> ${s.identity_pairs} ${s.identity_pairs === 1 ? "pair" : "pairs"} of records may describe the same physical copy and await adjudication.`);
+    }
+    if (!bits.length) return "";
+    return `<details class="fold">
+        <summary>Verification state — how settled this census is</summary>
+        <div class="body">${bits.join("<br><br>")}</div>
+      </details>`;
+  }
+
+  // Provisional banner — honest "not yet exhaustive" flag from the audit.
+  const st = DATA.meta.status || {};
+  let provBanner = "";
+  if (st.provisional) {
+    const bits = [];
+    if (st.shortfall) bits.push(`${st.shortfall} known ${st.shortfall === 1 ? "copy" : "copies"} not yet located`);
+    if ((st.unreached || []).length) bits.push(`catalogues not yet swept: ${st.unreached.map(escapeHtml).join(", ")}`);
+    provBanner = `<div class="prov-banner"><strong>Provisional census — not yet exhaustive.</strong> ${bits.join(" · ")}. Further copies may exist.</div>`;
+  }
+
+  // Citation head: SURNAME, Given. / <i>Title.</i> / Place: Printer, Year.
+  const citeImprint = [
+    [DATA.meta.place, DATA.meta.printer].filter(Boolean).join(": "),
+    DATA.meta.year,
+  ].filter(Boolean).join(", ");
+  document.getElementById("empty-state-hint").innerHTML = `
+    <div class="overview">
+      ${provBanner}
+      <h2 class="cite-head">
+        <span class="cite-author">${escapeHtml((DATA.meta.author_surname || "").toUpperCase())}, ${escapeHtml(DATA.meta.author_given || "")}.</span><br>
+        <i>${escapeHtml(DATA.meta.title)}.</i><br>
+        <span class="cite-imprint">${escapeHtml(citeImprint)}.</span>
+      </h2>
+      ${workHtml}
+      ${countHtml}
+      <h3>Where the located copies are</h3>
+      <table class="ov-countries">${countryRows}</table>
+      ${untracedHtml}
+      <details class="fold">
+        <summary>How securely each copy is attested</summary>
+        <div class="body"><div class="ov-grades">${gradeLine}</div></div>
+      </details>
+      <details class="fold">
+        <summary>Scope &amp; method — what this census counts</summary>
+        <div class="body">
+          <strong>In scope.</strong> ${escapeHtml(DATA.meta.scope_inclusion)}<br><br>
+          <strong>Counted as a copy.</strong> ${escapeHtml(DATA.meta.counted_as_copy)}<br><br>
+          <strong>Excluded.</strong> ${escapeHtml(DATA.meta.scope_excluded)}
+        </div>
+      </details>
+      ${reliabilityFold()}
+      <div class="permalink-hint">
+        Share any copy with its permalink
+        <code style="font-style:normal;background:#f0eee8;padding:1px 4px;border-radius:3px">?copy=&lt;slug&gt;</code>
+        — links stay stable across census versions.
+      </div>
+      <div class="permalink-hint">
+        Corrections and additions are welcome — a copy this census misses,
+        a record it misstates:
+        <a href="mailto:chris@sophiarb.com?subject=${encodeURIComponent("Census correction: " + (DATA.meta.key || ""))}">chris@sophiarb.com</a>.
+      </div>
+    </div>
+  `;
+  // The untraced strip's attested-copy links open the copy card.
+  for (const a of document.querySelectorAll("[data-untraced-slug]")) {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      setActive(a.dataset.untracedSlug);
+    });
+  }
+
+  // Wire chips
+  for (const chip of document.querySelectorAll(".chip[data-filter]")) {
+    chip.addEventListener("click", () => {
+      const f = chip.dataset.filter;
+      const v = chip.dataset.val;
+      if (v) {
+        if (state.filters[f].has(v)) state.filters[f].delete(v);
+        else state.filters[f].add(v);
+      } else {
+        state.filters[f] = !state.filters[f];
+      }
+      chip.classList.toggle("active");
+      render();
+    });
+  }
+  document.getElementById("cluster-clear").addEventListener("click", () => {
+    state.filters.cluster = null;
+    render();
+  });
+
+  // Standing COLLECTIONS chips — one per named cluster, so any grouping
+  // (e.g. presentation copies) is one click from the top bar rather than
+  // reachable only via a pill on a member's card.
+  {
+    const names = Object.keys(DATA.clusters || {});
+    if (names.length) {
+      document.getElementById("cluster-grouplabel").style.display = "";
+      const box = document.getElementById("cluster-chips");
+      for (const name of names) {
+        const n = (DATA.clusters[name] || []).length;
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "chip cluster-filter-chip";
+        chip.dataset.cluster = name;
+        chip.textContent = `${name} (${n})`;
+        chip.title = "Show only this collection";
+        chip.addEventListener("click", () => {
+          state.filters.cluster = (state.filters.cluster === name) ? null : name;
+          render();
+        });
+        box.appendChild(chip);
+      }
+    }
+  }
+  document.getElementById("search-input").addEventListener("input", e => {
+    state.filters.search = e.target.value.toLowerCase().trim();
+    render();
+  });
+
+  // Keyboard nav
+  document.addEventListener("keydown", e => {
+    if (document.activeElement && document.activeElement.tagName === "INPUT") return;
+    if (e.key === "ArrowDown" || e.key === "j") { nav(1); e.preventDefault(); }
+    if (e.key === "ArrowUp" || e.key === "k") { nav(-1); e.preventDefault(); }
+    if (e.key === "Escape") { state.filters.cluster = null; render(); }
+  });
+
+  render();
+
+  // ?copy=... deep link. Accepts the bare local slug OR the fully-qualified
+  // copy reference (<census_key>/<copy_id>, or the hyphen-flattened
+  // <census_key>-<copy_id>), so cross-census citations resolve here too.
+  const params = new URLSearchParams(location.search);
+  let requested = params.get("copy");
+  if (requested) {
+    if (requested.includes("/")) requested = requested.split("/").pop();
+    else if (requested.startsWith(DATA.meta.key + "-")) requested = requested.slice(DATA.meta.key.length + 1);
+    if (DATA.copies.some(c => c.slug === requested)) {
+      setActive(requested);
+    } else {
+      // Stale / renamed permalink — say so rather than silently no-op.
+      document.getElementById("card-container").innerHTML =
+        `<div class="empty-state">
+           <div>Copy <code>${escapeHtml(requested)}</code> is not in this census.</div>
+           <div class="hint">The slug may have been renamed since this link was made.
+           Pick a copy from the list or map.</div>
+         </div>`;
+    }
+  }
+}
+
+function nav(delta) {
+  const visible = orderCopies([...filteredCopies()]);
+  if (!visible.length) return;
+  let idx = visible.findIndex(c => c.slug === state.activeSlug);
+  idx = (idx === -1) ? 0 : (idx + delta + visible.length) % visible.length;
+  setActive(visible[idx].slug);
+}
+
+// ---------------------------------------------------------------------------
+// Render: filter chips → map, list, count
+// ---------------------------------------------------------------------------
+function render() {
+  const visible = orderCopies([...filteredCopies()]);
+  const visibleSet = new Set(visible.map(c => c.slug));
+
+  // Map visibility
+  for (const [slug, m] of Object.entries(markersBySlug)) {
+    if (visibleSet.has(slug)) {
+      if (!map.hasLayer(m)) m.addTo(map);
+    } else {
+      if (map.hasLayer(m)) m.removeFrom(map);
+    }
+  }
+
+  // Count
+  document.getElementById("count-text").textContent =
+    `${visible.length} of ${DATA.copies.length} copies visible`;
+
+  // Cluster indicator
+  const clusterIndicator = document.getElementById("cluster-clear");
+  if (state.filters.cluster) {
+    clusterIndicator.style.display = "inline-flex";
+    document.getElementById("cluster-name").textContent = state.filters.cluster;
+  } else {
+    clusterIndicator.style.display = "none";
+  }
+  // Sync active state on the standing COLLECTIONS chips.
+  for (const chip of document.querySelectorAll(".cluster-filter-chip")) {
+    chip.classList.toggle("active", state.filters.cluster === chip.dataset.cluster);
+  }
+
+  // List
+  const list = document.getElementById("copy-list");
+  list.innerHTML = "";
+  if (!visible.length) {
+    list.innerHTML = '<li class="empty">No copies match these filters. Try toggling a confidence band.</li>';
+    return;
+  }
+  // Attested copies (recorded historically, no live evidence) never sit
+  // under a country header — a header would assert a present-day location.
+  // They close the list under their own honest heading in place mode.
+  const located = visible.filter(c => c.status !== "attested");
+  const attestedRows = visible.filter(c => c.status === "attested");
+
+  const appendRow = (c) => {
+    const li = document.createElement("li");
+    li.className = `list-item status-${c.status}` + (c.slug === state.activeSlug ? " active" : "");
+    li.dataset.slug = c.slug;
+    const indicators = [];
+    if (c.has_surrogate || c.has_iiif) indicators.push('<span class="tag" title="A digital facsimile of this copy can be read online">digitised</span>');
+    if (c.status !== "extant") {
+      const stLabel = c.status === "attested" ? "untraced" : statusLabel(c.status);
+      indicators.push(`<span class="tag st">${escapeHtml(stLabel)}</span>`);
+    }
+    const cityLine = c.status === "attested"
+      ? `last recorded ${escapeHtml(c.city || "—")}${c.country ? " · " + escapeHtml(countryName(c.country)) : ""}`
+      : `${escapeHtml(c.city || "—")}${c.country ? " · " + escapeHtml(countryName(c.country)) : ""}`;
+    li.innerHTML = `
+      <span class="label-block">
+        <span class="title">${escapeHtml(c.display_label)}</span>
+        <span class="city">${cityLine}</span>
+        ${c.assoc_note ? `<span class="assoc">${escapeHtml(c.assoc_note)}</span>` : ""}
+      </span>
+      <span class="indicators">${indicators.join("")}</span>
+    `;
+    li.addEventListener("click", () => setActive(c.slug));
+    list.appendChild(li);
+  };
+
+  let lastCountry = null;
+  for (const c of located) {
+    if (c.country !== lastCountry) {
+      lastCountry = c.country;
+      const n = located.filter(v => v.country === c.country).length;
+      const head = document.createElement("li");
+      head.className = "country-head";
+      head.innerHTML = `${flagIco(c.country)}${escapeHtml(countryName(c.country))}<span class="n">· ${n}</span>`;
+      list.appendChild(head);
+    }
+    appendRow(c);
+  }
+  if (attestedRows.length) {
+    const head = document.createElement("li");
+    head.className = "country-head";
+    head.innerHTML = `Recorded, not located today<span class="n">· ${attestedRows.length}</span>`;
+    list.appendChild(head);
+    for (const c of attestedRows) appendRow(c);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Active copy
+// ---------------------------------------------------------------------------
+function setActive(slug) {
+  const copy = DATA.copies.find(c => c.slug === slug);
+  if (!copy) return;
+  state.activeSlug = slug;
+
+  // Update URL ?copy= without reload
+  const u = new URL(location);
+  u.searchParams.set("copy", slug);
+  history.replaceState(null, "", u);
+
+  // Update list active state
+  for (const li of document.querySelectorAll(".list-item")) {
+    li.classList.remove("active");
+  }
+  // Match by slug, not display text — copies can share a display_label.
+  const currentLi = document.querySelector(
+    `.list-item[data-slug="${CSS.escape(slug)}"]`);
+  if (currentLi) {
+    currentLi.classList.add("active");
+    currentLi.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  // Update map: highlight + fly
+  for (const [s, m] of Object.entries(markersBySlug)) {
+    const el = m._icon;
+    if (el) el.classList.toggle("active", s === slug);
+  }
+  const marker = markersBySlug[slug];
+  if (marker) {
+    autoView = false;   // the user picked a copy; stop auto-refitting on resize
+    map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 5), { duration: 0.6 });
+  }
+
+  // Render card
+  renderCard(copy);
+
+  // On the stacked narrow layout the card renders BELOW the map and the
+  // full copy list, so a tap would otherwise appear to do nothing. Bring
+  // it into view. Desktop keeps its side-by-side panes and needs no scroll.
+  if (window.matchMedia("(max-width: 860px)").matches) {
+    const card = document.getElementById("card-container");
+    if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Card rendering
+// ---------------------------------------------------------------------------
+function renderCard(c) {
+  const container = document.getElementById("card-container");
+  const visible = orderCopies([...filteredCopies()]);
+  const idx = visible.findIndex(x => x.slug === c.slug);
+  const prev = (idx > 0) ? visible[idx - 1] : null;
+  const next = (idx >= 0 && idx < visible.length - 1) ? visible[idx + 1] : null;
+
+  // Actions
+  const actions = [];
+  if (c.catalogue_url) {
+    actions.push(`<a href="${escapeHtml(c.catalogue_url)}" target="_blank" rel="noopener">
+      Catalogue <span class="ico">↗</span></a>`);
+  }
+  for (const s of (c.digital_surrogates || [])) {
+    if (s.url && s.kind !== "absent" && s.kind !== "needs_lookup") {
+      const label = s.kind === "iiif-manifest"
+        ? "IIIF manifest"
+        : (s.label || s.kind);
+      actions.push(`<a class="primary" href="${escapeHtml(s.url)}" target="_blank" rel="noopener">
+        ${escapeHtml(label)} <span class="ico">↗</span></a>`);
+    }
+  }
+
+  // Copy images (base64-embedded; click to open lightbox)
+  let imagesHtml = "";
+  if ((c.images || []).length) {
+    const figs = c.images.map((im, i) => {
+      const cap = im.caption ? escapeHtml(im.caption) : "";
+      return `<figure class="copy-image-fig" data-img-idx="${i}">
+        <img src="${im.data_uri}" alt="${cap}" loading="lazy">
+        ${cap ? `<figcaption>${cap}</figcaption>` : ""}
+      </figure>`;
+    }).join("");
+    imagesHtml = `<section><h3>Images (${c.images.length})</h3>
+      <div class="copy-images-grid">${figs}</div></section>`;
+  }
+
+  // Clusters
+  let clustersHtml = "";
+  if ((c.clusters || []).length) {
+    clustersHtml = `<section><h3>Provenance clusters</h3>
+      ${c.clusters.map(cl => `<span class="cluster-pill" data-cluster="${escapeHtml(cl)}">${escapeHtml(cl)}</span>`).join("")}
+    </section>`;
+  }
+
+  // Provenance
+  let provHtml = "";
+  if ((c.provenance_chain || []).length) {
+    const items = c.provenance_chain.map(p => {
+      const kindClass = p.kind ? `kind-${p.kind}` : "";
+      return `
+        <li class="${kindClass}">
+          <div class="owner">${escapeHtml(p.owner || p.event || "—")}</div>
+          <div class="meta-line">
+            ${p.kind ? `<span class="kind-tag">${escapeHtml(p.kind)}</span>` : ""}
+            ${p.date ? escapeHtml(p.date) : "(undated)"}
+            ${p.confidence ? ` · confidence ${escapeHtml(p.confidence)}` : ""}
+          </div>
+          ${p.evidence ? `<div class="evidence">${escapeHtml(p.evidence)}</div>` : ""}
+        </li>`;
+    }).join("");
+    provHtml = `<section><h3>Provenance chain</h3><ul class="provenance">${items}</ul></section>`;
+  }
+
+  // Physical
+  let physHtml = "";
+  const ph = c.physical || {};
+  const physRows = [];
+  if (ph.completeness) physRows.push(["Completeness", escapeHtml(ph.completeness)]);
+  if (ph.binding) {
+    const b = ph.binding;
+    // A store value of "unknown" (binding period or originality not yet
+    // determined) is a data placeholder, not a fact worth printing — showing
+    // the bare word beside the style reads as a cryptic label ("broadsheet,
+    // as issued · unknown"). Render only the determined values.
+    const bits = [b.style, b.period, b.originality]
+      .filter(v => v && String(v).toLowerCase() !== "unknown")
+      .map(escapeHtml).join(" · ");
+    let v = bits;
+    if (b.notes) v += `<span class="meta-note">${escapeHtml(b.notes)}</span>`;
+    physRows.push(["Binding", v]);
+  }
+  if (ph.marginalia) {
+    const m = ph.marginalia;
+    const bits = [];
+    if (m.density) bits.push(escapeHtml(m.density));
+    if (m.hands_count) bits.push(`${m.hands_count} hand(s)`);
+    if (m.character) bits.push(escapeHtml(m.character));
+    let v = bits.join(" · ");
+    if (m.hands_identified && m.hands_identified.length) {
+      v += `<span class="meta-note">Identified: ${m.hands_identified.map(escapeHtml).join("; ")}</span>`;
+    }
+    physRows.push(["Marginalia", v]);
+  }
+  if (ph.notes) physRows.push(["Notes", escapeHtml(ph.notes)]);
+  if (physRows.length) {
+    physHtml = `<section><h3>Physical</h3>
+      <dl class="physical-grid">
+        ${physRows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}
+      </dl></section>`;
+  }
+
+  // Surrogates
+  let surrHtml = "";
+  if ((c.digital_surrogates || []).length) {
+    const rows = c.digital_surrogates.map(s => {
+      let main;
+      if (s.url) {
+        const link = `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.host || s.label || s.url)}</a>`;
+        main = link;
+      } else {
+        main = `<span style="color:var(--muted)">${escapeHtml(s.label || "(no URL captured)")}</span>`;
+      }
+      const note = s.notes ? `<div class="notes">${escapeHtml(s.notes)}</div>` : "";
+      return `<div class="surrogate-row kind-${s.kind}">
+        <span class="kind-tag">${escapeHtml(s.kind)}</span>
+        ${main}
+        ${note}
+      </div>`;
+    }).join("");
+    surrHtml = `<section><h3>Digital surrogates</h3>${rows}</section>`;
+  }
+
+  // References
+  let refsHtml = "";
+  if ((c.references || []).length) {
+    const items = c.references.map(r => {
+      const parts = [];
+      if (r.name) parts.push(`<span class="ref-name">${escapeHtml(r.name)}</span>`);
+      if (r.entry) parts.push(escapeHtml(r.entry));
+      if (r.canon) parts.push(`canon ${escapeHtml(r.canon)}`);
+      if (r.number) parts.push(escapeHtml(r.number));
+      const refText = r.ref ? escapeHtml(r.ref) : "";
+      const refTruncated = refText.length > 320;
+      return `<li>
+        <span class="ref-kind">${escapeHtml(r.kind || "ref")}</span>
+        ${parts.join(", ")}
+        ${refText ? (refTruncated ? `<span class="ref-text" data-full="${refText.replace(/"/g, "&quot;")}">: ${refText.slice(0, 320)}<span class="ref-truncated" onclick="this.parentElement.innerHTML=':' + this.parentElement.dataset.full;"> …(more)</span></span>` : `<span class="ref-text">: ${refText}</span>`) : ""}
+      </li>`;
+    }).join("");
+    refsHtml = `<section><h3>References (${c.references.length})</h3><ul class="references">${items}</ul></section>`;
+  }
+
+  // Confidence history
+  let confHistHtml = "";
+  if ((c.confidence_history || []).length) {
+    const items = c.confidence_history.map(h =>
+      `<div><strong>${escapeHtml(h.from)}<span class="arrow">→</span>${escapeHtml(h.to)}</strong> · ${escapeHtml(h.date)}<br><span style="font-size:11px;color:var(--muted)">${escapeHtml(h.reason)}</span></div>`
+    ).join("<hr style='border:none;border-top:1px solid var(--rule);margin:8px 0'>");
+    confHistHtml = `<section><h3>Confidence-grade history</h3><div class="conf-history">${items}</div></section>`;
+  }
+
+  // Verification history — dated positive AND negative checks. For an
+  // attested (untraced) copy this section IS the justification: it shows
+  // what was searched, when, and what was not found.
+  let checksHtml = "";
+  if ((c.checks || []).length || (c.evidence || {}).method) {
+    const evLine = (c.evidence || {}).method
+      ? `<div style="font-size:12px;margin-bottom:8px"><strong>Strongest evidence:</strong> ${escapeHtml(c.evidence.method)}${c.evidence.last_verified ? ` · last verified ${escapeHtml(c.evidence.last_verified)}` : ""}${c.evidence.ref ? `<br><span style="color:var(--muted);font-size:11px">${escapeHtml(c.evidence.ref)}</span>` : ""}</div>`
+      : "";
+    const rows = (c.checks || []).map(ch => {
+      const mark = ch.result === "found" ? "✓" : ch.result === "not-found" ? "✗" : "?";
+      const color = ch.result === "found" ? "var(--grade-A)" : ch.result === "not-found" ? "var(--grade-D)" : "var(--muted)";
+      return `<div style="font-size:12px;padding:3px 0;border-bottom:1px solid var(--rule)">
+        <span style="color:${color};font-weight:700">${mark}</span>
+        ${escapeHtml(ch.date)} · ${escapeHtml(ch.channel)} — <strong>${escapeHtml(ch.result)}</strong>
+        ${ch.note ? `<br><span style="color:var(--muted);font-size:11px">${escapeHtml(ch.note)}</span>` : ""}
+      </div>`;
+    }).join("");
+    checksHtml = `<section><h3>Verification history</h3>${evLine}${rows}</section>`;
+  }
+
+  // Open questions
+  let questHtml = "";
+  if ((c.open_questions || []).length) {
+    const items = c.open_questions.map(q => `<li>${escapeHtml(q)}</li>`).join("");
+    questHtml = `<section><h3>Open questions</h3><ul class="open-questions">${items}</ul></section>`;
+  }
+
+  // Citation hint.
+  // Canonical citable identifier = fully-qualified copy reference
+  // (<census_key>/<copy_id>), from which author · title · year · holding · copy
+  // can all be read. The bare slug stays the short, stable, local id.
+  const url = location.origin + location.pathname + "?copy=" + encodeURIComponent(c.slug);
+  const fqid = DATA.meta.key + "/" + c.slug;
+  const humanLabel = `${DATA.meta.author}, ${DATA.meta.title_short} (${DATA.meta.year || "n.d."}) — ${c.display_label}`;
+  const codeStyle = "background:#f0eee8;padding:1px 5px;border-radius:3px";
+  // Ready-to-paste citation (Darwin/e-rara pattern): record + corpus + build + permalink + accessed date
+  const accDate = new Date().toISOString().slice(0, 10);
+  const citeText = "“" + humanLabel + "”, Tychoniana — Census "
+    + DATA.meta.key + " (build " + (DATA.meta.last_built || "") + "), " + url
+    + ", accessed " + accDate + ".";
+  const citationHtml = `<section><h3>Citation</h3>
+    <div style="font-size:12px;line-height:1.6">
+      <strong>Reference:</strong> ${escapeHtml(humanLabel)}<br>
+      <strong>Full ID:</strong> <code style="${codeStyle}">${escapeHtml(fqid)}</code><br>
+      <strong>Local slug:</strong> <code style="${codeStyle}">${escapeHtml(c.slug)}</code><br>
+      <strong>Permalink:</strong>
+      <a href="${escapeHtml(url)}" style="color:var(--accent);font-size:11px;word-break:break-all">${escapeHtml(url)}</a><br>
+      <strong>Cite:</strong> <span class="cite-line">${escapeHtml(citeText)}</span>
+      <button class="cite-copy" style="font-size:10px;margin-left:6px;padding:1px 7px;border:1px solid var(--border);border-radius:3px;background:#f0eee8;cursor:pointer"
+        onclick="try{navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied';}catch(e){}">copy</button>
+    </div>
+  </section>`;
+
+  container.innerHTML = `
+    <div class="copy-card">
+      <div class="nav-row">
+        <button ${prev ? "" : "disabled"} onclick="${prev ? `setActive('${prev.slug}')` : ''}">
+          ← ${prev ? escapeHtml(truncate(prev.display_label, 32)) : "(start)"}
+        </button>
+        <span class="keyboard-hint">↑ ↓ to navigate</span>
+        <button ${next ? "" : "disabled"} onclick="${next ? `setActive('${next.slug}')` : ''}">
+          ${next ? escapeHtml(truncate(next.display_label, 32)) : "(end)"} →
+        </button>
+      </div>
+      <div class="header-row">
+        <h2>${escapeHtml(c.display_label)}</h2>
+        <div class="status-row">
+          <span class="status-pill status-${c.status}">${escapeHtml(statusLabel(c.status))}</span>
+          <span class="grade-badge ${c.confidence} tooltip-host" data-tooltip="${
+            ({ A: 'Verified: examined first-hand, confirmed by a live institutional record, or anchored by a documented dated dispatch',
+               B: 'Documented: recorded by a named scholar or an institutional catalogue, but not independently examined',
+               C: 'Reported: attested in a source that has not been re-verified',
+               D: 'Contested: rumoured, or the evidence conflicts' })[c.confidence] || ''
+          }">${escapeHtml(c.confidence)}</span>
+        </div>
+      </div>
+      <div class="subtitle">
+        <strong>${escapeHtml(c.institution)}</strong>
+        ${c.shelfmark ? `<br>${escapeHtml(c.shelfmark)}` : ""}
+        ${c.city ? ` · ${escapeHtml(c.city)}` : ""}${c.country ? `, ${escapeHtml(c.country)}` : ""}
+        ${c.siglum ? `<br><span style="font-size:11px;color:var(--muted)">${escapeHtml(c.siglum)}</span>` : ""}
+      </div>
+      <div class="actions">${actions.join("")}</div>
+      ${imagesHtml}
+      ${clustersHtml}
+      ${provHtml}
+      ${physHtml}
+      ${surrHtml}
+      ${refsHtml}
+      ${confHistHtml}
+      ${checksHtml}
+      ${questHtml}
+      ${citationHtml}
+    </div>
+  `;
+
+  // Wire cluster pills
+  for (const pill of container.querySelectorAll(".cluster-pill")) {
+    pill.addEventListener("click", () => {
+      state.filters.cluster = pill.dataset.cluster;
+      render();
+    });
+  }
+
+  // Wire image thumbnails → lightbox
+  for (const fig of container.querySelectorAll(".copy-image-fig")) {
+    fig.addEventListener("click", () => {
+      const im = c.images[Number(fig.dataset.imgIdx)];
+      if (!im) return;
+      const lb = document.getElementById("lightbox");
+      document.getElementById("lightbox-img").src = im.data_uri;
+      document.getElementById("lightbox-caption").innerHTML =
+        (im.caption ? escapeHtml(im.caption) : "") +
+        (im.source ? `<br><span class="lb-source">${escapeHtml(im.source)}</span>` : "");
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden", "false");
+    });
+  }
+}
+
+// Lightbox dismissal (click anywhere / Escape)
+(function wireLightbox() {
+  const lb = document.getElementById("lightbox");
+  if (!lb) return;
+  const close = () => { lb.classList.remove("open"); lb.setAttribute("aria-hidden", "true"); };
+  lb.addEventListener("click", close);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+})();
+
+window.setActive = setActive;
+init();
+</script>
+</body>
+</html>

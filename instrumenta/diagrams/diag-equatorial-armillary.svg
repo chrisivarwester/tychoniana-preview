@@ -1,0 +1,65 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- The ring — shown face-on as a circle, the polar axis is its tilted diameter.
+       Centre O = (152, 110)  radius r = 82
+       Key geometry (Hven latitude 55°54′N ≈ 55.9°):
+         Polar axis direction: (cos55.9°, −sin55.9°) = (0.561, −0.829)
+         So NP end: O + 82·(0.561,−0.829) = (152+46, 110−68) = (198, 42)
+         SP end:    O − 82·(0.561,−0.829) = (152−46, 110+68) = (106, 178)
+         Equatorial crossings (perpendicular to polar axis):
+           direction (sin55.9°, cos55.9°) = (0.829, 0.561)
+           EQ+: O + 82·(0.829, 0.561) = (152+68, 110+46) = (220, 156)
+           EQ−: O − 82·(0.829, 0.561) = (152−68, 110−46) = (84, 64)
+  -->
+
+  <!-- The ring (circle, face-on view) -->
+  <circle cx="152" cy="110" r="82" fill="none" stroke="#1a2238" stroke-width="2.2"/>
+
+  <!-- Polar axis line through the ring (tilted at 55.9° from horizontal) -->
+  <line x1="106" y1="178" x2="198" y2="42" stroke="#8090a0" stroke-width="1.2" stroke-dasharray="6,3"/>
+
+  <!-- Polar axis arrowhead / symbol at NP end -->
+  <circle cx="198" cy="42" r="5" fill="#9a7b32"/>
+  <text x="207" y="38" font-size="10" fill="#9a7b32" font-weight="bold">N. Pole</text>
+  <text x="91" y="192" font-size="10" fill="#8090a0">S. Pole</text>
+
+  <!-- Equatorial crossings (0° declination marks) -->
+  <circle cx="220" cy="156" r="3.5" fill="#1a2238"/>
+  <text x="227" y="161" font-size="10" fill="#3a3028">0°δ</text>
+  <circle cx="84" cy="64" r="3.5" fill="#1a2238"/>
+  <text x="62" y="62" font-size="10" fill="#3a3028" text-anchor="end">0°δ</text>
+
+  <!-- Declination arc: from EQ+ (220,156) going 40° toward NP (CCW on ring).
+       Parametrically: the 40° arc from EQ+ position.
+       EQ+ is at angle θ₀ where (cos θ₀, sin θ₀) = (0.829, 0.561) ≈ θ₀ = 34.1° in SVG convention.
+       Star at θ₀ − 40° = −5.9° (going CCW = decreasing angle):
+         (152 + 82·cos(−5.9°), 110 + 82·sin(−5.9°)) = (152+81.5, 110−8.4) = (233.5, 101.6) ≈ (234, 102)
+       Arc from EQ+ (220,156) CCW to star (234,102): large-arc=0, sweep=0
+  -->
+  <path d="M 220,156 A 82,82 0 0,0 234,102" fill="none" stroke="#9a7b32" stroke-width="2.2"/>
+
+  <!-- Star at the end of the arc -->
+  <text x="240" y="99" font-size="16" fill="#9a7b32" text-anchor="middle">★</text>
+
+  <!-- Declination angle label -->
+  <text x="250" y="122" font-size="12" fill="#9a7b32" font-style="italic">δ = 40°</text>
+  <line x1="247" y1="113" x2="238" y2="100" stroke="#9a7b32" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+  <!-- Ring graduation ticks (every 30° from the EQ+ position) -->
+  <!-- 30° from EQ+ CCW: angle = 34.1° − 30° = 4.1° → (152+81.8, 110+5.9) = (233.8, 115.9) ≈ (234, 116) -->
+  <!-- Tick inward (toward centre): direction = −(cos4.1°, sin4.1°)*7 = (−7.0, −0.5) -->
+  <line x1="234" y1="116" x2="227" y2="116" stroke="#1a2238" stroke-width="1"/>
+  <!-- 60° from EQ+ CCW: angle = 34.1°−60° = −25.9° → (152+82·cos(−25.9°), 110+82·sin(−25.9°)) = (225.7, 74.1) -->
+  <line x1="226" y1="74" x2="220" y2="77" stroke="#1a2238" stroke-width="1"/>
+  <!-- 90° from EQ+ CCW (= NP end, already marked) -->
+
+  <!-- Label: the axle and what it means -->
+  <text x="108" y="128" font-size="10" fill="#3a3028" text-anchor="middle">Axle</text>
+  <text x="108" y="140" font-size="10" fill="#9a7b32" font-weight="bold" text-anchor="middle">&#x2225; Earth</text>
+  <text x="108" y="152" font-size="10" fill="#3a3028" text-anchor="middle">&#x2019;s axis</text>
+
+  <!-- Caption -->
+  <text x="160" y="203" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Axle &#x2225; Earth&#x2019;s axis &#x2014; position on ring = declination &#x3b4; directly</text>
+</svg>

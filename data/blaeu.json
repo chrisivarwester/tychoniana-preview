@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "title": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving — Hven / Tycho Brahe section",
+  "source": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 136–226. Universiteitsbibliotheek Utrecht, shelfmark AC 62 Rariora.",
+  "iiif_manifest": "https://objects.library.uu.nl/manifest/iiif/v3/20.500.14918-241046",
+  "pages": {
+    "start": 136,
+    "end": 226,
+    "total": 91
+  },
+  "instrument_plates": {
+    "inst-astronomical-sextant": {
+      "plate_page": 187,
+      "text_pages": [
+        186,
+        188,
+        189
+      ],
+      "plate_title": "SEXTANS ASTRONOMICUS PROVT ALTITUDINIBUS inseruit",
+      "section": "De Sextant",
+      "observatory": "Large southern Observatory of Uraniborg (O)",
+      "english": "THE SEXTANT, serving for the observation of altitudes: and its construction and use.\n\nLocated in the large and southern Observatory of Uraniborg (marked O in the floor plan). Sections I–VI describe the sextant's construction: the two arms forming a 60° arc; the graduated scale; the method using two simultaneous observers; and the verification procedure. Blaeu notes that this is the first instrument Tycho devised and the one from which all his other sextants derived.",
+      "dutch": "D E S E X T A N T ,\ndienende tot het waernemen der hooghten:\nen des felfs maekfel en gebruyck.\n\nIn het groot en zuydelijck Obfervatorium van Uraniburg, in de figuur met de letter O aangewesen.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 186–189. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p187.jpg",
+      "plate_thumb": "../assets/blaeu/p187_thumb.jpg"
+    },
+    "inst-mural-quadrant": {
+      "plate_page": 204,
+      "context_page": 201,
+      "context_title": "Interior of Uraniborg with the mural quadrant in use — the most famous image in the atlas",
+      "text_pages": [
+        202,
+        203
+      ],
+      "plate_title": "Quadrans muralis sive Tichonicus",
+      "section": "De Muur-Quadrant van Tycho",
+      "observatory": "South wall of the main building, Uraniborg",
+      "english": "THE MURAL QUADRANT OF TYCHO.\n\nBlaeu describes the great mural quadrant painted on the south wall of Uraniborg's main building. Radius ca. 6 feet; graduated to one-sixth of a minute by transversal dots. Three assistants are used simultaneously: one calls the star name, one reads the altitude from the scale, one records the time from the clock — as depicted in the famous interior view (p. 201), which Blaeu reproduces as a coloured engraving from the Astronomiae Instauratae Mechanica (Wandsbek, 1598). At the arc's centre, Tycho placed a self-portrait as part of the wall painting — an instrument that was also his grandest act of self-fashioning.",
+      "dutch": "D E M U U R - Q U A D R A N T\nV A N T Y C H O.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 201–204. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p204.jpg",
+      "plate_thumb": "../assets/blaeu/p204_thumb.jpg",
+      "context_image": "../assets/blaeu/p201.jpg",
+      "context_thumb": "../assets/blaeu/p201_thumb.jpg"
+    },
+    "inst-revolving-quadrant": {
+      "plate_page": 222,
+      "text_pages": [
+        220,
+        221,
+        223,
+        224
+      ],
+      "plate_title": "QVADRANS VOLVBILIS AZIMVTHALIS",
+      "section": "Het Beweeghlyck Azimuthael Quadrant",
+      "observatory": "Stjerneborg, underground chamber D",
+      "english": "THE MOVABLE AZIMUTHAL QUADRANT, standing in underground chamber D.\n\nBlaeu describes the rotating azimuthal quadrant in Stjerneborg's chamber D. The quadrant turns on its azimuth circle to face any direction, enabling simultaneous measurement of both altitude and azimuth. The coloured illustration shows the instrument in its circular pit with a plumb-bob weight for levelling.",
+      "dutch": "H E T B E W E E G H L Y C K\nA Z I M U T H A E L Q U A D R A N T ,\nStaende in de kelder D.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 220–224. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p222.jpg",
+      "plate_thumb": "../assets/blaeu/p222_thumb.jpg"
+    },
+    "inst-revolving-steel-quadrant": {
+      "plate_page": 218,
+      "text_pages": [
+        219,
+        220
+      ],
+      "plate_title": "QVADRANS MAGNVS CHALIVEVS in Quadrato etiam chaliben comprehensae, vnaque Azimvthalis",
+      "section": "'t Groot Stale Quadrant",
+      "observatory": "Stjerneborg, underground chamber F",
+      "english": "THE GREAT STEEL QUADRANT, enclosed in a square steel frame, serving also for azimuths. In underground chamber F.\n\nBlaeu describes the great steel quadrant in Stjerneborg's chamber F: a quadrant arc braced inside a rigid square steel frame for exceptional rigidity, with an azimuth circle for simultaneous altitude and azimuth measurement. The coloured illustration shows the instrument in its rectangular mounting within the circular chamber.",
+      "dutch": "'T G R O O T S T A L E\nQ U A D R A N T ,\nin een vierkante Stale raem befloten,\ndienende met een tot de Azimuths.\nIn de kelder F.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 218–220. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p218.jpg",
+      "plate_thumb": "../assets/blaeu/p218_thumb.jpg"
+    },
+    "inst-great-equatorial-armillary": {
+      "plate_page": 212,
+      "text_pages": [
+        209,
+        213
+      ],
+      "plate_title": "ARMILLAE AEQVATORIAE MAXIMAE SESQVIALTERO CONSTANTES CIRCULO",
+      "section": "'t Groot Evenaers Ring-Instrument",
+      "observatory": "Stjerneborg, underground chamber C (the largest crypt)",
+      "english": "THE GREAT EQUATORIAL RING-INSTRUMENT, consisting of one and a half circles. In the large underground chamber marked C.\n\nBlaeu's description of the great equatorial armillary in Stjerneborg's central chamber. A large ring set parallel to the celestial equator, with a declination semicircle: right ascension and declination read simultaneously. The coloured illustration shows the instrument within the curved walls of the underground chamber, with the observer at the base for scale. Diameter ca. 9 feet — the largest equatorial armillary Tycho built.",
+      "dutch": "'T G R O O T E V E N A E R S\nR I N G - I N S T R V M E N T ,\nBeftaende nyt een en een halve Cirkel.\nIn de groote kelder geteeckent met C.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 209, 212–213. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p212.jpg",
+      "plate_thumb": "../assets/blaeu/p212_thumb.jpg"
+    },
+    "inst-triangular-sextant": {
+      "plate_page": 216,
+      "text_pages": [
+        215,
+        217
+      ],
+      "plate_title": "SEXTANS ASTRONOMICVS TRIGONICUS PRO DISTANTIIS RIMANDIS",
+      "section": "D'Astronomische Sextant om de distantien te toecken",
+      "observatory": "Stjerneborg, underground chamber G",
+      "english": "THE ASTRONOMICAL SEXTANT for measuring distances, in underground chamber G.\n\nBlaeu describes the trigonometric distance sextant in Stjerneborg's chamber G. Two arms at 60° for angular distances between stars; two observers aim simultaneously from a shared centre point. The coloured illustration shows the instrument in a formal room setting on a chequerboard floor, mounted on an elaborate ornamental pedestal.",
+      "dutch": "D' A S T R O N O M I S C H E\nS E X T A N T ,\nOm de diftantien te toecken, in de kelder G.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 215–217. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p216.jpg",
+      "plate_thumb": "../assets/blaeu/p216_thumb.jpg"
+    },
+    "inst-triquetrum": {
+      "plate_page": 193,
+      "dual_plate": true,
+      "dual_caption": "Lower half of the dual plate: Tycho’s version above; upper half shows the Ptolemaic/Copernican triquetrum",
+      "text_pages": [
+        194,
+        195,
+        196
+      ],
+      "plate_title": "INSTRVMENTVM PARALLATICVM TYCHONIS BRAHE",
+      "section": "Het Parallaticum",
+      "observatory": "Large northern Observatory of Uraniborg (R)",
+      "english": "THE PARALLACTIC INSTRUMENT; which is in the large northern observatory marked R. Its construction and use.\n\nBlaeu reproduces both the traditional Ptolemaic/Copernican triquetrum (upper) and Tycho’s improved version (lower) on a single comparison plate — unique to Blaeu among the 17th-century sources. The comparison makes Tycho’s improvements legible: heavier and more rigid, with improved scale and a central pillar mounting. Used for measuring zenith distances; the plumb-line reading gives the star’s altitude.",
+      "dutch": "H E T P A R A L L A T I C U M ;\nWelck is in het groote Noordelijck Observatorium gemarkt R.\nSijn maeckfel en gebruyck.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 193–196. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p193.jpg",
+      "plate_thumb": "../assets/blaeu/p193_thumb.jpg"
+    },
+    "inst-copernicus-triquetrum": {
+      "plate_page": 193,
+      "dual_plate": true,
+      "dual_caption": "Upper half of the dual plate: the Ptolemaic/Copernican triquetrum. Blaeu’s caption names Nicolaus Copernicus explicitly.",
+      "text_pages": [
+        194,
+        195,
+        196
+      ],
+      "plate_title": "INSTRVMENTVM PARALLATICVM sive REGVLAE PTOLEMAICAE NIC. COPERNICI",
+      "section": "Het Parallaticum (Copernicus’s version)",
+      "english": "PARALLACTIC INSTRUMENT (or Ptolemaic Rules) of NICOLAUS COPERNICUS.\n\nUpper portion of Blaeu’s unique dual comparison plate (p. 193), showing the ancient Ptolemaic triquetrum as used by Copernicus — the three hinged rods of the traditional design. Placed opposite Tycho’s improved version on the same sheet, this comparison visualises Tycho’s explicit self-positioning as Copernicus’s methodological successor and reformer.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), p. 193. Universiteitsbibliotheek Utrecht, AC 62 Rariora.",
+      "plate_image": "../assets/blaeu/p193.jpg",
+      "plate_thumb": "../assets/blaeu/p193_thumb.jpg"
+    }
+  },
+  "site_illustrations": {
+    "site-uraniborg": [
+      {
+        "page": 178,
+        "type": "plan",
+        "title_latin": "ARCIS VRANIBURGI, A TYCHONE BRAHE, DNO DE KNVDSTRUP, IN INSVLA HELLESPONTI DANICI HVENNA CONSTRUCTAE, QVO AD TOTAM CAPACITATEM, DESIGNATIO",
+        "title_english": "Design of the Castle of Uraniborg, built by Tycho Brahe, Lord of Knudstrup, on the island of the Danish Hellespontus Hven, as to its total capacity",
+        "description": "Garden plan of Uraniborg: the square rampart with corner pavilions, the four approach roads, the central house, the outhouses, the formal gardens and orchard.",
+        "image": "../assets/blaeu/p178.jpg",
+        "thumb": "../assets/blaeu/p178_thumb.jpg"
+      },
+      {
+        "page": 181,
+        "type": "elevation",
+        "title_latin": "ORTHOGRAPHIA PRAECIPVAE DOMVS ARCIS VRANIBURGI in Insula Danica Venusia, sive Hvenna, Astronomiae restaurandae gratia, circa annum MDLXXVI, a TYCHONE BRAHE aedificatae",
+        "title_english": "Elevation of the principal building of Uraniborg on the Danish island of Venusia, or Hven, built ca. 1576 by Tycho Brahe for the restoration of astronomy",
+        "description": "South elevation of Uraniborg's main building: the two-storey block with round towers, dome, and observatory galleries. Richly coloured.",
+        "image": "../assets/blaeu/p181.jpg",
+        "thumb": "../assets/blaeu/p181_thumb.jpg"
+      },
+      {
+        "page": 182,
+        "type": "floor-plan",
+        "title_latin": "ICHNOGRAPHIA DOMUS ARCIS VRANIBURGI",
+        "title_english": "Floor plan of the house of the Castle of Uraniborg",
+        "description": "Floor plan of Uraniborg, with room key letters A–V decoded on p. 183. Observatory rooms O (large southern), N (small southern), R (large northern) and other chambers clearly labelled.",
+        "image": "../assets/blaeu/p182.jpg",
+        "thumb": "../assets/blaeu/p182_thumb.jpg"
+      }
+    ],
+    "site-stjerneborg": [
+      {
+        "page": 207,
+        "type": "bird-eye",
+        "title_latin": "STELLAEBURGVM sive OBSERVATORIVM SVBTERRANEUM a TYCHONE BRAHE in Insvla Hvena, extra Arcem Vraniam, extrvctvm circa annvm MDLXXXIIII",
+        "title_english": "Stjerneborg, or the Underground Observatory, built by Tycho Brahe on the island of Hven, outside the Castle of Urania, constructed around the year 1584",
+        "description": "Bird’s-eye coloured view of Stjerneborg: the star-shaped outer enclosure, five underground chambers visible as domed structures, central chamber largest, observer figures in the open spaces. The primary visual source for Stjerneborg’s appearance before destruction.",
+        "image": "../assets/blaeu/p207.jpg",
+        "thumb": "../assets/blaeu/p207_thumb.jpg"
+      },
+      {
+        "page": 210,
+        "type": "floor-plan",
+        "title_dutch": "GRONT VAN STARRENBURG",
+        "title_english": "Ground plan of Stjerneborg",
+        "description": "Floor plan of Stjerneborg showing the five underground chambers (A–E) with letter labels: C = the great equatorial armillary; D = the revolving azimuthal quadrant; F = the great steel quadrant; G = the distance sextant. Corresponds exactly to Tycho’s own plan in the Mechanica.",
+        "image": "../assets/blaeu/p210.jpg",
+        "thumb": "../assets/blaeu/p210_thumb.jpg"
+      }
+    ]
+  },
+  "site_passages": {
+    "site-hven": {
+      "opening_dutch": "Tusschen Zeelandt en Schonen legt in de Sond een klijn Eylandt, genomende Hven, ofte Venusia, só genaamt van Tycho Brahe, die daer meer als tweentwintig jaren over de Stelkunde heeft gearbeyt.",
+      "opening_english": "Between Zealand and Scania lies in the Sound a small island, called Hven, or Venusia, so named by Tycho Brahe, who laboured there for more than twenty-two years over astronomy.",
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), p. 174. Universiteitsbibliotheek Utrecht, AC 62 Rariora."
+    },
+    "site-stjerneborg": {
+      "inscriptions": [
+        {
+          "latin": "NON INIMICA ABOLET VIS VLLA NEC VNDA NEC IGNIS",
+          "english": "No hostile force destroys it, nor flood nor fire",
+          "location": "Main portal inscription of Stjerneborg"
+        },
+        {
+          "latin": "NEC FASCES NEC OPES, SOLA ARTIS SCEPTRA PERENNANT",
+          "english": "Neither rank nor riches — only the sceptres of art endure",
+          "location": "Motto on the chambers of Stjerneborg (the principal motto)"
+        },
+        {
+          "latin": "POSTERITATIS SACRUM",
+          "english": "Sacred to posterity",
+          "location": "Inscription on Stjerneborg"
+        },
+        {
+          "latin": "TYCHO BRAHE O. F. — HAVE QVI HAEC LEGIS FACISQVE, ET VALE",
+          "english": "Tycho Brahe, son of Otte. — Hail, you who read and do these things — and farewell.",
+          "location": "Tycho’s farewell motto on Stjerneborg"
+        }
+      ],
+      "astronomers_commemorated": [
+        "Alphonso X of Castile (patron of the Alfonsine Tables)",
+        "Nicolaus Copernicus of Thorn (1473–1543)",
+        "Hipparchus of Alexandria",
+        "Ptolemy",
+        "Al-Battani (Albategnius)"
+      ],
+      "citation": "Joan Blaeu, Grooten Atlas oft Werelt-beschryving (Amsterdam, 1664), pp. 206–208. Universiteitsbibliotheek Utrecht, AC 62 Rariora."
+    }
+  },
+  "notable_pages": {
+    "174": "Opening passage on Hven: 'Tusschen Zeelandt en Schonen...'",
+    "178": "ARCIS VRANIBURGI garden plan (coloured)",
+    "180": "Latin foundation inscription of Uraniborg (1576)",
+    "181": "ORTHOGRAPHIA elevation of Uraniborg (coloured)",
+    "182": "ICHNOGRAPHIA floor plan of Uraniborg (coloured)",
+    "193": "Dual parallaticum comparison plate: Ptolemy/Copernicus vs. Tycho (unique to Blaeu)",
+    "201": "Famous interior view: Tycho at the mural quadrant (the most reproduced image in the atlas)",
+    "206": "Stjerneborg inscriptions: Nec Fasces, Non Invidia, Posteritatis Sacrum",
+    "207": "STELLAEBURGUM bird's-eye of Stjerneborg, dated MDLXXXIIII (coloured)",
+    "208": "Astronomer commemoration list + Tycho's farewell motto: Have qui haec legis facisque, et vale"
+  }
+}

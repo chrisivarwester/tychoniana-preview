@@ -1,0 +1,74 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="16" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">The zodiacal armillary</text>
+
+  <!-- Show the two planes: equatorial (horizontal) and ecliptic (tilted 23.5°).
+       Centre O=(160,115).
+
+       Equatorial ring: horizontal ellipse cx=160, cy=115, rx=85, ry=26
+       Ecliptic ring:   tilted 23.5° to equator — shown as a circle tilted in perspective.
+         The ecliptic ring is shown face-on as a circle to suggest the tilted plane,
+         tilted 23.5° from equatorial plane.
+         We'll draw it as an ellipse rotated 23.5° visually:
+         Project a circle of radius 80 tilted 23.5° to the horizontal:
+         - The "height" axis shrinks by cos(23.5°)=0.917 (nearly full), so it looks almost circular
+         - Actually in the diagram, let's tilt it so the pole of the ecliptic is 23.5° off vertical:
+         Simplify: draw ecliptic ring as an ellipse with rotation transform.
+  -->
+
+  <!-- Equatorial ring (horizontal, light dashed) -->
+  <ellipse cx="160" cy="115" rx="85" ry="26" fill="none" stroke="#8090a0" stroke-width="1.3" stroke-dasharray="5,3"/>
+  <text x="252" y="113" font-size="9" fill="#6070a0">Equator</text>
+
+  <!-- Ecliptic ring (tilted 23.5° to equator, shown as tilted ellipse) -->
+  <!-- We show it as an ellipse tilted in the image plane to suggest the obliquity -->
+  <ellipse cx="160" cy="108" rx="85" ry="35" fill="none" stroke="#1a2238" stroke-width="2"
+           transform="rotate(-23.5, 160, 108)"/>
+
+  <!-- Ecliptic label -->
+  <text x="60" y="55" font-size="9.5" fill="#1a2238" text-anchor="middle">Ecliptic</text>
+  <text x="60" y="66" font-size="9.5" fill="#1a2238" text-anchor="middle">ring</text>
+
+  <!-- Obliquity angle label (between the two rings at intersection) -->
+  <!-- Rings intersect at the equinox points, approximately at x=75 and x=245 on equatorial -->
+  <!-- Show angle between planes at left intersection (~75,115) -->
+  <path d="M 75,115 A 22,22 0 0,0 80,95" fill="none" stroke="#9a7b32" stroke-width="1.5"/>
+  <text x="55" y="95" font-size="10.5" fill="#9a7b32" font-style="italic">&#x3b5; = 23.5°</text>
+  <text x="55" y="107" font-size="9" fill="#3a3028">(obliquity)</text>
+
+  <!-- Star on ecliptic ring -->
+  <!-- Star at ecliptic longitude ~60° (60° along ecliptic from vernal equinox) -->
+  <!-- In the rotated ecliptic ring, position is complex; place star visually at upper right -->
+  <text x="220" y="62" font-size="14" fill="#9a7b32" text-anchor="middle">★</text>
+
+  <!-- Ecliptic longitude arc along the ecliptic ring (gold) -->
+  <!-- From vernal equinox (left intersection ~75,115) to star position, along ecliptic -->
+  <!-- Simplified: draw a curved arrow suggesting the longitude measurement -->
+  <path d="M 75,115 A 85,35 0 0,1 215,68" fill="none" stroke="#9a7b32" stroke-width="1.8"
+        transform="rotate(-23.5, 160, 108)"/>
+
+  <!-- Coordinate labels -->
+  <text x="260" y="80" font-size="10" fill="#9a7b32" font-style="italic">&#x3bb;</text>
+  <text x="269" y="80" font-size="9" fill="#3a3028"> = ecl. long.</text>
+  <text x="260" y="95" font-size="10" fill="#9a7b32" font-style="italic">&#x3b2;</text>
+  <text x="269" y="95" font-size="9" fill="#3a3028"> = ecl. lat.</text>
+
+  <!-- Ecliptic latitude arc from ecliptic to star (small arc perpendicular to ecliptic) -->
+  <line x1="220" y1="62" x2="213" y2="80" stroke="#9a7b32" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <text x="226" y="74" font-size="10" fill="#9a7b32" font-style="italic">&#x3b2;</text>
+
+  <!-- Vernal equinox mark -->
+  <circle cx="75" cy="115" r="4" fill="#1a2238"/>
+  <text x="58" y="128" font-size="9" fill="#3a3028">&#x2648; Vernal</text>
+  <text x="58" y="139" font-size="9" fill="#3a3028">equinox</text>
+
+  <!-- Ptolemaic vs Tychonic note -->
+  <text x="160" y="175" font-size="9.5" fill="#3a3028" text-anchor="middle">Traditional Ptolemaic system: ecliptic coordinates (&#x3bb;, &#x3b2;)</text>
+  <text x="160" y="188" font-size="9.5" fill="#9a7b32" text-anchor="middle">Tycho replaced this with equatorial (&#x3b1;, &#x3b4;) for direct observation</text>
+
+  <!-- Caption -->
+  <text x="160" y="209" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Ecliptic ring tilted 23.5° to equator &#x2014; measures ecliptic longitude &#x3bb; and latitude &#x3b2;</text>
+</svg>

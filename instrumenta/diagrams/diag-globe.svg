@@ -1,0 +1,53 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- Title -->
+  <text x="160" y="16" font-size="11.5" fill="#1a2238" font-weight="bold" text-anchor="middle">The celestial globe</text>
+
+  <!-- Globe body: sphere centred at (155,115), radius 72 -->
+  <circle cx="155" cy="115" r="72" fill="#e8e4d8" stroke="#1a2238" stroke-width="1.8"/>
+
+  <!-- Equator ring (horizontal great circle, shown as ellipse) -->
+  <ellipse cx="155" cy="115" rx="72" ry="22" fill="none" stroke="#1a2238" stroke-width="1.2"/>
+
+  <!-- Meridian ring (vertical great circle — full circle) -->
+  <circle cx="155" cy="115" r="72" fill="none" stroke="#8090a0" stroke-width="1" stroke-dasharray="5,3"/>
+
+  <!-- Polar axis -->
+  <line x1="155" y1="43" x2="155" y2="187" stroke="#1a2238" stroke-width="1.5"/>
+  <!-- North pole dot -->
+  <circle cx="155" cy="43" r="4" fill="#9a7b32"/>
+  <text x="163" y="41" font-size="9.5" fill="#9a7b32">N</text>
+  <text x="163" y="191" font-size="9.5" fill="#8090a0">S</text>
+
+  <!-- Horizon ring (horizontal, tilted to latitude) — simplified as heavy ellipse at bottom -->
+  <ellipse cx="155" cy="140" rx="72" ry="20" fill="none" stroke="#6070a0" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="233" y="137" font-size="9" fill="#6070a0">Horizon</text>
+
+  <!-- Star position on globe surface: at (δ=30°, RA=6h) -->
+  <!-- Declination 30° above equator on the right side of the sphere:
+       Equator at y=115; 30° up → y=115-72·sin30°/something... simplified placement:
+       Star at position (155+50, 115-38) = (205, 77) -->
+  <text x="207" y="74" font-size="14" fill="#9a7b32" text-anchor="middle">★</text>
+
+  <!-- Declination arc from equator to star on the meridian ring -->
+  <path d="M 205,115 A 38,38 0 0,0 207,77" fill="none" stroke="#9a7b32" stroke-width="1.8"/>
+  <text x="220" y="100" font-size="11" fill="#9a7b32" font-style="italic">δ</text>
+
+  <!-- RA arc along equator -->
+  <path d="M 227,115 A 72,22 0 0,0 155,93" fill="none" stroke="#9a7b32" stroke-width="1.4" stroke-dasharray="4,2"/>
+  <text x="200" y="108" font-size="10" fill="#9a7b32" font-style="italic">RA</text>
+
+  <!-- Operation labels (left side) -->
+  <text x="12" y="72" font-size="9.5" fill="#3a3028">1. Set latitude</text>
+  <text x="12" y="84" font-size="9.5" fill="#3a3028">   on meridian ring</text>
+  <text x="12" y="100" font-size="9.5" fill="#3a3028">2. Rotate star to</text>
+  <text x="12" y="112" font-size="9.5" fill="#3a3028">   meridian</text>
+  <text x="12" y="128" font-size="9.5" fill="#9a7b32">→ Read <tspan font-style="italic">δ</tspan> + <tspan font-style="italic">RA</tspan></text>
+  <text x="12" y="144" font-size="9.5" fill="#9a7b32">→ Read altitude,</text>
+  <text x="12" y="156" font-size="9.5" fill="#9a7b32">   azimuth</text>
+
+  <!-- Caption -->
+  <text x="160" y="205" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Analog coordinate computer &#x2014; rotate star to meridian, read &#x3b4;, RA, altitude, azimuth</text>
+</svg>

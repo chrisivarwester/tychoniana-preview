@@ -1,0 +1,69 @@
+<svg viewBox="0 0 320 215" font-family="Georgia,serif" font-size="11" fill="#1a2238" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="320" height="215" fill="#f8f4ec"/>
+
+  <!-- The full circle (thin guide): centre O=(155,112) r=82 -->
+  <circle cx="155" cy="112" r="82" fill="none" stroke="#c8bba0" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Horizon reference line through O -->
+  <line x1="60" y1="112" x2="248" y2="112" stroke="#8090a0" stroke-width="0.9" stroke-dasharray="5,3"/>
+  <text x="250" y="116" font-size="10" fill="#7080a8">Horizon</text>
+
+  <!-- Key points:
+       O = (155, 112)  — circle centre
+       A = (73,  112)  — left horizon intersection (0° reference)
+       P = (155, 194)  — alidade pivot on rim (bottom of circle)
+       S = (113,  30)  — star on upper arc (240° SVG = upper-left)
+         S = (155+82·cos240°, 112+82·sin240°) = (155−41, 112−71) = (114, 41)
+  -->
+
+  <!-- Radii to A and S (construction lines, light) -->
+  <line x1="155" y1="112" x2="73" y2="112" stroke="#b0bbd0" stroke-width="1"/>
+  <line x1="155" y1="112" x2="114" y2="41" stroke="#b0bbd0" stroke-width="1"/>
+
+  <!-- Central angle arc at O: r=30, from A-direction (left) to S-direction (upper-left), sweep=0 (CCW) -->
+  <!-- Start: O + 30·dir(A) = (155−30, 112) = (125, 112) -->
+  <!-- End:   O + 30·dir(S) = O + 30·(−41,−71)/82 = (155−15, 112−26) = (140, 86) -->
+  <path d="M 125,112 A 30,30 0 0,0 140,86" fill="none" stroke="#9a7b32" stroke-width="2"/>
+  <text x="122" y="99" font-size="13" fill="#9a7b32" font-weight="bold">2α</text>
+
+  <!-- O label -->
+  <text x="159" y="110" font-size="10" fill="#3a3028" font-style="italic">O</text>
+
+  <!-- Alidade lines from P to A and P to S -->
+  <line x1="155" y1="194" x2="73" y2="112" stroke="#1a2238" stroke-width="1.6"/>
+  <line x1="155" y1="194" x2="114" y2="41" stroke="#1a2238" stroke-width="1.6"/>
+
+  <!-- Inscribed angle arc at P: r=38 -->
+  <!-- Start: P + 38·dir(A−P) = (155,194)+38·(−82,−82)/116 = (155−26.9,194−26.9) = (128,167) -->
+  <!-- End:   P + 38·dir(S−P) = (155,194)+38·(−41,−153)/158 = (155−9.9,194−36.8) = (145,157) -->
+  <!-- Sweep=1 (clockwise) for the short arc going from PA-direction to PS-direction -->
+  <path d="M 128,167 A 38,38 0 0,1 145,157" fill="none" stroke="#9a7b32" stroke-width="2"/>
+  <text x="126" y="157" font-size="13" fill="#9a7b32" font-weight="bold">α</text>
+
+  <!-- Point labels -->
+  <!-- A (left horizon) -->
+  <circle cx="73" cy="112" r="3" fill="#1a2238"/>
+  <text x="63" y="109" font-size="10" fill="#3a3028" text-anchor="middle">A</text>
+  <text x="63" y="120" font-size="9" fill="#6070a0" text-anchor="middle">0°</text>
+
+  <!-- P (alidade pivot — key point, on the rim) -->
+  <circle cx="155" cy="194" r="5" fill="#9a7b32"/>
+  <text x="155" y="210" font-size="10" fill="#3a3028" text-anchor="middle">P — alidade pivot (on the rim)</text>
+
+  <!-- S (star) -->
+  <text x="114" y="33" font-size="16" fill="#9a7b32" text-anchor="middle">★</text>
+  <text x="104" y="26" font-size="10" fill="#3a3028">S</text>
+
+  <!-- Double-spacing annotation -->
+  <text x="260" y="55" font-size="10" fill="#3a3028" text-anchor="middle">Arc spans</text>
+  <text x="260" y="67" font-size="10" fill="#9a7b32" font-weight="bold" text-anchor="middle">2α</text>
+  <text x="260" y="79" font-size="10" fill="#3a3028" text-anchor="middle">→ scale at</text>
+  <text x="260" y="91" font-size="10" fill="#3a3028" text-anchor="middle">double spacing</text>
+  <text x="260" y="103" font-size="10" fill="#3a3028" text-anchor="middle">reads</text>
+  <text x="260" y="115" font-size="10" fill="#9a7b32" font-weight="bold" text-anchor="middle">α</text>
+  <line x1="247" y1="85" x2="185" y2="100" stroke="#9a7b32" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.7"/>
+
+  <!-- Caption -->
+  <text x="160" y="202" font-size="10.5" fill="#5a4e40" text-anchor="middle" font-style="italic">Euclid III.20: inscribed angle at rim (&#x3b1;) = &#xbd; central angle (2&#x3b1;)</text>
+</svg>
