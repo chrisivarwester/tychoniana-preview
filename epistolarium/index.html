@@ -566,7 +566,7 @@ function initMap(){
     c.-1600 borders; 'survival' (where the manuscripts rest today) rides an
     ordinary modern map. */
  _tilesHist=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}',{attribution:'Terrain: Esri',maxZoom:16,className:'hist-tiles'});
- _tilesModern=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap, © CARTO',subdomains:'abcd',maxZoom:12});
+ _tilesModern=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors',subdomains:'abcd',maxZoom:12});
  if(window.BORDERS_1600){
   _histLayer=L.geoJSON(window.BORDERS_1600,{
    style:{color:'#8a6d3b',weight:1.1,opacity:.55,fillColor:'#c9a23f',fillOpacity:.035},

@@ -45,8 +45,8 @@ function esc(s) {
 // ordinary modern map; "Tycho's world" (terrain + c.-1600 borders) is the
 // alternate base for reading the exile route and correspondence hubs in period.
 const map = L.map('map',{attributionControl:false}).setView([52, 12], 4);
-const tilesModern = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap contributors &copy; CARTO', subdomains: 'abcd', maxZoom: 18
+const tilesModern = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors', subdomains: 'abcd', maxZoom: 18
 });
 const histBase = L.layerGroup();
 histBase.addLayer(L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}', {

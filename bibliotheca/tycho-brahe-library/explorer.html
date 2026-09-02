@@ -446,7 +446,7 @@ function drawMap(){
   <div class="maptoggle" id="mapToggle"><button class="mtbtn on" data-l="survive">Where it survives</button><button class="mtbtn" data-l="acquire">Where acquired</button></div>
   <div id="map"></div><div class="cnt" id="survcount" style="margin-top:10px"></div>`;
  const map=L.map('map',{attributionControl:false}).setView([50,11],4);
- L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap, © CARTO'}).addTo(map);
+ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{subdomains:'abcd',maxZoom:12,attribution:'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors'}).addTo(map);
  const OWN=SV.filter(s=>isOwnVol(s.id));let layer=null;
  function surviveLayer(){const byInst={};OWN.forEach(s=>{if(s.institution)(byInst[s.institution]=byInst[s.institution]||[]).push(s);});
   const g=L.layerGroup();

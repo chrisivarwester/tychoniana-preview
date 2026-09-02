@@ -731,8 +731,8 @@ const state = {
 // ---------------------------------------------------------------------------
 const map = L.map("map", { worldCopyJump: true, zoomControl: true, attributionControl: false, minZoom: 2 })
   .setView([50.5, 14], 4);   // fallback frame; replaced by fitBounds once markers exist
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution: "© OpenStreetMap, © CARTO",
+L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+  attribution: "Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors",
   subdomains: "abcd",
   maxZoom: 18,
 }).addTo(map);

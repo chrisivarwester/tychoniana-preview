@@ -1,0 +1,63 @@
+name: Tychoniana preview watch
+
+# Uptime + integrity watch for the unlisted preview site
+# (https://chrisivarwester.github.io/tychoniana-preview/). Source of truth:
+# organon/docs/tychoniana/preview-watch/ — _publish_preview.ps1 installs this
+# file and preview_watch.py into the preview repo on every deploy.
+#
+# Layer: GitHub Actions (deterministic HTTP probe, no LLM, no cloud-routine
+# credits). It lives in the PUBLIC preview repo because Actions minutes are
+# free there; in the private organon repo 48 runs a day would eat the quota.
+#
+# Alerts: the probe exits non-zero when an alert is due, so GitHub's own
+# "workflow failed" e-mail reaches the repo owner with no configuration.
+# Add PUSHOVER_TOKEN, PUSHOVER_USER and RESEND_API_KEY (Settings → Secrets and
+# variables → Actions; same values as organon's shiptrack secrets) to also get
+# the phone push and the house mail. State is deduped through actions/cache,
+# so an outage alerts once, then every six hours, then once on recovery.
+#
+# GitHub disables a scheduled workflow after 60 days without a push to the
+# repo — a redeploy resets the clock (reminder in organon's events.json).
+
+on:
+  schedule:
+    # off-peak minutes: GitHub throttles on-the-hour and */N schedules
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: preview-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: .github
+          sparse-checkout-cone-mode: false
+
+      - name: Restore watch state
+        uses: actions/cache/restore@v4
+        with:
+          path: .watch-state
+          key: preview-watch-state-${{ github.run_id }}
+          restore-keys: preview-watch-state-
+
+      - name: Probe the site
+        env:
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: python3 .github/preview_watch.py --state .watch-state/state.json
+
+      - name: Save watch state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .watch-state
+          key: preview-watch-state-${{ github.run_id }}
