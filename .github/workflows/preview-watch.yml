@@ -1,9 +1,11 @@
-name: Tychoniana preview watch
+name: Tychoniana site watch
 
-# Uptime + integrity watch for the unlisted preview site
-# (https://chrisivarwester.github.io/tychoniana-preview/). Source of truth:
-# organon/docs/tychoniana/preview-watch/ — _publish_preview.ps1 installs this
-# file and preview_watch.py into the preview repo on every deploy.
+# Uptime + integrity watch. ONE workflow serves both deployments: the publish
+# script writes TYCHO_WATCH_BASE below to its own site's address, so the copy
+# in the preview repo watches the preview and the copy in the public repo
+# watches tychoniana.com. Source of truth: organon/docs/tychoniana/preview-watch/
+# — _publish_preview.ps1 and _publish_public.ps1 install this file and
+# preview_watch.py into their repo on every deploy.
 #
 # Layer: GitHub Actions (deterministic HTTP probe, no LLM, no cloud-routine
 # credits). It lives in the PUBLIC preview repo because Actions minutes are
@@ -31,7 +33,7 @@ on:
         default: false
 
 concurrency:
-  group: preview-watch
+  group: tychoniana-watch
   cancel-in-progress: false
 
 permissions:
@@ -58,6 +60,8 @@ jobs:
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
           PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          # rewritten by the publish script to the site this repo serves
+          TYCHO_WATCH_BASE: "https://chrisivarwester.github.io/tychoniana-preview/"
         run: |
           if [ "${{ github.event.inputs.test_alert }}" = "true" ]; then
             python3 .github/preview_watch.py --test-alert
