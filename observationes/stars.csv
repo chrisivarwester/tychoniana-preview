@@ -1,0 +1,778 @@
+﻿number_1602,record_key,constellation,n_in_constellation,description_1598,modern_name,longitude,latitude,longitude_deg,latitude_deg,magnitude,reading_1602_differs_from_kepler,hip,identification_grade,dreyer_flag,rawlins_flag,vmag,vvg_dlon,vvg_dlat,vvg_delta,house_error_arcmin,tboo_ii_page,page_1602,manuscript_1598_number,kepler_1627_number,reading_verdict,reading_id
+1,st-001,Aries,1,Australis in praecedente cornu,,27°37′ ♈,7°8½′ N,27.617,7.142,4:,False,8832,1,1,1,3.9,,0.1,0.1,0.8,258,303,1,484,agrees,ty063
+2,st-002,Aries,2,Borealis ac sequens in eoduem cornu,,28°23′ ♈,8°29′ N,28.383,8.483,4:,False,8903,1,1,1,2.6,1.1,-0.8,1.3,1.79,258,303,2,485,agrees,ty070
+3,st-003,Aries,3,Lucida in vertice capitis: Principalis,Hamal,2°6′ ♉,9°57′ N,32.1,9.95,3.,False,9884,1,1,1,2.0,-0.8,0.2,0.8,1.43,258,303,3,486,agrees,ty081
+4,st-004,Aries,4,In rictu duarum borea,,2°34′ ♉,7°23′ N,32.567,7.383,6:,False,10306,1,1,1,5.2,-1.2,-0.4,1.3,1.28,258,303,4,487,agrees,ty083
+5,st-005,Aries,5,Quae magis ad Austrum,,3°20′ ♉,5°42½′ N,33.333,5.708,6:,False,10732,1,1,1,5.6,-1.4,0.7,1.6,2.48,258,303,5,488,agrees,ty085
+6,st-006,Aries,6,Quae in cervice,,27°57′ ♈,5°24′ N,27.95,5.4,5:,False,9110,1,1,1,5.1,,2.1,2.1,1.94,258,303,6,489,agrees,ty067
+7,st-007,Aries,7,In renibus,,8°36′ ♉,6°7′ N,38.6,6.117,6:,False,12332,1,1,1,5.4,-1.6,0.8,1.8,2.64,258,303,7,490,agrees,ty100
+8,st-008,Aries,8,Quae in eductione caudae,,12°57′ ♉,4°8½′ N,42.95,4.142,5,False,13914,1,1,1,4.6,-1.0,-0.5,1.1,2.02,258,303,8,491,differs in latitude by 58″,ty116
+9,st-009,Aries,9,Praecedens trium in caudae,,15°15′ ♉,1°46½′ N,45.25,1.775,4,False,14838,1,1,1,4.3,1.1,0.7,1.3,1.32,258,303,9,492,agrees,ty118
+10,st-010,Aries,10,Media,,16°24′ ♉,2°50′ N,46.4,2.833,5,False,15110,1,1,1,4.9,-1.2,1.3,1.8,2.52,258,303,10,493,agrees,ty123
+11,st-011,Aries,11,Ultima,,17°50½′ ♉,2°36′ N,47.842,2.6,6,False,15627,1,1,1,5.3,-0.9,-1.9,2.1,2.69,258,303,11,494,agrees,ty126
+12,st-012,Aries,12,In femore,,11°22′ ♉,1°12′ N,41.367,1.2,6,False,13702,1,1,1,5.6,-1.9,-1.7,2.5,3.89,258,303,12,495,agrees,ty110
+13,st-013,Aries,13,In poplite,,9°35′ ♉,1°7′ N,39.583,1.117,6,False,13165,1,1,1,5.3,-0.9,-1.0,1.3,2.05,258,303,13,496,agrees,ty107
+14,st-014,Aries,14,In genu sinistro,,9°23′ ♉,1°30′ S,39.383,-1.5,6,False,13327,1,1,1,5.5,-0.7,10.2,10.2,10.06,258,303,14,497,agrees,ty105
+15,st-015,Aries,15,In genu dextro,,7°52′ ♉,0°39′ S,37.867,-0.65,6,False,12803,1,1,1,5.8,-1.5,2.0,2.5,3.03,258,303,15,498,agrees,ty097
+16,st-016,Aries,16,Parvula in alvo,,8°46′ ♉,4°1′ N,38.767,4.017,6,False,12640,1,1,1,5.7,-0.2,0.5,0.6,0.98,258,303,16,499,agrees,ty102
+17,st-017,Aries,17,Quae est infra lucidam capitis,,1°41′ ♉,9°13′ N,31.683,9.217,6,False,9836,1,1,1,5.0,,0.1,0.1,0.84,258,304,17,500,agrees,ty078
+18,st-018,Aries,18,Supra dorsum 4 informium praeced.,,10°35′ ♉,10°50½′ N,40.583,10.842,5.,False,12489,1,1,1,5.3,-0.9,0.7,1.1,1.39,258,304,18,501,agrees,ty109
+19,st-019,Aries,19,Sequens sc.\ ad basin occi.\ $\triangle$ ex seq.,,11°23′ ♉,11°16′ N,41.383,11.267,4,False,12719,1,1,1,4.7,-0.6,0.5,0.8,1.48,258,304,19,502,agrees,ty111
+20,st-020,Aries,20,Orientalis in basi trianguli,,12°40′ ♉,10°24′ N,42.667,10.4,3.,False,13209,1,1,1,3.6,-1.8,1.4,2.2,2.45,258,304,20,503,agrees,ty113
+21,st-021,Aries,21,In apice eiusdem trianguli ad bor.,,12°51′ ♉,12°25½′ N,42.85,12.425,4,False,13061,1,1,1,4.5,-3.3,2.0,3.8,3.52,258,304,21,504,agrees,ty115
+22,st-022,Taurus,1,Suprema in sectione,,18°0′ ♉,5°57′ S,48.0,-5.95,5,False,16369,1,1,1,4.1,1.1,-0.5,1.3,0.73,258,304,22,505,agrees,ty127
+23,st-023,Taurus,2,Altera post ipsam,,17°30′ ♉,7°29′ S,47.5,-7.483,6:,False,16322,1,1,1,5.1,1.2,,1.2,0.24,258,304,23,506,agrees,ty124
+24,st-024,Taurus,3,Tertia,,16°18′ ♉,8°49½′ S,46.3,-8.825,4,False,16083,1,1,1,3.7,2.0,-0.7,2.1,1.79,258,304,24,507,agrees,ty122
+25,st-025,Taurus,4,Quarta maxime austrina,,15°35½′ ♉,9°22½′ S,45.592,-9.375,4,False,15900,1,1,1,3.6,0.5,0.3,0.6,0.97,258,304,25,508,agrees,ty120
+26,st-026,Taurus,5,In dextro armo,,21°46′ ♉,8°41′ S,51.767,-8.683,5,False,17771,1,1,1,5.1,0.4,,0.4,0.39,258,304,26,509,agrees,ty138
+27,st-027,Taurus,6,In pectore,,25°1′ ♉,8°3′ S,55.017,-8.05,4,False,18724,1,1,1,3.4,2.8,2.6,3.8,3.17,258,304,27,510,agrees,ty152
+28,st-028,Taurus,7,In geno dextro,,27°59′ ♉,12°13½′ S,57.983,-12.225,4,False,19860,1,1,1,4.3,1.4,-0.3,1.4,0.8,258,304,28,511,agrees,ty161
+29,st-029,Taurus,8,In suffragine dextra,,24°19′ ♉,14°30½′ S,54.317,-14.508,4,False,18907,1,1,1,3.9,1.6,0.6,1.7,0.95,258,304,29,512,agrees,ty148
+30,st-030,Taurus,9,In geno sinistro,,4°9′ ♊,9°32′ S,64.15,-9.533,5,False,21589,1,1,1,4.3,1.4,-0.9,1.7,1.72,258,304,30,513,agrees,ty190
+31,st-031,Taurus,10,In suffragine sinistra,,3°11′ ♊,11°48′ S,63.183,-11.8,5,False,21402,1,1,1,4.2,2.1,1.0,2.3,1.67,258,304,31,514,agrees,ty186
+32,st-032,Taurus,11,In facie sucularum prima in naribus,,0°12′ ♊,5°46½′ S,60.2,-5.775,3,False,20205,1,1,1,3.7,1.4,-0.1,1.4,1.31,258,304,32,515,agrees,ty172
+33,st-033,Taurus,12,Inter hanc et oculorum boreum,,1°16½′ ♊,4°2′ S,61.275,-4.033,3,False,20455,1,1,1,3.8,0.9,1.2,1.5,1.09,258,304,33,516,agrees,ty175
+34,st-034,Taurus,13,Quae inter eandem er oculum austr.,,2°22′ ♊,5°53′ S,62.367,-5.883,4,False,20894,1,3,1,3.4,0.8,,0.8,0.69,258,304,34,517,agrees,ty179
+35,st-035,Taurus,14,"In austr.ocul. Aldebaran, Pililicium",Aldebaran,4°12½′ ♊,5°31′ S,64.208,-5.517,1.,False,21421,1,1,1,0.9,0.4,1.3,1.3,0.2,258,304,35,518,agrees,ty192
+36,st-036,Taurus,15,In boreo oculo,,2°53′ ♊,2°36½′ S,62.883,-2.608,3,False,20889,1,1,1,3.5,0.1,-0.2,0.2,0.57,258,304,36,519,agrees,ty184
+37,st-037,Taurus,16,Ad radicem cornu australis,,8°12′ ♊,3°40′ S,68.2,-3.667,6,False,22565,1,1,1,5.1,-1.4,-1.0,1.7,2.13,258,304,37,520,agrees,ty209
+38,st-038,Taurus,17,In eodem cornu duarum australior,,12°13½′ ♊,2°30½′ S,72.225,-2.508,6,False,23871,1,1,1,5.3,-0.9,-0.6,1.1,2.24,258,304,38,521,agrees,ty220
+39,st-039,Taurus,18,Quae magis at boream,,11°4′ ♊,1°49½′ S,71.067,-1.825,4.,False,23497,1,1,1,4.6,8.7,34.8,35.8,27.85,258,304,39,522,agrees,ty217
+40,st-040,Taurus,19,In extremum eiusdem,,19°12′ ♊,2°14′ S,79.2,-2.233,3,False,26451,1,1,1,3.0,0.9,-0.8,1.2,0.91,258,304,40,523,agrees,ty257
+41,st-041,Taurus,20,In origine cornu septentrionalis,,6°35′ ♊,0°40′ N,66.583,0.667,5,False,21881,1,1,1,4.3,0.1,-0.1,0.2,0.76,258,304,41,524,agrees,ty200
+42,st-042,Taurus,21,"In extremitate, communis cum dex.ped.Heniochi",Elnath,16°59½′ ♊,5°20′ N,76.992,5.333,2,False,25428,1,1,1,1.6,0.8,1.1,1.4,0.02,258,304,42,525,agrees,ty243
+43,st-043,Taurus,22,In aure duarum borea,,2°54′ ♊,1°4′ N,62.9,1.067,5,False,20711,1,1,1,4.3,1.3,-0.2,1.3,1.29,258,304,43,526,agrees,ty185
+44,st-044,Taurus,23,Australior,,2°38′ ♊,0°35′ N,62.633,0.583,4,False,20635,1,1,1,4.2,-0.5,,0.5,0.79,258,305,44,527,agrees,ty183
+45,st-045,Taurus,24,In collo duarum praecedens,,27°51′ ♉,1°12′ N,57.85,1.2,5,False,19038,1,1,1,4.4,1.7,1.2,2.1,1.53,258,305,45,528,agrees,ty160
+46,st-046,Taurus,25,Quae sequitur,,0°28½′ ♊,0°46½′ S,60.475,-0.775,6,False,19990,1,1,1,4.9,1.2,-1.2,1.7,1.53,258,305,46,529,agrees,ty173
+47,st-047,Taurus,26,In cervice quadrilla. praeced. Austr.,,0°4′ ♊,5°16′ N,60.067,5.267,6,False,19513,1,1,1,5.4,1.6,0.4,1.7,0.56,258,305,47,530,agrees,ty169
+48,st-048,Taurus,27,Eiusdem lateris borea,,29°45½′ ♉,7°55′ N,59.758,7.917,5,False,19205,1,1,1,5.2,-1.2,-0.9,1.5,2.75,258,305,48,531,agrees,ty168
+49,st-049,Taurus,28,Sequentis lateris australis,,2°34′ ♊,3°57′ N,62.567,3.95,5,False,20430,1,1,1,5.4,-1.2,1.4,1.9,2.34,258,305,49,532,agrees,ty182
+50,st-050,Taurus,29,Eiusdem lateris borea,,2°25½′ ♊,5°45½′ N,62.425,5.758,5.,False,20250,1,1,1,5.0,-4.6,0.1,4.6,5.72,258,,50,533,not read,
+51,st-051,Taurus,30,Occidentalis lucidior. tri. in pleiadib.,,23°50′ ♉,4°11′ N,53.833,4.183,5,True,17499,1,1,1,3.7,37.1,-2.1,37.1,2.41,258,305,51,534,differs in longitude by -36′,ty145
+52,st-052,Taurus,31,Infima et occidentali proxima,,24°3′ ♉,4°2′ N,54.05,4.033,6.,False,17608,1,1,1,4.1,4.8,-7.2,8.6,8.49,258,305,52,535,agrees,ty147
+53,st-053,Taurus,32,Media et lucida pleiadem,,24°24′ ♉,4°0′ N,54.4,4.0,3,False,17702,1,1,1,2.8,1.4,0.5,1.5,0.7,258,305,53,536,agrees,ty149
+54,st-054,Taurus,33,Quae est in cuspide ad ortum,,24°47′ ♉,3°55′ N,54.783,3.917,5,False,17847,1,1,1,3.6,0.3,-2.5,2.5,2.19,258,,54,537,not read,
+55,st-055,Taurus,34,In ungula pedis sequentis,,19°57′ ♉,13°30′ S,49.95,-13.5,6,False,17563,1,1,1,5.3,1.8,-0.4,1.8,1.17,258,305,55,538,agrees,ty135
+56,st-056,Taurus,35,Stellula in talo pedis sequentis,,0°10′ ♊,12°2′ S,60.167,-12.033,6.,False,20522,1,1,1,5.1,0.9,0.4,1.0,0.34,258,305,56,539,agrees,ty171
+57,st-057,Taurus,36,Quae in armo dextro,,1°58½′ ♊,8°41′ S,61.975,-8.683,5,False,20901,1,1,1,5.0,0.2,0.2,0.3,0.08,258,305,57,540,agrees,ty178
+58,st-058,Taurus,37,Praecedens trium infra Suculas,,1°42′ ♊,6°56½′ S,61.7,-6.942,5,False,20732,1,1,1,4.7,1.0,-0.5,1.1,0.68,258,305,58,541,agrees,ty177
+59,st-059,Taurus,38,Media earundem,,3°28′ ♊,7°4½′ S,63.467,-7.075,5,False,21273,1,1,1,4.7,0.1,-0.8,0.8,1.04,258,305,59,542,differs in longitude by 27′ and latitude by 47′,ty188
+60,st-060,Taurus,39,Sequens,,4°55′ ♊,6°17½′ S,64.917,-6.292,5,False,21683,4,2,1,4.7,0.7,4.7,4.8,3.29,258,,60,543,not read,
+61,st-061,Taurus,40,Parvula in australi cornu,,15°2½′ ♊,1°4′ S,75.042,-1.067,6,True,24822,1,1,1,5.0,-1.9,0.8,2.0,3.16,258,305,61,544,agrees,ty232
+62,st-062,Taurus,41,Sequens in eodem cornu,,16°55½′ ♊,1°20′ S,76.925,-1.333,6,False,25539,1,1,1,4.9,0.1,-0.6,0.6,0.98,258,305,62,545,differs in longitude by -50′,ty237
+63,st-063,Taurus,42,Parvula sequens quatuor in sectione,,17°33′ ♉,9°34½′ S,47.55,-9.575,6,False,16511,1,1,1,5.8,0.7,3.7,3.8,3.34,258,305,63,546,agrees,ty125
+64,st-064,Taurus,43,Quae est inter binas praec. in $\box$ colli,,29°22½′ ♉,6°33′ S,59.375,-6.55,5,True,19171,1,1,1,5.2,-0.3,,0.3,,258,305,64,547,agrees,ty166
+65,st-065,Gemini,1,"In superiore capite Castor, Apollo",Castor,14°41′ ♋,10°2′ N,104.683,10.033,2,False,36850,1,1,1,1.6,0.3,2.1,2.1,1.95,259,305,65,548,agrees,ty307
+66,st-066,Gemini,2,"In inferiore capite Pollux, Hercules",Pollux,17°43′ ♋,6°38′ N,107.717,6.633,2,False,37826,1,1,1,1.2,-0.3,1.3,1.3,5.21,259,305,66,549,agrees,ty316
+67,st-067,Gemini,3,In sinistra manu praecedentis gemini,,5°32′ ♋,10°58′ N,95.533,10.967,5,False,33018,1,1,1,3.6,1.1,1.1,1.5,0.8,259,305,67,550,differs in longitude by 20′,ty288
+68,st-068,Gemini,4,In sinistro brachio,,9°54′ ♋,7°43′ N,99.9,7.717,4,False,34693,1,1,1,4.4,-1.5,-0.3,1.5,2.53,259,305,68,551,agrees,ty296
+69,st-069,Gemini,5,In scapulis eiusdem,,13°24′ ♋,5°42½′ N,103.4,5.708,4,False,36046,1,1,1,3.8,-0.1,0.8,0.8,1.66,259,305,69,552,differs in latitude by -38′,ty303
+70,st-070,Gemini,6,In dextro humero,,15°47′ ♋,5°10′ N,105.783,5.167,5,False,36962,1,1,1,4.1,-0.5,0.9,1.0,1.43,259,305,70,553,agrees,ty310
+71,st-071,Gemini,7,In sinistro humero sequentis gemini,,18°6′ ♋,3°3′ N,108.1,3.05,4,False,37740,1,1,1,3.6,-0.2,-0.7,0.7,1.55,259,306,71,554,agrees,ty318
+72,st-072,Gemini,8,In latere dextro antecedentis $\gemini$,,13°18′ ♋,2°56′ N,103.3,2.933,6,False,35846,1,1,1,5.0,-0.6,-0.6,0.8,2.01,259,306,72,555,agrees,ty302
+73,st-073,Gemini,9,Stellula in sinistro cubito superior $\gemini$,,14°10′ ♋,6°0½′ N,104.167,6.008,6,False,36429,1,3,4,5.0,6.1,-2.6,6.6,5.77,259,306,73,556,agrees,ty306
+74,st-074,Gemini,10,In boreali et supremo genu,,4°22′ ♋,2°11′ N,94.367,2.183,3,False,32246,1,1,1,3.1,0.2,-9.8,9.8,9.86,259,306,74,557,agrees,ty286
+75,st-075,Gemini,11,In sinsitro genu sequentis,,9°26′ ♋,2°6½′ S,99.433,-2.108,3,False,34088,1,1,1,4.0,-0.6,1.2,1.4,1.92,259,306,75,558,agrees,ty295
+76,st-076,Gemini,12,Quae in ventre meridionalis gemini,,12°56′ ♋,0°13½′ S,102.933,-0.225,3,False,35550,1,1,1,3.5,1.1,,1.1,0.24,259,306,76,559,agrees,ty300
+77,st-077,Gemini,13,In poplite inferioris gemini,,13°13′ ♋,5°41′ S,103.217,-5.683,4,False,35350,1,1,1,3.6,,0.3,0.3,1.13,259,306,77,560,agrees,ty301
+78,st-078,Gemini,14,In pede praece. gemini antecedens,,27°53′ ♊,0°58′ S,87.883,-0.967,4,False,29655,1,1,1,3.3,-0.5,1.7,1.8,2.41,259,306,78,561,agrees,ty276
+79,st-079,Gemini,15,"Sequens in eodem pede, dicta Calx",,29°44′ ♊,0°53′ S,89.733,-0.883,3,False,30343,1,1,1,2.9,-0.4,1.4,1.5,1.08,259,306,79,562,agrees,ty279
+80,st-080,Gemini,16,In extremit. pedis dextri praeced. $\gemini$,,1°14′ ♋,3°8′ S,91.233,-3.133,4,False,30883,1,1,1,4.1,0.1,1.6,1.6,1.7,259,306,80,563,agrees,ty281
+81,st-081,Gemini,17,Lucida pedis,,3°31′ ♋,6°48½′ S,93.517,-6.808,2,False,31681,1,1,1,1.9,1.2,1.3,1.8,0.93,259,306,81,564,agrees,ty285
+82,st-082,Gemini,18,In infimo pede sequentis $\gemini$,,5°29½′ ♋,10°9′ S,95.492,-10.15,4,False,32362,1,1,1,3.3,9.7,1.1,9.6,8.09,259,306,82,565,agrees,ty287
+83,st-083,Gemini,19,In calce pedis eiusdem,,7°56′ ♋,9°41′ S,97.933,-9.683,6,False,33202,1,1,1,4.7,-1.2,1.0,1.6,1.58,259,306,83,566,agrees,ty292
+84,st-084,Gemini,20,Quae est supra genu inferioris gemini,,6°23½′ ♋,1°12′ S,96.392,-1.2,6,True,32921,1,1,1,5.3,0.4,0.5,0.6,1.07,259,306,84,567,agrees,ty289
+85,st-085,Gemini,21,In femore superioris gemini,,8°37½′ ♋,1°31′ N,98.625,1.517,6,False,33927,1,1,1,5.2,0.7,-1.4,1.6,1.49,259,306,85,568,agrees,ty294
+86,st-086,Gemini,22,Quae infra caput inferius in manu,,19°42′ ♋,5°44′ N,109.7,5.733,6,False,38538,1,1,1,5.0,-1.5,0.3,1.5,2.47,259,306,86,569,agrees,ty320
+87,st-087,Gemini,23,Parvula inter utrumque caput,,17°4½′ ♋,7°24′ N,107.075,7.4,5,False,37629,1,1,1,4.2,-1.9,1.7,2.5,2.07,259,306,87,570,agrees,ty313
+88,st-088,Gemini,24,Ad aurem superioris gemini,,13°29′ ♋,9°42′ N,103.483,9.7,5,False,36366,1,1,1,4.2,1.1,2.3,2.5,3.86,259,306,88,571,agrees,ty304
+89,st-089,Gemini,25,Praeced. ad summum ped. Propus graece,,25°22′ ♊,0°13′ S,85.367,-0.217,4,False,28734,1,1,1,4.2,0.7,0.3,0.7,0.52,259,306,89,572,agrees,ty270
+90,st-090,Cancer,1,Nebul. in pect. quae Praesepe vocatur,,1°46½′ ♌,1°14′ N,121.775,1.233,nebulosa,False,,1,3,1,,,,,0.97,260,306,95,577,agrees,ty343
+91,st-091,Cancer,2,Borea praecedentium in $\box$ cancri,,29°49′ ♋,1°31½′ N,119.817,1.525,5,False,41909,1,1,1,5.3,1.5,0.7,1.7,0.55,260,306,96,578,agrees,ty337
+92,st-092,Cancer,3,Australior,,0°9½′ ♌,0°47½′ S,120.158,-0.792,5,False,41822,1,1,1,5.3,0.4,-0.5,0.7,1.22,260,306,97,579,agrees,ty338
+93,st-093,Cancer,4,Asellus boreus,,1°57′ ♌,3°8′ N,121.95,3.133,4,False,42806,1,1,1,4.7,1.7,1.5,2.3,1.12,260,306,98,580,agrees,ty344
+94,st-094,Cancer,5,Asellus australis,,3°8′ ♌,0°4′ S,123.133,-0.067,4,False,42911,1,1,1,3.9,0.9,7.8,7.9,6.35,260,306,99,581,agrees,ty345
+95,st-095,Cancer,6,In brachio austrino,,8°3½′ ♌,5°8′ S,128.058,-5.133,3,False,44066,1,1,1,4.3,0.8,1.2,1.4,1.07,260,306,100,582,agrees,ty358
+96,st-096,Cancer,7,In brachio boreali,,0°44′ ♌,10°23′ N,120.733,10.383,5,False,43103,1,1,1,4.0,2.3,0.5,2.3,1.03,260,306,101,583,agrees,ty342
+97,st-097,Cancer,8,In extremitate pedis borei,,23°56′ ♋,1°15½′ N,113.933,1.258,5,False,39780,1,1,1,5.3,-1.7,3.4,3.8,3.78,260,306,102,584,agrees,ty324
+98,st-098,Cancer,9,In extremitate pedis austrini,,25°4′ ♋,7°5′ S,115.067,-7.083,5,False,39567,1,1,1,5.1,-0.5,-0.7,0.8,1.86,260,307,103,585,agrees,ty328
+99,st-099,Cancer,10,Quae in radice caudae lucidior,,25°45½′ ♋,2°18½′ S,115.758,-2.308,4,False,40167,1,1,1,4.7,0.6,0.8,1.0,0.21,260,307,104,586,differs in magnitude (6 for 4),ty329
+100,st-100,Cancer,11,Proxime sequens in dorso,,28°12½′ ♋,1°4′ S,118.208,-1.067,6,False,41117,1,1,1,5.9,0.1,1.6,1.6,1.67,260,307,105,587,agrees,ty336
+101,st-101,Cancer,12,Borealis trium in brachio australi,,6°47½′ ♌,1°54′ S,126.792,-1.9,6,False,43970,1,1,1,5.2,1.1,1.4,1.7,1.7,260,307,106,588,agrees,ty354
+102,st-102,Cancer,13,Australis in eodem,,10°36′ ♌,5°36′ S,130.6,-5.6,5:,False,44798,1,1,1,5.2,0.3,-0.1,0.3,0.67,260,307,107,589,differs in magnitude (6 for 5),ty363
+103,st-103,Cancer,14,Duarum in rostro septentrionalis,,5°27′ ♌,7°14′ N,125.45,7.233,6,False,44405,1,1,1,5.4,1.2,1.0,1.5,1.02,260,307,108,590,agrees,ty349
+104,st-104,Cancer,15,Inferior et australis,,7°36½′ ♌,5°20′ N,127.608,5.333,6,False,44946,1,1,1,5.2,1.8,3.3,3.8,3.46,260,307,109,591,agrees,ty357
+105,st-105,Leo,1,In naribus,,9°41½′ ♌,10°23′ N,129.692,10.383,4,False,46146,1,1,1,4.5,1.8,0.9,2.0,0.99,261,307,110,592,differs in longitude by -37′,ty360
+106,st-106,Leo,2,In hiatu,,12°16½′ ♌,7°52′ N,132.275,7.867,4,False,46750,1,1,1,4.3,1.5,-0.3,1.5,0.85,261,307,111,593,agrees,ty365
+107,st-107,Leo,3,In capite duarum borealior,,15°51′ ♌,12°21′ N,135.85,12.35,4,False,48455,1,1,1,3.9,1.4,-1.0,1.7,1.99,261,307,112,594,agrees,ty371
+108,st-108,Leo,4,Australior,,15°5′ ♌,9°40′ N,135.083,9.667,3,False,47908,1,1,1,3.0,3.0,1.3,3.2,2.17,261,307,113,595,differs in magnitude (5 for 3),ty370
+109,st-109,Leo,5,In collo trium borea,,21°57½′ ♌,11°50′ N,141.958,11.833,3,False,50335,1,1,1,3.4,1.6,0.4,1.6,0.97,261,307,114,596,differs in magnitude (5 for 3),ty381
+110,st-110,Leo,6,Media et lucida coli,,23°59′ ♌,8°47′ N,143.983,8.783,2,False,50583,1,1,1,2.0,1.0,0.7,1.2,2.52,261,307,115,597,differs in magnitude (3 for 2),ty387
+111,st-111,Leo,7,Australis,,22°20′ ♌,4°52′ N,142.333,4.867,3,False,49583,1,1,1,3.5,-0.1,-1.5,1.5,1.77,261,307,116,598,agrees,ty383
+112,st-112,Leo,8,"Cor, regulus, Basiliscus",Regulus,24°17′ ♌,0°26½′ N,144.283,0.442,1,False,49669,1,1,1,1.4,0.2,0.6,0.6,2.23,261,307,117,599,agrees,ty388
+113,st-113,Leo,9,In pectore australior,,24°50½′ ♌,1°25½′ S,144.842,-1.425,5,False,49637,1,1,1,4.4,0.6,-0.4,0.8,1.18,261,307,118,600,differs in magnitude (4 for 5),ty390
+114,st-114,Leo,10,Antecedens regulum proxime,,21°43½′ ♌,0°0½′ N,141.725,0.008,4,False,48883,1,1,1,5.3,2.7,1.3,3.0,2.11,261,307,119,601,differs in magnitude (5 for 4),ty379
+115,st-115,Leo,11,Quae hanc praecedit in genu dextro,,17°54½′ ♌,0°16′ N,137.908,0.267,5,False,47723,1,1,1,5.4,0.5,3.4,3.4,3.33,261,307,120,602,differs in latitude by -32′ and magnitude (4 for 5),ty375
+116,st-116,Leo,12,In Drace dextra,,16°7′ ♌,3°10′ S,136.117,-3.167,4,False,46771,1,1,1,5.0,-1.8,-0.4,1.8,3.22,261,307,121,603,agrees,ty373
+117,st-117,Leo,13,Sequens in altero pede,,18°40′ ♌,3°47′ S,138.667,-3.783,4,False,47508,1,1,1,3.5,1.7,0.5,1.8,0.11,261,307,122,604,agrees,ty376
+118,st-118,Leo,14,In Drace sinistra,,23°46′ ♌,3°55′ S,143.767,-3.917,4,False,49029,1,1,1,4.7,-1.0,-0.9,1.4,2.3,261,,123,605,not read,
+119,st-119,Leo,15,In sinistra axilla,,0°48′ ♍,0°8′ N,150.8,0.133,4,False,51624,1,1,1,3.8,1.2,,1.2,0.36,261,307,124,606,differs in magnitude (6 for 4),ty397
+120,st-120,Leo,16,In ventre trium antecedens,,22°24′ ♌,2°10′ N,142.4,2.167,6,False,50333,3,3,4,5.4,187.7,38.6,191.4,,261,307,125,607,agrees,ty384
+121,st-121,Leo,17,Sequentium borealior,,2°6′ ♍,5°56′ N,152.1,5.933,6,False,52689,1,1,1,5.5,-0.8,-0.5,1.0,2.56,261,307,126,608,agrees,ty401
+122,st-122,Leo,18,Australior,,4°5′ ♍,2°49½′ N,154.083,2.825,6,False,52911,1,1,1,5.3,1.6,-1.3,2.1,1.68,261,307,127,609,differs in magnitude (5 for 6),ty404
+123,st-123,Leo,19,Praecedens duarum in lumbis,,3°14′ ♍,12°53′ N,153.233,12.883,5,False,53954,1,1,1,4.4,2.5,0.9,2.6,1.86,261,307,128,610,differs in magnitude (2 for 5),ty403
+124,st-124,Leo,20,Quae sequitur lucida,,5°41′ ♍,14°20′ N,155.683,14.333,2,False,54872,1,1,1,2.6,1.8,-0.4,1.8,2.32,261,307,129,611,agrees,ty406
+125,st-125,Leo,21,In clune duar. praecedens et borea,,7°50′ ♍,9°41½′ N,157.833,9.692,3,False,54879,1,1,1,3.3,0.9,-1.1,1.4,1.75,261,307,130,612,differs in magnitude (2 for 3),ty407
+126,st-126,Leo,22,Sequens et austrina,,9°8′ ♍,7°50½′ N,159.133,7.842,6,False,55016,1,1,1,5.3,-4.4,1.7,4.7,5.4,261,308,131,613,agrees,ty408
+127,st-127,Leo,23,In femore,,11°58½′ ♍,6°7′ N,161.975,6.117,3,False,55642,1,1,1,4.0,-0.1,-1.0,1.0,1.18,261,308,132,614,agrees,ty411
+128,st-128,Leo,24,In genus posteriori,,13°8½′ ♍,1°40′ N,163.142,1.667,4,False,55434,1,1,1,4.1,0.1,1.7,1.7,1.88,261,308,133,615,agrees,ty413
+129,st-129,Leo,25,Media in pede,,15°57′ ♍,0°33′ S,165.95,-0.55,4,False,55945,1,1,1,4.9,-0.5,-0.5,0.7,1.35,261,308,134,616,agrees,ty415
+130,st-130,Leo,26,Infima in pede,,19°27′ ♍,3°2½′ S,169.45,-3.042,4,False,56647,1,1,1,4.3,1.3,-0.5,1.4,0.46,261,308,135,617,agrees,ty428
+131,st-131,Leo,27,In extremo caudae lucida,Denebola,16°3′ ♍,12°18′ N,166.05,12.3,1.,False,57632,1,1,1,2.1,2.0,-0.2,2.0,2.72,261,308,136,618,agrees,ty416
+132,st-132,Leo,28,Extrema in ungula pedis sinistri,,16°32′ ♌,4°48′ S,136.533,-4.8,6,False,46774,1,1,1,5.1,3.5,7.0,7.8,7.37,261,308,137,619,agrees,ty374
+133,st-133,Leo,29,In ungula alterius pedis praeced.,,16°1½′ ♌,5°43′ S,136.025,-5.717,5,False,46454,1,1,1,5.4,-3.1,7.8,8.4,8.73,261,308,138,620,agrees,ty372
+134,st-134,Leo,30,Quae in medio corpore fere,,0°14′ ♍,10°17′ N,150.233,10.283,6,False,52686,1,1,1,5.5,0.9,-1.9,2.1,2.04,261,308,139,621,agrees,ty396
+135,st-135,Virgo,1,Borealis praecedent. in $\box$ capitis,,17°44′ ♍,6°6½′ N,167.733,6.108,5,False,57328,1,1,1,4.8,1.2,0.2,1.2,0.89,261,308,150,632,agrees,ty418
+136,st-136,Virgo,2,Australis,,18°33′ ♍,4°37′ N,168.55,4.617,5,False,57380,1,1,1,4.0,1.8,-0.8,2.0,2.34,261,308,151,633,agrees,ty423
+137,st-137,Virgo,3,Sequentium duar. in vulto borea,,22°7′ ♍,8°33½′ N,172.117,8.558,5,False,58948,1,1,1,4.1,1.6,-1.7,2.3,2.06,261,308,152,634,agrees,ty435
+138,st-138,Virgo,4,Australis,,21°58′ ♍,6°10′ N,171.967,6.167,5,False,58590,1,1,1,4.7,1.0,-0.5,1.1,0.77,261,308,153,635,agrees,ty434
+139,st-139,Virgo,5,In extremo alae austrinae et sinistrae,,21°32′ ♍,0°43′ N,171.533,0.717,3,False,57757,1,1,1,3.6,-1.6,-1.6,2.2,3.13,261,308,154,636,agrees,ty433
+140,st-140,Virgo,6,Praecedens quatuor in sinistra ala,,29°16′ ♍,1°25′ N,179.267,1.417,4,False,60129,1,1,1,3.9,,-2.3,2.3,2.85,261,308,155,637,agrees,ty447
+141,st-141,Virgo,7,Altera sequens,,4°35½′ ♎,2°50′ N,184.592,2.833,3,False,61941,1,1,1,2.7,2.6,-0.6,2.7,2.81,261,308,156,638,agrees,ty453
+142,st-142,Virgo,8,Penultima parva,,9°28½′ ♎,2°23½′ N,189.475,2.392,6.,False,63414,1,1,1,5.8,9.9,-0.8,9.9,8.79,261,308,157,639,agrees,ty460
+143,st-143,Virgo,9,Ultima,,12°37′ ♎,1°45′ N,192.617,1.75,4,False,64238,1,1,1,4.4,3.1,1.1,3.3,2.29,261,308,158,640,agrees,ty465
+144,st-144,Virgo,10,In dextro latere sub cingulo,,5°55′ ♎,8°41′ N,185.917,8.683,3,False,63090,1,1,1,3.4,0.8,-1.8,2.0,4.33,261,308,159,641,agrees,ty455
+145,st-145,Virgo,11,In dextra et borea ala trium praeced.,,29°53′ ♍,13°36½′ N,179.883,13.608,5,False,61960,1,1,1,4.9,2.2,-3.1,3.7,3.95,261,308,160,642,agrees,ty448
+146,st-146,Virgo,12,Reliquarum duarum austrina,,1°52′ ♎,11°37′ N,181.867,11.617,6,False,62267,1,1,1,5.2,-0.3,-2.3,2.3,3.15,261,308,161,643,agrees,ty451
+147,st-147,Virgo,13,"Borealior, Vindemiatrix vocata",,4°23½′ ♎,16°15½′ N,184.392,16.258,3,False,63608,1,1,1,2.8,-0.3,-1.8,1.9,3.74,261,308,162,644,agrees,ty452
+148,st-148,Virgo,14,In sinistra manu spica \virgo,Spica,18°16′ ♎,1°59′ S,198.267,-1.983,1,False,65474,1,1,1,1.0,0.6,-2.5,2.6,2.85,261,308,163,645,agrees,ty473
+149,st-149,Virgo,15,Sub perizomate in clune dextra,,15°22½′ ♎,8°10′ N,195.375,8.167,3,False,66249,2,1,1,3.4,72.9,30.0,78.1,,261,308,164,646,agrees,ty470
+150,st-150,Virgo,16,In sinistra coxa borealisima,,17°58½′ ♎,3°11′ N,197.975,3.183,6:,False,66006,1,1,1,4.7,3.1,-1.7,3.5,2.75,261,308,165,647,agrees,ty472
+151,st-151,Virgo,17,Sequentium duarum borealior,,21°9½′ ♎,1°45½′ N,201.158,1.758,6,False,66803,1,1,1,5.0,-0.6,-1.3,1.4,2.39,261,308,166,648,agrees,ty478
+152,st-152,Virgo,18,Australior,,19°44′ ♎,0°19½′ S,199.733,-0.325,6,False,66098,1,1,1,5.2,-3.0,-4.1,5.1,5.9,261,308,167,649,agrees,ty477
+153,st-153,Virgo,19,In genus sinsitro,,24°44′ ♎,2°24½′ N,204.733,2.408,6,False,68940,3,0,1,5.5,146.7,56.0,156.8,,261,308,168,650,agrees,ty482
+154,st-154,Virgo,20,Borealior in superiori fimbra duar.,,27°49′ ♎,11°2½′ N,207.817,11.042,5,False,70012,1,1,1,5.1,-0.2,1.0,1.0,1.66,261,309,169,651,agrees,ty488
+155,st-155,Virgo,21,Medium trium in fimbria,,28°9′ ♎,7°18½′ N,208.15,7.308,4,False,69701,1,1,1,4.1,3.6,-1.9,4.1,5.77,261,309,170,652,agrees,ty490
+156,st-156,Virgo,22,Infima et australis,,28°51′ ♎,2°57½′ N,208.85,2.958,4,False,69427,1,1,1,4.2,4.6,-1.7,4.9,3.6,261,309,171,653,agrees,ty491
+157,st-157,Virgo,23,Ausralior duar. in superio. fimbria,,29°51½′ ♎,11°48′ N,209.858,11.8,4.,False,70755,1,1,1,4.8,1.9,-0.1,1.8,0.41,261,,172,654,not read,
+158,st-158,Virgo,24,In australi pede,,1°22′ ♏,0°31½′ N,211.367,0.525,4,False,69974,1,1,1,4.5,1.1,-0.1,1.2,0.11,261,,173,655,not read,
+159,st-159,Virgo,25,In boreali seu dextro pede,,4°30′ ♏,9°49′ N,214.5,9.817,4,False,71957,1,1,1,3.9,2.0,-4.7,5.1,6.96,261,,174,656,not read,
+160,st-160,Virgo,26,Inferior duar. inter uindem. en cing.,,1°21′ ♎,10°26′ N,181.35,10.433,6,False,61968,1,1,1,5.6,0.6,-0.7,0.9,1.18,261,309,175,657,agrees,ty450
+161,st-161,Virgo,27,Sequens illam quae in clune dextra,,21°37½′ ♎,9°40½′ N,201.625,9.675,6,False,67929,1,1,1,5.2,-0.2,-2.6,2.6,3.35,261,309,176,658,agrees,ty479
+162,st-162,Virgo,28,Quae est in cervice,,27°45½′ ♍,4°59½′ N,177.758,4.992,6,False,60172,1,1,1,5.0,2.8,5.8,6.4,4.61,261,309,177,659,agrees,ty441
+163,st-163,Virgo,29,Parvula sequens vindemiatricem,,8°25′ ♎,16°14′ N,188.417,16.233,6,False,64792,1,1,1,5.2,3.1,-0.4,3.0,0.38,261,309,178,660,agrees,ty459
+164,st-164,Virgo,30,Praeced. trium in rec. linea alae bor.,,10°11′ ♎,12°40½′ N,190.183,12.675,5,False,64852,1,1,1,4.8,1.5,-0.5,1.6,0.77,261,309,179,661,agrees,ty461
+165,st-165,Virgo,31,Media earundem,,14°46′ ♎,12°34½′ N,194.767,12.575,6,False,66200,1,1,1,4.9,2.7,-1.0,2.8,2.32,261,309,180,662,agrees,ty469
+166,st-166,Virgo,32,Sequens,,22°11′ ♎,13°7½′ N,202.183,13.125,5,False,68520,1,1,1,4.2,-1.0,-2.0,2.2,2.63,261,309,181,663,agrees,ty480
+167,st-167,Virgo,33,Quae est inter quartam en quintem,,22°56½′ ♍,3°22½′ N,172.942,3.375,6,False,58510,1,1,1,5.4,1.2,-1.4,1.8,1.49,261,309,182,664,agrees,ty437
+168,st-168,Libra,1,Lanx austrina,,9°31′ ♏,0°26′ N,219.517,0.433,2,False,72622,1,1,3,2.8,0.4,-3.0,3.0,3.76,262,309,189,671,agrees,ty503
+169,st-169,Libra,2,Quae est supra australem lancem,,8°42′ ♏,1°55′ N,218.7,1.917,5,False,72489,1,1,1,5.3,-5.8,9.5,11.1,11.62,262,309,190,672,agrees,ty500
+170,st-170,Libra,3,Lanx borea,,13°48′ ♏,8°35′ N,223.8,8.583,2,False,74785,1,1,1,2.6,0.5,-2.4,2.5,2.87,262,309,191,673,agrees,ty510
+171,st-171,Libra,4,Quae supra borealem lanc. ad. occas.,,9°40½′ ♏,8°18½′ N,219.675,8.308,4,False,73473,1,1,1,4.9,2.5,-1.2,2.7,1.76,262,309,192,674,agrees,ty504
+172,st-172,Libra,5,Prima ab austrina lancem ad ortum,,12°26½′ ♏,1°14′ N,222.442,1.233,5,False,73945,1,1,1,5.2,45.8,0.5,45.8,,262,309,193,675,agrees,ty507
+173,st-173,Libra,6,Secunda ab eadem lance ad ortum,,16°19′ ♏,2°58½′ N,226.317,2.975,6,False,75118,1,3,1,6.1,2.1,-8.5,8.7,8.43,262,309,194,676,agrees,ty515
+174,st-174,Libra,7,Tertia ab eadem lance ad ortum,,19°33′ ♏,4°28′ N,229.55,4.467,3.,False,76333,1,1,1,3.9,0.6,-2.3,2.4,2.16,262,309,195,677,agrees,ty524
+175,st-175,Libra,8,Quae est infra hanc ad ortum,,21°48½′ ♏,4°4′ N,231.808,4.067,4,False,77060,1,1,1,5.4,-1.4,-0.9,1.7,2.73,262,309,196,678,agrees,ty527
+176,st-176,Libra,9,Quae infra eandem ad occasum,,19°27′ ♏,2°21′ N,229.45,2.35,4,False,76126,1,1,1,5.5,-0.1,-4.2,4.2,4.44,262,309,197,679,agrees,ty523
+177,st-177,Libra,10,Quae est infra boream lanc. ad ort.,,15°46′ ♏,8°7′ N,225.767,8.117,4.,False,75379,1,1,1,4.9,0.5,-0.6,0.8,1.83,262,309,198,680,agrees,ty514
+178,st-178,Scorpius,1,Suprema in fronte,,27°36′ ♏,1°5′ N,237.6,1.083,2.,False,78820,1,1,1,2.6,1.3,-1.5,1.9,1.46,263,309,207,689,agrees,ty538
+179,st-179,Scorpius,2,Media in fronte,,26°59′ ♏,1°54½′ S,236.983,-1.908,3:,False,78401,1,1,1,2.3,1.2,-1.5,1.9,1.83,263,309,208,690,agrees,ty535
+180,st-180,Scorpius,3,Australis trium in fronte lucidiorum,,27°25′ ♏,5°22½′ S,237.417,-5.375,3:,False,78265,1,1,1,2.9,-2.6,-3.0,3.9,4.68,263,310,209,691,agrees,ty537
+181,st-181,Scorpius,4,Quae adhuc magis ad austrum in pede,,27°43½′ ♏,8°27½′ S,237.725,-8.458,4.,False,78104,1,1,1,3.9,-8.6,-5.4,10.1,10.93,263,310,210,692,agrees,ty539
+182,st-182,Scorpius,5,Borealissima frontis,,29°3½′ ♏,1°42′ N,239.058,1.7,4.,False,79374,1,1,1,4.0,1.0,-0.9,1.3,0.53,263,310,211,693,agrees,ty542
+183,st-183,Scorpius,6,Parvula in $\triangle$ cum luc. front. et quinta,,28°7′ ♏,0°14′ N,238.117,0.233,5.,False,78933,1,1,1,3.9,-0.9,2.3,2.5,2.85,263,310,212,694,agrees,ty541
+184,st-184,Scorpius,7,"Praecedens cor, ad boream",,2°11′ ♐,3°55′ S,242.183,-3.917,4,False,80112,1,1,1,2.9,3.0,-4.1,5.1,4.72,263,310,213,695,agrees,ty546
+185,st-185,Scorpius,8,"Inmed. rutlinas, Antares seu Cor dicta",Antares,4°13′ ♐,4°27′ S,244.217,-4.45,1.,False,80763,1,1,1,1.1,-1.3,-4.0,4.2,4.72,263,310,214,696,agrees,ty549
+186,st-186,Scorpius,9,Quae cor sequitur as austrum,,5°53′ ♐,5°50′ S,245.883,-5.833,4,False,81266,1,1,1,2.8,0.4,-14.0,14.0,14.21,263,310,215,697,agrees,ty552
+187,st-187,Scorpius,10,In praecedentibus inferioribus pedib.,,0°46½′ ♐,6°37½′ S,240.775,-6.625,5.,False,79404,1,1,1,4.6,-5.7,-0.2,5.7,6.58,263,310,216,698,agrees,ty545
+188,st-188,Sagittarius,1,In boreali parte arcus duar. austral.,,0°47½′ ♑,2°0′ S,270.792,-2.0,4,False,90496,1,1,1,2.8,-2.3,-3.8,4.5,6.14,263,310,217,699,agrees,ty582
+189,st-189,Sagittarius,2,Borealior in eadem parte arcus,,27°41½′ ♐,2°27½′ N,267.692,2.458,4.,False,89341,1,1,1,3.8,-2.8,-3.9,4.8,5.31,263,310,218,700,agrees,ty580
+190,st-190,Sagittarius,3,In sinistro humero,Nunki,6°51′ ♑,3°31′ S,276.85,-3.517,4,False,92855,1,1,1,2.0,-2.1,7.4,7.7,7.64,263,310,219,701,agrees,ty584
+191,st-191,Sagittarius,4,Antecedens hanc in iaculo,,4°40′ ♑,3°50′ S,274.667,-3.833,5.,False,92041,1,1,1,3.2,-3.6,-4.2,5.5,5.92,263,310,220,702,agrees,ty583
+192,st-192,Sagittarius,5,Trium in capite praecedens,,7°56½′ ♑,1°44½′ N,277.942,1.742,4,False,93085,1,1,1,3.5,-3.8,-1.7,4.1,4.77,263,310,221,703,agrees,ty585
+193,st-193,Sagittarius,6,Media,,9°28′ ♑,0°59′ N,279.467,0.983,4.,False,93683,1,1,1,3.8,-2.9,-4.0,5.0,5.54,263,310,222,704,agrees,ty588
+194,st-194,Sagittarius,7,Ultima,,10°43′ ♑,1°31′ N,280.717,1.517,4,False,94141,1,1,1,2.9,-2.0,-1.6,2.5,3.41,263,310,223,705,agrees,ty591
+195,st-195,Sagittarius,8,Prima in contactu,,12°44′ ♑,3°6½′ N,282.733,3.108,6.,False,94820,1,1,1,4.9,2.9,12.0,12.3,12.1,263,310,224,706,agrees,ty593
+196,st-196,Sagittarius,9,"In boreo contactu, Media",,13°54½′ ♑,4°17′ N,283.908,4.283,4,False,95168,1,1,1,3.9,-1.4,-0.9,1.6,2.43,263,310,225,707,agrees,ty598
+197,st-197,Sagittarius,10,Sequens et superior,,14°11′ ♑,6°9½′ N,284.183,6.158,5,False,95176,1,1,1,4.5,-1.3,-0.8,1.6,2.31,263,310,226,708,agrees,ty599
+198,st-198,Sagittarius,11,Hac orient. duab. obsu. for. $\triangle$ subiuncta,,19°8½′ ♑,5°8′ N,289.142,5.133,6,False,96950,1,1,1,5.1,-3.4,3.8,5.1,5.28,263,310,227,709,agrees,ty606
+199,st-199,Sagittarius,12,Orientalis et ultima in sup. contactu,,22°52½′ ♑,5°12′ N,292.875,5.2,6,False,98258,1,1,1,5.0,-0.1,-3.7,3.7,4.41,263,310,228,710,agrees,ty614
+200,st-200,Sagittarius,13,Obscura in inferiori contactu ad ort.,,19°24′ ♑,1°25′ N,289.4,1.417,6.,False,97290,1,1,1,4.9,-1.8,2.6,3.2,4.23,263,310,229,711,agrees,ty608
+201,st-201,Sagittarius,14,Obscura in dextro cubito,,16°26′ ♑,3°8′ S,286.433,-3.133,6.,False,96465,1,1,1,4.6,-9.8,-4.5,10.8,11.24,263,310,230,712,agrees,ty604
+202,st-202,Capricornus,1,Borealis trium in cornu praecedente,,28°18′ ♑,7°2½′ N,298.3,7.042,3,True,100064,1,3,1,3.6,-0.8,-3.6,3.7,4.4,263,310,231,713,agrees,ty629
+203,st-203,Capricornus,2,Media,,28°51′ ♑,6°53′ N,298.85,6.883,6,False,100310,1,1,1,4.8,1.0,-15.9,15.9,15.97,263,310,232,714,agrees,ty632
+204,st-204,Capricornus,3,Australis,,28°31′ ♑,4°41′ N,298.517,4.683,3,False,100345,1,1,1,3.0,-2.5,-3.2,4.1,4.37,263,310,233,715,agrees,ty630
+205,st-205,Capricornus,4,Nebulosa superius cornu praecedens,,27°8′ ♑,7°16′ N,297.133,7.267,6.,False,99572,1,1,1,5.8,-13.2,-2.0,13.2,13.42,263,310,234,716,agrees,ty626
+206,st-206,Capricornus,5,Nebulosa occidem. basis $\triangle$ in fronte,,28°57′ ♑,0°48½′ N,298.95,0.808,nebulosa,False,100881,1,1,1,5.1,11.7,8.0,14.2,13.5,263,311,235,717,differs in latitude by -20′,ty633
+207,st-207,Capricornus,6,Nebulosa orientalis,,29°41′ ♑,0°28′ N,299.683,0.467,nebulosa,False,101123,1,1,1,5.9,-2.0,-1.5,2.5,3.5,263,311,236,718,differs in longitude by -4′ and latitude by -4′,ty637
+208,st-208,Capricornus,7,Suprema in eodem triangulo,,29°37′ ♑,1°20′ N,299.617,1.333,6,False,101027,1,1,1,4.8,-1.1,-5.7,5.8,6.0,263,311,237,719,differs in longitude by 4′,ty638
+209,st-209,Capricornus,8,Nebulosa praecedens in fronte,,27°13′ ♑,0°24′ N,297.217,0.4,nebulosa,False,100195,1,1,1,5.3,-6.5,5.9,8.8,9.37,263,,238,720,not read,
+210,st-210,Capricornus,9,In cervice duarum borea,,2°49′ ♒,3°25′ N,302.817,3.417,6,False,101923,1,1,1,5.2,-5.2,-1.6,5.5,6.35,263,,239,721,not read,
+211,st-211,Capricornus,10,Australis,,2°6′ ♒,0°15′ N,302.1,0.25,6,False,101984,1,1,1,5.2,-0.2,0.8,0.8,1.42,263,311,240,722,differs in longitude by 43′,ty643
+212,st-212,Capricornus,11,Praecedens in dextro genu obscura,,1°47′ ♒,6°58′ S,301.783,-6.967,6.,False,102485,1,1,1,4.1,-11.2,-0.4,11.2,12.66,263,311,241,723,differs in longitude by 19′,ty641
+213,st-213,Capricornus,12,Sequens in sinistro genu,,2°28′ ♒,9°2′ S,302.467,-9.033,6.,False,102978,1,1,1,4.1,-4.8,6.6,8.1,8.67,263,311,242,724,differs in longitude by -41′,ty640
+214,st-214,Capricornus,13,In sinistro armo,,6°13′ ♒,8°8′ S,306.217,-8.133,6,False,104234,1,1,1,4.5,3.4,4.1,5.4,4.54,263,311,243,725,differs in latitude by -48′,ty645
+215,st-215,Capricornus,14,Infima in ventre,,11°24½′ ♒,6°56′ S,311.408,-6.933,5,False,105881,1,1,1,3.8,-2.7,-1.6,3.2,3.83,263,311,244,726,differs in latitude by 27′,ty663
+216,st-216,Capricornus,15,Sequens borea duar. contig. sub alvo,,12°0′ ♒,6°29′ S,312.0,-6.483,6,False,106039,1,1,1,4.5,-0.2,-2.8,2.8,3.15,263,,245,727,not read,
+217,st-217,Capricornus,16,Trium in medio ventre orientalior,,9°23′ ♒,4°25′ S,309.383,-4.417,6.,False,104963,1,1,1,5.2,4.2,-4.6,6.2,5.71,263,311,246,728,differs in latitude by -2′,ty653
+218,st-218,Capricornus,17,Infima earum,,7°31′ ♒,4°27′ S,307.517,-4.45,6,False,104365,1,1,1,5.3,11.7,-3.8,12.2,11.56,263,,247,729,not read,
+219,st-219,Capricornus,18,Septentrionalis trium,,7°18′ ♒,3°1′ S,307.3,-3.017,5,False,104019,1,1,1,4.8,-7.6,3.7,8.5,9.48,263,311,248,730,differs in longitude by 13′,ty648
+220,st-220,Capricornus,19,Duarum in dorso anterior,,8°21′ ♒,0°29′ S,308.35,-0.483,5:,False,104139,1,1,1,4.1,-4.9,-3.5,6.0,6.74,263,311,249,731,differs in latitude by -48′,ty650
+221,st-221,Capricornus,20,Sequens earundem in dorso,,12°7′ ♒,1°16½′ S,312.117,-1.275,5:,False,105515,1,1,1,4.3,-0.5,-3.5,3.6,3.73,263,,250,732,not read,
+222,st-222,Capricornus,21,Antecedens duarum ad ilia,,14°25′ ♒,4°48′ S,314.417,-4.8,4.,False,106723,1,1,1,4.5,12.5,-8.7,15.2,14.58,263,311,251,733,differs in latitude by -1′,ty670
+223,st-223,Capricornus,22,Sequens earundem,,16°6′ ♒,4°49′ S,316.1,-4.817,5.,False,107188,1,1,1,4.7,-2.5,0.7,2.6,2.51,263,311,252,734,agrees,ty671
+224,st-224,Capricornus,23,Duarum lucidar. in cauda praeced.,,16°14′ ♒,2°26′ S,316.233,-2.433,3.,False,106985,1,1,1,3.7,-1.9,-5.1,5.5,5.92,263,311,253,735,differs in latitude by 6′,ty672
+225,st-225,Capricornus,24,Sequens,Deneb Algedi,18°0′ ♒,2°29′ S,318.0,-2.483,3.,False,107556,1,1,1,2.8,-2.7,-3.0,4.0,6.0,263,311,254,736,agrees,ty676
+226,st-226,Capricornus,25,Antecedens in cauda superiori,,18°14′ ♒,2°22′ N,318.233,2.367,5.,False,107517,3,1,1,5.6,72.4,-24.5,76.4,,263,311,255,737,agrees,ty677
+227,st-227,Capricornus,26,Reliquar. in superiori cauda austr.,,20°27′ ♒,0°14½′ S,320.45,-0.242,5,False,108036,1,1,1,5.1,-13.2,-24.3,27.7,27.67,263,311,256,738,agrees,ty684
+228,st-228,Capricornus,27,Praecedens hanc ad septentrionem,,20°16′ ♒,0°10′ S,320.267,-0.167,6.,False,,5,0,4,,,,,29.42,263,311,257,739,agrees,ty683
+229,st-229,Capricornus,28,Borea in extremo caudae,,19°54′ ♒,4°17′ N,319.9,4.283,6:,False,107382,1,1,1,5.1,-3.2,-2.9,4.3,4.86,263,311,258,740,agrees,ty681
+230,st-230,Aquarius,1,In capite,,22°26½′ ♒,15°23′ N,322.442,15.383,6:,False,106944,1,1,1,5.1,-2.4,-0.7,2.4,3.68,264,311,259,741,agrees,ty686
+231,st-231,Aquarius,2,"In humero dextro, clarior",Sadalmelik,27°49½′ ♒,10°42′ N,327.825,10.7,3:,False,109074,1,1,1,3.0,-2.0,-1.0,2.2,2.95,264,311,260,742,agrees,ty695
+232,st-232,Aquarius,3,Obscurior et Australior,,26°36′ ♒,9°11½′ N,326.6,9.192,5,False,108874,1,1,1,4.7,-3.4,-0.3,3.3,4.03,264,311,261,743,agrees,ty691
+233,st-233,Aquarius,4,In humero sinistro,Sadalsuud,17°51′ ♒,8°42′ N,317.85,8.7,3,False,106278,1,1,1,2.9,-1.2,-3.3,3.5,3.88,264,312,262,744,differs in magnitude (5 for 3),ty674
+234,st-234,Aquarius,5,Quae in dorso sub axilla,,18°38′ ♒,6°0½′ N,318.633,6.008,5,False,106786,1,1,1,4.7,-5.4,-1.0,5.5,5.7,264,312,263,745,agrees,ty678
+235,st-235,Aquarius,6,Sequens et inferior tri. in sinis. manu,,10°51′ ♒,4°50′ N,310.85,4.833,5,False,104459,1,1,1,4.5,-1.7,-1.8,2.5,2.87,264,312,264,746,agrees,ty660
+236,st-236,Aquarius,7,Media,,7°28½′ ♒,8°19′ N,307.475,8.317,5,False,103045,1,1,1,4.7,0.9,-2.2,2.4,2.51,264,312,265,747,agrees,ty647
+237,st-237,Aquarius,8,Antecedens lucidior,,6°12′ ♒,8°10′ N,306.2,8.167,4,False,102618,1,1,1,3.8,-2.6,-2.7,3.7,4.4,264,312,266,748,agrees,ty644
+238,st-238,Aquarius,9,In cubito dextro,,1°10′ ♓,8°17½′ N,331.167,8.292,3,False,110395,1,1,1,3.9,-1.7,-2.1,2.7,2.92,264,312,267,749,agrees,ty704
+239,st-239,Aquarius,10,In dexta manu borealior,,3°4½′ ♓,10°31′ N,333.075,10.517,5:,False,110672,1,1,1,4.8,-2.3,-1.7,2.8,3.44,264,312,268,750,agrees,ty707
+240,st-240,Aquarius,11,Reliquar. duar. australium praeced.,,3°23′ ♓,8°52½′ N,333.383,8.875,4,False,110960,1,1,1,3.7,-3.4,-0.6,3.4,2.96,264,312,269,751,agrees,ty710
+241,st-241,Aquarius,12,Sequens,,4°53′ ♓,8°10′ N,334.883,8.167,4,False,111497,1,1,1,4.0,-2.9,0.2,2.9,3.32,264,312,270,752,agrees,ty715
+242,st-242,Aquarius,13,In cotyla dextra duarum praecedens,,27°45′ ♒,2°46′ N,327.75,2.767,4.,False,110003,1,1,1,4.2,-3.9,-2.0,4.3,4.69,264,312,271,753,agrees,ty694
+243,st-243,Aquarius,14,Sequens earum,,28°31′ ♒,2°29½′ N,328.517,2.492,6,False,110273,1,1,1,5.3,-3.4,-6.0,6.9,7.35,264,312,272,754,agrees,ty697
+244,st-244,Aquarius,15,In dextro femore,,29°53′ ♒,1°10′ S,329.883,-1.167,5,False,111123,1,1,1,4.8,-3.9,-2.4,4.6,5.4,264,312,273,755,agrees,ty701
+245,st-245,Aquarius,16,Quae est ad clunes,,23°13′ ♒,2°0′ S,323.217,-2.0,4.,False,109139,1,1,1,4.3,-4.2,-3.0,5.1,5.98,264,312,274,756,agrees,ty688
+246,st-246,Aquarius,17,"Australis in dextra tibia, Scheat",,3°22′ ♓,8°10′ S,333.367,-8.167,3,False,113136,1,1,1,3.3,-3.8,-0.5,3.8,5.0,264,312,275,757,agrees,ty709
+247,st-247,Aquarius,18,Borea seu quae ad genu est,,3°5′ ♓,5°37′ S,333.083,-5.617,5,False,112716,1,1,1,4.1,-3.5,-1.7,3.9,4.88,264,312,276,758,agrees,ty708
+248,st-248,Aquarius,19,In sinistra coxa,,29°40′ ♒,5°40′ S,329.667,-5.667,6,False,112542,4,2,4,5.7,165.1,-14.1,164.8,,264,312,277,759,agrees,ty698
+249,st-249,Aquarius,20,In sinistro genu duar. australior,,26°55½′ ♒,10°48½′ S,326.925,-10.808,5.,False,111449,1,1,1,5.2,1.3,-2.9,3.1,4.58,264,312,278,760,agrees,ty692
+250,st-250,Aquarius,21,Borealior,,29°50′ ♒,9°57½′ S,329.833,-9.958,6:,False,112211,1,1,1,4.7,-10.3,1.2,10.2,11.23,264,312,279,761,differs in latitude by 52′,ty700
+251,st-251,Aquarius,22,In effusione aquae a manu prima,,3°52′ ♓,4°8½′ N,333.867,4.142,4.,False,111710,1,1,1,5.0,-0.2,-0.4,0.5,2.06,264,312,280,762,agrees,ty712
+252,st-252,Aquarius,23,Succedens australis,,6°4′ ♓,0°19½′ S,336.067,-0.325,4,False,112961,1,1,1,3.7,-3.8,-3.1,4.9,5.33,264,312,281,763,agrees,ty718
+253,st-253,Aquarius,24,Sequens in primo flexu aquae,,9°0′ ♓,1°24′ S,339.0,-1.4,6,False,113996,1,1,1,5.4,-10.8,-16.2,19.5,19.71,264,312,282,764,agrees,ty722
+254,st-254,Aquarius,25,Quae eam comitatur,,11°38′ ♓,1°0′ S,341.633,-1.0,5,False,114724,1,1,1,4.2,-3.7,-1.4,3.9,5.39,264,312,283,765,agrees,ty729
+255,st-255,Aquarius,26,In altero flexu australi,,11°33′ ♓,2°49′ S,341.55,-2.817,5.,False,114939,1,1,1,4.9,-3.5,-1.0,3.6,4.62,264,312,284,766,agrees,ty728
+256,st-256,Aquarius,27,Praeced et borealior duar. sequen.,,10°43′ ♓,3°58½′ S,340.717,-3.975,5,False,114855,1,1,1,4.2,-1.0,,1.0,1.12,264,312,285,767,agrees,ty725
+257,st-257,Aquarius,28,Sequens et australior,,11°11′ ♓,4°10½′ S,341.183,-4.175,5,False,115033,1,1,1,4.4,-1.7,-5.9,6.1,6.47,264,312,286,768,agrees,ty726
+258,st-258,Aquarius,29,Prope hanc in austrum declinans,,11°14½′ ♓,4°44′ S,341.242,-4.733,5,False,115115,1,1,1,5.0,-1.0,-2.1,2.4,2.84,264,312,287,769,agrees,ty727
+259,st-259,Aquarius,30,Post hanc duar. contig. praecedens,,14°7′ ♓,10°59′ S,344.117,-10.983,5,False,116758,1,1,1,5.0,-2.0,-2.4,3.1,3.87,264,312,288,770,agrees,ty737
+260,st-260,Aquarius,31,Sequens earundem contiguarum,,14°38′ ♓,11°33′ S,344.633,-11.55,5,False,116971,1,1,1,4.5,-1.4,-3.2,3.5,4.28,264,312,289,771,agrees,ty738
+261,st-261,Aquarius,32,In tertio aquae flexu borea trium,,13°3′ ♓,14°29′ S,343.05,-14.483,5.,False,116901,1,3,1,4.8,-1.3,-1.4,1.9,2.45,264,312,290,772,agrees,ty734
+262,st-262,Aquarius,33,Medio in tertio aquae flexu,,13°46′ ♓,15°16½′ S,343.767,-15.275,6,False,117089,1,1,1,5.2,-23.3,6.7,23.5,24.07,264,,291,773,not read,
+263,st-263,Aquarius,34,Sequens trium et australis,,14°44′ ♓,16°23′ S,344.733,-16.383,6.,False,117629,1,1,1,5.2,-1.4,-3.5,3.7,4.05,264,313,292,774,differs in longitude by -58′,ty735
+264,st-264,Aquarius,35,Sequentium trium borealis,,7°54½′ ♓,14°45′ S,337.908,-14.75,5,False,115438,1,1,1,4.0,-1.0,-1.3,1.6,3.16,264,,293,775,not read,
+265,st-265,Aquarius,36,Media trium earundem,,8°21′ ♓,15°30′ S,338.35,-15.5,5,False,115669,1,1,1,4.4,-0.9,-3.6,3.7,4.37,264,313,294,776,differs in longitude by -27′,ty719
+266,st-266,Aquarius,37,Australis harum trium,,9°50′ ♓,16°31′ S,339.833,-16.517,5.,False,116247,1,1,1,4.7,-1.2,0.5,1.2,2.01,264,,295,777,not read,
+267,st-267,Aquarius,38,In ultimo flexu trium superior,,4°25′ ♓,14°25½′ S,334.417,-14.425,5,False,114341,1,1,1,3.7,0.7,-3.1,3.2,3.07,264,,296,778,not read,
+268,st-268,Aquarius,39,Media,,4°2′ ♓,15°40′ S,334.033,-15.667,5,False,114375,1,1,1,4.7,-2.1,-1.6,2.6,3.11,264,313,297,779,differs in latitude by -13′,ty713
+269,st-269,Aquarius,40,Infima proxima Fomahant,,3°17′ ♓,15°53′ S,333.283,-15.883,5,False,114119,2,1,1,4.5,-32.2,-41.1,51.4,,264,,298,780,not read,
+270,st-270,Aquarius,41,"Ultima in effusione, Fomahant",Fomalhaut,28°11½′ ♒,21°0′ S,328.192,-21.0,1,False,113368,1,1,1,1.2,3.2,-5.1,5.9,7.9,264,313,299,781,agrees,ty696
+271,st-271,Pisces,1,In ore piscis austrini,,13°2′ ♓,9°4′ N,343.033,9.067,5:,False,113889,1,1,1,4.5,-0.6,-0.3,0.6,1.39,265,313,300,782,agrees,ty733
+272,st-272,Pisces,2,Duarum in occipite australis,,15°50½′ ♓,7°17½′ N,345.842,7.292,4,False,114971,1,1,1,3.7,-1.8,0.1,1.8,2.78,265,313,301,783,agrees,ty740
+273,st-273,Pisces,3,Borea in occipite,,17°30½′ ♓,8°54½′ N,347.508,8.908,6,False,115227,1,1,1,5.1,-2.9,-1.4,3.2,3.91,265,313,302,784,agrees,ty743
+274,st-274,Pisces,4,Praecedens duarum in dorso,,19°42′ ♓,9°3′ N,349.7,9.05,5,False,115830,1,1,1,4.3,-3.4,-1.0,3.5,5.17,265,313,303,785,agrees,ty747
+275,st-275,Pisces,5,Sequens in dorso,,21°56½′ ♓,7°13½′ N,351.942,7.225,5,False,116771,1,1,1,4.1,7.3,-0.7,7.3,8.68,265,313,304,786,agrees,ty750
+276,st-276,Pisces,6,Praecedens in alvo,,17°21′ ♓,4°27′ N,347.35,4.45,5.,False,115738,1,1,1,4.9,-1.0,-0.1,1.0,1.75,265,313,305,787,agrees,ty741
+277,st-277,Pisces,7,Sequens in alvo,,21°5′ ♓,3°25′ N,351.083,3.417,5,False,116928,1,1,1,4.5,-2.5,0.6,2.5,4.48,265,313,306,788,agrees,ty749
+278,st-278,Pisces,8,In cauda,,27°2′ ♓,6°23½′ N,357.033,6.392,5:,False,118268,1,1,1,4.0,-1.4,-1.0,1.7,2.64,265,313,307,789,agrees,ty756
+279,st-279,Pisces,9,Supra hanc ad ortum,,28°27′ ♓,7°27′ N,358.45,7.45,6,False,194,1,1,1,5.7,-2.0,4.6,5.0,5.77,265,313,308,790,agrees,ty758
+280,st-280,Pisces,10,Sequens,,2°29′ ♈,5°28′ N,2.483,5.467,6.,False,1645,1,1,1,5.4,-4.1,-0.4,4.1,4.91,265,313,309,791,agrees,ty002
+281,st-281,Pisces,11,In lino austr. lucidior tri. praecedens,,8°36′ ♈,2°11′ N,8.6,2.183,4,False,3786,1,1,1,4.4,-1.6,-0.9,1.8,2.44,265,313,310,792,agrees,ty007
+282,st-282,Pisces,12,Earundem media,,11°58′ ♈,1°5½′ N,11.967,1.092,4,False,4906,1,1,1,4.3,-0.1,-1.4,1.4,1.78,265,313,311,793,agrees,ty012
+283,st-283,Pisces,13,Sequens,,14°19′ ♈,0°57½′ N,14.317,0.958,4,False,5737,1,1,1,5.2,-1.2,-70.9,70.9,,265,,312,794,not read,
+284,st-284,Pisces,14,In flexu lini duar. exiguar. antecedens et borea,,12°25′ ♈,1°31′ S,12.417,-1.517,6,False,5346,1,1,1,5.5,-2.3,0.7,2.4,5.15,265,313,313,795,agrees,ty014
+285,st-285,Pisces,15,Earundem sequens ad autrum,,13°46′ ♈,4°19½′ S,13.767,-4.325,6,False,6061,1,1,1,5.1,-0.6,2.4,2.5,3.03,265,313,314,796,agrees,ty017
+286,st-286,Pisces,16,Post flexionem trium praecedens,,17°33′ ♈,3°3′ S,17.55,-3.05,5,False,7007,1,1,1,4.8,-0.9,-1.3,1.5,2.27,265,313,315,797,agrees,ty033
+287,st-287,Pisces,17,Media,,19°56′ ♈,4°40½′ S,19.933,-4.675,5:,False,7884,1,1,1,4.4,0.2,-2.8,2.8,2.82,265,313,316,798,agrees,ty040
+288,st-288,Pisces,18,Sequens et Ultima,,21°57½′ ♈,7°56′ S,21.958,-7.933,5:,False,8833,1,1,1,4.6,-1.0,-1.0,1.4,1.84,265,313,317,799,agrees,ty046
+289,st-289,Pisces,19,Lucidior in nexu amborum linorum,,23°47½′ ♈,9°4½′ S,23.792,-9.075,3,False,9487,1,1,1,3.8,0.5,-0.8,0.9,0.92,265,314,318,800,agrees,ty052
+290,st-290,Pisces,20,In lino boro a connexu praecedens,,22°12′ ♈,1°38½′ N,22.2,1.642,5.,True,8198,1,1,1,4.3,-2.2,-0.4,2.2,,265,314,319,801,agrees,ty047
+291,st-291,Pisces,21,Post hanc trium australis,,21°16′ ♈,1°51½′ N,21.267,1.858,5.,False,7535,1,1,1,5.5,5.3,0.4,5.3,4.03,265,314,320,802,agrees,ty042
+292,st-292,Pisces,22,Media et lucidior in nexu boreo,,21°16′ ♈,5°21′ N,21.267,5.35,4.,False,7097,1,1,1,3.6,-1.1,0.1,1.1,1.78,265,314,321,803,agrees,ty043
+293,st-293,Pisces,23,Borea trium et ultima in lino,,21°36½′ ♈,9°24′ N,21.608,9.4,5,False,6732,1,3,3,5.5,1.9,-0.1,1.9,1.34,265,314,322,804,agrees,ty044
+294,st-294,Pisces,24,Borea duar. in ore piscis borei,,23°15′ ♈,22°0′ N,23.25,22.0,6:,False,5544,1,1,1,5.2,-0.9,-1.3,1.5,2.13,265,314,323,805,agrees,ty050
+295,st-295,Pisces,25,Australis,,22°49½′ ♈,20°43′ N,22.825,20.717,5,False,5586,1,1,1,4.5,-4.0,0.1,3.7,4.16,265,314,324,806,agrees,ty048
+296,st-296,Pisces,26,Borealis trianguli in capite,,19°22½′ ♈,20°55′ N,19.375,20.917,6.,False,4510,1,1,1,5.4,-1.5,1.5,2.1,2.62,265,314,325,807,mis-constellated in the reading (read under Triangulum),ty039
+297,st-297,Pisces,27,Australis eiusdem trianguli,,18°6½′ ♈,19°24′ N,18.108,19.4,6,False,4366,1,1,1,6.1,3.7,5.0,6.1,5.77,265,314,326,808,mis-constellated in the reading (read under Triangulum),ty036
+298,st-298,Pisces,28,Media et antecedens trianguli,,17°3½′ ♈,20°24′ N,17.058,20.4,6,False,3885,1,1,1,5.6,0.8,6.3,6.3,5.97,265,314,327,809,mis-constellated in the reading (read under Triangulum),ty031
+299,st-299,Pisces,29,In austra. spina. tri. praece. prope sin. cub. Andromedae,,17°56½′ ♈,13°21′ N,17.942,13.35,5,False,5131,1,1,1,5.3,-4.0,-0.1,3.9,4.48,265,314,328,810,mis-constellated in the reading (read under Andromeda),ty034
+300,st-300,Pisces,30,Media,,18°2½′ ♈,12°21½′ N,18.042,12.358,6,False,5310,1,1,1,5.6,2.3,7.0,7.3,6.44,265,314,329,811,mis-constellated in the reading (read under Andromeda),ty035
+301,st-301,Pisces,31,Infima trium,,18°9′ ♈,11°21′ N,18.15,11.35,6:,False,5454,1,1,1,5.6,-5.0,-3.3,5.9,6.55,265,314,330,812,mis-constellated in the reading (read under Andromeda),ty037
+302,st-302,Pisces,32,In alvo duarum borea,,23°18′ ♈,17°26′ N,23.3,17.433,5,False,6193,1,1,1,4.7,-4.2,0.4,4.0,4.64,265,314,331,813,mis-constellated in the reading (read under Andromeda),ty049
+303,st-303,Pisces,33,Quae magis ad austrum,,20°58½′ ♈,15°30′ N,20.975,15.5,5,False,5742,1,1,1,4.7,-4.4,-1.2,4.4,5.19,265,314,332,814,mis-constellated in the reading (read under Andromeda),ty041
+304,st-304,Pisces,34,Sequens mediam tri. in australi spina,,19°0′ ♈,12°27½′ N,19.0,12.458,5,False,5571,1,1,1,4.7,-1.8,-2.4,3.0,3.48,265,314,333,815,mis-constellated in the reading (read under Andromeda),ty038
+305,st-305,Pisces,35,Sequens boream in alvo ad Septentr.,,24°11′ ♈,18°31′ N,24.183,18.517,6,False,6315,1,1,1,5.2,0.8,8.4,8.5,7.86,265,314,334,816,mis-constellated in the reading (read under Andromeda),ty055
+306,st-306,Pisces,36,In occipite borei piscis,,21°41′ ♈,23°3′ N,21.683,23.05,6,False,4889,1,1,1,5.5,-1.2,0.4,1.2,1.9,265,314,335,817,agrees,ty045
+307,st-307,Ursa Minor,1,"In extremo caudae, vulgo Polaris",Polaris,23°2½′ ♊,66°2′ N,83.042,66.033,2,False,11767,1,1,1,2.0,-3.2,1.2,1.8,1.81,266,,336,1,not read,
+308,st-308,Ursa Minor,2,Penultima caudae,,25°36′ ♊,69°50½′ N,85.6,69.842,4,False,85822,1,1,1,4.3,1.6,3.4,3.5,3.07,266,,337,2,not read,
+309,st-309,Ursa Minor,3,Quae in caudae radice,,3°24′ ♋,73°50′ N,93.4,73.833,4,False,82080,1,1,1,4.2,8.0,2.3,3.2,2.99,266,,338,3,not read,
+310,st-310,Ursa Minor,4,Superior duar. in $\box$ sequentium,,21°29′ ♋,75°0′ N,111.483,75.0,4,False,77055,1,1,1,4.3,15.2,4.5,6.0,5.91,266,,339,4,not read,
+311,st-311,Ursa Minor,5,Earundem inferior,,24°52′ ♋,77°38½′ N,114.867,77.642,5,False,79822,1,1,1,4.9,-10.4,10.2,10.4,9.34,266,,340,5,not read,
+312,st-312,Ursa Minor,6,Superior duar. in quadrato praeced.,,7°16½′ ♌,72°51½′ N,127.275,72.858,2,False,72607,1,1,1,2.1,21.2,5.9,8.6,8.18,266,,341,6,not read,
+313,st-313,Ursa Minor,7,Earundem inferior,,14°41′ ♌,75°23½′ N,134.683,75.392,3,False,75097,1,1,1,3.0,71.4,-10.7,21.0,20.83,266,,342,7,not read,
+314,st-314,Ursa Major,1,Quae in rostro,,17°36½′ ♋,40°2½′ N,107.608,40.042,4,False,41704,1,1,1,3.3,-11.3,10.3,13.4,13.55,267,315,356,21,agrees,ty315
+315,st-315,Ursa Major,2,Sub oculo sinistro,,17°10′ ♋,43°55½′ N,107.167,43.925,4,False,42527,1,1,1,4.6,3.9,3.4,4.4,3.8,267,315,357,22,agrees,ty314
+316,st-316,Ursa Major,3,Contigua sub hac,,16°8′ ♋,44°22′ N,106.133,44.367,5,False,42080,1,1,4,5.5,-5.5,10.5,11.2,11.11,267,315,358,23,agrees,ty311
+317,st-317,Ursa Major,4,Supra oculum dextrum,,18°25′ ♋,47°50½′ N,108.417,47.842,4,False,44390,1,1,1,4.7,-2.3,3.8,4.1,4.47,267,315,359,24,agrees,ty319
+318,st-318,Ursa Major,5,Supra oculum sinistrum,,19°44½′ ♋,47°44½′ N,109.742,47.742,4,False,45038,1,1,1,4.8,-2.6,3.1,3.5,3.28,267,315,360,25,agrees,ty321
+319,st-319,Ursa Major,6,Ad aurem sinistram,,24°42½′ ♋,51°36½′ N,114.708,51.608,5,False,46977,4,1,1,4.5,-238.0,-24.5,150.5,,267,315,361,26,agrees,ty326
+320,st-320,Ursa Major,7,Infima et praecedens in parvo $\triangle$ colli,,23°50′ ♋,42°30′ N,113.833,42.5,5,False,45333,1,1,1,5.2,-8.7,17.5,18.6,18.63,267,315,362,27,agrees,ty323
+321,st-321,Ursa Major,8,Sequens in eodem triangulo,,25°2′ ♋,45°3′ N,115.033,45.05,4,False,46733,4,1,1,3.7,10.6,4.1,8.5,8.76,267,315,363,28,agrees,ty327
+322,st-322,Ursa Major,9,Suprema in apice ejusdem $\triangle$,,28°0′ ♋,46°21½′ N,118.0,46.358,5.,False,,5,3,4,,,,,,267,315,364,29,agrees,ty335
+323,st-323,Ursa Major,10,"In collo, dicto triangulo succedens",,0°38′ ♌,42°36′ N,120.633,42.6,4,False,48319,1,1,1,3.8,3.8,2.5,3.8,1.18,267,315,365,30,agrees,ty341
+324,st-324,Ursa Major,11,Sequens infra hanc,,3°38½′ ♌,38°15½′ N,123.642,38.258,4:,False,48402,1,1,1,4.6,6.7,-2.2,5.7,4.95,267,315,366,31,agrees,ty346
+325,st-325,Ursa Major,12,In genu sinistro anteriori,,0°32½′ ♌,34°34½′ N,120.542,34.575,3.,False,46853,1,1,1,3.2,73.1,22.6,64.2,20.2,267,315,367,32,agrees,ty339
+326,st-326,Ursa Major,13,Duarum in dextro pede borealior,,25°56′ ♋,29°15½′ N,115.933,29.258,3.,False,44127,1,1,1,3.1,79.4,18.8,71.7,,267,315,368,33,agrees,ty330
+327,st-327,Ursa Major,14,Australior,,27°10′ ♋,28°38′ N,117.167,28.633,3.,False,44471,2,1,1,3.6,71.1,18.7,65.1,,267,315,369,34,agrees,ty332
+328,st-328,Ursa Major,15,Infra genu dextrum,,27°7′ ♋,33°30′ N,117.117,33.5,5,False,44901,1,1,1,4.5,25.6,-4.7,21.9,20.53,267,315,370,35,agrees,ty331
+329,st-329,Ursa Major,16,In ipso genu dextro,,27°26′ ♋,36°6′ N,117.433,36.1,5,False,45493,1,1,1,4.8,16.9,-2.5,13.9,13.33,267,315,371,36,agrees,ty333
+330,st-330,Ursa Major,17,Superior praecedenti. in $\box$ majori,Dubhe,9°34′ ♌,49°40′ N,129.567,49.667,2,False,54061,1,1,1,1.8,1.8,-0.5,1.3,1.26,267,315,372,37,agrees,ty361
+331,st-331,Ursa Major,18,Inferior ejusdem,Merak,13°43½′ ♌,45°3½′ N,133.725,45.058,2,False,53910,1,1,1,2.3,5.4,2.1,4.4,4.44,267,315,373,38,agrees,ty366
+332,st-332,Ursa Major,19,Superior sequentium quadrati,,25°25½′ ♌,51°37′ N,145.425,51.617,2,False,59774,1,1,1,3.3,-0.1,0.6,0.6,1.07,267,315,374,39,agrees,ty391
+333,st-333,Ursa Major,20,Inferior earundem,,24°45′ ♌,47°6½′ N,144.75,47.108,2,False,58001,1,1,1,2.4,5.6,0.2,3.8,3.85,267,315,375,40,agrees,ty389
+334,st-334,Ursa Major,21,Superior sinistri pedis posterior.,,13°56½′ ♌,29°51½′ N,133.942,29.858,4:,False,50372,1,1,1,3.5,2.0,0.5,1.8,0.22,267,315,376,41,differs in latitude by 2′,ty367
+335,st-335,Ursa Major,22,Sequens et australior,,15°4½′ ♌,28°45′ N,135.075,28.75,4:,False,50801,1,1,1,3.1,34.7,13.1,33.1,31.87,267,315,377,42,agrees,ty369
+336,st-336,Ursa Major,23,In genu praecedentis pedum poster.,,22°33′ ♌,35°14′ N,142.55,35.233,4,False,54539,1,1,1,3.0,40.0,17.2,36.9,35.85,267,315,378,43,agrees,ty385
+337,st-337,Ursa Major,24,Praecedens duar. in dex. pede poster.,,0°55′ ♍,26°14′ N,150.917,26.233,4:,False,55219,1,1,1,3.5,8.9,-5.4,9.6,8.74,267,315,379,44,agrees,ty398
+338,st-338,Ursa Major,25,Sequens et australior,,1°36′ ♍,24°54′ N,151.6,24.9,4:,False,55203,1,1,1,3.8,9.0,-11.4,14.0,13.7,267,315,380,45,agrees,ty400
+339,st-339,Ursa Major,26,Antepenultima caudae,Alioth,3°10′ ♍,54°18′ N,153.167,54.3,2.,False,62956,1,1,1,1.8,6.7,-0.2,3.9,3.99,267,315,381,46,agrees,ty402
+340,st-340,Ursa Major,27,Penultima,,9°56½′ ♍,56°22′ N,159.942,56.367,2,False,65378,1,1,1,2.2,5.5,-0.3,3.0,3.25,267,315,382,47,agrees,ty410
+341,st-341,Ursa Major,28,Ultima caudae,Alkaid,21°12′ ♍,54°25′ N,171.2,54.417,2,False,67301,1,1,1,1.9,6.5,-1.1,3.9,3.17,267,316,383,48,agrees,ty432
+342,st-342,Ursa Major,29,Informis inter caud. huius et leonis,,17°43½′ ♍,40°6′ N,167.725,40.1,2,False,63125,1,1,4,2.9,75.7,1.7,57.9,,267,316,384,49,agrees,ty417
+343,st-343,Draco,1,Quae est in lingua,,18°56½′ ♏,76°17′ N,228.942,76.283,4.,False,83608,1,1,1,4.9,11.0,-0.6,2.7,1.77,267,316,412,77,agrees,ty522
+344,st-344,Draco,2,In ore,,4°14½′ ♐,78°14½′ N,244.242,78.242,4.,True,85819,1,1,1,4.9,22.7,-4.2,6.3,5.94,267,316,413,78,agrees,ty550
+345,st-345,Draco,3,Duar. lucidarum in capite praeced.,,6°19½′ ♐,75°21′ N,246.325,75.35,3,False,85670,1,1,1,2.8,1.9,-1.3,1.4,1.29,267,316,414,79,agrees,ty554
+346,st-346,Draco,4,Quae ad genam,,19°3′ ♐,80°21½′ N,259.05,80.358,4,False,87585,1,1,1,3.7,4.3,-2.0,2.1,1.81,267,316,415,80,agrees,ty567
+347,st-347,Draco,5,Sequens lucidarum (vulgo lucida cap.),,22°24′ ♐,75°3½′ N,262.4,75.058,3:,False,87833,1,1,1,2.2,0.6,-4.9,4.9,5.01,267,316,416,81,agrees,ty571
+348,st-348,Draco,6,In prima colli infexione tri. borealium,,17°4′ ♑,81°53′ N,287.067,81.883,5:,False,90156,1,1,1,5.0,-17.9,-4.0,4.7,4.46,267,316,417,82,differs in latitude by -20′,ty605
+349,st-349,Draco,7,Australis,,24°31′ ♑,77°57′ N,294.517,77.95,5:,False,91755,1,1,1,5.0,-4.9,-2.4,2.6,2.49,267,316,418,83,agrees,ty616
+350,st-350,Draco,8,Media earundem,,20°33½′ ♑,79°51½′ N,290.558,79.858,5:,False,90905,1,1,1,4.8,-18.2,-3.4,4.7,4.78,267,316,419,84,agrees,ty610
+351,st-351,Draco,9,Quae sequitur ad ortum,,9°29′ ♒,80°53½′ N,309.483,80.892,4.,False,92512,1,1,1,4.6,1.8,-3.2,3.2,3.43,267,316,420,85,agrees,ty654
+352,st-352,Draco,10,Quae est prope secundam flexuram,,28°33′ ♓,81°51′ N,358.55,81.85,4,False,95081,1,1,1,4.6,-24.9,-1.4,3.8,3.62,267,316,421,86,agrees,ty759
+353,st-353,Draco,11,Borea $\box$ secundae flexurae,,12°26½′ ♈,82°49′ N,12.442,82.817,3.,False,94376,1,1,1,3.1,-32.5,3.7,5.5,4.63,267,316,422,87,agrees,ty015
+354,st-354,Draco,12,Borea lateris sequentis,,15°21′ ♈,78°9½′ N,15.35,78.158,4,False,98702,1,1,1,4.5,-21.8,-1.0,4.6,4.43,267,316,423,88,agrees,ty024
+355,st-355,Draco,13,Australis eiusdem lateris,,27°47′ ♈,79°25′ N,27.783,79.417,3.,False,97433,1,1,1,3.8,-27.0,3.1,5.8,5.52,267,316,424,89,agrees,ty064
+356,st-356,Draco,14,Sequentis trianguli praecedens,,15°18′ ♉,83°5′ N,45.3,83.083,4,False,92782,1,1,1,4.8,-19.0,6.1,6.5,6.18,267,316,425,90,agrees,ty119
+357,st-357,Draco,15,Quae sequitur ad austrum,,19°40½′ ♉,80°38′ N,49.675,80.633,4.,False,94648,1,1,1,4.4,-10.7,0.8,1.9,1.31,267,316,426,91,agrees,ty134
+358,st-358,Draco,16,Quae supra hanc,,26°44′ ♈,80°54′ N,26.733,80.9,4:,False,96100,1,1,1,4.7,-28.1,1.2,4.6,16.66,267,,427,92,not read,
+359,st-359,Draco,17,In reliquo triangulo sequens,,6°34½′ ♋,83°4½′ N,96.575,83.075,4,False,86614,2,1,1,4.6,86.2,62.4,63.1,,267,316,428,93,agrees,ty291
+360,st-360,Draco,18,Australis eiusdem,,1°28′ ♋,83°28½′ N,91.467,83.475,4,False,87728,2,3,4,5.4,-191.6,60.7,63.9,,267,316,429,94,agrees,ty282
+361,st-361,Draco,19,Praecedens ac borealis trianguli,,5°31′ ♊,84°48½′ N,65.517,84.808,4,True,89908,1,1,1,4.2,7.6,1.8,1.9,1.3,267,316,430,95,agrees,ty195
+362,st-362,Draco,20,Quae in flexura nodi tertij,,29°44½′ ♌,81°4½′ N,149.742,81.075,3.,False,80650,1,1,1,4.9,-14.8,-2.9,3.7,4.07,267,316,431,96,agrees,ty394
+363,st-363,Draco,21,Polo Zodiaci proxima,,6°26′ ♌,86°53′ N,126.433,86.883,4,False,86201,1,1,1,4.8,3.4,0.3,0.3,1.86,267,316,432,97,agrees,ty352
+364,st-364,Draco,22,Quae 24 sequitur,,28°21′ ♍,83°18′ N,178.35,83.3,5.,False,82860,1,1,1,4.9,31.3,0.2,3.7,4.17,267,316,433,98,agrees,ty444
+365,st-365,Draco,23,Succedens huic,,28°22′ ♍,81°41′ N,178.367,81.683,5.,False,81660,1,1,1,4.8,6.8,-2.7,2.9,2.92,267,316,434,99,agrees,ty445
+366,st-366,Draco,24,"Polo vicionior, mediocriter lucida",,26°51½′ ♍,84°46′ N,176.858,84.767,3,False,83895,1,1,1,3.2,25.0,0.2,2.3,2.03,267,316,435,100,agrees,ty440
+367,st-367,Draco,25,Praecedens antepe. ab extre. flexione,,7°55′ ♎,78°32′ N,187.917,78.533,3,False,80331,2,1,1,2.7,47.4,-4.7,10.5,1.08,267,316,436,101,agrees,ty458
+368,st-368,Draco,26,Antepenultima flexuram praecedens,,12°28½′ ♎,74°11½′ N,192.475,74.192,3.,False,78527,1,1,1,4.0,-81.7,15.9,27.2,29.93,267,317,437,102,agrees,ty464
+369,st-369,Draco,27,Penultima ad flexuram,,29°22′ ♍,71°4′ N,179.367,71.067,3,False,75458,1,1,1,3.3,-7.8,2.1,3.3,3.61,267,,438,103,not read,
+370,st-370,Draco,28,"Quae flexuram sequitur, secunda",,29°17′ ♌,65°18′ N,149.283,65.3,5,False,67627,1,1,1,4.6,-2.1,3.0,3.1,3.2,267,317,439,104,agrees,ty393
+371,st-371,Draco,29,Quae feluram proxime sequitur,,2°10½′ ♍,66°36′ N,152.175,66.6,2.,False,68756,1,1,1,3.7,-23.3,-15.0,17.7,18.23,267,,440,105,not read,
+372,st-372,Draco,30,Penultim caudae,,10°26′ ♌,61°33′ N,130.433,61.55,3,False,61281,1,1,1,3.8,11.3,11.0,12.3,11.72,267,317,441,106,agrees,ty362
+373,st-373,Draco,31,Ultima caudae,,4°37½′ ♌,57°7′ N,124.625,57.117,3,False,56211,1,1,1,3.8,5.2,5.5,6.2,5.67,267,317,442,107,agrees,ty347
+374,st-374,Draco,32,"Inter 11 et brachium Cephei, infor.",,1°4′ ♈,77°31½′ N,1.067,77.525,5,False,98583,1,1,1,5.2,-14.6,-1.6,3.6,3.79,267,317,443,108,agrees,ty001
+375,st-375,Cepheus,1,In cingulo,,0°13′ ♉,71°7′ N,30.217,71.117,3.,False,106032,1,1,1,3.2,-7.5,0.2,2.5,2.63,268,317,444,109,agrees,ty075
+376,st-376,Cepheus,2,Lucida in humero,,7°13′ ♈,68°54′ N,7.217,68.9,3,False,105199,1,1,1,2.5,5.1,0.6,1.9,2.34,268,317,445,110,agrees,ty005
+377,st-377,Cepheus,3,Quae in sinistro humero,,27°53½′ ♈,62°35′ N,27.892,62.583,4:,False,112724,1,1,1,3.5,-6.4,0.2,2.9,4.25,268,317,446,111,agrees,ty066
+378,st-378,Cepheus,4,Quae in tiara sequitur ad boream,,8°29′ ♈,61°3′ N,8.483,61.05,4,False,109492,1,1,1,3.4,-0.1,4.9,4.9,4.86,268,317,447,112,agrees,ty006
+379,st-379,Bootes,1,In manu sinistra trium praecedens,,24°9½′ ♍,58°53′ N,174.158,58.883,4.,False,69483,1,1,1,4.5,7.9,0.9,4.2,4.02,268,,455,120,not read,
+380,st-380,Bootes,2,Secunda,,25°33′ ♍,58°51′ N,175.55,58.85,4.,False,69713,1,1,1,4.8,-4.1,-0.1,2.1,3.75,268,,456,121,not read,
+381,st-381,Bootes,3,Tertia,,26°59½′ ♍,60°5′ N,176.992,60.083,4.,False,70497,1,1,1,4.0,-3.5,4.9,5.2,2.53,268,,457,122,not read,
+382,st-382,Bootes,4,In cubito sinistro,,1°18′ ♎,54°40′ N,181.3,54.667,4,False,69732,1,1,1,4.2,4.1,-0.7,2.5,0.59,268,317,458,123,agrees,ty449
+383,st-383,Bootes,5,In humero sinistro,,13°5½′ ♎,49°33½′ N,193.092,49.558,3,False,71075,1,1,1,3.0,-61.5,0.2,39.9,,268,317,459,124,agrees,ty466
+384,st-384,Bootes,6,In capite,,18°43½′ ♎,54°15½′ N,198.725,54.258,3.,False,73555,1,1,1,3.5,-6.2,-4.7,5.9,6.5,268,317,460,125,agrees,ty476
+385,st-385,Bootes,7,In dextro humero supra coronam,,27°29½′ ♎,49°1′ N,207.492,49.017,3.,False,74666,1,1,1,3.5,1.7,-0.7,1.3,1.81,268,317,461,126,agrees,ty487
+386,st-386,Bootes,8,Quae in coxendice sub brac. dextro,,22°29½′ ♎,40°40′ N,202.492,40.667,3,False,72105,1,1,1,2.3,0.9,-0.8,1.1,0.87,268,317,462,127,agrees,ty481
+387,st-387,Bootes,9,Inferior duar. contiguar. in dorso,,18°16′ ♎,42°11′ N,198.267,42.183,4,False,71284,1,1,1,4.5,0.3,-2.2,2.2,0.92,268,317,463,128,agrees,ty474
+388,st-388,Bootes,10,Superior earundem,,17°17½′ ♎,42°35½′ N,197.292,42.592,4:,False,71053,1,1,1,3.6,-5.8,-7.4,8.5,9.1,268,317,464,129,agrees,ty471
+389,st-389,Bootes,11,Quae est in crure dextro,,27°26½′ ♎,27°57′ N,207.442,27.95,3,False,71795,1,1,1,3.8,-0.1,-2.4,2.4,2.45,268,317,465,130,agrees,ty486
+390,st-390,Bootes,12,Suprema in tibia sinistra,,13°42′ ♎,28°9′ N,193.7,28.15,3,False,67927,1,1,1,2.7,1.9,-0.8,1.8,3.45,268,317,466,131,agrees,ty468
+391,st-391,Bootes,13,Media,,12°25′ ♎,26°33′ N,192.417,26.55,4.,False,67275,1,1,1,4.5,-1.2,,1.1,5.06,268,317,467,132,agrees,ty463
+392,st-392,Bootes,14,Infima,,13°37′ ♎,25°14′ N,193.617,25.233,4:,False,67459,1,1,1,4.1,0.2,-0.9,0.9,1.55,268,317,468,133,agrees,ty467
+393,st-393,Bootes,15,In fimbria tunicae Arcturus dicta,Arcturus,18°39½′ ♎,31°2½′ N,198.658,31.042,1,True,69673,1,1,1,-0.1,1.1,-1.8,2.0,16.94,268,317,469,134,agrees,ty475
+394,st-394,Bootes,16,Infima tri. infor. circa dext. genu,,26°13½′ ♎,30°27½′ N,206.225,30.458,4,False,71762,1,1,1,4.5,2.3,-3.8,4.3,3.93,268,317,470,135,agrees,ty483
+395,st-395,Bootes,17,Media,,27°11′ ♎,31°22′ N,207.183,31.367,4,False,72125,1,1,1,4.6,2.4,-4.3,4.8,4.9,268,318,471,136,mis-constellated in the reading (read under Draco),ty485
+396,st-396,Bootes,18,Suprema,,27°52′ ♎,33°52′ N,207.867,33.867,4,False,72659,1,1,1,4.5,3.8,-3.9,5.0,5.32,268,318,472,137,mis-constellated in the reading (read under Draco),ty489
+397,st-397,Corona Borealis,1,Lucida coronae,Alphecca,6°38½′ ♏,44°23′ N,216.642,44.383,2:,False,76267,1,1,1,2.2,1.7,-1.0,1.6,2.0,269,318,497,148,agrees,ty499
+398,st-398,Corona Borealis,2,Praecedens,,3°37′ ♏,46°8′ N,213.617,46.133,4,False,75695,1,1,1,3.7,-4.6,-2.7,4.2,5.73,269,318,498,149,agrees,ty497
+399,st-399,Corona Borealis,3,Supra hanc,,3°10½′ ♏,48°25′ N,213.175,48.417,5,False,76127,1,1,1,4.1,40.0,10.4,28.4,6.42,269,318,499,150,agrees,ty496
+400,st-400,Corona Borealis,4,Quae succedit magis septent. versus,,8°2′ ♏,50°21′ N,218.033,50.35,6,False,77048,1,1,1,5.6,-86.7,9.3,56.0,18.94,269,318,500,151,not read,
+401,st-401,Corona Borealis,5,Quae sequitur lucidam,,9°14½′ ♏,44°33′ N,219.242,44.55,4,False,76952,1,1,1,3.8,2.9,-0.3,2.1,0.67,269,318,501,152,agrees,ty502
+402,st-402,Corona Borealis,6,Proxime sequens,,11°25′ ♏,44°52′ N,221.417,44.867,4,False,77512,1,1,1,4.6,1.1,-3.1,3.2,3.71,269,318,502,153,agrees,ty505
+403,st-403,Corona Borealis,7,Quae hanc rursus comitatur,,13°32′ ♏,46°9½′ N,223.533,46.158,4,False,78159,1,1,1,4.1,-0.5,-2.3,2.4,3.11,269,318,503,154,agrees,ty509
+404,st-404,Corona Borealis,8,Omnium ultima,,13°2′ ♏,48°24′ N,223.033,48.4,6.,False,78493,1,1,1,5.0,22.8,48.2,50.5,,269,318,504,155,not read,
+405,st-405,Hercules,1,In capite,,10°31′ ♐,37°23′ N,250.517,37.383,3:,False,84345,1,1,1,2.8,3.7,-3.0,4.1,3.47,269,318,505,156,agrees,ty560
+406,st-406,Hercules,2,In humero dextro,,25°27½′ ♏,42°48′ N,235.458,42.8,3,False,80816,1,1,1,2.8,3.5,-2.8,3.8,3.27,269,318,506,157,agrees,ty531
+407,st-407,Hercules,3,Penultima dextri brachij,,23°36′ ♏,40°5½′ N,233.6,40.092,3.,False,80170,1,1,1,3.7,2.0,-2.5,2.9,2.31,269,318,507,158,agrees,ty529
+408,st-408,Hercules,4,Infima in dextro brachio,,20°6½′ ♏,37°19′ N,230.108,37.317,4:,False,79043,1,1,1,5.0,1.5,-3.3,3.5,2.95,269,318,508,159,agrees,ty525
+409,st-409,Hercules,5,In sinsitro humero,,9°10′ ♐,47°47′ N,249.167,47.783,3,False,84379,1,1,1,3.1,1.0,-1.7,1.9,2.76,269,318,509,160,agrees,ty558
+410,st-410,Hercules,6,In sinistro brachio,,14°22′ ♐,49°23′ N,254.367,49.383,4.,False,85693,1,1,1,4.4,-2.5,-2.4,2.9,3.05,269,318,510,161,agrees,ty564
+411,st-411,Hercules,7,Praecedens in exuvijs leonis,,19°36′ ♐,51°16½′ N,259.6,51.275,4:,False,86974,1,1,1,3.4,6.1,-2.1,4.3,7.3,269,318,511,162,agrees,ty568
+412,st-412,Hercules,8,Sequens in triangulo exuviarum,,27°19′ ♐,52°19′ N,267.317,52.317,4.,False,88794,1,1,1,3.8,-10.9,-4.9,8.3,8.65,269,318,512,163,agrees,ty579
+413,st-413,Hercules,9,In basi trianguli ad boream,,23°57′ ♐,53°46′ N,263.95,53.767,4.,False,87998,1,1,1,4.4,-3.6,-5.2,5.6,5.82,269,318,513,164,agrees,ty574
+414,st-414,Hercules,10,Media earum quae in exuvijs,,23°38′ ♐,52°47′ N,263.633,52.783,4.,False,87933,1,1,1,3.7,-1.1,-2.6,2.7,2.77,269,318,514,165,agrees,ty573
+415,st-415,Hercules,11,Quae est in coxa sinistra,,26°2′ ♏,53°10½′ N,236.033,53.175,3,False,81693,1,1,1,2.8,-4.4,-2.6,3.7,6.74,269,318,515,166,agrees,ty533
+416,st-416,Hercules,12,"Hac orientalior, in femore sinistro",,2°45½′ ♐,53°21′ N,242.758,53.35,3,False,83207,1,1,1,3.9,-0.7,-3.2,3.3,3.34,269,318,516,167,agrees,ty547
+417,st-417,Hercules,13,Praecedens tri. contiguar. in femore,,6°21½′ ♐,59°38′ N,246.358,59.633,4,False,84380,1,1,1,3.2,7.5,-1.9,4.2,3.7,269,318,517,168,agrees,ty555
+418,st-418,Hercules,14,Media,,7°19′ ♐,60°11½′ N,247.317,60.192,4,False,84606,1,1,1,4.6,3.6,-2.5,3.0,2.31,269,318,518,169,agrees,ty557
+419,st-419,Hercules,15,Sequens,,9°47½′ ♐,60°13½′ N,249.792,60.225,4,False,85112,1,1,1,4.2,0.3,-2.9,2.9,2.93,269,318,519,170,agrees,ty559
+420,st-420,Hercules,16,In genu sinistro,,22°56′ ♐,60°47′ N,262.933,60.783,3,False,87808,1,1,1,3.9,-1.3,-2.8,2.9,2.93,269,318,520,171,agrees,ty572
+421,st-421,Hercules,17,Quae in sinis. sura prope cap. Draco.,,14°17′ ♐,69°22′ N,254.283,69.367,3,False,86414,1,1,1,3.8,1.5,-3.0,3.0,2.97,269,319,521,172,agrees,ty563
+422,st-422,Hercules,18,Praeced. tri. obscurar. in pede sinis.,,7°5½′ ♐,71°20′ N,247.092,71.333,6.,False,85379,1,1,1,5.8,-4.7,-5.1,5.3,5.35,269,319,522,173,agrees,ty556
+423,st-423,Hercules,19,Media earundem,,11°7′ ♐,71°13½′ N,251.117,71.225,6.,False,86182,1,1,1,5.3,51.0,35.5,39.0,39.38,269,319,523,174,differs in latitude by -12′,ty561
+424,st-424,Hercules,20,Ultima,,18°0′ ♐,71°5′ N,258.0,71.083,nebulosa,False,,5,3,3,,,,,5.89,269,319,524,175,agrees,ty566
+425,st-425,Hercules,21,In superiori femore dextro,,23°8½′ ♏,60°22½′ N,233.142,60.375,3,False,81833,1,1,1,3.5,1.4,-1.8,2.0,2.4,269,319,525,176,agrees,ty528
+426,st-426,Hercules,22,Borealior in eodem femore,,17°39½′ ♏,63°14′ N,227.658,63.233,4,False,81126,1,1,1,4.2,-2.1,-2.0,2.2,2.19,269,319,526,177,agrees,ty520
+427,st-427,Hercules,23,Quae est in dextro genu,,8°43½′ ♏,65°55′ N,218.725,65.917,4,False,79992,1,1,1,3.9,1.3,-3.1,3.1,2.88,269,319,527,178,agrees,ty501
+428,st-428,Hercules,24,Quae est in superiore sura,,5°57′ ♏,63°51′ N,215.95,63.85,4,False,79101,1,1,1,4.2,3.0,-2.2,2.6,2.14,269,319,528,179,agrees,ty498
+429,st-429,Hercules,25,Quae in crure,,2°43′ ♏,64°23′ N,212.717,64.383,4,False,78592,1,1,1,4.7,-0.1,-1.7,1.7,1.9,269,319,529,180,agrees,ty495
+430,st-430,Hercules,26,Praecedens in dextro crure,,16°32′ ♏,62°29′ N,226.533,62.483,5,False,80704,1,1,1,4.8,-36.8,-8.1,18.9,19.03,269,319,530,181,agrees,ty518
+431,st-431,Hercules,27,Quae in tibia dextri ped. circa talum,,2°28½′ ♏,60°15½′ N,212.475,60.258,4:,False,77760,1,1,1,4.6,5.9,-0.4,3.0,5.71,269,319,531,182,differs in longitude by -20′,ty493
+432,st-432,Hercules,28,Extrema in dextro pede,,27°6′ ♎,57°15½′ N,207.1,57.258,4,False,76041,1,3,3,5.0,1.3,-0.9,1.2,1.05,269,319,532,183,agrees,ty484
+433,st-433,Lyra,1,Lucida Lyrae,Vega,9°43′ ♑,61°47½′ N,279.717,61.792,1,False,91262,1,1,1,,0.5,-2.3,2.3,1.5,270,319,533,184,agrees,ty589
+434,st-434,Lyra,2,Quae supra lucidem ad aquilonem,,13°14′ ♑,62°27′ N,283.233,62.45,5:,False,91919,1,1,1,4.7,-8.6,-0.8,4.1,4.24,270,319,534,185,differs in longitude by -13′,ty595
+435,st-435,Lyra,3,Quae infra lucidam ad Eurum,,12°26′ ♑,60°26′ N,282.433,60.433,5:,False,91971,1,1,1,4.3,8.0,-2.7,4.8,4.52,270,319,535,186,agrees,ty592
+436,st-436,Lyra,4,Quae in medio eductionis cornuum,,16°10½′ ♑,59°26′ N,286.175,59.433,4.,False,92791,1,1,1,4.2,-2.3,-4.2,4.3,4.41,270,319,536,187,agrees,ty601
+437,st-437,Lyra,5,Duarum contiguarum ad boream,,24°32½′ ♑,60°46′ N,294.542,60.767,5:,False,94481,1,1,1,4.4,,-2.9,2.9,2.93,270,319,537,188,agrees,ty617
+438,st-438,Lyra,6,Quae ad Austrum,,25°2′ ♑,59°41′ N,295.033,59.683,5,False,94713,1,1,1,4.3,-1.6,-4.5,4.5,4.6,270,319,538,189,agrees,ty618
+439,st-439,Lyra,7,"Duar. praecedentium in iugo, borea",,13°16½′ ♑,56°5′ N,283.275,56.083,3,False,92420,1,1,1,3.5,4.2,-3.0,3.8,3.57,270,319,539,190,agrees,ty597
+440,st-440,Lyra,8,Parva sub hac,,13°3½′ ♑,55°16′ N,283.058,55.267,6,False,92405,1,3,1,5.2,-0.2,-1.7,1.7,1.95,270,319,540,191,agrees,ty596
+441,st-441,Lyra,9,In iugo duar. sequentium borea,,16°11′ ♑,55°6′ N,286.183,55.1,3,False,93194,1,1,1,3.2,12.2,-2.4,7.4,6.93,270,319,541,192,agrees,ty602
+442,st-442,Lyra,10,"Parva, quae huic subest",,16°20′ ♑,54°31½′ N,286.333,54.525,6,False,93279,1,1,1,4.9,16.2,-2.5,9.7,9.3,270,319,542,193,agrees,ty603
+443,st-443,Lyra,11,Quae in medio fere corpore,,20°52′ ♑,58°6′ N,290.867,58.1,5,False,93903,1,1,1,5.2,-11.3,-2.2,6.4,6.8,270,319,543,194,agrees,ty611
+444,st-444,Cygnus,1,In rostro,,25°44′ ♑,49°2′ N,295.733,49.033,3,False,95947,1,1,1,3.0,-0.9,-1.4,1.5,1.3,270,,544,195,not read,
+445,st-445,Cygnus,2,In capite,,29°20′ ♑,50°42′ N,299.333,50.7,5,False,96683,1,1,1,4.7,4.2,-2.4,3.6,3.14,270,319,545,196,agrees,ty634
+446,st-446,Cygnus,3,In medio colli,,7°33′ ♒,54°19′ N,307.55,54.317,4.,False,98110,1,1,1,3.9,-7.8,-0.3,4.6,5.32,270,320,546,197,agrees,ty649
+447,st-447,Cygnus,4,In pectore,Sadr,19°25′ ♒,57°9½′ N,319.417,57.158,3:,False,100453,1,1,1,2.2,-4.5,-0.4,2.5,2.92,270,320,547,198,agrees,ty680
+448,st-448,Cygnus,5,In cauda,Deneb,29°53½′ ♒,59°56½′ N,329.892,59.942,2:,False,102098,1,1,1,1.2,-2.8,-1.0,1.8,2.12,270,320,548,199,agrees,ty702
+449,st-449,Cygnus,6,Prima et lucidis. in ancone super. alae,,10°53′ ♒,64°28′ N,310.883,64.467,3,False,97165,1,1,1,2.9,-8.0,-1.3,3.7,3.61,270,320,549,200,agrees,ty661
+450,st-450,Cygnus,7,"Trium in superiori vola, australis",,13°21′ ♒,69°42′ N,313.35,69.7,4.,False,96441,1,1,1,4.5,-12.3,-4.4,6.2,4.76,270,,550,201,not read,
+451,st-451,Cygnus,8,Penultima superioris alae,,12°39½′ ♒,71°31′ N,312.658,71.517,4.,False,95853,1,1,1,3.8,-9.8,-2.7,4.1,3.49,270,320,551,202,agrees,ty667
+452,st-452,Cygnus,9,Extrema superioris alae,,9°36½′ ♒,73°50½′ N,309.608,73.842,4.,False,94779,1,1,1,3.8,-10.0,-0.8,2.9,2.29,270,320,552,203,agrees,ty655
+453,st-453,Cygnus,10,Quae in ancone inferioris alae,,22°9½′ ♒,49°26′ N,322.158,49.433,3.,False,102488,1,1,1,2.5,-0.4,-0.2,0.3,2.44,270,320,553,204,agrees,ty685
+454,st-454,Cygnus,11,In medio ipsius,,24°18′ ♒,51°41′ N,324.3,51.683,4,True,102589,1,1,1,4.5,-3.9,-3.3,4.1,4.06,270,,554,205,not read,
+455,st-455,Cygnus,12,Extrema inferioris alase,,27°43′ ♒,43°44′ N,327.717,43.733,3.,False,104732,1,1,1,3.2,-11.7,-0.7,8.5,9.27,270,320,555,206,agrees,ty693
+456,st-456,Cygnus,13,Praecedens in infimo pede,,0°32′ ♓,54°59′ N,330.533,54.983,4,False,103413,1,1,1,3.9,6.5,-3.0,4.8,4.53,270,320,556,207,agrees,ty703
+457,st-457,Cygnus,14,Quae sequitur in infimo genu,,5°21½′ ♓,56°36′ N,335.358,56.6,4:,False,104060,1,1,1,3.7,-3.2,-0.2,1.8,2.15,270,320,557,208,agrees,ty717
+458,st-458,Cygnus,15,Aust. et praec. duar. contig. in sup. pede,,22°50′ ♒,63°37′ N,322.833,63.617,4,False,99675,1,3,3,3.8,-14.6,0.6,6.5,6.85,270,320,558,209,agrees,ty687
+459,st-459,Cygnus,16,Sequens earundem et borealior,,24°34½′ ♒,64°17½′ N,324.575,64.292,4,False,99848,1,1,1,4.0,-15.3,1.1,6.7,7.03,270,320,559,210,agrees,ty689
+460,st-460,Cygnus,17,Inferior duar. infor. dex. alam sequens,,3°3½′ ♓,50°33′ N,333.058,50.55,4.,False,104887,1,1,1,3.7,-1.3,-0.8,1.2,1.48,270,320,560,211,agrees,ty706
+461,st-461,Cygnus,18,Superior earundem,,4°53½′ ♓,51°31′ N,334.892,51.517,4,False,105102,1,1,1,4.2,-3.0,-0.6,1.9,2.46,270,320,561,212,agrees,ty716
+462,st-462,Cassiopeia,1,In capite,,29°35′ ♈,44°40½′ N,29.583,44.675,4,False,2920,1,1,1,3.7,-2.9,0.8,2.2,2.67,271,320,570,222,agrees,ty073
+463,st-463,Cassiopeia,2,"In pectore, Schedir",Schedar,2°17½′ ♉,46°35½′ N,32.292,46.592,3:,False,3179,1,1,1,2.2,-2.4,0.1,1.6,2.08,271,320,571,223,agrees,ty082
+464,st-464,Cassiopeia,3,In cingulo,,4°38′ ♉,47°5′ N,34.633,47.083,4,False,3821,1,1,1,3.5,-0.5,0.5,0.6,7.26,271,320,572,224,agrees,ty088
+465,st-465,Cassiopeia,4,In flexura ad coxas,Cih,8°27½′ ♉,48°46′ N,38.458,48.767,3:,False,4427,1,1,1,2.2,-3.6,0.7,2.4,2.82,271,320,573,225,agrees,ty099
+466,st-466,Cassiopeia,5,Ad genu,,12°21′ ♉,46°22′ N,42.35,46.367,3,False,6686,1,1,1,2.7,0.5,1.1,1.1,1.31,271,320,574,226,agrees,ty112
+467,st-467,Cassiopeia,6,In crure,,19°13½′ ♉,47°29′ N,49.225,47.483,3,False,8886,1,1,1,3.3,-0.2,1.4,1.4,1.36,271,320,575,227,agrees,ty131
+468,st-468,Cassiopeia,7,Extrema pedis,,26°39′ ♉,48°54′ N,56.65,48.9,4,False,11569,1,1,1,4.5,2.1,1.7,2.2,2.13,271,320,576,228,agrees,ty155
+469,st-469,Cassiopeia,8,In brachio sinistro,,6°14½′ ♉,43°6½′ N,36.242,43.108,4,False,5542,1,1,1,4.3,-0.4,-0.6,0.7,1.54,271,320,577,229,agrees,ty092
+470,st-470,Cassiopeia,9,In cubito sinitro,,5°16′ ♉,43°28′ N,35.267,43.467,5,False,5336,1,1,1,5.2,2.6,-1.1,2.2,26.76,271,320,578,230,differs in magnitude (4 for 5),ty090
+471,st-471,Cassiopeia,10,In cubite dextro,,24°39′ ♈,49°24½′ N,24.65,49.408,6,False,118243,1,1,1,4.9,-2.4,-1.6,2.2,2.63,271,320,579,231,agrees,ty057
+472,st-472,Cassiopeia,11,In erectione sedis,,7°6′ ♉,52°14′ N,37.1,52.233,4,False,2599,1,1,1,4.2,-1.4,0.6,1.0,1.44,271,320,580,232,agrees,ty096
+473,st-473,Cassiopeia,12,Lucida cathedrae,Caph,29°35½′ ♈,51°14½′ N,29.592,51.242,3,False,746,1,1,1,2.3,-2.7,-0.4,1.7,3.63,271,321,581,233,agrees,ty074
+474,st-474,Cassiopeia,13,Extrema cathedrae,,25°34′ ♈,51°8′ N,25.567,51.133,6,False,117863,1,1,1,4.5,-1.8,0.5,1.3,1.8,271,321,582,234,agrees,ty060
+475,st-475,Cassiopeia,14,Quae iuxta hanc ad extremitat. Sellae,,25°32′ ♈,52°39′ N,25.533,52.65,6,False,117301,1,1,1,4.9,-0.4,-0.2,0.3,0.26,271,321,583,235,agrees,ty059
+476,st-476,Cassiopeia,15,Quae in rec. fere linea cum XI et XVII,,19°28′ ♉,52°48′ N,49.467,52.8,6,False,6692,1,1,1,4.7,-3.2,1.2,2.3,2.2,271,321,584,236,agrees,ty133
+477,st-477,Cassiopeia,16,Extrema scabelli,,22°21′ ♉,56°13′ N,52.35,56.217,6,False,5926,1,3,4,5.9,-0.5,-6.0,6.0,6.04,271,321,585,237,agrees,ty142
+478,st-478,Cassiopeia,17,Media scabelli,,22°33′ ♉,54°27′ N,52.55,54.45,6,True,7078,1,3,4,5.8,-7.1,-14.1,14.7,18.12,271,321,586,238,agrees,ty143
+479,st-479,Cassiopeia,18,In scabello proxime ad plantam ped.,,21°58′ ♉,52°8½′ N,51.967,52.142,6,False,7965,1,3,4,5.6,-37.4,-18.3,29.4,29.8,271,321,587,239,agrees,ty140
+480,st-480,Cassiopeia,19,Quae genu sequitur,,12°57½′ ♉,44°57½′ N,42.958,44.958,6,False,7294,1,1,1,4.7,-4.2,0.7,3.0,3.92,271,321,588,240,agrees,ty117
+481,st-481,Cassiopeia,20,Quae genu praecedit,,10°0′ ♉,45°4½′ N,40.0,45.075,6,False,6242,1,1,1,4.9,-1.5,-0.9,1.4,1.9,271,321,589,241,agrees,ty108
+482,st-482,Cassiopeia,21,Gyrus umbilici,,6°52′ ♉,47°31½′ N,36.867,47.525,6,False,4422,1,1,1,4.6,12.7,,8.6,7.32,271,321,590,242,differs in latitude by -28′,ty095
+483,st-483,Cassiopeia,22,Parvula ad crinea Cassiopeae,,29°10′ ♈,45°38′ N,29.167,45.633,6,False,2505,1,1,1,4.7,-1.9,,1.4,1.79,271,,591,243,not read,
+484,st-484,Cassiopeia,23,Sequens ex duabus borealib. in virga,,29°32′ ♈,41°15′ N,29.533,41.25,6,False,3801,1,1,1,4.9,-3.5,-0.1,2.6,3.08,271,321,592,244,agrees,ty072
+485,st-485,Cassiopeia,24,Praecendes earundem,,27°57′ ♈,41°25½′ N,27.95,41.425,6,False,3300,1,1,1,4.8,-0.4,-0.6,0.6,1.08,271,321,593,245,agrees,ty068
+486,st-486,Cassiopeia,25,Penultima Virgae,,26°56′ ♈,39°15½′ N,26.933,39.258,6,False,3504,1,1,1,4.5,-0.3,1.4,1.4,1.54,271,321,594,246,agrees,ty062
+487,st-487,Cassiopeia,26,Extrema virgae,,25°54½′ ♈,38°19′ N,25.908,38.317,6,True,3414,1,1,1,4.9,-1.1,8.9,9.0,2.17,271,321,595,247,agrees,ty061
+488,st-488,Perseus,1,In extrema dext. manus obvolutione,,18°31′ ♉,39°0½′ N,48.517,39.008,6,False,11060,1,1,1,5.2,-2.4,-3.4,3.8,4.19,271,321,615,268,agrees,ty129
+489,st-489,Perseus,2,In cubito dextro,,23°9½′ ♉,37°28½′ N,53.158,37.475,4,False,13268,1,1,1,3.8,-0.5,-2.3,2.3,2.58,271,321,616,269,agrees,ty144
+490,st-490,Perseus,3,In humero dextro,,24°26½′ ♉,34°30′ N,54.442,34.5,3,False,14328,1,1,1,2.9,1.6,-1.0,1.6,1.19,271,321,617,270,agrees,ty150
+491,st-491,Perseus,4,Quae in sinistro humero,,19°4½′ ♉,31°34½′ N,49.075,31.575,4,False,12777,1,1,1,4.1,0.2,1.2,1.2,1.34,271,321,618,271,agrees,ty130
+492,st-492,Perseus,5,Quae in capitis vertice,,21°50′ ♉,34°26½′ N,51.833,34.442,5,True,13531,1,1,1,3.9,31.6,-6.5,26.9,21.34,271,321,619,272,agrees,ty139
+493,st-493,Perseus,6,Quae in dorso est,,23°33′ ♉,30°36½′ N,53.55,30.608,4,False,14632,1,1,1,4.1,0.9,1.8,2.0,7.92,271,321,620,273,agrees,ty146
+494,st-494,Perseus,7,Fulgens in dextro latere,Mirfak,26°17′ ♉,30°5′ N,56.283,30.083,2,False,15863,1,1,1,1.8,14.3,-0.1,12.4,11.81,271,321,621,274,agrees,ty154
+495,st-495,Perseus,8,Quae proxime infra sequitur,,27°4½′ ♉,27°59′ N,57.075,27.983,5,False,16335,1,1,1,4.4,-1.5,0.8,1.6,2.24,271,321,622,275,agrees,ty158
+496,st-496,Perseus,9,Hanc sequens parva,,28°13½′ ♉,27°55′ N,58.225,27.917,5:,False,16826,1,1,1,4.3,-2.4,0.6,2.2,2.75,271,321,623,276,agrees,ty163
+497,st-497,Perseus,10,Quae est ad flexuram eijusdem lateris,,29°15′ ♉,27°14′ N,59.25,27.233,3.,False,17358,1,1,1,3.0,-0.5,1.5,1.6,1.64,271,321,624,277,agrees,ty165
+498,st-498,Perseus,11,Quae in cubito sinistro,,22°6′ ♉,26°4′ N,52.1,26.067,4.,False,14668,1,1,1,3.8,1.2,-0.5,1.2,2.14,271,321,625,278,agrees,ty141
+499,st-499,Perseus,12,Caput Medusae seu Algol,Algol,20°37′ ♉,22°22′ N,50.617,22.367,3,False,14576,1,1,1,2.1,-0.5,1.0,1.1,1.54,271,321,626,279,agrees,ty137
+500,st-500,Perseus,13,Quae sub Algol,,20°31′ ♉,20°54′ N,50.517,20.9,5,False,14817,1,1,1,4.6,17.3,1.4,16.2,15.3,271,322,627,280,agrees,ty136
+501,st-501,Perseus,14,Hanc praecedens,,19°18′ ♉,20°33′ N,49.3,20.55,4,False,14354,1,1,1,3.3,2.5,-0.3,2.3,2.46,271,322,628,281,agrees,ty132
+502,st-502,Perseus,15,Praecedens ad boream in eodem capite,,18°20′ ♉,21°35′ N,48.333,21.583,4,False,13879,1,1,1,4.7,0.7,6.5,6.5,6.2,271,322,629,282,agrees,ty128
+503,st-503,Perseus,16,In poplite dextro,,6°13½′ ♊,28°22½′ N,66.225,28.375,5:,False,20070,1,1,1,4.6,1.4,1.9,2.2,1.61,271,322,630,283,agrees,ty197
+504,st-504,Perseus,17,Quae dextrum genu praecedit,,4°11½′ ♊,28°50′ N,64.192,28.833,4.,False,19167,1,1,1,4.2,0.1,0.4,0.4,0.85,271,322,631,284,agrees,ty191
+505,st-505,Perseus,18,Flexuram genu praecedens,,3°55′ ♊,26°11′ N,63.917,26.183,5:,False,19343,1,1,1,4.0,1.1,0.3,1.0,0.28,271,322,632,285,agrees,ty189
+506,st-506,Perseus,19,Media in genu dextro,,5°14′ ♊,26°39′ N,65.233,26.65,4,False,19812,1,1,1,4.1,,0.5,0.5,0.85,271,322,633,286,agrees,ty193
+507,st-507,Perseus,20,Quae infra genu dextrum,,6°0′ ♊,24°35′ N,66.0,24.583,6:,False,20354,1,1,1,4.8,3.2,-0.7,3.0,2.45,271,322,634,287,agrees,ty196
+508,st-508,Perseus,21,Quae est in planta pedis dextri,,8°1′ ♊,18°56′ N,68.017,18.933,5:,False,21476,1,1,1,4.2,,1.4,1.4,1.55,271,322,635,288,agrees,ty207
+509,st-509,Perseus,22,Quae in sinistro femore,,28°11′ ♉,22°6′ N,58.183,22.1,4,False,17529,1,1,1,3.8,4.8,0.3,4.5,3.63,271,322,636,289,agrees,ty162
+510,st-510,Perseus,23,Quae in sinistro genu,,0°8′ ♊,19°4′ N,60.133,19.067,3,False,18532,1,1,1,2.9,-1.1,0.1,1.1,1.82,271,322,637,290,agrees,ty170
+511,st-511,Perseus,24,In crure sinitro,,29°23½′ ♉,14°53½′ N,59.392,14.892,5,False,18614,1,1,1,4.0,1.0,0.2,1.0,0.23,271,322,638,291,agrees,ty167
+512,st-512,Perseus,25,Quae in sinsitro calcaneo,,25°33′ ♉,12°8′ N,55.55,12.133,4,False,17448,1,1,1,3.8,1.7,0.3,1.7,0.9,271,322,639,292,agrees,ty153
+513,st-513,Perseus,26,Sequens sinistri pedis,,27°36′ ♉,11°17½′ N,57.6,11.292,3,False,18246,1,1,1,2.8,-2.5,-0.3,2.4,3.27,271,322,640,293,agrees,ty159
+514,st-514,Perseus,27,Informis supra caput,,26°45′ ♉,42°26′ N,56.75,42.433,5.,False,13665,1,0,4,5.6,-1.3,-2.7,2.9,2.92,271,322,641,294,agrees,ty157
+515,st-515,Perseus,28,Quae in superiori parte femoris dextri,,2°32′ ♊,29°31′ N,62.533,29.517,5.,False,18453,1,1,1,5.3,-1.9,1.7,2.3,2.05,271,322,642,295,agrees,ty181
+516,st-516,Perseus,29,Informis praecedens caput Medusae,,16°16′ ♉,20°53′ N,46.267,20.883,4.,False,13254,1,1,1,4.2,-0.4,2.1,2.1,1.01,271,322,643,296,agrees,ty121
+517,st-517,Auriga,1,Superior et praecedens duarum in capite,,23°38′ ♊,32°15′ N,83.633,32.25,6,False,27949,1,1,1,5.0,-3.7,-2.0,3.7,4.29,272,322,648,301,agrees,ty265
+518,st-518,Auriga,2,Inferior et sequens,,24°14′ ♊,30°50′ N,84.233,30.833,4,False,28358,1,1,1,3.7,6.2,-1.5,5.6,5.74,272,322,649,302,agrees,ty267
+519,st-519,Auriga,3,"In sinistro humero fulgens, Capella",Capella,16°16′ ♊,22°51½′ N,76.267,22.858,1,True,24608,1,1,1,0.1,1.1,1.1,1.5,2.81,272,322,650,303,agrees,ty238
+520,st-520,Auriga,4,Lucida in dextro humero,,24°28′ ♊,21°27½′ N,84.467,21.458,2.,True,28360,1,1,1,1.9,-91.2,-0.1,84.9,7.88,272,322,651,304,not read,
+521,st-521,Auriga,5,In dextro brachio,,23°59′ ♊,13°44′ N,83.983,13.733,4:,True,28380,1,1,1,2.7,-5.9,-0.2,5.7,21.93,272,322,652,305,agrees,ty266
+522,st-522,Auriga,6,Que in sinsitro cubito,,13°9′ ♊,20°52′ N,73.15,20.867,4,False,23416,1,1,1,3.0,7.5,1.6,7.2,6.4,272,322,653,306,agrees,ty226
+523,st-523,Auriga,7,Praecedens haedus,,13°5½′ ♊,18°8½′ N,73.092,18.142,4.,False,23453,1,1,1,3.7,-1.5,0.7,1.6,2.3,272,322,654,307,agrees,ty225
+524,st-524,Auriga,8,Sequens haedus,,13°49½′ ♊,18°11½′ N,73.825,18.192,4.,False,23767,1,1,1,3.2,3.1,2.9,4.1,3.31,272,322,655,308,agrees,ty227
+525,st-525,Auriga,9,In superiori pede,,11°4½′ ♊,10°22′ N,71.075,10.367,4,False,23015,1,1,1,2.7,-0.2,2.3,2.3,2.37,272,322,656,309,agrees,ty218
+526,st-526,Coma Berenices,1,In cuspide pri. et borealis trianguli,,18°17′ ♍,28°25′ N,168.283,28.417,3.,False,60742,1,1,1,4.3,0.9,-0.4,0.9,1.22,272,323,483,469,not read,
+527,st-527,Coma Berenices,3,Suprema contiguarum sequens,,18°17½′ ♍,28°25′ N,168.292,28.417,3.,True,60697,1,1,1,4.9,-1.1,3.6,3.7,1.39,272,323,485,471,agrees,ty421
+528,st-528,Coma Berenices,4,Inferior earundem,,18°46′ ♍,27°20′ N,168.767,27.333,4,False,60746,4,1,1,5.0,16.1,-13.2,19.5,8.84,272,323,486,472,agrees,ty425
+529,st-529,Coma Berenices,5,Quae contiguas sequitur,,19°19′ ♍,27°7′ N,169.317,27.117,4,False,60904,4,1,1,5.3,36.3,-37.8,49.8,15.89,272,323,487,473,agrees,ty427
+530,st-530,Coma Berenices,6,Praecedens duar. australi. contiguar.,,18°25′ ♍,25°51′ N,168.417,25.85,4,False,60351,1,1,1,4.8,5.7,-3.6,6.3,5.7,272,323,488,474,agrees,ty422
+531,st-531,Coma Berenices,7,Altera ad ortum,,18°48½′ ♍,26°7′ N,168.808,26.117,4,False,60514,1,1,1,5.2,-0.8,4.7,4.8,4.89,272,323,489,475,agrees,ty426
+532,st-532,Coma Berenices,8,Quae praecedit ad Austrum,,18°0′ ♍,23°30′ N,168.0,23.5,4,False,59847,1,1,1,4.9,2.7,-1.8,3.1,2.47,272,323,490,476,not read,
+533,st-533,Coma Berenices,9,Sequens contiguarum,,18°0½′ ♍,23°30′ N,168.008,23.5,4,True,61071,1,1,1,5.5,-6.9,13.1,14.5,2.21,272,323,491,477,agrees,ty419
+534,st-534,Coma Berenices,10,Altera contiguarum,,20°51′ ♍,24°56′ N,170.85,24.933,4,False,60941,1,1,1,5.5,4.3,-0.9,4.0,3.15,272,323,492,478,differs in longitude by 19′ and latitude by 20′,ty430
+535,st-535,Coma Berenices,11,Infima sequens,,20°51½′ ♍,24°56′ N,170.858,24.933,4,True,61394,1,1,1,4.8,-0.4,6.8,6.8,2.74,272,323,493,479,agrees,ty429
+536,st-536,Coma Berenices,12,Postrema in extensione comae,,28°58½′ ♍,32°46′ N,178.975,32.767,4:,False,64394,1,1,1,4.2,-3.9,-17.7,18.0,18.7,272,323,494,480,agrees,ty446
+537,st-537,Coma Berenices,13,Quae hanc mox praecedit,,27°49½′ ♍,31°42′ N,177.825,31.7,4,False,64022,1,1,1,4.8,-1.8,7.9,8.1,7.83,272,323,495,481,not read,
+538,st-538,Coma Berenices,14,Quae et hac anterior est,,27°49½′ ♍,31°41½′ N,177.825,31.692,4,True,62763,1,1,1,4.9,-0.7,-3.3,3.4,8.3,272,323,496,482,agrees,ty442
+539,st-539,Coma Berenices,15,Quae est in australi cusp. $\triangle$ parvi,,28°15′ ♍,28°32′ N,178.25,28.533,5,False,,6,0,0,,,,,,272,323,,483,agrees,ty443
+540,st-540,Ophiuchus,1,In capite,Rasalhague,16°50′ ♐,35°57′ N,256.833,35.95,3,False,86032,1,1,1,2.1,1.6,-2.3,2.7,4.03,273,323,688,328,agrees,ty565
+541,st-541,Ophiuchus,2,In dextro humero,,19°45′ ♐,28°1′ N,259.75,28.017,3,False,86742,1,1,1,2.8,1.4,-2.5,2.8,1.51,273,323,689,329,agrees,ty569
+542,st-542,Ophiuchus,3,Inferior et sequens in dextro humero,,21°5′ ♐,26°11′ N,261.083,26.183,3.,False,87108,1,1,1,3.8,-1.0,-0.7,1.1,2.12,273,323,690,330,agrees,ty570
+543,st-543,Ophiuchus,4,Praecedens in sinistro humero,,4°59½′ ♐,32°35½′ N,244.992,32.592,4.,False,82673,1,1,1,4.4,4.9,-2.0,4.6,3.83,273,323,691,331,differs in latitude by -30′,ty551
+544,st-544,Ophiuchus,5,Sequens in eodem humero,,6°16′ ♐,31°56′ N,246.267,31.933,4,False,83000,1,1,1,3.2,1.0,-2.5,2.6,3.32,273,323,692,332,agrees,ty553
+545,st-545,Ophiuchus,6,Quae in sinistro cubito,,0°3′ ♐,23°39½′ N,240.05,23.658,4,False,80883,1,1,1,3.8,-1.8,-2.7,3.2,4.1,273,323,693,333,agrees,ty544
+546,st-546,Ophiuchus,7,In sinistra manu borealior,,26°44½′ ♏,17°19′ N,236.742,17.317,3,False,79593,1,1,1,2.7,-0.8,-0.7,1.0,2.38,273,323,694,334,agrees,ty534
+547,st-547,Ophiuchus,8,Sequens et australior,,27°57′ ♏,16°30½′ N,237.95,16.508,3.,False,79882,1,1,1,3.2,-1.4,-1.6,2.1,2.04,273,323,695,335,agrees,ty540
+548,st-548,Ophiuchus,9,In dextro ancone,,19°3′ ♐,15°19′ N,259.05,15.317,4,True,86284,1,1,1,4.6,-48.0,-3.0,46.4,18.57,273,,696,336,not read,
+549,st-549,Ophiuchus,10,Australior et praeced. in dextra manu,,24°13½′ ♐,13°47′ N,264.225,13.783,4,False,88048,1,1,1,3.3,-2.3,-3.2,3.9,5.02,273,323,697,337,agrees,ty575
+550,st-550,Ophiuchus,11,Borealior et sequens in eadem manu,,25°14½′ ♐,15°20′ N,265.242,15.333,5,False,88404,1,1,1,4.8,-1.2,-1.2,1.7,2.38,273,323,698,338,agrees,ty577
+551,st-551,Ophiuchus,12,In dextro genu,,12°24′ ♐,7°18′ N,252.4,7.3,3,False,84012,1,1,1,2.4,-0.2,-3.7,3.7,3.12,273,323,699,339,agrees,ty562
+552,st-552,Ophiuchus,13,Quae in sinistro genu,,3°39′ ♐,11°30′ N,243.65,11.5,3,False,81377,1,1,1,2.5,0.4,-3.7,3.7,3.54,273,324,700,340,agrees,ty548
+553,st-553,Ophiuchus,14,In dextra tibia,,14°23′ ♐,2°12′ N,254.383,2.2,3,False,84893,1,0,1,4.4,55.4,-6.5,55.7,,273,,701,341,not read,
+554,st-554,Ophiuchus,15,Quinta informium in via lactea,,26°31′ ♐,33°2½′ N,266.517,33.042,4.,False,88771,1,1,1,3.7,5.2,-0.6,4.4,3.23,273,324,702,342,agrees,ty578
+555,st-555,Serpens,1,Praecedens in ore,,11°35′ ♏,38°12′ N,221.583,38.2,5.,False,76852,1,1,1,4.5,0.3,-2.9,2.9,3.32,273,324,713,365,agrees,ty506
+556,st-556,Serpens,2,Quae in ore est,,14°24½′ ♏,39°6½′ N,224.408,39.108,3.,False,77661,2,1,1,4.7,-28.7,56.1,60.3,,273,324,714,366,agrees,ty512
+557,st-557,Serpens,3,Quae in Temporibus,,17°6½′ ♏,35°25′ N,227.108,35.417,3,False,78072,1,1,1,3.8,,-2.9,2.9,11.18,273,324,715,367,agrees,ty519
+558,st-558,Serpens,4,In eductione colli,,14°21½′ ♏,34°27½′ N,224.358,34.458,3:,False,77233,1,1,1,3.7,-0.6,-5.2,5.2,5.36,273,324,716,368,agrees,ty511
+559,st-559,Serpens,5,Quae ad sinistrum oculum,,15°10′ ♏,37°28½′ N,225.167,37.475,4,False,77450,1,1,1,4.1,-58.8,-18.7,50.3,,273,324,717,369,agrees,ty513
+560,st-560,Serpens,6,Quae ad nares,,16°32′ ♏,42°37′ N,226.533,42.617,4.,False,78554,1,1,1,4.8,0.3,-7.4,7.4,7.25,273,324,718,370,agrees,ty517
+561,st-561,Serpens,7,Secunda in collo infra caput,,12°46½′ ♏,28°58′ N,222.775,28.967,3:,False,76276,1,1,1,3.8,-0.6,-2.6,2.6,3.22,273,324,719,371,agrees,ty508
+562,st-562,Serpens,8,In medio nexu colli,,16°30′ ♏,25°35½′ N,226.5,25.592,2,True,77070,1,1,1,2.6,-1.3,-2.4,2.7,2.69,273,324,720,372,agrees,ty516
+563,st-563,Serpens,9,Australior trium,,18°46½′ ♏,24°5½′ N,228.775,24.092,3,False,77622,1,1,1,3.7,-2.3,-3.0,3.7,3.24,273,324,721,373,agrees,ty521
+564,st-564,Serpens,10,Quae est in secunda flexione,,20°26½′ ♏,16°26½′ N,230.442,16.442,4,False,77516,1,1,1,3.5,-4.1,-9.2,10.0,10.93,273,324,722,374,agrees,ty526
+565,st-565,Serpens,11,Antepenultima caudae,,24°34½′ ♐,19°57′ N,264.575,19.95,3,False,88175,1,1,1,4.6,-1.9,-8.6,8.8,9.07,273,324,723,375,agrees,ty576
+566,st-566,Serpens,12,Penultima,,0°12½′ ♑,20°37½′ N,270.208,20.625,3.,False,89962,1,1,1,3.2,-1.6,-3.8,4.1,10.28,273,324,724,376,agrees,ty581
+567,st-567,Serpens,13,Ultima,,10°10′ ♑,26°59′ N,280.167,26.983,3,False,92946,1,1,1,4.6,1.4,-3.6,3.8,3.47,273,324,725,377,agrees,ty590
+568,st-568,Sagitta,1,Superior et orientalior,,1°32′ ♒,39°13′ N,301.533,39.217,4,False,98337,1,1,1,3.5,-2.4,0.7,2.0,2.19,274,324,726,378,agrees,ty639
+569,st-569,Sagitta,2,Media seu hanc przecedens,,27°55′ ♑,38°58½′ N,297.917,38.975,5.,False,97365,1,1,1,3.7,-4.3,-1.3,3.6,4.24,274,324,727,379,agrees,ty628
+570,st-570,Sagitta,3,Parvula quae est supra mediam,,28°31′ ♑,39°31′ N,298.517,39.517,6,False,97496,1,1,1,5.0,-1.2,-3.7,3.8,3.86,274,324,728,380,agrees,ty631
+571,st-571,Sagitta,4,Super. duar. contiguar. in Glyphide,,25°30½′ ♑,38°53′ N,295.508,38.883,4.,False,96757,1,1,1,4.4,1.0,-2.8,2.9,2.89,274,324,729,381,agrees,ty620
+572,st-572,Sagitta,5,Inferior earundem,,25°39′ ♑,38°18′ N,295.65,38.3,4,False,96837,1,1,1,4.4,0.6,-2.1,2.2,2.35,274,324,730,382,agrees,ty622
+573,st-573,Aquila,1,Quae est in capite,,29°28½′ ♑,27°8½′ N,299.475,27.142,6,False,98823,1,1,1,5.5,0.3,-4.9,4.9,4.81,274,324,734,386,agrees,ty636
+574,st-574,Aquila,2,In collo,,26°53′ ♑,26°49½′ N,296.883,26.825,3,False,98036,1,1,1,3.7,-0.3,-4.2,4.3,7.57,274,324,735,387,agrees,ty625
+575,st-575,Aquila,3,Lucida in scapulis,,26°9′ ♑,29°21½′ N,296.15,29.358,2:,False,97649,1,1,1,0.8,-0.1,-2.5,2.5,3.26,274,324,736,388,differs in latitude by -19′,ty624
+576,st-576,Aquila,4,Parva quae supra lucidam,,25°33′ ♑,30°54½′ N,295.55,30.908,6,False,97675,3,1,1,5.1,66.0,-2.6,56.7,24.44,274,325,737,389,agrees,ty621
+577,st-577,Aquila,5,Quae in sinistro humero,,25°26′ ♑,31°18′ N,295.433,31.3,3,False,97278,1,1,1,2.7,-2.8,-0.8,2.5,3.11,274,,738,390,not read,
+578,st-578,Aquila,6,Quae sequitur parva,,26°8½′ ♑,31°59′ N,296.142,31.983,5.,False,97473,1,1,4,5.8,14.0,21.2,24.3,23.9,274,325,739,391,agrees,ty623
+579,st-579,Aquila,7,Superior et praecedens in inferiori ala,,21°16½′ ♑,28°46½′ N,291.275,28.775,4.,False,96229,1,1,1,4.4,-2.5,-3.2,3.9,4.81,274,325,740,392,agrees,ty612
+580,st-580,Aquila,8,Inferior et sequens in ala,,22°14′ ♑,26°35′ N,292.233,26.583,5:,False,96665,1,1,1,5.2,1.1,-3.8,3.9,3.83,274,325,741,393,agrees,ty613
+581,st-581,Aquila,9,Cauda Vulturis,,14°15½′ ♑,36°16½′ N,284.258,36.275,3:,False,93747,1,1,1,3.0,-0.8,-1.9,2.0,2.87,274,325,742,394,agrees,ty600
+582,st-582,Aquila,10,"Quae proxime caudam praecedit, informis",,12°44′ ♑,37°40′ N,282.733,37.667,3,False,93244,1,1,1,4.0,-1.0,-2.6,2.7,3.57,274,325,743,395,agrees,ty594
+583,st-583,Aquila,11,Media informium supra caudam,,9°12′ ♑,43°32½′ N,279.2,43.542,4,False,92043,1,1,1,4.2,2.0,-3.2,3.5,5.46,274,325,744,396,agrees,ty586
+584,st-584,Aquila,12,Septima infor. quae sci. ex tribus sequitur,,9°17½′ ♑,41°5′ N,279.292,41.083,4,False,92161,1,1,1,4.3,0.3,-1.8,1.8,1.07,274,325,745,397,agrees,ty587
+585,st-585,Antinous,1,Manus sinistra,,29°21½′ ♑,18°48′ N,299.358,18.8,3,False,99473,1,1,1,3.2,-0.4,-1.9,1.9,2.1,274,325,746,398,agrees,ty635
+586,st-586,Antinous,2,Latus dextrum,,20°17½′ ♑,20°14½′ N,290.292,20.242,3,False,96468,1,1,1,4.4,-0.8,-11.0,11.1,11.3,274,325,747,399,agrees,ty609
+587,st-587,Antinous,3,Genu,,19°17′ ♑,14°28′ N,289.283,14.467,3,False,96483,1,1,1,4.9,0.5,-4.5,4.5,4.51,274,325,748,400,agrees,ty607
+588,st-588,Delphinus,1,Lucida caudae,,8°32′ ♒,29°8′ N,308.533,29.133,3,False,101421,1,1,1,4.0,-1.2,-1.3,1.7,2.29,274,325,753,405,agrees,ty651
+589,st-589,Delphinus,2,Quae caudam sequitur,,9°48′ ♒,28°52½′ N,309.8,28.875,6,False,101800,1,1,1,5.4,-1.8,-1.0,1.8,2.34,274,325,754,406,differs in latitude by -47′,ty657
+590,st-590,Delphinus,3,Quae infra caudam,,9°42′ ♒,27°34′ N,309.7,27.567,6.,False,101916,1,1,1,5.1,-2.3,-1.9,2.8,2.49,274,325,755,407,agrees,ty656
+591,st-591,Delphinus,4,In rhomboide praecede. lateris australior,,10°56′ ♒,31°57½′ N,310.933,31.958,3,False,101769,1,1,1,3.6,-8.9,0.1,7.6,7.6,274,325,756,408,agrees,ty662
+592,st-592,Delphinus,5,Eiusdem lateris borealior,,11°50½′ ♒,33°5′ N,311.842,33.083,3,False,101958,1,1,1,3.8,-0.6,-1.7,1.7,1.91,274,325,757,409,agrees,ty664
+593,st-593,Delphinus,6,Sequentis lateris australior,,13°36½′ ♒,32°0′ N,313.608,32.0,3,False,102281,2,1,1,4.4,-61.9,-1.2,52.5,,274,325,758,410,agrees,ty668
+594,st-594,Delphinus,7,Quae est in capite,,13°52′ ♒,32°47′ N,313.867,32.783,3,False,102532,1,1,1,4.3,-1.7,-1.8,2.3,4.05,274,325,759,411,agrees,ty669
+595,st-595,Delphinus,8,Quae in praec. latere IIII contigue anteit,,10°17′ ♒,32°8½′ N,310.283,32.142,5:,False,101589,1,1,1,4.6,-4.5,2.8,4.7,5.01,274,325,760,412,agrees,ty658
+596,st-596,Delphinus,9,Praecedens duar. infimar. in rhomboide,,9°18′ ♒,30°41½′ N,309.3,30.692,6,False,101483,1,1,1,5.4,-1.7,1.0,1.8,1.97,274,325,761,413,agrees,ty652
+597,st-597,Delphinus,10,Sequens earundem,,10°42′ ♒,30°41′ N,310.7,30.683,6,False,101882,1,1,1,5.7,-1.6,-2.4,2.7,3.16,274,325,762,414,agrees,ty659
+598,st-598,Equuleus,1,Praecedens capitis,,17°32½′ ♒,20°12½′ N,317.542,20.208,4,False,104987,1,1,1,3.9,1.2,-2.8,3.0,3.5,275,325,763,415,agrees,ty673
+599,st-599,Equuleus,2,Sequens capitis,,19°54½′ ♒,21°6′ N,319.908,21.1,4,False,105570,1,1,1,5.2,-1.9,-2.6,3.1,3.4,275,325,764,416,agrees,ty682
+600,st-600,Equuleus,3,Praecedens oris,,17°54′ ♒,25°16′ N,317.9,25.267,4,False,104521,1,1,1,4.7,-1.2,-2.3,2.5,3.86,275,326,765,417,agrees,ty675
+601,st-601,Equuleus,4,Sequens oris,,18°54½′ ♒,24°52′ N,318.908,24.867,4,False,104858,1,1,1,4.5,-0.3,-4.4,4.4,6.6,275,326,766,418,agrees,ty679
+602,st-602,Pegasus,1,Os Pegasi,Enif,26°22′ ♒,22°7½′ N,326.367,22.125,3,False,107315,1,1,1,2.4,-2.1,-0.2,1.9,2.53,275,326,767,419,agrees,ty690
+603,st-603,Pegasus,2,Caput,,1°15½′ ♓,16°25′ N,331.258,16.417,4:,False,109427,1,1,1,3.5,-0.7,-3.0,3.1,3.59,275,326,768,420,agrees,ty705
+604,st-604,Pegasus,3,Quae ad Austrum in capite,,29°45½′ ♒,15°43′ N,329.758,15.717,5,False,109068,1,1,1,4.9,-1.1,-0.8,1.3,1.04,275,326,769,421,agrees,ty699
+605,st-605,Pegasus,4,Inferior et sequens in iuba,,13°0′ ♓,14°30½′ N,343.0,14.508,6,False,113186,1,1,1,4.9,0.2,-0.6,0.6,0.61,275,326,770,422,agrees,ty732
+606,st-606,Pegasus,5,Superior et sequens in iuba,,12°44′ ♓,15°43½′ N,342.733,15.725,6.,False,112935,1,1,1,5.2,-1.3,0.2,1.3,1.54,275,326,771,423,agrees,ty731
+607,st-607,Pegasus,6,Lucida colli,,10°39½′ ♓,17°41′ N,340.658,17.683,3,False,112029,1,1,1,3.4,-4.0,0.6,3.9,4.18,275,326,772,424,agrees,ty724
+608,st-608,Pegasus,7,Sequens in collo,,12°25′ ♓,18°29′ N,342.417,18.483,5,False,112447,1,1,1,4.2,-1.4,-0.7,1.5,4.72,275,326,773,425,agrees,ty730
+609,st-609,Pegasus,8,Sinistrum crus,,3°23′ ♓,36°42½′ N,333.383,36.708,4,False,107354,1,1,1,4.1,0.7,-3.2,3.3,3.26,275,326,774,426,agrees,ty711
+610,st-610,Pegasus,9,Sinistrum genu,,8°50′ ♓,34°19′ N,338.833,34.317,4,False,109176,1,1,1,3.8,0.2,-2.4,2.4,3.37,275,326,775,427,differs in longitude by -20′,ty721
+611,st-611,Pegasus,10,Dextrum crus,,14°3′ ♓,41°0½′ N,344.05,41.008,4,False,109410,1,1,1,4.3,-1.3,-1.1,1.5,2.1,275,326,776,428,agrees,ty736
+612,st-612,Pegasus,11,Praecedens duarum in pectore,,17°29½′ ♓,28°49′ N,347.492,28.817,4.,False,112440,1,1,1,4.0,1.0,-0.8,1.2,1.19,275,326,777,429,agrees,ty742
+613,st-613,Pegasus,12,Sequens,,18°53½′ ♓,29°24½′ N,348.892,29.408,4.,False,112748,1,1,1,3.5,-3.6,-0.5,3.1,3.33,275,326,778,430,agrees,ty745
+614,st-614,Pegasus,13,Dextrum genu,,20°10½′ ♓,35°7½′ N,350.175,35.125,3,False,112158,1,1,1,2.9,0.4,-0.8,0.9,1.07,275,326,779,431,agrees,ty748
+615,st-615,Pegasus,14,In eodem genus ad Austrum,,19°25′ ♓,34°24½′ N,349.417,34.408,5,False,112051,1,1,1,4.8,-2.1,0.8,1.9,2.64,275,326,780,432,agrees,ty746
+616,st-616,Pegasus,15,Praecedens duarum in ala,,25°33′ ♓,25°35′ N,355.55,25.583,6,False,115250,1,1,1,4.6,-2.5,-1.0,2.5,3.1,275,326,781,433,agrees,ty754
+617,st-617,Pegasus,16,Sequens in ala et australior,,27°6′ ♓,24°50½′ N,357.1,24.842,6,False,115623,1,1,1,4.4,-41.6,-2.8,37.8,37.35,275,326,782,434,agrees,ty757
+618,st-618,Pegasus,17,"Prima alae, Marchab",Markab,17°56½′ ♓,19°26′ N,347.942,19.433,2,False,113963,1,1,1,2.5,-0.7,-1.1,1.3,1.9,275,326,783,435,agrees,ty744
+619,st-619,Pegasus,18,"Eductio cruris, Scheat",Scheat,23°49½′ ♓,31°7½′ N,353.825,31.125,2,True,113881,1,1,1,2.4,-0.6,0.5,0.7,0.74,275,326,784,436,agrees,ty751
+620,st-620,Pegasus,19,Extrema alae,Algenib,3°38′ ♈,12°35′ N,3.633,12.583,2,False,1067,1,1,1,2.8,-2.1,0.3,2.1,2.84,275,326,785,437,agrees,ty003
+621,st-621,Andromeda,1,Caput,Alpheratz,8°47′ ♈,25°42′ N,8.783,25.7,2,False,677,1,1,1,2.1,-1.6,-0.8,1.6,2.82,275,326,790,442,agrees,ty008
+622,st-622,Andromeda,2,Infima in scapula dextra,,17°6½′ ♈,27°6½′ N,17.108,27.108,5,False,2912,1,1,1,4.3,1.5,1.1,1.7,1.23,275,326,791,443,agrees,ty032
+623,st-623,Andromeda,3,Inferior in sinistro humero,,15°25′ ♈,23°3½′ N,15.417,23.058,4,False,3031,1,1,1,4.3,-0.2,-2.6,2.6,4.64,275,326,792,444,agrees,ty025
+624,st-624,Andromeda,4,In dextro brachio trium australior,,14°58′ ♈,31°33′ N,14.967,31.55,5,False,1473,1,1,1,4.5,-5.8,1.6,5.2,6.36,275,326,793,445,agrees,ty021
+625,st-625,Andromeda,5,Borea,,15°45½′ ♈,33°20½′ N,15.758,33.342,4.,False,1366,1,1,1,4.6,-5.3,1.3,4.6,5.58,275,326,794,446,agrees,ty026
+626,st-626,Andromeda,6,Media,,16°7′ ♈,32°14½′ N,16.117,32.242,5,False,1686,1,1,1,5.2,-1.8,7.6,7.8,7.47,275,327,795,447,agrees,ty027
+627,st-627,Andromeda,7,Australior in superiori manu,,10°28′ ♈,40°56½′ N,10.467,40.942,4,False,116631,1,1,1,4.3,5.3,4.3,5.9,5.43,275,327,796,448,agrees,ty009
+628,st-628,Andromeda,8,Borealior,,11°46′ ♈,41°44′ N,11.767,41.733,4,False,116805,1,1,1,4.2,-0.1,-1.7,1.7,2.08,275,327,797,449,agrees,ty011
+629,st-629,Andromeda,9,Obscura ibidem,,14°23′ ♈,42°8′ N,14.383,42.133,5.,False,117221,1,1,1,5.0,1.9,47.7,47.7,,275,327,798,450,agrees,ty020
+630,st-630,Andromeda,10,Suprema omnium in boreali manu,,12°47′ ♈,43°49½′ N,12.783,43.825,4,False,116584,1,1,1,3.8,-0.2,-1.2,1.2,4.39,275,327,799,451,agrees,ty016
+631,st-631,Andromeda,11,Praeced. et sup. duar. in sinis. brachio,,15°9′ ♈,17°48′ N,15.15,17.8,4,False,3693,1,1,1,4.1,-6.6,-11.9,13.4,14.44,275,327,800,452,agrees,ty023
+632,st-632,Andromeda,12,Quae in sinistro cubito,,16°53½′ ♈,15°58′ N,16.892,15.967,5,False,4463,1,1,1,4.4,-3.9,-3.4,5.1,6.12,275,327,801,453,agrees,ty030
+633,st-633,Andromeda,13,Australior in cingulo,Mirach,24°49′ ♈,25°59′ N,24.817,25.983,2,False,5447,1,1,1,2.1,1.6,-3.0,3.3,4.39,275,327,802,454,agrees,ty058
+634,st-634,Andromeda,14,Media,,24°6½′ ♈,30°33½′ N,24.108,30.558,4:,False,4436,1,1,1,3.9,-29.8,-55.5,61.2,,275,327,803,455,agrees,ty053
+635,st-635,Andromeda,15,Borea,,23°36′ ♈,32°30½′ N,23.6,32.508,4,False,3881,1,1,1,4.5,0.4,1.7,1.7,1.55,275,327,804,456,agrees,ty051
+636,st-636,Andromeda,16,In australi pede lucida,,8°39′ ♉,27°46½′ N,38.65,27.775,2,False,9640,1,1,1,2.1,1.3,,1.2,0.75,275,327,805,457,agrees,ty101
+637,st-637,Andromeda,17,Extrema in superiori pede,,9°6½′ ♉,36°49½′ N,39.108,36.825,5,False,8068,1,1,1,4.0,-3.6,-0.7,3.0,3.54,275,327,806,458,agrees,ty104
+638,st-638,Andromeda,18,Lucidior et praeced. in dextro pede,,6°52′ ♉,35°21½′ N,36.867,35.358,4,False,7607,1,1,1,3.6,1.8,2.0,2.4,1.37,275,327,807,459,agrees,ty094
+639,st-639,Andromeda,19,Suprema in sinistra sura,,5°6′ ♉,28°59′ N,35.1,28.983,5,False,7918,1,1,4,5.0,-38.3,43.8,55.1,,275,327,808,460,agrees,ty089
+640,st-640,Andromeda,20,Inferior,,3°23′ ♉,27°54½′ N,33.383,27.908,5:,False,7818,1,1,1,5.0,-1.8,-0.6,1.7,2.39,275,327,809,461,agrees,ty086
+641,st-641,Andromeda,21,Quae ad genu dextrum,,0°56′ ♉,36°20′ N,30.933,36.333,5.,False,5434,1,1,1,4.3,-3.1,0.2,2.5,3.13,275,327,810,462,differs in latitude by -10′,ty076
+642,st-642,Andromeda,22,Quae in extremo catenae annulo,,24°0′ ♓,57°19′ N,354.0,57.317,4,False,107533,1,1,4,4.2,-138.4,-22.9,78.5,,275,,811,463,not read,
+643,st-643,Andromeda,23,Clarior et superior in sinistra scapula,,16°19½′ ♈,24°20′ N,16.325,24.333,3,False,3092,1,1,1,3.3,-4.0,0.5,3.7,4.01,275,327,812,464,agrees,ty028
+644,st-644,Triangulum,1,In apice trianguli,,1°19′ ♉,16°49½′ N,31.317,16.825,4,False,8796,1,1,1,3.4,-0.2,-2.1,2.1,3.86,276,327,813,465,agrees,ty077
+645,st-645,Triangulum,2,In basi ad boream,,6°49½′ ♉,20°33′ N,36.825,20.55,4:,False,10064,1,1,1,3.0,-2.6,0.2,2.4,2.4,276,327,814,466,agrees,ty093
+646,st-646,Triangulum,3,Media,,7°59′ ♉,19°29′ N,37.983,19.483,5,False,10644,1,1,1,4.8,-3.2,-7.9,8.4,12.4,276,327,815,467,not read,
+647,st-647,Triangulum,4,Australior in basi,,7°58′ ♉,18°57′ N,37.967,18.95,4,False,10670,1,1,1,4.0,-0.5,-2.0,2.0,2.67,276,327,816,468,agrees,ty098
+648,st-648,Cetus,1,Quae in rostro,,9°31′ ♉,7°50′ S,39.517,-7.833,4,False,13954,1,1,1,4.7,0.1,0.6,0.6,0.81,276,327,817,818,differs in latitude by 50′,ty106
+649,st-649,Cetus,2,Lucida mandibulae Cetae,Menkar,8°47′ ♉,12°37′ S,38.783,-12.617,2,False,14135,1,1,1,2.5,-2.2,,2.1,3.17,276,328,818,819,agrees,ty103
+650,st-650,Cetus,3,Media in ore,,3°53½′ ♉,12°2½′ S,33.892,-12.042,3,False,12706,1,1,1,3.5,-0.9,1.2,1.5,3.01,276,328,819,820,agrees,ty087
+651,st-651,Cetus,4,Praecedens trium ad genam,,2°2′ ♉,14°32′ S,32.033,-14.533,3,False,12387,1,1,1,4.1,-2.5,2.3,3.3,3.85,276,328,820,821,agrees,ty080
+652,st-652,Cetus,5,Quae infra oculum,,1°54′ ♉,5°52′ S,31.9,-5.867,4.,False,11484,1,1,1,4.3,-0.4,-1.2,1.3,1.74,276,328,821,822,agrees,ty079
+653,st-653,Cetus,6,Quae est supra oculum,,6°7′ ♉,5°36′ S,36.117,-5.6,4,False,12828,1,1,1,4.3,13.4,0.5,13.3,14.21,276,328,822,823,agrees,ty091
+654,st-654,Cetus,7,In occipite,,28°29½′ ♈,4°19′ S,28.492,-4.317,4.,False,10324,1,1,1,4.4,-1.1,1.1,1.6,2.44,276,328,823,824,agrees,ty071
+655,st-655,Cetus,8,"In pectore quadrila, praeced. borea",,24°9′ ♈,25°17′ S,24.15,-25.283,4,False,11345,1,1,1,4.9,-1.2,0.9,1.4,2.09,276,328,824,825,agrees,ty054
+656,st-656,Cetus,9,Duar. infer. praecedentium ad austrum,,24°31½′ ♈,28°31′ S,24.525,-28.517,4,True,11783,1,1,1,4.7,-0.9,-1.9,2.1,3.01,276,328,825,826,agrees,ty056
+657,st-657,Cetus,10,Sequentibus in pectore australis,,28°11½′ ♈,28°16½′ S,28.192,-28.275,4,False,12770,1,1,1,4.2,-1.5,-0.3,1.4,2.19,276,328,826,827,agrees,ty069
+658,st-658,Cetus,11,Praecedens et borealis,,27°47½′ ♈,25°58′ S,27.792,-25.967,3.,False,12390,1,1,1,4.8,-3.0,-2.2,3.4,4.97,276,328,827,828,agrees,ty065
+659,st-659,Cetus,12,In ventre media,,12°25′ ♈,25°1′ S,12.417,-25.017,4.,False,8102,1,1,1,3.5,-2.2,1.1,2.3,15.54,276,328,828,829,agrees,ty013
+660,st-660,Cetus,13,Infima in ventre,,13°50′ ♈,31°4′ S,13.833,-31.067,4.,False,9347,1,1,1,4.0,-1.1,1.2,1.5,1.13,276,328,829,830,agrees,ty018
+661,st-661,Cetus,14,Borea ventris,,16°25′ ♈,20°19′ S,16.417,-20.317,3:,False,8645,1,1,1,3.7,-3.3,-2.1,3.8,4.51,276,328,830,831,agrees,ty029
+662,st-662,Cetus,15,Duar. lucidior. in dorso orientalior,,10°42½′ ♈,15°46½′ S,10.708,-15.775,3.,False,6537,1,1,1,3.6,-2.8,0.4,2.8,4.59,276,328,831,832,agrees,ty010
+663,st-663,Cetus,16,Occidentalior earundem,,6°11½′ ♈,16°55′ S,6.192,-16.917,3.,False,5364,1,1,1,3.5,-1.4,48.5,48.5,,276,328,832,833,agrees,ty004
+664,st-664,Cetus,17,Borealis caudae,,25°23′ ♓,10°1′ S,355.383,-10.017,3,False,1562,1,1,1,3.6,-2.5,-0.4,2.5,3.53,276,328,833,834,agrees,ty753
+665,st-665,Cetus,18,Australis seu lucida caudae,Diphda,26°56′ ♓,20°47′ S,356.933,-20.783,2,False,3419,1,1,1,2.0,2.1,0.1,2.0,2.72,276,328,834,835,agrees,ty755
+666,st-666,Cetus,19,Lucidam mandib. ad ort. seq. infor.,,12°45′ ♉,14°30′ S,42.75,-14.5,5.,False,15457,1,1,1,4.8,-1.8,0.4,1.7,0.8,276,328,835,836,agrees,ty114
+667,st-667,Cetus,20,Boream ventris praeced. ad austrum,,15°4½′ ♈,21°55′ S,15.075,-21.917,5:,False,8497,1,1,1,4.7,42.7,84.6,93.6,,276,328,836,837,agrees,ty022
+668,st-668,Cetus,21,Quae in rec. linea cum III et V Cap.,,2°49½′ ♉,9°12½′ S,32.825,-9.208,4.,False,12093,1,1,1,4.9,-0.5,-0.4,0.6,1.64,276,328,837,838,agrees,ty084
+669,st-669,Orion,1,Suprema tri. coninunctarum in capite,,18°11½′ ♊,13°26′ S,78.192,-13.433,4.,False,26207,1,1,1,3.4,-3.2,0.7,3.2,4.01,277,328,838,839,agrees,ty250
+670,st-670,Orion,2,Occidentalior,,18°6½′ ♊,13°54′ S,78.108,-13.9,5,False,26176,1,1,1,4.4,-4.3,2.3,4.7,5.47,277,328,839,840,agrees,ty249
+671,st-671,Orion,3,Tertia quae ad ortum,,18°33½′ ♊,14°4½′ S,78.558,-14.075,5,False,26366,1,1,1,4.1,-0.6,1.6,1.7,1.01,277,328,840,841,agrees,ty253
+672,st-672,Orion,4,Sequens seu lucidus humerus,Betelgeuse,23°12′ ♊,16°6′ S,83.2,-16.1,2:,False,27989,1,1,1,0.4,-1.0,1.2,1.5,2.01,277,328,841,842,agrees,ty263
+673,st-673,Orion,5,Sinister seu praecedens humerus,Bellatrix,15°23′ ♊,16°53′ S,75.383,-16.883,2.,False,25336,1,1,1,1.6,-0.4,1.0,1.1,1.48,277,328,842,843,agrees,ty234
+674,st-674,Orion,6,Sequens in sinistro humero,,16°47′ ♊,17°22′ S,76.783,-17.367,5,False,25813,1,1,1,4.2,2.1,1.2,2.4,1.62,277,328,843,844,agrees,ty241
+675,st-675,Orion,7,Quae in dextro brachio,,25°4½′ ♊,14°51′ S,85.075,-14.85,4,False,28614,1,1,1,4.1,-2.4,60.7,60.7,,277,328,844,845,agrees,ty268
+676,st-676,Orion,8,In dextra vina,,28°30½′ ♊,11°30′ S,88.508,-11.5,6,False,29800,1,1,1,5.0,0.5,19.1,19.1,20.37,277,329,845,846,agrees,ty278
+677,st-677,Orion,9,In manu dextra australior,,27°23½′ ♊,9°15′ S,87.392,-9.25,4,False,29426,1,1,1,4.4,-1.7,,1.7,2.52,277,329,846,847,agrees,ty275
+678,st-678,Orion,10,Praecedens in dextra manu,,26°21′ ♊,8°44′ S,86.35,-8.733,4.,False,29038,1,1,1,4.4,-4.0,1.5,4.3,4.96,277,329,847,848,agrees,ty272
+679,st-679,Orion,11,Proxima supremae in dextra manu,,27°22′ ♊,7°20½′ S,87.367,-7.342,6,False,29434,1,1,1,4.9,-1.0,0.8,1.3,1.95,277,329,848,849,agrees,ty274
+680,st-680,Orion,12,Suprema et ultima earum quae in manu,,28°8½′ ♊,7°19′ S,88.142,-7.317,6,False,29704,1,1,1,5.3,1.3,1.2,1.8,1.23,277,329,849,850,agrees,ty277
+681,st-681,Orion,13,Praecedens duarum in Coloboro,,23°9′ ♊,3°12½′ S,83.15,-3.208,5,False,27913,1,1,1,4.4,-1.2,0.6,1.3,3.14,277,329,850,851,agrees,ty262
+682,st-682,Orion,14,Sequens earundem,,25°21½′ ♊,3°21′ S,85.358,-3.35,5,False,28716,1,1,1,4.6,-0.3,,0.3,1.14,277,329,851,852,agrees,ty269
+683,st-683,Orion,15,Quae est infra dextrum humerum ad occas.,,18°56½′ ♊,19°17½′ S,78.942,-19.292,5.,False,26594,1,1,1,4.5,-0.5,1.3,1.3,1.81,277,329,852,853,agrees,ty255
+684,st-684,Orion,16,Ex duabus obsuris in dorso sequens,,17°40′ ♊,19°36½′ S,77.667,-19.608,6.,False,26126,1,1,1,5.3,-2.5,2.2,3.3,4.01,277,329,853,854,agrees,ty247
+685,st-685,Orion,17,Praecedens earundem,,16°46′ ♊,19°52½′ S,76.767,-19.875,6.,False,25861,1,1,1,5.5,1.5,-8.0,8.1,8.06,277,329,854,855,agrees,ty240
+686,st-686,Orion,18,Quae ex quatuor in dorso praecedit,,15°34′ ♊,20°8½′ S,75.567,-20.142,5.,False,25473,1,1,1,4.6,2.6,,2.5,1.65,277,329,855,856,agrees,ty235
+687,st-687,Orion,19,In clypeo novem borealissima,,7°53′ ♊,8°17′ S,67.883,-8.283,4.,False,22667,1,1,1,4.7,2.4,0.7,2.4,1.5,277,329,856,857,agrees,ty204
+688,st-688,Orion,20,Secunda,,8°48′ ♊,9°7′ S,68.8,-9.117,4.,False,22957,1,1,1,4.1,-1.0,0.3,1.1,2.4,277,329,857,858,agrees,ty210
+689,st-689,Orion,21,Tertia,,8°10′ ♊,11°6′ S,68.167,-11.1,6,False,22833,1,1,1,5.2,-1.3,-2.9,3.2,3.6,277,329,858,859,agrees,ty208
+690,st-690,Orion,22,Quarta,,8°0½′ ♊,12°25½′ S,68.008,-12.425,4,False,22845,1,1,1,4.6,0.7,1.3,1.5,0.45,277,329,859,860,differs in latitude by 4′,ty206
+691,st-691,Orion,23,Quinta,,6°49′ ♊,13°31½′ S,66.817,-13.525,4,True,22509,1,1,1,4.3,-1.3,-28.4,28.4,2.17,277,329,860,861,differs in latitude by 28′,ty201
+692,st-692,Orion,24,Sexta,,6°23′ ♊,15°27′ S,66.383,-15.45,4,False,22449,1,1,1,3.2,-5.0,1.2,5.0,2.74,277,329,861,862,agrees,ty198
+693,st-693,Orion,25,Septima,,6°33′ ♊,16°50′ S,66.55,-16.833,4,False,22549,1,1,1,3.7,-1.3,0.6,1.4,2.14,277,329,862,863,agrees,ty199
+694,st-694,Orion,26,Octava,,6°58′ ♊,20°2′ S,66.967,-20.033,4:,False,22797,1,1,1,3.7,-3.0,-1.4,3.1,3.84,277,329,863,864,agrees,ty202
+695,st-695,Orion,27,Ultima,,7°57′ ♊,20°55½′ S,67.95,-20.925,4,False,23123,1,1,1,4.5,0.9,1.4,1.6,1.34,277,329,864,865,differs in latitude by 50′,ty205
+696,st-696,Orion,28,Prima baltei,,16°50½′ ♊,23°38′ S,76.842,-23.633,2,False,25930,1,1,1,2.2,-3.0,1.7,3.2,3.9,277,329,865,866,agrees,ty242
+697,st-697,Orion,29,Media,,17°54′ ♊,24°33½′ S,77.9,-24.558,2,False,26311,1,1,1,1.7,-0.4,,0.4,1.11,277,329,866,867,agrees,ty248
+698,st-698,Orion,30,Ultima,,19°6½′ ♊,25°21½′ S,79.108,-25.358,2.,False,26727,1,1,1,1.7,0.2,0.8,0.8,0.91,277,329,867,868,agrees,ty256
+699,st-699,Orion,31,Quae in manubrio ensis,,14°37½′ ♊,25°36½′ S,74.625,-25.608,3,False,25281,1,1,1,3.3,-2.3,1.4,2.5,3.17,277,329,868,869,agrees,ty231
+700,st-700,Orion,32,Suprema trium in ense,,17°28′ ♊,28°9½′ S,77.467,-28.158,5,False,26237,1,3,3,4.6,0.4,-1.3,1.4,1.47,277,329,869,870,agrees,ty246
+701,st-701,Orion,33,Media ensis,,17°24½′ ♊,28°45′ S,77.408,-28.75,3.,False,26220,4,2,1,5.0,,1.3,1.3,1.08,277,329,870,871,agrees,ty244
+702,st-702,Orion,34,Australis,,17°27½′ ♊,29°17′ S,77.458,-29.283,3,False,26241,1,1,1,2.8,-1.9,1.9,2.5,2.98,277,329,871,872,agrees,ty245
+703,st-703,Orion,35,Praecedens duarum infra ensem,,16°20′ ♊,30°37½′ S,76.333,-30.625,4,False,25923,1,1,1,4.6,0.4,1.8,1.8,1.77,277,329,872,873,agrees,ty239
+704,st-704,Orion,36,Sequens duarum infra ensem,,18°23′ ♊,30°38′ S,78.383,-30.633,5,False,26563,1,1,1,4.8,-2.1,2.7,3.3,3.53,277,330,873,874,agrees,ty252
+705,st-705,Orion,37,"Lucida in sinistro pede, Regel",Rigel,11°17′ ♊,31°11½′ S,71.283,-31.192,1.,False,24436,1,1,1,0.2,-1.7,1.0,1.8,2.36,277,330,874,875,agrees,ty219
+706,st-706,Orion,38,Quae in sinistro calcaneo,,12°15½′ ♊,29°53′ S,72.258,-29.883,4,False,24674,1,1,1,3.6,1.1,-0.3,1.0,0.41,277,330,875,876,agrees,ty222
+707,st-707,Orion,39,Quae in sura sinistri pedis,,14°2′ ♊,31°0′ S,74.033,-31.0,5:,False,25247,1,1,1,4.1,-1.6,1.9,2.3,2.72,277,330,876,877,agrees,ty228
+708,st-708,Orion,40,In genus dextro,Saiph,20°49½′ ♊,33°8′ S,80.825,-33.133,3,False,27366,1,1,1,2.1,0.3,0.6,0.7,0.74,277,330,877,878,agrees,ty260
+709,st-709,Orion,41,Quae ultimam baltei praecedit ad austr.,,18°39′ ♊,26°0½′ S,78.65,-26.008,4,False,26549,1,1,1,3.8,-7.5,1.5,6.9,7.08,277,330,878,879,differs in magnitude (5 for 4),ty254
+710,st-710,Orion,42,Quae ad dorsum est hanc praecedens,,14°34′ ♊,19°40′ S,74.567,-19.667,6,False,25142,1,1,1,5.0,0.9,2.2,2.4,2.23,277,330,879,880,agrees,ty230
+711,st-711,Eridanus,1,Quae ad sinis. ped. Orio. in princip. fluvij,,9°40′ ♊,31°35½′ S,69.667,-31.592,4,False,23972,1,1,1,4.2,-1.7,-0.2,1.4,2.18,278,330,900,901,agrees,ty212
+712,st-712,Eridanus,2,Supra pedem Orionis in fluvio,,9°42′ ♊,27°54½′ S,69.7,-27.908,3.,False,23875,1,1,1,2.8,0.8,0.2,0.7,0.71,278,330,901,902,agrees,ty213
+713,st-713,Eridanus,3,Duarum aliarum sequens,,7°39′ ♊,29°52′ S,67.65,-29.867,5,False,23364,1,1,1,4.8,-1.0,3.1,3.2,3.51,278,330,902,903,agrees,ty203
+714,st-714,Eridanus,4,Praecedens,,5°29½′ ♊,27°51½′ S,65.492,-27.858,5,False,22701,1,1,1,4.4,-1.2,0.6,1.2,2.04,278,330,903,904,not read,
+715,st-715,Eridanus,5,Sequens duarum superiorum,,3°45½′ ♊,25°34′ S,63.758,-25.567,4,False,22109,1,1,1,4.0,,9.0,9.0,8.96,278,330,904,905,agrees,ty187
+716,st-716,Eridanus,6,Praecedens earundem,,1°14½′ ♊,25°11½′ S,61.242,-25.192,4,False,21444,1,1,1,3.9,-0.2,1.2,1.2,1.51,278,330,905,906,agrees,ty174
+717,st-717,Eridanus,7,Post intevallum sequens ex quatuor,,18°18′ ♉,33°13½′ S,48.3,-33.225,3,False,18543,1,1,1,3.0,-1.4,-0.5,1.3,2.13,278,330,906,907,not read,
+718,st-718,Eridanus,8,Quae praeit hanc,,15°22½′ ♉,31°9′ S,45.375,-31.15,4,False,17593,1,1,1,4.4,-0.3,-1.0,1.0,0.89,278,330,907,908,not read,
+719,st-719,Eridanus,9,Quae ad septentr. est seu tertia praeced.,,15°7′ ♉,28°46½′ S,45.117,-28.775,3,False,17378,1,1,1,3.5,8.8,-1.6,7.9,8.36,278,330,908,909,not read,
+720,st-720,Eridanus,10,Quae omnes quatuor antecedit,,12°45′ ♉,27°47′ S,42.75,-27.783,3,False,16537,1,1,1,3.7,-3.0,-0.3,2.7,9.8,278,330,909,910,not read,
+721,st-721,Lepus,1,Superior praecedentis auris,,10°14½′ ♊,34°34′ S,70.242,-34.567,5,False,24244,1,1,1,4.4,-3.7,-12.1,12.5,12.85,278,330,920,920,differs in latitude by -5′,ty215
+722,st-722,Lepus,2,Inferior eiusdem auris,,10°20½′ ♊,35°54′ S,70.342,-35.9,5,False,24327,1,1,1,4.4,-0.7,2.3,2.4,2.64,278,330,921,921,agrees,ty216
+723,st-723,Lepus,3,Superior sequentis auris,,12°27′ ♊,35°18′ S,72.45,-35.3,6,False,24873,1,1,1,5.3,-1.9,-5.5,5.7,5.89,278,330,922,922,agrees,ty223
+724,st-724,Lepus,4,Inferior sequentis auris,,12°14′ ♊,36°14′ S,72.233,-36.233,5,False,24845,1,1,1,4.3,-1.7,-0.4,1.4,2.12,278,330,923,923,agrees,ty221
+725,st-725,Lepus,5,Quae est in capite,,9°49′ ♊,39°4′ S,69.817,-39.067,5,False,24305,1,1,1,3.3,-0.3,-1.9,2.0,2.17,278,330,924,924,agrees,ty214
+726,st-726,Lepus,6,Extrema anteriorem pedum,,6°25½′ ♊,45°0′ S,66.425,-45.0,4,False,23685,1,1,1,3.2,2.9,-0.4,2.1,1.77,278,,925,925,not read,
+727,st-727,Lepus,7,Quae in dorso seu medio corpore,,15°49½′ ♊,41°5½′ S,75.825,-41.092,3.,False,25985,1,1,1,2.6,-1.0,-1.1,1.4,1.77,278,330,926,926,agrees,ty236
+728,st-728,Lepus,8,In armo sinistro,,14°6½′ ♊,43°57½′ S,74.108,-43.958,3,False,25606,1,1,1,2.8,-0.5,0.1,0.4,1.16,278,330,927,927,agrees,ty229
+729,st-729,Lepus,9,Australior duar. in posteriorib. pedib.,,19°21½′ ♊,45°49½′ S,79.358,-45.825,3.,False,27072,1,1,1,3.6,-2.0,-0.4,1.4,4.39,278,331,928,928,agrees,ty258
+730,st-730,Lepus,10,Borealior earundem,,21°36′ ♊,44°18′ S,81.6,-44.3,3.,False,27654,1,1,1,3.8,-2.0,1.4,2.0,3.04,278,331,929,929,agrees,ty261
+731,st-731,Lepus,11,Praecedens in dorso,,20°26½′ ♊,38°16′ S,80.442,-38.267,4,False,27288,1,1,1,3.5,-1.3,-0.1,1.0,1.82,278,331,930,930,agrees,ty259
+732,st-732,Lepus,12,Sequens in dorso,,23°27½′ ♊,37°40½′ S,83.458,-37.675,4,False,28103,1,1,1,3.7,-7.2,0.2,5.7,6.69,278,331,931,931,agrees,ty264
+733,st-733,Lepus,13,Ultima in cauda,,26°22′ ♊,38°26′ S,86.367,-38.433,4.,False,28910,1,1,1,4.7,-1.9,0.9,1.8,2.52,278,331,932,932,differs in latitude by 10′,ty273
+734,st-734,Canis Major,1,"In ore splendidissima, Sirius vocata",Sirius,8°35½′ ♋,39°30′ S,98.592,-39.5,1,False,32349,1,1,1,-1.4,-0.3,-0.8,0.9,10.01,278,331,933,933,agrees,ty293
+735,st-735,Canis Major,2,Quae in fronte ad dextram aurem,,11°1½′ ♋,34°50′ S,101.025,-34.833,4,False,33160,1,1,1,4.1,-22.7,4.1,19.1,20.61,278,331,934,934,agrees,ty297
+736,st-736,Canis Major,3,In media fronte,,11°27′ ♋,36°43′ S,101.45,-36.717,5,False,33345,1,1,1,5.0,2.4,0.7,2.0,1.41,278,331,935,935,differs in latitude by -2′,ty298
+737,st-737,Canis Major,4,Quae sub sinistra aure,,14°6′ ♋,38°2½′ S,104.1,-38.042,3.,False,34045,1,1,1,4.1,-2.7,0.1,2.1,2.77,278,331,936,936,differs in latitude by -14′,ty305
+738,st-738,Canis Major,5,In collo,,12°3′ ♋,39°30′ S,102.05,-39.5,4,False,33347,1,1,1,4.4,-4.8,-11.5,12.1,12.34,278,331,937,937,not read,
+739,st-739,Canis Major,6,In armo dextro anteriorum pedum,,6°32½′ ♋,42°12½′ S,96.542,-42.208,5,False,31592,1,3,4,4.0,-21.9,-9.4,18.8,19.16,278,331,938,938,differs in latitude by -49′,ty290
+740,st-740,Canis Major,7,Quae in extremitate pedis prioris,,1°42½′ ♋,41°18½′ S,91.708,-41.308,2.,False,30324,1,1,1,2.0,-4.8,0.2,3.6,4.24,278,331,939,939,differs in longitude by -38′,ty280
+741,st-741,Canis Major,8,Quae in dorso,,15°30½′ ♋,46°9½′ S,105.508,-46.158,5:,False,33977,1,1,1,3.0,-3.1,-1.2,2.4,2.94,278,331,940,940,agrees,ty309
+742,st-742,Canis Major,9,Media in pectore,,12°36½′ ♋,46°39½′ S,102.608,-46.658,5:,False,33152,1,1,1,3.9,0.3,-9.9,9.9,5.66,278,331,941,941,agrees,ty299
+743,st-743,Canis Major,10,Quae in ventre,,17°55′ ♋,48°30′ S,107.917,-48.5,3,False,34444,1,1,1,1.8,-3.7,,2.5,3.04,278,331,942,942,agrees,ty317
+744,st-744,Canis Major,11,In ventre inter posteriora femora,,15°21½′ ♋,51°24½′ S,105.358,-51.408,3,False,33579,1,1,1,1.5,-8.2,,5.1,5.64,278,331,943,943,differs in latitude by 22′,ty308
+745,st-745,Canis Major,12,Inferior dextri pedis priorum,,1°7′ ♋,51°46½′ S,91.117,-51.775,3,False,30122,1,1,1,3.0,42.3,-99.0,102.2,,278,331,944,944,differs in longitude by 60′,ty284
+746,st-746,Canis Major,13,Quae in cauda,,24°11½′ ♋,51°24½′ S,114.192,-51.408,3,False,35904,1,1,1,2.5,-11.3,45.3,45.9,8.94,278,331,945,945,agrees,ty325
+747,st-747,Canis Minor,1,In collo,,16°39½′ ♋,13°33½′ S,106.658,-13.558,3.,False,36188,1,1,1,2.9,-1.5,1.8,2.3,2.93,279,331,946,946,agrees,ty312
+748,st-748,Canis Minor,2,"In femore, Procyon",Procyon,20°18½′ ♋,15°57′ S,110.308,-15.95,2:,False,37279,1,1,1,0.4,-1.4,0.7,1.5,7.68,279,331,947,947,agrees,ty322
+749,st-749,Argo Navis,1,Quae in suprema puppi,,5°53½′ ♌,43°18½′ S,125.892,-43.308,3,False,39757,1,1,1,2.8,-1.3,,1.0,2.23,279,331,951,951,agrees,ty351
+750,st-750,Argo Navis,2,Suprema clypei navis,,0°35½′ ♌,44°58½′ S,120.592,-44.975,3:,False,38170,1,1,1,3.3,-5.1,-0.2,3.6,4.22,279,331,952,952,agrees,ty340
+751,st-751,Argo Navis,3,Praecedens clypei,,28°0′ ♋,47°28′ S,118.0,-47.467,3,False,37229,1,1,1,3.8,-4.4,0.6,3.0,3.74,279,331,953,953,agrees,ty334
+752,st-752,Hydra,1,Praecedens in capite,,5°39½′ ♌,14°37′ S,125.658,-14.617,5,False,42402,1,1,1,4.4,-0.4,-1.2,1.2,1.81,279,331,962,962,agrees,ty350
+753,st-753,Hydra,2,Supra primam ad aquilonem,,6°46′ ♌,14°16½′ S,126.767,-14.275,4,False,42799,1,1,1,4.3,-1.2,-0.7,1.3,2.22,279,332,963,963,agrees,ty353
+754,st-754,Hydra,3,Borealior in occipite,,6°48′ ♌,11°8′ S,126.8,-11.133,4,False,43109,1,1,1,3.4,0.4,0.3,0.5,1.84,279,332,964,964,agrees,ty355
+755,st-755,Hydra,4,Quae tertiam ad austrum praeit,,7°22½′ ♌,11°36′ S,127.375,-11.6,5,False,43234,1,1,1,4.3,-1.5,1.0,1.8,2.48,279,332,965,965,agrees,ty356
+756,st-756,Hydra,5,Omnium in capite orientalior,,9°0½′ ♌,11°1′ S,129.008,-11.017,4,False,43813,1,1,1,3.1,1.0,0.9,1.3,0.89,279,332,966,966,agrees,ty359
+757,st-757,Hydra,6,Quae in collo praecedit,,11°51½′ ♌,11°5½′ S,131.858,-11.092,6,False,44659,1,1,1,5.0,-1.4,1.8,2.3,2.87,279,332,967,967,agrees,ty364
+758,st-758,Hydra,7,Sequens in eductione colli,,14°41½′ ♌,13°5′ S,134.692,-13.083,4,False,45336,1,1,1,3.9,0.9,1.8,2.0,1.38,279,332,968,968,agrees,ty368
+759,st-759,Hydra,8,Media colli et praeced. trium in nexu,,20°11½′ ♌,15°0′ S,140.192,-15.0,5,False,46776,1,1,1,4.5,-0.6,0.2,0.6,1.45,279,332,969,969,agrees,ty378
+760,st-760,Hydra,9,Borea trium in flexu colli,,22°4′ ♌,14°17½′ S,142.067,-14.292,4,False,47431,1,1,1,3.9,0.6,-0.3,0.7,0.63,279,332,970,970,agrees,ty382
+761,st-761,Hydra,10,Australis in nexu,,19°53½′ ♌,16°46′ S,139.892,-16.767,5,False,46509,1,1,1,4.6,7.6,2.2,7.6,7.46,279,332,971,971,agrees,ty377
+762,st-762,Hydra,11,Lucida Hydrae sive Cor,Alphard,21°45½′ ♌,22°24′ S,141.758,-22.4,1.,False,46390,1,1,1,2.0,-1.6,-0.6,1.6,2.42,279,332,972,972,agrees,ty380
+763,st-763,Hydra,12,Quae proxime Cor sequitur,,27°12′ ♌,26°33½′ S,147.2,-26.558,4,False,47452,1,1,1,5.1,-4.0,-3.5,5.0,5.75,279,332,973,973,agrees,ty392
+764,st-764,Hydra,13,Quae hanc deinde sequitur,,0°9′ ♍,26°12′ S,150.15,-26.2,5,False,48356,1,1,1,4.1,-0.4,6.4,6.4,6.35,279,332,974,974,agrees,ty395
+765,st-765,Hydra,14,Praeced. ex duab. contig. supra hanc,,2°48′ ♍,23°13′ S,152.8,-23.217,5,False,49402,1,1,1,4.6,-1.1,1.4,1.7,2.45,279,,975,975,not read,
+766,st-766,Hydra,15,Sequens earundem,,3°51′ ♍,21°52′ S,153.85,-21.867,4,True,49841,1,1,1,3.6,-2.8,-9.6,10.0,10.04,279,,976,976,not read,
+767,st-767,Hydra,16,Quae a corde quinta est,,9°31½′ ♍,24°38′ S,159.525,-24.633,4,False,51069,1,1,1,3.8,-1.4,-2.0,2.4,3.91,279,332,977,977,agrees,ty409
+768,st-768,Hydra,17,Quae in rec. linea cum hac et sequente,,12°41½′ ♍,23°31′ S,162.692,-23.517,5.,False,52085,1,1,1,4.9,-10.6,0.7,9.8,11.19,279,332,978,978,agrees,ty412
+769,st-769,Hydra,18,Cratere proxime praecedens,,14°51′ ♍,21°48½′ S,164.85,-21.808,4,False,52943,1,1,1,3.1,-1.9,-1.1,2.1,2.58,279,332,979,979,agrees,ty414
+770,st-770,Hydra,19,Informis caput proxime praecedens,,4°45½′ ♌,12°27′ S,124.758,-12.45,4,False,42313,1,1,1,4.1,-0.4,1.4,1.4,2.05,279,332,980,980,agrees,ty348
+771,st-771,Crater,1,Quae est in basi Crateris,,18°13′ ♍,22°41′ S,168.217,-22.683,4,False,53740,1,1,1,4.1,-1.0,-1.6,1.9,5.33,280,332,986,986,agrees,ty420
+772,st-772,Crater,2,Sequens duarum in medio,,23°43′ ♍,19°39′ S,173.717,-19.65,4,False,55705,1,1,1,4.1,-1.3,-0.6,1.4,2.79,280,332,987,987,agrees,ty438
+773,st-773,Crater,3,Praecedens earundem,,21°10½′ ♍,17°25′ S,171.175,-17.417,4,False,55282,1,1,1,3.6,-1.0,-10.2,10.3,9.79,280,332,988,988,agrees,ty431
+774,st-774,Corvus,1,Quae ad oculum,,6°8′ ♎,19°39′ S,186.133,-19.65,4:,False,59316,1,1,1,3.0,-0.6,-0.4,0.7,1.92,280,332,994,994,agrees,ty456
+775,st-775,Corvus,2,Praecedens duar. superiorum in $\box$,,5°13′ ♎,14°25′ S,185.217,-14.417,3,False,59803,1,1,1,2.6,-1.8,-3.9,4.3,5.52,280,332,995,995,agrees,ty454
+776,st-776,Corvus,3,Sequens earundem,,7°55′ ♎,12°7′ S,187.917,-12.117,3,False,60965,1,1,1,2.9,-0.5,-2.4,2.5,4.39,280,332,996,996,agrees,ty457
+777,st-777,Corvus,4,Sequens inferiorum in quadrato,,11°49′ ♎,17°59′ S,191.817,-17.983,3.,False,61359,1,1,1,2.7,-0.3,-2.2,2.2,2.71,280,332,997,997,agrees,ty462

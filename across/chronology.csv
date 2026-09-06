@@ -1,0 +1,256 @@
+kind,record_key,label,year_start,year_end,edition,link
+instrument-fate,transmission-20th century,"The two sextants pass to the Národní technické muzeum, Prague, where they are displayed.",,,Instrumenta,../instrumenta/index.html#sec-transmission
+period,per-1,Childhood in Scania and Zealand,1546,1559,Loca,../loca/index.html#per-1
+period,per-2,Student at Copenhagen,1559,1562,Loca,../loca/index.html#per-2
+journey,journey-copenhagen-leipzig-1562,"First study journey: Copenhagen to Leipzig, February–March 1562",1562,1562,Loca,../loca/index.html#journey-copenhagen-leipzig-1562
+period,per-3,Leipzig with Vedel,1562,1565,Loca,../loca/index.html#per-3
+volume,O_GKS1824,Earliest observations 1563–1582,1563,1582,Observationes,../observationes/index.html#vc-O_GKS1824
+volume,O_GKS310,Collectio observationum (Bartholin),1563,,Observationes,../observationes/index.html#vc-O_GKS310
+volume,O_LOST_8VO,Lost 8vo observation volume 1563–74,1563,1574,Observationes,../observationes/index.html#vc-O_LOST_8VO
+instrument,inst-radius-1564,Radius astronomicus (cross-staff) — the student instrument,1564,1570,Instrumenta,../instrumenta/index.html#inst-radius-1564
+journey,journey-leipzig-home-1565,"Return from Leipzig to wartime Denmark, May–June 1565",1565,1565,Loca,../loca/index.html#journey-leipzig-home-1565
+period,per-4,The Wanderjahre,1565,1570,Loca,../loca/index.html#per-4
+journey,journey-plague-flight-1566,"Plague flight: Wittenberg to Rostock, September 1566",1566,1566,Loca,../loca/index.html#journey-plague-flight-1566
+journey,journey-second-study-tour-1566,"Second departure: Denmark to Wittenberg, April 1566",1566,1566,Loca,../loca/index.html#journey-second-study-tour-1566
+journey,journey-home-visit-1567,"Summer visit home and return toward Rostock, 1567",1567,1567,Loca,../loca/index.html#journey-home-visit-1567
+journey,journey-return-rostock-1568,"Third trip abroad: Denmark to Rostock, New Year 1568",1567,1568,Loca,../loca/index.html#journey-return-rostock-1568
+journey,journey-basel-to-augsburg-1569,"Basel to Augsburg by the Danube road, early 1569",1568,1569,Loca,../loca/index.html#journey-basel-to-augsburg-1569
+journey,journey-south-to-basel-1568,"Southward across Germany: Rostock to Basel, 1568",1568,1568,Loca,../loca/index.html#journey-south-to-basel-1568
+letters-year,letters-1568,"Letters, 1568: 1",1568,1568,Epistolarium,../epistolarium/index.html
+instrument,inst-augsburg-quadrant,Quadrans maximus — the great Augsburg quadrant,1569,1574,Instrumenta,../instrumenta/index.html#inst-augsburg-quadrant
+instrument,inst-globe,Globus magnus orichalcicus — the great brass globe,1570,1595,Instrumenta,../instrumenta/index.html#inst-globe
+journey,journey-augsburg-home-1570,"Homeward from Augsburg to Helsingborg, May–December 1570",1570,1570,Loca,../loca/index.html#journey-augsburg-home-1570
+letters-year,letters-1571,"Letters, 1571: 2",1571,1571,Epistolarium,../epistolarium/index.html
+period,per-5,"Herrevad, the nova, the lectures, the grand tour",1571,1576,Loca,../loca/index.html#per-5
+edition,M_CARMEN_1572,Copenhagen 1572,1572,1572,Typographica,../census/brahe-carmen-ad-fratrem-1572/explorer.html
+instrument,inst-halfsextant-smallangles,Half-sextant for small angles,1572,1601,Instrumenta,../instrumenta/index.html#inst-halfsextant-smallangles
+instrument,inst-herrevad-sextant,Sextant of Herrevadskloster — the new-star sextant,1572,1574,Instrumenta,../instrumenta/index.html#inst-herrevad-sextant
+letters-year,letters-1572,"Letters, 1572: 2",1572,1572,Epistolarium,../epistolarium/index.html
+reception,recep-apocalyptic-nova,The apocalyptic sky — the 1572 nova and 1577 comet read as signs,1572,1592,Receptio,../receptio/index.html#recep-apocalyptic-nova
+reception,recep-busch-reravius-1572,The 1572 new star in contemporary eyes — Busch & Reravius (1572–73),1572,1573,Receptio,../receptio/index.html#recep-busch-reravius-1572
+reception,recep-nova-remnant,SN 1572 — Tycho's Supernova and its remnant,1572,1572,Receptio,../receptio/index.html#recep-nova-remnant
+edition,M_NOVA_1573,Copenhagen 1573,1573,1573,Typographica,../census/brahe-de-nova-stella-1573/explorer.html
+instrument,inst-smallest-quadrant,Quadrans minor — the smallest (gilt-brass) quadrant,1573,1601,Instrumenta,../instrumenta/index.html#inst-smallest-quadrant
+letters-year,letters-1573,"Letters, 1573: 2",1573,1573,Epistolarium,../epistolarium/index.html
+likeness,icon-gilt-quadrant,The small gilt brass quadrant — an iconographic instrument,1573,1573,Iconographia,../iconographia/index.html#icon-gilt-quadrant
+reception,recep-aeredigte-reception,Tycho in contemporary verse — æredigte and support-poems (1573–1602),1573,1602,Receptio,../receptio/index.html#recep-aeredigte-reception
+instrument,inst-steel-sextant-1obs,Steel sextant for a single observer,1574,1601,Instrumenta,../instrumenta/index.html#inst-steel-sextant-1obs
+journey,journey-skane-oresund-circuit-1574,The early-1574 Skane-Oresund observing circuit,1574,1574,Loca,../loca/index.html#journey-skane-oresund-circuit-1574
+letters-year,letters-1574,"Letters, 1574: 1",1574,1574,Epistolarium,../epistolarium/index.html
+journey,journey-grand-tour-1575,The grand tour of 1575,1575,1575,Loca,../loca/index.html#journey-grand-tour-1575
+letters-year,letters-1575,"Letters, 1575: 3",1575,1575,Epistolarium,../epistolarium/index.html
+instrument,inst-brass-azimuthal-quadrant,Brass azimuthal quadrant,1576,1601,Instrumenta,../instrumenta/index.html#inst-brass-azimuthal-quadrant
+journey,journey-hven-decision-circuit-1576,"The Ibstrup summons and Hven decision circuit, February 1576",1576,1576,Loca,../loca/index.html#journey-hven-decision-circuit-1576
+letters-year,letters-1576,"Letters, 1576: 12",1576,1576,Epistolarium,../epistolarium/index.html
+period,per-6,The lord of Hven,1576,1596,Loca,../loca/index.html#per-6
+site,site-gardens,The gardens and ramparts of Uraniborg,1576,1597,Loca,../loca/index.html#site-gardens
+site,site-hven,Hven (Ven) — the island fief,1576,1597,Loca,../loca/index.html#site-hven
+site,site-uraniborg,Uraniborg — the castle of the heavens,1576,1601,Loca,../loca/index.html#site-uraniborg
+instrument,inst-clocks,Horologia — the observatory clocks,1577,1601,Instrumenta,../instrumenta/index.html#inst-clocks
+letters-year,letters-1577,"Letters, 1577: 4",1577,1577,Epistolarium,../epistolarium/index.html
+volume,O_GKS1825,Observations December 1577 – 1581 (portrait & arms binding),1577,1581,Observationes,../observationes/index.html#vc-O_GKS1825
+volume,O_GKS1826,Seven comets 1577–1596 (mostly Tycho's hand; leaf 56 also Wittich's),1577,1596,Observationes,../observationes/index.html#vc-O_GKS1826
+volume,O_GKS1827,Seven comets 1577–1596 (other hand),1577,1596,Observationes,../observationes/index.html#vc-O_GKS1827
+letters-year,letters-1578,"Letters, 1578: 2",1578,1578,Epistolarium,../epistolarium/index.html
+letters-year,letters-1579,"Letters, 1579: 7",1579,1579,Epistolarium,../epistolarium/index.html
+instrument,inst-medium-quadrant,Quadrans mediocris azimuthalis — the medium brass quadrant,1580,1601,Instrumenta,../instrumenta/index.html#inst-medium-quadrant
+letters-year,letters-1580,"Letters, 1580: 3",1580,1580,Epistolarium,../epistolarium/index.html
+site,site-laboratory,The alchemical laboratory,1580,1597,Loca,../loca/index.html#site-laboratory
+site,site-library,The library and the great globe,1580,1597,Loca,../loca/index.html#site-library
+letters-year,letters-1581,"Letters, 1581: 2",1581,1581,Epistolarium,../epistolarium/index.html
+likeness,icon-tapestry-figure,The Kronborg tapestry figure — the conjectured earliest likeness,1581,1584,Iconographia,../iconographia/index.html#icon-tapestry-figure
+instrument,inst-mural-quadrant,Quadrans muralis sive Tichonicus — the great mural quadrant,1582,1601,Instrumenta,../instrumenta/index.html#inst-mural-quadrant
+instrument,inst-triangular-sextant,Triangular sextant (sextans trigonicus),1582,1601,Instrumenta,../instrumenta/index.html#inst-triangular-sextant
+letters-year,letters-1582,"Letters, 1582: 2",1582,1582,Epistolarium,../epistolarium/index.html
+likeness,icon-mural-portrait,The mural quadrant portrait (Uraniborg),1582,1587,Iconographia,../iconographia/index.html#icon-mural-portrait
+volume,O_COD10657,Fair-copy observations 1582 (apographum),1582,1582,Observationes,../observationes/index.html#vc-O_COD10657
+volume,O_GKS311,Observations 1582–1586,1582,1586,Observationes,../observationes/index.html#vc-O_GKS311
+instrument,inst-bipartite-arc,Arcus bipartitus — the bipartite arc (1583),1583,1601,Instrumenta,../instrumenta/index.html#inst-bipartite-arc
+instrument,inst-parallactic-azimuth,Parallactic instrument with an azimuth circle,1583,1601,Instrumenta,../instrumenta/index.html#inst-parallactic-azimuth
+letters-year,letters-1583,"Letters, 1583: 1",1583,1583,Epistolarium,../epistolarium/index.html
+volume,O_COD10658,Fair-copy observations 1583 (apographum),1583,1583,Observationes,../observationes/index.html#vc-O_COD10658
+edition,M_ELEGIA_PTOL_1584,Uraniborg 1584? (lost as issued),1584,1584,Typographica,../census/brahe-elegia-ptolemaeus-1584/explorer.html
+edition,M_FRANDSEN_1584,Uraniborg 1584? (lost),1584,1584,Typographica,../census/brahe-elegy-frandsen-1584/explorer.html
+edition,M_GJOE_1584,Uraniborg 1584 (lost),1584,1584,Typographica,../census/brahe-carmen-gjoe-1584/explorer.html
+edition,M_LANGE_1584,Uraniborg 1584 (lost),1584,1584,Typographica,../census/brahe-carmen-lange-1584/explorer.html
+edition,M_PRATENSIS_1584,Uraniborg 1584,1584,1584,Typographica,../census/brahe-epitaphium-pratensis-1584/explorer.html
+edition,M_ULFELDT_1584,Uraniborg 1584,1584,1584,Typographica,../census/brahe-carmen-ulfeldt-1584/explorer.html
+instrument,inst-astronomical-sextant,Astronomical sextant with parallel-slit sights,1584,1601,Instrumenta,../instrumenta/index.html#inst-astronomical-sextant
+instrument,inst-copernicus-triquetrum,Copernicus's triquetrum — the relic from Frauenburg,1584,1601,Instrumenta,../instrumenta/index.html#inst-copernicus-triquetrum
+instrument,inst-north-equatorial-armillary,Northern equatorial armillary sphere,1584,1601,Instrumenta,../instrumenta/index.html#inst-north-equatorial-armillary
+instrument,inst-south-equatorial-armillary,Southern equatorial armillary sphere,1584,1601,Instrumenta,../instrumenta/index.html#inst-south-equatorial-armillary
+instrument,inst-zodiacal-armillary,Zodiacal (ecliptic) armillary sphere,1584,1601,Instrumenta,../instrumenta/index.html#inst-zodiacal-armillary
+letters-year,letters-1584,"Letters, 1584: 7",1584,1584,Epistolarium,../epistolarium/index.html
+likeness,icon-armillary-pedestal-portraits,The portraits on the equatorial armillary's pedestal,1584,1598,Iconographia,../iconographia/index.html#icon-armillary-pedestal-portraits
+likeness,icon-steensgaard-oil,"The Steensgaard panel — a lifetime portrait or an early copy, never tested",1584,1588,Iconographia,../iconographia/index.html#icon-steensgaard-oil
+likeness,icon-stjerneborg-astronomers,The Stjerneborg astronomer cycle — Tycho as the terminus of his own science,1584,1594,Iconographia,../iconographia/index.html#icon-stjerneborg-astronomers
+site,site-printing-house,The printing house (Tycho's press),1584,1597,Loca,../loca/index.html#site-printing-house
+site,site-stjerneborg,Stjerneborg — the star castle,1584,1601,Loca,../loca/index.html#site-stjerneborg
+volume,O_COD10659,Fair-copy observations 1584 (apographum),1584,1584,Observationes,../observationes/index.html#vc-O_COD10659
+diary-year,year-1585,"Diary, 1585: 2 notes",1585,1585,Diarium,../diarium/index.html#year-1585
+edition,M_ICONES_4_976,Uraniborg 1585,1585,1585,Typographica,../census/brahe-icones-duorum-1585/explorer.html
+edition,M_KAAS_1585,Uraniborg 1585,1585,1585,Typographica,../census/brahe-carmen-kaas-1585/explorer.html
+edition,M_ORTHO_1585,Uraniborg 1585,1585,1585,Typographica,../census/brahe-orthographia-uranienburg-1585/explorer.html
+edition,M_RANTZAU_1585,Uraniborg 1585,1585,1585,Typographica,../census/brahe-carmen-rantzau-1585/explorer.html
+instrument,inst-great-equatorial-armillary,Great equatorial armillary sphere,1585,1601,Instrumenta,../instrumenta/index.html#inst-great-equatorial-armillary
+instrument,inst-triquetrum,Parallactic instrument (triquetrum / regulae),1585,1601,Instrumenta,../instrumenta/index.html#inst-triquetrum
+letters-year,letters-1585,"Letters, 1585: 10",1585,1585,Epistolarium,../epistolarium/index.html
+likeness,icon-uraniborg-views,The printed views of Uraniborg and Stjerneborg,1585,1598,Iconographia,../iconographia/index.html#icon-uraniborg-views
+volume,O_COD10660,Fair-copy observations 1585 (apographum),1585,1585,Observationes,../observationes/index.html#vc-O_COD10660
+volume,O_GKS1829,"Transcript of the 1585 observations (Dreyer's Codex L), with 1598–1600 calculations",1585,1600,Observationes,../observationes/index.html#vc-O_GKS1829
+volume,O_GKS1830,Theory of Sun; lunar/planetary obs 1585–1593,1585,1593,Observationes,../observationes/index.html#vc-O_GKS1830
+diary-year,year-1586,"Diary, 1586: 8 notes",1586,1586,Diarium,../diarium/index.html#year-1586
+edition,M_DIARIUM_1586,Uraniborg 1586,1586,1586,Typographica,../census/brahe-diarium-astrologicum-1586/explorer.html
+instrument,inst-revolving-quadrant,Revolving quadrant (quadrans azimuthalis volubilis),1586,1601,Instrumenta,../instrumenta/index.html#inst-revolving-quadrant
+letters-year,letters-1586,"Letters, 1586: 14",1586,1586,Epistolarium,../epistolarium/index.html
+likeness,icon-gemperlin-oil-portrait,The Frederiksborg oil (attributed to Gemperlin) — known through C. A. Jensen's 1838 copy,1586,1587,Iconographia,../iconographia/index.html#icon-gemperlin-oil-portrait
+likeness,icon-prague-panel,The Prague panel — Mortensen's Clementinum portrait,1586,1601,Iconographia,../iconographia/index.html#icon-prague-panel
+likeness,icon-supralibros,The gilt portrait supralibros — two dies,1586,1588,Iconographia,../iconographia/index.html#icon-supralibros
+likeness,icon-woodcut-1586,The woodcut 'Effigies' (Westergaard 1376) — the praedelineatum's record,1586,1592,Iconographia,../iconographia/index.html#icon-woodcut-1586
+volume,O_COD10661,Fair-copy observations 1586 (apographum),1586,1586,Observationes,../observationes/index.html#vc-O_COD10661
+diary-year,year-1587,"Diary, 1587: 10 notes",1587,1587,Diarium,../diarium/index.html#year-1587
+letters-year,letters-1587,"Letters, 1587: 14",1587,1587,Epistolarium,../epistolarium/index.html
+volume,O_COD10662,Fair-copy observations 1587 (apographum),1587,1587,Observationes,../observationes/index.html#vc-O_COD10662
+volume,O_GKS312,Observations 1587–1589 + fixed stars 1590–1594,1587,1594,Observationes,../observationes/index.html#vc-O_GKS312
+diary-year,year-1588,"Diary, 1588: 15 notes",1588,1588,Diarium,../diarium/index.html#year-1588
+edition,M_DEMUNDI_1588,Uraniborg 1588,1588,1588,Typographica,../census/brahe-de-mundi-1588/explorer.html
+instrument,inst-revolving-steel-quadrant,Revolving steel quadrant,1588,1601,Instrumenta,../instrumenta/index.html#inst-revolving-steel-quadrant
+instrument,inst-semicircle,Azimuth semicircle (the doubled-scale half-circle),1588,1601,Instrumenta,../instrumenta/index.html#inst-semicircle
+letters-year,letters-1588,"Letters, 1588: 15",1588,1588,Epistolarium,../epistolarium/index.html
+likeness,icon-arms-supralibros,The Brahe coat-of-arms supralibros,1588,1601,Iconographia,../iconographia/index.html#icon-arms-supralibros
+likeness,icon-funeral-procession-1588,"Frederik II's funeral procession, 1588 — Tycho among the coffin-bearers",1588,1589,Iconographia,../iconographia/index.html#icon-funeral-procession-1588
+reception,recep-uraniborg-endowment,The endowment that failed — Uraniborg's promised perpetuity (1588) against the instruments' decay (1597),1588,1597,Receptio,../receptio/index.html#recep-uraniborg-endowment
+volume,O_COD10663,Fair-copy observations 1588 (apographum),1588,1588,Observationes,../observationes/index.html#vc-O_COD10663
+diary-year,year-1589,"Diary, 1589: 16 notes",1589,1589,Diarium,../diarium/index.html#year-1589
+letters-year,letters-1589,"Letters, 1589: 22",1589,1589,Epistolarium,../epistolarium/index.html
+site,site-paper-mill,The paper mill,1589,1597,Loca,../loca/index.html#site-paper-mill
+volume,O_COD10664,Fair-copy observations 1589 (apographum),1589,1589,Observationes,../observationes/index.html#vc-O_COD10664
+volume,O_COD10709,"Catalogue of the stars near the zodiac, 1589 (Dreyer's Codex V¹)",1589,1589,Observationes,../observationes/index.html#vc-O_COD10709
+volume,O_GKS1831,Brass-quadrant observations 1589,1589,1589,Observationes,../observationes/index.html#vc-O_GKS1831
+diary-year,year-1590,"Diary, 1590: 47 notes",1590,1590,Diarium,../diarium/index.html#year-1590
+letters-year,letters-1590,"Letters, 1590: 29",1590,1590,Epistolarium,../epistolarium/index.html
+likeness,icon-degheyn-v1,De Gheyn's first engraving (Westergaard 1377) — the 'overloaded' portrait,1590,1590,Iconographia,../iconographia/index.html#icon-degheyn-v1
+volume,O_COD10665,Fair-copy observations 1590 (apographum),1590,1590,Observationes,../observationes/index.html#vc-O_COD10665
+volume,O_GKS1828,"Transcripts of 1593, 1590 and 1598–1600",1590,1600,Observationes,../observationes/index.html#vc-O_GKS1828
+volume,O_GKS313,"Observations 1590–1594 (Sun, Moon, planets)",1590,1594,Observationes,../observationes/index.html#vc-O_GKS313
+volume,O_GKS315,Comets of 1590 & 1596,1590,1596,Observationes,../observationes/index.html#vc-O_GKS315
+diary-year,year-1591,"Diary, 1591: 34 notes",1591,1591,Diarium,../diarium/index.html#year-1591
+edition,M_APOLOGIA_1591,Uraniborg 1591 (lost),1591,1591,Typographica,../census/brahe-apologia-1591/explorer.html
+edition,M_FLEMLOES_1591,Uraniborg 1591,1591,1591,Typographica,../census/brahe-flemloes-astrologia-1591-da/explorer.html
+edition,M_FLEMLOES_1591_DE,Uraniborg 1591 (German),1591,1591,Typographica,../census/brahe-flemloes-astrologia-1591-de/explorer.html
+letters-year,letters-1591,"Letters, 1591: 15",1591,1591,Epistolarium,../epistolarium/index.html
+likeness,icon-degheyn-v2,De Gheyn's second engraving (Westergaard 1394) — the corrected portrait,1591,1596,Iconographia,../iconographia/index.html#icon-degheyn-v2
+likeness,icon-drawing-kksgb5254,The Copenhagen pen drawing (SMK KKSgb5254) — the second engraving's production drawing,1591,1595,Iconographia,../iconographia/index.html#icon-drawing-kksgb5254
+volume,O_COD10666,Fair-copy observations 1591 (apographum),1591,1591,Observationes,../observationes/index.html#vc-O_COD10666
+diary-year,year-1592,"Diary, 1592: 26 notes",1592,1592,Diarium,../diarium/index.html#year-1592
+edition,M_PROG_1592,Uraniborg 1592 (unfinished printing),1592,1592,Typographica,../census/brahe-progymnasmata-1592-uraniborg/explorer.html
+letters-year,letters-1592,"Letters, 1592: 25",1592,1592,Epistolarium,../epistolarium/index.html
+volume,O_COD10667,Fair-copy observations 1592 (apographum),1592,1592,Observationes,../observationes/index.html#vc-O_COD10667
+diary-year,year-1593,"Diary, 1593: 19 notes",1593,1593,Diarium,../diarium/index.html#year-1593
+letters-year,letters-1593,"Letters, 1593: 7",1593,1593,Epistolarium,../epistolarium/index.html
+diary-year,year-1594,"Diary, 1594: 18 notes",1594,1594,Diarium,../diarium/index.html#year-1594
+letters-year,letters-1594,"Letters, 1594: 13",1594,1594,Epistolarium,../epistolarium/index.html
+likeness,icon-blaeu-globes,Tycho's portrait on the celestial globes — a distribution channel begun in his lifetime,1594,1630,Iconographia,../iconographia/index.html#icon-blaeu-globes
+volume,O_COD10668,Fair-copy observations 1594 (apographum),1594,1594,Observationes,../observationes/index.html#vc-O_COD10668
+diary-year,year-1595,"Diary, 1595: 16 notes",1595,1595,Diarium,../diarium/index.html#year-1595
+letters-year,letters-1595,"Letters, 1595: 4",1595,1595,Epistolarium,../epistolarium/index.html
+likeness,icon-cornelisz-1595,Lambert Cornelisz's print (Westergaard 1409) — the copy Tycho disliked,1595,1595,Iconographia,../iconographia/index.html#icon-cornelisz-1595
+likeness,icon-medal-1595,The 1595 portrait medal — the only likeness in metal,1595,1595,Iconographia,../iconographia/index.html#icon-medal-1595
+volume,O_COD10669,Fair-copy observations 1595 (apographum),1595,1595,Observationes,../observationes/index.html#vc-O_COD10669
+volume,O_GKS314,Planetary observations 1595,1595,1595,Observationes,../observationes/index.html#vc-O_GKS314
+diary-year,year-1596,"Diary, 1596: 31 notes",1596,1596,Diarium,../diarium/index.html#year-1596
+edition,M_EPIST_1596,Uraniborg 1596,1596,1596,Typographica,../census/brahe-epistolae-1596/explorer.html
+edition,M_ICONES_1596,Uraniborg c.1596,1596,1596,Typographica,../census/brahe-icones-1596/explorer.html
+letters-year,letters-1596,"Letters, 1596: 9",1596,1596,Epistolarium,../epistolarium/index.html
+likeness,icon-mechanica-author-portrait,The inserted author portrait in Epistolae and Mechanica copies,1596,1598,Iconographia,../iconographia/index.html#icon-mechanica-author-portrait
+likeness,icon-standing-type,The aetatis-50 portrait (Skokloster / Edinburgh) — the exile likeness,1596,1597,Iconographia,../iconographia/index.html#icon-standing-type
+reception,recep-blaeu-globes,"Willem Blaeu, Tycho’s pupil, maps Hven’s stars onto the celestial globe (1596–1600)",1596,1600,Receptio,../receptio/index.html#recep-blaeu-globes
+volume,O_COD10670,Fair-copy observations 1596 (apographum),1596,1596,Observationes,../observationes/index.html#vc-O_COD10670
+volume,O_GKS316,Observations 1596–97 (Wandsbek); Kepler's declaration,1596,1597,Observationes,../observationes/index.html#vc-O_GKS316
+diary-year,year-1597,"Diary, 1597: 6 notes",1597,1597,Diarium,../diarium/index.html#year-1597
+instrument-fate,transmission-1597,"Tycho leaves Hven; the instruments follow him into exile and, in 1599, to Bohemia.",1597,1597,Instrumenta,../instrumenta/index.html#sec-transmission
+journey,journey-copenhagen-rostock-1597,Out of Denmark: Copenhagen to Rostock (2 June – mid-June 1597),1597,1597,Loca,../loca/index.html#journey-copenhagen-rostock-1597
+journey,journey-hven-copenhagen-1597,Final removal from Hven to Copenhagen (February–April 1597),1597,1597,Loca,../loca/index.html#journey-hven-copenhagen-1597
+journey,journey-rostock-wandsbek-1597,Rostock to Wandsburg via Segeberg and Bramstedt (8 September – mid-October 1597),1597,1597,Loca,../loca/index.html#journey-rostock-wandsbek-1597
+letters-year,letters-1597,"Letters, 1597: 23",1597,1597,Epistolarium,../epistolarium/index.html
+period,per-7,The departure and exile,1597,1599,Loca,../loca/index.html#per-7
+volume,O_COD10671,Fair-copy observations 1597 (apographum),1597,1597,Observationes,../observationes/index.html#vc-O_COD10671
+edition,M_APOLOGIA_1598,Hamburg 1598 (lost; the author's statement),1598,1598,Typographica,../census/brahe-apologia-1598-wandsbeck/explorer.html
+edition,M_MECH_1598,Wandsbek 1598,1598,1598,Typographica,../census/brahe-mechanica-1598-wandsbek/explorer.html
+instrument,inst-sextant-burgi,Smaller iron sextant (Bürgi c.1600 / disputed) — surviving,1598,1601,Instrumenta,../instrumenta/index.html#inst-sextant-burgi
+journey,journey-wandsbek-wittenberg-1598,"The interrupted Prague journey: Wandsburg to Wittenberg via Harburg, Magdeburg and Dresden (29 September – 4 December 1598)",1598,1598,Loca,../loca/index.html#journey-wandsbek-wittenberg-1598
+letters-year,letters-1598,"Letters, 1598: 60",1598,1598,Epistolarium,../epistolarium/index.html
+likeness,icon-mechanica-watercolours,The painted portraits in the finest Mechanica copies — Tycho between Ptolemy and Copernicus,1598,1601,Iconographia,../iconographia/index.html#icon-mechanica-watercolours
+likeness,icon-progymnasmata-watercolour,The full-figure watercolour at Strahov — the standing Tycho with a sextant,1598,1666,Iconographia,../iconographia/index.html#icon-progymnasmata-watercolour
+reception,recep-stygge-1598,A contemporary Danish verdict — Tycho's pomp at Wandsbek (1598),1598,1598,Receptio,../receptio/index.html#recep-stygge-1598
+volume,O_COD10672,Fair-copy observations 1598 (apographum),1598,1598,Observationes,../observationes/index.html#vc-O_COD10672
+volume,O_GKS317,Wittenberg & Benátky observations 1598–1600,1598,1600,Observationes,../observationes/index.html#vc-O_GKS317
+instrument-fate,"transmission-1599, summer",Tycho arrives in Prague and lodges in the Curtius house; at his audience the Emperor asks him to send for the instruments still on their way.,1599,1599,Instrumenta,../instrumenta/index.html#sec-transmission
+journey,journey-benatky-girsitz-1599,"Plague flight to Girsitz and back, November 1599 – January 1600",1599,1600,Loca,../loca/index.html#journey-benatky-girsitz-1599
+journey,journey-castle-circuit-1599,"The castle-inspection circuit: Lysá, Brandeis, Benátky (summer 1599)",1599,1599,Loca,../loca/index.html#journey-castle-circuit-1599
+journey,journey-prague-benatky-1599,"Removal from Prague to Benátky via Brandeis, 20-21 August 1599",1599,1599,Loca,../loca/index.html#journey-prague-benatky-1599
+journey,journey-wittenberg-prague-1599,"Wittenberg to Prague via Pretzsch and Dresden, 14 June – early July 1599",1599,1599,Loca,../loca/index.html#journey-wittenberg-prague-1599
+letters-year,letters-1599,"Letters, 1599: 41",1599,1599,Epistolarium,../epistolarium/index.html
+period,per-8,Bohemia,1599,1601,Loca,../loca/index.html#per-8
+site,site-belvedere,The Belvedere (Royal Summer Palace) — Tycho's Prague Musaeum,1599,1635,Loca,../loca/index.html#site-belvedere
+site,site-benatky,Benátky nad Jizerou — Tycho's first Bohemian observatory,1599,1600,Loca,../loca/index.html#site-benatky
+volume,O_COD10673,Fair-copy observations 1599 (apographum),1599,1599,Observationes,../observationes/index.html#vc-O_COD10673
+instrument,inst-sextant-habermel,Sextant by Erasmus Habermel (1600) — surviving,1600,1600,Instrumenta,../instrumenta/index.html#inst-sextant-habermel
+instrument-fate,"transmission-1600, October–November","The great instruments from Hven arrive and are set up, at the Emperor's wish, in the Belvedere in the castle garden (Tycho to Magini, 24 January 1601); Tycho observes there from 2 December 1600.",1600,1600,Instrumenta,../instrumenta/index.html#sec-transmission
+journey,journey-benatky-prague-1600,"Final removal from Benátky to Prague, June 1600",1600,1600,Loca,../loca/index.html#journey-benatky-prague-1600
+letters-year,letters-1600,"Letters, 1600: 127",1600,1600,Epistolarium,../epistolarium/index.html
+site,site-curtius-house,The Curtius (Kurtz) house — Tycho's Prague residence and place of death,1600,1601,Loca,../loca/index.html#site-curtius-house
+volume,O_COD10674,Fair-copy observations 1600 (apographum),1600,1600,Observationes,../observationes/index.html#vc-O_COD10674
+volume,O_GKS318,Observations 1600–1601 (Benátky & Prague),1600,1601,Observationes,../observationes/index.html#vc-O_GKS318
+instrument-fate,"transmission-1601, 10 April",All the instruments are moved from the Belvedere to the Curtius house and observation resumes.,1601,1601,Instrumenta,../instrumenta/index.html#sec-transmission
+instrument-fate,"transmission-1601, 24 October",Tycho dies; Kepler closes the observation journal with the account of his illness and death.,1601,1601,Instrumenta,../instrumenta/index.html#sec-transmission
+instrument-fate,transmission-1601–1608,"The Emperor secures the observations and instruments from the heirs, who had asked 100,000 thalers, for 20,000 at six per cent; 4,000 are paid in 1602 and 1,000 in 1608, and nothing after. The claim was still unsettled in 1671.",1601,1601,Instrumenta,../instrumenta/index.html#sec-transmission
+letters-year,letters-1601,"Letters, 1601: 30",1601,1601,Epistolarium,../epistolarium/index.html
+reception,recep-grave-prague,"The grave in the Týn Church, Prague",1601,,Receptio,../receptio/index.html#recep-grave-prague
+reception,recep-heirs-unpaid-claim,"The unpaid 20,000 daler — the heirs' thirty-year claim on the imperial treasury (1601–1630)",1601,1630,Receptio,../receptio/index.html#recep-heirs-unpaid-claim
+reception,recep-kepler-data,Kepler inherits the observations (1601),1601,1601,Receptio,../receptio/index.html#recep-kepler-data
+reception,recep-naked-eye-tradition,The naked-eye precision tradition — Hevelius and Verbiest,1601,1690,Receptio,../receptio/index.html#recep-naked-eye-tradition
+reception,recep-tychonic-system,The afterlife of the Tychonic world-system,1601,1700,Receptio,../receptio/index.html#recep-tychonic-system
+site,site-schwarzenberg,The Schwarzenberg (Rožmberk) palace — Tycho's last banquet,1601,1601,Loca,../loca/index.html#site-schwarzenberg
+site,site-tyn-church,Church of Our Lady before Týn — Tycho's grave,1601,2025,Loca,../loca/index.html#site-tyn-church
+volume,O_COD10675,Fair-copy observations 1601 (apographum),1601,1601,Observationes,../observationes/index.html#vc-O_COD10675
+instrument-fate,transmission-1602,"Kepler, denied the use of the instruments, which are stored in a cellar under the Curtius house, is lent a quadrant and a sextant by Baron J. F. Hoffmann.",1602,1602,Instrumenta,../instrumenta/index.html#sec-transmission
+likeness,icon-posthumous-copies,The posthumous copies (1602 onward),1602,1655,Iconographia,../iconographia/index.html#icon-posthumous-copies
+instrument-fate,"transmission-1604, 27 March",An imperial order to Kepler to pack the instruments and send them to Vienna 'for greater safety'; apparently not carried out.,1604,1604,Instrumenta,../instrumenta/index.html#sec-transmission
+likeness,icon-teyn-epitaph,"The Týn church epitaph, Prague — the effigy that closes the series",1604,1604,Iconographia,../iconographia/index.html#icon-teyn-epitaph
+instrument-fate,"transmission-1609, July",An imperial rescript on the heirs' claim states that the instruments and books 'remain in this Crown of Bohemia'. When the Curtius house changes hands the instruments return to the Belvedere.,1609,1609,Instrumenta,../instrumenta/index.html#sec-transmission
+reception,recep-astronomia-nova,Astronomia Nova (1609) — the elliptical orbit of Mars,1609,1609,Receptio,../receptio/index.html#recep-astronomia-nova
+likeness,icon-kageroed-epitaph,"The Kågeröd epitaph, 1613 — Tycho kneeling among his parents' children",1613,1613,Iconographia,../iconographia/index.html#icon-kageroed-epitaph
+instrument-fate,transmission-1619,"Destruction in the disturbances that followed the death of Emperor Matthias, when Prague was held for Frederick of the Palatinate: some instruments converted to other uses, the rest destroyed or dispersed (Gassendi, Vita, 1655, p. 216). The version that attaches the loss to the battle of the White Mountain, 8 November 1620, is a misreading of Gassendi.",1619,1619,Instrumenta,../instrumenta/index.html#sec-transmission
+instrument-fate,"transmission-1621, 6 December","The inventory of the Prague treasury and Kunstkammer still lists, in the Belvedere, 'no. 1424, a very large celestial globe of metal' and 'no. 1425, a quadrant with many appurtenant instruments'.",1621,1621,Instrumenta,../instrumenta/index.html#sec-transmission
+reception,recep-longomontanus-danica,"Longomontanus, Astronomia Danica (1622) — the Tychonic textbook",1622,1622,Receptio,../receptio/index.html#recep-longomontanus-danica
+likeness,icon-console-clock-1642,The 1642 console clock — Tycho as proprietor of a world system,1623,1642,Iconographia,../iconographia/index.html#icon-console-clock-1642
+instrument-fate,transmission-c. 1625,The globe is acquired by Christoph Scheiner for the Jesuit college at Neisse in Silesia.,1625,1625,Instrumenta,../instrumenta/index.html#sec-transmission
+reception,recep-rudolphine,The Rudolphine Tables (1627),1627,1627,Receptio,../receptio/index.html#recep-rudolphine
+instrument-fate,transmission-1632,"Prince Ulrik, son of Christian IV, takes the globe from Neisse as war booty to Copenhagen, where it is placed in the observatory of the Round Tower.",1632,1632,Instrumenta,../instrumenta/index.html#sec-transmission
+reception,recep-rundetaarn,"The Round Tower (Rundetårn), Copenhagen — Tycho's catalogue continued",1637,1728,Receptio,../receptio/index.html#recep-rundetaarn
+instrument-fate,transmission-1648–1650,The Swedish removal of Rudolf II's collections leaves the two large iron sextants behind; the Castle Armoury inventory of 1650 lists them.,1648,1648,Instrumenta,../instrumenta/index.html#sec-transmission
+reception,recep-crater-tycho,The lunar crater Tycho,1651,,Receptio,../receptio/index.html#recep-crater-tycho
+likeness,icon-gassendi-frontispiece,The Gassendi Vita frontispiece (1655) — the portrait's afterlife,1654,1655,Iconographia,../iconographia/index.html#icon-gassendi-frontispiece
+reception,recep-gassendi-vita,"Gassendi, Tychonis Brahei vita (1654)",1654,1654,Receptio,../receptio/index.html#recep-gassendi-vita
+reception,recep-observations-opera-omnia,The observation archive → Copenhagen → the Opera Omnia,1655,1929,Receptio,../receptio/index.html#recep-observations-opera-omnia
+likeness,icon-kilian-standing,Kilian's standing Tycho (1666) — a whole body invented around a borrowed head,1658,1666,Iconographia,../iconographia/index.html#icon-kilian-standing
+reception,recep-blaeu-atlas-1664,Joan Blaeu’s Grooten Atlas — Tycho’s instruments in colour for a vernacular public (1664),1664,1664,Receptio,../receptio/index.html#recep-blaeu-atlas-1664
+reception,recep-historia-coelestis-1666,Historia Coelestis (Augsburg 1666) — the observations first in print,1666,1666,Receptio,../receptio/index.html#recep-historia-coelestis-1666
+instrument-fate,"transmission-1672, 18 May",The English legation secretary Henshaw reports that 'Tycho Brahe's instruments were long ago sold to brass-founders'.,1672,1672,Instrumenta,../instrumenta/index.html#sec-transmission
+instrument-fate,transmission-1728,"The globe burns in the Round Tower fire; the wooden body is consumed and the brass melts, leaving some lumps, the meridian ring, iron rings and the axle, since lost.",1728,1728,Instrumenta,../instrumenta/index.html#sec-transmission
+instrument-fate,transmission-c. 1780,"The Prague observatory's earliest inventory lists 'No. 4, a large sextant of Tycho Brahe, made in the year 1600 by Erasmus Habermel' and 'No. 5, a smaller sextant of Tycho Brahe, which he brought with him to Prague'.",1780,1780,Instrumenta,../instrumenta/index.html#sec-transmission
+instrument-fate,transmission-1782,"At Joseph II's auction of the Castle collections the two sextants are sold to Franz Leonard Herget, public teacher of mechanics and hydraulics.",1782,1782,Instrumenta,../instrumenta/index.html#sec-transmission
+likeness,icon-eckersberg-1831,"Eckersberg's sketch, 1831 — the young Christian IV visiting Hven",1831,1842,Iconographia,../iconographia/index.html#icon-eckersberg-1831
+reception,recep-comet-recomputation-19c,Tycho's comets recomputed — the 19th-century orbit reductions (1854),1844,1854,Receptio,../receptio/index.html#recep-comet-recomputation-19c
+instrument-fate,transmission-1852,"The Prague observatory sells discarded instruments; the 'Tychonic' pieces among them, a sundial inscribed 'Insula Heveen A.D. 1578' and a planetarium engraved 'Ty. de Brahe', are forgeries, bought by the painter Gabriel Max and given in 1909 to the Deutsches Museum in Munich.",1852,1852,Instrumenta,../instrumenta/index.html#sec-transmission
+likeness,icon-levy-mindeblad,The Levy memorial sheet — Tycho for children,1855,1901,Iconographia,../iconographia/index.html#icon-levy-mindeblad
+likeness,icon-hansen-1882,"Heinrich Hansen, 1882 — Tycho as national history painting",1882,1882,Iconographia,../iconographia/index.html#icon-hansen-1882
+reception,recep-dreyer-biography-1890,"Dreyer, Tycho Brahe (Edinburgh 1890) — the foundational biography",1890,1890,Receptio,../receptio/index.html#recep-dreyer-biography-1890
+instrument-fate,transmission-1901,"Weinek publishes the two Prague sextants, with plates.",1901,1901,Instrumenta,../instrumenta/index.html#sec-transmission
+reception,recep-exhumation-1901,The 1901 exhumation (the tercentenary),1901,1901,Receptio,../receptio/index.html#recep-exhumation-1901
+reception,recep-opera-omnia,Tychonis Brahe Opera Omnia (Copenhagen 1913–29) — the complete critical edition,1913,1929,Receptio,../receptio/index.html#recep-opera-omnia
+site,site-museum,Tycho Brahe Museum & the Stjerneborg reconstruction,1950,2025,Loca,../loca/index.html#site-museum
+reception,recep-zeeberg-urania-titani,"Zeeberg, Urania Titani (1994) — first critical edition of Tycho’s Latin poetry",1994,1994,Receptio,../receptio/index.html#recep-zeeberg-urania-titani
+reception,recep-living-data,The data still in use — SN 1572 and the star catalogue,2004,,Receptio,../receptio/index.html#recep-living-data
+reception,recep-exhumation-2010,The 2010 exhumation & the death question,2010,2012,Receptio,../receptio/index.html#recep-exhumation-2010

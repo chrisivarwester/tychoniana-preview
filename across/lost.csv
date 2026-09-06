@@ -1,0 +1,64 @@
+kind,record_key,label,status,date,link
+instrument,inst-radius-1564,Radius astronomicus (cross-staff) — the student instrument,lost,1564,../instrumenta/index.html#inst-radius-1564
+instrument,inst-augsburg-quadrant,Quadrans maximus — the great Augsburg quadrant,destroyed-1574,1569–1570,../instrumenta/index.html#inst-augsburg-quadrant
+instrument,inst-globe,Globus magnus orichalcicus — the great brass globe,destroyed-1728,1570 shell; completed at Hven 1584 (horizon inscription),../instrumenta/index.html#inst-globe
+instrument,inst-halfsextant-smallangles,Half-sextant for small angles,destroyed,"1572 (the plate is so dated, and Tycho says he had it made when the new star appeared)",../instrumenta/index.html#inst-halfsextant-smallangles
+instrument,inst-herrevad-sextant,Sextant of Herrevadskloster — the new-star sextant,lost,1572,../instrumenta/index.html#inst-herrevad-sextant
+instrument,inst-smallest-quadrant,Quadrans minor — the smallest (gilt-brass) quadrant,destroyed,1573,../instrumenta/index.html#inst-smallest-quadrant
+instrument,inst-steel-sextant-1obs,Steel sextant for a single observer,destroyed,1574,../instrumenta/index.html#inst-steel-sextant-1obs
+instrument,inst-brass-azimuthal-quadrant,Brass azimuthal quadrant,destroyed,1576,../instrumenta/index.html#inst-brass-azimuthal-quadrant
+instrument,inst-clocks,Horologia — the observatory clocks,lost,"by 1577, on Hven",../instrumenta/index.html#inst-clocks
+instrument,inst-medium-quadrant,Quadrans mediocris azimuthalis — the medium brass quadrant,destroyed,1580,../instrumenta/index.html#inst-medium-quadrant
+instrument,inst-mural-quadrant,Quadrans muralis sive Tichonicus — the great mural quadrant,destroyed,1582 (planned from 1576),../instrumenta/index.html#inst-mural-quadrant
+instrument,inst-triangular-sextant,Triangular sextant (sextans trigonicus),destroyed,1582,../instrumenta/index.html#inst-triangular-sextant
+instrument,inst-bipartite-arc,Arcus bipartitus — the bipartite arc (1583),lost,1583,../instrumenta/index.html#inst-bipartite-arc
+instrument,inst-parallactic-azimuth,Parallactic instrument with an azimuth circle,destroyed,1583,../instrumenta/index.html#inst-parallactic-azimuth
+instrument,inst-astronomical-sextant,Astronomical sextant with parallel-slit sights,destroyed,"1584 at Hven (the design first devised at Augsburg, c. 1569)",../instrumenta/index.html#inst-astronomical-sextant
+instrument,inst-copernicus-triquetrum,Copernicus's triquetrum — the relic from Frauenburg,lost,1584 (received on Hven),../instrumenta/index.html#inst-copernicus-triquetrum
+instrument,inst-north-equatorial-armillary,Northern equatorial armillary sphere,destroyed,1584,../instrumenta/index.html#inst-north-equatorial-armillary
+instrument,inst-south-equatorial-armillary,Southern equatorial armillary sphere,destroyed,1584,../instrumenta/index.html#inst-south-equatorial-armillary
+instrument,inst-zodiacal-armillary,Zodiacal (ecliptic) armillary sphere,destroyed,ca. 1583–85,../instrumenta/index.html#inst-zodiacal-armillary
+instrument,inst-great-equatorial-armillary,Great equatorial armillary sphere,destroyed,1585,../instrumenta/index.html#inst-great-equatorial-armillary
+instrument,inst-triquetrum,Parallactic instrument (triquetrum / regulae),destroyed,1585 (Thoren's 'small rulers'),../instrumenta/index.html#inst-triquetrum
+instrument,inst-revolving-quadrant,Revolving quadrant (quadrans azimuthalis volubilis),destroyed,1585–86,../instrumenta/index.html#inst-revolving-quadrant
+instrument,inst-revolving-steel-quadrant,Revolving steel quadrant,destroyed,1588,../instrumenta/index.html#inst-revolving-steel-quadrant
+instrument,inst-semicircle,Azimuth semicircle (the doubled-scale half-circle),destroyed,1588,../instrumenta/index.html#inst-semicircle
+site,site-laboratory,The alchemical laboratory,lost,1580,../loca/index.html#site-laboratory
+site,site-library,The library and the great globe,lost,1580,../loca/index.html#site-library
+site,site-printing-house,The printing house (Tycho's press),lost,1584,../loca/index.html#site-printing-house
+site,site-paper-mill,The paper mill,lost,1589–1597,../loca/index.html#site-paper-mill
+site,site-curtius-house,The Curtius (Kurtz) house — Tycho's Prague residence and place of death,lost,1600–1601,../loca/index.html#site-curtius-house
+edition,brahe-carmen-gjoe-1584,Carmen ad Falk Gjøe,no located copy,1584,../census/brahe-carmen-gjoe-1584/explorer.html
+edition,brahe-carmen-lange-1584,Carmen ad Erik Lange,no located copy,1584,../census/brahe-carmen-lange-1584/explorer.html
+edition,brahe-elegy-frandsen-1584,Elegy on Hans Frandsen,no located copy,1584,../census/brahe-elegy-frandsen-1584/explorer.html
+edition,brahe-apologia-1591,Apologia (1591),no located copy,1591,../census/brahe-apologia-1591/explorer.html
+edition,brahe-apologia-1598-wandsbeck,Apologia (1598 Wandsbeck),no located copy,1598,../census/brahe-apologia-1598-wandsbeck/explorer.html
+edition,brahe-elegia-ptolemaeus-1584,Elegy to Ptolemy,no located copy,1584,../census/brahe-elegia-ptolemaeus-1584/explorer.html
+edition,brahe-flemloes-astrologia-1591-da,Flemloes Astrologia (Danish),no located copy,1591,../census/brahe-flemloes-astrologia-1591-da/explorer.html
+edition,brahe-progymnasmata-1592-uraniborg,Progymnasmata 1592,no located copy,1592,../census/brahe-progymnasmata-1592-uraniborg/explorer.html
+census copy,brahe-de-nova-stella-1573:konigsberg-formerly,Königsberg (formerly Universitätsbibliothek; WW2 attrition risk),lost,,../census/brahe-de-nova-stella-1573/explorer.html?copy=konigsberg-formerly
+census copy,brahe-epistolae-1596:market-hohenems-weiss,copy in a private collection,lost,,../census/brahe-epistolae-1596/explorer.html?copy=market-hohenems-weiss
+census copy,brahe-mechanica-1598-wandsbek:berlin-grauen-kloster-rollenhagen-lost,"Berlin, Gymnasium zum Grauen Kloster (Rollenhagen copy) — destroyed WW2",lost,,../census/brahe-mechanica-1598-wandsbek/explorer.html?copy=berlin-grauen-kloster-rollenhagen-lost
+census copy,brahe-mechanica-1598-wandsbek:berlin-sbb-h7-lost,"Berlin, Staatsbibliothek (Hasselberg nr 7) — reported destroyed WW2",lost,,../census/brahe-mechanica-1598-wandsbek/explorer.html?copy=berlin-sbb-h7-lost
+census copy,brahe-mechanica-1598-wandsbek:berlin-sbb-h8-lost,"Berlin, Staatsbibliothek (Hasselberg nr 8) — reported destroyed WW2",lost,,../census/brahe-mechanica-1598-wandsbek/explorer.html?copy=berlin-sbb-h8-lost
+census copy,brahe-mechanica-1598-wandsbek:berlin-sbb-h9-lost,"Berlin, Staatsbibliothek (Hasselberg nr 9) — reported destroyed WW2",lost,,../census/brahe-mechanica-1598-wandsbek/explorer.html?copy=berlin-sbb-h9-lost
+census copy,brahe-mechanica-1598-wandsbek:dessau-landesbuecherei-lost,"Dessau, Landesbücherei — destroyed WW2",lost,,../census/brahe-mechanica-1598-wandsbek/explorer.html?copy=dessau-landesbuecherei-lost
+census copy,brahe-mechanica-1598-wandsbek:wroclaw-bu-h12-monavius,"Wrocław, Biblioteka Uniwersytecka (Hasselberg nr 12, Monavius copy)",lost,,../census/brahe-mechanica-1598-wandsbek/explorer.html?copy=wroclaw-bu-h12-monavius
+census copy,brahe-progymnasmata-1592-uraniborg:konigsberg-muller-working-copy,Königsberg — the Johannes Müller working copy (Tycho's autograph corrections),lost,,../census/brahe-progymnasmata-1592-uraniborg/explorer.html?copy=konigsberg-muller-working-copy
+likeness,icon-armillary-pedestal-portraits,The portraits on the equatorial armillary's pedestal,lost,"c. 1584 (instrument built) – December 1596 (the recording block's first issue); the inscribed '1580' is Tycho's floruit year, not an execution date",../iconographia/index.html#icon-armillary-pedestal-portraits
+likeness,icon-steensgaard-oil,"The Steensgaard panel — a lifetime portrait or an early copy, never tested",untraced,the likeness c. mid-1580s; the panel untested,../iconographia/index.html#icon-steensgaard-oil
+likeness,icon-stjerneborg-astronomers,The Stjerneborg astronomer cycle — Tycho as the terminus of his own science,lost,1584 – 1594,../iconographia/index.html#icon-stjerneborg-astronomers
+likeness,icon-gemperlin-oil-portrait,The Frederiksborg oil (attributed to Gemperlin) — known through C. A. Jensen's 1838 copy,lost,c. 1586–87 (original); burned 1859,../iconographia/index.html#icon-gemperlin-oil-portrait
+likeness,icon-prague-panel,The Prague panel — Mortensen's Clementinum portrait,attested,1586–1592 (design family),../iconographia/index.html#icon-prague-panel
+likeness,icon-mural-portrait,The mural quadrant portrait (Uraniborg),lost,1586–1587 (tablet: 1587),../iconographia/index.html#icon-mural-portrait
+likeness,icon-gilt-quadrant,The small gilt brass quadrant — an iconographic instrument,lost,c. 1573,../iconographia/index.html#icon-gilt-quadrant
+likeness,icon-eckersberg-1831,"Eckersberg's sketch, 1831 — the young Christian IV visiting Hven",untraced,"1831 or later, by 1842",../iconographia/index.html#icon-eckersberg-1831
+likeness,icon-levy-mindeblad,The Levy memorial sheet — Tycho for children,untraced,undated; 'måske 1901?',../iconographia/index.html#icon-levy-mindeblad
+likeness,icon-progymnasmata-watercolour,The full-figure watercolour at Strahov — the standing Tycho with a sextant,untraced,c. 1598 – 1666; the drawing's date is open,../iconographia/index.html#icon-progymnasmata-watercolour
+observation volume,O_LOST_8VO,Lost 8vo observation volume 1563–74,lost,1563-1574,../observationes/index.html#vc-O_LOST_8VO
+observation volume,O_LOST_APOGRAPHUM_1593,Fair-copy observations 1593 (the lost apographum),lost,1593,../observationes/index.html#sec-register
+manuscript inferred,O_UT_FAIR_COPY_LANGE,"Urania Titani — the fair copy signed by Sophie Brahe, intended for Erik Lange",lost,1594,../typographica/index.html#inedita-urania-titani
+manuscript inferred,O_UT_FORLAEG,Urania Titani — the written exemplar behind Cod. Vindob. 10686/12,lost,1594,../typographica/index.html#inedita-urania-titani
+hand specimen,lynge-detached-signature,Detached signature 'd:Dt: Tÿcho Brahe' (private collection) — ILAB Missing Books 2015,lost,,../observationes/graphonomicon/brahe-tycho/explorer.html?specimen=lynge-detached-signature
+library title,e-mort-lipsius-de-constantia-lost,De constantia,lost,,../bibliotheca/tycho-brahe-library/explorer.html?entry=e-mort-lipsius-de-constantia-lost
+library title,e-mort-niels-krag-laced-lost,Republica Lacedaemoniorum (1593) — copy with Tycho's autograph distichs,lost,1593,../bibliotheca/tycho-brahe-library/explorer.html?entry=e-mort-niels-krag-laced-lost

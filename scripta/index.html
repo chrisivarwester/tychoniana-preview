@@ -1,469 +1,186 @@
 <!doctype html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Scripta — Tychoniana</title>
-<style>
-.topbar{background:var(--navy,#0f1525);color:#8090b0;font-size:12px;padding:5px 26px;font-family:-apple-system,'Segoe UI',sans-serif}.topbar a{color:#c9a23f;text-decoration:none}.topbar a:hover{text-decoration:underline}.topbar .sep{color:#5a6a88;margin:0 8px}.topbar .cur{color:#cdd6e8}.build-stamp{border-top:1px solid #ddd3bf;padding:10px 26px 18px;font-size:10.5px;color:#6b6450;line-height:1.6;font-family:-apple-system,'Segoe UI',sans-serif}.build-stamp b{color:#6b6450;font-weight:600}.build-stamp a{color:#7d6428}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-:root{--ink:#1a2238;--gold:#9a7b32;--gold2:#c9a23f;--parch:#f6f1e6;
-      --card:#fffdf8;--line:#ddd3bf;--muted:#6b6450;--navy:#0f1525;
-      --blue:#2c5fa3;--bluebg:#eef3fb;--sophie:#4a2a6a;--sophiebg:#f3ede8;
-      --early:#2d5a8b;--hven:#2d5a3a;--exile:#7a4090}
-*{box-sizing:border-box}
-body{margin:0;background:var(--parch);color:var(--ink);
-     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-     line-height:1.55}
-a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
-header.hero{background:linear-gradient(160deg,#1b2a47,#0f1a2e);color:#f6f1e6;
-            padding:34px 0 26px;border-bottom:4px solid var(--gold)}
-.hdr-divider{width:44px;height:1px;background:var(--gold);opacity:.4;margin:8px 0 12px}
-.hero h1{font-family:Georgia,serif;font-size:34px;font-weight:normal;margin:0 0 4px;letter-spacing:.5px}
-.hero .lat{font-style:italic;color:var(--gold2)}
-.hero p.sub{margin:6px 0 0;font-size:14.5px;color:#cdd2e0;max-width:840px}
-.hero p.sub b{color:#fff}
-.hero p.sub em{font-style:italic}
-.hero p.div-line{margin:10px 0 0;font-size:13px;color:#aeb4c6;max-width:840px}
-.hero p.cred{margin:9px 0 0;font-size:11.5px;color:#9aa0b4;max-width:840px}
-.statbar{display:flex;flex-wrap:wrap;gap:20px;margin-top:18px;padding-top:16px;
-          border-top:1px solid rgba(255,255,255,.15)}
-.stat{display:flex;flex-direction:column}
-.stat b{font-size:24px;font-family:Georgia,serif;color:#fff}
-.stat span{font-size:11.5px;color:#aeb4c6;text-transform:uppercase;letter-spacing:.6px}
-/* controls */
-.controls{position:sticky;top:0;z-index:30;background:var(--parch);
-          border-bottom:1px solid var(--line);padding:8px 0 6px}
-.cwrap{max-width:1100px;margin:0 auto;padding:0 18px}
-.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:3px 0}
-.cf-label{font-size:10px;text-transform:uppercase;letter-spacing:.8px;
-          color:var(--muted);font-weight:700;flex-shrink:0}
-.srch-wrap{position:relative;flex:1;max-width:430px}
-.srch-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);
-           opacity:.4;pointer-events:none;font-size:14px}
-.srch-wrap input{width:100%;padding:6px 12px 6px 32px;border:1px solid var(--line);
-                 border-radius:8px;font-size:13px;background:#fff;font-family:inherit}
-.countpill{font-size:11.5px;color:var(--muted);white-space:nowrap}
-.chip{cursor:pointer;font-size:12px;border:1px solid var(--line);background:#fff;
-      border-radius:14px;padding:3px 11px;user-select:none;white-space:nowrap;
-      font-family:inherit;transition:background .12s,border-color .12s}
-.chip:hover{border-color:var(--gold)}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.chip.disabled{opacity:.45;cursor:default}
-.chip .cnt{font-weight:400;font-size:10px;color:var(--muted);margin-left:1px}
-.chip.on .cnt{color:#bbb}
-/* reader layout */
-.reader{max-width:1100px;margin:0 auto;padding:0 18px}
-.rwrap{display:flex;gap:0;border:1px solid var(--line);border-top:none;
-       border-radius:0 0 10px 10px;background:var(--card);min-height:520px}
-aside#list{width:345px;flex-shrink:0;border-right:1px solid var(--line);
-           overflow-y:auto;max-height:calc(100vh - 120px);position:sticky;top:78px;
-           padding:6px 0 20px}
-main#main{flex:1;min-width:0}
-main#main .pad{padding:22px 28px 40px}
-/* list */
-.gh{padding:12px 14px 5px;cursor:pointer}
-.gh:hover .gh-name{color:var(--gold)}
-.gh-name{font-family:Georgia,serif;font-size:15.5px;color:var(--ink);font-weight:bold}
-.gh-gloss{font-size:11px;color:var(--muted);margin-top:1px}
-.li{padding:7px 14px 7px 18px;cursor:pointer;border-left:3px solid transparent;font-size:13px}
-.li:hover{background:#f6f0e2}
-.li.on{background:#f1e9d6;border-left-color:var(--gold)}
-.li .yr{display:inline-block;min-width:52px;color:var(--muted);
-        font-family:ui-monospace,monospace;font-size:11px}
-.li .ti{color:var(--ink)}
-.li .dadot{display:inline-block;width:7px;height:7px;border-radius:50%;
-           background:#2c5fa3;margin-left:6px;vertical-align:1px}
-.li .sopill{font-size:9px;background:var(--sophie);color:#fff;border-radius:8px;
-            padding:0 6px;margin-left:6px;vertical-align:1px}
-.li .gwtag{font-size:9px;color:var(--muted);border:1px solid var(--line);
-           border-radius:8px;padding:0 6px;margin-left:6px;vertical-align:1px}
-.ghost-strip{margin:18px 14px 8px;border-top:1px dashed var(--line);padding-top:10px}
-.ghost-h{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);
-         font-weight:700;margin-bottom:6px}
-.ghost{display:block;font-size:12px;color:var(--muted);padding:4px 4px 4px 8px;
-       border:1px dashed var(--line);border-radius:7px;margin:4px 0;background:transparent}
-.ghost:hover{border-color:var(--gold);text-decoration:none;color:var(--ink)}
-.ghost b{font-style:italic;font-weight:600}
-.ghost span{color:var(--blue);font-size:11px}
-/* detail: about + genre panes */
-.about h2,.gpane h2{font-family:Georgia,serif;font-weight:normal;font-size:24px;margin:0 0 10px}
-.about p,.gpane p{font-size:13.5px;line-height:1.65;color:#2a2a24;max-width:70ch}
-.about .keyfact{background:var(--bluebg);border:1px solid #c8d8ee;border-radius:9px;
-                padding:12px 16px;margin:14px 0;font-size:13.5px;max-width:70ch}
-.gpane .g-sub{font-size:12px;font-weight:700;text-transform:uppercase;
-              letter-spacing:.5px;color:var(--gold);margin:-6px 0 10px}
-/* thread + sophie boxes */
-.sophie-box{background:linear-gradient(135deg,#f5ede8,#ede4f5);border:1px solid #c0a8d8;
-            border-left:4px solid var(--sophie);border-radius:10px;padding:16px 20px;
-            margin:18px 0;max-width:74ch}
-.sophie-head{font-family:Georgia,serif;font-size:15px;font-weight:bold;
-             color:var(--sophie);margin-bottom:8px}
-.sophie-box p{font-size:13px;color:#2a2238;line-height:1.6;margin:0 0 8px}
-.sophie-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:5px}
-.sophie-links a{font-size:12px;font-weight:600;color:var(--sophie);
-                border:1px solid #c0a8d8;border-radius:12px;padding:2px 10px}
-.sophie-links a:hover{background:var(--sophie);color:#fff;text-decoration:none}
-.thread-box{background:#f4efe2;border:1px solid var(--line);border-left:4px solid var(--gold);
-            border-radius:10px;padding:14px 18px;margin:18px 0;max-width:74ch}
-.thread-head{font-family:Georgia,serif;font-size:14.5px;font-weight:bold;margin-bottom:7px}
-.thread-box p{font-size:13px;line-height:1.6;margin:0 0 6px}
-.thread-box a{cursor:pointer}
-/* work pane */
-.doc h2{font-family:Georgia,serif;font-weight:normal;font-size:25px;margin:0 0 2px;line-height:1.25}
-.doc .ten{font-size:13.5px;color:var(--muted);font-style:italic;margin:0 0 8px}
-.doc .gist{font-size:14px;color:#2a2a24;margin:6px 0 10px;max-width:74ch}
-.badges{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 4px}
-.badge{font-size:10.5px;font-weight:700;border-radius:4px;padding:1px 8px;letter-spacing:.3px}
-.badge.yr{background:#eee7d4;color:#5a4b20;border:1px solid #ddd0a8}
-.badge.gen{background:#e8e2d2;color:#4a4030;border:1px solid #d4c9ac}
-.badge.la{background:#fdf3a8;color:#5a4b00;border:1px solid #e6d56a}
-.badge.lada{background:#e3edf8;color:#1a3a6a;border:1px solid #b8cfe8}
-.badge.tyda{background:#e0f0e2;color:#1a5a28;border:1px solid #a8d8b0}
-.badge.daonly{background:#e3edf8;color:#1a3a6a;border:1px solid #b8cfe8}
-.badge.sophie{background:var(--sophie);color:#fff}
-.badge.per-early{background:#e4ecf5;color:var(--early);border:1px solid #b8cce4}
-.badge.per-hven{background:#e2efe5;color:var(--hven);border:1px solid #b0d4b8}
-.badge.per-exile{background:#eee4f4;color:var(--exile);border:1px solid #ceb2e0}
-.meta-line{font-size:12px;color:var(--muted);margin:7px 0 0}
-.meta-line .tboo{font-size:10.5px;color:#6b5e40;font-family:ui-monospace,monospace;
-                 background:#f0e8d4;border:1px solid #e0d4b4;border-radius:8px;padding:0 6px}
-.conn{margin:14px 0;border:1px solid var(--line);border-radius:9px;overflow:hidden;max-width:74ch}
-.conn .c{padding:8px 13px;font-size:12.5px;border-top:1px solid var(--line)}
-.conn .c:first-child{border-top:none}
-.conn .lbl{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;
-           letter-spacing:.6px;color:var(--muted);width:92px}
-.gw-banner,.stub-banner{background:#faf3df;border:1px solid #e4d5a8;border-radius:9px;
-          padding:12px 16px;font-size:13px;margin:14px 0;max-width:74ch}
-/* the text */
-.sec{margin:20px 0 0}
-.sec-h{font-family:Georgia,serif;font-size:16px;color:var(--gold);
-       border-top:1px solid var(--line);padding-top:12px;margin:0 0 8px}
-.sec-note{font-size:11.5px;color:var(--muted);font-style:italic;margin:-4px 0 8px}
-.rd{font-family:Georgia,'Times New Roman',serif;font-size:15.5px;line-height:1.72;
-    color:#22201a;max-width:68ch}
-.rd p{margin:0 0 11px}
-.rd .vind{display:inline-block;width:2em}
-.rd .tboo{font-size:10px;color:#6b5e40;font-family:ui-monospace,monospace;background:#f0e8d4;
-          border:1px solid #e0d4b4;border-radius:8px;padding:0 6px;white-space:nowrap}
-.rd sup.tcnote{font-size:9.5px;color:var(--gold);font-weight:700;
-               font-family:ui-monospace,monospace;line-height:0}
-.tc-notes{border-top:1px dashed var(--line);margin-top:12px;padding-top:8px}
-.tc-notes-head{font-size:10.5px;font-weight:700;text-transform:uppercase;
-               letter-spacing:.6px;color:var(--muted);margin-bottom:4px}
-.tc-notes ol{margin:0;padding-left:22px}
-.tc-notes li{font-size:11.5px;color:var(--muted);line-height:1.5;margin:0 0 3px;
-             font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-/* parallel columns */
-.cols{display:flex;gap:26px}
-.cols .col{flex:1;min-width:0}
-.col-h{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;
-       color:var(--muted);border-bottom:2px solid var(--line);padding-bottom:4px;margin:0 0 9px}
-.cols .rd{font-size:14.5px}
-/* TOC */
-.toc{border:1px solid var(--line);border-radius:9px;padding:12px 16px;margin:14px 0;
-     font-size:12.5px;max-width:74ch;column-count:2;column-gap:26px}
-.toc a{display:block;padding:2px 0;cursor:pointer}
-.toc .tno{color:var(--muted);font-family:ui-monospace,monospace;font-size:10.5px;
-          display:inline-block;min-width:26px}
-/* prev/next + cite */
-.pn{display:flex;justify-content:space-between;gap:10px;margin:22px 0 0;max-width:74ch}
-.pn button{font-size:12px;border:1px solid var(--line);background:#fff;border-radius:8px;
-           padding:5px 12px;cursor:pointer;font-family:inherit;color:var(--ink)}
-.pn button:hover{border-color:var(--gold)}
-.pn button:disabled{opacity:.4;cursor:default}
-.cite{font-size:11px;color:var(--muted);margin-top:12px;border-top:1px solid var(--line);
-      padding-top:7px;max-width:74ch}
-.cite button{font-size:10px;padding:0 6px;border:1px solid var(--line);border-radius:3px;
-             background:var(--card);cursor:pointer}
-.nores{padding:26px 16px;color:var(--muted);font-size:13px}
-/* footer */
-.also-footer{max-width:1100px;margin:0 auto;border-top:none;padding:16px 18px;
-             display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-.also-lbl{font-size:10px;text-transform:uppercase;letter-spacing:2px;
-          color:#6b6450;font-family:monospace;flex-shrink:0;margin-right:8px;white-space:nowrap}
-.also-chip{display:inline-block;padding:4px 12px;border-radius:12px;
-           border:1px solid #ddd3bf;color:#6b6450;font-size:12px;
-           text-decoration:none;transition:border-color .13s,color .13s}
-.also-chip:hover{border-color:#9a7b32;color:#1a2238;text-decoration:none}
-.also-chip.portal{border-color:#9a7b32;color:#7d6428}
-.also-chip.portal:hover{background:#9a7b32;color:#f6f1e6}
-@media(max-width:880px){
- .rwrap{flex-direction:column}
- aside#list{width:100%;position:static;max-height:320px;border-right:none;
-            border-bottom:1px solid var(--line)}
- .cols{flex-direction:column;gap:14px}
- .toc{column-count:1}
-}
-
-</style>
-</head><body>
-<div class="topbar"><a href="../index.html">&#8592; Tychoniana</a><span class="sep">&#8250;</span><span class="cur">Scripta</span></div>
-<header class="hero"><div class="wrap">
- <h1>Scripta <span class="lat">&mdash; Tycho&#8217;s Writings</span></h1>
- <div class="hdr-divider"></div>
- <p class="sub"><b>The reading room.</b> 57 works by Tycho Brahe from the critical edition of the
- Danish Society for Language and Literature &mdash; the occasional poems, the verses carved into
- Uraniborg&#8217;s stone, the Copenhagen oration, horoscopes and alchemical recipes, and three of the
- printed books &mdash; two readable here in full, the third (the <em>Epistolae astronomicae</em>)
- linked page by page at the source. Ten works carry Peter Zeeberg&#8217;s modern Danish translation
- beside the Latin; one, the 1591 Flemløs preface, is in Tycho&#8217;s own Danish. This is the
- edition&#8217;s selection, not the whole oeuvre &mdash; <em>De mundi aetherei</em> and the
- <em>Progymnasmata</em> are not in it, and the correspondence lives in the Epistolarium.</p>
- <p class="div-line"><em>Typographica</em> treats these works as printed books; <em>Epistolarium</em>
- as a correspondence network; here you read them.</p>
- <p class="cred">Texts and Danish translations from the critical edition prepared by Peter Zeeberg and
- Finn Gredal Jensen for Det Danske Sprog- og Litteraturselskab, 2019 &middot; tekstnet.dk.</p>
- <div class="statbar"><div class="stat"><b>57</b><span>works</span></div><div class="stat"><b>10</b><span>in parallel Latin–Danish</span></div><div class="stat"><b>1</b><span>in Tycho's own Danish</span></div><div class="stat"><b>56</b><span>readable here in full</span></div></div>
-</div></header>
-
-<div class="controls"><div class="cwrap">
- <div class="crow">
-  <div class="srch-wrap"><span class="srch-icon">&#128269;</span>
-   <input type="search" id="q" placeholder="Search titles and full texts&hellip;  ( / )"></div>
-  <span id="count" class="countpill"></span>
- </div>
- <div class="crow chips">
-  <span class="cf-label">Genre</span>
-  <button class="chip on" data-gen="all">All <b class="cnt"></b></button>
-<button class="chip" data-gen="carmina" title="Poems, elegies, and epitaphs">Carmina <b class="cnt"></b></button>
-<button class="chip" data-gen="inscriptiones" title="Building inscriptions">Inscriptiones <b class="cnt"></b></button>
-<button class="chip" data-gen="astronomica" title="Astronomical and scientific writings">Astronomica <b class="cnt"></b></button>
-<button class="chip" data-gen="epistolae" title="Letters, prefaces, and the unfinished volume">Epistolae <b class="cnt"></b></button>
-<button class="chip" data-gen="orationes" title="Speeches">Orationes <b class="cnt"></b></button>
-<button class="chip" data-gen="astrologica" title="Astrological and meteorological writings">Astrologica <b class="cnt"></b></button>
-<button class="chip" data-gen="chimica" title="Alchemical and medical recipes">Chimica <b class="cnt"></b></button>
- </div>
- <div class="crow chips">
-  <span class="cf-label">Period</span>
-  <button class="chip on" data-per="all">All <b class="cnt"></b></button>
-<button class="chip" data-per="early" title="1568–1576 — before Hven">Early <b class="cnt"></b></button>
-<button class="chip" data-per="hven" title="1577–1597 — the Uraniborg years">Hven <b class="cnt"></b></button>
-<button class="chip" data-per="exile" title="1597–1601 — Wandsbek, Wittenberg, Prague, Benátky">Exile <b class="cnt"></b></button>
-  <span class="cf-label" style="margin-left:14px">Text</span>
-  <button class="chip" data-da="1" title="Works with Peter Zeeberg's modern Danish translation shown beside the Latin">Parallel Latin&ndash;Danish <b class="cnt"></b></button>
- </div>
-</div></div>
-
-<section class="reader"><div class="rwrap">
- <aside id="list"></aside>
- <main id="main"><div class="pad" id="detail"></div></main>
-</div></section>
-
-<footer class="also-footer">
- <span class="also-lbl">Also in Tychoniana</span>
- <a class="also-chip" href="../typographica/index.html">Typographica</a>
- <a class="also-chip" href="../epistolarium/index.html">Epistolarium</a>
- <a class="also-chip" href="../familia/index.html">Familia</a>
- <a class="also-chip portal" href="../index.html">&larr; Portal</a>
-</footer>
-<script src="data.js"></script>
-<script>
-
-const BY={}; DATA.forEach(w=>BY[w.s]=w);
-const GEN=[{"id": "carmina", "label": "Carmina", "sub": "Poems, elegies, and epitaphs", "desc": "Tycho's substantial output as a Neo-Latin poet — dedicatory verses, elegies, epitaphs, occasional poems, and the verse inscriptions of Uraniborg and Benátky. His first publication (1572) was a poem — the epitaph for his stillborn twin brother — and he continued writing verse to the end of his life.", "box": "<div class='thread-box'><div class='thread-head'>The Urania allegory, 1573&ndash;1601</div><p>One allegory grows across Tycho's whole poetic output. In the elegy printed in <a onclick=\"openWork('brahe-t_de-nova-stella')\">De nova stella</a> (1573) the muse Urania appears to the young nobleman and gives him the new star as his calling; the <a onclick=\"openWork('brahe-t_fundamentalis-uraniburgi-lapis')\">foundation stone</a> of 1576 dedicates the new house on Hven to her, and the epigram <a onclick=\"openWork('brahe-t_typographiae')\">Typographi&aelig;</a> commits work &#8216;brought forth by Urania's lofty enterprise&#8217; to the press. In the poems printed at Uraniborg in 1584&ndash;85 she is an exile who has wandered through lands that failed astronomy and found refuge on Hven &mdash; the theme of the epistles to <a onclick=\"openWork('brahe-t_jacobo-ulfeldio')\">Jacob Ulfeldt</a> and <a onclick=\"openWork('brahe-t_nicolao-kaasio')\">Niels Kaas</a> and of the fragment <a onclick=\"openWork('brahe-t_si-quid-agat')\">Si quid agat</a>. In <a onclick=\"openWork('brahe-t_urania-titani')\">Urania Titani</a> (1594) Tycho lends her name to his sister Sophie; over the observatory door at Ben&aacute;tky (<a onclick=\"openWork('brahe-t_supra-januam-observatorii')\">Supra januam observatorii</a>) her rites, refused elsewhere, pass to Bohemia; and in the late correspondence with the Rostock poet Martin Brasch (<a onclick=\"openWork('brahe-t_ad-martinum-braschium')\">Ad Martinum Braschium</a>), for whose didactic poem on the famous astronomers Tycho supplied bibliography, directives and the opening verses, the identification of Tycho with Urania's art is complete.</p></div><div class='thread-box'><div class='thread-head'>The Denmark quarrel, in verse</div><p>Tycho's break with Denmark runs through this genre as a single thread: the <a onclick=\"openWork('brahe-t_ad-daniam-elegia-1')\">farewell elegy</a> he entered in his observation protocol at Wandsbek (20 October 1597); the <a onclick=\"openWork('brahe-t_ad-daniam-epigramma')\">epigram</a> written on arriving at Benátky in August 1599, reproaching his homeland and thanking Rudolf II; the <a onclick=\"openWork('brahe-t_ad-daniam-excusatio')\">excusatio</a> absolving the young Christian IV and blaming &#8216;three or four&#8217; hostile men; and <a onclick=\"openWork('brahe-t_dania-ad-tychonem')\">Dania ad Tychonem</a> — a personified Denmark's reply, urging her foster-son to bear his lot with courage.</p></div>"}, {"id": "inscriptiones", "label": "Inscriptiones", "sub": "Building inscriptions", "desc": "Inscriptions composed for buildings: the Latin mottoes and verses of Uraniborg's rooms and fittings — the museum, the furnace, the optical mirror, the clock, the four seasons on the roof — the inscriptions for Kronborg castle, and the paper-mill inscription recording the dam and mill Tycho built on Hven in 1590–92.", "box": ""}, {"id": "astronomica", "label": "Astronomica", "sub": "Astronomical and scientific writings", "desc": "The technical-scientific core: the 1573 book on the new star, the account of the 1585 comet, the complete <em>Astronomiae instauratae mechanica</em> (1598) describing every instrument of Uraniborg and Stjerneborg, a manuscript trigonometry textbook, the geodetic survey of Hven, and working notes on the obliquity of the ecliptic.", "box": ""}, {"id": "epistolae", "label": "Epistolae", "sub": "Letters, prefaces, and the unfinished volume", "desc": "The <em>Epistolae astronomicae</em> (1596) — scientific correspondence as a published genre — with the prefaces intended for its never-completed second volume, and the polemical exchange with the Scottish mathematician John Craig over the comets.", "box": "<div class='sophie-box'><div class='sophie-head'>The unfinished second volume — Sophie Brahe's letter</div><p>The <em>Epistolae astronomicae</em> (1596) was the first volume of a planned series of astronomical correspondence. The <b>second volume</b> was never published — Tycho left Hven in 1597 and the exile press gave priority to the <em>Mechanica</em> — but its contents were largely assembled: the correspondence with Thaddaeus Hagecius on the new star and the comets and, above all, <b>Sophie Brahe's long letter</b> on alchemy and astrology with Tycho's reply. The key surviving evidence for it is his prose preface <em>Occasio et argumentum</em> (c. 1594); he celebrated his sister as <em><b>Urania</b></em> in the verse preface <em>Urania Titani</em>.</p><div class='sophie-links'><a href='../epistolarium/index.html'>View Epistolarium ↗</a><a href='../familia/index.html#COR_SOPHIE_BRAHE'>Sophie Brahe in Familia ↗</a></div></div>"}, {"id": "orationes", "label": "Orationes", "sub": "Speeches", "desc": "One speech survives in the edition, and it is a programmatic one: the oration on the mathematical disciplines that Tycho delivered at the University of Copenhagen in September 1574, at King Frederik II's request, to open his public lectures on astronomy — with its defence of astrology against its learned despisers.", "box": ""}, {"id": "astrologica", "label": "Astrologica", "sub": "Astrological and meteorological writings", "desc": "The practical face of the Uraniborg programme: natal horoscopes for the three Danish royal princes, the 1573 astrological-meteorological diary, the draft preface for the 1586 diary, a fragment on weather astrology — and Tycho's preface to his assistant Peder Jacobsen Flemløs's Danish <em>En Elementisch oc Jordisch Astrologia</em> (1591), the sole Danish-language Uraniborg book.", "box": ""}, {"id": "chimica", "label": "Chimica", "sub": "Alchemical and medical recipes", "desc": "Recipes for plague remedies and medicaments composed for patrons — the alchemical output of the Uraniborg laboratory, where Tycho produced spagyric medicines alongside observations: an elixir against the plague, three remedies written into Heinrich Rantzau's book of medicine at Wandsbek, and a preparation sent to Emperor Rudolf II.", "box": ""}];
-const GENBY={}; GEN.forEach(g=>GENBY[g.id]=g);
-const PER=[{"id": "early", "label": "Early", "sub": "1568–1576 — before Hven"}, {"id": "hven", "label": "Hven", "sub": "1577–1597 — the Uraniborg years"}, {"id": "exile", "label": "Exile", "sub": "1597–1601 — Wandsbek, Wittenberg, Prague, Benátky"}];
-const PERBY={}; PER.forEach(p=>PERBY[p.id]=p);
-const LANGLAB={la:'Latin',la_da:'Latin · parallel Danish (Zeeberg 2019)',
-               tycho_da:"Tycho's own Danish",da_only:'Danish translation only (Zeeberg 2019)'};
-const LANGCLS={la:'la',la_da:'lada',tycho_da:'tyda',da_only:'daonly'};
-let curGen='all',curPer='all',curDa=false,selected=null;
-let HAY=null;
-
-function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function stripTags(h){const d=document.createElement('div');d.innerHTML=h;return d.textContent||'';}
-function buildHay(){
- HAY={};
- DATA.forEach(w=>{
-  let t=w.t+' '+(w.te||'')+' '+w.gl+' '+w.y+' '+GENBY[w.gen].label;
-  w.secs.forEach(s=>{t+=' '+(s.h||'')+' '+stripTags(s.la||'')+' '+stripTags(s.da||'');});
-  if(w.toc)t+=' '+w.toc.join(' ');
-  HAY[w.s]=t.toLowerCase();
- });
-}
-function passes(w,q,gen,per,da){
- if(gen!=='all'&&w.gen!==gen)return false;
- if(per!=='all'&&w.per!==per)return false;
- if(da&&w.lang!=='la_da')return false;
- if(q){ if(!HAY)buildHay(); if(!HAY[w.s].includes(q))return false; }
- return true;
-}
-function state(){return{q:document.getElementById('q').value.toLowerCase().trim(),gen:curGen,per:curPer,da:curDa};}
-
-function renderList(){
- const st=state(); const host=document.getElementById('list');
- let h='',shown=0,lastGen=null;
- DATA.forEach(w=>{
-  if(!passes(w,st.q,st.gen,st.per,st.da))return;
-  shown++;
-  if(w.gen!==lastGen){
-   lastGen=w.gen; const g=GENBY[w.gen];
-   h+=`<div class="gh" onclick="openGenre('${g.id}')" title="Read about this group">`+
-      `<span class="gh-name">${esc(g.label)}</span>`+
-      `<div class="gh-gloss">${esc(g.sub)}</div></div>`;
-  }
-  const on=w.s===selected?' on':'';
-  let tags='';
-  if(w.lang==='la_da')tags+='<span class="dadot" title="Parallel Latin–Danish text"></span>';
-  if(w.lang==='tycho_da')tags+='<span class="sopill" style="background:#1a5a28" title="In Tycho’s own Danish">DA</span>';
-  if(w.so)tags+='<span class="sopill" title="Sophie Brahe connection">Sophie</span>';
-  if(w.gw)tags+='<span class="gwtag" title="Held as a gateway — full text at tekstnet.dk">gateway</span>';
-  h+=`<div class="li${on}" onclick="openWork('${w.s}')">`+
-     `<span class="yr">${esc(w.y)}</span><span class="ti">${esc(w.t)}</span>${tags}</div>`;
- });
- if(!shown)h+='<div class="nores">No works match these filters.</div>';
- h+=`<div class="ghost-strip"><div class="ghost-h">Not in this edition</div><a class="ghost" href="../typographica/index.html#ln428"><b>De mundi aetherei recentioribus phaenomenis (1588)</b> — the comet treatise — not in the DSL selection <span>Typographica →</span></a><a class="ghost" href="../typographica/index.html#ln433"><b>Astronomiae instauratae progymnasmata (1602)</b> — the posthumous magnum opus — not in the DSL selection <span>Typographica →</span></a><a class="ghost" href="../observationes/index.html"><b>The star catalogue (1598)</b> — read it as data, star by star <span>Observationes →</span></a><a class="ghost" href="../epistolarium/index.html"><b>The manuscript correspondence</b> — the letters as a network, with English summaries <span>Epistolarium →</span></a></div>`;
- host.innerHTML=h;
- // faceted counts: a chip's number = what clicking it would show,
- // computed against the OTHER active facets (banked contract, 2026-07-06)
- document.querySelectorAll('.chip[data-gen]').forEach(ch=>{
-  const v=ch.dataset.gen,n=DATA.filter(w=>passes(w,st.q,v,st.per,st.da)).length;
-  ch.querySelector('.cnt').textContent='('+n+')';
-  ch.classList.toggle('disabled',n===0&&v!=='all');
- });
- document.querySelectorAll('.chip[data-per]').forEach(ch=>{
-  const v=ch.dataset.per,n=DATA.filter(w=>passes(w,st.q,st.gen,v,st.da)).length;
-  ch.querySelector('.cnt').textContent='('+n+')';
-  ch.classList.toggle('disabled',n===0&&v!=='all');
- });
- {const ch=document.querySelector('.chip[data-da]');
-  const n=DATA.filter(w=>passes(w,st.q,st.gen,st.per,true)).length;
-  ch.querySelector('.cnt').textContent='('+n+')';
-  ch.classList.toggle('disabled',n===0);}
- document.getElementById('count').textContent='showing '+shown+' of '+DATA.length+' works';
-}
-
-function setParam(k,v){try{const u=new URL(location);if(v==null)u.searchParams.delete(k);else u.searchParams.set(k,v);history.replaceState(null,'',u);}catch(e){}}
-
-function badgeRow(w){
- let h=`<span class="badge yr">${esc(w.y)}</span>`;
- h+=`<span class="badge gen">${esc(GENBY[w.gen].label)}</span>`;
- h+=`<span class="badge ${LANGCLS[w.lang]}">${esc(LANGLAB[w.lang])}</span>`;
- if(w.per!=='undated'&&PERBY[w.per])h+=`<span class="badge per-${w.per}" title="${esc(PERBY[w.per].sub)}">${esc(PERBY[w.per].label)}</span>`;
- if(w.so)h+='<span class="badge sophie">Sophie Brahe</span>';
- return `<div class="badges">${h}</div>`;
-}
-function connBlock(w){
- let h='';
- (w.lk||[]).forEach(l=>{h+=`<div class="c"><span class="lbl">${esc(l[2]||'See also')}</span><a href="${esc(l[1])}">${esc(l[0])}</a></div>`;});
- h+=`<div class="c"><span class="lbl">Critical text</span><a href="${esc(w.url)}" target="_blank">tekstnet.dk (DSL edition) ↗</a>`+
-    (w.urlda?` &middot; <a href="${esc(w.urlda)}" target="_blank">Danish translation ↗</a>`:'')+`</div>`;
- return `<div class="conn">${h}</div>`;
-}
-function secHtml(w,s,i){
- let h=`<div class="sec" id="sec-${i}">`;
- if(s.h)h+=`<div class="sec-h">${esc(s.h)}</div>`;
- if(s.note)h+=`<div class="sec-note">${esc(s.note)}</div>`;
- if(s.da!=null){
-  h+=`<div class="cols"><div class="col"><div class="col-h">Latin</div><div class="rd">${s.la}</div></div>`+
-     `<div class="col"><div class="col-h">Dansk — Peter Zeeberg (2019)</div><div class="rd">${s.da}</div></div></div>`;
- }else if(s.la!=null){
-  h+=`<div class="rd">${s.la}</div>`;
- }
- return h+'</div>';
-}
-function openWork(slug,sec){
- const w=BY[slug];if(!w)return;
- selected=slug;setParam('text',slug);setParam('sec',sec||null);
- let h=`<div class="doc"><h2>${esc(w.t)}</h2>`;
- if(w.te)h+=`<p class="ten">${esc(w.te)}</p>`;
- h+=badgeRow(w);
- h+=`<p class="gist">${esc(w.gl)}</p>`;
- let ml=[];
- if(w.tboo){
-  const ff=w.tbop?' title="This Opera omnia reference marks only the opening pages of the text; the work continues further in the volume."':'';
-  ml.push(`<span class="tboo"${ff}>[${esc(w.tboo)}${w.tbop?' ff.':''}]</span>`);
- }
- if(w.ex)ml.push(esc(w.ex));
- if(ml.length)h+=`<div class="meta-line">${ml.join(' &middot; ')}</div>`;
- h+=connBlock(w);
- if(w.gw){
-  h+=`<div class="gw-banner"><b>Read at the source.</b> The full book is not embedded here: the `+
-     `<i>Epistolae astronomicae</i> runs to 84 web pages in the DSL edition, and its letters are `+
-     `presented as a correspondence network — with English summaries — in the `+
-     `<a href="../epistolarium/index.html">Epistolarium</a>. The complete text is at `+
-     `<a href="${esc(w.url)}" target="_blank">tekstnet.dk ↗</a>. Contents:</div>`;
-  h+=`<div class="toc">`+w.toc.map((t,i)=>`<a href="${esc(w.url)}${String(i+1).padStart(3,'0')}/" target="_blank"><span class="tno">${i+1}</span>${esc(t)} ↗</a>`).join('')+`</div>`;
- }else{
-  if(w.secs.length>5){
-   h+=`<div class="toc">`+w.secs.map((s,i)=>`<a onclick="jumpSec(${i})"><span class="tno">${i+1}</span>${esc(s.h||('Section '+(i+1)))}</a>`).join('')+`</div>`;
-  }
-  w.secs.forEach((s,i)=>{h+=secHtml(w,s,i);});
- }
- h+=prevNext(w);
- {const _url=location.origin+location.pathname+'?text='+encodeURIComponent(slug);
-  const _cite='“'+w.t+'”, Tychoniana — Scripta, '+_url+', accessed '+new Date().toISOString().slice(0,10)+'.';
-  h+=`<div class="cite"><b>Cite:</b> <span class="cite-line">${esc(_cite)}</span> `+
-     `<button onclick="try{navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied';}catch(e){}">copy</button></div>`;}
- h+='</div>';
- document.getElementById('detail').innerHTML=h;
- const m=document.getElementById('main');m.scrollIntoView({block:'nearest'});
- if(sec){const el=document.getElementById('sec-'+(sec-1));if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
- else window.scrollTo({top:document.querySelector('.controls').offsetTop,behavior:'auto'});
- renderList();
-}
-function jumpSec(i){const el=document.getElementById('sec-'+i);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});setParam('sec',i+1);}}
-function prevNext(w){
- const sib=DATA.filter(x=>x.gen===w.gen);
- const i=sib.findIndex(x=>x.s===w.s);
- const p=i>0?sib[i-1]:null,n=i<sib.length-1?sib[i+1]:null;
- return `<div class="pn"><button ${p?`onclick="openWork('${p.s}')"`:'disabled'}>&lsaquo; ${p?esc(p.t):'—'}</button>`+
-        `<button ${n?`onclick="openWork('${n.s}')"`:'disabled'}>${n?esc(n.t):'—'} &rsaquo;</button></div>`;
-}
-function openGenre(gid){
- const g=GENBY[gid];if(!g)return;
- selected=null;setParam('text',null);setParam('sec',null);
- let h=`<div class="gpane"><h2>${esc(g.label)}</h2><div class="g-sub">${esc(g.sub)}</div><p>${g.desc}</p>`;
- if(g.box)h+=g.box;
- h+='</div>';
- document.getElementById('detail').innerHTML=h;
- renderList();
-}
-function showAbout(){
- selected=null;setParam('text',null);setParam('sec',null);
- document.getElementById('detail').innerHTML=ABOUT_HTML;
- renderList();
-}
-
-document.querySelectorAll('.chip[data-gen]').forEach(ch=>{
- ch.addEventListener('click',()=>{
-  if(ch.classList.contains('disabled'))return;
-  curGen=ch.dataset.gen;
-  document.querySelectorAll('.chip[data-gen]').forEach(c=>c.classList.toggle('on',c.dataset.gen===curGen));
-  renderList();
- });
-});
-document.querySelectorAll('.chip[data-per]').forEach(ch=>{
- ch.addEventListener('click',()=>{
-  if(ch.classList.contains('disabled'))return;
-  curPer=ch.dataset.per;
-  document.querySelectorAll('.chip[data-per]').forEach(c=>c.classList.toggle('on',c.dataset.per===curPer));
-  renderList();
- });
-});
-{const ch=document.querySelector('.chip[data-da]');
- ch.addEventListener('click',()=>{curDa=!curDa;ch.classList.toggle('on',curDa);renderList();});}
-document.getElementById('q').addEventListener('input',()=>renderList());
-document.addEventListener('keydown',e=>{
- if(e.key==='/'&&document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('q').focus();}
- if(e.key==='Escape'&&document.activeElement.id==='q'){document.getElementById('q').value='';renderList();}
-});
-
-/* boot: ?text= permalink, legacy #w-<slug> hash shim, else About */
+<title>Scripta Tychonis — Tychoniana</title>
+<style>:root{--ink:#1a2238;--gold:#9a7b32;--gold2:#c9a23f;--gold-text:#7d6428;--parch:#f6f1e6;--card:#fffdf8;--line:#ddd3bf;--muted:#6b6450;--navy:#0f1525}.topbar{background:var(--navy,#0f1525);color:#8090b0;font-size:12px;padding:5px 26px;font-family:-apple-system,'Segoe UI',sans-serif}.topbar a{color:#c9a23f;text-decoration:none}.topbar a:hover{text-decoration:underline}.topbar .sep{color:#5a6a88;margin:0 8px}.topbar .cur{color:#cdd6e8}.build-stamp{border-top:1px solid #ddd3bf;padding:10px 26px 18px;font-size:10.5px;color:#6b6450;line-height:1.6;font-family:-apple-system,'Segoe UI',sans-serif}.build-stamp b{color:#6b6450;font-weight:600}.build-stamp a{color:#7d6428}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}.topbar{display:flex;align-items:center;flex-wrap:wrap;gap:4px 0}.site-search{margin-left:auto;display:flex}.site-search input{font:12px -apple-system,'Segoe UI',sans-serif;padding:3px 8px;width:190px;border:1px solid #2a3350;border-radius:3px;background:#1a2238;color:#cdd6e8}.site-search input::placeholder{color:#6a7898}.site-search input:focus{outline:1px solid #c9a23f;background:#141c30}@media(max-width:600px){.site-search{margin-left:0;width:100%;margin-top:4px}.site-search input{width:100%}}*{box-sizing:border-box}html{scroll-padding-top:16px}body{margin:0;background:var(--parch);color:var(--ink);font:15px/1.55 Georgia,'Times New Roman',serif}a{color:var(--gold-text);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1280px;margin:0 auto;padding:0 28px}header.mast{background:var(--navy);color:#e8e2d3;padding:30px 0 18px;border-bottom:4px solid var(--gold)}header.mast h1{font:normal 34px/1.15 Georgia,serif;letter-spacing:.5px;margin:0 0 8px;color:#f6f1e6}header.mast h1 .gloss{font-style:italic;color:var(--gold2)}.lead{max-width:820px;color:#d6d0c2;font-size:15px;margin:0 0 12px}.lead p{margin:0 0 8px}.stat-run{font:13px/1.7 -apple-system,'Segoe UI',sans-serif;color:#cdd6e8;margin:0 0 8px}.stat-run b{color:#f4efe2;font:normal 17px/1 Georgia,serif;margin-right:4px}.stat-run .run{white-space:nowrap}.stat-run .sep{color:#5a6a88;margin:0 6px}.edition-line{font:12px/1.5 -apple-system,'Segoe UI',sans-serif;color:#a9b3c9;border-top:1px solid #2a3350;padding-top:10px;margin:8px 0 0}.edition-line a{color:var(--gold2)}.page{display:flex;gap:32px;align-items:flex-start;padding-bottom:50px}nav.contents{width:224px;flex-shrink:0;position:sticky;top:0;max-height:100vh;overflow-y:auto;padding:22px 0 30px;font:12.5px/1.5 -apple-system,'Segoe UI',sans-serif}.contents-lbl{font-size:10.5px;letter-spacing:.06em;color:var(--gold);margin-bottom:8px}nav.contents ol{list-style:none;margin:0;padding:0}nav.contents a{display:block;padding:3px 8px 3px 6px;color:#5a4e40;border-left:2px solid transparent}nav.contents a:hover{color:var(--ink);text-decoration:none;border-left-color:var(--gold2)}nav.contents li.cur>a{color:var(--ink);border-left-color:var(--gold);background:#efe7d2}nav.contents .n{display:inline-block;min-width:18px;color:#9a9080;font:11px ui-monospace,Consolas,monospace;margin-right:6px}nav.contents .downloads{margin-top:12px;border-top:1px solid var(--line);padding-top:8px}main.doc{flex:1;min-width:0;padding-top:16px}@media(max-width:1099px){.page{display:block}nav.contents{position:static;width:auto;max-height:none;border-bottom:1px solid var(--line);padding:14px 0 10px}nav.contents ol{columns:2;column-gap:24px}nav.contents .downloads{border-top:none;padding-top:0;margin-top:6px}}@media(max-width:700px){nav.contents ol{columns:1}.wrap{padding:0 14px}header.mast h1{font-size:28px}}section.sec{margin:0 0 36px;scroll-margin-top:12px}section.sec>h2{font:normal 26px/1.2 Georgia,serif;color:var(--ink);letter-spacing:.3px;border-bottom:2px solid var(--gold2);padding-bottom:5px;margin:30px 0 12px}section.sec>h2 .n{color:var(--gold);font:18px ui-monospace,Consolas,monospace;margin-right:10px}section.sec>h2 .lat{font-style:italic;color:var(--muted);font-size:17px;margin-left:10px}h3{font:normal 19px/1.3 Georgia,serif;margin:24px 0 8px}h3.run{font-size:16px;color:var(--ink);border-top:1px solid var(--line);padding-top:9px;margin:26px 0 8px}h3.run span{color:#9a9080;font-size:12.5px;margin-left:8px}h4{font:normal 16.5px/1.3 Georgia,serif;margin:14px 0 6px}p{margin:0 0 10px}.prose,.sec-intro,.intro-prose{max-width:820px}.sec-intro{color:#3a3028;margin-bottom:14px}.note,.mut{color:var(--muted);font-size:13.5px}code{font:12.5px ui-monospace,Consolas,monospace;background:#f0e8d8;padding:0 4px;border-radius:3px}ul.plain{font-size:13.5px;padding-left:20px}ul.plain li{margin:2px 0}ol.des{font-size:14px;max-width:820px;padding-left:22px}ol.des li{margin:0 0 8px}.none{color:#8a8170;font-style:italic}.chip{display:inline-block;font:600 11px/1 -apple-system,'Segoe UI',sans-serif;border-radius:3px;padding:3px 6px;vertical-align:middle;border:1px solid transparent;white-space:nowrap}.chip.grade{border-color:currentColor;background:transparent}.grade-A{color:#9a7b32}.grade-B{color:#5070a0}.grade-C{color:#8b6030}.grade-D{color:#808080}.chip.status{color:#fff;border-radius:9px;padding:3px 8px}.st-extant{background:#2d6a2d}.st-reconstructed{background:#2d5a8b}.st-ruined{background:#b07820}.st-lost{background:#8a8170;color:#1a2238}.st-destroyed{background:#8b3a3a}.st-unknown{background:#9a9080}.tag{display:inline-block;font:11px/1 -apple-system,'Segoe UI',sans-serif;border:1px solid var(--line);border-radius:9px;padding:3px 8px;color:var(--muted);vertical-align:middle;white-space:nowrap}a.xref{border-bottom:1px dotted #c9b98f}a.xref::before{content:attr(data-label) " \203A ";font:11px -apple-system,'Segoe UI',sans-serif;color:#9a9080}a.xref.bare::before{content:none}a.xref:hover{text-decoration:none;border-bottom-style:solid}article.rec{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:12px 16px 10px;margin:10px 0;scroll-margin-top:12px;position:relative;overflow:hidden}article.rec:target,article.rec.hl{box-shadow:0 0 0 3px #c9a23f66}.rec-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin:0 0 8px}.rec-hd .rec-no{font:600 12px/1 -apple-system,'Segoe UI',sans-serif;color:#fff;background:var(--gold);padding:4px 7px;border-radius:3px;align-self:center}.rec-hd h3{margin:0;font:normal 19px/1.3 Georgia,serif;flex:1 1 auto}.rec-hd .badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font:12.5px -apple-system,'Segoe UI',sans-serif}.rec-hd .rec-key{margin-left:auto;font:11px ui-monospace,Consolas,monospace;color:#a89c84;user-select:all}.rec-body>p{max-width:820px}dl.app{margin:8px 0 0;display:grid;grid-template-columns:170px 1fr;gap:0 12px;font-size:13.5px;clear:both}dl.app dt{font:600 12px/1.6 -apple-system,'Segoe UI',sans-serif;color:var(--muted);border-top:1px solid #efe9db;padding:5px 0 4px}dl.app dd{margin:0;border-top:1px solid #efe9db;padding:4px 0}dl.app dt:first-of-type,dl.app dd:first-of-type{border-top:none}dl.app ul{margin:2px 0 2px 18px;padding:0}dl.app li{margin:2px 0}dl.app p{margin:4px 0 0}.elsewhere{font-size:13px;margin:10px 0 0;border-top:1px dotted var(--line);padding-top:6px}.elsewhere b{font:600 11px -apple-system,'Segoe UI',sans-serif;color:var(--gold-text);margin-right:6px}@media(max-width:700px){dl.app{grid-template-columns:1fr}dl.app dt{border-top:1px solid #efe9db;padding-bottom:0}dl.app dd{border-top:none;padding-top:0;margin-bottom:6px}}.filters{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:end;font:13px/1.4 -apple-system,'Segoe UI',sans-serif;background:var(--card);border:1px solid var(--line);padding:10px 12px;margin:8px 0}.filters label{display:flex;flex-direction:column;gap:3px;color:var(--muted)}.filters input,.filters select{font:13px -apple-system,'Segoe UI',sans-serif;padding:4px 6px;border:1px solid var(--line);background:#fff;color:var(--ink)}.filters input[type=search]{min-width:240px}.filters button,.filters .btn{font:13px -apple-system,'Segoe UI',sans-serif;padding:5px 10px;border:1px solid var(--gold);background:#fff;color:var(--gold-text);cursor:pointer;text-decoration:none;align-self:end}.filters button:hover,.filters .btn:hover{background:var(--gold2);color:var(--ink);text-decoration:none}.count-line{font:13px -apple-system,'Segoe UI',sans-serif;color:var(--muted);margin:0 0 6px}.count-line b{color:var(--ink)}.tw{overflow-x:auto;margin:8px 0 12px}table.tbl{border-collapse:collapse;width:100%;font:13px/1.45 -apple-system,'Segoe UI',sans-serif;background:var(--card)}table.tbl th,table.tbl td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}table.tbl th{background:#efe7d2;font-weight:600;white-space:nowrap}table.tbl .num{text-align:right;white-space:nowrap}table.tbl .ctr,table.tbl .c-mid{text-align:center}table.tbl .nowrap{white-space:nowrap}table.tbl.small{font-size:12px}table.tbl.defs td:first-child{font-weight:600;white-space:nowrap}table.tbl.sortable th{cursor:pointer;user-select:none}table.tbl.sortable th::after{content:" \2195";color:#b0a488;font-size:10px}table.tbl.sortable th.asc::after{content:" \2191";color:var(--gold-text)}table.tbl.sortable th.desc::after{content:" \2193";color:var(--gold-text)}table.tbl tr.hide{display:none}.twin{display:grid;grid-template-columns:2fr 1fr;gap:0 24px}@media(max-width:800px){.twin{grid-template-columns:1fr}}figure.fig{margin:14px 0;background:var(--card);border:1px solid var(--line);padding:10px}figure.fig figcaption{font:12.5px/1.5 -apple-system,'Segoe UI',sans-serif;color:var(--muted);margin-top:6px}.fig-wrap{overflow-x:auto}.fig-svg{width:100%;height:auto;background:#fffdf8}.legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px}.legend i{display:inline-block;width:11px;height:11px;border-radius:50%}figure.plate{float:right;width:250px;margin:0 0 10px 18px;font:12px/1.4 -apple-system,'Segoe UI',sans-serif;color:var(--muted)}figure.plate img{width:100%;height:auto;display:block;border:1px solid var(--line);background:#fff}figure.plate figcaption{margin-top:5px}blockquote.quote{margin:10px 0;padding:6px 12px;border-left:2px solid var(--gold);color:#3f382c;font-size:14px;max-width:820px}blockquote.quote footer{font:12px -apple-system,'Segoe UI',sans-serif;color:var(--muted);margin-top:4px}.diag{max-width:500px;margin:6px 0 10px}.diag svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:4px}@media(max-width:800px){figure.plate{float:none;width:100%;max-width:300px;margin:0 0 10px}}.box{background:var(--card);border:1px solid var(--line);padding:8px 16px 6px;margin:10px 0;scroll-margin-top:12px}.box h3{margin-top:6px}.box:target{box-shadow:0 0 0 3px #c9a23f66}ol.sources{list-style:none;margin:0;padding:0}ol.sources li{background:var(--card);border:1px solid var(--line);padding:10px 14px;margin:0 0 8px;scroll-margin-top:12px;font-size:13px}ol.sources li:target{box-shadow:0 0 0 3px #c9a23f66}.src-short{font:normal 15px/1.3 Georgia,serif;color:var(--ink)}.src-full{margin:3px 0 5px;line-height:1.6}.src-kv{margin:3px 0;line-height:1.6}.src-kv b{font:600 11px -apple-system,'Segoe UI',sans-serif;color:var(--gold-text);margin-right:4px}.cite-box{margin-top:16px;padding:10px 14px;border:1px solid var(--line);background:var(--card);font-size:13px;max-width:820px}nav.also{border-top:1px solid var(--line);padding:14px 28px 16px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;font:12.5px -apple-system,'Segoe UI',sans-serif}nav.also .also-lbl{color:var(--muted);margin-right:8px}nav.also a{display:inline-block;padding:4px 12px;border-radius:12px;border:1px solid var(--line);color:var(--muted)}nav.also a:hover{border-color:var(--gold);color:var(--ink);text-decoration:none}nav.also a.portal{border-color:var(--gold);color:var(--gold-text)}@media print{nav.contents,.filters,nav.also,.topbar,.site-search{display:none}.page{display:block}body{background:#fff;font-size:10.5pt}header.mast{background:#fff;color:#000;border-bottom:2px solid #000}header.mast h1,header.mast .gloss,.lead,.stat-run,.stat-run b,.edition-line,.edition-line a{color:#000}article.rec,ol.sources li,figure,.box{break-inside:avoid;border:1px solid #ccc}section.sec>h2{break-after:avoid}a{color:#000}a.xref::before{color:#444}.fig-svg{min-width:0}figure.plate{float:none;max-width:300px}}.guide{padding:26px 0 40px}.guide>h2{font:600 12px/1.4 -apple-system,'Segoe UI',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text);margin:0 0 12px;border:none}.gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}.gcard{display:block;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:14px 16px 12px;color:var(--ink);text-decoration:none}.gcard:hover{border-color:var(--gold2);border-left-color:var(--gold2);text-decoration:none;box-shadow:0 2px 8px rgba(26,34,56,.08)}.gcard .n{font:12px ui-monospace,Consolas,monospace;color:var(--gold)}.gcard .t{display:block;font:normal 19px/1.25 Georgia,serif;margin:2px 0 4px}.gcard .lat{font-style:italic;color:var(--muted);font-size:15px;margin-left:6px}.gcard .s{display:block;font-size:13.5px;line-height:1.5;color:#3a3028;margin:0 0 8px}.gcard .f{display:block;font:12px -apple-system,'Segoe UI',sans-serif;color:var(--muted)}.guide .whole{font-size:14px;margin:18px 0 0;max-width:820px}header.mast.slim{padding:16px 0 14px}header.mast.slim .eyebrow{font:11.5px/1.5 -apple-system,'Segoe UI',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2);margin:0 0 6px}header.mast.slim .eyebrow a{color:var(--gold2)}header.mast.slim .eyebrow .sep{color:#5a6a88;margin:0 6px}header.mast.slim h1{font-size:28px;margin:0 0 6px}header.mast.slim h1 .n{color:var(--gold);font:18px ui-monospace,Consolas,monospace;margin-right:10px}header.mast.slim .lead{margin-bottom:8px}header.mast.slim .rec-hd{margin:0 0 6px}header.mast.slim .rec-hd h3{color:#f6f1e6;font-size:28px}header.mast.slim .rec-hd .rec-key{color:#a9b3c9}article.rec.compact{padding:7px 14px;margin:6px 0}article.rec.compact .rec-hd{margin:0}article.rec.compact .rec-hd h3{font-size:16.5px}main.doc>article.rec.alone{border-left:none;border:none;background:transparent;padding:0;margin:0}main.doc>article.rec.alone>header.rec-hd{display:none}nav.pn{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);margin-top:28px;padding-top:12px;font:13px/1.5 -apple-system,'Segoe UI',sans-serif}nav.pn a{max-width:48%}nav.pn .next{margin-left:auto;text-align:right}nav.contents li.cur>a{border-left-color:var(--gold)}nav.contents .whole{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}@media print{nav.pn{display:none}}</style><style class="delta">.cert{display:inline-block;font:11px/1 -apple-system,'Segoe UI',sans-serif;border-radius:9px;padding:3px 7px;vertical-align:middle;background:#efe7d2;color:#5a4b20}.cert-secure{background:#e2efe5;color:#2d5a3a}.cert-uncertain,.cert-unknown{background:#f3e6e6;color:#8b3a3a}.cert-edition{background:#eee;color:#666}.rec-gloss{font-size:14px;color:#3f382c;margin:4px 0 8px}.rec-hd a.btn.read{font:13px -apple-system,'Segoe UI',sans-serif;padding:4px 10px;border:1px solid var(--gold);border-radius:3px;color:var(--gold-text);white-space:nowrap}table.figs td:first-child{font-weight:600}ul.refs{font-size:12.5px}details summary{cursor:pointer;color:var(--gold-text);font:13px -apple-system,'Segoe UI',sans-serif}.inl{background:#fbf8f0;border:1px solid var(--line);padding:8px 14px;margin:8px 0}.inl p.vs{font-size:14.5px}.inl p.vs .v{display:block;position:relative;padding-left:2.4em}.inl p.vs .v.ind{padding-left:4.4em}.inl .vn{position:absolute;left:0;top:.2em;font:11px ui-monospace,monospace;color:var(--muted)}.inl .pb{display:inline-block;font:10px ui-monospace,monospace;color:#6b5e40;background:#f0e8d4;border:1px solid #e0d4b4;border-radius:8px;padding:0 5px;margin:0 .25em;vertical-align:middle;white-space:nowrap}.filters .count{color:var(--muted);align-self:center}#tx-hits .hit{background:var(--card);border:1px solid var(--line);padding:6px 10px;margin:6px 0;font-size:13.5px}#tx-hits .hit b{background:#fdf3a8}</style><script>(function(){var S={"brahe-t_diarium-anni-1573": "brahe-t_diarium-anni-1573", "brahe-t_fratri-gemello": "brahe-t_fratri-gemello", "brahe-t_de-nova-stella": "brahe-t_de-nova-stella", "brahe-t_astrologiae-meteorologicae-fragmentum": "brahe-t_astrologiae-meteorologicae-fragmentum", "brahe-t_de-disciplinis-mathematicis-oratio": "brahe-t_de-disciplinis-mathematicis-oratio", "brahe-t_andreae-welleio": "brahe-t_andreae-welleio", "brahe-t_epitaphium-kirstinae": "brahe-t_epitaphium-kirstinae", "brahe-t_additiones-de-eclipsi-lunae-1573": "brahe-t_additiones-de-eclipsi-lunae-1573", "brahe-t_epitaphium-pratensis": "brahe-t_epitaphium-pratensis", "brahe-t_fundamentalis-uraniburgi-lapis": "brahe-t_fundamentalis-uraniburgi-lapis", "brahe-t_horoscopus-principis-christiani": "brahe-t_horoscopus-principis-christiani", "brahe-t_horoscopus-principis-huldarici": "brahe-t_horoscopus-principis-huldarici", "brahe-t_inskriptioner": "brahe-t_inskriptioner", "brahe-t_horoscopus-principis-johannis": "brahe-t_horoscopus-principis-johannis", "brahe-t_erico-lange": "brahe-t_erico-lange", "brahe-t_jacobo-ulfeldio": "brahe-t_jacobo-ulfeldio", "brahe-t_typographiae": "brahe-t_typographiae", "brahe-t_henrico-ranzovio": "brahe-t_henrico-ranzovio", "brahe-t_nicolao-kaasio": "brahe-t_nicolao-kaasio", "brahe-t_si-quid-agat": "brahe-t_si-quid-agat", "brahe-t_de-cometa-1585": "brahe-t_de-cometa-1585", "brahe-t_diarii-astrologici-et-meteorologici-praefatio": "brahe-t_diarii-astrologici-et-meteorologici-praefatio", "brahe-t_inscriptiones-croneburgenses": "brahe-t_inscriptiones-croneburgenses", "brahe-t_4-epigrammer": "brahe-t_4-epigrammer", "brahe-t_apologetica-responsio": "brahe-t_apologetica-responsio", "brahe-t_de-classe-hispaniae": "brahe-t_de-classe-hispaniae", "brahe-t_elixir-pestilentiale": "brahe-t_elixir-pestilentiale", "brahe-t_flemloese-indl": "brahe-t_flemloese-indl", "brahe-t_triangulorum-praxis-arithmetica": "brahe-t_triangulorum-praxis-arithmetica", "brahe-t_apologetica-responsio-additamenta": "brahe-t_apologetica-responsio-additamenta", "brahe-t_papirmoelle": "brahe-t_papirmoelle", "brahe-t_iudicis-est-aequi": "brahe-t_iudicis-est-aequi", "brahe-t_in-nic-cragii-remp-lac": "brahe-t_in-nic-cragii-remp-lac", "brahe-t_occasio-et-argumentum.da": "brahe-t_occasio-et-argumentum.da", "brahe-t_urania-titani": "brahe-t_urania-titani", "brahe-t_epistolae-astronomicae": "brahe-t_epistolae-astronomicae", "brahe-t_epistolae-astr-2-praefatio": "brahe-t_epistolae-astr-2-praefatio", "brahe-t_observationes-geographicae": "brahe-t_observationes-geographicae", "brahe-t_ad-daniam-elegia-2": "brahe-t_ad-daniam-elegia-2", "brahe-t_ad-daniam-elegia-1": "brahe-t_ad-daniam-elegia-1", "brahe-t_ad-martinum-braschium": "brahe-t_ad-martinum-braschium", "brahe-t_medicamenta-henr-ranz": "brahe-t_medicamenta-henr-ranz", "brahe-t_ante-stellas-restitutas": "brahe-t_ante-stellas-restitutas", "brahe-t_mechanica": "brahe-t_mechanica", "brahe-t_in-librum-de-mechanicis": "brahe-t_in-librum-de-mechanicis", "brahe-t_in-solis-et-lunae-motus": "brahe-t_in-solis-et-lunae-motus", "brahe-t_per-varios-casus": "brahe-t_per-varios-casus", "brahe-t_sub-pyramide": "brahe-t_sub-pyramide", "brahe-t_ad-daniam-epigramma": "brahe-t_ad-daniam-epigramma", "brahe-t_ad-daniam-excusatio": "brahe-t_ad-daniam-excusatio", "brahe-t_dania-ad-tychonem": "brahe-t_dania-ad-tychonem", "brahe-t_disce-puer": "brahe-t_disce-puer", "brahe-t_medicamentum-imp-rudolfi": "brahe-t_medicamentum-imp-rudolfi", "brahe-t_supra-januam-novi-laboratorii": "brahe-t_supra-januam-novi-laboratorii", "brahe-t_supra-januam-observatorii": "brahe-t_supra-januam-observatorii", "brahe-t_calculi-de-obliquitate-eclipticae": "brahe-t_calculi-de-obliquitate-eclipticae", "brahe-t_quamvis-mortalis": "brahe-t_quamvis-mortalis", "brahe-t_fratri-gemello.da": "brahe-t_fratri-gemello", "brahe-t_de-nova-stella.da": "brahe-t_de-nova-stella", "brahe-t_de-disciplinis-mathematicis-oratio.da": "brahe-t_de-disciplinis-mathematicis-oratio", "brahe-t_erico-lange.da": "brahe-t_erico-lange", "brahe-t_jacobo-ulfeldio.da": "brahe-t_jacobo-ulfeldio", "brahe-t_henrico-ranzovio.da": "brahe-t_henrico-ranzovio", "brahe-t_nicolao-kaasio.da": "brahe-t_nicolao-kaasio", "brahe-t_urania-titani.da": "brahe-t_urania-titani", "brahe-t_ad-daniam-elegia.da": "brahe-t_ad-daniam-elegia-1", "brahe-t_mechanica.da": "brahe-t_mechanica"};try{var P=new URLSearchParams(location.search),t=P.get('text');if(t&&S[t]){location.replace('texts/'+S[t]+'.html'+(P.get('sec')?'#sec-'+P.get('sec'):''));return;}if(location.hash&&location.hash.indexOf('#w-')===0){var k=location.hash.slice(3),hit=null;for(var key in S){if(key.replace(/\./g,'-')===k){hit=S[key];break;}}if(hit)location.replace('texts/'+hit+'.html');}}catch(e){}})();</script>
+</head>
+<body class="edition layer-domain page-section page-first" data-permalink="entry">
+<div class="topbar"><a href="../index.html">&#8592; Tychoniana</a><span class="sep">&#8250;</span><span class="cur">Scripta</span><form class="site-search" action="../index.html" method="get" role="search"><input type="search" name="q" placeholder="Search Tychoniana" aria-label="Search Tychoniana"></form></div><header class="mast"><div class="wrap"><h1>Scripta Tychonis <em class="gloss">&mdash; The writings of Tycho Brahe (1546–1601) in the edition of 2019: a catalogue, with the texts</em></h1><div class="lead"><p>The 57 texts that Peter Zeeberg and Finn Gredal Jensen edited for Det Danske Sprog- og Litteraturselskab beyond the correspondence — 33 records of poems and inscriptions, the Copenhagen oration of 1574, the three royal nativities, the almanac for 1573, the recipes, the polemic against John Craig, and two of the printed books given whole, <i>De nova stella</i> (1573) and the <i>Astronomiae instauratae mechanica</i> (1598), with the prefaces, poems and descriptions that frame the third, the <i>Epistolae astronomicae</i> (1596), whose letters are in the Epistolarium. For each text: its form and its date with the evidence for it, its addressee and occasion, how it was transmitted and where it was first printed, its place in Dreyer&#8217;s <i>Opera omnia</i> and in the earlier catalogues, how securely it is attested, and what remains open. Each text is given in full on a page of its own, the edition&#8217;s Latin with every line and paragraph numbered for citation. The Danish translations and the editors' notes are the edition's and are read at the source, linked section by section.</p></div><p class="stat-run"><span class="run"><b>57</b> texts</span> <span class="sep">&middot;</span> <span class="run"><b>33</b> poems and inscriptions (45 pieces)</span> <span class="sep">&middot;</span> <span class="run"><b>56</b> given in full, 1 in its non-letter parts</span> <span class="sep">&middot;</span> <span class="run"><b>10</b> with a Danish translation in the edition</span> <span class="sep">&middot;</span> <span class="run"><b>29</b> records researched (A 17 · B 12), 28 not yet</span> <span class="sep">&middot;</span> <span class="run"><b>15</b> dates corrected against the edition</span> <span class="sep">&middot;</span> <span class="run"><b>50</b> sources</span></p><p class="edition-line">Edition of 5 September 2026 &middot; <a href="sources.html#sec-sources">how to cite</a> &middot; <a href="data.json" download>data (JSON)</a> &middot; <a href="works.csv" download>catalogue (CSV)</a> &middot; <a href="full.html">whole edition, one page</a></p></div></header><div class="wrap page"><nav class="contents" aria-label="Contents"><div class="contents-lbl">Scripta Tychonis</div><ol><li class="cur"><a href="index.html"><span class="n">1</span>Introduction</a></li><li><a href="catalogue.html"><span class="n">2</span>Catalogue</a></li><li><a href="register.html"><span class="n">3</span>Register</a></li><li><a href="texts.html"><span class="n">4</span>The texts</a></li><li><a href="concordance.html"><span class="n">5</span>Concordance</a></li><li><a href="transmission.html"><span class="n">6</span>Transmission and printed witnesses</a></li><li><a href="addressees.html"><span class="n">7</span>Addressees and persons</a></li><li><a href="threads.html"><span class="n">8</span>Threads</a></li><li><a href="chronology.html"><span class="n">9</span>Chronology</a></li><li><a href="desiderata.html"><span class="n">10</span>Desiderata</a></li><li><a href="sources.html"><span class="n">11</span>Sources</a></li></ol><div class="downloads whole"><a href="full.html"><span class="n">&#9776;</span>Whole edition, one page</a><a href="works.csv" download><span class="n">&#8623;</span>Catalogue (CSV)</a><a href="data.json" download><span class="n">&#8623;</span>Dataset (JSON)</a></div></nav><main class="doc"><section class="sec" id="sec-intro"><a id="s-intro" class="alias"></a><p>This is a catalogue of the 57 texts of Tycho Brahe that the Danish critical edition of his
+writings prints beyond the correspondence: the web edition prepared by Peter Zeeberg and Finn Gredal
+Jensen for Det Danske Sprog- og Litteraturselskab in 2019. The edition's selection is the catalogue's
+scope. It holds the poems and inscriptions, the Copenhagen oration of 1574, the three royal nativities,
+the almanac for 1573, the medical compositions, the polemic against John Craig, two of the printed books
+entire &mdash; <i>De nova stella</i> (1573) and the <i>Astronomiae instauratae mechanica</i> (1598)
+&mdash; and the poems, dedication, prefaces and descriptions that frame the third, the <i>Epistolae
+astronomicae</i> (1596), whose letters are read in the <a href="../epistolarium/index.html">Epistolarium</a>.
+What the edition does not hold &mdash; the comet treatise of 1588, the <i>Progymnasmata</i>, the star
+catalogue, the verse Tycho printed inside his letters and his other books &mdash; is listed with its
+place in Dreyer's <i>Opera omnia</i> and its home in this portal in <a href="desiderata.html#s-desiderata">§10</a>.</p>
+<p>For each text the catalogue states what it is, when and on what evidence it was written, for whom and
+on what occasion, by which channel it reached us and where it was first printed, its place in Dreyer's
+<i>Opera omnia</i> and in the earlier bibliographies, how securely the record is attested, and what
+remains open. Each text is then given in full on a page of its own &mdash; the edition's Latin, section
+by section, with the page breaks of the <i>Opera omnia</i> marked, every line and paragraph numbered for
+citation &mdash; as the object layer of this edition. The books as printed objects are Typographica's;
+the letters are the Epistolarium's; the persons are Familia's; the places are Loca's; the instruments
+the <i>Mechanica</i> describes are Instrumenta's. This catalogue bridges to each of them and duplicates
+none.</p>
+<p>The record is uneven, and the catalogue says so. 29 of the 57 records carry a full
+apparatus &mdash; summary, occasion, addressee, printing, transmission, references and open questions,
+graded on their evidence; the other 28 carry their identifying fields, the edition's own
+data and the computed fields, and no grade. The two states are marked on every record and in the
+catalogue table.</p>
+<h3>The figures</h3><div class="tw"><table class="tbl figs"><thead><tr><th>Figure</th><th>Count</th><th>Definition</th></tr></thead><tbody><tr><td>Texts</td><td class="nowrap"><b>57</b></td><td>One record per book of the edition that is not a Danish translation of another book in it (67 − 10). The edition&#x27;s row count, not a count of Tycho&#x27;s works.</td></tr><tr><td>Poems and inscriptions</td><td class="nowrap"><b>33 records · 45 pieces</b></td><td>Records of verse and of inscriptions; the pieces they hold, counting the three editorial groupings piece by piece. Dreyer&#x27;s Carmina hold three further pieces, and the other volumes about twenty (§10).</td></tr><tr><td>Given in full · in its non-letter parts</td><td class="nowrap"><b>56 · 1</b></td><td>Every page of the edition&#x27;s text on the text page; &#x27;in full&#x27; is the edition&#x27;s text — figures, charts and woodcuts are placeholders. The Epistolae astronomicae: its poems, dedication, prefaces, comet description, Hven description, captions, memorial poem and impressum; its letters are the Epistolarium&#x27;s.</td></tr><tr><td>With a Danish translation in the edition</td><td class="nowrap"><b>10 (9 complete; the Mechanica in 30 of 35 sections) · 1 Danish only · 1 in Tycho&#x27;s own Danish</b></td><td>Zeeberg&#x27;s translation where the edition names him; the edition&#x27;s where it does not; for the Mechanica&#x27;s instrument chapters an older translation whose translator the local copy does not name.</td></tr><tr><td>Researched · not yet researched</td><td class="nowrap"><b>29 (A 17 · B 12) · 28</b></td><td>Researched: the full apparatus exists and is graded on its evidence. Not yet researched: the identifying fields, the edition&#x27;s data and the computed fields, no grade.</td></tr><tr><td>Printed in his lifetime · posthumously · first in the Opera omnia</td><td class="nowrap"><b>10 · 8 · 11 of the 29 researched</b></td><td>From the researched records&#x27; printing history; the 28 pending records add to these counts as they are researched.</td></tr><tr><td>Transmission channel established</td><td class="nowrap"><b>45 of 57</b></td><td>Book 3 · separately printed 7 · by others 4 · posthumous 7 · manuscript until the Opera omnia 24 · not established 12.</td></tr><tr><td>Dates</td><td class="nowrap"><b>secure 16 · probable 23 · uncertain 4 · unknown 2 · the edition&#x27;s 12</b></td><td>Every record carries the basis of its date; 15 displayed dates depart from the edition&#x27;s year, each with its reason (§9).</td></tr><tr><td>Opera omnia loci</td><td class="nowrap"><b>54 of 57</b></td><td>The span computed from the page markers of the edition&#x27;s text; the record without one is the Flemløs preface, which Dreyer does not print.</td></tr><tr><td>The edition&#x27;s apparatus</td><td class="nowrap"><b>textual notes 3419 · commentary 803 · person notes 194</b></td><td>On the Latin units, from the edition&#x27;s sidecars. This build reproduces the constituted Latin only; the rest is read at the source, linked section by section.</td></tr><tr><td>Sections on the text pages</td><td class="nowrap"><b>150</b></td><td>One per page of the web edition, numbered from the title page as 1; the number the citations and the links from the other pillars carry.</td></tr><tr><td>Persons indexed</td><td class="nowrap"><b>50</b></td><td>Addressees, dedicatees, commissioners, natives, subjects, voices and the authors of the sections not by Tycho (§7).</td></tr><tr><td>Sources</td><td class="nowrap"><b>50</b></td><td>The works cited on the records, each with what it contributes (§11).</td></tr></tbody></table></div><h3>How to read an entry</h3><p><b>What a text is here.</b> A record is one book of the edition's series that is not a Danish
+translation of another book in it: the edition publishes 67 web books, of which
+10 are Danish translations shown here beside their Latin, and one (<i>Occasio et
+argumentum</i>) is a Danish translation whose Latin the edition does not print and which therefore
+stands as a text of its own. The record is the edition's unit, not a count of Tycho's works: four records
+are editorial groupings of several pieces (four epigrams on the death of Frederik II; nine Uraniborg
+inscriptions; two Kronborg inscriptions; three recipes), one is the second recension of another
+record's poem, two are supplements to texts held elsewhere, four are prefaces or dedications, one is
+Tycho's translation of a poem by James VI, and two are whole printed books whose sections include
+pieces by other hands &mdash; a poem by Hans Frandsen, a letter of Pratensis, a poem by Anders Sørensen
+Vedel, the printer's note; Holger Rosenkrantz's poem, two letters of Jacob Kurz, two of Magini, an ode
+by Rudolphus Caukerchius. Every such section is headed with its author on the text page and in the
+sections table.</p>
+<p><b>Numbering and order.</b> Records are numbered 1&ndash;57 in the order of the register:
+the three periods of Tycho's life in sequence, and within each the date of composition, undated
+last. The number is stable and is the citation key together with the record's own key, which is the
+edition's slug (<code>brahe-t_&hellip;</code>) and the address every other page of this portal uses for
+the text.</p>
+<p><b>Sections.</b> A text page is divided as the edition divides it, one section per page of the web
+edition, numbered from the title page as section 1. The edition's own chapter numbers, where it prints
+them, are shown beside the section number: section 12 of <i>De nova stella</i> is the edition's
+chapter 11. The section number is what the citation and the links from the other pillars carry.</p>
+<p><b>Forms and channels.</b> Each record carries one of 18 forms (defined in the table below) and,
+where it is established, the channel by which the text reached us: printed in one of Tycho's own
+books, separately printed at his order, printed by others in his lifetime, printed after his death, or
+in manuscript until the <i>Opera omnia</i> &mdash; Zeeberg's own account of the transmission, as this
+catalogue partitions it. A channel not yet established is left blank, never guessed.</p>
+<p><b>Dates.</b> Every date carries its basis and a certainty mark: <i>secure</i> where the text dates
+itself or two authorities agree; <i>probable</i> on one authority or an inference from the content;
+<i>uncertain</i> where authorities disagree or the bounds are wide; <i>unknown</i> where no source dates
+the text and the edition's year is a placement; <i>the edition's</i> where the edition's year has not
+been independently examined. Where research has corrected the edition's year, both are shown and the
+correction is stated in words; the 15 cases are gathered in <a href="chronology.html#s-chronology">§9</a>.</p>
+<p><b>Grades.</b> A researched record is graded A&ndash;D on the evidence behind it, on the scale of the
+other pillars (A secure, B probable, C uncertain, D speculative). A record not yet researched carries no
+grade: its status is a state of work, not a judgement.</p>
+<p><b>Text.</b> The Latin is the edition's constituted text. Superscript figures on a text page are the
+edition's textual notes where this catalogue reproduces them; the page breaks of the <i>Opera omnia</i> and
+the witnesses' folios are marked inline. Prose is set in numbered paragraphs, verse in numbered lines
+with the pentameter indented; the four passages of <i>De nova stella</i> whose verses the web text runs
+together are set again in lines here, after the line breaks of Dreyer's edition, and each carries the
+note. A text of forty lines or fewer is printed entire in its register entry as well as on its own
+page.</p>
+<h4>Forms</h4><div class="tw"><table class="tbl small"><thead><tr><th>Form</th><th>Records</th><th>Definition</th></tr></thead><tbody><tr><td>Treatise</td><td class="num">5</td><td>A continuous scientific or polemical work in prose, whether printed as a book or left in manuscript.</td></tr><tr><td>Oration</td><td class="num">1</td><td>A speech, transmitted as text.</td></tr><tr><td>Elegy</td><td class="num">9</td><td>A poem in elegiac couplets: the verse epistles, the laments and the farewell poems.</td></tr><tr><td>Epigram</td><td class="num">8</td><td>A short poem of a few couplets, including the chronograms.</td></tr><tr><td>Epitaph</td><td class="num">2</td><td>A funerary poem, hung in a church or printed.</td></tr><tr><td>Poem</td><td class="num">5</td><td>Verse not otherwise typed: dedicatory, occasional, hexameter.</td></tr><tr><td>Verse epistle</td><td class="num">1</td><td>A letter in verse, here the heroic epistle Urania Titani.</td></tr><tr><td>Inscription</td><td class="num">7</td><td>Verse or prose composed for a building, a stone or a door, transmitted as text.</td></tr><tr><td>Translation</td><td class="num">1</td><td>Tycho&#x27;s Latin rendering of another author&#x27;s poem.</td></tr><tr><td>Horoscope</td><td class="num">3</td><td>A nativity with its astrological judgement.</td></tr><tr><td>Almanac</td><td class="num">1</td><td>The astrological and meteorological diary for a year.</td></tr><tr><td>Preface</td><td class="num">5</td><td>A preface, dedication or prolegomena to a work of Tycho&#x27;s or of another author.</td></tr><tr><td>Supplement</td><td class="num">2</td><td>Notes or connective matter written for insertion into another text.</td></tr><tr><td>Fragment</td><td class="num">1</td><td>A text the author or the tradition left unfinished.</td></tr><tr><td>Recipe</td><td class="num">3</td><td>A medical or alchemical composition.</td></tr><tr><td>Survey</td><td class="num">1</td><td>A table of measurements with its notes.</td></tr><tr><td>Working notes</td><td class="num">1</td><td>Calculations and notes made for the author&#x27;s own use.</td></tr><tr><td>Printed correspondence</td><td class="num">1</td><td>A volume of letters that Tycho himself printed, with its framing matter.</td></tr></tbody></table></div><h4>Transmission channels</h4><div class="tw"><table class="tbl small"><thead><tr><th>Channel</th><th>Records</th><th>Definition</th></tr></thead><tbody><tr><td>In Tycho&#x27;s own books</td><td class="num">3</td><td>Printed by Tycho inside one of his own books.</td></tr><tr><td>Separately printed by Tycho</td><td class="num">7</td><td>Printed on Tycho&#x27;s own press, or at his order, as a broadsheet or pamphlet.</td></tr><tr><td>Printed by others in his lifetime</td><td class="num">4</td><td>First printed in another author&#x27;s book or by another press before 1601.</td></tr><tr><td>Printed after his death</td><td class="num">7</td><td>First printed between 1601 and Dreyer&#x27;s edition.</td></tr><tr><td>Manuscript until the Opera omnia</td><td class="num">24</td><td>Unprinted until Dreyer and Ræder printed it from the manuscripts, 1913–1929.</td></tr><tr><td>Not established</td><td class="num">12</td><td>The research has not yet settled the channel.</td></tr></tbody></table></div><h4>Certainty of a date</h4><div class="tw"><table class="tbl small"><thead><tr><th>Mark</th><th>Records</th><th>Meaning</th></tr></thead><tbody><tr><td><span class="cert cert-secure" title="the text dates itself, or two independent authorities agree">secure</span></td><td class="num">16</td><td>the text dates itself, or two independent authorities agree</td></tr><tr><td><span class="cert cert-probable" title="one authority, or an inference from the content, with no contradiction">probable</span></td><td class="num">23</td><td>one authority, or an inference from the content, with no contradiction</td></tr><tr><td><span class="cert cert-uncertain" title="authorities disagree, or the bounds are wide">uncertain</span></td><td class="num">4</td><td>authorities disagree, or the bounds are wide</td></tr><tr><td><span class="cert cert-unknown" title="no source dates the text; the edition&#x27;s year is a placement">unknown</span></td><td class="num">2</td><td>no source dates the text; the edition&#x27;s year is a placement</td></tr><tr><td><span class="cert cert-edition" title="the edition&#x27;s year, not independently examined">the edition&#x27;s</span></td><td class="num">12</td><td>the edition&#x27;s year, not independently examined</td></tr></tbody></table></div><h4>Grades</h4><div class="tw"><table class="tbl small"><thead><tr><th>Grade</th><th>Records</th><th>Meaning</th></tr></thead><tbody><tr><td><span class="chip grade grade-A" title="Secure: multiple independent authorities agree.">A</span></td><td class="num">17</td><td>Secure: multiple independent authorities agree.</td></tr><tr><td><span class="chip grade grade-B" title="Probable: one solid authority; no contradiction found.">B</span></td><td class="num">12</td><td>Probable: one solid authority; no contradiction found.</td></tr><tr><td><span class="chip grade grade-C" title="Uncertain: inference, or authorities disagree.">C</span></td><td class="num">0</td><td>Uncertain: inference, or authorities disagree.</td></tr><tr><td><span class="chip grade grade-D" title="Speculative or largely unknown.">D</span></td><td class="num">0</td><td>Speculative or largely unknown.</td></tr></tbody></table></div><h3>What the figures are not</h3><p>The count of 57 texts is the edition's row count and nothing more: it neither counts Tycho's
+works nor measures his output. 33 records of verse and inscriptions hold
+45 separately transmitted pieces; the edition omits three pieces of Dreyer's Carmina
+and all the verse Dreyer prints inside the other volumes (<a href="desiderata.html#s-desiderata">§10</a>), so no
+ratio of these figures is a completeness rate. "Given in full" means the edition's text: the figures
+of the 1573 almanac, the nativity charts and the woodcuts of the <i>Mechanica</i> are transmitted by
+the edition as placeholders and are not reproduced here; the <i>Mechanica</i>'s woodcuts are seen in
+Instrumenta. The <i>Epistolae astronomicae</i> is given in its non-letter parts; its letters are the
+Epistolarium's. "In Tycho's own Danish" marks one text, the 1591 preface printed in Flemløs's book,
+which the edition prints among Tycho's writings although it speaks in Flemløs's name; the attribution
+is the edition's. The Danish beside the Latin is Peter Zeeberg's translation of 2019 where the edition
+names him, the edition's translation where it does not, and, for the <i>Mechanica</i>'s instrument
+chapters, an older translation reproduced by the edition in a pre-1948 orthography whose translator
+the local copy does not name. Every text here but one
+is Latin; he also wrote Danish (the Flemløs preface, his letters home) and German (the comet tract of
+1577, not in this edition).</p>
+<h3>The edition and its layers</h3><p>Tycho's words are in the public domain, and so is the text of Dreyer's <i>Opera omnia</i> (1913&ndash;1929)
+on which the edition rests. The edition of 2019 adds four layers that are Det Danske Sprog- og
+Litteraturselskab's and the editors': the constituted Latin, which re-collates Dreyer's text against the
+witnesses; the editors' textual notes; Peter Zeeberg's explanatory commentary and biographical notes; and
+the Danish translations. This build reproduces the constituted Latin only. The layers it does not reproduce are
+read at the source, to which every text page links section by section; each page states, for every
+layer, what it carries and what it withholds. The Society's permission for the republication of its
+layers has been asked for and is recorded here when it is given; until then the translations and the
+notes stay at the source, and the commentary is never reproduced.</p>
+</section><nav class="pn" aria-label="Previous and next"><span></span><a class="next" href="catalogue.html">&sect;2 Catalogue &rarr;</a></nav></main></div><nav class="also" aria-label="Also in Tychoniana"><span class="also-lbl">Also in Tychoniana</span><a href="../typographica/index.html">Typographica — the printed works</a><a href="../epistolarium/index.html">Epistolarium — the letters</a><a href="../familia/index.html">Familia</a><a href="../loca/index.html">Loca</a><a href="../instrumenta/index.html">Instrumenta</a><a class="portal" href="../index.html">&larr; Portal</a></nav><div class="build-stamp">Scripta &middot; <a href="data.json" download style="color:#7d6428">data (JSON)</a><br><b>Cite:</b> Westergaard, C., &ldquo;Scripta Tychonis — The writings of Tycho Brahe (1546–1601) in the edition of 2019: a catalogue, with the texts&rdquo;, <i>Tychoniana</i> (edition of 5 September 2026), accessed <span class="acc-date"></span>.<script>document.querySelectorAll(".acc-date").forEach(function(e){e.textContent=new Date().toISOString().slice(0,10);});</script></div><script>
 (function(){
- renderList();
- let slug=null,sec=null;
- try{const u=new URL(location);slug=u.searchParams.get('text');sec=parseInt(u.searchParams.get('sec'),10)||null;}catch(e){}
- if(!slug&&location.hash&&location.hash.startsWith('#w-')){
-  const key=location.hash.slice(3);
-  const hit=DATA.find(w=>w.s.replace(/\./g,'-')===key||(w.s+'').replace(/\./g,'-')===key);
-  if(hit)slug=hit.s;
+ const $=(s,r)=>(r||document).querySelector(s),$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+ /* sortable tables: click a header; data-sort wins over text; empty cells sort last */
+ $$('table.tbl.sortable').forEach(t=>{const ths=$$('thead th',t);ths.forEach((th,i)=>{th.addEventListener('click',()=>{
+   const asc=!th.classList.contains('asc');ths.forEach(x=>x.classList.remove('asc','desc'));th.classList.add(asc?'asc':'desc');
+   const tb=t.tBodies[0];const rows=Array.from(tb.rows);
+   const val=r=>{const c=r.cells[i];if(!c)return '';const d=c.getAttribute('data-sort');return d!=null?d:c.textContent.trim();};
+   const num=rows.every(r=>{const v=val(r);return v===''||!isNaN(parseFloat(v));});
+   rows.sort((a,b)=>{let x=val(a),y=val(b);
+    if(num){x=x===''?Infinity:parseFloat(x);y=y===''?Infinity:parseFloat(y);return asc?x-y:y-x;}
+    if(x===''&&y!=='')return 1;if(y===''&&x!=='')return -1;
+    return asc?x.localeCompare(y,undefined,{numeric:true,sensitivity:'base'}):y.localeCompare(x,undefined,{numeric:true,sensitivity:'base'});});
+   rows.forEach(r=>tb.appendChild(r));});});});
+ /* the catalogue: text search over data-text, facets over data-<facet>, an honest count line, CSV of the rows shown */
+ $$('div.catalogue[data-catalogue]').forEach(cat=>{
+  const tbl=$('table',cat);if(!tbl)return;const rows=Array.from(tbl.tBodies[0].rows);
+  const noun=cat.dataset.noun||'records';const out=$('.count-line',cat);
+  const ctrls=$$('[data-filter]',cat);
+  const apply=()=>{let n=0;
+   const q=ctrls.filter(c=>c.dataset.filter==='q').map(c=>(c.value||'').toLowerCase()).join(' ').split(/\s+/).filter(Boolean);
+   const facets=ctrls.filter(c=>c.dataset.filter!=='q'&&c.value).map(c=>[c.dataset.filter,c.value]);
+   rows.forEach(r=>{let ok=facets.every(([f,v])=>{const d=r.dataset[f]||'';return d===v||d.split(' ').includes(v);});
+    if(ok&&q.length){const h=(r.dataset.text||r.textContent).toLowerCase();ok=q.every(t=>h.includes(t));}
+    r.classList.toggle('hide',!ok);r.hidden=!ok;if(ok)n++;});
+   if(out)out.innerHTML='<b>'+n+'</b> of '+rows.length+' '+noun+' shown';};
+  ctrls.forEach(c=>c.addEventListener(c.dataset.filter==='q'?'input':'change',apply));
+  const clr=$('[data-clear]',cat);if(clr)clr.addEventListener('click',()=>{ctrls.forEach(c=>c.value='');apply();});
+  const exp=$('[data-export]',cat);if(exp)exp.addEventListener('click',()=>{
+   const hdr=Array.from(tbl.tHead.rows[0].cells).map(c=>c.textContent.replace(/[\u2191\u2193\u2195]/g,'').trim());
+   const o=[hdr];rows.forEach(r=>{if(r.hidden)return;o.push(Array.from(r.cells).map(c=>c.textContent.trim()));});
+   const csv=o.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+   a.download=(tbl.id||'table')+'-shown.csv';a.click();});
+  apply();});
+ /* permalinks: ?<param>=<key> (the pillar declares its params) and #<key> highlight a record */
+ const hl=el=>{if(!el)return;$$('.hl').forEach(x=>x.classList.remove('hl'));el.classList.add('hl');};
+ const P=new URLSearchParams(location.search);const params=(document.body.dataset.permalink||'').split(',').filter(Boolean);
+ let key=null;params.forEach(p=>{if(!key&&P.get(p))key=P.get(p);});
+ if(key){const el=document.getElementById(key);if(el){setTimeout(()=>{hl(el);el.scrollIntoView({block:'center'});},50);}}
+ else if(location.hash){const el=document.getElementById(location.hash.slice(1));if(el&&el.classList.contains('rec'))setTimeout(()=>hl(el),50);}
+ window.addEventListener('hashchange',()=>{const el=document.getElementById(location.hash.slice(1));if(el&&el.classList.contains('rec'))hl(el);});
+ /* you are here: the contents marks the section in view */
+ const nav=$('nav.contents');const secs=$$('section.sec');
+ if(nav&&secs.length&&'IntersectionObserver' in window){
+  const items={};$$('li',nav).forEach(li=>{const a=$('a',li);if(a&&a.hash)items[a.hash.slice(1)]=li;});
+  let cur=null;const set=id=>{if(cur===id)return;cur=id;Object.keys(items).forEach(k=>items[k].classList.toggle('cur',k===id));};
+  const vis=new Map();
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{vis.set(en.target.id,en.isIntersecting?en.intersectionRatio:0);});
+   let best=null,bv=0;secs.forEach(s=>{const v=vis.get(s.id)||0;if(v>bv){bv=v;best=s.id;}});
+   if(best)set(best);},{rootMargin:'-10% 0px -70% 0px',threshold:[0,0.1,0.5,1]});
+  secs.forEach(s=>io.observe(s));
  }
- if(slug&&BY[slug])openWork(slug,sec);else document.getElementById('detail').innerHTML=ABOUT_HTML;
 })();
 
+(function(){
+ const $=(s,r)=>(r||document).querySelector(s),$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+ const fold=s=>s.toLowerCase().replace(/æ/g,'ae').replace(/œ/g,'oe').replace(/ß/g,'ss').replace(/[êèé]/g,'e').replace(/[àâ]/g,'a').replace(/[òóô]/g,'o').replace(/[ùúû]/g,'u').replace(/[îìí]/g,'i').replace(/v/g,'u').replace(/j/g,'i');
+ const tq=$('#tx-q');let IDX=null,loading=false;
+ const titleOf={};$$('#cat-table tbody tr').forEach(r=>{const a=r.querySelector('td:nth-child(2) a');if(a)titleOf[a.getAttribute('href').slice(1)]=a.textContent;});
+ const run=()=>{const q=fold(tq.value.trim());const host=$('#tx-hits'),cnt=$('#tx-count');if(!q||q.length<3){host.innerHTML='';cnt.textContent=q?'Type at least three letters.':'';return;}
+  const terms=q.split(/\s+/);let hits=[];
+  for(const s of IDX){if(terms.every(t=>s.f.includes(t))){let i=s.f.indexOf(terms[0]);const a=Math.max(0,i-90),b=Math.min(s.t.length,i+130);
+   hits.push({s,snip:s.t.slice(a,b)});if(hits.length>=60)break;}}
+  cnt.textContent=hits.length+(hits.length>=60?'+':'')+' sections match';
+  host.innerHTML=hits.map(h=>`<div class="hit"><a href="texts/${h.s.k}.html#sec-${h.s.n}">${titleOf[h.s.k]||h.s.k} · §${h.s.n}${h.s.h?' · '+h.s.h:''}</a><br>…${h.snip.replace(/</g,'&lt;')}…</div>`).join('');};
+ if(tq){tq.addEventListener('input',()=>{if(IDX){run();return;}if(loading)return;loading=true;$('#tx-count').textContent='Loading the texts…';
+  fetch('search.json').then(r=>r.json()).then(j=>{IDX=j.map(s=>({...s,f:fold(s.t)}));run();}).catch(()=>{$('#tx-count').textContent='The search index could not be loaded.';});});}
+})();
+</script><script id="keymap" type="application/json">{"sec-intro": "index.html", "s-intro": "index.html", "sec-catalogue": "catalogue.html", "s-catalogue": "catalogue.html", "cat-q": "catalogue.html", "f-form": "catalogue.html", "f-period": "catalogue.html", "f-channel": "catalogue.html", "f-lang": "catalogue.html", "f-status": "catalogue.html", "f-thread": "catalogue.html", "cat-table-count": "catalogue.html", "cat-table": "catalogue.html", "brahe-t_diarium-anni-1573": "texts/brahe-t_diarium-anni-1573.html", "brahe-t_fratri-gemello": "texts/brahe-t_fratri-gemello.html", "brahe-t_de-nova-stella": "texts/brahe-t_de-nova-stella.html", "brahe-t_astrologiae-meteorologicae-fragmentum": "texts/brahe-t_astrologiae-meteorologicae-fragmentum.html", "brahe-t_de-disciplinis-mathematicis-oratio": "texts/brahe-t_de-disciplinis-mathematicis-oratio.html", "brahe-t_andreae-welleio": "texts/brahe-t_andreae-welleio.html", "brahe-t_epitaphium-kirstinae": "texts/brahe-t_epitaphium-kirstinae.html", "brahe-t_additiones-de-eclipsi-lunae-1573": "texts/brahe-t_additiones-de-eclipsi-lunae-1573.html", "brahe-t_epitaphium-pratensis": "texts/brahe-t_epitaphium-pratensis.html", "brahe-t_fundamentalis-uraniburgi-lapis": "texts/brahe-t_fundamentalis-uraniburgi-lapis.html", "brahe-t_horoscopus-principis-christiani": "texts/brahe-t_horoscopus-principis-christiani.html", "brahe-t_horoscopus-principis-huldarici": "texts/brahe-t_horoscopus-principis-huldarici.html", "brahe-t_inskriptioner": "texts/brahe-t_inskriptioner.html", "brahe-t_horoscopus-principis-johannis": "texts/brahe-t_horoscopus-principis-johannis.html", "brahe-t_erico-lange": "texts/brahe-t_erico-lange.html", "brahe-t_jacobo-ulfeldio": "texts/brahe-t_jacobo-ulfeldio.html", "brahe-t_typographiae": "texts/brahe-t_typographiae.html", "brahe-t_henrico-ranzovio": "texts/brahe-t_henrico-ranzovio.html", "brahe-t_nicolao-kaasio": "texts/brahe-t_nicolao-kaasio.html", "brahe-t_si-quid-agat": "texts/brahe-t_si-quid-agat.html", "brahe-t_de-cometa-1585": "texts/brahe-t_de-cometa-1585.html", "brahe-t_diarii-astrologici-et-meteorologici-praefatio": "texts/brahe-t_diarii-astrologici-et-meteorologici-praefatio.html", "brahe-t_inscriptiones-croneburgenses": "texts/brahe-t_inscriptiones-croneburgenses.html", "brahe-t_4-epigrammer": "texts/brahe-t_4-epigrammer.html", "brahe-t_apologetica-responsio": "texts/brahe-t_apologetica-responsio.html", "brahe-t_de-classe-hispaniae": "texts/brahe-t_de-classe-hispaniae.html", "brahe-t_elixir-pestilentiale": "texts/brahe-t_elixir-pestilentiale.html", "brahe-t_flemloese-indl": "texts/brahe-t_flemloese-indl.html", "brahe-t_triangulorum-praxis-arithmetica": "texts/brahe-t_triangulorum-praxis-arithmetica.html", "brahe-t_apologetica-responsio-additamenta": "texts/brahe-t_apologetica-responsio-additamenta.html", "brahe-t_papirmoelle": "texts/brahe-t_papirmoelle.html", "brahe-t_iudicis-est-aequi": "texts/brahe-t_iudicis-est-aequi.html", "brahe-t_in-nic-cragii-remp-lac": "texts/brahe-t_in-nic-cragii-remp-lac.html", "brahe-t_occasio-et-argumentum.da": "texts/brahe-t_occasio-et-argumentum.da.html", "brahe-t_urania-titani": "texts/brahe-t_urania-titani.html", "brahe-t_epistolae-astronomicae": "texts/brahe-t_epistolae-astronomicae.html", "brahe-t_epistolae-astr-2-praefatio": "texts/brahe-t_epistolae-astr-2-praefatio.html", "brahe-t_observationes-geographicae": "texts/brahe-t_observationes-geographicae.html", "brahe-t_ad-daniam-elegia-2": "texts/brahe-t_ad-daniam-elegia-2.html", "brahe-t_ad-daniam-elegia-1": "texts/brahe-t_ad-daniam-elegia-1.html", "brahe-t_ad-martinum-braschium": "texts/brahe-t_ad-martinum-braschium.html", "brahe-t_medicamenta-henr-ranz": "texts/brahe-t_medicamenta-henr-ranz.html", "brahe-t_ante-stellas-restitutas": "texts/brahe-t_ante-stellas-restitutas.html", "brahe-t_mechanica": "texts/brahe-t_mechanica.html", "brahe-t_in-librum-de-mechanicis": "texts/brahe-t_in-librum-de-mechanicis.html", "brahe-t_in-solis-et-lunae-motus": "texts/brahe-t_in-solis-et-lunae-motus.html", "brahe-t_per-varios-casus": "texts/brahe-t_per-varios-casus.html", "brahe-t_sub-pyramide": "texts/brahe-t_sub-pyramide.html", "brahe-t_ad-daniam-epigramma": "texts/brahe-t_ad-daniam-epigramma.html", "brahe-t_ad-daniam-excusatio": "texts/brahe-t_ad-daniam-excusatio.html", "brahe-t_dania-ad-tychonem": "texts/brahe-t_dania-ad-tychonem.html", "brahe-t_disce-puer": "texts/brahe-t_disce-puer.html", "brahe-t_medicamentum-imp-rudolfi": "texts/brahe-t_medicamentum-imp-rudolfi.html", "brahe-t_supra-januam-novi-laboratorii": "texts/brahe-t_supra-januam-novi-laboratorii.html", "brahe-t_supra-januam-observatorii": "texts/brahe-t_supra-januam-observatorii.html", "brahe-t_calculi-de-obliquitate-eclipticae": "texts/brahe-t_calculi-de-obliquitate-eclipticae.html", "brahe-t_quamvis-mortalis": "texts/brahe-t_quamvis-mortalis.html", "sec-register": "register.html", "s-register": "register.html", "reg-early": "register.html", "reg-hven": "register.html", "reg-exile": "register.html", "reg-undated": "register.html", "sec-texts": "texts.html", "s-texts": "texts.html", "tx-q": "texts.html", "tx-count": "texts.html", "tx-hits": "texts.html", "sec-concordance": "concordance.html", "s-concordance": "concordance.html", "sec-transmission": "transmission.html", "s-transmission": "transmission.html", "chan-book": "transmission.html", "chan-separate": "transmission.html", "chan-others": "transmission.html", "chan-posthumous": "transmission.html", "chan-manuscript": "transmission.html", "chan-none": "transmission.html", "sec-addressees": "addressees.html", "s-addressees": "addressees.html", "sec-threads": "threads.html", "s-threads": "threads.html", "thr-urania": "threads.html", "thr-dania": "threads.html", "thr-sophie": "threads.html", "sec-chronology": "chronology.html", "s-chronology": "chronology.html", "sec-desiderata": "desiderata.html", "s-desiderata": "desiderata.html", "des-dsl-permission": "desiderata.html", "des-mechanica-translator": "desiderata.html", "des-28-records": "desiderata.html", "des-occasio-latin": "desiderata.html", "des-tboo-text": "desiderata.html", "des-sigla": "desiderata.html", "des-ea-unjoined": "desiderata.html", "des-muñoz": "desiderata.html", "des-kronborg-site": "desiderata.html", "des-horoscopi-anchors": "desiderata.html", "des-persons-without-record": "desiderata.html", "des-verse-in-volumes": "desiderata.html", "des-figures": "desiderata.html", "sec-sources": "sources.html", "s-sources": "sources.html", "src-dsl2019": "sources.html", "src-bartholin1665": "sources.html", "src-beckett1921": "sources.html", "src-brondsted1962": "sources.html", "src-christianson2000": "sources.html", "src-christianson2002": "sources.html", "src-christianson2020": "sources.html", "src-danskemagazin1746": "sources.html", "src-dreyer1890": "sources.html", "src-friis1871": "sources.html", "src-gassendi1654": "sources.html", "src-gigas1900": "sources.html", "src-hakansson2006": "sources.html", "src-kancelliet": "sources.html", "src-karenbrahe": "sources.html", "src-kb-mscat": "sources.html", "src-lohmeier2000": "sources.html", "src-morsing1586": "sources.html", "src-mosley2002": "sources.html", "src-mosley2007": "sources.html", "src-nielsen1921": "sources.html", "src-nielsen1931": "sources.html", "src-norlind1970": "sources.html", "src-oestmann2002": "sources.html", "src-pontoppidan1739": "sources.html", "src-resen1668": "sources.html", "src-tboo-i": "sources.html", "src-tboo-ii": "sources.html", "src-tboo-iv": "sources.html", "src-tboo-ix": "sources.html", "src-tboo-v": "sources.html", "src-tboo-vi": "sources.html", "src-tboo-vii": "sources.html", "src-tboo-viii": "sources.html", "src-tboo-x": "sources.html", "src-tboo-xiii": "sources.html", "src-tboo-xiv": "sources.html", "src-tboo-xv": "sources.html", "src-object-dns1573": "sources.html", "src-object-lange1584": "sources.html", "src-object-pamphlet1585": "sources.html", "src-census": "sources.html", "src-thesaurus-libr": "sources.html", "src-thoren1990": "sources.html", "src-toftgaard2023": "sources.html", "src-vellev2017": "sources.html", "src-zeeberg1993": "sources.html", "src-zeeberg1994": "sources.html", "src-zeeberg2006": "sources.html", "src-zeeberg-portrait": "sources.html"}</script><script>
+(function(){const M=JSON.parse(document.getElementById('keymap').textContent);
+ const P=new URLSearchParams(location.search);const ps=(document.body.dataset.permalink||'').split(',').filter(Boolean);
+ let k=null;ps.forEach(p=>{if(!k&&P.get(p))k=P.get(p);});
+ /* a pillar that resolves its own ?param= (Bibliotheca's ?entry=, Manus's ?specimen=) declares no params: any value that names a key counts */
+ if(!k){P.forEach((v,p)=>{if(!k&&v&&(M[v]||Object.keys(M).filter(x=>x.endsWith('-'+v)).length===1))k=v;});}
+ if(!k&&location.hash)k=decodeURIComponent(location.hash.slice(1));
+ /* a pillar whose ids carry a prefix (spec-, rec-, vc-, place-) is addressed by the bare key: complete it when unambiguous */
+ if(k&&!M[k]){const c=Object.keys(M).filter(x=>x.endsWith('-'+k));if(c.length===1)k=c[0];}
+ const here=location.pathname.split('/').pop()||'index.html';
+ if(k&&M[k]&&M[k]!==here)location.replace(M[k]+'#'+encodeURIComponent(k));})();
 </script>
-<style>.build-stamp{border-top:1px solid #ddd3bf;padding:10px 26px 18px;font-size:10.5px;color:#6b6450;line-height:1.6;font-family:-apple-system,'Segoe UI',sans-serif}.build-stamp b{color:#6b6450;font-weight:600}.build-stamp a{color:#7d6428}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}</style><div class="build-stamp">Scripta<br><b>Cite:</b> Westergaard, C., &ldquo;Scripta — Tycho&#x27;s Writings in the DSL Critical Edition&rdquo;, <i>Tychoniana</i> (build 2026-08-04), accessed <span class="acc-date"></span>.<script>document.querySelectorAll(".acc-date").forEach(function(e){e.textContent=new Date().toISOString().slice(0,10);});</script></div>
-</body></html>
+</body>
+</html>

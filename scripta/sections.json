@@ -1,0 +1,1966 @@
+{
+"edition_date": "2026-09-05",
+"sections": [
+{
+"key": "brahe-t_diarium-anni-1573",
+"n": 1,
+"head": "",
+"form": "prose-with-figures",
+"by": null,
+"tboo_first": 75,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_fratri-gemello",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 173,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 1,
+"head": "Titelblad",
+"form": "empty",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 2,
+"head": "1. Æredigt af Hans Frandsen",
+"form": "verse",
+"by": "Hans Frandsen",
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 3,
+"head": "2. Brev fra Johannes Pratensis",
+"form": "prose",
+"by": "Johannes Pratensis",
+"tboo_first": 7,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 4,
+"head": "3. Brev fra Tycho Brahe",
+"form": "prose-with-verse",
+"by": null,
+"tboo_first": 10,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 5,
+"head": "4. Om den nye stjerne",
+"form": "prose",
+"by": null,
+"tboo_first": 17,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 6,
+"head": "5. Om dens position",
+"form": "prose",
+"by": null,
+"tboo_first": 21,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 7,
+"head": "6. Om dens afstand fra Jorden",
+"form": "prose",
+"by": null,
+"tboo_first": 25,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 8,
+"head": "7. Om dens størrelse, lys og farve",
+"form": "prose",
+"by": null,
+"tboo_first": 29,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 9,
+"head": "8. Astrologisk vurdering",
+"form": "prose",
+"by": null,
+"tboo_first": 31,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 10,
+"head": "9. Dedikationsbrev til den meteorologiske kalender",
+"form": "prose",
+"by": null,
+"tboo_first": 36,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 11,
+"head": "10. Om måneformørkelsen i december 1573",
+"form": "prose",
+"by": null,
+"tboo_first": 46,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 12,
+"head": "11. Om Urania. Elegi af forfatteren",
+"form": "verse",
+"by": null,
+"tboo_first": 66,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 13,
+"head": "12. Æredigt af Anders Sørensen Vedel",
+"form": "verse",
+"by": "Anders Sørensen Vedel",
+"tboo_first": 71,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-nova-stella",
+"n": 14,
+"head": "13. Trykkerens note til læseren",
+"form": "prose",
+"by": "Lorentz Benedicht, the printer",
+"tboo_first": 72,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_astrologiae-meteorologicae-fragmentum",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 177,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-disciplinis-mathematicis-oratio",
+"n": 1,
+"head": "Oratio",
+"form": "prose",
+"by": null,
+"tboo_first": 145,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-disciplinis-mathematicis-oratio",
+"n": 2,
+"head": "Subjungenda",
+"form": "prose",
+"by": null,
+"tboo_first": 171,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_andreae-welleio",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 174,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epitaphium-kirstinae",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 174,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_additiones-de-eclipsi-lunae-1573",
+"n": 1,
+"head": "Annotatio autoris",
+"form": "prose",
+"by": null,
+"tboo_first": 131,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_additiones-de-eclipsi-lunae-1573",
+"n": 2,
+"head": "Additio autoris (1)",
+"form": "prose",
+"by": null,
+"tboo_first": 133,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_additiones-de-eclipsi-lunae-1573",
+"n": 3,
+"head": "Additio autoris (2)",
+"form": "prose",
+"by": null,
+"tboo_first": 137,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epitaphium-pratensis",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 176,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_fundamentalis-uraniburgi-lapis",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 175,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-christiani",
+"n": 1,
+"head": "Titelblad",
+"form": "title",
+"by": null,
+"tboo_first": 181,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-christiani",
+"n": 2,
+"head": "Forord",
+"form": "prose",
+"by": null,
+"tboo_first": 182,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-christiani",
+"n": 3,
+"head": "De astronomica motuum supputatione",
+"form": "table",
+"by": null,
+"tboo_first": 185,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-christiani",
+"n": 4,
+"head": "Astrologicum judicium",
+"form": "prose",
+"by": null,
+"tboo_first": 194,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 1,
+"head": "Titelblad",
+"form": "title",
+"by": null,
+"tboo_first": 211,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 2,
+"head": "Data",
+"form": "table",
+"by": null,
+"tboo_first": 213,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 3,
+"head": "De planetarum conditionibus",
+"form": "prose",
+"by": null,
+"tboo_first": 217,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 4,
+"head": "De stellis fixis in praecipuis figurae locis constitutis",
+"form": "table",
+"by": null,
+"tboo_first": 218,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 5,
+"head": "Pars prima. De iis quæ ad corporis bona pertinent",
+"form": "prose",
+"by": null,
+"tboo_first": 221,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 6,
+"head": "Secunda pars. De iis quæ ad animum spectant",
+"form": "prose",
+"by": null,
+"tboo_first": 233,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 7,
+"head": "Tertia pars. De bonis externis quæ ad fortunam pertinent",
+"form": "prose",
+"by": null,
+"tboo_first": 237,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-huldarici",
+"n": 8,
+"head": "Conclusio",
+"form": "prose",
+"by": null,
+"tboo_first": 250,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_inskriptioner",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 368,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-johannis",
+"n": 1,
+"head": "Titelblad",
+"form": "title",
+"by": null,
+"tboo_first": 253,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-johannis",
+"n": 2,
+"head": "Data",
+"form": "table",
+"by": null,
+"tboo_first": 255,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-johannis",
+"n": 3,
+"head": "Forord",
+"form": "prose",
+"by": null,
+"tboo_first": 261,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-johannis",
+"n": 4,
+"head": "De planetarum fortitudinibus et debilitatibus",
+"form": "prose",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_horoscopus-principis-johannis",
+"n": 5,
+"head": "Judicium astrologicum",
+"form": "prose",
+"by": null,
+"tboo_first": 264,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_erico-lange",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 3,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_jacobo-ulfeldio",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 179,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_typographiae",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 175,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_henrico-ranzovio",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 187,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_nicolao-kaasio",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 180,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_si-quid-agat",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 215,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-cometa-1585",
+"n": 1,
+"head": "De cometa seu stella crinita rotunda — the treatise printed in Morsing's Diarium of 1586",
+"form": "prose",
+"by": null,
+"tboo_first": 399,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-cometa-1585",
+"n": 2,
+"head": "De crinita stella non caudata — the second treatise, from the autograph",
+"form": "prose",
+"by": null,
+"tboo_first": 408,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_diarii-astrologici-et-meteorologici-praefatio",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 149,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_inscriptiones-croneburgenses",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 190,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_4-epigrammer",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 192,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_apologetica-responsio",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 417,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_de-classe-hispaniae",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 192,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_elixir-pestilentiale",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 166,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_flemloese-indl",
+"n": 1,
+"head": "Title page of Flemløs's book",
+"form": "title",
+"by": "Peder Jacobsen Flemløs (the title page of his book)",
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_flemloese-indl",
+"n": 2,
+"head": "Forord",
+"form": "prose",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_triangulorum-praxis-arithmetica",
+"n": 1,
+"head": "Titelblad",
+"form": "title",
+"by": null,
+"tboo_first": 283,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_triangulorum-praxis-arithmetica",
+"n": 2,
+"head": "De triangulis planis",
+"form": "prose",
+"by": null,
+"tboo_first": 285,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_triangulorum-praxis-arithmetica",
+"n": 3,
+"head": "De triangulis sphæricis",
+"form": "prose",
+"by": null,
+"tboo_first": 289,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_apologetica-responsio-additamenta",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 153,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_papirmoelle",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 365,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_iudicis-est-aequi",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 192,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_in-nic-cragii-remp-lac",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 193,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_occasio-et-argumentum.da",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_urania-titani",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 193,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 1,
+"head": "Titelblad",
+"form": "empty",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 2,
+"head": "Hyldestdigt af Albertus Voitus",
+"form": "verse",
+"by": "Albertus Voitus",
+"tboo_first": 4,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 3,
+"head": "Hyldestdigt af Nathan Chytræus",
+"form": "verse",
+"by": "Nathan Chytraeus",
+"tboo_first": 6,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 4,
+"head": "Hyldestdigt af Henricus Hoierus",
+"form": "verse",
+"by": "Henricus Hoierus",
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 5,
+"head": "Hyldestdigt af Antonius Riccobonus",
+"form": "verse",
+"by": "Antonius Riccobonus",
+"tboo_first": 7,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 6,
+"head": "Hyldestdigt af Olivierus Tubanellus",
+"form": "verse",
+"by": "Olivierus Tubanellus",
+"tboo_first": 8,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 7,
+"head": "Hyldestdigt af Marinus Plecius",
+"form": "verse",
+"by": "Marinus Plecius",
+"tboo_first": 9,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 8,
+"head": "Dedikationsbrev til Moritz, landgreve af Hessen",
+"form": "prose",
+"by": null,
+"tboo_first": 10,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 9,
+"head": "Forord",
+"form": "prose",
+"by": null,
+"tboo_first": 19,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 10,
+"head": "Forord til Tom. I",
+"form": "prose",
+"by": null,
+"tboo_first": 25,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 11,
+"head": "Fra Heinrich Rantzau, 17.01.1587",
+"form": "letter",
+"by": null,
+"tboo_first": 29,
+"epistolarium_id": "brahe-t_15870117001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 12,
+"head": "Fra landgreve Wilhelm til Heinrich Rantzau, 20.10.1585, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 31,
+"epistolarium_id": "brahe-t_15851020001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 13,
+"head": "Fra landgreve Wilhelm til Heinrich Rantzau, 20.10.1585, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 33,
+"epistolarium_id": "brahe-t_15851020001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 14,
+"head": "Til landgreve Wilhelm, 01.03.1586 og Observationes cometae 1585",
+"form": "letter",
+"by": null,
+"tboo_first": 34,
+"epistolarium_id": "brahe-t_15860301001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 15,
+"head": "Fra landgreve Wilhelm, 14.04.1586, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 49,
+"epistolarium_id": "brahe-t_15860414001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 16,
+"head": "Fra landgrave Wilhelm, 14.04.1586, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 52,
+"epistolarium_id": "brahe-t_15860414001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 17,
+"head": "Fra Christopher Rothmann, 18.05.1586",
+"form": "letter",
+"by": null,
+"tboo_first": 55,
+"epistolarium_id": null
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 18,
+"head": "Fra landgrave Wilhelm, 26.08.1586, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 59,
+"epistolarium_id": "brahe-t_15860826001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 19,
+"head": "Fra landgreve Wilhelm, 26.08.1586, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 60,
+"epistolarium_id": "brahe-t_15860826001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 20,
+"head": "Fra Christopher Rothmann, 07.09.1586",
+"form": "letter",
+"by": null,
+"tboo_first": 61,
+"epistolarium_id": "brahe-t_15860907002"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 21,
+"head": "Fra landgreve Wilhelm, 14.10.1586, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": null,
+"epistolarium_id": "brahe-t_15861014001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 22,
+"head": "Fra landgreve Wilhelm, 14.10.1586, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 63,
+"epistolarium_id": "brahe-t_15861014001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 23,
+"head": "Til landgreve Wilhelm, 01.01.1587",
+"form": "letter",
+"by": null,
+"tboo_first": 64,
+"epistolarium_id": "brahe-t_15870101001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 24,
+"head": "Til Rothmann, 20.01.1587",
+"form": "letter",
+"by": null,
+"tboo_first": 85,
+"epistolarium_id": "brahe-t_15870120001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 25,
+"head": "Til Rothmann, 12.08.1587",
+"form": "letter",
+"by": null,
+"tboo_first": 105,
+"epistolarium_id": "brahe-t_15870812001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 26,
+"head": "Fra landgreve Wilhelm, 11.09.1587, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 107,
+"epistolarium_id": "brahe-t_15870911001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 27,
+"head": "Fra landgreve Wilhelm, 11.09.1587, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 109,
+"epistolarium_id": "brahe-t_15870911001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 28,
+"head": "Fra Rothmann, 11.10.1587",
+"form": "letter",
+"by": null,
+"tboo_first": 110,
+"epistolarium_id": "brahe-t_15871011001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 29,
+"head": "Fra Rothmann, 14.11.1587",
+"form": "letter",
+"by": null,
+"tboo_first": 120,
+"epistolarium_id": "brahe-t_15871114001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 30,
+"head": "Til landgreve Wilhelm, 16.08.1588",
+"form": "letter",
+"by": null,
+"tboo_first": 122,
+"epistolarium_id": "brahe-t_15880816001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 31,
+"head": "Til Rothmann, 11.06.1588",
+"form": "letter",
+"by": null,
+"tboo_first": 133,
+"epistolarium_id": "brahe-t_15880611001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 32,
+"head": "Til Rothmann, 17.08.1588",
+"form": "letter",
+"by": null,
+"tboo_first": 134,
+"epistolarium_id": "brahe-t_15880817003"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 33,
+"head": "Fra Rothmann, 13.10.1588",
+"form": "letter",
+"by": null,
+"tboo_first": 149,
+"epistolarium_id": "brahe-t_15881013001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 34,
+"head": "Til Landgrave Wilhelm, 21.02.1589",
+"form": "letter",
+"by": null,
+"tboo_first": 162,
+"epistolarium_id": "brahe-t_15890221001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 35,
+"head": "Til Rothmann, 21.02.1589",
+"form": "letter",
+"by": null,
+"tboo_first": 167,
+"epistolarium_id": "brahe-t_15890221002"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 36,
+"head": "Fra Rothmann, 22.08.1589",
+"form": "letter",
+"by": null,
+"tboo_first": 182,
+"epistolarium_id": "brahe-t_15890822001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 37,
+"head": "Fra landgreve Wilhelm to Rothmann, 26.07.1589, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": null,
+"epistolarium_id": "brahe-t_15890726001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 38,
+"head": "Fra landgreve Wilhelm to Rothmann, 26.07.1589, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": null,
+"epistolarium_id": "brahe-t_15890726001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 39,
+"head": "Til Rothmann, 24.11.1589",
+"form": "letter",
+"by": null,
+"tboo_first": 185,
+"epistolarium_id": "brahe-t_15891124001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 40,
+"head": "Fra Rothmannn, 6.08.1589",
+"form": "letter",
+"by": null,
+"tboo_first": 201,
+"epistolarium_id": "brahe-t_15890806001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 41,
+"head": "Fra Rothmann til Heinrich Rantzau, s.d.",
+"form": "letter",
+"by": null,
+"tboo_first": null,
+"epistolarium_id": null
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 42,
+"head": "Til Rothmann, 23.02.1590",
+"form": "letter",
+"by": null,
+"tboo_first": 203,
+"epistolarium_id": "brahe-t_15900223002"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 43,
+"head": "Til landgreve Wilhelm, 1.04.1590",
+"form": "letter",
+"by": null,
+"tboo_first": 205,
+"epistolarium_id": "brahe-t_15900401001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 44,
+"head": "Cometæ anni 1590 brevis descriptio",
+"form": "prose",
+"by": null,
+"tboo_first": 207,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 45,
+"head": "Fra landgreve Wilhelm, 15.05.1590, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 213,
+"epistolarium_id": "brahe-t_15900515001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 46,
+"head": "Fra landgreve Wilhelm, 15.05.1590, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 214,
+"epistolarium_id": "brahe-t_15900515001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 47,
+"head": "Fra Rothmann, 18.04.1590",
+"form": "letter",
+"by": null,
+"tboo_first": 215,
+"epistolarium_id": "brahe-t_15900418001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 48,
+"head": "Til landgreve Wilhelm, 1.10.1590",
+"form": "letter",
+"by": null,
+"tboo_first": 224,
+"epistolarium_id": "brahe-t_15901001001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 49,
+"head": "Fra landgreve Wilhelm, 3.02.1591, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": null,
+"epistolarium_id": "brahe-t_15910203001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 50,
+"head": "Fra landgreve Wilhelm, 3.02.1591, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 226,
+"epistolarium_id": "brahe-t_15910203001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 51,
+"head": "Til landgreve Wilhelm, 1.04.1591",
+"form": "letter",
+"by": null,
+"tboo_first": 227,
+"epistolarium_id": "brahe-t_15910401001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 52,
+"head": "From Landgrave Wilhelm, 22.05.1591, in German",
+"form": "letter",
+"by": null,
+"tboo_first": 231,
+"epistolarium_id": "brahe-t_15910522001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 53,
+"head": "Fra landgreve Wilhelm, 22.05.1591, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 233,
+"epistolarium_id": "brahe-t_15910522001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 54,
+"head": "Til landgreve Wilhelm, 8.09.1591, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 234,
+"epistolarium_id": "brahe-t_15910908001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 55,
+"head": "Til landgreve Wilhelm, 8.09.1591, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 238,
+"epistolarium_id": "brahe-t_15910908001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 56,
+"head": "Fra landgreve Wilhelm, 31.08.1591, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 240,
+"epistolarium_id": "brahe-t_15910831001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 57,
+"head": "Fra landgreve Wilhelm, 31.08.1591, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 242,
+"epistolarium_id": "brahe-t_15910831001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 58,
+"head": "Til landgreve Wilhelm, 26.09.1591, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 243,
+"epistolarium_id": "brahe-t_15910926001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 59,
+"head": "Til landgreve Wilhelm, 26.09.1591, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 247,
+"epistolarium_id": "brahe-t_15910926001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 60,
+"head": "Beskrivelse af instrumenterne på Uraniborg, på tysk",
+"form": "prose",
+"by": null,
+"tboo_first": 250,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 61,
+"head": "Beskrivelse af instrumenterne på Uraniborg, på latin",
+"form": "prose",
+"by": null,
+"tboo_first": 263,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 62,
+"head": "Træsnit af Uraniborg",
+"form": "figure-caption",
+"by": null,
+"tboo_first": 289,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 63,
+"head": "Træsnit af Uraniborgs grundplan",
+"form": "figure-caption",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 64,
+"head": "Prospekt af Uraniborg",
+"form": "figure-caption",
+"by": null,
+"tboo_first": 291,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 65,
+"head": "Træsnit af Stjerneborg",
+"form": "figure-caption",
+"by": null,
+"tboo_first": 293,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 66,
+"head": "Træsnit af Stjerneborgs grundplan",
+"form": "figure-caption",
+"by": null,
+"tboo_first": 294,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 67,
+"head": "Træsnitkort over Hven",
+"form": "figure-caption",
+"by": null,
+"tboo_first": 295,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 68,
+"head": "Til landgreve Wilhelm, 20.02.1592",
+"form": "letter",
+"by": null,
+"tboo_first": 296,
+"epistolarium_id": "brahe-t_15920220001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 69,
+"head": "Til Rothmann, 20.02.1592",
+"form": "letter",
+"by": null,
+"tboo_first": 300,
+"epistolarium_id": "brahe-t_15920220002"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 70,
+"head": "Fra landgreve Wilhelm, 2.04.1592, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 301,
+"epistolarium_id": "brahe-t_15920402001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 71,
+"head": "Fra landgreve Wilhelm, 2.04.1592, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 302,
+"epistolarium_id": "brahe-t_15920402001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 72,
+"head": "Fra landgreve Wilhelm, 30.07.1592, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 304,
+"epistolarium_id": "brahe-t_15920730001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 73,
+"head": "Fra landgreve Wilhelm, 30.07.1592, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": null,
+"epistolarium_id": "brahe-t_15920730001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 74,
+"head": "Til landgreve Wilhelm, 20.09.1592",
+"form": "letter",
+"by": null,
+"tboo_first": 305,
+"epistolarium_id": "brahe-t_15920920001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 75,
+"head": "Til landgreve Moritz, 20.02.1592, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 307,
+"epistolarium_id": "brahe-t_15920220003"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 76,
+"head": "Til landgreve Moritz, 20.02.1592, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 309,
+"epistolarium_id": "brahe-t_15920220003"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 77,
+"head": "Fra landgreve Moritz, 2.04.1592, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 311,
+"epistolarium_id": "brahe-t_15920402002"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 78,
+"head": "Til landgreve Moritz, 21.09.1592",
+"form": "letter",
+"by": null,
+"tboo_first": 314,
+"epistolarium_id": "brahe-t_15920921001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 79,
+"head": "Fra Rothmann, 28.09.1594",
+"form": "letter",
+"by": null,
+"tboo_first": 315,
+"epistolarium_id": "brahe-t_15940928001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 80,
+"head": "Til Rothmann, 14.01.1594",
+"form": "letter",
+"by": null,
+"tboo_first": 316,
+"epistolarium_id": null
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 81,
+"head": "Til landgreve Moritz, 22.12.1592, på tysk",
+"form": "letter",
+"by": null,
+"tboo_first": 338,
+"epistolarium_id": "brahe-t_15921222001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 82,
+"head": "Til landgreve Moritz, 22.12.1592, på latin",
+"form": "letter",
+"by": null,
+"tboo_first": 339,
+"epistolarium_id": "brahe-t_15921222001"
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 83,
+"head": "Magni herois Guilielmi Hassiae Landtgravii manibus magnis parentatio T.B.D.",
+"form": "verse",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astronomicae",
+"n": 84,
+"head": "Impressum",
+"form": "title",
+"by": "the Uraniborg press",
+"tboo_first": 341,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astr-2-praefatio",
+"n": 1,
+"head": "Til læseren",
+"form": "prose",
+"by": null,
+"tboo_first": 395,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astr-2-praefatio",
+"n": 2,
+"head": "Letter of Jerónimo Muñoz to Bartholomaeus Reisacher",
+"form": "prose",
+"by": "Jerónimo Muñoz, to Bartholomaeus Reisacher",
+"tboo_first": 396,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astr-2-praefatio",
+"n": 3,
+"head": "Tycho Brahe to Jerónimo Muñoz",
+"form": "prose",
+"by": null,
+"tboo_first": 398,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astr-2-praefatio",
+"n": 4,
+"head": "Letter dated 6 December",
+"form": "prose",
+"by": null,
+"tboo_first": 401,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_epistolae-astr-2-praefatio",
+"n": 5,
+"head": "Responsum ad primum caput historiae de nova cometa",
+"form": "prose",
+"by": null,
+"tboo_first": 403,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_observationes-geographicae",
+"n": 1,
+"head": "",
+"form": "table",
+"by": null,
+"tboo_first": 294,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_ad-daniam-elegia-2",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 208,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_ad-daniam-elegia-1",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 101,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_ad-martinum-braschium",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 208,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_medicamenta-henr-ranz",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 161,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_ante-stellas-restitutas",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 212,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 1,
+"head": "Titelblad",
+"form": "title",
+"by": null,
+"tboo_first": 3,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 2,
+"head": "Forord",
+"form": "prose",
+"by": null,
+"tboo_first": 4,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 3,
+"head": "Hyldestdigt",
+"form": "verse",
+"by": "Holger Rosenkrantz",
+"tboo_first": 11,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 4,
+"head": "Quadrans minor orichalcicus inauratus",
+"form": "prose",
+"by": null,
+"tboo_first": 12,
+"instrumenta_ids": [
+"inst-smallest-quadrant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 5,
+"head": "Quadrans mediocris orichalcicus azimuthalis",
+"form": "prose",
+"by": null,
+"tboo_first": 16,
+"instrumenta_ids": [
+"inst-medium-quadrant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 6,
+"head": "Quadrans alius orichalcicus etiam azimuthalis",
+"form": "prose",
+"by": null,
+"tboo_first": 20,
+"instrumenta_ids": [
+"inst-brass-azimuthal-quadrant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 7,
+"head": "Sextans astronomicus prout altitudinibus inservit",
+"form": "prose",
+"by": null,
+"tboo_first": 24,
+"instrumenta_ids": [
+"inst-astronomical-sextant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 8,
+"head": "Quadrans muralis sive Tichonicus",
+"form": "prose",
+"by": null,
+"tboo_first": 28,
+"instrumenta_ids": [
+"inst-mural-quadrant",
+"inst-clocks"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 9,
+"head": "Quadrans volubilis azimuthalis",
+"form": "prose",
+"by": null,
+"tboo_first": 32,
+"instrumenta_ids": [
+"inst-revolving-quadrant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 10,
+"head": "Quadrans magnus chalibeus in quadrato etiam chalibeo comprehensus unaque azimuthalis",
+"form": "prose",
+"by": null,
+"tboo_first": 36,
+"instrumenta_ids": [
+"inst-revolving-steel-quadrant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 11,
+"head": "Semicirculus magnus azimuthalis",
+"form": "prose",
+"by": null,
+"tboo_first": 40,
+"instrumenta_ids": [
+"inst-semicircle"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 12,
+"head": "Instrumentum parallaticum sive regularum",
+"form": "prose",
+"by": null,
+"tboo_first": 44,
+"instrumenta_ids": [
+"inst-triquetrum",
+"inst-copernicus-triquetrum"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 13,
+"head": "Parallaticum aliud sive regulae tam altitudines quam azimutha expedientes",
+"form": "prose",
+"by": null,
+"tboo_first": 48,
+"instrumenta_ids": [
+"inst-parallactic-azimuth"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 14,
+"head": "Armillae zodiacales",
+"form": "prose",
+"by": null,
+"tboo_first": 52,
+"instrumenta_ids": [
+"inst-zodiacal-armillary"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 15,
+"head": "Armillae aequatoriae",
+"form": "prose",
+"by": null,
+"tboo_first": 56,
+"instrumenta_ids": [
+"inst-north-equatorial-armillary"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 16,
+"head": "Armillae aliae aequatoriae",
+"form": "prose",
+"by": null,
+"tboo_first": 60,
+"instrumenta_ids": [
+"inst-south-equatorial-armillary"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 17,
+"head": "Armillæ æquatoriæ maximæ sesquialtero constantes circulo",
+"form": "prose",
+"by": null,
+"tboo_first": 64,
+"instrumenta_ids": [
+"inst-great-equatorial-armillary"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 18,
+"head": "Arcus bipartitus minoribus siderum distantiis inservens",
+"form": "prose",
+"by": null,
+"tboo_first": 68,
+"instrumenta_ids": [
+"inst-bipartite-arc"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 19,
+"head": "Sextansi astronomicus trigonicus pro distantiis rimandis",
+"form": "prose",
+"by": null,
+"tboo_first": 72,
+"instrumenta_ids": [
+"inst-triangular-sextant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 20,
+"head": "Sextans chalybeus pro distantiis per unicum observatorem dimetiendis",
+"form": "prose",
+"by": null,
+"tboo_first": 76,
+"instrumenta_ids": [
+"inst-steel-sextant-1obs"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 21,
+"head": "Aliud instrumentum simile priori pro distantiis",
+"form": "prose",
+"by": null,
+"tboo_first": 80,
+"instrumenta_ids": [
+"inst-halfsextant-smallangles"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 22,
+"head": "Instrumenti eiusdem ut altitudinibus capiendis inserviat dispositio",
+"form": "prose",
+"by": null,
+"tboo_first": 84,
+"instrumenta_ids": [
+"inst-herrevad-sextant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 23,
+"head": "Quadrans maximus qualem olim prope Augustam Vindelicorum exstruximus",
+"form": "prose",
+"by": null,
+"tboo_first": 88,
+"instrumenta_ids": [
+"inst-augsburg-quadrant"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 24,
+"head": "Quadrans maximus chalybeus quadrato inclusus, et horizonti azimutali chalybeo insistens",
+"form": "prose",
+"by": null,
+"tboo_first": 92,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 25,
+"head": "De aliis quibusdam instrumentis nostris quæ nondum exsculpta sunt brevis indicatio",
+"form": "prose",
+"by": null,
+"tboo_first": 96,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 26,
+"head": "Globus magnus orichalcicus",
+"form": "prose",
+"by": null,
+"tboo_first": 102,
+"instrumenta_ids": [
+"inst-globe"
+]
+},
+{
+"key": "brahe-t_mechanica",
+"n": 27,
+"head": "De iis quæ hactenus in astronomicis Dei dono exantlavimus quæque posthac eodem favente exequenda restant",
+"form": "prose",
+"by": null,
+"tboo_first": 106,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 28,
+"head": "Descriptum literarum amplissimi et generosi viri domini Jacobi Curtii ad Tychonem Brahe",
+"form": "prose",
+"by": "Jacob Kurz von Senftenau",
+"tboo_first": 119,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 29,
+"head": "Designatio subdivisionum quadrantis ab domino Jacobo Curtio ingeniose adinventa",
+"form": "prose",
+"by": "Jacob Kurz von Senftenau",
+"tboo_first": 123,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 30,
+"head": "Descriptum litterarum Johannis Antonii Magini ad Tychonem Brahe",
+"form": "prose",
+"by": "Giovanni Antonio Magini",
+"tboo_first": 125,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 31,
+"head": "Altera episola Johannis Antonii Magini",
+"form": "prose",
+"by": "Giovanni Antonio Magini",
+"tboo_first": 127,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 32,
+"head": "Appendix De architechtonicis structuris astronomicis observationibus accomodis",
+"form": "prose",
+"by": null,
+"tboo_first": 134,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 33,
+"head": "Supplementum de subdivisione et dioptris instrumentorum",
+"form": "prose",
+"by": null,
+"tboo_first": 153,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 34,
+"head": "Digt af Rudolphus Caukerchius",
+"form": "verse",
+"by": "Rudolphus Caukerchius",
+"tboo_first": 156,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_mechanica",
+"n": 35,
+"head": "Impressum",
+"form": "title",
+"by": "the Wandsbek press",
+"tboo_first": 162,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_in-librum-de-mechanicis",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 211,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_in-solis-et-lunae-motus",
+"n": 1,
+"head": "Epistola dedicatoria",
+"form": "prose",
+"by": null,
+"tboo_first": 165,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_in-solis-et-lunae-motus",
+"n": 2,
+"head": "Prolegomena",
+"form": "prose",
+"by": null,
+"tboo_first": 169,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_per-varios-casus",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 212,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_sub-pyramide",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 211,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_ad-daniam-epigramma",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 214,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_ad-daniam-excusatio",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 213,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_dania-ad-tychonem",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 213,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_disce-puer",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": null,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_medicamentum-imp-rudolfi",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 168,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_supra-januam-novi-laboratorii",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 214,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_supra-januam-observatorii",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 214,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_calculi-de-obliquitate-eclipticae",
+"n": 1,
+"head": "",
+"form": "prose",
+"by": null,
+"tboo_first": 228,
+"instrumenta_ids": []
+},
+{
+"key": "brahe-t_quamvis-mortalis",
+"n": 1,
+"head": "",
+"form": "verse",
+"by": null,
+"tboo_first": 215,
+"instrumenta_ids": []
+}
+]
+}

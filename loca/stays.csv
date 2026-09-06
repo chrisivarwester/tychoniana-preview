@@ -1,0 +1,141 @@
+record_key,date_start,date_end,date_precision,span,place,region,country_modern,lat,lon,period,purposes,evidence_grade,people,citations,dispute
+stay-knutstorp-1546,1546-12-14,1548,circa,c. 14 December 1546 – 1548,Knutstorp,Scania,Sweden,55.9400,13.0900,Childhood in Scania and Zealand,family,A,4,15,yes
+stay-tostrup-1548,1548,1559-04,circa,c. 1548 – April 1559,Tosterup,Scania,Sweden,55.5500,13.9700,Childhood in Scania and Zealand,"family, education",B,3,6,yes
+stay-naesbyhoved-1549,1549,1552,year,1549 – 1552,Næsbyhoved,Danish realm (other),Denmark,55.4180,10.3680,Childhood in Scania and Zealand,family,C,2,1,no
+stay-vordingborg-1552,1552,1557,range-uncertain,1552 – 1557 (bounds uncertain),Vordingborg,Zealand & the Sound,Denmark,55.0080,11.9100,Childhood in Scania and Zealand,"family, education",B,2,5,yes
+stay-nykobing-falster-1557,1557,1559-04,range-uncertain,1557 – April 1559 (bounds uncertain),Nykøbing Falster,Danish realm (other),Denmark,54.7691,11.8743,Childhood in Scania and Zealand,family,C,2,1,yes
+stay-copenhagen-1559,1559-04-19,1562-02-14,day,19 April 1559 – 14 February 1562,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,Student at Copenhagen,"education, observation, books & printing",A,8,14,yes
+stay-wittenberg-1562,1562-02,1562-03,month,February 1562 – March 1562,Wittenberg,German lands,Germany,51.8662,12.6471,Leipzig with Vedel,in transit,B,1,2,no
+stay-leipzig-1562,1562-03-24,1565-05-17,day,24 March 1562 – 17 May 1565,Leipzig,German lands,Germany,51.3397,12.3731,Leipzig with Vedel,"education, observation, instruments, books & printing",A,9,12,yes
+stay-copenhagen-1565,1565-05,1565-06,circa,c. May 1565 – June 1565,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The Wanderjahre,"in transit, family",B,2,3,yes
+stay-wittenberg-1565,1565-05,1565-05,month,May 1565,Wittenberg,German lands,Germany,51.8662,12.6471,The Wanderjahre,"in transit, social visit",B,3,5,yes
+stay-rostock-1565,1565-05-25,1565-05,day,25 May 1565 (departure within the month),Rostock,German lands,Germany,54.0889,12.1400,The Wanderjahre,in transit,A,1,6,no
+stay-helsingborg-1565,1565-06,1565-06,circa,c. June 1565,Helsingborg,Scania,Sweden,56.0465,12.6945,The Wanderjahre,"observation, in transit",B,0,2,no
+stay-knutstorp-1565,1565-06,1566-04,circa,c. June 1565 – April 1566,Knutstorp,Scania,Sweden,55.9400,13.0900,The Wanderjahre,"family, property",B,8,8,yes
+stay-malmo-1565,1565-06,1565-06,circa,c. June 1565,Malmö,Scania,Sweden,55.6050,13.0000,The Wanderjahre,"observation, in transit",B,0,2,no
+stay-wittenberg-1566,1566-04-15,1566-09-16,day,15 April 1566 – 16 September 1566,Wittenberg,German lands,Germany,51.8662,12.6471,The Wanderjahre,education,A,4,10,yes
+stay-rostock-1566,1566-09-24,1567,day,24 September 1566 – 1567,Rostock,German lands,Germany,54.0889,12.1400,The Wanderjahre,"education, observation, alchemy & medicine",A,8,10,yes
+stay-copenhagen-1567,1567,1567,circa,c. 1567,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The Wanderjahre,"education, court & patronage, social visit",C,1,1,yes
+stay-denmark-1567,1567-06,1567-12,circa,c. June 1567 – December 1567,Denmark (unspecified),Danish realm (other),Denmark,,,The Wanderjahre,"family, property, social visit",B,5,6,yes
+stay-freiburg-1568,1568,1569,range-uncertain,1568 – 1569 (bounds uncertain),Freiburg im Breisgau,German lands,Germany,47.9945,7.8460,The Wanderjahre,"social visit, instruments",B,1,2,yes
+stay-nuremberg-1568,1568,1568,circa,c. 1568,Nuremberg,German lands,Germany,49.4511,11.0784,The Wanderjahre,"instruments, in transit",C,1,1,yes
+stay-rostock-1568,1568-01-01,1568,day,1 January 1568 (departure within the year),Rostock,German lands,Germany,54.0889,12.1400,The Wanderjahre,"education, observation, alchemy & medicine, court & patronage",A,5,8,yes
+stay-basel-1568,1568-09,1569,circa,c. September 1568 – 1569,Basel,Swiss & Italian journey,Switzerland,47.5596,7.5886,The Wanderjahre,"education, instruments",A,2,8,yes
+stay-ingolstadt-1569,1569,1569,circa,c. 1569,Ingolstadt,German lands,Germany,48.7665,11.4258,The Wanderjahre,"in transit, social visit",B,1,7,yes
+stay-lauingen-1569,1569,1569,circa,c. 1569,Lauingen,German lands,Germany,48.5686,10.4297,The Wanderjahre,"social visit, in transit",A,1,6,no
+stay-augsburg-1569,1569-04-14,1570-05-16,day,14 April 1569 – 16 May 1570,Augsburg,German lands,Germany,48.3705,10.8978,The Wanderjahre,"instruments, observation, alchemy & medicine, social visit, education",A,8,10,yes
+stay-rostock-1570,1570,1570,circa,c. 1570,Rostock,German lands,Germany,54.0889,12.1400,The Wanderjahre,"in transit, social visit",C,1,1,yes
+stay-goggingen-1570,1570-04-01,1570-05-16,day,1 April 1570 – 16 May 1570,Göggingen,German lands,Germany,48.3500,10.8700,The Wanderjahre,"observation, instruments",A,2,6,yes
+stay-wittenberg-1570,1570-09-09,1570-09-09,day,9 September 1570,Wittenberg,German lands,Germany,51.8662,12.6471,The Wanderjahre,in transit,A,1,2,no
+stay-helsingborg-1570,1570-12-30,1571-05-09,day,30 December 1570 – 9 May 1571,Helsingborg,Scania,Sweden,56.0465,12.6945,The Wanderjahre,"family, observation",A,5,8,yes
+stay-herrevad-1571,1571,1575,range-uncertain,1571 – 1575 (bounds uncertain),Herrevad Abbey,Scania,Sweden,56.0800,13.2300,"Herrevad, the nova, the lectures, the grand tour","alchemy & medicine, observation, instruments, family",A,8,10,yes
+stay-knutstorp-1571,1571,1575,range-uncertain,1571 – 1575 (bounds uncertain),Knutstorp,Scania,Sweden,55.9400,13.0900,"Herrevad, the nova, the lectures, the grand tour","property, family, observation",A,4,12,yes
+stay-helsingborg-1571,1571-05,1575,range-uncertain,May 1571 – 1575 (bounds uncertain),Helsingborg,Scania,Sweden,56.0465,12.6945,"Herrevad, the nova, the lectures, the grand tour","family, property",C,3,2,yes
+stay-copenhagen-1572b,1572,1572,year,1572,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,"Herrevad, the nova, the lectures, the grand tour",books & printing,C,1,1,yes
+stay-kagerod-1572,1572,1573,circa,c. 1572 – 1573,Kågeröd,Scania,Sweden,55.9960,13.0450,"Herrevad, the nova, the lectures, the grand tour","social visit, family",C,2,2,yes
+stay-copenhagen-1572a,1572-07-20,1572-07-21,day,20 July 1572 – 21 July 1572,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,"Herrevad, the nova, the lectures, the grand tour","court & patronage, social visit",C,4,2,yes
+stay-copenhagen-1573a,1573,1573,circa,c. 1573,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,"Herrevad, the nova, the lectures, the grand tour","social visit, books & printing",B,2,6,yes
+stay-copenhagen-1573b,1573,1573,circa,c. 1573,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,"Herrevad, the nova, the lectures, the grand tour","books & printing, social visit, instruments",B,5,6,no
+stay-herrevad-1574,1574-03,1574-05,month,March 1574 – May 1574,Herrevad Abbey,Scania,Sweden,56.0800,13.2300,"Herrevad, the nova, the lectures, the grand tour",observation,A,1,2,yes
+stay-copenhagen-1574,1574-04-24,1575-03,range-uncertain,24 April 1574 – March 1575 (bounds uncertain),Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,"Herrevad, the nova, the lectures, the grand tour","education, court & patronage, family, observation",A,10,9,yes
+stay-soro-abbey-1574,1574-12-20,1574-12-20,day,20 December 1574,Sorø Abbey,Zealand & the Sound,Denmark,55.4314,11.5541,"Herrevad, the nova, the lectures, the grand tour",court & patronage,C,3,1,yes
+stay-basel-1575,1575,1575,circa,c. 1575,Basel,Swiss & Italian journey,Switzerland,47.5596,7.5886,"Herrevad, the nova, the lectures, the grand tour","in transit, education, other",A,0,8,yes
+stay-innsbruck-1575,1575,1575,circa,c. 1575,Innsbruck,Swiss & Italian journey,Austria,47.2700,11.3950,"Herrevad, the nova, the lectures, the grand tour",in transit,C,0,2,yes
+stay-padua-1575,1575,1575,circa,c. 1575,Padua,Swiss & Italian journey,Italy,45.4064,11.8768,"Herrevad, the nova, the lectures, the grand tour","other, in transit",C,0,2,yes
+stay-venice-1575,1575,1575,circa,c. 1575,Venice,Swiss & Italian journey,Italy,45.4408,12.3155,"Herrevad, the nova, the lectures, the grand tour","social visit, in transit, court & patronage",A,0,9,yes
+stay-kassel-1575,1575-03,1575-04,month,March 1575 – April 1575,Kassel,German lands,Germany,51.3127,9.4797,"Herrevad, the nova, the lectures, the grand tour","observation, instruments, court & patronage, social visit",A,3,10,no
+stay-frankfurt-1575,1575-04,1575-04,month,April 1575,Frankfurt am Main,German lands,Germany,50.1109,8.6821,"Herrevad, the nova, the lectures, the grand tour","books & printing, in transit",A,0,8,no
+stay-augsburg-1575,1575-08,1575-10,circa,c. August 1575 – October 1575,Augsburg,German lands,Germany,48.3705,10.8978,"Herrevad, the nova, the lectures, the grand tour","instruments, social visit, in transit",A,6,9,yes
+stay-regensburg-1575,1575-10,1575-11,circa,c. October 1575 – November 1575,Regensburg,German lands,Germany,49.0134,12.1016,"Herrevad, the nova, the lectures, the grand tour","court & patronage, social visit, books & printing",A,5,10,yes
+stay-nuremberg-1575,1575-11,1575-11,month,November 1575,Nuremberg,German lands,Germany,49.4511,11.0784,"Herrevad, the nova, the lectures, the grand tour","social visit, instruments, in transit",B,3,4,yes
+stay-saalfeld-1575,1575-11,1575-11,circa,c. November 1575,Saalfeld,German lands,Germany,50.6500,11.3600,"Herrevad, the nova, the lectures, the grand tour","social visit, books & printing, in transit",B,1,5,yes
+stay-wittenberg-1575,1575-11,1575-12,circa,c. November 1575 – December 1575,Wittenberg,German lands,Germany,51.8662,12.6471,"Herrevad, the nova, the lectures, the grand tour","in transit, instruments, social visit",B,3,5,yes
+stay-knutstorp-1575,1575-12,1576-02,circa,c. December 1575 – February 1576,Knutstorp,Scania,Sweden,55.9400,13.0900,"Herrevad, the nova, the lectures, the grand tour","property, family",A,3,4,no
+stay-soro-abbey-1575,1575-12,1575-12,month,December 1575,Sorø Abbey,Zealand & the Sound,Denmark,55.4314,11.5541,"Herrevad, the nova, the lectures, the grand tour",court & patronage,A,3,3,yes
+stay-copenhagen-1576b,1576,1597,range-uncertain,1576 – 1597 (bounds uncertain),Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"property, social visit, books & printing",B,1,2,yes
+stay-hven-1576b,1576,1597-03-29,range-uncertain,1576 – 29 March 1597 (bounds uncertain),Ven (Hven),Zealand & the Sound,Sweden,55.9060,12.6945,The lord of Hven,"observation, instruments, books & printing, alchemy & medicine, court & patronage, property, family",A,30,34,yes
+stay-scania-1576,1576,1597,range-uncertain,1576 – 1597 (bounds uncertain),Scania (region),Scania,Sweden,,,The lord of Hven,"property, family, in transit",B,0,2,no
+stay-tagalycka-1576,1576,1576,circa,c. 1576,Tågalycka,Scania,Sweden,,,The lord of Hven,"family, in transit",C,2,1,yes
+stay-copenhagen-1576,1576-02,1576-02,month,February 1576,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"social visit, court & patronage",A,2,2,yes
+stay-herrevad-1576,1576-02,1576-02,month,February 1576,Herrevad Abbey,Scania,Sweden,56.0800,13.2300,The lord of Hven,"social visit, court & patronage",A,1,2,yes
+stay-knutstorp-1576,1576-02-10,1576-02-16,day,10 February 1576 – 16 February 1576,Knutstorp,Scania,Sweden,55.9400,13.0900,The lord of Hven,"family, court & patronage",A,5,4,no
+stay-ibstrup-1576,1576-02-11,1576-02-11,day,11 February 1576,Ibstrup,Zealand & the Sound,Denmark,55.7700,12.5700,The lord of Hven,court & patronage,A,2,9,yes
+stay-frederiksborg-1576,1576-02-18,1576-02-18,day,18 February 1576,Frederiksborg,Zealand & the Sound,Denmark,55.9350,12.3011,The lord of Hven,court & patronage,A,1,3,no
+stay-hven-1576,1576-02-22,1576-02-22,day,22 February 1576,Ven (Hven),Zealand & the Sound,Sweden,55.9060,12.6945,The lord of Hven,"observation, property, in transit",A,2,5,yes
+stay-helsingborg-1576,1576-05,1576-09,circa,c. May 1576 – September 1576,Helsingborg,Scania,Sweden,56.0465,12.6945,The lord of Hven,"family, death & burial, in transit",B,3,2,yes
+stay-landskrona-1576,1576-09,1576-12,circa,c. September 1576 – December 1576,Landskrona,Scania,Sweden,55.8700,12.8300,The lord of Hven,in transit,C,0,1,no
+stay-knutstorp-1576b,1576-09-03,1576-09-03,day,3 September 1576,Knutstorp,Scania,Sweden,55.9400,13.0900,The lord of Hven,"property, social visit",A,2,2,no
+stay-copenhagen-1577,1577-06-02,1577-06-04,day,2 June 1577 – 4 June 1577,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"court & patronage, social visit",A,2,1,no
+stay-kronborg-1577,1577-07-01,1577-07-01,day,1 July 1577,Helsingør / Kronborg,Zealand & the Sound,Denmark,56.0390,12.6210,The lord of Hven,court & patronage,B,3,1,yes
+stay-kronborg-1578,1578,1578,circa,c. 1578,Helsingør / Kronborg,Zealand & the Sound,Denmark,56.0390,12.6210,The lord of Hven,"court & patronage, social visit",C,1,1,yes
+stay-lund-1580,1580,1580,year,1580,Lund,Scania,Sweden,55.7047,13.1910,The lord of Hven,social visit,C,2,1,yes
+stay-helsingborg-1580,1580-10-20,1580-10-27,day,20 October 1580 – 27 October 1580,Helsingborg,Scania,Sweden,56.0465,12.6945,The lord of Hven,observation,A,2,3,no
+stay-ribe-1581,1581-08,1581-08,month,August 1581,Ribe,Danish realm (other),Denmark,55.3280,8.7620,The lord of Hven,social visit,A,1,1,no
+stay-kronborg-1584,1584,1590,range-uncertain,1584 – 1590 (bounds uncertain),Helsingør / Kronborg,Zealand & the Sound,Denmark,56.0390,12.6210,The lord of Hven,"social visit, court & patronage",C,1,1,no
+stay-lund-1584,1584-07-20,1584-07-20,day,20 July 1584,Lund,Scania,Sweden,55.7047,13.1910,The lord of Hven,"court & patronage, property",A,1,2,no
+stay-bygholm-1584,1584-08-23,1584-08-23,day,23 August 1584,Bygholm,Danish realm (other),Denmark,55.8620,9.8270,The lord of Hven,"family, social visit",A,3,1,no
+stay-copenhagen-1585,1585-10,1585-10-18,day,to 18 October 1585 (arrival within the month),Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,social visit,A,1,1,no
+stay-copenhagen-1588,1588-08-18,1588-08-23,day,18 August 1588 – 23 August 1588,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,court & patronage,A,3,2,yes
+stay-copenhagen-1589,1589,1589,circa,c. 1589,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"death & burial, social visit",B,1,1,no
+stay-eriksholm-1590,1590-08,1590-08,circa,c. August 1590,Eriksholm,Scania,Sweden,,,The lord of Hven,"social visit, family, alchemy & medicine",B,3,2,no
+stay-copenhagen-1590,1590-08-01,1590-08-01,day,1 August 1590,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"social visit, in transit",A,1,2,no
+stay-copenhagen-1590b,1590-10-26,1590-10-26,day,26 October 1590,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,other,A,2,1,no
+stay-landskrona-1591,1591,1591,circa,c. 1591,Landskrona,Scania,Sweden,55.8700,12.8300,The lord of Hven,"social visit, court & patronage",C,1,2,yes
+stay-copenhagen-1591,1591-06,1591-07,circa,c. June 1591 – July 1591,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,court & patronage,B,1,1,no
+stay-ringsted-1592,1592-02,1592-02,month,February 1592,Ringsted,Zealand & the Sound,Denmark,55.4426,11.7900,The lord of Hven,"property, other",A,1,2,no
+stay-hoersholm-1592,1592-06-30,1592-06-30,day,30 June 1592,Hørsholm,Zealand & the Sound,Denmark,55.8803,12.5011,The lord of Hven,"court & patronage, in transit",A,2,2,no
+stay-copenhagen-1594,1594-05-02,1594-05-02,day,2 May 1594,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,other,A,2,1,no
+stay-kronborg-1594,1594-07-04,1594-07-04,day,4 July 1594,Helsingør / Kronborg,Zealand & the Sound,Denmark,56.0390,12.6210,The lord of Hven,other,A,3,1,no
+stay-copenhagen-1594b,1594-09,1594-09-14,day,to 14 September 1594 (arrival within the month),Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"family, social visit",B,2,1,no
+stay-roskilde-1594,1594-09-26,1594-09-26,day,26 September 1594,Roskilde,Zealand & the Sound,Denmark,55.6415,12.0803,The lord of Hven,property,A,1,1,yes
+stay-copenhagen-1594c,1594-11-06,1594-11-18,day,6 November 1594 – 18 November 1594,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,family,A,3,1,no
+stay-copenhagen-1594d,1594-11-30,1594-12-04,day,30 November 1594 – 4 December 1594,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"family, social visit",A,5,4,no
+stay-gundsogaard-1594,1594-12,1594-12,circa,c. December 1594,Gundsøgaard,Zealand & the Sound,Denmark,,,The lord of Hven,"property, other",B,3,1,no
+stay-copenhagen-1595,1595-01,1595-01-21,day,to 21 January 1595 (arrival within the month),Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"family, court & patronage",A,7,2,no
+stay-jutland-1595,1595-06-22,1595-06-22,day,22 June 1595,Jutland (region),Danish realm (other),Denmark,,,The lord of Hven,other,A,0,1,no
+stay-copenhagen-1595b,1595-09,1595-09-08,day,to 8 September 1595 (arrival within the month),Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"social visit, family",A,5,2,no
+stay-lund-1596,1596-01-10,1596-01-20,day,10 January 1596 – 20 January 1596,Lund,Scania,Sweden,55.7047,13.1910,The lord of Hven,"family, court & patronage",A,5,2,yes
+stay-copenhagen-1596,1596-02-21,1596-03,day,21 February 1596 – March 1596,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"family, court & patronage, other",A,9,4,no
+stay-copenhagen-1596b,1596-06,1596-06,month,June 1596,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"court & patronage, family",B,5,2,yes
+stay-copenhagen-1596c,1596-07-14,1596-07-17,day,14 July 1596 – 17 July 1596,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"observation, social visit",A,0,1,no
+stay-copenhagen-1596d,1596-08,1596-08-15,day,to 15 August 1596 (arrival within the month),Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,other,A,2,2,no
+stay-copenhagen-1596e,1596-08-28,1596-09-09,day,28 August 1596 – 9 September 1596,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"court & patronage, social visit",A,10,7,yes
+stay-copenhagen-1596g,1596-09,1596-09,circa,c. September 1596,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,"court & patronage, property",B,1,1,no
+stay-copenhagen-1596f,1596-09-15,1596-09-15,day,15 September 1596,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The lord of Hven,other,A,1,1,no
+stay-scania-1597,1597-01-07,1597-01-07,day,7 January 1597,Scania (region),Scania,Sweden,,,The departure and exile,"in transit, other",B,1,1,yes
+stay-scania-1597b,1597-01-28,1597-02-07,day,28 January 1597 – 7 February 1597,Scania (region),Scania,Sweden,,,The departure and exile,"in transit, family",B,1,1,yes
+stay-copenhagen-1597a,1597-03-06,1597-03-13,day,6 March 1597 – 13 March 1597,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The departure and exile,"court & patronage, family, in transit",A,3,3,no
+stay-copenhagen-1597b,1597-04-11,1597-06-02,day,11 April 1597 – 2 June 1597,Copenhagen,Zealand & the Sound,Denmark,55.6761,12.5683,The departure and exile,"exile, observation, books & printing, alchemy & medicine, property, court & patronage",A,12,11,yes
+stay-roskilde-1597,1597-04-17,1597-04-20,day,17 April 1597 – 20 April 1597,Roskilde,Zealand & the Sound,Denmark,55.6415,12.0803,The departure and exile,"other, social visit, in transit",A,7,3,yes
+stay-gedser-1597,1597-06,1597-06,month,June 1597,Gedser,Danish realm (other),Denmark,54.5742,11.9306,The departure and exile,"in transit, exile",C,2,2,yes
+stay-koge-1597,1597-06,1597-06,month,June 1597,Køge,Zealand & the Sound,Denmark,55.4580,12.1820,The departure and exile,"in transit, exile",C,0,3,yes
+stay-lubeck-1597,1597-06,1597-06,month,June 1597,Lübeck,German lands,Germany,53.8700,10.6900,The departure and exile,in transit,C,0,1,yes
+stay-nykobing-falster-1597,1597-06,1597-06,month,June 1597,Nykøbing Falster,Danish realm (other),Denmark,54.7691,11.8743,The departure and exile,"in transit, exile",C,1,2,yes
+stay-rostock-1597,1597-06,1597-09-08,day,June 1597 – 8 September 1597,Rostock,German lands,Germany,54.0889,12.1400,The departure and exile,"exile, court & patronage, property, social visit",A,11,12,yes
+stay-vordingborg-1597,1597-06,1597-06,month,June 1597,Vordingborg,Zealand & the Sound,Denmark,55.0080,11.9100,The departure and exile,"in transit, exile",C,1,2,yes
+stay-bramstedt-1597a,1597-09,1597-10-08,range-uncertain,September 1597 – 8 October 1597 (bounds uncertain),Bramstedt,German lands,Germany,53.9195,9.8815,The departure and exile,"court & patronage, social visit",B,2,3,yes
+stay-wismar-1597,1597-09,1597-09,circa,c. September 1597,Wismar,German lands,Germany,53.8920,11.4650,The departure and exile,in transit,C,0,3,no
+stay-doberan-1597,1597-09-08,1597-09,circa,c. 8 September 1597 (departure within the month),Doberan,German lands,Germany,54.1069,11.9050,The departure and exile,"in transit, property",C,1,4,yes
+stay-segeberg-1597,1597-09-17,1597-09-17,day,17 September 1597,Segeberg,German lands,Germany,53.9400,10.3100,The departure and exile,"in transit, court & patronage, exile",A,1,4,yes
+stay-wandsbek-1597,1597-10,1598-09-29,day,October 1597 – 29 September 1598,Wandsbek,German lands,Germany,53.5730,10.0700,The departure and exile,"exile, books & printing, court & patronage, observation, instruments, alchemy & medicine",A,16,13,yes
+stay-bramstedt-1597b,1597-12-22,1597-12-22,day,22 December 1597,Bramstedt,German lands,Germany,53.9195,9.8815,The departure and exile,"court & patronage, social visit",A,4,4,yes
+stay-dresden-1598,1598-10,1598-12,range-uncertain,October 1598 – December 1598 (bounds uncertain),Dresden,German lands,Germany,51.0502,13.7376,The departure and exile,"in transit, court & patronage",A,9,10,yes
+stay-magdeburg-1598,1598-10,1598-10,month,October 1598,Magdeburg,German lands,Germany,52.1300,11.6300,The departure and exile,"in transit, court & patronage, property, social visit",A,7,5,yes
+stay-harburg-1598,1598-10-05,1598-10-05,day,5 October 1598,Harburg,German lands,Germany,53.4600,9.9800,The departure and exile,"in transit, court & patronage",A,2,3,yes
+stay-wittenberg-1598a,1598-10-25,1598-10-25,day,25 October 1598,Wittenberg,German lands,Germany,51.8662,12.6471,The departure and exile,in transit,A,1,3,yes
+stay-wittenberg-1598b,1598-12-04,1599-06-14,day,4 December 1598 – 14 June 1599,Wittenberg,German lands,Germany,51.8662,12.6471,The departure and exile,"exile, education, books & printing, observation, alchemy & medicine, social visit",A,13,14,yes
+stay-lysa-1599,1599,1599,circa,c. 1599,Lysá nad Labem,Bohemia,Czech Republic,50.2015,14.8328,Bohemia,"in transit, property",B,1,3,yes
+stay-prague-1599,1599-06,1599-08,month,June 1599 – August 1599,Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,"court & patronage, exile, observation, instruments",A,13,11,yes
+stay-pretzsch-1599,1599-06-14,1599-06-15,day,14 June 1599 – 15 June 1599,Pretzsch,German lands,Germany,51.7150,12.8040,Bohemia,"in transit, social visit",A,1,5,yes
+stay-dresden-1599,1599-06-16,1599-06,day,16 June 1599 (departure within the month),Dresden,German lands,Germany,51.0502,13.7376,Bohemia,"in transit, family",A,5,6,yes
+stay-benatky-1599,1599-08-20,1600-06,range-uncertain,20 August 1599 – June 1600 (bounds uncertain),Benátky nad Jizerou,Bohemia,Czech Republic,50.2909,14.8230,Bohemia,"observation, instruments, alchemy & medicine, court & patronage, family, property",A,22,12,yes
+stay-brandys-1599,1599-08-20,1599-08-21,day,20 August 1599 – 21 August 1599,Brandýs nad Labem,Bohemia,Czech Republic,50.1868,14.6646,Bohemia,"in transit, property",A,2,3,yes
+stay-girsitz-1599,1599-11,1600-01,month,November 1599 – January 1600,Girsitz (Jičice?),Bohemia,Czech Republic,,,Bohemia,"other, observation, in transit",B,2,4,yes
+stay-prague-1600a,1600-02,1600-03,circa,c. February 1600 – March 1600,Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,"court & patronage, social visit",B,3,2,yes
+stay-prague-1600b,1600-04,1600-04,circa,c. April 1600,Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,"social visit, in transit",B,3,2,no
+stay-prague-1600c,1600-05-01,1600-05-01,circa,c. 1 May 1600,Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,social visit,A,3,3,no
+stay-prague-1600,1600-06,1601-10-24,range-uncertain,June 1600 – 24 October 1601 (bounds uncertain),Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,"court & patronage, observation, books & printing, family, instruments, death & burial",A,24,12,yes
+stay-prague-1600d,1600-12-02,1601-02,range-uncertain,2 December 1600 – February 1601 (bounds uncertain),Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,"observation, instruments",B,1,4,yes
+stay-prague-1601,1601-02-25,1601-10-24,day,25 February 1601 – 24 October 1601,Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,"court & patronage, observation, family, death & burial",A,9,7,yes
+stay-prague-1601b,1601-10-13,1601-10-13,day,13 October 1601,Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,social visit,A,2,8,yes
+stay-prague-1601c,1601-11-04,1601-11-04,day,4 November 1601,Prague,Bohemia,Czech Republic,50.0875,14.4213,Bohemia,death & burial,A,8,10,yes

@@ -1,0 +1,97 @@
+city,country,kind,count
+Copenhagen,DK,census copies,24
+Copenhagen,DK,library volumes,5
+Copenhagen,DK,likenesses,9
+Copenhagen,DK,observation codices,17
+Copenhagen,DK,hand specimens,27
+Prague,CZ,census copies,1
+Prague,CZ,library volumes,53
+Prague,CZ,likenesses,1
+Prague,CZ,hand specimens,6
+Prague,CZ,instruments,2
+Vienna,AT,census copies,3
+Vienna,AT,library volumes,2
+Vienna,AT,observation codices,20
+Vienna,AT,hand specimens,6
+Marburg,DE,census copies,4
+Marburg,DE,hand specimens,6
+Paris,FR,census copies,7
+Paris,FR,hand specimens,2
+London,GB,census copies,5
+London,GB,likenesses,1
+London,GB,hand specimens,1
+Oxford,GB,census copies,5
+Oxford,GB,hand specimens,1
+Uppsala,SE,census copies,3
+Uppsala,SE,library volumes,1
+Uppsala,SE,hand specimens,1
+Washington DC,US,census copies,4
+Washington DC,US,hand specimens,1
+Dresden,DE,census copies,3
+Dresden,DE,hand specimens,1
+Augsburg,DE,census copies,3
+Edinburgh,GB,census copies,3
+Gotha,DE,census copies,1
+Gotha,DE,library volumes,1
+Gotha,DE,hand specimens,1
+Kiel,DE,census copies,1
+Kiel,DE,likenesses,1
+Kiel,DE,hand specimens,1
+Munich,DE,census copies,3
+Stockholm,SE,census copies,2
+Stockholm,SE,hand specimens,1
+Venice,IT,census copies,2
+Venice,IT,hand specimens,1
+Aberdeen,GB,census copies,2
+Austin,US,census copies,1
+Austin,US,library volumes,1
+Berlin,DE,census copies,1
+Berlin,DE,hand specimens,1
+Cambrai,FR,census copies,1
+Cambrai,FR,hand specimens,1
+Detmold,DE,census copies,1
+Detmold,DE,hand specimens,1
+Florence,IT,census copies,1
+Florence,IT,hand specimens,1
+Hillerød,,library volumes,1
+Hillerød,,likenesses,1
+Kraków,PL,census copies,2
+Rostock,DE,census copies,1
+Rostock,DE,hand specimens,1
+Zürich,CH,census copies,2
+Bamberg,DE,census copies,1
+Bern,CH,census copies,1
+Cambridge,GB,census copies,1
+Chicago,,library volumes,1
+Frankfurt am Main,,likenesses,1
+Gdańsk,PL,census copies,1
+Ghent,BE,census copies,1
+Glasgow,GB,census copies,1
+Groningen,NL,census copies,1
+Görlitz,DE,census copies,1
+Göteborg,,library volumes,1
+Göttingen,,hand specimens,1
+Halle (Saale),DE,census copies,1
+Hamburg,,hand specimens,1
+Håbo,,likenesses,1
+Kaliningrad,,hand specimens,1
+Kansas City,US,census copies,1
+Kågeröd,,likenesses,1
+Křivoklát,,hand specimens,1
+Lund,SE,census copies,1
+Lübeck,DE,census copies,1
+Moscow,RU,census copies,1
+Odense,DK,census copies,1
+Oslo,,hand specimens,1
+Pittsburgh,US,census copies,1
+Poznań,PL,census copies,1
+Roskilde,DK,census copies,1
+Schwerin,,hand specimens,1
+St Petersburg,,hand specimens,1
+Staroměstské náměstí,,likenesses,1
+Stralsund,,hand specimens,1
+Teplá,,library volumes,1
+Vatican City,,library volumes,1
+Weimar,DE,census copies,1
+Wolfenbüttel,DE,census copies,1
+unknown,,hand specimens,1

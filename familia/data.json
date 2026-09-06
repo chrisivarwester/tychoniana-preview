@@ -1,48 +1,170 @@
 {
  "id": "brahe-tycho",
- "version": "1.3",
- "generated": "2026-07-01",
- "description": "Prosopographical directory of Tycho Brahe's familia — the assistants, printers, patrons, and correspondents who shaped Uraniborg and its output. 189 deduplicated people: the 33 documented associates of the household, press, and archive and the 152 parties to the 509-letter Epistolarium Tychonicum correspondence, Tycho himself among them (10 are both), plus 14 people known from craft, service, or scholarship.",
+ "version": "2.0",
+ "edition_date": "2026-09-05",
+ "generated": "2026-09-05",
+ "title": "Familia — the people around Tycho Brahe",
+ "description": "A prosopography of the documented circle of Tycho Brahe: the assistants and craftsmen of Uraniborg, the printers and publishers of his works, the patrons and dedicatees, the kin and friends, every party to the surviving correspondence, and the later owners, editors and scholars through whom his books and papers passed. Each record carries its roles, dates, documented seat, biography with sources, and the letters, visits, stays, printed works, presentation copies and manuscripts in which the person appears elsewhere in Tychoniana.",
  "sources": [
   {
    "id": "S_CHRISTIANSON",
-   "label": "Christianson, On Tycho's Island (Cambridge, 2000)"
+   "label": "Christianson, On Tycho's Island (2000)",
+   "full": "John Robert Christianson, On Tycho's Island: Tycho Brahe and His Assistants, 1570–1601 (Cambridge: Cambridge University Press, 2000). Part Two, 'Tycho Brahe's Coworkers: A Biographical Directory', is the standing prosopography.",
+   "contributes": "The people authority: the assistants, artisans, printers, kin and patrons of the resident community, with dates and the patronage axes; the source of record for most household biographies here."
   },
   {
-   "id": "S_THESAURUS",
-   "label": "Thesaurus Tychonis (2026)"
+   "id": "S_THOREN",
+   "label": "Thoren, The Lord of Uraniborg (1990)",
+   "full": "Victor E. Thoren, with contributions by John R. Christianson, The Lord of Uraniborg: A Biography of Tycho Brahe (Cambridge: Cambridge University Press, 1990).",
+   "contributes": "The technical biography; cited for Longomontanus, Blaeu and the chronology of the assistants' service."
   },
   {
    "id": "S_DREYER",
-   "label": "Dreyer, Tycho Brahe (1890)"
+   "label": "Dreyer, Tycho Brahe (1890)",
+   "full": "J. L. E. Dreyer, Tycho Brahe: A Picture of Scientific Life and Work in the Sixteenth Century (Edinburgh: Adam & Charles Black, 1890). Appendix B reprints the 1595–96 roster of pupils and assistants.",
+   "contributes": "The standard biography and the first English roster of the pupils; cited for the Prague patrons, the editors and the afterlife of the papers.",
+   "url": "https://archive.org/details/tychobrahepictur00dreyrich",
+   "url_label": "full scan at the Internet Archive"
   },
   {
    "id": "S_MOSLEY",
-   "label": "Mosley, Bearing the Heavens (Cambridge, 2007)"
+   "label": "Mosley, Bearing the Heavens (2007)",
+   "full": "Adam Mosley, Bearing the Heavens: Tycho Brahe and the Astronomical Community of the Late Sixteenth Century (Cambridge: Cambridge University Press, 2007).",
+   "contributes": "The correspondence network and the gift-campaign among the imperial court and the scholarly community; cited for Coraduz and the Prague circle."
   },
   {
    "id": "S_ELLEFSEN",
-   "label": "Ellefsen, Søsteren og astronomen (Oslo, 2023)"
+   "label": "Ellefsen, Søsteren og astronomen (2023)",
+   "full": "Trine A. Ellefsen, Søsteren og astronomen: På sporet av Sophie Brahe (Oslo: Humanist forlag, 2023).",
+   "contributes": "The only book-length life of Sophie Brahe; the source for her contested birth year, Erik Lange's ruin and the circle of learned noblewomen (Birgitte Thott)."
+  },
+  {
+   "id": "S_ZEEBERG1994",
+   "label": "Zeeberg, Urania Titani (1994)",
+   "full": "Peter Zeeberg, Tycho Brahes 'Urania Titani': et digt om Sophie Brahe (Copenhagen: Museum Tusculanum, 1994).",
+   "contributes": "The edition and study of the elegy in which Sophie Brahe and Erik Lange figure as Urania and Titan."
+  },
+  {
+   "id": "S_DSL_URANIA",
+   "label": "Urania Titani (DSL edition)",
+   "full": "Tycho Brahe, Urania Titani, in the Danish Society for Language and Literature's digital edition of Tycho's Latin works (tekstnet.dk).",
+   "contributes": "The critical text of the elegy and of the prose 'Occasio et argumentum' prefaced to Sophie Brahe's letter.",
+   "url": "https://tekstnet.dk/",
+   "url_label": "the DSL edition at tekstnet.dk"
   },
   {
    "id": "S_JERN",
-   "label": "Jern, Uraniborg: herresäte och himlaborg (Lund, 1976)"
+   "label": "Jern, Uraniborg (1976)",
+   "full": "Carl Henrik Jern, Uraniborg: herresäte och himlaborg (Lund: Studentlitteratur, 1976).",
+   "contributes": "The Uraniborg craftsmen — von Paschen, Stenwinkel, Gemperlin, Labenwolf — and the building history in which they appear."
   },
   {
    "id": "S_BECKETT",
-   "label": "Beckett & Christensen, Uraniborg og Stjærneborg (1921)"
+   "label": "Beckett & Christensen, Uraniborg og Stjærneborg (1921)",
+   "full": "Francis Beckett (text) & Charles Christensen (measured drawings), Tyge Brahes Uraniborg og Stjærneborg paa Hven (Copenhagen: Selskabet til Udgivelse af Danske Mindesmærker / London: Oxford University Press, 1921).",
+   "contributes": "The painters and builders named in the reconstruction — Knieper, Gemperlin, Stenwinkel — and the mural quadrant's division of labour."
   },
   {
-   "id": "S_RORDAM_FRIIS_DM",
-   "label": "Rørdam & Friis, 'Bidrag til Tyge Brahes Historie' incl. the roster of Tycho's pupils & assistants (Danske Magazin 4. R. II, 1873)"
+   "id": "S_RORDAM_DM1873",
+   "label": "Rørdam, 'Bidrag til Tyge Brahes Historie' (1873)",
+   "full": "Holger Fr. Rørdam, 'Bidrag til Tyge Brahes Historie', Danske Magazin, 4. række, 2. bind (Copenhagen, 1873), pp. 16–34. Prints the 1595–96 roster of Tycho's pupils and assistants and the documents of the Gellius Sascerides suit.",
+   "contributes": "The Gellius suit and the contemporary roster of pupils; cited for Sascerides.",
+   "url": "https://da.wikisource.org/wiki/Danske_Magazin,_4._r%C3%A6kke,_2._bind",
+   "url_label": "the volume at Wikisource"
+  },
+  {
+   "id": "S_FRIIS_DM1873",
+   "label": "Friis, 'Bidrag til Astronomen Tyge Brahes Historie' (1873)",
+   "full": "F. R. Friis, 'Bidrag til Astronomen Tyge Brahes Historie', Danske Magazin, 4. række, 2. bind (Copenhagen, 1873), pp. 324–328: the sale of Knudstrup (1594), Manderup Parsberg's vindication (1602), and an addendum to Rørdam's roster of pupils.",
+   "contributes": "The addendum to the roster is the source for Simon Marius and Ambrosius Rhodius.",
+   "url": "https://da.wikisource.org/wiki/Danske_Magazin,_4._r%C3%A6kke,_2._bind",
+   "url_label": "the volume at Wikisource"
   },
   {
    "id": "S_KB_BREVBOGER",
-   "label": "Kancelliets Brevbøger vedr. Danmarks indre Forhold (Rigsarkivet, ed. Laursen)"
+   "label": "Kancelliets Brevbøger (Rigsarkivet)",
+   "full": "Kancelliets Brevbøger vedrørende Danmarks indre Forhold, ed. L. Laursen et al. (Copenhagen: Rigsarkivet, 1885–), the volumes for 1588–92, 1593–96 and 1596–1602.",
+   "contributes": "The royal chancery's own record of the bailiffs, the tenant disputes and the Hven priest; cited by volume and page."
   },
   {
    "id": "S_FRIIS1875",
-   "label": "Friis, Breve og Aktstykker angaaende Tyge Brahe og hans Slaegtninge (1875)"
+   "label": "Friis, Breve og Aktstykker (1875)",
+   "full": "F. R. Friis (ed.), Breve og Aktstykker angaaende Tyge Brahe og hans Slægtninge (Copenhagen: A. F. Høst, 1875).",
+   "contributes": "Tycho's Danish letters and deeds; the source for the bailiffs Christen Jyde and the Rasmus Pedersen affair.",
+   "url": "https://archive.org/details/breveogaktstykk00friigoog",
+   "url_label": "full scan at the Internet Archive"
+  },
+  {
+   "id": "S_NIELSEN1921",
+   "label": "Nielsen, 'Tycho Brahes Bogtrykkeri paa Hveen' (1921)",
+   "full": "Lauritz Nielsen, 'Tycho Brahes Bogtrykkeri paa Hveen', Nordisk tidskrift för bok- och biblioteksväsen VIII (1921), pp. 175–214; with his Dansk Bibliografi 1551–1600 (Copenhagen, 1931–33).",
+   "contributes": "The printers and the press: Vingaard, Benedicht, Weida, Gaschitz, de Ohr, and the posthumous publishers.",
+   "url": "https://runeberg.org/bokobibl/1921/0187.html",
+   "url_label": "full text at Projekt Runeberg"
+  },
+  {
+   "id": "S_DBL",
+   "label": "Dansk Biografisk Leksikon",
+   "full": "Dansk Biografisk Leksikon, 3rd edition (Copenhagen: Gyldendal, 1979–84), online at biografiskleksikon.lex.dk.",
+   "contributes": "Dates and offices for the Danish figures — Nielsen, Gemperlin and others.",
+   "url": "https://biografiskleksikon.lex.dk/",
+   "url_label": "the online edition"
+  },
+  {
+   "id": "S_GINGERICH_WESTMAN",
+   "label": "Gingerich & Westman, The Wittich Connection (1988)",
+   "full": "Owen Gingerich & Robert S. Westman, The Wittich Connection: Conflict and Priority in Late Sixteenth-Century Cosmology (Transactions of the American Philosophical Society 78/7; Philadelphia, 1988).",
+   "contributes": "Paul Wittich, his annotated Copernicus copies and the priority dispute."
+  },
+  {
+   "id": "S_CROSSROADS",
+   "label": "Tycho Brahe and Prague: Crossroads of European Science (2002)",
+   "full": "John Robert Christianson, Alena Hadravová, Petr Hadrava & Martin Šolc (eds.), Tycho Brahe and Prague: Crossroads of European Science (Acta Historica Astronomiae 16; Frankfurt am Main: Harri Deutsch, 2002).",
+   "contributes": "The Bohemian patrons and dedicatees — Hasenburg, Pruskovský — and the royal nativities."
+  },
+  {
+   "id": "S_GIGAS",
+   "label": "Gigas, 'Nogle Bøger fra Tycho Brahes Bogbinderi' (1900)",
+   "full": "Emil Gigas, 'Nogle Bøger fra Tycho Brahes Bogbinderi', Bogvennen (Copenhagen, 1900).",
+   "contributes": "The presentation bindings of the royal nativities (GKS 1822–1823)."
+  },
+  {
+   "id": "S_DEMUNDI",
+   "label": "Brahe, De mundi aetherei recentioribus phaenomenis (1588)",
+   "full": "Tycho Brahe, De mundi aetherei recentioribus phaenomenis liber secundus (Uraniborg, 1588 [dated 1587]), p. 284.",
+   "contributes": "Tycho's own printed notice of the painter Gemperlin's death.",
+   "url": "../typographica/index.html#ln428",
+   "url_label": "the edition in Typographica"
+  },
+  {
+   "id": "S_EPISTOLARIUM",
+   "label": "The letters (Epistolarium)",
+   "full": "The 509 letters to, from and about Tycho Brahe, 1568–1601, after Dreyer's Opera Omnia and the DSL edition, as modelled in the Tychoniana Epistolarium.",
+   "contributes": "Every letter count in this register, and the biographies of the correspondents known only through their letters.",
+   "url": "../epistolarium/index.html",
+   "url_label": "the Epistolarium"
+  },
+  {
+   "id": "S_THESAURUS",
+   "label": "The Tychoniana agent register",
+   "full": "The agent register of the Tychoniana thesaurus: the 33 persons recorded as author, printer, publisher, dedicatee, scribe, owner or editor of a Tychonic work, manifestation or object.",
+   "contributes": "The 33 core entries and their roles, and the joins to the works printed, the presentation copies and the manuscripts in each hand."
+  },
+  {
+   "id": "S_DIARIUM",
+   "label": "The Hven visitor register (Diarium)",
+   "full": "The meteorological diary kept on Hven 1582–1597 (TBOO IX), its arrivals and departures as modelled in the Tychoniana Diarium.",
+   "contributes": "The dated visits to Hven of 21 persons in this register.",
+   "url": "../diarium/index.html",
+   "url_label": "the Diarium"
+  },
+  {
+   "id": "S_LOCA",
+   "label": "The itinerary (Loca)",
+   "full": "The reconstructed itinerary of Tycho's life as modelled in the Tychoniana Loca, whose stays name the people engaged at each.",
+   "contributes": "The stays at which each person is recorded with Tycho, and the persons of the itinerary this register still lacks.",
+   "url": "../loca/index.html",
+   "url_label": "Loca"
   }
  ],
  "category_colours": {
@@ -71,11 +193,88 @@
   "scribe": "#2d6a4a",
   "craftsman": "#9c6b3f"
  },
+ "category_groups": [
+  {
+   "id": "observers",
+   "label": "Observers and assistants",
+   "categories": [
+    "assistant",
+    "scribe"
+   ]
+  },
+  {
+   "id": "builders",
+   "label": "Builders and craftsmen",
+   "categories": [
+    "craftsman"
+   ]
+  },
+  {
+   "id": "press",
+   "label": "The book trade",
+   "categories": [
+    "printer",
+    "publisher",
+    "bookseller"
+   ]
+  },
+  {
+   "id": "patrons",
+   "label": "Patrons and dedicatees",
+   "categories": [
+    "patron",
+    "dedicatee",
+    "subject"
+   ]
+  },
+  {
+   "id": "peers",
+   "label": "Scientific peers and rivals",
+   "categories": [
+    "astronomer",
+    "mathematician",
+    "antagonist",
+    "annotator",
+    "associate"
+   ]
+  },
+  {
+   "id": "kin",
+   "label": "Family and friends",
+   "categories": [
+    "family",
+    "friend"
+   ]
+  },
+  {
+   "id": "afterlife",
+   "label": "Editors, owners and scholars",
+   "categories": [
+    "editor",
+    "scholar",
+    "source",
+    "owner",
+    "former-owner"
+   ]
+  },
+  {
+   "id": "correspondents",
+   "label": "Correspondents only",
+   "categories": [
+    "correspondent",
+    "intermediary",
+    "author"
+   ]
+  }
+ ],
  "people": [
   {
    "id": "TYCHO",
    "name": "Tycho Brahe",
+   "sort_name": "Brahe, Tycho",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1546,
    "died": 1601,
    "categories": [
@@ -83,45 +282,99 @@
     "astronomer"
    ],
    "connection": "",
-   "letters_sent": 284,
-   "letters_received": 200,
+   "sources": [
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
+   "letters_sent": 283,
+   "letters_received": 203,
+   "epistolarium_keys": [
+    "Tycho Brahe"
+   ],
    "thesaurus_agent": "TYCHO",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "Uraniborg, his island seat"
+   }
   },
   {
    "id": "KEPLER",
    "name": "Johannes Kepler",
+   "sort_name": "Kepler, Johannes",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1571,
    "died": 1630,
    "categories": [
     "associate"
    ],
-   "connection": "Reached Prague in January 1600 and arrived at Benátky on 4 February 1600; inherited Tycho's observation data after October 1601; used it to derive the three laws of planetary motion and compile the Rudolphine Tables (1627). 10 letters while Tycho lived.",
+   "connection": "Reached Prague in January 1600 and arrived at Benátky on 4 February 1600; held Tycho's observation records after October 1601.",
+   "sources": [
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 5,
    "letters_received": 5,
+   "epistolarium_keys": [
+    "Johannes Kepler"
+   ],
    "thesaurus_agent": "KEPLER",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Prague",
+    "lat": 50.075,
+    "lon": 14.438,
+    "basis": "joined Tycho in Bohemia, 1600"
+   }
   },
   {
    "id": "CRAIG",
    "name": "John Craig",
+   "sort_name": "Craig, John",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "antagonist"
    ],
-   "connection": "Edinburgh physician, later physician to James VI; initially a follower, then a persistent antagonist over atmospheric refraction and cometary parallax. 9 letters.",
+   "connection": "Edinburgh physician, later physician to James VI; initially a follower, then a persistent antagonist over atmospheric refraction and cometary parallax.",
+   "sources": [
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 7,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "John Craig"
+   ],
    "thesaurus_agent": "CRAIG",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Edinburgh",
+    "lat": 55.953,
+    "lon": -3.188,
+    "basis": "Edinburgh physician"
+   }
   },
   {
    "id": "LONGO",
    "name": "Christen Sørensen Longomontanus",
+   "sort_name": "Longomontanus, Christen Sørensen",
    "name_latin": "",
+   "name_variants": [
+    "Christian Sørensen Longomontanus",
+    "Christen Sorensen Longomontanus",
+    "Christen Longomontanus",
+    "Longomontanus",
+    "Christian Severin"
+   ],
+   "entry_kind": "person",
    "born": 1562,
    "died": 1647,
    "categories": [
@@ -130,15 +383,33 @@
     "correspondent"
    ],
    "connection": "Tycho's chief calculator; served on Hven 1589–97 and at Benátky in Bohemia January–August 1600. Son of Jutland peasants, he later became professor at Copenhagen and wrote Astronomia Danica (1622), the textbook of the Tychonic world-system. (Christianson; Thoren)",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_THOREN",
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 7,
+   "epistolarium_keys": [
+    "Christen Sørensen Longomontanus"
+   ],
    "thesaurus_agent": "LONGO",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "Uraniborg assistant 1589–97"
+   }
   },
   {
    "id": "PRATENSIS",
    "name": "Johannes Pratensis",
+   "sort_name": "Pratensis, Johannes",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1543,
    "died": 1576,
    "categories": [
@@ -146,15 +417,33 @@
     "former-owner"
    ],
    "connection": "Professor of medicine at Copenhagen and Tycho's closest early friend; partly at his urging Tycho published De nova stella (1573), prefaced by their exchange of letters. Died 1576, and was commemorated by an Epitaphium from the Uraniborg press. (Christianson, On Tycho's Island, 2000; Nielsen)",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_NIELSEN1921",
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 4,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Johannes Pratensis"
+   ],
    "thesaurus_agent": "PRATENSIS",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "royal physician, Tycho's friend"
+   }
   },
   {
    "id": "BARTHOLIN",
    "name": "Erasmus (Rasmus) Bartholin",
+   "sort_name": "Bartholin, Erasmus (Rasmus)",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1625,
    "died": 1698,
    "categories": [
@@ -162,30 +451,53 @@
     "owner"
    ],
    "connection": "Posthumous editor, not a contemporary (b. 1625): commissioned by Frederik III in 1664 to edit Tycho's observations from the Copenhagen autographs, with the young Ole Rømer transcribing, though the edition was never completed. Discovered double refraction (1669). (Dreyer)",
+   "sources": [
+    "S_DREYER",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "BARTHOLIN",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Copenhagen professor; commissioned 1664 to edit Tycho's observations (never completed)"
+   }
   },
   {
    "id": "FROM",
    "name": "Jørgen From",
+   "sort_name": "From, Jørgen",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": 1651,
    "categories": [
     "owner"
    ],
    "connection": "Copenhagen professor of astronomy who succeeded Longomontanus in 1647; a later custodian of Tychonic manuscripts who in 1647–48 supplied material (through Olaus Worm) to Gassendi's biography — not a contemporary of Tycho. (Norlind; Christianson)",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "FROM",
-   "in_agents": true
+   "in_agents": true,
+   "seat": null
   },
   {
    "id": "MORSING",
    "name": "Elias Olsen Morsing",
+   "sort_name": "Morsing, Elias Olsen",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": 1590,
    "categories": [
@@ -193,15 +505,33 @@
     "author"
    ],
    "connection": "Assistant at Uraniborg 1583–90; in 1584 Tycho sent him to Frombork to remeasure the latitude of Copernicus's observatory. Named author of the printed Diarium for 1586 and a tract on the comet of 1585. (Christianson, On Tycho's Island, 2000)",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "MORSING",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "Uraniborg assistant"
+   }
   },
   {
    "id": "FLEMLOES",
    "name": "Peder Jacobsen Flemløs",
+   "sort_name": "Flemløs, Peder Jacobsen",
    "name_latin": "",
+   "name_variants": [
+    "Peter Jacobsen Flemlose",
+    "Peder Jakobsen Flemlose",
+    "Peder Jacobsen Flemløse"
+   ],
+   "entry_kind": "person",
    "born": 1554,
    "died": 1598,
    "categories": [
@@ -209,135 +539,264 @@
     "author"
    ],
    "connection": "In Tycho's service from the 1574 Copenhagen oration, possibly abroad with him in 1575, and his leading assistant on Hven 1577–88 as principal recorder of astronomical observations; named author of En Elementisch oc Jordisch Astrologia (1591), the only Danish-language Uraniborg imprint. Died 1598. (Christianson, On Tycho's Island, pp. 76, 138, 282; Nielsen)",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "FLEMLOES",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "Uraniborg assistant"
+   }
   },
   {
    "id": "GASCHITZ",
    "name": "Hans Gaschitz",
+   "sort_name": "Gaschitz, Hans",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "printer"
    ],
    "connection": "Printer named in the colophons of both editions of Flemløs's Astrologia (Uraniborg, 1591), including the only Danish-language Uraniborg book; otherwise unidentified. (Nielsen, Bogtrykkeri paa Hveen)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "GASCHITZ",
-   "in_agents": true
+   "in_agents": true,
+   "seat": null
   },
   {
    "id": "WEIDA",
    "name": "Christopher Weida",
+   "sort_name": "Weida, Christopher",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "printer"
    ],
    "connection": "Printer named in the colophon of De mundi … Liber Secundus (Uraniborg, 1588) as 'Authoris Typographus Christophorus Vveida'; otherwise unidentified. (Nielsen)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "WEIDA",
-   "in_agents": true
+   "in_agents": true,
+   "seat": null
   },
   {
    "id": "DEOHR",
    "name": "Philip de Ohr",
+   "sort_name": "Ohr, Philip de",
    "name_latin": "",
+   "name_variants": [
+    "Philipp von Ohr"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "printer"
    ],
    "connection": "Hamburg printer who operated Tycho's travelling press at Wandsbek for the Mechanica (1598), supplying the type and the decorative borders from his own Hamburg shop. (Nielsen, Bogtrykkeri paa Hveen)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "DEOHR",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Hamburg",
+    "lat": 53.55,
+    "lon": 9.99,
+    "basis": "printer of the Mechanica (Wandsbek/Hamburg)"
+   }
   },
   {
    "id": "HULSIUS",
    "name": "Levinus Hülsius",
+   "sort_name": "Hülsius, Levinus",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "publisher"
    ],
    "connection": "Nuremberg and Frankfurt cosmographer-publisher who, after Tycho's death, acquired the Mechanica blocks from Tengnagel and issued the 1602 Nuremberg reprint, and reissued the remaining stock of the Epistolae (1596). (Nielsen)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "HULSIUS",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Frankfurt",
+    "lat": 50.111,
+    "lon": 8.682,
+    "basis": "Frankfurt/Nuremberg publisher"
+   }
   },
   {
    "id": "LOCHNER",
    "name": "Christoph Lochner",
+   "sort_name": "Lochner, Christoph",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "printer"
    ],
    "connection": "Nuremberg printer who set the 1602 Nuremberg reprint of the Mechanica (its only commercially distributed edition) from the original blocks acquired by Levinus Hülsius. (Nielsen)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "LOCHNER",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Nuremberg",
+    "lat": 49.452,
+    "lon": 11.077,
+    "basis": "Nuremberg printer (posthumous re-issues)"
+   }
   },
   {
    "id": "TAMPACH",
    "name": "Gottfried Tampach",
+   "sort_name": "Tampach, Gottfried",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "publisher"
    ],
    "connection": "Frankfurt bookseller and Hülsius's successor; in 1610 reissued the three surviving Tycho works (Progymnasmata, De mundi Liber II, Epistolae) under his own imprint with new title-leaves. (Nielsen, Bogtrykkeri paa Hveen)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "TAMPACH",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Frankfurt",
+    "lat": 50.111,
+    "lon": 8.682,
+    "basis": "Frankfurt publisher (posthumous re-issues)"
+   }
   },
   {
    "id": "VINGAARD",
    "name": "Mads Vingaard (Matthias Vinitor)",
+   "sort_name": "Vingaard, Mads (Matthias Vinitor)",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "printer"
    ],
    "connection": "Copenhagen printer; produced Tycho's first publication, the single-leaf elegy Carmen ad fratrem (1572), a year before De nova stella. (Nielsen)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "VINGAARD",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Copenhagen printer"
+   }
   },
   {
    "id": "BENEDICHT",
    "name": "Lorentz Benedicht",
+   "sort_name": "Benedicht, Lorentz",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "printer"
    ],
    "connection": "Copenhagen printer holding a royal monopoly from 1565; printed Tycho's first book, De nova stella (1573). (Nielsen; Dansk Biografisk Leksikon)",
+   "sources": [
+    "S_NIELSEN1921",
+    "S_DBL",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "BENEDICHT",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Copenhagen printer"
+   }
   },
   {
    "id": "CHR4",
-   "name": "Christian IV of Denmark",
+   "name": "Christian IV, King of Denmark",
+   "sort_name": "Christian IV, King of Denmark",
    "name_latin": "",
+   "name_variants": [
+    "Christian 4.",
+    "Christian IV",
+    "Prince Christian (later Christian IV)",
+    "Christian IV (minor, under regents)",
+    "Crown prince Christian (IV)",
+    "Christian (IV), king-elect",
+    "King Christian IV",
+    "Christian IV of Denmark"
+   ],
+   "entry_kind": "person",
    "born": 1577,
    "died": 1648,
    "categories": [
@@ -346,15 +805,38 @@
     "correspondent"
    ],
    "connection": "King of Denmark from 1588; Tycho cast his nativity as a new-born prince in 1577, but under his reign Tycho's pension and Norwegian fief were withdrawn, forcing his departure from Denmark in 1597. (Dreyer; Crossroads Prague)",
+   "sources": [
+    "S_DREYER",
+    "S_CROSSROADS",
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 9,
    "letters_received": 5,
+   "epistolarium_keys": [
+    "Christian 4."
+   ],
    "thesaurus_agent": "CHR4",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "King of Denmark"
+   }
   },
   {
    "id": "RUDOLF2",
    "name": "Rudolf II, Holy Roman Emperor",
+   "sort_name": "Rudolf II, Holy Roman Emperor",
    "name_latin": "",
+   "name_variants": [
+    "Rudolf 2.",
+    "Kejser Rudolf II",
+    "Rudolf II",
+    "Emperor Rudolf II"
+   ],
+   "entry_kind": "person",
    "born": 1552,
    "died": 1612,
    "categories": [
@@ -363,60 +845,118 @@
     "correspondent"
    ],
    "connection": "Tycho's imperial patron from 1599 and dedicatee of the Mechanica (1598); he appointed Tycho Imperial Mathematician and provided Benátky castle as an observatory. (Crossroads Prague; Dreyer)",
+   "sources": [
+    "S_DREYER",
+    "S_CROSSROADS",
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 5,
+   "epistolarium_keys": [
+    "Rudolf 2."
+   ],
    "thesaurus_agent": "RUDOLF2",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Prague",
+    "lat": 50.075,
+    "lon": 14.438,
+    "basis": "Holy Roman Emperor, Prague court"
+   }
   },
   {
    "id": "JOHANNADOLF",
    "name": "Johann Adolf, Bishop of Lübeck",
+   "sort_name": "Johann Adolf, Bishop of Lübeck",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1575,
    "died": 1616,
    "categories": [
     "dedicatee"
    ],
    "connection": "Duke of Holstein-Gottorp and Christian IV's brother-in-law; received a presentation copy of the Epistolae astronomicae (1596) in green satin bearing Tycho's written dedication to him, and the manuscript star catalogue carrying Tycho's autograph verse. (Gigas)",
+   "sources": [
+    "S_GIGAS",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "JOHANNADOLF",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Lübeck",
+    "lat": 53.866,
+    "lon": 10.687,
+    "basis": "Bishop of Lübeck"
+   }
   },
   {
    "id": "ULRIK",
-   "name": "Prince Ulrik of Denmark",
+   "name": "Ulrik, Prince of Denmark",
+   "sort_name": "Ulrik, Prince of Denmark",
    "name_latin": "",
+   "name_variants": [
+    "Prince Ulrik of Denmark",
+    "Prince Ulrik"
+   ],
+   "entry_kind": "person",
    "born": 1578,
    "died": 1624,
    "categories": [
     "subject"
    ],
    "connection": "Second son of Frederik II; Tycho cast his nativity in 1579 as a court-astronomer duty, the horoscope surviving as KB GKS 1822 in a green velvet binding. (Crossroads Prague; Gigas)",
+   "sources": [
+    "S_CROSSROADS",
+    "S_GIGAS",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "ULRIK",
-   "in_agents": true
+   "in_agents": true,
+   "seat": null
   },
   {
    "id": "HANS",
-   "name": "Duke Hans (Hans the Younger)",
+   "name": "Hans, Prince of Denmark",
+   "sort_name": "Hans, Prince of Denmark",
    "name_latin": "",
+   "name_variants": [
+    "Duke Hans (Hans the Younger)",
+    "Duke Hans"
+   ],
+   "entry_kind": "person",
    "born": 1583,
    "died": 1602,
    "categories": [
     "subject"
    ],
    "connection": "Third son of Frederik II; Tycho cast his nativity in 1583, the horoscope surviving as KB GKS 1823, a pair with Prince Ulrik's. (Crossroads Prague; Gigas)",
+   "sources": [
+    "S_CROSSROADS",
+    "S_GIGAS",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "HANS",
-   "in_agents": true
+   "in_agents": true,
+   "seat": null
   },
   {
    "id": "NIELSEN_L",
    "name": "Lauritz Nielsen",
+   "sort_name": "Nielsen, Lauritz",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1881,
    "died": 1947,
    "categories": [
@@ -424,15 +964,29 @@
     "source"
    ],
    "connection": "Modern scholar, not a contemporary (1881–1947): the Royal Library book historian whose Dansk Bibliografi 1551–1600 (1931–1933) and 'Tycho Brahes Bogtrykkeri paa Hveen' (1921) are the standard descriptions of Tycho's printed corpus and the Uraniborg press. (Dansk Biografisk Leksikon)",
+   "sources": [
+    "S_DBL",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "NIELSEN_L",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Danish bibliographer (Royal Library)"
+   }
   },
   {
    "id": "DREYER_J",
    "name": "J. L. E. Dreyer",
+   "sort_name": "Dreyer, J. L. E.",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1852,
    "died": 1926,
    "categories": [
@@ -440,32 +994,60 @@
     "editor",
     "source"
    ],
-   "connection": "Modern scholar, not a contemporary (1852–1926): the Armagh astronomer who wrote the standard biography Tycho Brahe (1890) and edited the 15-volume Opera Omnia (1913–29), the backbone of modern Tycho research.",
+   "connection": "Modern scholar, not a contemporary (1852–1926): the Armagh astronomer who wrote the standard biography Tycho Brahe (1890) and edited the 15-volume Opera Omnia (1913–29).",
+   "sources": [
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "DREYER_J",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Danish-born astronomer and biographer"
+   }
   },
   {
    "id": "FRIIS",
    "name": "F. R. Friis",
+   "sort_name": "Friis, F. R.",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1836,
    "died": 1910,
    "categories": [
     "scholar",
     "source"
    ],
-   "connection": "Modern scholar, not a contemporary (1836–1910): the leading Danish Tycho scholar before Dreyer, who wrote the first modern Danish biography (1871) and the foundational edition of Tycho's letters and documents (1875). (Dansk Biografisk Leksikon)",
+   "connection": "Modern scholar, not a contemporary (1836–1910): the Danish Tycho scholar before Dreyer, who wrote the first modern Danish biography (1871) and the edition of Tycho's letters and documents (1875). (Dansk Biografisk Leksikon)",
+   "sources": [
+    "S_DREYER",
+    "S_DBL",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "FRIIS",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Danish scholar"
+   }
   },
   {
    "id": "FROBENIUS",
    "name": "Georg Ludwig Frobenius",
+   "sort_name": "Frobenius, Georg Ludwig",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1566,
    "died": 1645,
    "categories": [
@@ -474,15 +1056,31 @@
     "author"
    ],
    "connection": "Hamburg printer-bookseller and mathematician who spent about six weeks in the familia on Hven in 1591; the true author of GKS 320, a four-world-systems treatise long mis-catalogued as a Tycho autograph. (Christianson, On Tycho's Island, 2000)",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "FROBENIUS",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Hamburg",
+    "lat": 53.55,
+    "lon": 9.99,
+    "basis": "Hamburg mathematician and bookseller"
+   }
   },
   {
    "id": "WITTICH",
    "name": "Paul Wittich",
+   "sort_name": "Wittich, Paul",
    "name_latin": "",
+   "name_variants": [
+    "Paulus Wittichius"
+   ],
+   "entry_kind": "person",
    "born": 1546,
    "died": 1586,
    "categories": [
@@ -490,15 +1088,34 @@
     "annotator"
    ],
    "connection": "Itinerant Wrocław astronomer who visited Hven briefly in 1580; credited with a practical form of prosthaphaeresis. His annotated De revolutionibus copies were misattributed to Tycho until Gingerich and Westman identified the hand in 1988. (Gingerich & Westman, The Wittich Connection, 1988)",
+   "sources": [
+    "S_GINGERICH_WESTMAN",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "WITTICH",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Wrocław",
+    "lat": 51.108,
+    "lon": 17.039,
+    "basis": "Silesian astronomer (Breslau)"
+   }
   },
   {
    "id": "MONAU",
-   "name": "Jakob Monau (Monavius)",
+   "name": "Jacob Monau (Monavius)",
+   "sort_name": "Monau, Jacob (Monavius)",
    "name_latin": "",
+   "name_variants": [
+    "Jacob Monavius",
+    "Jakob Monau",
+    "Jacob Monaw (Monavius)",
+    "Jakob Monau (Monavius)"
+   ],
+   "entry_kind": "person",
    "born": 1546,
    "died": 1603,
    "categories": [
@@ -507,31 +1124,62 @@
     "correspondent"
    ],
    "connection": "Wrocław humanist who in October 1600 completed Tycho's long pursuit of Paul Wittich's library, conveying the annotated De revolutionibus copies from Wittich's heirs; his 1600 attestation anchors the Wittich-hand attribution. (Gingerich & Westman, The Wittich Connection, 1988)",
+   "sources": [
+    "S_GINGERICH_WESTMAN",
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 3,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Jacob Monavius"
+   ],
    "thesaurus_agent": "MONAU",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Wrocław",
+    "lat": 51.108,
+    "lon": 17.039,
+    "basis": "Silesian intermediary (Breslau)"
+   }
   },
   {
    "id": "REINHOLD",
    "name": "Erasmus Reinhold",
+   "sort_name": "Reinhold, Erasmus",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1511,
    "died": 1553,
    "categories": [
     "astronomer",
     "former-owner"
    ],
-   "connection": "Predecessor, not a contemporary (d. 1553): the Wittenberg professor whose Prutenic Tables (1551), computed from Copernican parameters, were the standard planetary tables Tycho's observational reform set out to supersede. (Dreyer)",
+   "connection": "Predecessor, not a contemporary (d. 1553): the Wittenberg professor author of the Prutenic Tables (1551). (Dreyer)",
+   "sources": [
+    "S_DREYER",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "REINHOLD",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Wittenberg",
+    "lat": 51.866,
+    "lon": 12.648,
+    "basis": "Wittenberg astronomer (Prutenic Tables)"
+   }
   },
   {
    "id": "MATTHIAS",
    "name": "Matthias, Archduke of Austria",
+   "sort_name": "Matthias, Archduke of Austria",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1557,
    "died": 1619,
    "categories": [
@@ -540,15 +1188,40 @@
     "correspondent"
    ],
    "connection": "Rudolf II's brother and eventual successor as Emperor; in May 1600 Tycho sent him the Mechanica, the manuscript star catalogue, and a celestial globe together. His Mechanica copy survives at the Austrian National Library, Vienna. (Dreyer; Mosley)",
+   "sources": [
+    "S_DREYER",
+    "S_MOSLEY",
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Matthias, Archduke of Austria"
+   ],
    "thesaurus_agent": "MATTHIAS",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Vienna",
+    "lat": 48.208,
+    "lon": 16.374,
+    "basis": "Archduke, later Emperor"
+   }
   },
   {
    "id": "CORRADUZ",
-   "name": "Rudolf Corraduz (Corraducius), Imperial Vice-Chancellor",
+   "name": "Rudolf Coraduz (Corraducius)",
+   "sort_name": "Coraduz, Rudolf (Corraducius)",
    "name_latin": "",
+   "name_variants": [
+    "Rudolf Coraduz",
+    "Rudolf Corraduc",
+    "Rudolf Corraducius",
+    "Rudolf von Coraduz (Coraducius)",
+    "Rudolf Corraduz",
+    "Rudolf Corraduz (Corraducius), Imperial Vice-Chancellor"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": 1606,
    "categories": [
@@ -557,15 +1230,33 @@
     "correspondent"
    ],
    "connection": "Imperial Vice-Chancellor under Rudolf II and a key target of Tycho's court gift-campaign, receiving the Epistolae, the Mechanica, the manuscript star catalogue, and a celestial globe. (Dreyer; Mosley)",
+   "sources": [
+    "S_DREYER",
+    "S_MOSLEY",
+    "S_THESAURUS",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Rudolf Coraduz"
+   ],
    "thesaurus_agent": "CORRADUZ",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Prague",
+    "lat": 50.075,
+    "lon": 14.438,
+    "basis": "Imperial Vice-Chancellor, Prague"
+   }
   },
   {
    "id": "HASENBURG",
    "name": "Jan Zbyněk Zajíc z Házmburka (Johann von Hasenburg)",
+   "sort_name": "Zajíc z Házmburka, Jan Zbyněk (Johann von Hasenburg)",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1565,
    "died": 1616,
    "categories": [
@@ -573,15 +1264,33 @@
     "dedicatee"
    ],
    "connection": "Bohemian baron and ardent alchemist, one of Tycho's closest Prague friends; dedicatee of a Mechanica (Strahov AG XI 56) and of the Progymnasmata copy bearing the canonical full-figure portrait of Tycho. (Dreyer; Crossroads Prague)",
+   "sources": [
+    "S_DREYER",
+    "S_CROSSROADS",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "HASENBURG",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Prague",
+    "lat": 50.075,
+    "lon": 14.438,
+    "basis": "Bohemian noble patron"
+   }
   },
   {
    "id": "PRUSKOVSKY",
-   "name": "Pruskovský (Prussinowsky) von Pruskow",
+   "name": "Ulrich Desiderius Pruskovský von Pruskov",
+   "sort_name": "Pruskovský von Pruskov, Ulrich Desiderius",
    "name_latin": "",
+   "name_variants": [
+    "Ulrich Desiderius Pruskowski",
+    "Pruskovský (Prussinowsky) von Pruskow"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -589,15 +1298,33 @@
     "dedicatee"
    ],
    "connection": "Bohemian baron and Imperial Chamberlain under Rudolf II; dedicatee of a Mechanica with Tycho's autograph dated 12 March 1601, now in the National Museum, Prague. (Crossroads Prague)",
+   "sources": [
+    "S_CROSSROADS",
+    "S_THESAURUS"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "PRUSKOVSKY",
-   "in_agents": true
+   "in_agents": true,
+   "seat": {
+    "place": "Prague",
+    "lat": 50.075,
+    "lon": 14.438,
+    "basis": "Bohemian/Moravian noble patron"
+   }
   },
   {
    "id": "COR_THADDAEUS_HAGECIUS",
    "name": "Thaddaeus Hagecius",
+   "sort_name": "Hagecius, Thaddaeus (Hájek)",
    "name_latin": "Thaddaeus Hagecius ab Hayek",
+   "name_variants": [
+    "Thaddaeus Hagecius (Tadeas Hajek)",
+    "Thaddaeus Hagecius (Hájek)",
+    "Tadeáš Hájek"
+   ],
+   "entry_kind": "person",
    "born": 1526,
    "died": 1600,
    "categories": [
@@ -606,31 +1333,61 @@
     "correspondent"
    ],
    "connection": "Imperial court physician in Prague; Tycho's closest scientific ally in Bohemia. Urged Rudolf II to invite Tycho to Prague.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 16,
    "letters_received": 21,
+   "epistolarium_keys": [
+    "Thaddaeus Hagecius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Prague",
+    "lat": 50.075,
+    "lon": 14.438,
+    "basis": "imperial court physician, Prague"
+   }
   },
   {
    "id": "COR_HOLGER_ROSENKRANTZ",
    "name": "Holger Rosenkrantz",
+   "sort_name": "Rosenkrantz, Holger",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1574,
    "died": 1642,
    "categories": [
     "patron",
     "correspondent"
    ],
-   "connection": "Danish noble, theologian, and humanist; Tycho family connection. 25 letters.",
+   "connection": "Danish noble, theologian, and humanist; Tycho family connection.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 3,
    "letters_received": 22,
+   "epistolarium_keys": [
+    "Holger Rosenkrantz"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Danish noble and theologian"
+   }
   },
   {
    "id": "COR_WILHELM_4_LANDGREVE_AF_H",
    "name": "Wilhelm IV, Landgrave of Hesse-Kassel",
+   "sort_name": "Wilhelm IV, Landgrave of Hesse-Kassel",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1532,
    "died": 1592,
    "categories": [
@@ -638,172 +1395,351 @@
     "astronomer",
     "correspondent"
    ],
-   "connection": "Built the Kassel observatory — among the first permanent observatories in Europe — and observed in it himself; the Hven–Kassel correspondence (1586–92) on the Tychonic world-system and star positions is the most sustained scientific correspondence Tycho conducted. 23 letters.",
+   "connection": "Built the Kassel observatory and observed in it himself; party to the Hven–Kassel correspondence (1586–92) on the Tychonic world-system and star positions.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 13,
    "letters_received": 10,
+   "epistolarium_keys": [
+    "Wilhelm 4., landgreve af Hessen-Kassel"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Kassel",
+    "lat": 51.313,
+    "lon": 9.48,
+    "basis": "Landgrave of Hesse-Kassel"
+   }
   },
   {
    "id": "COR_CHRISTOPHER_ROTHMANN",
-   "name": "Christopher Rothmann",
+   "name": "Christoph Rothmann",
+   "sort_name": "Rothmann, Christoph",
    "name_latin": "Christophorus Rotmannus",
+   "name_variants": [
+    "Christopher Rothmann"
+   ],
+   "entry_kind": "person",
    "born": 1555,
    "died": 1605,
    "categories": [
     "astronomer",
     "correspondent"
    ],
-   "connection": "Court mathematician at Kassel; heliocentrist who argued vigorously with Tycho about the world-system in the 1586–90 correspondence published in the Epistolae Astronomicae (1596). 22 letters.",
+   "connection": "Court mathematician at Kassel; heliocentrist who argued with Tycho about the world-system in the 1586–90 correspondence published in the Epistolae Astronomicae (1596).",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 10,
    "letters_received": 12,
+   "epistolarium_keys": [
+    "Christopher Rothmann"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Kassel",
+    "lat": 51.313,
+    "lon": 9.48,
+    "basis": "court mathematician at Kassel"
+   }
   },
   {
    "id": "COR_HEINRICH_BRUCAEUS",
    "name": "Heinrich Brucaeus",
+   "sort_name": "Brucaeus, Heinrich",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1530,
    "died": 1593,
    "categories": [
     "astronomer",
     "correspondent"
    ],
-   "connection": "Rostock physician-mathematician; early supporter and scientific discussant; 17 letters 1576-1589.",
+   "connection": "Rostock physician-mathematician; early supporter and scientific discussant.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 14,
    "letters_received": 3,
+   "epistolarium_keys": [
+    "Heinrich Brucaeus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Rostock",
+    "lat": 54.089,
+    "lon": 12.14,
+    "basis": "Rostock physician-mathematician"
+   }
   },
   {
    "id": "COR_HENRIK_RANTZAU",
    "name": "Henrik Rantzau",
+   "sort_name": "Rantzau, Henrik",
    "name_latin": "Henricus Ranzovius",
+   "name_variants": [
+    "Heinrich Rantzau",
+    "Henricus Ranzovius"
+   ],
+   "entry_kind": "person",
    "born": 1526,
    "died": 1598,
    "categories": [
     "patron",
     "correspondent"
    ],
-   "connection": "Holstein nobleman, humanist polymath, amateur astrologer; hosted Tycho at Wandsbek 1597-98 when Tycho printed the Mechanica. 15 letters.",
+   "connection": "Holstein nobleman, humanist polymath, amateur astrologer; hosted Tycho at Wandsbek 1597–98 when Tycho printed the Mechanica.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 14,
+   "epistolarium_keys": [
+    "Henrik Rantzau"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Segeberg",
+    "lat": 53.93,
+    "lon": 10.31,
+    "basis": "Holstein statesman; hosted Tycho at Wandsbek"
+   }
   },
   {
    "id": "COR_ANDERS_SØRENSEN_VEDEL",
    "name": "Anders Sørensen Vedel",
+   "sort_name": "Vedel, Anders Sørensen",
    "name_latin": "",
+   "name_variants": [
+    "Anders Sorensen Vedel",
+    "Andreas Severinus Velleius"
+   ],
+   "entry_kind": "person",
    "born": 1542,
    "died": 1616,
    "categories": [
     "correspondent"
    ],
-   "connection": "Danish historian and translator; childhood friend of Tycho; 12 letters.",
+   "connection": "Danish historian and translator; childhood friend of Tycho.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 12,
+   "epistolarium_keys": [
+    "Anders Sørensen Vedel"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Ribe",
+    "lat": 55.328,
+    "lon": 8.766,
+    "basis": "Danish historian, Ribe"
+   }
   },
   {
    "id": "COR_GIOVANNI_ANTONIO_MAGINI",
    "name": "Giovanni Antonio Magini",
+   "sort_name": "Magini, Giovanni Antonio",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1555,
    "died": 1617,
    "categories": [
     "astronomer",
     "correspondent"
    ],
-   "connection": "Bologna astronomer and professor of mathematics; initially hostile to the Tychonic system; 10 letters.",
+   "connection": "Bologna astronomer and professor of mathematics; initially hostile to the Tychonic system.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 6,
    "letters_received": 4,
+   "epistolarium_keys": [
+    "Giovanni Antonio Magini"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Bologna",
+    "lat": 44.495,
+    "lon": 11.343,
+    "basis": "Bologna professor of mathematics"
+   }
   },
   {
    "id": "COR_JOHANN_GEORG_HERWART_VON",
    "name": "Johann Georg Herwart von Hohenburg",
+   "sort_name": "Herwart von Hohenburg, Johann Georg",
    "name_latin": "",
+   "name_variants": [
+    "Hans Georg Herwart von Hohenburg"
+   ],
+   "entry_kind": "person",
    "born": 1553,
    "died": 1622,
    "categories": [
     "patron",
     "correspondent"
    ],
-   "connection": "Bavarian chancellor and humanist; later Kepler's important patron.",
+   "connection": "Bavarian chancellor and humanist; later Kepler's patron.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 13,
    "letters_received": 4,
+   "epistolarium_keys": [
+    "Johann Georg Herwart von Hohenburg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Munich",
+    "lat": 48.135,
+    "lon": 11.582,
+    "basis": "Bavarian chancellor"
+   }
   },
   {
    "id": "COR_ANDREAS_MEIER",
    "name": "Andreas Meier",
+   "sort_name": "Meier, Andreas",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
-    "assistant",
     "correspondent"
    ],
-   "connection": "Uraniborg assistant in the 1590s; 7 letters.",
+   "connection": "Rent-master (Rentmeister) of the Mecklenburg ducal treasury at Güstrow, the official through whom Tycho's loan of 10,000 thalers to Duke Ulrich was serviced. The eight letters, 1598–1601, are all about money: Tycho's request for a 100-thaler advance (Wandsbek, March 1598), his quittance for 200 thalers of interest paid in advance (Wittenberg, January 1599), the 600-thaler instalments routed through Bacmeister and Gödelmann at Rostock, and the overdue principal, which Eske Bille was still calling in for Tycho in the summer of 1601. Not a member of the household; an earlier reading of these letters as those of an Uraniborg assistant was mistaken.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
-   "letters_received": 7,
+   "letters_received": 8,
+   "epistolarium_keys": [
+    "Andreas Meier",
+    "[Andreas Meyer, Mecklenburg rent"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Güstrow",
+    "lat": 53.797,
+    "lon": 12.176,
+    "basis": "rent-master of the Mecklenburg ducal treasury"
+   }
   },
   {
    "id": "COR_GEORG_ROLLENHAGEN",
    "name": "Georg Rollenhagen",
+   "sort_name": "Rollenhagen, Georg",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1542,
    "died": 1609,
    "categories": [
     "correspondent"
    ],
-   "connection": "German poet and humanist; 7 letters.",
+   "connection": "German poet and humanist.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 5,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Georg Rollenhagen"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Magdeburg",
+    "lat": 52.12,
+    "lon": 11.627,
+    "basis": "German poet, Magdeburg"
+   }
   },
   {
    "id": "COR_HIERONYMUS_WOLF",
    "name": "Hieronymus Wolf",
+   "sort_name": "Wolf, Hieronymus",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1516,
    "died": 1580,
    "categories": [
     "correspondent"
    ],
-   "connection": "Augsburg humanist and scholar; 7 letters.",
+   "connection": "Augsburg humanist and scholar.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 6,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Hieronymus Wolf"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Augsburg",
+    "lat": 48.37,
+    "lon": 10.898,
+    "basis": "Augsburg humanist"
+   }
   },
   {
    "id": "COR_PETER_YOUNG",
    "name": "Peter Young",
+   "sort_name": "Young, Peter",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1544,
    "died": 1628,
    "categories": [
     "correspondent"
    ],
-   "connection": "Scottish humanist, tutor to James VI; intermediary for Tycho's Scottish correspondence. 7 letters.",
+   "connection": "Scottish humanist, tutor to James VI; intermediary for Tycho's Scottish correspondence.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 6,
+   "epistolarium_keys": [
+    "Peter Young"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Edinburgh",
+    "lat": 55.953,
+    "lon": -3.188,
+    "basis": "tutor to James VI, Scotland"
+   }
   },
   {
    "id": "COR_ULRICH_3",
-   "name": "Duke Ulrich III of Mecklenburg",
+   "name": "Ulrich III, Duke of Mecklenburg",
+   "sort_name": "Ulrich III, Duke of Mecklenburg",
    "name_latin": "",
+   "name_variants": [
+    "Ulrich 3., hertug af Mecklenburg",
+    "Ulrich, Duke of Mecklenburg",
+    "Duke Ulrich III of Mecklenburg"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -811,30 +1747,60 @@
     "correspondent"
    ],
    "connection": "Duke of Mecklenburg.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 7,
    "letters_received": 6,
+   "epistolarium_keys": [
+    "Ulrich 3., hertug af Mecklenburg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Güstrow",
+    "lat": 53.797,
+    "lon": 12.176,
+    "basis": "Duke of Mecklenburg"
+   }
   },
   {
    "id": "COR_ANONYMUS",
-   "name": "Anonymus",
+   "name": "Unnamed correspondents (Anonymus)",
+   "sort_name": "Unnamed correspondents",
    "name_latin": "",
+   "name_variants": [
+    "anonymus",
+    "Anonymus"
+   ],
+   "entry_kind": "unnamed",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 7,
+   "epistolarium_keys": [
+    "Anonymus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_ESKE_BILLE",
    "name": "Eske Bille",
+   "sort_name": "Bille, Eske",
    "name_latin": "",
+   "name_variants": [
+    "Eske (Esge) Bille"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -842,361 +1808,686 @@
     "family"
    ],
    "connection": "Kinsman on the Bille side — correspondent in the post-mortem estate letters of 1601 (Christianson, On Tycho's Island, 2000).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 3,
    "letters_received": 3,
+   "epistolarium_keys": [
+    "Eske Bille"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JACOB_BORDING",
    "name": "Jacob Bording",
+   "sort_name": "Bording, Jacob",
    "name_latin": "",
+   "name_variants": [
+    "Jakob Bording"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Jurist and chancellor to Duke Ulrich of Mecklenburg, later mayor of Lübeck; son of Christian III's physician, he was the intermediary between Tycho and the Duke during the 1597 Rostock exile. 6 letters.",
+   "connection": "Jurist and chancellor to Duke Ulrich of Mecklenburg, later mayor of Lübeck; son of Christian III's physician, he was the intermediary between Tycho and the Duke during the 1597 Rostock exile.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
-   "letters_received": 4,
+   "letters_received": 5,
+   "epistolarium_keys": [
+    "Jacob Bording",
+    "Jakob Bording"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Güstrow",
+    "lat": 53.797,
+    "lon": 12.176,
+    "basis": "chancellor to Duke Ulrich of Mecklenburg"
+   }
   },
   {
    "id": "COR_MARTIN_BRASCH",
    "name": "Martin Brasch",
+   "sort_name": "Brasch, Martin",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Humanist poet and professor of logic at Rostock; he sent Tycho a Carmen on the defence of Várad in 1600. 6 letters.",
+   "connection": "Humanist poet and professor of logic at Rostock; he sent Tycho a Carmen on the defence of Várad in 1600.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
    "letters_received": 4,
+   "epistolarium_keys": [
+    "Martin Brasch"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CHARLES_DE_DANÇAY",
    "name": "Charles de Dançay",
+   "sort_name": "Dançay, Charles de",
    "name_latin": "",
+   "name_variants": [
+    "Charles de Dancey",
+    "Charles de Dancay"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Long-serving French ambassador at the Danish court; one of Tycho's earliest friends in Copenhagen, to whom he showed the new star in 1573 and who laid the foundation stone of Uraniborg in 1576. 5 letters.",
+   "connection": "Long-serving French ambassador at the Danish court; one of Tycho's earliest friends in Copenhagen, to whom he showed the new star in 1573 and who laid the foundation stone of Uraniborg in 1576.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 3,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Charles de Dançay"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "French ambassador to Denmark"
+   }
   },
   {
    "id": "COR_JOHANNES_MAJOR",
    "name": "Johannes Major",
+   "sort_name": "Major, Johannes",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Wittenberg professor of poetics and crowned poet laureate (1558), a lifelong Philippist devoted to Melanchthon. 5 letters.",
+   "connection": "Wittenberg professor of poetics and crowned poet laureate (1558), a lifelong Philippist devoted to Melanchthon.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 4,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Johannes Major"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOSEPH_JUSTUS_SCALIGER",
    "name": "Joseph Justus Scaliger",
+   "sort_name": "Scaliger, Joseph Justus",
    "name_latin": "",
+   "name_variants": [
+    "Joseph Scaliger"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "The pre-eminent classical philologist and chronologist of the age, from 1593 at Leiden; his De emendatione temporum (1583) put ancient chronology on a scientific footing. He received the Epistolae and the Mechanica. 7 letters.",
+   "connection": "Classical philologist and chronologist, from 1593 at Leiden. He received the Epistolae and the Mechanica.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
-   "letters_received": 5,
+   "letters_received": 4,
+   "epistolarium_keys": [
+    "Joseph Justus Scaliger"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Leiden",
+    "lat": 52.16,
+    "lon": 4.497,
+    "basis": "Leiden scholar"
+   }
   },
   {
    "id": "COR_VITUS_WINSHEMIUS",
    "name": "Vitus Winshemius",
+   "sort_name": "Winshemius, Vitus",
    "name_latin": "",
+   "name_variants": [
+    "Veit Winsheim"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
-   "letters_received": 3,
+   "letters_received": 4,
+   "epistolarium_keys": [
+    "Vitus Winshemius",
+    "Veit Winsheim"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_BARTHOLOMAEUS_SCULTETUS",
    "name": "Bartholomaeus Scultetus",
+   "sort_name": "Scultetus, Bartholomaeus",
    "name_latin": "",
+   "name_variants": [
+    "Bartholomæus Scultetus",
+    "Bartholomew Schultz (Scultetus)"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Görlitz mathematician, cartographer and burgomaster; Tycho's one-time tutor in mathematics from their Leipzig student years, and a force behind the Gregorian calendar in Lusatia. 5 letters.",
+   "connection": "Görlitz mathematician, cartographer and burgomaster; Tycho's one-time tutor in mathematics from their Leipzig student years, and a force behind the Gregorian calendar in Lusatia.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 5,
+   "epistolarium_keys": [
+    "Bartholomaeus Scultetus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_DANIEL_CRAMER",
    "name": "Daniel Cramer",
+   "sort_name": "Cramer, Daniel",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Lutheran theologian at Stettin who visited Hven in 1592 and dedicated his Isagoge in Metaphysicam (Hanau 1594) to Tycho; the surviving letters (1598–1600) run from the Duncan Liddel plagiarism affair into the Bohemian exile. Later widely read for his emblematic devotional books. 4 letters.",
+   "connection": "Lutheran theologian at Stettin who visited Hven in 1592 and dedicated his Isagoge in Metaphysicam (Hanau 1594) to Tycho; the surviving letters (1598–1600) run from the Duncan Liddel plagiarism affair into the Bohemian exile. Later widely read for his emblematic devotional books.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Daniel Cramer"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_DRONNING_SOPHIE",
-   "name": "Dronning Sophie",
+   "name": "Sophie of Mecklenburg, Queen of Denmark",
+   "sort_name": "Sophie of Mecklenburg, Queen of Denmark",
    "name_latin": "",
+   "name_variants": [
+    "Queen Sophie",
+    "Dronning Sophie",
+    "Queen Sophie of Denmark"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Queen of Denmark as consort of Frederik II, later dowager queen; she visited Tycho at Hven in 1586 and shared his interests in alchemy and horticulture. (Not his sister Sophie Brahe.) 4 letters.",
+   "connection": "Queen of Denmark as consort of Frederik II, later dowager queen; she visited Tycho at Hven in 1586 and shared his interests in alchemy and horticulture. (Not his sister Sophie Brahe.)",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 4,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Dronning Sophie"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Queen, then Queen Dowager, of Denmark"
+   }
   },
   {
    "id": "COR_ERNST_KURFYRSTE_ÆRKEBISK",
-   "name": "Ernst, kurfyrste, ærkebiskop af Köln",
+   "name": "Ernst of Bavaria, Archbishop-Elector of Cologne",
+   "sort_name": "Ernst of Bavaria, Archbishop-Elector of Cologne",
    "name_latin": "",
+   "name_variants": [
+    "Ernst, Elector-Archbishop of Cologne",
+    "Ernst, kurfyrste, ærkebiskop af Köln"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Wittelsbach Archbishop-Elector of Cologne (and bishop of Liège, Münster, Hildesheim and Freising); despite their confessional difference he welcomed the Epistolae, helped Tycho secure a Spanish printing privilege, and received the Mechanica. 4 letters.",
+   "connection": "Wittelsbach Archbishop-Elector of Cologne (and bishop of Liège, Münster, Hildesheim and Freising); despite their confessional difference he welcomed the Epistolae, helped Tycho secure a Spanish printing privilege, and received the Mechanica.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 4,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Ernst, kurfyrste, ærkebiskop af Köln"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Cologne",
+    "lat": 50.937,
+    "lon": 6.96,
+    "basis": "Archbishop-Elector of Cologne"
+   }
   },
   {
    "id": "COR_JACOB_KURZ",
    "name": "Jacob Kurz",
+   "sort_name": "Kurz, Jacob",
    "name_latin": "",
+   "name_variants": [
+    "Jacob Kurz von Senftenau (Curtius)"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Imperial Vice-Chancellor under Rudolf II with a taste for mathematical astronomy; he obtained an imperial printing privilege for Tycho in 1590 and urged his move to Bohemia, but died in 1594 before Tycho arrived. 4 letters.",
+   "connection": "Imperial Vice-Chancellor under Rudolf II with a taste for mathematical astronomy; he obtained an imperial printing privilege for Tycho in 1590 and urged his move to Bohemia, but died in 1594 before Tycho arrived.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 3,
+   "epistolarium_keys": [
+    "Jacob Kurz"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANN_FRIEDRICH_HOFFMAN",
    "name": "Johann Friedrich Hoffmann",
+   "sort_name": "Hoffmann, Johann Friedrich",
    "name_latin": "",
+   "name_variants": [
+    "Baron Johann Friedrich Hoffmann",
+    "Baron Johann Hoffmann"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Austrian baron (Hoffmann von Grünbüchel) and patron of practical astronomy at the imperial court; in January 1600 he escorted Kepler from Graz to Prague, for which Tycho thanked him as the means of bringing Kepler to him. 4 letters.",
+   "connection": "Austrian baron (Hoffmann von Grünbüchel) and patron of practical astronomy at the imperial court; in January 1600 he escorted Kepler from Graz to Prague, for which Tycho thanked him as the means of bringing Kepler to him.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 3,
+   "epistolarium_keys": [
+    "Johann Friedrich Hoffmann"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_LUCAS_BACMEISTER",
    "name": "Lucas Bacmeister",
+   "sort_name": "Bacmeister, Lucas",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Rostock superintendent and professor of theology, recommended by Melanchthon and with long Danish ties; he kept the very house where Tycho's student duel had taken place and still boarded Danish students there. 4 letters.",
+   "connection": "Rostock superintendent and professor of theology, recommended by Melanchthon and with long Danish ties; he kept the house where Tycho's student duel had taken place and still boarded Danish students there.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Lucas Bacmeister"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_MELCHIOR_JÖSTELIUS",
    "name": "Melchior Jöstelius",
+   "sort_name": "Jöstelius, Melchior",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Wittenberg professor of mathematics from 1594; one of Tycho's closest academic collaborators during his 1598 Wittenberg stay, refining prosthaphaeresis and testing his lunar theory against the eclipse of 1599. 4 letters.",
+   "connection": "Wittenberg professor of mathematics from 1594; one of Tycho's closest academic collaborators during his 1598 Wittenberg stay, refining prosthaphaeresis and testing his lunar theory against the eclipse of 1599.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 4,
+   "epistolarium_keys": [
+    "Melchior Jöstelius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_NIELS_KRAG",
    "name": "Niels Krag",
+   "sort_name": "Krag, Niels",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Danish humanist and diplomat; professor of history at Copenhagen from 1589 and Royal Historiographer of Denmark from 1594; he visited Hven in 1597. 4 letters.",
+   "connection": "Danish humanist and diplomat; professor of history at Copenhagen from 1589 and Royal Historiographer of Denmark from 1594; he visited Hven in 1597.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 3,
+   "epistolarium_keys": [
+    "Niels Krag"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CASPAR_PEUCER",
    "name": "Caspar Peucer",
+   "sort_name": "Peucer, Caspar",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1525,
    "died": 1602,
    "categories": [
     "astronomer",
     "correspondent"
    ],
-   "connection": "Wittenberg mathematician and son-in-law of Melanchthon, at the centre of the Philippist scholarly network; recipient of Tycho's long letter of 13 September 1588, sent with De mundi, setting out his projected programme of works. 3 letters.",
+   "connection": "Wittenberg mathematician and son-in-law of Melanchthon, at the centre of the Philippist scholarly network; recipient of Tycho's long letter of 13 September 1588, sent with De mundi, setting out his projected programme of works.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Caspar Peucer"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Wittenberg",
+    "lat": 51.866,
+    "lon": 12.648,
+    "basis": "Wittenberg mathematician"
+   }
   },
   {
    "id": "COR_CHRISTOPH_STURTZ",
    "name": "Christoph Sturtz",
+   "sort_name": "Sturtz, Christoph",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Livonian-born jurist, long resident in Copenhagen and later professor of history at Rostock (d. 1602); Tycho approached him and Brasch — without success — to finish a Danish chronicle left by Chytraeus. 3 letters.",
+   "connection": "Livonian-born jurist, long resident in Copenhagen and later professor of history at Rostock (d. 1602); Tycho approached him and Brasch — without success — to finish a Danish chronicle left by Chytraeus.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Christoph Sturtz"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_DAVID_CHYTRAEUS",
    "name": "David Chytraeus",
+   "sort_name": "Chytraeus, David",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Leading Rostock Lutheran theologian and church historian, a co-author of the Formula of Concord; Tycho met him during his Rostock studies and corresponded with him to the end of his Danish years. 3 letters.",
+   "connection": "Leading Rostock Lutheran theologian and church historian, a co-author of the Formula of Concord; Tycho met him during his Rostock studies and corresponded with him to the end of his Danish years.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "David Chytraeus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_FREDERIK_2",
-   "name": "Frederik 2.",
+   "name": "Frederik II, King of Denmark",
+   "sort_name": "Frederik II, King of Denmark",
    "name_latin": "",
+   "name_variants": [
+    "Frederick II",
+    "Frederik II",
+    "King Frederik II",
+    "Frederik 2."
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "King of Denmark from 1559; in 1576 he granted Tycho the island of Hven and the revenues to build Uraniborg, and remained his principal patron for over two decades. His death in 1588 began the erosion of royal support that drove Tycho from Denmark. 3 letters.",
+   "connection": "King of Denmark from 1559; in 1576 he granted Tycho the island of Hven and the revenues to build Uraniborg, and in the following years the fiefs and prebends that sustained it — Kullagården (1577), Nordfjord (1578), the Roskilde canonry (1579); his death in April 1588 ended the patronage. (Kancelliets Brevbøger; Dreyer)",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 3,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Frederik 2."
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "King of Denmark, Tycho's patron"
+   }
   },
   {
    "id": "COR_JAQUES_BONGARS",
-   "name": "Jaques Bongars",
+   "name": "Jacques Bongars",
+   "sort_name": "Bongars, Jacques",
    "name_latin": "",
+   "name_variants": [
+    "Jaques Bongars"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "French Huguenot diplomat in Henri IV's service and a classical scholar; he visited Uraniborg in the mid-1580s and later edited the Crusade anthology Gesta Dei per Francos. 4 letters.",
+   "connection": "French Huguenot diplomat in Henri IV's service and a classical scholar; he visited Uraniborg in the mid-1580s and later edited the Crusade anthology Gesta Dei per Francos.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 3,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Jaques Bongars"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHN_MAITLAND",
    "name": "John Maitland",
+   "sort_name": "Maitland, John",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "John Maitland"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Edinburgh",
+    "lat": 55.953,
+    "lon": -3.188,
+    "basis": "Chancellor of Scotland"
+   }
   },
   {
    "id": "COR_PAUL_HAINZEL",
    "name": "Paul Hainzel",
+   "sort_name": "Hainzel, Paul",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 3,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Paul Hainzel"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Augsburg",
+    "lat": 48.37,
+    "lon": 10.898,
+    "basis": "Augsburg patrician; the great quadrant"
+   }
   },
   {
-   "id": "COR_REKTOR_OG_PROFESSORERNE_",
-   "name": "Rektor og professorerne ved Københavns Universitet",
+   "id": "COR_REKTOR_OG_PROFESSORER_VE",
+   "name": "The Rector and Professors of the University of Copenhagen",
+   "sort_name": "Copenhagen, University of (Rector and Professors)",
    "name_latin": "",
+   "name_variants": [
+    "Rektor ved Københavns Universitet",
+    "Rektor og professorer ved Københavns Universitet",
+    "Rektor og professorerne ved Københavns Universitet"
+   ],
+   "entry_kind": "body",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
-   "letters_received": 2,
+   "letters_received": 5,
+   "epistolarium_keys": [
+    "Rektor og professorerne ved Københavns Universitet",
+    "Rektor ved Københavns Universitet",
+    "Rektor og professorer ved Københavns Universitet"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_SOPHIE_BRAHE",
    "name": "Sophie Brahe",
+   "sort_name": "Brahe, Sophie",
    "name_latin": "Sophia Brahea",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1556,
    "died": 1643,
    "dates_display": "1556 or 1559 – 1643",
@@ -1204,31 +2495,59 @@
     "correspondent",
     "family"
    ],
-   "connection": "Tycho's younger sister and most intellectually gifted sibling. Her birth year is contested — Gassendi's account gives 1556, Tycho's own record 1559, and the arguments for the two dates are nearly evenly weighted (Ellefsen). After widowhood from Otto Thott (died 1588), she progressed from garden-making at Eriksholm in Scania to Paracelsian alchemy to judicial astrology, teaching herself from Latin sources translated into Danish at her own expense and from German texts. Tycho celebrated her under the sobriquet URANIA — comparing her favourably to Fulvia Olympia Morata — in his verse preface Urania Titani and in the prose introduction ('Occasio et argumentum', c. 1594) he wrote for her long letter on alchemy and astrology, intended for the never-published second volume of the Epistolae astronomicae. She later remarried Erik Lange (1602). (Christianson, On Tycho's Island; DSL critical edition, Urania Titani.) In her long widowhood she became a serious genealogist of the Danish nobility, whose manuscript lineage-books and heraldic copybooks survive at the Landsarkiv in Lund, and she stood at the centre of a circle of learned Danish noblewomen (Ellefsen, Søsteren og astronomen, 2023).",
+   "connection": "Tycho's younger sister. Her birth year is contested — Gassendi's account gives 1556, Tycho's own record 1559, and the arguments for the two dates are nearly evenly weighted (Ellefsen). After widowhood from Otto Thott (died 1588), she progressed from garden-making at Eriksholm in Scania to Paracelsian alchemy to judicial astrology, teaching herself from Latin sources translated into Danish at her own expense and from German texts. Tycho celebrated her under the sobriquet Urania — comparing her favourably to Fulvia Olympia Morata — in his verse preface Urania Titani and in the prose introduction ('Occasio et argumentum', c. 1594) he wrote for her long letter on alchemy and astrology, intended for the never-published second volume of the Epistolae astronomicae. She later remarried Erik Lange (1602). (Christianson, On Tycho's Island; DSL critical edition, Urania Titani.) In her long widowhood she became a serious genealogist of the Danish nobility, whose manuscript lineage-books and heraldic copybooks survive at the Landsarkiv in Lund, and she stood at the centre of a circle of learned Danish noblewomen (Ellefsen, Søsteren og astronomen, 2023).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_ELLEFSEN",
+    "S_DSL_URANIA",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Sophie Brahe"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "Tycho's sister, helped at Uraniborg"
+   }
   },
   {
    "id": "COR_AXEL_GYLDENSTIERNE",
    "name": "Axel Gyldenstierne",
+   "sort_name": "Gyldenstierne, Axel",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Axel Gyldenstierne"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_BEATE_BILLE",
    "name": "Beate Bille",
+   "sort_name": "Bille, Beate",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -1236,300 +2555,522 @@
     "family"
    ],
    "connection": "Tycho's mother, of the Bille family; mistress of Knudstrup (Christianson, On Tycho's Island, 2000).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Beate Bille"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CHRISTIAN_FRIIS",
    "name": "Christian Friis",
+   "sort_name": "Friis, Christian",
    "name_latin": "",
+   "name_variants": [
+    "Christian Friis of Borreby"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
-   "letters_received": 1,
+   "letters_received": 2,
+   "epistolarium_keys": [
+    "Christian Friis",
+    "Christoffer Valkendorf, Christian Friis"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CHRISTOPHORUS_HENNIOCHUS",
    "name": "Christophorus Henniochus",
+   "sort_name": "Henniochus, Christophorus",
    "name_latin": "",
+   "name_variants": [
+    "Cristophorus Henniochus"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 1,
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
+   "letters_sent": 2,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Christophorus Henniochus",
+    "Cristophorus Henniochus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CORT_ASLAKSEN",
    "name": "Cort Aslaksen",
+   "sort_name": "Aslaksen, Cort",
    "name_latin": "",
+   "name_variants": [
+    "Cort Aslakssen"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Cort Aslaksen"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_COSIMO_CONCINI",
    "name": "Cosimo Concini",
+   "sort_name": "Concini, Cosimo",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Cosimo Concini"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
-   "id": "COR_FERDINANDO_I_DE'_MEDICI",
+   "id": "COR_FERDINANDO_I_DE_MEDICI",
    "name": "Ferdinando I de' Medici",
+   "sort_name": "Ferdinando I de' Medici",
    "name_latin": "",
+   "name_variants": [
+    "Ferdinando de' Medici",
+    "Fernando de' Medici"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 4,
+   "epistolarium_keys": [
+    "Ferdinando I de' Medici"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Florence",
+    "lat": 43.77,
+    "lon": 11.256,
+    "basis": "Grand Duke of Tuscany"
+   }
   },
   {
    "id": "COR_HANS_AALBORG",
    "name": "Hans Aalborg",
+   "sort_name": "Aalborg, Hans",
    "name_latin": "",
+   "name_variants": [
+    "Hans (Johannes) Aalborg"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Hans Aalborg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_HARTWIG_VON_DASSEL",
    "name": "Hartwig von Dassel",
+   "sort_name": "Dassel, Hartwig von",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Hartwig von Dassel"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_HUGO_BLOTIUS",
    "name": "Hugo Blotius",
+   "sort_name": "Blotius, Hugo",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Hugo Blotius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Vienna",
+    "lat": 48.208,
+    "lon": 16.374,
+    "basis": "imperial librarian, Vienna"
+   }
   },
   {
    "id": "COR_JOACHIM_CAMERARIUS",
    "name": "Joachim Camerarius",
+   "sort_name": "Camerarius, Joachim",
    "name_latin": "",
+   "name_variants": [
+    "Joachim Camerarius the Younger"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Joachim Camerarius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Nuremberg",
+    "lat": 49.452,
+    "lon": 11.077,
+    "basis": "Nuremberg physician-humanist"
+   }
   },
   {
    "id": "COR_JOACHIM_FRIEDRICH_KURFYR",
-   "name": "Joachim Friedrich, kurfyrste af Brandenburg",
+   "name": "Joachim Friedrich, Elector of Brandenburg",
+   "sort_name": "Joachim Friedrich, Elector of Brandenburg",
    "name_latin": "",
+   "name_variants": [
+    "Joachim Friedrich",
+    "Joachim Frederick, Margrave of Brandenburg",
+    "Joachim Friedrich, kurfyrste af Brandenburg"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
-   "letters_received": 0,
+   "letters_received": 1,
+   "epistolarium_keys": [
+    "Joachim Friedrich, kurfyrste af Brandenburg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Brandenburg",
+    "lat": 52.398,
+    "lon": 13.066,
+    "basis": "Elector of Brandenburg"
+   }
   },
   {
    "id": "COR_JOHANNES_JESSENIUS",
    "name": "Johannes Jessenius",
+   "sort_name": "Jessenius, Johannes",
    "name_latin": "",
+   "name_variants": [
+    "Johannes Jessenius a Jessen",
+    "Johannes Jessenius (Jan Jesenský)"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 2,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_JOHANNES_JESSENIUS_A_JES",
-   "name": "Johannes Jessenius a Jessen",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 1,
-   "letters_received": 1,
+   "letters_received": 3,
+   "epistolarium_keys": [
+    "Johannes Jessenius",
+    "Johannes Jessenius a Jessen"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Prague",
+    "lat": 50.075,
+    "lon": 14.438,
+    "basis": "anatomist at Prague/Wittenberg"
+   }
   },
   {
-   "id": "COR_JOHANNES_PONTANUS",
-   "name": "Johannes Pontanus",
+   "id": "COR_JOHANNES_ISACIUS_PONTANU",
+   "name": "Johannes Isacius Pontanus",
+   "sort_name": "Pontanus, Johannes Isacius",
    "name_latin": "",
+   "name_variants": [
+    "Johannes Isaksen Pontanus",
+    "Johannes Pontanus"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
+   "letters_sent": 2,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Johannes Pontanus",
+    "Johannes Isacius Pontanus",
+    "Johannes Isaksen Pontanus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_KATHARINA_KURFYRSTINDE_A",
-   "name": "Katharina, kurfyrstinde af Brandenburg",
+   "name": "Katharina, Electress of Brandenburg",
+   "sort_name": "Katharina, Electress of Brandenburg",
    "name_latin": "",
+   "name_variants": [
+    "Catherine, Margravine of Brandenburg-Küstrin",
+    "Katharina, kurfyrstinde af Brandenburg"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 2,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Katharina, kurfyrstinde af Brandenburg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Brandenburg",
+    "lat": 52.398,
+    "lon": 13.066,
+    "basis": "Electress of Brandenburg"
+   }
   },
   {
    "id": "COR_LUDOLF_RIDDERSHUSEN",
    "name": "Ludolf Riddershusen",
+   "sort_name": "Riddershusen, Ludolf",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Ludolf Riddershusen"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_MORITZ_LANDGREVE_AF_HESS",
-   "name": "Moritz, landgreve af Hessen-Kassel",
+   "name": "Moritz, Landgrave of Hesse-Kassel",
+   "sort_name": "Moritz, Landgrave of Hesse-Kassel",
    "name_latin": "",
+   "name_variants": [
+    "Moritz, landgreve af Hessen-Kassel"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 5,
+   "epistolarium_keys": [
+    "Moritz, landgreve af Hessen-Kassel"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_PETRUS_SEVERINUS",
    "name": "Petrus Severinus",
+   "sort_name": "Severinus, Petrus",
    "name_latin": "",
+   "name_variants": [
+    "Peder Sorensen (Severinus)",
+    "Peder Sørensen"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 2,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_REKTOR_VED_KØBENHAVNS_UN",
-   "name": "Rektor ved Københavns Universitet",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 0,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Petrus Severinus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Copenhagen",
+    "lat": 55.676,
+    "lon": 12.568,
+    "basis": "Danish royal physician, Paracelsian"
+   }
   },
   {
    "id": "COR_SIMON_VON_PETKUM",
    "name": "Simon von Petkum",
+   "sort_name": "Petkum, Simon von",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Simon von Petkum"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_TAGE_OTTESEN_THOTT",
    "name": "Tage Ottesen Thott",
+   "sort_name": "Thott, Tage Ottesen",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -1537,105 +3078,183 @@
     "family"
    ],
    "connection": "Tycho's nephew — Sophie Brahe's son by Otto Thott, born 1580; identified in the Hven visitor register's footnotes.",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Tage Ottesen Thott"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_THOMAS_CRAIG",
    "name": "Thomas Craig",
+   "sort_name": "Craig, Thomas",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Thomas Craig"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Edinburgh",
+    "lat": 55.953,
+    "lon": -3.188,
+    "basis": "Scottish jurist"
+   }
   },
   {
    "id": "COR_TOBIAS_FISCHER",
    "name": "Tobias Fischer",
+   "sort_name": "Fischer, Tobias",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Tobias Fischer"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_VINCENT_MOLLER",
    "name": "Vincent Moller",
+   "sort_name": "Moller, Vincent",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Vincent Moller"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_WOLFGANG_FRANZIUS",
    "name": "Wolfgang Franzius",
+   "sort_name": "Franzius, Wolfgang",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Wolfgang Franzius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_AN_ANONYMOUS_LADY",
-   "name": "An anonymous lady",
+   "name": "An unnamed lady",
+   "sort_name": "Unnamed lady",
    "name_latin": "",
+   "name_variants": [
+    "An anonymous lady"
+   ],
+   "entry_kind": "unnamed",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "An anonymous lady"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_ANDERS_CHRISTENSEN",
    "name": "Anders Christensen",
+   "sort_name": "Christensen, Anders",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
-   "connection": "Dr. med. Anders Christensen, professor of medicine and later Rector Magnificus of the University of Copenhagen; Tycho's correspondent and legal intermediary, whom Tycho asked in June 1591 to convene the professors to take depositions in the Rasmus Pedersen suit. (Friis, Breve og Aktstykker 1875, no. 2, pp.3-4.)",
+   "connection": "Dr. med. Anders Christensen, professor of medicine and later Rector Magnificus of the University of Copenhagen; Tycho's correspondent and legal intermediary, whom Tycho asked in June 1591 to convene the professors to take depositions in the Rasmus Pedersen suit. (Friis, Breve og Aktstykker 1875, no. 2, pp. 3–4.)",
+   "sources": [
+    "S_FRIIS1875",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Anders Christensen"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_AXEL_BRAHE",
    "name": "Axel Brahe",
+   "sort_name": "Brahe, Axel",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -1643,225 +3262,339 @@
     "family"
    ],
    "connection": "Tycho's brother (Christianson, On Tycho's Island, 2000).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Axel Brahe"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_BALTHASAR_CAMINAEUS",
    "name": "Balthasar Caminaeus",
+   "sort_name": "Caminaeus, Balthasar",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Balthasar Caminaeus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_BERKA_ZBYNĚK_ARCHBISHOP_",
-   "name": "Berka Zbyněk, archbishop of Prague",
+   "name": "Zbyněk Berka z Dubé, Archbishop of Prague",
+   "sort_name": "Berka z Dubé, Zbyněk, Archbishop of Prague",
    "name_latin": "",
+   "name_variants": [
+    "Berka Zbyněk, archbishop of Prague"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Berka Zbyněk, archbishop of Prague"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_BIRGITTE_BØLLE",
    "name": "Birgitte Bølle",
+   "sort_name": "Bølle, Birgitte",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Birgitte Bølle"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_BORGMESTRE_OG_RÅD_I_HAMB",
-   "name": "Borgmestre og råd i Hamborg",
+   "name": "The Mayors and Council of Hamburg",
+   "sort_name": "Hamburg, Mayors and Council of",
    "name_latin": "",
+   "name_variants": [
+    "Borgmestre og råd i Hamborg"
+   ],
+   "entry_kind": "body",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Borgmestre og råd i Hamborg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CHRISTIAN_II_ELECTOR_OF_",
    "name": "Christian II, Elector of Saxony",
+   "sort_name": "Christian II, Elector of Saxony",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Christian II, Elector of Saxony"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CHRISTINA_VON_HALLE",
    "name": "Christina von Halle",
+   "sort_name": "Halle, Christina von",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_CHRISTOFFER_VALKENDORF_C",
-   "name": "Christoffer Valkendorf, Christian Friis",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Christina von Halle"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_CLAUS_MULE",
    "name": "Claus Mule",
+   "sort_name": "Mule, Claus",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_CRISTOPHORUS_HENNIOCHUS",
-   "name": "Cristophorus Henniochus",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "epistolarium_keys": [
+    "Claus Mule"
    ],
-   "connection": "",
-   "letters_sent": 1,
-   "letters_received": 0,
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_DANIEL_BUCRETIUS",
    "name": "Daniel Bucretius",
+   "sort_name": "Bucretius, Daniel",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Daniel Bucretius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_DANIEL_FELS",
    "name": "Daniel Fels",
+   "sort_name": "Fels, Daniel",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Daniel Fels"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_DAVID_FABRICIUS",
    "name": "David Fabricius",
+   "sort_name": "Fabricius, David",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "David Fabricius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Aurich",
+    "lat": 53.47,
+    "lon": 7.48,
+    "basis": "Frisian pastor-astronomer"
+   }
   },
   {
    "id": "COR_EBERHARD_SCHELE",
    "name": "Eberhard Schele",
+   "sort_name": "Schele, Eberhard",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Eberhard Schele"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_EHRENFRIED_FREIHERR_VON_",
    "name": "Ehrenfried Freiherr von Minckwitz",
+   "sort_name": "Minckwitz, Ehrenfried von",
    "name_latin": "",
+   "name_variants": [
+    "Baron Ehrenfried von Minckwitz"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Ehrenfried Freiherr von Minckwitz"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_ERIK_BRAHE",
    "name": "Erik Brahe",
+   "sort_name": "Brahe, Erik",
    "name_latin": "",
+   "name_variants": [
+    "Erik Brahe, Count of Visingsborg"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -1869,451 +3602,664 @@
     "family"
    ],
    "connection": "Count Erik Brahe of the Swedish line — the kinsman present in Tycho's final days in Prague (Christianson, On Tycho's Island, 2000).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Erik Brahe"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_ERIK_SPARRE",
    "name": "Erik Sparre",
+   "sort_name": "Sparre, Erik",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Erik Sparre"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_FRANS_TENGNAGEL",
    "name": "Frans Tengnagel",
+   "sort_name": "Tengnagel, Frans",
    "name_latin": "",
+   "name_variants": [
+    "Frans Gansneb genannt Tengnagel",
+    "Franz Gansneb Tengnagel"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Frans Tengnagel"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_FRIEDRICH_TAUBMANN",
    "name": "Friedrich Taubmann",
+   "sort_name": "Taubmann, Friedrich",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Friedrich Taubmann"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_GALILEO_GALILEI",
    "name": "Galileo Galilei",
+   "sort_name": "Galilei, Galileo",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Galileo Galilei"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Padua",
+    "lat": 45.406,
+    "lon": 11.876,
+    "basis": "professor at Padua"
+   }
   },
   {
    "id": "COR_GELLIUS_SASCERIDES",
    "name": "Gellius Sascerides",
+   "sort_name": "Sascerides, Gellius",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "assistant",
     "antagonist"
    ],
-   "connection": "Physician (later professor of medicine at Copenhagen) who assisted Tycho on Hven and was betrothed to Tycho's eldest daughter Magdalene; his breaking of the engagement provoked a bitter suit before the university and chapter (1596-1599) that Dreyer counts among the vexations driving Tycho from Denmark. Received 2 letters from Tycho (1590, 1591). (Rørdam, Danske Magazin 4.R. II, pp.16-34; Kancelliets Brevbøger 1593-96 p.578, 1596-1602 pp.115-116.)",
+   "connection": "Physician (later professor of medicine at Copenhagen) who assisted Tycho on Hven and was betrothed to Tycho's eldest daughter Magdalene; his breaking of the engagement provoked a bitter suit before the university and chapter (1596–1599) that Dreyer counts among the vexations driving Tycho from Denmark. Received 2 letters from Tycho (1590, 1591). (Rørdam 1873, pp. 16–34; Kancelliets Brevbøger 1593–96, p. 578; 1596–1602, pp. 115–116.)",
+   "sources": [
+    "S_DREYER",
+    "S_RORDAM_DM1873",
+    "S_KB_BREVBOGER",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 2,
+   "epistolarium_keys": [
+    "Gellius Sascerides"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_GEORG_VON_WOLFRAMSDORF",
    "name": "Georg von Wolframsdorf",
+   "sort_name": "Wolframsdorf, Georg von",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Georg von Wolframsdorf"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_GEORGE_BUCHANAN",
    "name": "George Buchanan",
+   "sort_name": "Buchanan, George",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "George Buchanan"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": {
+    "place": "Edinburgh",
+    "lat": 55.953,
+    "lon": -3.188,
+    "basis": "Scottish humanist, tutor to James VI"
+   }
   },
   {
    "id": "COR_GOTTFRIED_VON_BERBISTORF",
    "name": "Gottfried von Berbistorf",
+   "sort_name": "Berbistorf, Gottfried von",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Gottfried von Berbistorf"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_HEINRICH_ELLENBERGER",
    "name": "Heinrich Ellenberger",
+   "sort_name": "Ellenberger, Heinrich",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Heinrich Ellenberger"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_HENRIK_BELOW",
    "name": "Henrik Below",
+   "sort_name": "Below, Henrik",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Henrik Below"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_HENRIK_RAMEL",
    "name": "Henrik Ramel",
+   "sort_name": "Ramel, Henrik",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Henrik Ramel"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JACOB_GRYNAEUS",
    "name": "Jacob Grynaeus",
+   "sort_name": "Grynaeus, Jacob",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_JAKOB_BORDING",
-   "name": "Jakob Bording",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 0,
    "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_JOACHIM_FRIEDRICH",
-   "name": "Joachim Friedrich",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "epistolarium_keys": [
+    "Jacob Grynaeus"
    ],
-   "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOACHIM_STRALENDORFF",
    "name": "Joachim Stralendorff",
+   "sort_name": "Stralendorff, Joachim",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Joachim Stralendorff"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANN_ANTON_BARWITZ",
-   "name": "Johann Anton Barwitz",
+   "name": "Johann Anton Barvitius",
+   "sort_name": "Barvitius, Johann Anton",
    "name_latin": "",
+   "name_variants": [
+    "Johann Barwitz",
+    "Johannes Barvitius",
+    "Johann Anton Barwitz"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_JOHANN_BARWITZ",
-   "name": "Johann Barwitz",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 0,
-   "letters_received": 1,
+   "letters_received": 2,
+   "epistolarium_keys": [
+    "Johann Anton Barwitz",
+    "Johann Barwitz"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANN_GEORG_GÖDELMANN",
    "name": "Johann Georg Gödelmann",
+   "sort_name": "Gödelmann, Johann Georg",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Johann Georg Gödelmann"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANN_TAUCHMANN",
    "name": "Johann Tauchmann",
+   "sort_name": "Tauchmann, Johann",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Johann Tauchmann"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANNES_CASELIUS",
    "name": "Johannes Caselius",
+   "sort_name": "Caselius, Johannes",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 1,
-   "letters_received": 0,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_JOHANNES_ISACIUS_PONTANU",
-   "name": "Johannes Isacius Pontanus",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 1,
    "letters_received": 0,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_JOHANNES_ISAKSEN_PONTANU",
-   "name": "Johannes Isaksen Pontanus",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "epistolarium_keys": [
+    "Johannes Caselius"
    ],
-   "connection": "",
-   "letters_sent": 1,
-   "letters_received": 0,
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANNES_MÜLLER",
    "name": "Johannes Müller",
+   "sort_name": "Müller, Johannes",
    "name_latin": "",
+   "name_variants": [
+    "Johann Muller"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Johannes Müller"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANNES_OSWALDUS",
    "name": "Johannes Oswaldus",
+   "sort_name": "Oswaldus, Johannes",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Johannes Oswaldus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JOHANNES_STYGGE",
-   "name": "Johannes Stygge",
+   "name": "Johan Stygge",
+   "sort_name": "Stygge, Johan",
    "name_latin": "",
+   "name_variants": [
+    "Johannes Stygge",
+    "Hans Stygge"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Johannes Stygge"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_JON_JACOBSEN_VENUSINUS",
    "name": "Jon Jacobsen Venusinus",
+   "sort_name": "Venusinus, Jon Jacobsen",
    "name_latin": "",
+   "name_variants": [
+    "Jon Venusin"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Jon Jacobsen Venusinus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_KIRSTEN_LINDENOV",
    "name": "Kirsten Lindenov",
+   "sort_name": "Lindenov, Kirsten",
    "name_latin": "",
+   "name_variants": [
+    "Kirsten Lindenow"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Kirsten Lindenov"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_KRISTOFFER_VALKENDORF",
-   "name": "Kristoffer Valkendorf",
+   "name": "Christoffer Valkendorf",
+   "sort_name": "Valkendorf, Christoffer",
    "name_latin": "",
+   "name_variants": [
+    "Christoffer Walkendorff",
+    "Christoffer Walkendorf",
+    "Kristoffer Valkendorf"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
-   "letters_received": 1,
+   "letters_received": 2,
+   "epistolarium_keys": [
+    "Kristoffer Valkendorf",
+    "Christoffer Valkendorf, Christian Friis"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_MADS_JØRGENSEN_HUUS",
    "name": "Mads Jørgensen Huus",
+   "sort_name": "Huus, Mads Jørgensen",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Mads Jørgensen Huus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_MAGDALENE_BRAHE",
    "name": "Magdalene Brahe",
+   "sort_name": "Brahe, Magdalene",
    "name_latin": "",
+   "name_variants": [
+    "Magdalene Tygesdatter"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -2321,255 +4267,401 @@
     "family"
    ],
    "connection": "Tycho's eldest daughter — her 1599 letter from Benátky is among the third-party letters (Christianson, On Tycho's Island, 2000).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Magdalene Brahe"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_MARTIN_BACHAZEK",
    "name": "Martin Bachazek",
+   "sort_name": "Bachazek, Martin",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Martin Bachazek"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_METTE_KOTTE",
    "name": "Mette Kotte",
+   "sort_name": "Kotte, Mette",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Mette Kotte"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_MICHAEL_MÄSTLIN",
    "name": "Michael Mästlin",
+   "sort_name": "Mästlin, Michael",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Michael Mästlin"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_MIKKEL_VIBE",
    "name": "Mikkel Vibe",
+   "sort_name": "Vibe, Mikkel",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Mikkel Vibe"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_NICOLAUS_BRASCHIUS",
    "name": "Nicolaus Braschius",
+   "sort_name": "Braschius, Nicolaus",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Nicolaus Braschius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_NIELS_BILD",
    "name": "Niels Bild",
+   "sort_name": "Bild, Niels",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Niels Bild"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_NIELS_HEMMINGSEN",
    "name": "Niels Hemmingsen",
+   "sort_name": "Hemmingsen, Niels",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Niels Hemmingsen"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_OLUF_ROSENSPARRE",
    "name": "Oluf Rosensparre",
+   "sort_name": "Rosensparre, Oluf",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Oluf Rosensparre"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_OTTAVIO_CAURIAN",
    "name": "Ottavio Caurian",
+   "sort_name": "Caurian, Ottavio",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Ottavio Caurian"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_PATRICK_GORDON",
    "name": "Patrick Gordon",
+   "sort_name": "Gordon, Patrick",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Patrick Gordon"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_PAULUS_MELISSUS",
    "name": "Paulus Melissus",
+   "sort_name": "Melissus, Paulus",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Paulus Melissus"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_PEDER_BRAHE",
    "name": "Peder Brahe",
+   "sort_name": "Brahe, Peder",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Peder Brahe"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_POUL_MADSEN",
    "name": "Poul Madsen",
+   "sort_name": "Madsen, Poul",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Poul Madsen"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_RAPHAEL_CIAPERENIUS",
    "name": "Raphael Ciaperenius",
+   "sort_name": "Ciaperenius, Raphael",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_REKTOR_OG_PROFESSORER_VE",
-   "name": "Rektor og professorer ved Københavns Universitet",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Raphael Ciaperenius"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_SIGFRID_RINDSCHAT",
    "name": "Sigfrid Rindschat",
+   "sort_name": "Rindschat, Sigfrid",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Sigfrid Rindschat"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_STEEN_BILLE",
    "name": "Steen Bille",
+   "sort_name": "Bille, Steen",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -2577,15 +4669,27 @@
     "family"
    ],
    "connection": "Tycho's maternal uncle — at Herrevadskloster, where the 1572 new-star observations and the paper-mill venture began (Christianson, On Tycho's Island, 2000; Dreyer).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_DREYER",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
+   "epistolarium_keys": [
+    "Steen Bille"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_STEEN_BRAHE",
    "name": "Steen Brahe",
+   "sort_name": "Brahe, Steen",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
@@ -2593,165 +4697,211 @@
     "family"
    ],
    "connection": "Tycho's brother (Christianson, On Tycho's Island, 2000).",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Steen Brahe"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_SUSANNE_HÁJEK",
    "name": "Susanne Hájek",
+   "sort_name": "Hájek, Susanne",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Susanne Hájek"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_THE_CHAPTER_AT_THE_CATHE",
-   "name": "The chapter at the cathedral of Magdeburg",
+   "name": "The Chapter of Magdeburg Cathedral",
+   "sort_name": "Magdeburg Cathedral, Chapter of",
    "name_latin": "",
+   "name_variants": [
+    "The dean of the chapter at the cathedral of Magdeburg",
+    "The chapter at the cathedral of Magdeburg"
+   ],
+   "entry_kind": "body",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
-   "letters_received": 1,
+   "letters_received": 2,
+   "epistolarium_keys": [
+    "The chapter at the cathedral of Magdeburg",
+    "The dean of the chapter at the cathedral of Magdeburg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_THE_DEAN_AND_DOCTORS_AT_",
-   "name": "The dean and doctors at the college of medicine i Wittenberg",
+   "name": "The Dean and Doctors of the Faculty of Medicine at Wittenberg",
+   "sort_name": "Wittenberg, Faculty of Medicine (Dean and Doctors)",
    "name_latin": "",
+   "name_variants": [
+    "The dean and doctors at the college of medicine i Wittenberg"
+   ],
+   "entry_kind": "body",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_THE_DEAN_OF_THE_CHAPTER_",
-   "name": "The dean of the chapter at the cathedral of Magdeburg",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "The dean and doctors at the college of medicine i Wittenberg"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_THOMAS_SAVILE",
    "name": "Thomas Savile",
+   "sort_name": "Savile, Thomas",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Thomas Savile"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_UKENDT_DANSK_STUDERENDE",
-   "name": "Ukendt dansk studerende",
+   "name": "An unknown Danish student",
+   "sort_name": "Unknown Danish student",
    "name_latin": "",
+   "name_variants": [
+    "Ukendt dansk studerende"
+   ],
+   "entry_kind": "unnamed",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Ukendt dansk studerende"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_UKENDT_MEDICINSK_DOKTOR",
-   "name": "Ukendt medicinsk doktor",
+   "name": "An unknown doctor of medicine",
+   "sort_name": "Unknown doctor of medicine",
    "name_latin": "",
+   "name_variants": [
+    "Ukendt medicinsk doktor"
+   ],
+   "entry_kind": "unnamed",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
+   "sources": [
+    "S_EPISTOLARIUM"
+   ],
    "letters_sent": 1,
    "letters_received": 0,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_VEIT_WINSHEIM",
-   "name": "Veit Winsheim",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "epistolarium_keys": [
+    "Ukendt medicinsk doktor"
    ],
-   "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "COR_VINCENZIO_PINELLI",
    "name": "Vincenzio Pinelli",
+   "sort_name": "Pinelli, Vincenzio",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "correspondent"
    ],
    "connection": "",
-   "letters_sent": 0,
-   "letters_received": 1,
-   "thesaurus_agent": "",
-   "in_agents": false
-  },
-  {
-   "id": "COR_EMPTY",
-   "name": "empty",
-   "name_latin": "",
-   "born": null,
-   "died": null,
-   "categories": [
-    "correspondent"
+   "sources": [
+    "S_EPISTOLARIUM"
    ],
-   "connection": "",
    "letters_sent": 0,
    "letters_received": 1,
+   "epistolarium_keys": [
+    "Vincenzio Pinelli"
+   ],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "FAM_ERIK_LANGE",
    "name": "Erik Lange",
+   "sort_name": "Lange, Erik",
    "name_latin": "Ericus Langius",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": 1613,
    "categories": [
@@ -2759,207 +4909,364 @@
     "family"
    ],
    "connection": "Alchemist and long-standing friend of Tycho who became his brother-in-law. After a twelve-year engagement (betrothed 1590) he married Sophie Brahe in 1602. A 'gold-maker' chasing the philosopher's stone rather than the medical alchemy Tycho practised, he ruined himself — a 20,000-daler debt, forced sales of land (some to his sister Margrethe and Tycho's brother Knud Brahe), and flight abroad. It was Lange who first brought Nicolaus Reimers Ursus to Uraniborg in 1584, the visit behind the later plagiarism quarrel. Tycho figured him as 'Titan' (to Sophie's 'Urania') in the elegy Urania Titani, mocked his alchemy in a 1583 letter to Charles Dançay, and in 1599 refused to present him to Emperor Rudolf II for fear of the taint. Died c. 1613. (Ellefsen, Søsteren og astronomen, 2023; Zeeberg, Urania Titani, 1994.)",
-   "in_agents": false,
-   "thesaurus_agent": "",
+   "sources": [
+    "S_ELLEFSEN",
+    "S_ZEEBERG1994"
+   ],
+   "letters_sent": 0,
    "letters_received": 0,
-   "letters_sent": 0
+   "epistolarium_keys": [],
+   "thesaurus_agent": "",
+   "in_agents": false,
+   "seat": {
+    "place": "Engelsholm",
+    "lat": 55.726,
+    "lon": 9.418,
+    "basis": "alchemist; Sophie Brahe's husband, his Jutland seat"
+   }
   },
   {
    "id": "FAM_BIRGITTE_THOTT",
    "name": "Birgitte Thott",
+   "sort_name": "Thott, Birgitte",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1610,
    "died": 1662,
    "categories": [
     "scholar"
    ],
-   "connection": "One of the most learned Danish women of the age, a polyglot pupil of Holger Rosenkrantz who translated Seneca's moral philosophy into Danish (1658), arguing in her preface that learning protects rather than endangers women. Daughter of Sophie Below, she belonged to the next generation of the learned-noblewomen network that had formed around Tycho's sister Sophie Brahe; born nine years after Tycho's death, she is a node of that intellectual afterlife rather than of his lifetime circle. (Ellefsen, Søsteren og astronomen, 2023.)",
-   "in_agents": false,
-   "thesaurus_agent": "",
+   "connection": "A polyglot pupil of Holger Rosenkrantz who translated Seneca's moral philosophy into Danish (1658), arguing in her preface that learning protects rather than endangers women. Daughter of Sophie Below, she belonged to the next generation of the learned-noblewomen network that had formed around Tycho's sister Sophie Brahe; born nine years after Tycho's death, she is a node of that intellectual afterlife rather than of his lifetime circle. (Ellefsen, Søsteren og astronomen, 2023.)",
+   "sources": [
+    "S_ELLEFSEN"
+   ],
+   "letters_sent": 0,
    "letters_received": 0,
-   "letters_sent": 0
+   "epistolarium_keys": [],
+   "thesaurus_agent": "",
+   "in_agents": false,
+   "seat": {
+    "place": "Sorø",
+    "lat": 55.432,
+    "lon": 11.554,
+    "basis": "learned noblewoman; lived and is buried at Sorø"
+   }
   },
   {
    "id": "FAM_HANS_VON_PASCHEN",
    "name": "Hans von Paschen",
+   "sort_name": "Paschen, Hans von",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "craftsman"
    ],
-   "connection": "Netherlandish royal master-builder. Because Uraniborg was legally the King's building — Hven was crown property and the 400-daler building grant was royal — Beckett argues that the royal architect Hans von Paschen, not Tycho's own man, drew the original design and oversaw the first two building seasons (1576-77); he had already built for Frederik II at Kronborg (the new wing on the medieval Krogen) and the 1574 Communitet hall in Copenhagen, besides fortress work at Bohus, Akershus and the new Oslo. He transferred to Bohus late in 1577 — later falling briefly from favour, the King fearing he would betray military secrets — leaving Stenwinkel to complete the house. Beckett and Gregor Paulsson attribute to his stone-and-image workshop the Lund Cathedral high-altar retable (1577), the manors Lystrup and Vester-Vallø, and the Krognos/Hardenberg and Podebusk/Oxe tombs at Ringsted and Aarhus; the rival attribution of the sculpture to Herkules Mida keeps the carver's identity open. (Beckett & Christensen, Uraniborg, 1921; Jern, Uraniborg, 1976.)",
-   "in_agents": false,
-   "thesaurus_agent": "",
+   "connection": "Netherlandish royal master-builder. Because Uraniborg was legally the King's building — Hven was crown property and the 400-daler building grant was royal — Beckett argues that the royal architect Hans von Paschen, not Tycho's own man, drew the original design and oversaw the first two building seasons (1576–77); he had already built for Frederik II at Kronborg (the new wing on the medieval Krogen) and the 1574 Communitet hall in Copenhagen, besides fortress work at Bohus, Akershus and the new Oslo. He transferred to Bohus late in 1577 — later falling briefly from favour, the King fearing he would betray military secrets — leaving Stenwinkel to complete the house. Beckett and Gregor Paulsson attribute to his stone-and-image workshop the Lund Cathedral high-altar retable (1577), the manors Lystrup and Vester-Vallø, and the Krognos/Hardenberg and Podebusk/Oxe tombs at Ringsted and Aarhus; the rival attribution of the sculpture to Herkules Mida keeps the carver's identity open. (Beckett & Christensen, Uraniborg, 1921; Jern, Uraniborg, 1976.)",
+   "sources": [
+    "S_JERN",
+    "S_BECKETT"
+   ],
+   "letters_sent": 0,
    "letters_received": 0,
-   "letters_sent": 0
+   "epistolarium_keys": [],
+   "thesaurus_agent": "",
+   "in_agents": false,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "master-builder of Uraniborg"
+   }
   },
   {
    "id": "FAM_HANS_VAN_STENWINKEL_ELDER",
    "name": "Hans van Stenwinkel the Elder",
+   "sort_name": "Stenwinkel, Hans van, the Elder",
    "name_latin": "",
+   "name_variants": [
+    "Hans van Steenwinckel",
+    "Hans van Steenwinkel"
+   ],
+   "entry_kind": "person",
    "born": 1545,
    "died": 1601,
    "categories": [
     "craftsman"
    ],
    "connection": "Antwerp-born architect who reached Denmark via Emden, where his father Laurens was town-builder and Hans made his first known design — the 1574 'Patron' for the tower and stair of the Emden town hall. On Kronborg from spring 1578, he entered Tycho's service the same year and completed Uraniborg: fulfilling the first architect's design, but responsible in his own right for the great cupola, the interior, probably the portals and the late-1580s alterations, and for building the sunken Stjerneborg and the island's paper-mill. His Copenhagen Helligaandskirken spire (1594) derives from the Emden town hall. The friendship outlasted the commission — he revisited Hven in 1590 to help with the mill-works and in 1593 sent Tycho pen-drawings for his books' frontispieces. Appointed royal architect of Denmark in 1582; founder of the Steenwinckel dynasty of royal builders. (Beckett & Christensen, Uraniborg, 1921; Jern, Uraniborg, 1976.)",
-   "in_agents": false,
-   "thesaurus_agent": "",
+   "sources": [
+    "S_JERN",
+    "S_BECKETT"
+   ],
+   "letters_sent": 0,
    "letters_received": 0,
-   "letters_sent": 0
+   "epistolarium_keys": [],
+   "thesaurus_agent": "",
+   "in_agents": false,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "architect of Uraniborg's interior and Stjerneborg"
+   }
   },
   {
    "id": "FAM_TOBIAS_GEMPERLIN",
    "name": "Tobias Gemperlin",
+   "sort_name": "Gemperlin, Tobias",
    "name_latin": "",
+   "name_variants": [
+    "Tobias Gemperlin (Gemperle)",
+    "Tobias Gemperle"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "craftsman"
    ],
    "connection": "Augsburg-born painter whom Tycho brought home and kept as his court painter on Hven. He painted the life-size figure of Tycho in effigy directing the observations in the 1587 trompe-l'oeil behind the great mural quadrant (the landscape by Hans Knieper, the perspectival architecture by Stenwinkel), and presumably the cycle of eight astronomers in the cupola of Stjerneborg's warming-room; he also decorated instruments and illustrated Tycho's books and painted Danish nobles. His lost portrait of Tycho was the model from which Jacob de Gheyn's portrait engraving descends (cut in Amsterdam, autumn 1590, though inscribed with the 1586 sitting date). He died of the plague in Copenhagen by 1587 — Tycho's own words in De mundi aetherei liber secundus (printed at Uraniborg, 1587) record him as already dead. (Beckett & Christensen, Uraniborg, 1921; Christianson, On Tycho's Island, 2000; Jern, Uraniborg, 1976; Brahe, De mundi aetherei recentioribus phaenomenis liber secundus, Uraniborg 1587, p. 284.)",
-   "in_agents": false,
-   "thesaurus_agent": "",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_JERN",
+    "S_BECKETT",
+    "S_DEMUNDI"
+   ],
+   "letters_sent": 0,
    "letters_received": 0,
-   "letters_sent": 0
+   "epistolarium_keys": [],
+   "thesaurus_agent": "",
+   "in_agents": false,
+   "seat": {
+    "place": "Hven",
+    "lat": 55.907,
+    "lon": 12.696,
+    "basis": "court painter on Hven"
+   }
   },
   {
    "id": "FAM_GEORG_LABENWOLF",
    "name": "Georg Labenwolf",
+   "sort_name": "Labenwolf, Georg",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "craftsman"
    ],
-   "connection": "Nuremberg metal-founder of the celebrated Labenwolf workshop who installed Uraniborg's advanced lead-pipe water system — pressurised running water carried to most rooms from the kitchen well, its Arion-on-a-dolphin bronze taps now in Lund University's Historical Museum — and probably the ground-floor fountain, kin to the one he made for Kronborg. He was in Denmark from 1576 for the Kronborg fountain (set up 1583) and was still supplying Tycho's water-line in 1579. (Beckett & Christensen, Uraniborg, 1921; Jern, Uraniborg, 1976.)",
-   "in_agents": false,
-   "thesaurus_agent": "",
+   "connection": "Nuremberg metal-founder of the Labenwolf workshop who installed Uraniborg's lead-pipe water system — pressurised running water carried to most rooms from the kitchen well, its Arion-on-a-dolphin bronze taps now in Lund University's Historical Museum — and probably the ground-floor fountain, kin to the one he made for Kronborg. He was in Denmark from 1576 for the Kronborg fountain (set up 1583) and was still supplying Tycho's water-line in 1579. (Beckett & Christensen, Uraniborg, 1921; Jern, Uraniborg, 1976.)",
+   "sources": [
+    "S_JERN",
+    "S_BECKETT"
+   ],
+   "letters_sent": 0,
    "letters_received": 0,
-   "letters_sent": 0
+   "epistolarium_keys": [],
+   "thesaurus_agent": "",
+   "in_agents": false,
+   "seat": {
+    "place": "Nuremberg",
+    "lat": 49.452,
+    "lon": 11.077,
+    "basis": "Nuremberg founder; Uraniborg's water-system"
+   }
   },
   {
    "id": "BLAEU",
    "name": "Willem Janszoon Blaeu",
+   "sort_name": "Blaeu, Willem Janszoon",
    "name_latin": "Guilielmus Janssonius Blaeu",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1571,
    "died": 1638,
    "categories": [
     "assistant"
    ],
-   "connection": "A Dutch student, about twenty-five, who wintered on Hven in 1595–96, learning Tycho's instruments and observing methods at first hand. He returned to Amsterdam to found the great Blaeu cartographic house: his celestial globes (from c. 1600) were mapped on Tycho's star positions, and he discovered the variable star P Cygni in 1600. His son Joan's Grooten Atlas (1664) reproduced Tycho's instruments in colour. (Thoren; Christianson, On Tycho's Island, 2000)",
+   "connection": "A Dutch student, about twenty-five, who wintered on Hven in 1595–96, learning Tycho's instruments and observing methods at first hand. He returned to Amsterdam to found the Blaeu cartographic house: his celestial globes (from c. 1600) were mapped on Tycho's star positions, and he discovered the variable star P Cygni in 1600. His son Joan's Grooten Atlas (1664) reproduced Tycho's instruments in colour. (Thoren; Christianson, On Tycho's Island, 2000)",
+   "sources": [
+    "S_CHRISTIANSON",
+    "S_THOREN"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "FAM_HANS_KNIEPER",
    "name": "Hans Knieper",
+   "sort_name": "Knieper, Hans",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": 1587,
    "categories": [
     "craftsman"
    ],
    "connection": "Antwerp-born court painter to Frederik II at Kronborg (designer of the great Kronborg tapestry series of Danish kings). For Tycho he painted the landscape — the sun setting behind mountains — in the 1587 trompe-l'oeil wall-painting behind Uraniborg's great mural quadrant; the figure of Tycho was Gemperlin's and the perspectival architecture Stenwinkel's. (Beckett & Christensen, Uraniborg, 1921.)",
-   "in_agents": false,
-   "thesaurus_agent": "",
+   "sources": [
+    "S_BECKETT"
+   ],
+   "letters_sent": 0,
    "letters_received": 0,
-   "letters_sent": 0
+   "epistolarium_keys": [],
+   "thesaurus_agent": "",
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "MARIUS",
    "name": "Simon Marius",
+   "sort_name": "Marius, Simon",
    "name_latin": "Simon Marius",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": 1573,
    "died": 1624,
    "categories": [
     "astronomer",
     "assistant"
    ],
-   "connection": "German astronomer (Simon Mayr, 1573-1624). Friis's roster lists him among Tycho's pupils as having studied astronomy with Tycho and Kepler at Prague; he then took his medical degree at Padua and from 1604 was court astronomer to the Margrave of Brandenburg-Ansbach. Best known for his independent observation of Jupiter's four moons around 1610 and the priority dispute with Galileo that followed (the moon-names Io, Europa, Ganymede and Callisto come from his Mundus Iovialis, 1614). Recovered to the familia from Friis's addendum to the roster of Tycho's pupils. (Friis, Danske Magazin 4. R. II, 1873.)",
+   "connection": "German astronomer (Simon Mayr, 1573–1624). Friis's roster lists him among Tycho's pupils as having studied astronomy with Tycho and Kepler at Prague; he then took his medical degree at Padua and from 1604 was court astronomer to the Margrave of Brandenburg-Ansbach. Listed in Friis's addendum to the roster of Tycho's pupils (Friis 1873, pp. 324–328).",
+   "sources": [
+    "S_FRIIS_DM1873"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "RHODIUS",
    "name": "Ambrosius Rhodius",
+   "sort_name": "Rhodius, Ambrosius",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": 1633,
    "categories": [
     "assistant",
     "mathematician"
    ],
-   "connection": "Tycho's assistant ('Medhjælper') during the Prague years, afterwards professor of mathematics at Wittenberg, where he died in 1633. Recovered to the familia from Friis's addendum to the roster of Tycho's pupils and assistants. (Friis, Danske Magazin 4. R. II, 1873.)",
+   "connection": "Tycho's assistant ('Medhjælper') during the Prague years, afterwards professor of mathematics at Wittenberg, where he died in 1633. Listed in Friis's addendum to the roster of Tycho's pupils and assistants (Friis 1873, pp. 324–328).",
+   "sources": [
+    "S_FRIIS_DM1873"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "FAM_CHRISTOFFER_PEPELER",
    "name": "Christoffer Pepeler",
+   "sort_name": "Pepeler, Christoffer",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "associate"
    ],
-   "connection": "Tycho's foged (bailiff / estate-agent). A dispute arose between them; Tycho had Pepeler's goods impounded at Bergen in Norway and refused to release them even after Pepeler's wife petitioned the King and Pepeler posted bond in Elsinore (Kancelliets Brevbøger, royal missive to Tycho, 8 June 1594, 1593-96 p.292; index 'Pepeler, Kristoffer, Tyge Brahes Foged').",
+   "connection": "Tycho's foged (bailiff / estate-agent). A dispute arose between them; Tycho had Pepeler's goods impounded at Bergen in Norway and refused to release them even after Pepeler's wife petitioned the King and Pepeler posted bond in Elsinore (Kancelliets Brevbøger, royal missive to Tycho, 8 June 1594, 1593–96, p. 292; index 'Pepeler, Kristoffer, Tyge Brahes Foged').",
+   "sources": [
+    "S_KB_BREVBOGER"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "FAM_CHRISTEN_JYDE",
    "name": "Christen Jyde",
+   "sort_name": "Jyde, Christen",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "associate"
    ],
-   "connection": "An earlier foged (bailiff) of Tycho's, given full power of attorney to represent Tycho before the Copenhagen professors in the Rasmus Pedersen affair (Tycho to Dr Anders Christensen, 21 June 1591: 'min Fogits, wed naffn Christen Judes ... huilcken ieg der paa fuldmact giffnit haffuer'; Friis, Breve og Aktstykker 1875, no. 2, pp.3-4). Distinct from Christoffer Pepeler.",
+   "connection": "An earlier foged (bailiff) of Tycho's, given full power of attorney to represent Tycho before the Copenhagen professors in the Rasmus Pedersen affair (Tycho to Dr Anders Christensen, 21 June 1591: 'min Fogits, wed naffn Christen Judes .. huilcken ieg der paa fuldmact giffnit haffuer'; Friis, Breve og Aktstykker 1875, no. 2, pp. 3–4). Distinct from Christoffer Pepeler.",
+   "sources": [
+    "S_FRIIS1875"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "FAM_RASMUS_PEDERSEN",
    "name": "Rasmus Pedersen",
+   "sort_name": "Pedersen, Rasmus",
    "name_latin": "",
+   "name_variants": [],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "antagonist"
    ],
-   "connection": "Originally Tycho's servant ('min tiener Rasmus Person'), later a tenant on Tycho's Gundsømagle fief. He became Tycho's most litigious adversary, complaining to the King that Tycho persecuted him, barred him from his farm and jailed his brother and hired man without trial, and seeking a royal letter of protection (Kancelliets Brevbøger 1588-92 pp.880-881, 898; Friis, Breve og Aktstykker 1875, no. 2). It was his brother and servant who were imprisoned, not Rasmus himself.",
+   "connection": "Originally Tycho's servant ('min tiener Rasmus Person'), later a tenant on Tycho's Gundsømagle fief. He became Tycho's most litigious adversary, complaining to the King that Tycho persecuted him, barred him from his farm and jailed his brother and hired man without trial, and seeking a royal letter of protection (Kancelliets Brevbøger 1588–92, pp. 880–881, 898; Friis, Breve og Aktstykker 1875, no. 2). It was his brother and servant who were imprisoned, not Rasmus himself.",
+   "sources": [
+    "S_KB_BREVBOGER",
+    "S_FRIIS1875"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   },
   {
    "id": "FAM_JENS_JENSEN_HVEN",
    "name": "Jens Jensen",
+   "sort_name": "Jensen, Jens",
    "name_latin": "",
+   "name_variants": [
+    "Jens Jensen Wensøsil",
+    "Jens Jensen Wensosil"
+   ],
+   "entry_kind": "person",
    "born": null,
    "died": null,
    "categories": [
     "associate"
    ],
-   "connection": "'Hr. Jens Jensen', priest on Hven under Tycho in the late Uraniborg years. He was repeatedly summoned before the church authorities for altering the prescribed ceremonies against the Ordinance (Kancelliets Brevbøger, 14 & 21 April 1597, 1596-1602 pp.135, 141); after Tycho's departure he was removed, and in June 1602 the King asked the bishop to help 'Hr. Jens, forhen Præst paa Hven' to the first vacant schoolmaster's post on Zealand (p.752).",
+   "connection": "'Hr. Jens Jensen', priest on Hven under Tycho in the late Uraniborg years. He was repeatedly summoned before the church authorities for altering the prescribed ceremonies against the Ordinance (Kancelliets Brevbøger, 14 and 21 April 1597, 1596–1602, pp. 135, 141); after Tycho's departure he was removed, and in June 1602 the King asked the bishop to help 'Hr. Jens, forhen Præst paa Hven' to the first vacant schoolmaster's post on Zealand (p. 752).",
+   "sources": [
+    "S_KB_BREVBOGER"
+   ],
    "letters_sent": 0,
    "letters_received": 0,
+   "epistolarium_keys": [],
    "thesaurus_agent": "",
-   "in_agents": false
+   "in_agents": false,
+   "seat": null
   }
  ]
 }

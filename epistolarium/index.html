@@ -1,697 +1,105 @@
 <!doctype html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Epistolarium — Tychoniana</title>
-<link rel="stylesheet" href="../vendor/leaflet/leaflet.css"/>
-<script src="../vendor/leaflet/leaflet.js"></script>
-<script src="../vendor/borders_1600.js"></script>
-<style>
-:root{--ink:#1a2238;--gold:#9a7b32;--gold2:#c9a23f;--parch:#f6f1e6;--card:#fffdf8;--line:#ddd3bf;--muted:#6b6450;--blue:#2c5fa3;--bluebg:#eef3fb}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--parch);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column}
-a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
-header.hero{background:linear-gradient(135deg,#1a2238,#2c3a63);color:#f6f1e6;padding:12px 20px;border-bottom:3px solid var(--gold);display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-header.hero h1{margin:0;font-family:Georgia,serif;font-size:24px;font-weight:normal;letter-spacing:.5px}
-header.hero h1 .lat{color:var(--gold2);font-style:italic}
-header.hero .actions{margin-left:auto;display:flex;gap:8px}
-header.hero .actions a,header.hero .actions button{font-size:12.5px;color:var(--gold2);background:transparent;border:1px solid #4a5781;padding:5px 11px;border-radius:7px;cursor:pointer;font-family:inherit}
-header.hero .actions a:hover,header.hero .actions button:hover{background:#28335c;text-decoration:none}
-header.hero .hero-lead{flex-basis:100%;margin:0;font-size:13px;line-height:1.45;color:#c4cbdd}
-/* switcher */
-.switcher{background:var(--parch);border-bottom:1px solid var(--line);padding:9px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.swtabs{display:inline-flex;background:#ece3cf;border:1px solid var(--line);border-radius:22px;padding:3px;gap:2px}
-.swbtn{font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink);background:transparent;border:0;border-radius:18px;padding:7px 16px;cursor:pointer;white-space:nowrap}
-.swbtn:hover{background:#e2d7bd}
-.swbtn.on{background:var(--ink);color:#fff}
-@media(max-width:480px){
-  .switcher{padding:9px 12px;gap:10px}
-  .swtabs{flex-wrap:wrap;border-radius:14px}
-  .swbtn{padding:6px 12px;font-size:12.5px}
-}
-/* generic view container */
-.eview{display:none;flex:1;min-height:0}
-.eview.on{display:flex;flex-direction:column;min-height:0}
-.vintro{padding:12px 22px 4px;font-size:13.5px;color:#3a3a32;max-width:1000px;line-height:1.5}
-.vintro b{color:var(--ink)}
-/* ---------- MAP ---------- */
-.maptoggle{padding:4px 22px 8px;display:flex;gap:7px;align-items:center}
-.mtbtn{font-family:inherit;font-size:12.5px;border:1px solid var(--line);background:#fff;border-radius:16px;padding:5px 13px;cursor:pointer;color:var(--ink)}
-.mtbtn:hover{border-color:var(--gold)}
-.mtbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-#epimap{flex:1;min-height:260px;margin:0 22px;border:1px solid var(--line);border-radius:10px}
-#epimap .hist-tiles{filter:sepia(.22) saturate(.85) brightness(1.03)}
-/* map view scrolls internally on short viewports so the legend never spills onto the footer */
-.eview[data-view="map"].on,.eview[data-view="rhythm"].on,.eview[data-view="corr"].on{overflow:auto}
-.map-legend{padding:8px 22px 14px;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
-.map-legend .ml{display:inline-flex;align-items:center;gap:6px}
-.map-legend i{width:13px;height:13px;border-radius:50%;display:inline-block}
-.map-legend i.hollow{background:#fff;border:2px solid #8a8175}
-.map-legend i.line{width:20px;height:0;border-radius:0;border-top:3px dashed var(--gold2)}
-.leaflet-popup-content{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12.5px}
-.mpop b{font-family:Georgia,serif}
-.mpop .mlink{display:inline-block;margin-top:5px;font-size:12px;cursor:pointer;color:var(--blue)}
-.leaflet-tooltip.epi-itin-tip{white-space:normal;width:250px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12px;line-height:1.45}
-.leaflet-tooltip.epi-itin-tip b{font-family:Georgia,serif}
-/* ---------- RHYTHM ---------- */
-.rhythm-scroll{overflow:auto;padding:6px 22px 0;flex:none}
-.rhythm{position:relative;border:1px solid var(--line);border-radius:10px;background:#fffdf8;padding:30px 14px 0;min-width:760px}
-.revents{position:absolute;left:14px;right:14px;top:6px;height:22px;pointer-events:none}
-.rev{position:absolute;transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap;text-align:center}
-.rev::after{content:"";display:block;width:1px;height:7px;background:var(--line);margin:1px auto 0}
-/* edge-anchored variant: label grows leftward, tick stays on the event year */
-.rev-r{transform:translateX(-100%);text-align:right}
-.rev-r::after{margin:1px 0 0 auto}
-.rbars{display:flex;align-items:flex-end;gap:2px;height:300px}
-.rcol{flex:1;display:flex;flex-direction:column-reverse;cursor:pointer;position:relative;min-width:9px}
-.rcol:hover{outline:2px solid var(--gold2);outline-offset:0}
-.rseg{width:100%}
-.raxis{display:flex;gap:2px;border-top:1px solid var(--line);margin-top:2px}
-.rtick{flex:1;text-align:center;font-size:9.5px;color:var(--muted);padding:3px 0;min-width:9px}
-.rhythm-readout{padding:8px 22px 2px;font-size:13px;color:var(--ink);min-height:20px;font-family:Georgia,serif}
-.rhythm-readout:empty::before{content:"Hover a year for its numbers · click to read its letters";color:var(--muted);font-style:italic;font-size:12.5px}
-.rhythm-legend{padding:6px 22px 16px;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
-.rhythm-legend .rl{display:inline-flex;align-items:center;gap:6px}
-.rhythm-legend i{width:13px;height:13px;border-radius:3px;display:inline-block}
-/* ---------- WEB ---------- */
-/* ---------- CORRESPONDENTS (the index) ---------- */
-.corr-scroll{padding:6px 22px 18px}
-.corrtab{border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:12.8px;min-width:700px}
-.corrtab th{position:sticky;top:0;background:#ece3cf;text-align:left;padding:7px 11px;font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:#6b6450;border-bottom:1px solid var(--line);white-space:nowrap}
-.corrtab th.srt{cursor:pointer}
-.corrtab th.srt:hover{color:#1a2238}
-.corrtab td{padding:6px 11px;border-top:1px solid #eee4cf}
-.corrtab th.num,.corrtab td.num{text-align:right}
-.corrtab tbody tr{cursor:pointer}
-.corrtab tbody tr:hover{background:#f3ead2}
-.corrtab tbody tr:focus{outline:2px solid var(--gold2);outline-offset:-2px}
-/* the map's repository register reuses the register look but is not clickable */
-.map-register{padding:2px 22px 18px}
-.map-register .cap{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:#6b6450;margin:0 0 6px}
-.map-register .regtab{min-width:0}
-.map-register .regtab tbody tr{cursor:default}
-.map-register .regtab tbody tr:hover{background:none}
-/* ---------- READER (existing) ---------- */
-.controls{background:var(--parch);padding:9px 20px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.controls input[type=search]{width:100%;padding:7px 28px 7px 34px;border:1px solid var(--line);border-radius:8px;font-size:13px;background:#fff}
-.srch-wrap{position:relative;flex:1;min-width:280px}
-.srch-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none;display:flex;color:var(--ink)}
-.srch-key{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:11px;font-family:monospace;color:#aaa;pointer-events:none;transition:opacity .15s}
-.srch-wrap input:focus~.srch-key{opacity:0}
-.controls select{padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;background:#fff;max-width:230px}
-.glabel{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:700}
-.chip{cursor:pointer;font-size:12px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:4px 10px;user-select:none;white-space:nowrap}
-.chip:hover{border-color:var(--gold)}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.chip .cnt{font-weight:400;font-size:10px;color:var(--muted);margin-left:1px}
-.chip.on .cnt{color:#c9cfe0}
-.chip.disabled{opacity:.34;cursor:default;pointer-events:none}
-.toggle{cursor:pointer;font-size:12px;display:inline-flex;align-items:center;gap:5px;color:var(--muted)}
-.gsep{width:1px;align-self:stretch;background:var(--line);margin:1px 4px}
-#count{font-size:11.5px;color:var(--muted);margin-left:auto;white-space:nowrap}
-.setbar{background:#fff7e6;border-bottom:1px solid var(--line);padding:6px 20px;font-size:12.5px;color:#7a5c10;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.setbar button{font-size:11.5px;border:1px solid var(--line);background:#fff;border-radius:6px;padding:2px 9px;cursor:pointer}
-.setbar button:hover{border-color:var(--gold)}
-.wrap{flex:1;display:grid;grid-template-columns:340px 1fr;min-height:0}
-aside{border-right:1px solid var(--line);background:#fbf7ec;overflow:auto;min-height:0}
-.li{padding:7px 12px;border-bottom:1px solid #eee4cf;cursor:pointer;font-size:12.8px;line-height:1.3}
-.li:hover{background:#f3ead2}
-.li.on{background:var(--ink);color:#fff}
-.li.on .d,.li.on .g,.li.on .ar{color:var(--gold2)}
-.li .d{font-family:Georgia,serif;color:var(--gold);font-size:11.5px;margin-right:5px}
-.li .ar{font-weight:700}
-.li .tyc{color:var(--muted)}
-.li.on .tyc{color:#c4cbdd}
-.li .ar.from{color:#2e7d32}.li .ar.to{color:#9c5a00}.li .ar.third{color:var(--muted)}
-.li-gist{font-size:11px;line-height:1.4;color:var(--muted);margin-top:3px}
-.li.on .li-gist{color:#c4cbdd}
-.doc-gist{font-size:14px;line-height:1.5;color:#5a5340;font-style:italic;margin:2px 0 12px;max-width:760px;border-left:2px solid var(--gold2);padding-left:11px}
-main{overflow:auto;min-height:0}
-.pad{max-width:1180px;margin:0 auto;padding:20px 26px 80px}
-.about h2{font-family:Georgia,serif;font-size:24px;margin:0 0 4px}
-.about .lead{font-size:14px;color:#3a3a32;margin:0 0 16px;max-width:760px}
-.about h4{margin:16px 0 4px;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:.5px}
-.about p{margin:7px 0;font-size:13.5px;line-height:1.55;max-width:820px}
-.about ul{margin:6px 0 6px 18px;font-size:13.5px;line-height:1.5}.about li{margin:3px 0}
-.about .golink{color:var(--blue);cursor:pointer}
-.about .golink:hover{text-decoration:underline}
-.doc h2{font-family:Georgia,serif;font-size:22px;margin:0 0 4px;line-height:1.25}
-.doc .meta{font-size:12.5px;color:var(--muted);margin-bottom:12px;line-height:1.5}
-.doc .meta i{font-style:italic}
-.note{background:#fffdf6;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:11px 14px;font-size:13px;line-height:1.55;margin-bottom:14px}
-.note p{margin:.35em 0}
-.conn{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-.conn .c{background:#f3ead2;border:1px solid var(--line);border-radius:7px;padding:8px 12px;font-size:12.6px;line-height:1.5}
-.conn .c.ms{border-left:3px solid var(--gold2)}
-.conn .c.tk{border-left:3px solid var(--blue);background:var(--bluebg)}
-.conn .c.kassel{border-left:3px solid var(--ink)}
-.conn .c.book{border-left:3px solid #2e7d32}
-.conn .lbl{font-weight:700;color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
-.thread{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:12.5px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 12px}
-.thread button{font-size:12px;border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 9px;cursor:pointer}
-.thread button:hover{border-color:var(--gold)}.thread button:disabled{opacity:.35;cursor:default}
-.thread .mid{color:var(--muted)}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.col h3{font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:4px;margin:0 0 8px}
-.latin{font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.62}
-.english{font-size:14.5px;line-height:1.66}
-.latin p,.english p{margin:0 0 .8em}
-.app{margin-top:22px;border-top:1px solid var(--line);padding-top:6px}
-.app summary{cursor:pointer;font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);padding:6px 0;list-style:none}
-.app summary::-webkit-details-marker{display:none}
-.app summary::before{content:"▸ ";color:var(--gold)}.app[open] summary::before{content:"▾ "}
-.app .body{font-size:12.8px;line-height:1.55}
-.app .body ul{margin:.3em 0;padding-left:20px}.app .body li{margin:.3em 0}
-.app .conf{margin-top:10px;border-left:3px solid var(--gold2);padding-left:11px}
-.hidden{display:none!important}
-@media(max-width:820px){.wrap{grid-template-columns:1fr;grid-template-rows:240px 1fr}.cols{grid-template-columns:1fr}aside{border-right:none;border-bottom:1px solid var(--line)}}
-.topbar{background:#0f1525;color:#8090b0;font-size:12px;padding:5px 26px;font-family:-apple-system,sans-serif}
-.topbar a{color:#c9a23f;text-decoration:none}.topbar a:hover{text-decoration:underline}
-.topbar .sep{color:#5a6a88;margin:0 8px}.topbar .cur{color:#cdd6e8}
-.build-stamp{border-top:1px solid #ddd3bf;padding:10px 26px 18px;font-size:10.5px;color:#6b6450;line-height:1.6;font-family:-apple-system,'Segoe UI',sans-serif}.build-stamp b{color:#6b6450;font-weight:600}.build-stamp a{color:#7d6428}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
-</head><body>
-<div class="topbar"><a href="../index.html">← Tychoniana</a><span class="sep">›</span><span class="cur">Epistolarium</span></div>
-<noscript><div style="background:#fdf6e3;border-bottom:2px solid #c9a23f;padding:14px 26px;font-size:13.5px;color:#3a2e28;line-height:1.6">
-This explorer renders its four views (Reader &middot; Correspondents &middot; Map &middot; Rhythm) with JavaScript, which is disabled in your browser.
-The complete dataset is still available as plain JSON: <a href="data.json" style="color:#7d6428">data.json</a> — all 509 letters with their texts, manuscript witnesses, and translation-confidence ratings.
-</div></noscript>
-<header class="hero">
- <h1>Epistolarium <span class="lat">&mdash; The Letters</span></h1>
- <div class="actions"><button id="aboutBtn">ⓘ About</button></div>
- <p class="hero-lead">The complete correspondence of Tycho Brahe — all 509 known letters, 1568–1601, in parallel original text and English, with an index of correspondents, a map of the exchange, and its year-by-year rhythm.</p>
-</header>
-
-<nav class="switcher">
- <div class="swtabs">
-  <button class="swbtn" data-view="reader" title="Read any letter in parallel Latin/English, with apparatus and manuscript witness">The Reader</button>
-  <button class="swbtn" data-view="corr" title="Every correspondent — the extent, span, and manuscript survival of each exchange">The Correspondents</button>
-  <button class="swbtn" data-view="map" title="Where each letter was written, and where the manuscripts survive today">The Map</button>
-  <button class="swbtn" data-view="rhythm" title="The correspondence year by year — the shape of a life in letters">The Rhythm</button>
- </div>
-</nav>
-
-<!-- ===================== MAP ===================== -->
-<section class="eview" data-view="map">
- <div class="vintro" id="mapIntro">Tycho's correspondence as geography. <b>Where written</b> traces both his own moving address — Copenhagen and Rostock, then the island of Hven, and in exile Wandsbek, Wittenberg, Benátky and Prague — and the reach of the network writing <i>to</i> him, from Kassel and Augsburg to Edinburgh and Bologna. Switch to <b>where the manuscripts survive</b> to see how they re-converged into a few great archives.</div>
- <div class="maptoggle">
-  <button class="mtbtn on" data-layer="origin">Where written</button>
-  <button class="mtbtn" data-layer="survival">Where the manuscripts survive</button>
- </div>
- <div id="epimap"></div>
- <div class="map-legend" id="mapLegend"></div>
- <div class="map-register" id="mapRegister"></div>
-</section>
-
-<!-- ===================== WEB ===================== -->
-<section class="eview" data-view="corr">
- <div class="vintro">The index of the correspondence, as the register of a printed edition would give it: every correspondent, the extent of the exchange in each direction, its span, its language, and how many of its letters survive with a manuscript witness. Click a column heading to sort; click a row to open that correspondence in the Reader. Letters between third parties are indexed under both correspondents.</div>
- <div class="corr-scroll"><table class="corrtab" id="corrTab"></table></div>
-</section>
-
-<!-- ===================== RHYTHM ===================== -->
-<section class="eview" data-view="rhythm">
- <div class="vintro">Letters per year, 1568–1601, split by direction. The shape is a biography: a thin trickle through the student years, the long Hven plateau of the great scientific correspondences, then the <b>exile explosion</b> — the year 1600 alone carries more letters than any three Hven years, as Tycho wrote relentlessly to secure his position in Prague. Click a year to read its letters.</div>
- <div class="rhythm-scroll">
-  <div class="rhythm" id="rhythm">
-   <div class="revents" id="rEvents"></div>
-   <div class="rbars" id="rBars"></div>
-   <div class="raxis" id="rAxis"></div>
-  </div>
- </div>
- <div class="rhythm-readout" id="rhythmReadout"></div>
- <div class="rhythm-legend" id="rhythmLegend"></div>
-</section>
-
-<!-- ===================== READER ===================== -->
-<section class="eview" data-view="reader">
- <div class="controls">
-  <div class="srch-wrap">
-   <span class="srch-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="4"/><line x1="8.8" y1="8.8" x2="13" y2="13"/></svg></span>
-   <input type="search" id="q" placeholder="Search names, Latin, English, notes…">
-   <span class="srch-key">/</span>
-  </div>
-  <span class="glabel">Dir</span>
-  <span class="chip on" data-dir="all">All <b class="cnt"></b></span>
-  <span class="chip" data-dir="from">From Tycho <b class="cnt"></b></span>
-  <span class="chip" data-dir="to">To Tycho <b class="cnt"></b></span>
-  <span class="chip" data-dir="third">Third-party <b class="cnt"></b></span>
-  <span class="gsep"></span>
-  <span class="glabel">Period</span>
-  <span id="perChips"></span>
-  <span class="gsep"></span>
-  <select id="corr"></select>
-  <select id="lang"><option value="all">All languages</option><option>Latin</option><option>German</option><option>Danish</option></select>
-  <span id="count"></span>
- </div>
- <div id="setbar" class="setbar hidden"></div>
- <div class="wrap">
-  <aside id="list"></aside>
-  <main><div class="pad" id="detail"></div></main>
- </div>
-</section>
-
-<script src="data.js"></script>
-<script>
-const CFG={"periods": [{"id": "early", "label": "Early years", "sub": "1568–1576"}, {"id": "hven", "label": "Hven · Uraniborg", "sub": "1577–1597"}, {"id": "exile", "label": "Exile · Wandsbek–Prague", "sub": "1597–1601"}], "corr": [["Thaddaeus Hagecius", "Thaddaeus Hagecius (Hájek)", 37], ["Holger Rosenkrantz", "Holger Rosenkrantz", 25], ["Wilhelm 4., landgreve af Hessen-Kassel", "Wilhelm IV, Landgrave of Hesse-Kassel", 23], ["Christopher Rothmann", "Christoph Rothmann", 22], ["Heinrich Brucaeus", "Heinrich Brucæus", 17], ["Johann Georg Herwart von Hohenburg", "Johann Georg Herwart von Hohenburg", 17], ["Henrik Rantzau", "Henrik Rantzau", 15], ["Christian 4.", "Christian IV, King of Denmark", 14], ["Ulrich 3., hertug af Mecklenburg", "Ulrich III, Duke of Mecklenburg", 13], ["Anders Sørensen Vedel", "Anders Sørensen Vedel", 12], ["Giovanni Antonio Magini", "Giovanni Antonio Magini", 10], ["Johannes Kepler", "Johannes Kepler", 10], ["John Craig", "John Craig", 9], ["Christen Sørensen Longomontanus", "Longomontanus (Christen Sørensen)", 8], ["Andreas Meier", "Andreas Meier", 7], ["Anonymus", "Unknown / anonymous", 7], ["Georg Rollenhagen", "Georg Rollenhagen", 7], ["Hieronymus Wolf", "Hieronymus Wolf", 7], ["Joseph Justus Scaliger", "Joseph Justus Scaliger", 7], ["Peter Young", "Peter Young", 7], ["Eske Bille", "Eske Bille", 6], ["Jacob Bording", "Jacob Bording", 6], ["Johannes Pratensis", "Johannes Pratensis", 6], ["Martin Brasch", "Martin Brasch", 6], ["Moritz, landgreve af Hessen-Kassel", "Moritz, Landgrave of Hesse-Kassel", 6], ["Rudolf 2.", "Rudolf II, Holy Roman Emperor", 6], ["Bartholomaeus Scultetus", "Bartholomaeus Scultetus", 5], ["Charles de Dançay", "Charles de Dançay", 5], ["Ferdinando I de' Medici", "Ferdinando I de' Medici", 5], ["Jacob Monavius", "Jacob Monavius", 5], ["Johannes Major", "Johannes Major", 5], ["Vitus Winshemius", "Vitus Winshemius", 5], ["Daniel Cramer", "Daniel Cramer", 4], ["Dronning Sophie", "Dronning Sophie", 4], ["Ernst, kurfyrste, ærkebiskop af Köln", "Ernst of Bavaria, Archbishop-Elector of Cologne", 4], ["Jacob Kurz", "Jacob Kurz", 4], ["Jaques Bongars", "Jaques Bongars", 4], ["Johann Friedrich Hoffmann", "Johann Friedrich Hoffmann", 4], ["Lucas Bacmeister", "Lucas Bacmeister", 4], ["Melchior Jöstelius", "Melchior Jöstelius", 4], ["Niels Krag", "Niels Krag", 4], ["Caspar Peucer", "Caspar Peucer", 3], ["Christoph Sturtz", "Christoph Sturtz", 3], ["David Chytraeus", "David Chytraeus", 3], ["Frederik 2.", "Frederik II, King of Denmark", 3], ["Joachim Friedrich, kurfyrste af Brandenburg", "Joachim Friedrich, Elector of Brandenburg", 3], ["John Maitland", "John Maitland", 3], ["Paul Hainzel", "Paul Hainzel", 3], ["Rektor og professorerne ved Københavns Universitet", "Rektor og professorerne ved Københavns Universitet", 3], ["Rudolf Coraduz", "Rudolf Coraduz", 3], ["Sophie Brahe", "Sophie Brahe", 3], ["Axel Gyldenstierne", "Axel Gyldenstierne", 2], ["Beate Bille", "Beate Bille", 2], ["Christian Friis", "Christian Friis", 2], ["Christophorus Henniochus", "Christophorus Henniochus", 2], ["Cort Aslaksen", "Cort Aslaksen", 2], ["Cosimo Concini", "Cosimo Concini", 2], ["Gellius Sascerides", "Gellius Sascerides", 2], ["Hans Aalborg", "Hans Aalborg", 2], ["Hartwig von Dassel", "Hartwig von Dassel", 2], ["Hugo Blotius", "Hugo Blotius", 2], ["Joachim Camerarius", "Joachim Camerarius", 2], ["Johannes Jessenius", "Johannes Jessenius", 2], ["Johannes Jessenius a Jessen", "Johannes Jessenius a Jessen", 2], ["Johannes Pontanus", "Johannes Pontanus", 2], ["Katharina, kurfyrstinde af Brandenburg", "Katharina, Electress of Brandenburg", 2], ["Ludolf Riddershusen", "Ludolf Riddershusen", 2], ["Petrus Severinus", "Petrus Severinus", 2], ["Rektor ved Københavns Universitet", "Rektor ved Københavns Universitet", 2], ["Simon von Petkum", "Simon von Petkum", 2], ["Tage Ottesen Thott", "Tage Ottesen Thott", 2], ["Thomas Craig", "Thomas Craig", 2], ["Tobias Fischer", "Tobias Fischer", 2], ["Vincent Moller", "Vincent Moller", 2], ["Wolfgang Franzius", "Wolfgang Franzius", 2], ["An anonymous lady", "An anonymous lady", 1], ["Anders Christensen", "Anders Christensen", 1], ["Axel Brahe", "Axel Brahe", 1], ["Balthasar Caminaeus", "Balthasar Caminaeus", 1], ["Berka Zbyněk, archbishop of Prague", "Berka Zbyněk, archbishop of Prague", 1], ["Birgitte Bølle", "Birgitte Bølle", 1], ["Borgmestre og råd i Hamborg", "Borgmestre og råd i Hamborg", 1], ["Christian II, Elector of Saxony", "Christian II, Elector of Saxony", 1], ["Christina von Halle", "Christina von Halle", 1], ["Christoffer Valkendorf, Christian Friis", "Valkendorf & Friis (Danish chancellery)", 1], ["Claus Mule", "Claus Mule", 1], ["Cristophorus Henniochus", "Cristophorus Henniochus", 1], ["Daniel Bucretius", "Daniel Bucretius", 1], ["Daniel Fels", "Daniel Fels", 1], ["David Fabricius", "David Fabricius", 1], ["Eberhard Schele", "Eberhard Schele", 1], ["Ehrenfried Freiherr von Minckwitz", "Ehrenfried Freiherr von Minckwitz", 1], ["Erik Brahe", "Erik Brahe", 1], ["Erik Sparre", "Erik Sparre", 1], ["Frans Tengnagel", "Frans Tengnagel", 1], ["Friedrich Taubmann", "Friedrich Taubmann", 1], ["Galileo Galilei", "Galileo Galilei", 1], ["Georg von Wolframsdorf", "Georg von Wolframsdorf", 1], ["George Buchanan", "George Buchanan", 1], ["Gottfried von Berbistorf", "Gottfried von Berbistorf", 1], ["Heinrich Ellenberger", "Heinrich Ellenberger", 1], ["Henrik Below", "Henrik Below", 1], ["Henrik Ramel", "Henrik Ramel", 1], ["Jacob Grynaeus", "Jacob Grynaeus", 1], ["Jakob Bording", "Jakob Bording", 1], ["Joachim Stralendorff", "Joachim Stralendorff", 1], ["Johann Anton Barwitz", "Johann Anton Barvitius", 1], ["Johann Barwitz", "Johann Barwitz", 1], ["Johann Georg Gödelmann", "Johann Georg Gödelmann", 1], ["Johann Tauchmann", "Johann Tauchmann", 1], ["Johannes Caselius", "Johannes Caselius", 1], ["Johannes Isacius Pontanus", "Johannes Isacius Pontanus", 1], ["Johannes Isaksen Pontanus", "Johannes Isaksen Pontanus", 1], ["Johannes Müller", "Johannes Müller", 1], ["Johannes Oswaldus", "Johannes Oswaldus", 1], ["Johannes Stygge", "Johannes Stygge", 1], ["Jon Jacobsen Venusinus", "Jon Jacobsen Venusinus", 1], ["Kirsten Lindenov", "Kirsten Lindenov", 1], ["Kristoffer Valkendorf", "Kristoffer Valkendorf", 1], ["Mads Jørgensen Huus", "Mads Jørgensen Huus", 1], ["Magdalene Brahe", "Magdalene Brahe", 1], ["Martin Bachazek", "Martin Bachazek", 1], ["Matthias, Archduke of Austria", "Matthias, Archduke of Austria", 1], ["Mette Kotte", "Mette Kotte", 1], ["Michael Mästlin", "Michael Mästlin", 1], ["Mikkel Vibe", "Mikkel Vibe", 1], ["Nicolaus Braschius", "Nicolaus Braschius", 1], ["Niels Bild", "Niels Bild", 1], ["Niels Hemmingsen", "Niels Hemmingsen", 1], ["Oluf Rosensparre", "Oluf Rosensparre", 1], ["Ottavio Caurian", "Ottavio Caurian", 1], ["Patrick Gordon", "Patrick Gordon", 1], ["Paulus Melissus", "Paulus Melissus", 1], ["Peder Brahe", "Peder Brahe", 1], ["Poul Madsen", "Poul Madsen", 1], ["Raphael Ciaperenius", "Raphael Ciaperenius", 1], ["Rektor og professorer ved Københavns Universitet", "Rektor og professorer ved Københavns Universitet", 1], ["Sigfrid Rindschat", "Sigfrid Rindschat", 1], ["Steen Bille", "Steen Bille", 1], ["Steen Brahe", "Steen Brahe", 1], ["Susanne Hájek", "Susanne Hájek", 1], ["The chapter at the cathedral of Magdeburg", "The chapter at the cathedral of Magdeburg", 1], ["The dean and doctors at the college of medicine i Wittenberg", "The dean and doctors at the college of medicine i Wittenberg", 1], ["The dean of the chapter at the cathedral of Magdeburg", "The dean of the chapter at the cathedral of Magdeburg", 1], ["Thomas Savile", "Thomas Savile", 1], ["Ukendt dansk studerende", "An unknown Danish student", 1], ["Ukendt medicinsk doktor", "An unknown doctor of medicine", 1], ["Veit Winsheim", "Veit Winsheim", 1], ["Vincenzio Pinelli", "Vincenzio Pinelli", 1], ["[Andreas Meyer, Mecklenburg rent", "[Andreas Meyer, Mecklenburg rent", 1], ["[open letter / deed of declaration]", "[open letter / deed of declaration]", 1], ["[open testimonial, for Christian Severini Longomontanus]", "[open testimonial, for Christian Severini Longomontanus]", 1], ["empty", "(Recipient unrecorded)", 1]], "kassel": {"correspondents": ["Wilhelm 4., landgreve af Hessen-Kassel", "Christopher Rothmann", "Moritz, landgreve af Hessen-Kassel"], "note_html": "Part of Tycho's astronomical correspondence with the Hesse-Kassel court — Landgrave Wilhelm IV and his astronomer Christoph Rothmann. Tycho printed much of this exchange in his <i>Epistolae astronomicae</i> (1596); several autograph originals survive in the Kassel-retained convolute at Marburg (HStAM Best. 3 II, Nr. 1070).", "corpus_link": "../typographica/index.html#ln430", "corpus_label": "Epistolae astronomicae (LN 430) — Typographica"}, "bookorbit": {"note_html": "This letter touches the making, gift, sale, or acquisition of Tycho's printed books.", "corpus_link": "../typographica/index.html", "corpus_label": "Typographica — Tycho's printed works"}};
-const V=VIEWS;
-const BY={}; DATA.forEach(r=>BY[r.s]=r);
-const ABOUT_HTML=`<div class="about"><h2>About the Epistolarium</h2><p class="lead">Select a letter at left, or begin with one of the principal correspondences below.</p><h4>The corpus</h4>All 509 known letters to and from Tycho Brahe, written between 1568 and 1601 — from the earliest surviving letter, sent by the twenty-one-year-old student at Rostock, to the letters of the Prague years: the exchange with Kepler (1597–1600) and, last of all, the letters settling his affairs in the summer of 1601. Of these, 284 are from Tycho and 202 addressed to him; a further 23 passed between third parties in his orbit — the Kassel astronomers corresponding with one another, the Brahe family, diplomatic intermediaries, and the settlement of his estate — and are included where they bear directly on his affairs. Every letter is given in full, in its original language (Latin for the learned correspondence; German and Danish for court, family, and business), with an English translation in parallel.<h4>Texts and translations</h4>The original texts follow the standard scholarly edition of Tycho's correspondence: J. L. E. Dreyer's <i>Opera Omnia</i> (1913–29), as re-edited digitally by Zeeberg and Gredal Jensen at <a href="https://tekstnet.dk" target="_blank">tekstnet.dk</a> for the Danish Society for Language and Literature; every letter links to that edition. The English translations were prepared for this archive, and each carries an explicit assessment of its reliability — <b>Secure</b> (sound throughout), <b>Probable</b> (minor difficulties, flagged), or <b>Possible</b> (substantive uncertainties remain) — given, with its grounds, in the apparatus at the foot of each letter. Where the original manuscript survives, its holding library is named, with a link to the library's digitised images where these exist.<h4>The principal correspondences</h4>Selecting a correspondence below restricts the list to its letters.<ul><li><b><span class="golink" onclick="applyFocus({k:'ck',v:'Johannes Kepler'})">Johannes Kepler</span></b> (10 letters) — the Prague endgame, 1597–1600: the correspondence surrounding Kepler's arrival at Benátky and the disposition of Tycho's observations.</li><li><b><span class="golink" onclick="applyFocus({k:'ck',v:'Wilhelm 4., landgreve af Hessen-Kassel'})">Wilhelm IV of Hesse-Kassel</span></b> and <b><span class="golink" onclick="applyFocus({k:'ck',v:'Christopher Rothmann'})">Christoph Rothmann</span></b> — the astronomical correspondence between Hven and Kassel, published by Tycho as the <i>Epistolae astronomicae</i> (1596); the despatched originals survive at Marburg.</li><li><b><span class="golink" onclick="applyFocus({k:'ck',v:'Thaddaeus Hagecius'})">Thaddaeus Hagecius</span></b> (37) — imperial physician at Prague and Tycho's most constant correspondent: cometary observations, the exchange of books, and ultimately the approach to the court of Rudolf II.</li><li><b><span class="golink" onclick="applyFocus({k:'ck',v:'John Craig'})">John Craig</span></b> (9) — the dispute with the Scottish physician-mathematician over cometary parallax and the supralunary position of comets.</li><li><b><span class="golink" onclick="applyFocus({k:'ck',v:'Christian 4.'})">Christian IV</span></b> (14) — the correspondence with the Danish court, including the letters surrounding Tycho's departure from Denmark in 1597.</li><li>The earliest surviving letter (<span class="golink" onclick="openLetter('brahe-t_15680114001')">Rostock, 14 January 1568</span>) opens directly.</li></ul>The correspondent index above lists all 152 named correspondents.<h4>The four views</h4><b>The Reader</b> — the present view — gives the letters themselves in parallel text. <b>The Correspondents</b> is the register of the exchange: every correspondent, the extent and span of each correspondence, its language, and how much of it survives in manuscript. <b>The Map</b> plots the geography of the correspondence: where each letter was written, and the archives in which the surviving manuscripts — originals and contemporary copies — now rest, with a register of the holding repositories. <b>The Rhythm</b> gives the year-by-year distribution of the correspondence, whose shape follows the biography — the student years, the two decades on Hven, and the concentrated letter-writing of the exile. The tabs above switch between the four.<h4>Conventions</h4>The 7 letters to unnamed recipients — officials, patrons, an unnamed reverend friend — are grouped under a single &#8220;Anonymus&#8221; entry in the counts and filters, although they were almost certainly addressed to several different persons. One 1601 quittance (Johannes Müller, 29 May 1601) names no recipient and appears in the index as &#8220;(Recipient unrecorded)&#8221;. Datelines are reproduced as written: <b>[O.S.]</b> denotes the Julian calendar, retained in Denmark throughout Tycho's lifetime; <b>[N.S.]</b> the Gregorian calendar in use in Catholic Europe from 1582; the two differed by ten days. Letters bearing on the production, presentation, or sale of Tycho's printed books are linked to Typographica, the press pillar of this site; the Kassel letters are linked to the Marburg dossier of the surviving originals.</div>`;
-
-const PCLR={early:'#2d5a8b',hven:'#2d5a3a',exile:'#7a4090'};
-const DIRCLR={from:'#2c5fa3',to:'#9a7b32',third:'#9aa0ab'};
-const DIRLAB={from:'from Tycho',to:'to Tycho',third:'third-party'};
-// Translation-confidence rating. Word labels (not the bare letters A/B/C) so the
-// rating can never be mistaken for the manuscript-witness sigla A/B/C, which are a
-// separate scholarly scheme. Data value stays A/B/C; only the display is worded.
-const GRADELAB={A:'Secure',B:'Probable',C:'Possible'};
-let curDir='all', curPer='all', selected=null, forceSet=null, focus=null, curView='map';
-let mapInited=false, corrInited=false, rhythmInited=false;
-
-/* List rows name both parties, arrow running sender → recipient:
-   "Rothmann → Tycho" = a letter Rothmann sent; "Rothmann ← Tycho" = one Tycho sent him.
-   Third-party letters (neither party Tycho) show their real pair, taken from the title. */
-function pairHTML(r){
- if(r.dir==='third') return `<span class="pair3" title="${DIRLAB.third}">${esc(r.t.split(' — ')[0])}</span>`;
- return `${esc(r.c)} <span class="ar ${r.dir}" title="${DIRLAB[r.dir]}">${r.dir==='to'?'→':'←'}</span> <span class="tyc">Tycho</span>`;
-}
-function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function yearOf(d){return (d||'').slice(0,4);}
-
-/* ---------------- view switching ---------------- */
-function setView(v){
- curView=v;
- document.querySelectorAll('.eview').forEach(s=>s.classList.toggle('on',s.dataset.view===v));
- document.querySelectorAll('.swbtn').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
- try{const u=new URL(location);u.searchParams.set('view',v);history.replaceState(null,'',u);}catch(e){}
- if(v==='map'){ if(!mapInited){initMap();mapInited=true;} else setTimeout(()=>_map.invalidateSize(),60); }
- if(v==='corr' && !corrInited){renderCorr();corrInited=true;}
- if(v==='rhythm' && !rhythmInited){renderRhythm();rhythmInited=true;}
-}
-
-/* ---------------- bridges ---------------- */
-function applyFocus(f){
- focus=f; forceSet=null;
- curDir='all';curPer='all';
- document.getElementById('q').value='';document.getElementById('corr').value='all';
- document.getElementById('lang').value='all';
- document.querySelectorAll('.chip[data-dir]').forEach(x=>x.classList.toggle('on',x.dataset.dir==='all'));
- document.querySelectorAll('.chip[data-per]').forEach(x=>x.classList.toggle('on',x.dataset.per==='all'));
- selected=null;
- setView('reader'); updateSetbar(); renderList();
- document.getElementById('detail').innerHTML=ABOUT_HTML;
-}
-
-/* ---------------- reader ---------------- */
-function passes(r, q, dir, per, corr, lang){
- if(forceSet==='kassel' && !r.ka) return false;
- if(focus){
-   if(focus.k==='year' && yearOf(r.d)!==focus.v) return false;
-   if(focus.k==='pl' && r.pl!==focus.v) return false;
-   if(focus.k==='ck' && r.ck!==focus.v && r.ck2!==focus.v) return false;
- }
- if(dir!=='all' && r.dir!==dir) return false;
- if(per!=='all' && r.per!==per) return false;
- if(corr!=='all' && r.ck!==corr && r.ck2!==corr) return false;
- if(lang!=='all' && r.lb!==lang) return false;
- /* A–D evidence-quality threshold (doctrine 5a.2; Six-Degrees pattern) */
- if(q){
-   const hay=(r.t+' '+r.c+' '+r.ck+' '+r.n+' '+r.la+' '+r.en+' '+r.ap+' '+(r.ab||'')).toLowerCase();
-   if(!hay.includes(q)) return false;
- }
- return true;
-}
-function state(){return {q:document.getElementById('q').value.toLowerCase().trim(),dir:curDir,per:curPer,corr:document.getElementById('corr').value,lang:document.getElementById('lang').value};}
-
-function renderList(){
- const st=state();
- const host=document.getElementById('list'); let h=''; let shown=0;
- DATA.forEach(r=>{
-   if(!passes(r,st.q,st.dir,st.per,st.corr,st.lang)) return;
-   shown++;
-   const on = r.s===selected?' on':'';
-   h+=`<div class="li${on}" onclick="openLetter('${r.s}')"><div class="li-row"><span class="d">${r.d}</span>${pairHTML(r)}</div>${r.ab?`<div class="li-gist">${esc(r.ab)}</div>`:''}</div>`;
- });
- host.innerHTML = h || '<div style="padding:20px;color:var(--muted);font-size:13px">No letters match these filters.</div>';
- document.querySelectorAll('.chip[data-dir]').forEach(ch=>{
-   const v=ch.dataset.dir, n=DATA.filter(r=>passes(r,st.q,v,st.per,st.corr,st.lang)).length;
-   ch.querySelector('.cnt').textContent='('+n+')'; ch.classList.toggle('disabled', n===0 && v!=='all');
- });
- document.querySelectorAll('.chip[data-per]').forEach(ch=>{
-   const v=ch.dataset.per, n=DATA.filter(r=>passes(r,st.q,st.dir,v,st.corr,st.lang)).length;
-   ch.querySelector('.cnt').textContent='('+n+')'; ch.classList.toggle('disabled', n===0 && v!=='all');
- });
- document.getElementById('count').textContent='showing '+shown+' of '+DATA.length;
-}
-
-function connBlock(r){
- let h='';
- if(r.ms){
-   const v=r.ms.u?` — <a href="${esc(r.ms.u)}" target="_blank">view manuscript ↗</a>`:'';
-   h+=`<div class="c ms"><span class="lbl">Manuscript</span>${esc(r.ms.sh||r.ms.l)}${r.ms.in?' · '+esc(r.ms.in):''}${v}</div>`;
- }
- if(r.ka){
-   const K=CFG.kassel;
-   h+=`<div class="c kassel"><span class="lbl">Kassel correspondence</span>${K.note_html} <a href="${esc(K.corpus_link)}" target="_blank">${esc(K.corpus_label)} ↗</a></div>`;
- }
- if(r.bk){
-   const B=CFG.bookorbit;
-   h+=`<div class="c book"><span class="lbl">Books</span>${B.note_html} <a href="${esc(B.corpus_link)}" target="_blank">${esc(B.corpus_label)} ↗</a></div>`;
- }
- if(r.url) h+=`<div class="c tk"><span class="lbl">Critical text</span><a href="${esc(r.url)}" target="_blank">Read on tekstnet.dk (DSL) ↗</a></div>`;
- return h?`<div class="conn">${h}</div>`:'';
-}
-function threadBlock(r){
- const t=r.th; if(!t) return '';
- const prev = t.prev?`onclick="openLetter('${t.prev}')"`:'disabled';
- const next = t.next?`onclick="openLetter('${t.next}')"`:'disabled';
- return `<div class="thread"><button ${prev}>‹ prev</button><span class="mid">Letter ${t.pos} of ${t.count} in the correspondence with <b>${esc(t.label)}</b></span><button ${next}>next ›</button></div>`;
-}
-function openLetter(slug){
- const r=BY[slug]; if(!r) return;
- selected=slug;
- if(curView!=='reader') setView('reader');
- try{const u=new URL(location);u.searchParams.set('letter',slug);history.replaceState(null,'',u);}catch(e){}
- let h=`<div class="doc"><h2>${esc(r.t)}</h2>`;
- if(r.ab) h+=`<p class="doc-gist">${esc(r.ab)}</p>`;
- if(r.m) h+=`<div class="meta">${r.m}</div>`;
- if(r.n) h+=`<div class="note">${r.n}</div>`;
- h+=connBlock(r);
- h+=threadBlock(r);
- h+=`<div class="cols"><div class="col"><h3>Source</h3><div class="latin">${r.la}</div></div><div class="col"><h3>English</h3><div class="english">${r.en}</div></div></div>`;
- /* the translation-confidence tier lives here, with its grounds — the rationale
-    texts do not name the tier themselves, so it is prefixed explicitly */
- h+=`<details class="app"><summary>Apparatus &amp; confidence</summary><div class="body">${r.ap||''}<div class="conf"><p><b>Translation confidence: ${GRADELAB[r.g]}.</b></p>${r.cf||''}</div></div></details>`;
- // contextual navigation (Newton-pattern reading-pane tabs, light form):
- // jump from this letter to its correspondent's whole exchange or its year
- {const _yr=yearOf(r.d), _ckd=r.ck&&NETBY[r.ck]?NETBY[r.ck].disp:r.c;
-  let nav='';
-  if(r.ck) nav+='<a class="ctx-nav" data-kind="ck" style="color:#7d6428;cursor:pointer;margin-right:14px">&#8594; all letters with '+esc(_ckd)+'</a>';
-  if(_yr)  nav+='<a class="ctx-nav" data-kind="year" data-yr="'+_yr+'" style="color:#7d6428;cursor:pointer">&#8594; everything from '+_yr+'</a>';
-  if(nav)  h+='<div style="font-size:12px;margin-top:10px">'+nav+'</div>';}
- // ready-to-paste record citation (doctrine 5a.4): letter + corpus + permalink + accessed date
- {const _url=location.origin+location.pathname+'?letter='+encodeURIComponent(slug);
-  const _cite='“'+r.t+'”, Tychoniana — Epistolarium (letter '+slug+'), '+_url+', accessed '+new Date().toISOString().slice(0,10)+'.';
-  h+=`<div style="font-size:11px;color:#6b6450;margin-top:10px;border-top:1px solid #ddd3bf;padding-top:7px"><b>Cite:</b> <span class="cite-line">${esc(_cite)}</span> `+
-     `<button style="font-size:10px;padding:0 6px;border:1px solid #ddd3bf;border-radius:3px;background:#fffdf8;cursor:pointer" `+
-     `onclick="try{navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied';}catch(err){}">copy</button></div>`;}
- h+=`</div>`;
- document.getElementById('detail').innerHTML=h;
- document.querySelectorAll('#detail .ctx-nav').forEach(a=>{
-   a.addEventListener('click',()=>applyFocus(
-     a.dataset.kind==='ck' ? {k:'ck',v:r.ck} : {k:'year',v:a.dataset.yr}));
- });
- document.querySelector('[data-view="reader"] main').scrollTop=0;
- renderList();
-}
-function showAbout(){ selected=null; document.getElementById('detail').innerHTML=ABOUT_HTML; renderList(); }
-
-function updateSetbar(){
- const bar=document.getElementById('setbar');
- if(forceSet==='kassel'){
-   bar.classList.remove('hidden');
-   bar.innerHTML='<b>Kassel correspondence</b> — the astronomical correspondence with the Hesse-Kassel court — Wilhelm IV, Christoph Rothmann, and Landgrave Moritz; much of it printed by Tycho as the <i>Epistolae astronomicae</i> (1596). <button id="clearset">show all letters</button>';
-   document.getElementById('clearset').onclick=()=>{forceSet=null;updateSetbar();renderList();};
- } else if(focus){
-   bar.classList.remove('hidden');
-   const lbl = focus.k==='year'?('Year '+focus.v)
-            : focus.k==='pl'?('Written at '+focus.v)
-            : ('Correspondence with '+(NETBY[focus.v]?NETBY[focus.v].disp:focus.v));
-   bar.innerHTML='<b>'+esc(lbl)+'</b> <button id="clearset">clear &times;</button>';
-   document.getElementById('clearset').onclick=()=>{focus=null;updateSetbar();renderList();};
- } else { bar.classList.add('hidden'); bar.innerHTML=''; }
-}
-
-/* ---------------- RHYTHM ---------------- */
-function periodOfYear(y){
- // derive period from its sub-label year-range, e.g. "1568–1576"
- for(const p of CFG.periods){
-   const m=p.sub.match(/(\d{4}).*?(\d{4})/); if(m && y>=+m[1] && y<=+m[2]) return p.id;
- }
- return 'exile';
-}
-const REV=[{y:1576,t:'Hven granted'},{y:1588,t:'De mundi'},{y:1596,t:'Epistolae'},
- {y:1597,t:'leaves Hven'},{y:1599,t:'→ Prague'},{y:1600,t:'Kepler joins'},{y:1601,t:'Tycho dies'}];
-function renderRhythm(){
- const data=V.rhythm; const y0=data[0].y, y1=data[data.length-1].y;
- const years=[]; for(let y=y0;y<=y1;y++)years.push(y);
- const byY={}; data.forEach(d=>byY[d.y]=d);
- const MAX=Math.max(...data.map(d=>d.from+d.to+d.third));
- const HPX=290;
- const bars=document.getElementById('rBars'); let bh='';
- years.forEach(y=>{
-   const d=byY[y]||{from:0,to:0,third:0}; const tot=d.from+d.to+d.third;
-   const tint=PCLR[periodOfYear(y)];
-   let segs='';
-   [['third',d.third],['to',d.to],['from',d.from]].forEach(([k,n])=>{
-     if(n>0) segs+=`<div class="rseg" style="height:${(n/MAX*HPX).toFixed(1)}px;background:${DIRCLR[k]}"></div>`;
-   });
-   bh+=`<div class="rcol" data-y="${y}" data-tot="${tot}" data-f="${d.from}" data-t="${d.to}" data-h="${d.third}" style="background:linear-gradient(${tint}2e,${tint}14)">${segs}</div>`;
- });
- bars.innerHTML=bh;
- // axis
- const ax=document.getElementById('rAxis'); let ah='';
- years.forEach(y=>{ ah+=`<div class="rtick">${(y%5===0||y===y0||y===y1)?("'"+String(y).slice(2)):''}</div>`; });
- ax.innerHTML=ah;
- // events
- const ev=document.getElementById('rEvents'); let eh='';
- REV.forEach(e=>{ const f=(e.y-y0)/(y1-y0)*100; eh+=`<span class="rev" style="left:${f.toFixed(2)}%">${esc(e.t)}</span>`; });
- ev.innerHTML=eh;
- /* lesson-4 label dodge (measured, not estimated): right-anchor any label
-    overflowing the plot edge (tick stays on the event year via .rev-r),
-    then stagger remaining collisions onto extra rows. Runs only when the
-    view is visible (renderRhythm is called after .on toggles), so the
-    measurements are real. */
- {
-  const _c=ev.getBoundingClientRect(), _sp=[...ev.children];
-  // Right-anchor any label that overflows the plot edge OR whose centre sits in
-  // the rightmost ~10% (so edge labels like 'Kepler joins'/'Tycho dies' flip to
-  // extend leftward before they clip); the row-stagger below then de-collides.
-  _sp.forEach(s=>{ const r=s.getBoundingClientRect(); const cen=(r.left+r.right)/2;
-    if(r.right>_c.right+1 || cen>_c.right-_c.width*0.10) s.classList.add('rev-r'); });
-  const _rows=[];
-  _sp.forEach(s=>{ const r=s.getBoundingClientRect(); let i=0;
-    while(_rows[i]!==undefined && r.left<_rows[i]+6) i++;
-    _rows[i]=r.right; if(i>0)s.style.top=(i*14)+'px'; });
-  if(_rows.length>1) ev.style.height=(22+(_rows.length-1)*14)+'px';
- }
- // legend
- document.getElementById('rhythmLegend').innerHTML=
-   `<span class="rl"><i style="background:${DIRCLR.from}"></i>from Tycho</span>`+
-   `<span class="rl"><i style="background:${DIRCLR.to}"></i>to Tycho</span>`+
-   `<span class="rl"><i style="background:${DIRCLR.third}"></i>third-party</span>`+
-   `<span class="rl" style="margin-left:10px">band tint = life-period:</span>`+
-   /* chips show the tint the plot actually draws (not the saturated period colour —
-      legend must match plot; a full-sat early-blue chip also collided with the
-      from-Tycho blue two chips away) */
-   CFG.periods.map(p=>`<span class="rl"><i style="background:${PCLR[p.id]}2e;border:1px solid ${PCLR[p.id]}66;border-radius:3px"></i>${esc(p.label)}</span>`).join('');
- const ro=document.getElementById('rhythmReadout');
- bars.querySelectorAll('.rcol').forEach(c=>{
-   c.addEventListener('mouseenter',()=>{ const y=c.dataset.y,t=c.dataset.tot;
-     ro.textContent=t==='0'?`${y} — no letters recorded`:`${y} — ${t} letter${t==='1'?'':'s'} · ${c.dataset.f} from Tycho · ${c.dataset.t} to Tycho`+(+c.dataset.h?` · ${c.dataset.h} third-party`:''); });
-   c.addEventListener('mouseleave',()=>ro.textContent='');
-   c.addEventListener('click',()=>{ if(+c.dataset.tot>0) applyFocus({k:'year',v:c.dataset.y}); });
- });
-}
-
-/* NETBY: display names for the Reader's setbar + context links (from the VIEWS.net blob) */
-const NETBY={}; V.net.nodes.forEach(n=>NETBY[n.k]=n);
-/* ---------------- CORRESPONDENTS (the index) ---------------- */
-const CORRDISP={}; CFG.corr.forEach(c=>CORRDISP[c[0]]=c[1]);
-let corrSort={col:'n',asc:false}, CORRROWS=null;
-function corrRows(){
- /* one row per correspondent, computed from the letter spine itself;
-    third-party letters are indexed under both parties (as a printed register would) */
- const by={};
- DATA.forEach(r=>{
-   (r.dir==='third'?[r.ck,r.ck2]:[r.ck]).forEach(k=>{
-     if(!k || !CORRDISP[k]) return;
-     const o=by[k]||(by[k]={k,disp:CORRDISP[k],n:0,f:0,t:0,h:0,d0:r.d,d1:r.d,langs:{},ms:0});
-     o.n++; if(r.dir==='from')o.f++; else if(r.dir==='to')o.t++; else o.h++;
-     if(r.d<o.d0)o.d0=r.d; if(r.d>o.d1)o.d1=r.d;
-     if(r.lb)o.langs[r.lb]=1;
-     if(r.ms||(r.w&&r.w.length))o.ms++;
-   });
- });
- return Object.values(by);
-}
-function renderCorr(){
- if(!CORRROWS)CORRROWS=corrRows();
- const {col,asc}=corrSort;
- const cmp=(a,b)=> col==='disp'? a.disp.localeCompare(b.disp,'en')
-        : col==='d0'? a.d0.localeCompare(b.d0)
-        : a[col]-b[col];
- const rows=CORRROWS.slice().sort((a,b)=> (asc?cmp(a,b):cmp(b,a)) || a.disp.localeCompare(b.disp,'en'));
- const COLS=[['disp','Correspondent',''],['n','Letters','num'],['f','From Tycho','num'],
-             ['t','To Tycho','num'],['h','Third-party','num'],['d0','Span',''],
-             ['lg','Language',''],['ms','In manuscript','num']];
- let h='<thead><tr>'+COLS.map(([c,lab,cls])=>{
-   const srt=c!=='lg';
-   const arrow=(srt&&corrSort.col===c)?(corrSort.asc?' ▲':' ▼'):'';
-   return `<th class="${cls}${srt?' srt':''}"${srt?` data-col="${c}"`:''}>${lab}${arrow}</th>`;
- }).join('')+'</tr></thead><tbody>';
- rows.forEach(o=>{
-   const y0=o.d0.slice(0,4), y1=o.d1.slice(0,4);
-   h+=`<tr tabindex="0" data-k="${esc(o.k)}"><td>${esc(o.disp)}</td><td class="num">${o.n}</td>`+
-      `<td class="num">${o.f||''}</td><td class="num">${o.t||''}</td><td class="num">${o.h||''}</td>`+
-      `<td>${y0===y1?y0:y0+'–'+y1}</td><td>${Object.keys(o.langs).join(', ')}</td>`+
-      `<td class="num">${o.ms||'—'}</td></tr>`;
- });
- h+='</tbody>';
- const tab=document.getElementById('corrTab'); tab.innerHTML=h;
- tab.querySelectorAll('th.srt').forEach(th=>th.addEventListener('click',()=>{
-   const c=th.dataset.col;
-   if(corrSort.col===c)corrSort.asc=!corrSort.asc; else corrSort={col:c,asc:c==='disp'||c==='d0'};
-   renderCorr();
- }));
- tab.querySelectorAll('tbody tr').forEach(tr=>{
-   const open=()=>applyFocus({k:'ck',v:tr.dataset.k});
-   tr.addEventListener('click',open);
-   tr.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} });  /* keyboard parity */
- });
-}
-/* ---------------- MAP ---------------- */
-let _map=null,_layer=null,_curLayer='origin',_tilesHist=null,_tilesModern=null;
-function _rad(n,base,k){return base+Math.sqrt(n)*k;}
-let INTRO_ORIGIN='';
-function survIntro(){
- const s=V.geo.survival, t=s.slice(0,3), far=s.filter(p=>p.lon<=-10);
- return `The same letters, by where their manuscripts — original or contemporary copy, as recorded in each letter's witness apparatus — <b>rest today</b>: the surviving manuscripts re-converged into three great convolutes — ${esc(t[0].disp)} (${t[0].n}), ${esc(t[1].disp)} (${t[1].n}) and ${esc(t[2].disp)} (${t[2].n}) — with a scatter of smaller holdings from Oxford to Wrocław${far.length?`, and ${far.map(p=>p.n+' in '+esc(p.disp)).join(', ')}`:''}. ${V.geo.nowit} letters have no recorded manuscript witness — most survive in print only. Switch to <b>where written</b> for the geography of the writing itself.`;
-}
-let _histLayer=null;
-function initMap(){
- _map=L.map('epimap',{scrollWheelZoom:false,zoomSnap:0.5,attributionControl:false}).setView([52.5,11.5],4);
- /* Era-aware base: 'origin' (where the letters were written) rides terrain +
-    c.-1600 borders; 'survival' (where the manuscripts rest today) rides an
-    ordinary modern map. */
- _tilesHist=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}',{attribution:'Terrain: Esri',maxZoom:16,className:'hist-tiles'});
- _tilesModern=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors',subdomains:'abcd',maxZoom:12});
- if(window.BORDERS_1600){
-  _histLayer=L.geoJSON(window.BORDERS_1600,{
-   style:{color:'#8a6d3b',weight:1.1,opacity:.55,fillColor:'#c9a23f',fillOpacity:.035},
-   onEachFeature:function(f,l){if(f.properties&&f.properties.n)l.bindTooltip(f.properties.n+' (c. 1600)',{sticky:true});}
-  });
- }
- INTRO_ORIGIN=document.getElementById('mapIntro').innerHTML;
- showMapLayer(_curLayer);
- document.querySelectorAll('.mtbtn').forEach(b=>b.addEventListener('click',()=>showMapLayer(b.dataset.layer)));
-}
-function _domPeriod(per){let best='hven',bv=-1;for(const k in per){if(per[k]>bv){bv=per[k];best=k;}}return best;}
-function showMapLayer(which){
- _curLayer=which;
- document.querySelectorAll('.mtbtn').forEach(b=>b.classList.toggle('on',b.dataset.layer===which));
- if(_layer)_map.removeLayer(_layer); _layer=L.layerGroup().addTo(_map);
- if(which==='origin'){
-  if(_tilesModern&&_map.hasLayer(_tilesModern))_map.removeLayer(_tilesModern);
-  if(_tilesHist)_tilesHist.addTo(_map);
-  if(_histLayer)_histLayer.addTo(_map);
- }else{
-  if(_tilesHist&&_map.hasLayer(_tilesHist))_map.removeLayer(_tilesHist);
-  if(_histLayer)_map.removeLayer(_histLayer);
-  if(_tilesModern)_tilesModern.addTo(_map);
- }
- const leg=document.getElementById('mapLegend');
- const intro=document.getElementById('mapIntro');
- if(intro)intro.innerHTML=(which==='origin')?INTRO_ORIGIN:survIntro();
- /* refit to THIS layer's markers — the origin fit clipped Stockholm and Florence
-    on the survival layer. The transatlantic outlier is excluded from the bounds
-    (fitting it would zoom out across the Atlantic) and named in the legend instead. */
- const fitPts=(which==='origin')
-   ? V.geo.origin.map(p=>[p.lat,p.lon]).concat(V.geo.spine.map(s=>[s.lat,s.lon]))
-   : V.geo.survival.filter(p=>p.lon>-10).map(p=>[p.lat,p.lon]);
- if(fitPts.length)_map.fitBounds(fitPts,{padding:[26,26],maxZoom:6});
- if(which==='origin'){
-   const sp=V.geo.spine.map(s=>[s.lat,s.lon]);
-   L.polyline(sp,{color:'#c9a23f',weight:3,dashArray:'7,7',opacity:.85}).addTo(_layer);
-   V.geo.origin.forEach(p=>{
-     const dom=_domPeriod(p.per);
-     const m=L.circleMarker([p.lat,p.lon],{radius:_rad(p.n,5,2.6),color:'#fff',weight:1.5,fillColor:PCLR[dom],fillOpacity:.85}).addTo(_layer);
-     const parts=[]; if(p.from)parts.push(p.from+' from Tycho'); if(p.to)parts.push(p.to+' to Tycho'); if(p.third)parts.push(p.third+' third-party');
-     m.bindPopup(`<div class="mpop"><b>${esc(p.place)}</b><br>${p.n} letter${p.n!==1?'s':''} written here<br><span style="color:#6b6450">${parts.join(' · ')}</span><br><span class="mlink" onclick="applyFocus({k:'pl',v:'${esc(p.place)}'})">see these letters →</span></div>`);
-   });
-   /* the residence-spine waypoints, drawn above the letter markers so the
-      "moving address" the legend promises is actually findable */
-   V.geo.spine.forEach(s=>{
-     L.circleMarker([s.lat,s.lon],{radius:4,color:'#fff',weight:1.5,fillColor:'#c9a23f',fillOpacity:1}).addTo(_layer)
-      .bindTooltip(s.tip,{className:'epi-itin-tip'});
-   });
-   const yrs={}; CFG.periods.forEach(p=>yrs[p.id]=p.sub);
-   leg.innerHTML=`<span class="ml"><i style="background:${PCLR.early}"></i>early · ${yrs.early}</span>`+
-     `<span class="ml"><i style="background:${PCLR.hven}"></i>Hven · ${yrs.hven}</span>`+
-     `<span class="ml"><i style="background:${PCLR.exile}"></i>exile · ${yrs.exile}</span>`+
-     `<span class="ml"><i class="line"></i>Tycho's own moving address (hover a gold stop)</span>`+
-     `<span class="ml">marker size = letters written there · ${V.geo.unplaced} letters give no place</span>`;
- } else {
-   V.geo.survival.forEach(p=>{
-     const insts=(p.insts&&p.insts.length)?`<br><span style="color:#6b6450">MS witnesses: ${p.insts.slice(0,3).map(i=>esc(i[0])+' ×'+i[1]).join(' · ')}${p.insts.length>3?' · …':''}</span>`:'';
-     L.circleMarker([p.lat,p.lon],{radius:_rad(p.n,5,2.7),color:'#fff',weight:1.5,fillColor:'#9a7b32',fillOpacity:.82}).addTo(_layer)
-      .bindPopup(`<div class="mpop"><b>${esc(p.disp)}</b><br>${p.n} letter${p.n!==1?'s':''} preserved in manuscript here${insts}</div>`);
-   });
-   const far=V.geo.survival.filter(p=>p.lon<=-10);
-   leg.innerHTML=`<span class="ml"><i style="background:#9a7b32"></i>marker size = letters with a manuscript witness preserved there</span>`+
-     `<span class="ml">${V.geo.nowit} letters have no recorded manuscript witness — most survive in print only`+
-     (V.geo.unmapped_wit?` · ${V.geo.unmapped_wit} with witnesses at unmapped places`:'')+`</span>`+
-     far.map(p=>`<span class="ml">+ ${p.n} letter${p.n!==1?'s':''} — ${esc(p.disp)}, off the map to the west</span>`).join('');
- }
- /* the repository register — the citable census of witnesses by holding institution;
-    shown under the survival layer only */
- const regHost=document.getElementById('mapRegister');
- if(which==='survival'){
-   const reg=[];
-   V.geo.survival.forEach(p=>{ (p.insts||[]).forEach(i=>reg.push({inst:i[0],city:p.disp,n:i[1]})); });
-   reg.sort((a,b)=> b.n-a.n || a.inst.localeCompare(b.inst,'en'));
-   regHost.innerHTML = reg.length?
-     `<div class="cap">The manuscripts by repository — original or contemporary copy, as recorded in each letter's witness apparatus</div>`+
-     `<table class="corrtab regtab"><thead><tr><th>Repository</th><th>City</th><th class="num">MS witnesses</th></tr></thead><tbody>`+
-     reg.map(r=>`<tr><td>${esc(r.inst)}</td><td>${esc(r.city)}</td><td class="num">${r.n}</td></tr>`).join('')+
-     `</tbody></table>`:'';
- } else regHost.innerHTML='';
-}
-
-/* ---------------- init ---------------- */
-(function init(){
- let pc='<span class="chip on" data-per="all">All <b class="cnt"></b></span>';
- CFG.periods.forEach(p=>{ pc+=`<span class="chip" data-per="${p.id}" title="${esc(p.sub)}">${esc(p.label)} <b class="cnt"></b></span>`; });
- document.getElementById('perChips').innerHTML=pc;
- let co='<option value="all">All correspondents — '+DATA.length+' letters</option>';
- CFG.corr.forEach(([k,d,c])=>{ co+=`<option value="${esc(k)}">${esc(d)} (${c})</option>`; });
- document.getElementById('corr').innerHTML=co;
-
- document.getElementById('q').addEventListener('input',renderList);
- document.getElementById('corr').addEventListener('change',()=>{focus=null;updateSetbar();renderList();});
- document.getElementById('lang').addEventListener('change',renderList);
- document.querySelectorAll('.chip[data-dir]').forEach(ch=>ch.addEventListener('click',()=>{
-   if(ch.classList.contains('disabled'))return;
-   curDir=ch.dataset.dir; document.querySelectorAll('.chip[data-dir]').forEach(x=>x.classList.toggle('on',x.dataset.dir===curDir)); renderList();
- }));
- document.querySelectorAll('.chip[data-per]').forEach(ch=>ch.addEventListener('click',()=>{
-   if(ch.classList.contains('disabled'))return;
-   curPer=ch.dataset.per; document.querySelectorAll('.chip[data-per]').forEach(x=>x.classList.toggle('on',x.dataset.per===curPer)); renderList();
- }));
- document.querySelectorAll('.swbtn').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
- document.getElementById('aboutBtn').addEventListener('click',()=>{setView('reader');focus=null;forceSet=null;updateSetbar();showAbout();});
-
- const params=new URLSearchParams(location.search);
- if(params.get('dir')) curDir=params.get('dir');
- if(params.get('period')) curPer=params.get('period');
- document.querySelectorAll('.chip[data-dir]').forEach(x=>x.classList.toggle('on',x.dataset.dir===curDir));
- document.querySelectorAll('.chip[data-per]').forEach(x=>x.classList.toggle('on',x.dataset.per===curPer));
- if(params.get('corr')){
-   const _cs=document.getElementById('corr'), _cv=params.get('corr');
-   _cs.value=_cv;
-   if(_cs.value!==_cv) _cs.value='all';   /* unknown key: show everything, never a silent empty Reader */
- }
- if(params.get('lang')) document.getElementById('lang').value=params.get('lang');
- forceSet=params.get('set'); updateSetbar();
-
- renderList();
- const pl=params.get('letter');
- const pv=params.get('view');
- if(pl && BY[pl]){ openLetter(pl); }
- else { showAbout(); setView(['map','corr','rhythm','reader'].includes(pv)?pv:'reader'); }
-})();
-document.addEventListener('keydown',function(e){if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();document.getElementById('q').focus();}});
+<style>:root{--ink:#1a2238;--gold:#9a7b32;--gold2:#c9a23f;--gold-text:#7d6428;--parch:#f6f1e6;--card:#fffdf8;--line:#ddd3bf;--muted:#6b6450;--navy:#0f1525}.topbar{background:var(--navy,#0f1525);color:#8090b0;font-size:12px;padding:5px 26px;font-family:-apple-system,'Segoe UI',sans-serif}.topbar a{color:#c9a23f;text-decoration:none}.topbar a:hover{text-decoration:underline}.topbar .sep{color:#5a6a88;margin:0 8px}.topbar .cur{color:#cdd6e8}.build-stamp{border-top:1px solid #ddd3bf;padding:10px 26px 18px;font-size:10.5px;color:#6b6450;line-height:1.6;font-family:-apple-system,'Segoe UI',sans-serif}.build-stamp b{color:#6b6450;font-weight:600}.build-stamp a{color:#7d6428}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}.topbar{display:flex;align-items:center;flex-wrap:wrap;gap:4px 0}.site-search{margin-left:auto;display:flex}.site-search input{font:12px -apple-system,'Segoe UI',sans-serif;padding:3px 8px;width:190px;border:1px solid #2a3350;border-radius:3px;background:#1a2238;color:#cdd6e8}.site-search input::placeholder{color:#6a7898}.site-search input:focus{outline:1px solid #c9a23f;background:#141c30}@media(max-width:600px){.site-search{margin-left:0;width:100%;margin-top:4px}.site-search input{width:100%}}*{box-sizing:border-box}html{scroll-padding-top:16px}body{margin:0;background:var(--parch);color:var(--ink);font:15px/1.55 Georgia,'Times New Roman',serif}a{color:var(--gold-text);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1280px;margin:0 auto;padding:0 28px}header.mast{background:var(--navy);color:#e8e2d3;padding:30px 0 18px;border-bottom:4px solid var(--gold)}header.mast h1{font:normal 34px/1.15 Georgia,serif;letter-spacing:.5px;margin:0 0 8px;color:#f6f1e6}header.mast h1 .gloss{font-style:italic;color:var(--gold2)}.lead{max-width:820px;color:#d6d0c2;font-size:15px;margin:0 0 12px}.lead p{margin:0 0 8px}.stat-run{font:13px/1.7 -apple-system,'Segoe UI',sans-serif;color:#cdd6e8;margin:0 0 8px}.stat-run b{color:#f4efe2;font:normal 17px/1 Georgia,serif;margin-right:4px}.stat-run .run{white-space:nowrap}.stat-run .sep{color:#5a6a88;margin:0 6px}.edition-line{font:12px/1.5 -apple-system,'Segoe UI',sans-serif;color:#a9b3c9;border-top:1px solid #2a3350;padding-top:10px;margin:8px 0 0}.edition-line a{color:var(--gold2)}.page{display:flex;gap:32px;align-items:flex-start;padding-bottom:50px}nav.contents{width:224px;flex-shrink:0;position:sticky;top:0;max-height:100vh;overflow-y:auto;padding:22px 0 30px;font:12.5px/1.5 -apple-system,'Segoe UI',sans-serif}.contents-lbl{font-size:10.5px;letter-spacing:.06em;color:var(--gold);margin-bottom:8px}nav.contents ol{list-style:none;margin:0;padding:0}nav.contents a{display:block;padding:3px 8px 3px 6px;color:#5a4e40;border-left:2px solid transparent}nav.contents a:hover{color:var(--ink);text-decoration:none;border-left-color:var(--gold2)}nav.contents li.cur>a{color:var(--ink);border-left-color:var(--gold);background:#efe7d2}nav.contents .n{display:inline-block;min-width:18px;color:#9a9080;font:11px ui-monospace,Consolas,monospace;margin-right:6px}nav.contents .downloads{margin-top:12px;border-top:1px solid var(--line);padding-top:8px}main.doc{flex:1;min-width:0;padding-top:16px}@media(max-width:1099px){.page{display:block}nav.contents{position:static;width:auto;max-height:none;border-bottom:1px solid var(--line);padding:14px 0 10px}nav.contents ol{columns:2;column-gap:24px}nav.contents .downloads{border-top:none;padding-top:0;margin-top:6px}}@media(max-width:700px){nav.contents ol{columns:1}.wrap{padding:0 14px}header.mast h1{font-size:28px}}section.sec{margin:0 0 36px;scroll-margin-top:12px}section.sec>h2{font:normal 26px/1.2 Georgia,serif;color:var(--ink);letter-spacing:.3px;border-bottom:2px solid var(--gold2);padding-bottom:5px;margin:30px 0 12px}section.sec>h2 .n{color:var(--gold);font:18px ui-monospace,Consolas,monospace;margin-right:10px}section.sec>h2 .lat{font-style:italic;color:var(--muted);font-size:17px;margin-left:10px}h3{font:normal 19px/1.3 Georgia,serif;margin:24px 0 8px}h3.run{font-size:16px;color:var(--ink);border-top:1px solid var(--line);padding-top:9px;margin:26px 0 8px}h3.run span{color:#9a9080;font-size:12.5px;margin-left:8px}h4{font:normal 16.5px/1.3 Georgia,serif;margin:14px 0 6px}p{margin:0 0 10px}.prose,.sec-intro,.intro-prose{max-width:820px}.sec-intro{color:#3a3028;margin-bottom:14px}.note,.mut{color:var(--muted);font-size:13.5px}code{font:12.5px ui-monospace,Consolas,monospace;background:#f0e8d8;padding:0 4px;border-radius:3px}ul.plain{font-size:13.5px;padding-left:20px}ul.plain li{margin:2px 0}ol.des{font-size:14px;max-width:820px;padding-left:22px}ol.des li{margin:0 0 8px}.none{color:#8a8170;font-style:italic}.chip{display:inline-block;font:600 11px/1 -apple-system,'Segoe UI',sans-serif;border-radius:3px;padding:3px 6px;vertical-align:middle;border:1px solid transparent;white-space:nowrap}.chip.grade{border-color:currentColor;background:transparent}.grade-A{color:#9a7b32}.grade-B{color:#5070a0}.grade-C{color:#8b6030}.grade-D{color:#808080}.chip.status{color:#fff;border-radius:9px;padding:3px 8px}.st-extant{background:#2d6a2d}.st-reconstructed{background:#2d5a8b}.st-ruined{background:#b07820}.st-lost{background:#8a8170;color:#1a2238}.st-destroyed{background:#8b3a3a}.st-unknown{background:#9a9080}.tag{display:inline-block;font:11px/1 -apple-system,'Segoe UI',sans-serif;border:1px solid var(--line);border-radius:9px;padding:3px 8px;color:var(--muted);vertical-align:middle;white-space:nowrap}a.xref{border-bottom:1px dotted #c9b98f}a.xref::before{content:attr(data-label) " \203A ";font:11px -apple-system,'Segoe UI',sans-serif;color:#9a9080}a.xref.bare::before{content:none}a.xref:hover{text-decoration:none;border-bottom-style:solid}article.rec{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:12px 16px 10px;margin:10px 0;scroll-margin-top:12px;position:relative;overflow:hidden}article.rec:target,article.rec.hl{box-shadow:0 0 0 3px #c9a23f66}.rec-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin:0 0 8px}.rec-hd .rec-no{font:600 12px/1 -apple-system,'Segoe UI',sans-serif;color:#fff;background:var(--gold);padding:4px 7px;border-radius:3px;align-self:center}.rec-hd h3{margin:0;font:normal 19px/1.3 Georgia,serif;flex:1 1 auto}.rec-hd .badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font:12.5px -apple-system,'Segoe UI',sans-serif}.rec-hd .rec-key{margin-left:auto;font:11px ui-monospace,Consolas,monospace;color:#a89c84;user-select:all}.rec-body>p{max-width:820px}dl.app{margin:8px 0 0;display:grid;grid-template-columns:170px 1fr;gap:0 12px;font-size:13.5px;clear:both}dl.app dt{font:600 12px/1.6 -apple-system,'Segoe UI',sans-serif;color:var(--muted);border-top:1px solid #efe9db;padding:5px 0 4px}dl.app dd{margin:0;border-top:1px solid #efe9db;padding:4px 0}dl.app dt:first-of-type,dl.app dd:first-of-type{border-top:none}dl.app ul{margin:2px 0 2px 18px;padding:0}dl.app li{margin:2px 0}dl.app p{margin:4px 0 0}.elsewhere{font-size:13px;margin:10px 0 0;border-top:1px dotted var(--line);padding-top:6px}.elsewhere b{font:600 11px -apple-system,'Segoe UI',sans-serif;color:var(--gold-text);margin-right:6px}@media(max-width:700px){dl.app{grid-template-columns:1fr}dl.app dt{border-top:1px solid #efe9db;padding-bottom:0}dl.app dd{border-top:none;padding-top:0;margin-bottom:6px}}.filters{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:end;font:13px/1.4 -apple-system,'Segoe UI',sans-serif;background:var(--card);border:1px solid var(--line);padding:10px 12px;margin:8px 0}.filters label{display:flex;flex-direction:column;gap:3px;color:var(--muted)}.filters input,.filters select{font:13px -apple-system,'Segoe UI',sans-serif;padding:4px 6px;border:1px solid var(--line);background:#fff;color:var(--ink)}.filters input[type=search]{min-width:240px}.filters button,.filters .btn{font:13px -apple-system,'Segoe UI',sans-serif;padding:5px 10px;border:1px solid var(--gold);background:#fff;color:var(--gold-text);cursor:pointer;text-decoration:none;align-self:end}.filters button:hover,.filters .btn:hover{background:var(--gold2);color:var(--ink);text-decoration:none}.count-line{font:13px -apple-system,'Segoe UI',sans-serif;color:var(--muted);margin:0 0 6px}.count-line b{color:var(--ink)}.tw{overflow-x:auto;margin:8px 0 12px}table.tbl{border-collapse:collapse;width:100%;font:13px/1.45 -apple-system,'Segoe UI',sans-serif;background:var(--card)}table.tbl th,table.tbl td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}table.tbl th{background:#efe7d2;font-weight:600;white-space:nowrap}table.tbl .num{text-align:right;white-space:nowrap}table.tbl .ctr,table.tbl .c-mid{text-align:center}table.tbl .nowrap{white-space:nowrap}table.tbl.small{font-size:12px}table.tbl.defs td:first-child{font-weight:600;white-space:nowrap}table.tbl.sortable th{cursor:pointer;user-select:none}table.tbl.sortable th::after{content:" \2195";color:#b0a488;font-size:10px}table.tbl.sortable th.asc::after{content:" \2191";color:var(--gold-text)}table.tbl.sortable th.desc::after{content:" \2193";color:var(--gold-text)}table.tbl tr.hide{display:none}.twin{display:grid;grid-template-columns:2fr 1fr;gap:0 24px}@media(max-width:800px){.twin{grid-template-columns:1fr}}figure.fig{margin:14px 0;background:var(--card);border:1px solid var(--line);padding:10px}figure.fig figcaption{font:12.5px/1.5 -apple-system,'Segoe UI',sans-serif;color:var(--muted);margin-top:6px}.fig-wrap{overflow-x:auto}.fig-svg{width:100%;height:auto;background:#fffdf8}.legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px}.legend i{display:inline-block;width:11px;height:11px;border-radius:50%}figure.plate{float:right;width:250px;margin:0 0 10px 18px;font:12px/1.4 -apple-system,'Segoe UI',sans-serif;color:var(--muted)}figure.plate img{width:100%;height:auto;display:block;border:1px solid var(--line);background:#fff}figure.plate figcaption{margin-top:5px}blockquote.quote{margin:10px 0;padding:6px 12px;border-left:2px solid var(--gold);color:#3f382c;font-size:14px;max-width:820px}blockquote.quote footer{font:12px -apple-system,'Segoe UI',sans-serif;color:var(--muted);margin-top:4px}.diag{max-width:500px;margin:6px 0 10px}.diag svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:4px}@media(max-width:800px){figure.plate{float:none;width:100%;max-width:300px;margin:0 0 10px}}.box{background:var(--card);border:1px solid var(--line);padding:8px 16px 6px;margin:10px 0;scroll-margin-top:12px}.box h3{margin-top:6px}.box:target{box-shadow:0 0 0 3px #c9a23f66}ol.sources{list-style:none;margin:0;padding:0}ol.sources li{background:var(--card);border:1px solid var(--line);padding:10px 14px;margin:0 0 8px;scroll-margin-top:12px;font-size:13px}ol.sources li:target{box-shadow:0 0 0 3px #c9a23f66}.src-short{font:normal 15px/1.3 Georgia,serif;color:var(--ink)}.src-full{margin:3px 0 5px;line-height:1.6}.src-kv{margin:3px 0;line-height:1.6}.src-kv b{font:600 11px -apple-system,'Segoe UI',sans-serif;color:var(--gold-text);margin-right:4px}.cite-box{margin-top:16px;padding:10px 14px;border:1px solid var(--line);background:var(--card);font-size:13px;max-width:820px}nav.also{border-top:1px solid var(--line);padding:14px 28px 16px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;font:12.5px -apple-system,'Segoe UI',sans-serif}nav.also .also-lbl{color:var(--muted);margin-right:8px}nav.also a{display:inline-block;padding:4px 12px;border-radius:12px;border:1px solid var(--line);color:var(--muted)}nav.also a:hover{border-color:var(--gold);color:var(--ink);text-decoration:none}nav.also a.portal{border-color:var(--gold);color:var(--gold-text)}@media print{nav.contents,.filters,nav.also,.topbar,.site-search{display:none}.page{display:block}body{background:#fff;font-size:10.5pt}header.mast{background:#fff;color:#000;border-bottom:2px solid #000}header.mast h1,header.mast .gloss,.lead,.stat-run,.stat-run b,.edition-line,.edition-line a{color:#000}article.rec,ol.sources li,figure,.box{break-inside:avoid;border:1px solid #ccc}section.sec>h2{break-after:avoid}a{color:#000}a.xref::before{color:#444}.fig-svg{min-width:0}figure.plate{float:none;max-width:300px}}.guide{padding:26px 0 40px}.guide>h2{font:600 12px/1.4 -apple-system,'Segoe UI',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text);margin:0 0 12px;border:none}.gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}.gcard{display:block;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:14px 16px 12px;color:var(--ink);text-decoration:none}.gcard:hover{border-color:var(--gold2);border-left-color:var(--gold2);text-decoration:none;box-shadow:0 2px 8px rgba(26,34,56,.08)}.gcard .n{font:12px ui-monospace,Consolas,monospace;color:var(--gold)}.gcard .t{display:block;font:normal 19px/1.25 Georgia,serif;margin:2px 0 4px}.gcard .lat{font-style:italic;color:var(--muted);font-size:15px;margin-left:6px}.gcard .s{display:block;font-size:13.5px;line-height:1.5;color:#3a3028;margin:0 0 8px}.gcard .f{display:block;font:12px -apple-system,'Segoe UI',sans-serif;color:var(--muted)}.guide .whole{font-size:14px;margin:18px 0 0;max-width:820px}header.mast.slim{padding:16px 0 14px}header.mast.slim .eyebrow{font:11.5px/1.5 -apple-system,'Segoe UI',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2);margin:0 0 6px}header.mast.slim .eyebrow a{color:var(--gold2)}header.mast.slim .eyebrow .sep{color:#5a6a88;margin:0 6px}header.mast.slim h1{font-size:28px;margin:0 0 6px}header.mast.slim h1 .n{color:var(--gold);font:18px ui-monospace,Consolas,monospace;margin-right:10px}header.mast.slim .lead{margin-bottom:8px}header.mast.slim .rec-hd{margin:0 0 6px}header.mast.slim .rec-hd h3{color:#f6f1e6;font-size:28px}header.mast.slim .rec-hd .rec-key{color:#a9b3c9}article.rec.compact{padding:7px 14px;margin:6px 0}article.rec.compact .rec-hd{margin:0}article.rec.compact .rec-hd h3{font-size:16.5px}main.doc>article.rec.alone{border-left:none;border:none;background:transparent;padding:0;margin:0}main.doc>article.rec.alone>header.rec-hd{display:none}nav.pn{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);margin-top:28px;padding-top:12px;font:13px/1.5 -apple-system,'Segoe UI',sans-serif}nav.pn a{max-width:48%}nav.pn .next{margin-left:auto;text-align:right}nav.contents li.cur>a{border-left-color:var(--gold)}nav.contents .whole{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}@media print{nav.pn{display:none}}</style><style class="delta">.dir{font-size:10.5px;padding:1px 7px;border-radius:9px;color:#fff;vertical-align:middle}.dir-from{background:#2c5fa3}.dir-to{background:#9a7b32}.dir-third{background:#8a8170}.kb{font-size:10px;padding:1px 6px;border-radius:3px;background:#f0e8d8;color:#6b6450;border:1px solid #ddd3bf}.unc{font-size:10px;padding:1px 6px;border-radius:3px;background:#fff3e0;color:#8b6030;border:1px solid #e6c9a3}.rec-hd h3 .arr{color:#9a7b32}.rec-hd h3 .rec-place{color:#6b6450;font-size:14px;font-weight:normal}.rec-abs{font-size:13.5px;line-height:1.6;color:#3a2e28;margin:4px 0 6px}.rec-inc{font-family:Georgia,serif;font-size:12.5px;color:#6b6450;margin:0 0 6px;font-style:italic}.rec-note{background:#fffdf6;border-left:3px solid #c9a23f;padding:7px 11px;font-size:12.8px;line-height:1.55;margin:6px 0}.rec-note p{margin:.3em 0}.rec-kv{font-size:12.5px;color:#3a2e28;margin:5px 0;line-height:1.7}.rec-kv b{font-weight:600;color:#7d6428;margin-right:4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em}.rec-kv ul.wit{margin:2px 0 0 0;padding-left:0;list-style:none}.rec-kv ul.wit li{margin:1px 0}.wk{font-size:10px;padding:0 5px;border-radius:3px;border:1px solid #ddd3bf;color:#6b6450}.wk-original{background:#e6f0e6;color:#2d6a2d;border-color:#b8d4b8}.wk-draft{background:#eef3fb;color:#2c5fa3;border-color:#c4d3ea}.wk-copy{background:#f5efe2;color:#7d6428;border-color:#e0d2b0}.wn{color:#6b6450;font-size:11.5px}.olink{display:inline-block;font-size:12px;margin:1px 10px 1px 0}.olink .host,.host{color:#9a9080;font-size:10.5px;margin-left:3px}.olink.read{font-weight:600}.retired-note{font-size:11.5px;color:#6b6450;margin:-4px 0 10px 4px}td.c-mid,th.c-mid{text-align:center}td.abs{font-size:12px;color:#3a2e28;min-width:260px}td.forms{font-size:11px;color:#6b6450}td.dig{font-size:11.5px;color:#3a2e28;min-width:220px}table.defs td:first-child{font-weight:600;color:#1a2238}.fig-svg .sea{fill:#fbf8f0}.fig-svg .border{fill:#f1eadb;stroke:#b9a77e;stroke-width:.8}.fig-svg .mk-w{fill:#9a7b32;fill-opacity:.8;stroke:#fff;stroke-width:1}.fig-svg .mk-p{fill-opacity:.82;stroke:#fff;stroke-width:1}.fig-svg .spine{fill:none;stroke:#c9a23f;stroke-width:2.5;stroke-dasharray:7 6}.fig-svg .mlab{font-size:11px;fill:#1a2238;font-family:Georgia,serif}.fig-svg .yr{fill:#6b5e4a;font-size:10px;text-anchor:middle}.fig-svg .axis{stroke:#b9a77e}.fig-svg a:hover circle{stroke:#1a2238;stroke-width:2}.fig-svg a:hover rect{opacity:.8}.lg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:4px;vertical-align:middle}h3.run.band{font-size:13px;color:#1a2238;border-top:2px solid #c9a23f}.yr-hd{font-size:15px;color:#1a2238;margin:18px 0 8px;scroll-margin-top:12px;font-weight:normal}.yr-hd span{font-size:11px;color:#9a9080;margin-left:8px;font-family:-apple-system,'Segoe UI',sans-serif}.corr{margin:14px 0 6px}.corr-name{font-size:16px;color:#1a2238;scroll-margin-top:12px;border-top:1px solid var(--line);padding-top:10px}.corr-name a.xref{font-size:11px;margin-left:8px}.corr-n{float:right;font-size:11px;color:#9a9080;font-family:-apple-system,'Segoe UI',sans-serif}.corr-forms{font-size:11px;color:#6b6450;margin:2px 0 6px}ul.l-list{list-style:none;padding:0;margin:0}ul.l-list li{padding:5px 0 5px 10px;border-left:2px solid #ece3cf;margin:2px 0;font-size:12.5px}.l-date{font-family:Georgia,serif;color:#1a2238;font-weight:600}.l-rel{color:#7d6428}.l-place{color:#6b6450}.l-abs{font-size:12px;color:#3a2e28;margin:2px 0}.l-links{font-size:11px}.arrow{font-size:11px;color:#7d6428;margin-left:6px}.shelf-rep{font-size:14px;color:#1a2238;margin:16px 0 6px;border-top:1px solid var(--line);padding-top:8px}.shelf-rep span{font-size:11px;color:#9a9080;margin-left:8px;font-family:-apple-system,'Segoe UI',sans-serif}.shelf{font-size:12.5px;margin:4px 0 8px 8px}.shelf-n{color:#6b6450;font-size:11.5px;margin-left:6px}.shelf-docs{font-size:11px;line-height:1.9}.shelf-docs a{margin-right:6px;padding:0 4px;background:#f0e8d8;border-radius:3px}ol.des table{margin-top:6px}</style>
+</head>
+<body class="edition layer-domain page-section page-first" data-permalink="entry,record">
+<div class="topbar"><a href="../index.html">&#8592; Tychoniana</a><span class="sep">&#8250;</span><span class="cur">Epistolarium</span><form class="site-search" action="../index.html" method="get" role="search"><input type="search" name="q" placeholder="Search Tychoniana" aria-label="Search Tychoniana"></form></div><header class="mast"><div class="wrap"><h1>Epistolarium <em class="gloss">&mdash; The Letters of Tycho Brahe</em></h1><div class="lead"><div class="charter"><b>Charter.</b> Epistolarium is the reading edition and apparatus of Tycho Brahe’s correspondence as the standard corpus prints it: the letters and acts of the Danish Society for Language and Literature’s digital re-edition (tekstnet.dk, 2019) of J. L. E. Dreyer’s <i>Opera Omnia</i> VI–VIII and XIV. Each document is given in its original Latin, German or Danish beside an English translation made for this edition by a language model and checked against Dreyer’s pages, with a one-sentence abstract, the parties identified against the Familia register, the place of writing, the date with its calendar, the edition of record by volume and page, the manuscript witnesses by kind, and its position in the exchange. It is the standard corpus, not the whole surviving correspondence: the letters published since Dreyer are listed, not edited, in §11.</div></div><p class="stat-run"><span class="run"><b>508</b> documents (500 letters · 8 acts)</span> <span class="sep">&middot;</span> <span class="run">1568–1601</span> <span class="sep">&middot;</span> <span class="run"><b>283</b> issued by Tycho, 203 addressed to him, 22 between others</span> <span class="sep">&middot;</span> <span class="run"><b>138</b> correspondents</span> <span class="sep">&middot;</span> <span class="run"><b>439</b> with a manuscript witness, 69 in print only</span> <span class="sep">&middot;</span> <span class="run"><b>457</b> translations collated against Dreyer, 51 not</span> <span class="sep">&middot;</span> <span class="run"><b>61</b> places of writing</span></p><p class="edition-line">Edition of 5 September 2026 &middot; <a href="sources.html#sec-sources">how to cite</a> &middot; <a href="data.json" download>data (JSON)</a> &middot; <a href="letters.csv" download>catalogue (CSV)</a> &middot; <a href="full.html">whole edition, one page</a></p></div></header><div class="wrap page"><nav class="contents" aria-label="Contents"><div class="contents-lbl">Epistolarium</div><ol><li class="cur"><a href="index.html"><span class="n">1</span>Introduction</a></li><li><a href="catalogue.html"><span class="n">2</span>Catalogue of the documents</a></li><li><a href="register.html"><span class="n">3</span>Register of the documents</a></li><li><a href="correspondents.html"><span class="n">4</span>Correspondents</a></li><li><a href="manuscripts.html"><span class="n">5</span>The manuscript witnesses</a></li><li><a href="editions.html"><span class="n">6</span>Editions of record and concordance</a></li><li><a href="places.html"><span class="n">7</span>Places of writing</a></li><li><a href="chronology.html"><span class="n">8</span>Chronology and calendars</a></li><li><a href="press.html"><span class="n">9</span>Letters concerning the press</a></li><li><a href="translations.html"><span class="n">10</span>The translations and their checking</a></li><li><a href="desiderata.html"><span class="n">11</span>Desiderata</a></li><li><a href="sources.html"><span class="n">12</span>Sources</a></li></ol><div class="downloads whole"><a href="full.html"><span class="n">&#9776;</span>Whole edition, one page</a><a href="letters.csv" download><span class="n">&#8623;</span>Catalogue (CSV)</a><a href="data.json" download><span class="n">&#8623;</span>Dataset (JSON)</a></div></nav><main class="doc"><section class="sec" id="sec-intro"><div class="intro-prose"><h3 class="reg-hd">What this edition contains</h3>
+<p>The 508 documents here are the contents of <i>Tycho Brahes Breve</i>, the digital edition published by the Danish Society for Language and Literature at tekstnet.dk (redaktion Peter Zeeberg, 2019), which re-edits the letters printed by J. L. E. Dreyer in <i>Tychonis Brahe Dani Opera Omnia</i>: vol. VI (1919), the <i>Epistolae astronomicae</i> of 1596 re-edited; vol. VII (1924), the letters of 1568–1597; vol. VIII (1925), the letters of 1596–1601; and, from vol. XIV (1928), <i>Epistolae et Acta</i>, the letter-type documents the digital edition selected. Dreyer’s corpus is in substance the one F. R. Friis assembled between 1875 and 1909, with few additions (<a href="sources.html#src-norlind-1970">Norlind 1970</a>, p. 175). The digital edition has 509 letter pages; two of them carry the same letter to Scaliger of 23 July 1600, which is counted once here. Of the 508, 500 are letters and 8 are acts of letter form — two printing privileges, a deed, three testimonials, a petition and a receipt — kept because the edition keeps them and marked as acts. Every document keeps its tekstnet identifier as its key and links to its tekstnet page, where the editors’ commentary and textual notes stand.</p>
+<h3 class="reg-hd">This is not the whole correspondence</h3>
+<p>It is the standard corpus. At least seven letters to or from Tycho and one letter about him have been published since Dreyer and are not in the edition: Tycho to Christoph Clavius, 5 January 1600 (<a href="sources.html#src-norlind-1954">Norlind 1954</a>; Norlind 1970, Bilaga 9); Tycho to the Doge Marino Grimani, 28 November 1598 (Norlind 1970, Bilaga 7); the Liddel letters of 1587, the Ripensis letters of 1598, the Lund chapter’s letter of 1593 and Tengnagel’s letter to Rantzau of 1597 (Bilagor 2, 6, 4, 5); and the Danish documents in J. R. Christianson’s addenda to vol. XIV (<a href="sources.html#src-christianson-1972">Centaurus 16, 1972</a>). They are listed with their prints and archives in §11, not edited. Whole correspondences are lost — Tycho’s letters to Vedel burned with Bishop Worm’s library in 1728, most of Rosenkrantz’s papers at Fredrikshald in 1826 — and no letter at all survives from 1569 or 1570 (Norlind 1970, pp. 174–175). No letter to or from Ursus, Wittich or Mercator exists; the Ursus quarrel ran in print. The digital edition’s own overview speaks of 350 letters, and Early Modern Letters Online catalogues the same printed corpus as 505; the differences are enclosures, testimonials, declarations and receipts counted or not, and the definitions table below says exactly what is counted here.</p><h3 class="reg-hd">The texts</h3>
+<p>The Latin, German and Danish texts are tekstnet’s, read in 2026 against the page images of Dreyer’s printed volumes; defects of the first transcription were corrected, and every document whose printed words differ from a second transcription of the same tekstnet page lists both readings beneath the original on its letter page (80 documents; Dreyer’s page decides, and where the audit paragraph does not name the word that check has not yet been made). Dreyer’s volume and page are cited on every record, with a link to the page in the facsimile tekstnet serves. The 47 letters of the Hven–Kassel exchange survive only as Tycho printed them in his <i>Epistolarum astronomicarum liber primus</i> of 1596, edited by him for publication (<a href="sources.html#src-mosley-jardine-tybjerg-2003">Mosley, Jardine &amp; Tybjerg 2003</a>); their text is that of the print as Dreyer reprinted it, no manuscript is cited for them because the edition cites none, and the letters Tycho despatched to Kassel, which survive at Marburg (Hessisches Staatsarchiv, Best. 3 II Nr. 1070), are not collated here.</p><h3 class="reg-hd">The English translations</h3>
+<p>The English was produced for this edition in 2026 by a large language model (Anthropic’s Claude) and is not the work of a human translator; no Latinist has reviewed it. Every translation was then read against the original in an independent pass, and 457 of the 508 documents were collated against the page images of Dreyer’s edition; the 289 defects that pass found — most of them in the transcribed originals rather than in the English — were corrected. 51 documents, 47 of them the Kassel letters of <i>Opera Omnia</i> VI, which the digital edition does not paginate, have not been so collated; each says so, and none is graded higher than Probable. The grade beside each translation — Secure, Probable, Possible — is the checker’s judgement of that translation’s fidelity to Dreyer’s printed text, given with its grounds on the letter page; it grades the English, not the Latin, the date, the attribution or the manuscript, and “Secure” means that a machine check against the page found no defect, not that a scholar has read it. Quote the original, not the English.</p><h3 class="run">The figures, and what they count</h3><table class="tbl defs"><thead><tr><th>Figure</th><th>Value</th><th>Definition</th></tr></thead><tbody><tr><td>Records / documents</td><td class="c-mid">509 / 508</td><td>pages of tekstnet's <i>Tycho Brahes Breve</i> / distinct texts; one page repeats the letter to Scaliger of 23 July 1600 and is retired. Not the number of known letters.</td></tr><tr><td>Letters / acts</td><td class="c-mid">500 / 8</td><td>acts: two printing privileges, a deed, three testimonials, a petition, a receipt — kept because the edition keeps them, marked</td></tr><tr><td>Issued by Tycho / addressed to him / between others</td><td class="c-mid">283 / 203 / 22</td><td>by the edited parties; by tekstnet's raw fields over the 509 records the partition is 284 / 202 / 23</td></tr><tr><td>Correspondents</td><td class="c-mid">138</td><td>Familia register entries that are parties: 130 persons, 4 bodies, 4 groups of unnamed recipients; reached through 149 name-forms; 4 documents have no addressee</td></tr><tr><td>Span</td><td class="c-mid">1568–1601</td><td>32 years with documents; none in 1569, 1570</td></tr><tr><td>Periods</td><td class="c-mid">23 · 210 · 275</td><td>early to 31 December 1576; Hven 1 January 1577 – 29 April 1597; exile from 30 April 1597 — the editor's cut</td></tr><tr><td>Language</td><td class="c-mid">Latin 397 · German 65 · Danish 46</td><td>the head term of the edition's language statement; the full statement is on every record</td></tr><tr><td>Manuscript witnesses</td><td class="c-mid">475 lines on 439 documents</td><td>69 documents have none (46 of them Kassel letters of the 1596 print); a line may be an original, a draft or a later copy</td></tr><tr><td>Record-level catalogue links</td><td class="c-mid">103 documents</td><td>336 witnessed documents have none; the repositories are described in §5</td></tr><tr><td>Translations collated against Dreyer's pages</td><td class="c-mid">457 / 51 not</td><td>47 of the uncollated are in vol. VI; an uncollated translation is graded at most Probable</td></tr><tr><td>Translation grade</td><td class="c-mid">Secure 454 · Probable 52 · Possible 2</td><td>the checker's judgement of the English against Dreyer's printed text (§10)</td></tr><tr><td>Places of writing</td><td class="c-mid">61 places, 493 documents</td><td>15 documents name no place, a region only, or an unlocated manor</td></tr><tr><td>Dated to the day / month / year</td><td class="c-mid">482 / 6 / 20</td><td>as the edition gives the date</td></tr><tr><td>Calendar marked [O.S.] / [N.S.] / unmarked</td><td class="c-mid">307 / 162 / 39</td><td>from the edited dateline</td></tr><tr><td>Hven–Kassel exchange</td><td class="c-mid">47 by the print · 49 by correspondent</td><td>two definitions, tabled in §6</td></tr><tr><td>Documents concerning the press</td><td class="c-mid">218</td><td>the editor's flag; no per-letter work recorded (§9)</td></tr></tbody></table><h3 class="reg-hd">What the counts count</h3>
+<p>Direction follows the edited parties: 283 documents issued by Tycho, 203 addressed to him, 22 letters between other people, indexed under both. The receipt of 29 May 1601, whose addressee the digital edition leaves blank, is counted as addressed to him; the partition by tekstnet’s raw fields is given in the table for reconciliation with earlier citations. A correspondent is an entry in the Familia register — a person, a body such as the University of Copenhagen, or a group of unnamed recipients — reached through 149 name-forms of the edition; there are 138 such entries, and 4 documents have no addressee. A manuscript witness is one line of the edition’s own apparatus, whatever the manuscript is — an autograph, the sender’s draft, a contemporary copy or an eighteenth-century transcript; §5 separates the kinds by the edition’s wording, 146 documents survive only in copies, and “in manuscript” never means “in autograph”. The edition’s sigla A, B, C order the witnesses and have nothing to do with the grade words. A place of writing is the place named in the dateline, not the correspondent’s residence. The three periods are the editor’s, cut at 1 January 1577 and at Tycho’s departure from Hven on 29 April 1597.</p><h3 class="reg-hd">Dates and calendars</h3>
+<p>Dates stand as the edition gives them, with the calendar the dateline names, [O.S.] or [N.S.]; the calendar conventions are stated in §8. 26 documents are dated only to a year or a month and are printed so. Where this edition dates a letter otherwise than tekstnet’s catalogue line (23 documents), both values and the basis are given on the record and in §8.</p>
+<h3 class="reg-hd">What the numbers are not</h3>
+<p>508 is the size of one edition, not the number of letters Tycho wrote or received; the letters per year measure what survives and what Friis and Dreyer printed. A correspondent’s count is not the size of the exchange. A repository’s count is of witness lines, including later copies. No figure on this page is a survival rate. Identity and biography are Familia’s, the itinerary is Loca’s, the printed books are Typographica’s; this edition links to them.</p><h3 class="reg-hd">How to read this edition</h3>
+<p>The catalogue (§2) is one row per document, sortable and filterable, with the whole table downloadable as a spreadsheet. The register (§3) gives every document a record card in date order — parties, place, date, abstract, incipit, edition of record, witnesses, position in the exchange, translation grade — and each card leads to the letter’s own page, where the original stands above or beside the English with the apparatus and the audit’s warrant. The indexes (§4–§9) re-project the same records by correspondent, by manuscript, by print, by place, by year and by subject; the translations and their checking have their own section (§10); what is missing or doubtful is listed in §11; every source is described in §12. Each record prints its key, the tekstnet identifier (<code>brahe-t_15680114001</code>), and is addressable: <code>#brahe-t_15680114001</code> as an anchor on this page, <code>letters/brahe-t_15680114001.html</code> for the letter. All 508 texts in one file, for searching the whole corpus without script, are at <a href="all.html">all.html</a>.</p></div></section><nav class="pn" aria-label="Previous and next"><span></span><a class="next" href="catalogue.html">&sect;2 Catalogue of the documents &rarr;</a></nav></main></div><nav class="also" aria-label="Also in Tychoniana"><span class="also-lbl">Also in Tychoniana</span><a href="../familia/index.html">Familia</a><a href="../typographica/index.html">Typographica</a><a href="../loca/index.html">Loca</a><a href="../scripta/index.html">Scripta</a><a href="../observationes/index.html">Observationes</a><a href="../receptio/index.html">Receptio</a><a href="all.html">All texts, one file</a><a class="portal" href="../index.html">&larr; Portal</a></nav><div class="build-stamp">Epistolarium &middot; <a href="data.json" download style="color:#7d6428">data (JSON)</a><br><b>Cite:</b> Westergaard, C., &ldquo;Epistolarium — The Letters of Tycho Brahe&rdquo;, <i>Tychoniana</i> (edition of 5 September 2026), accessed <span class="acc-date"></span>.<script>document.querySelectorAll(".acc-date").forEach(function(e){e.textContent=new Date().toISOString().slice(0,10);});</script></div><script>const CFG={"corr": [["Thaddaeus Hagecius", "Thaddaeus Hagecius", 37], ["Holger Rosenkrantz", "Holger Rosenkrantz", 25], ["Wilhelm 4., landgreve af Hessen-Kassel", "Wilhelm IV, Landgrave of Hesse-Kassel", 23], ["Christopher Rothmann", "Christoph Rothmann", 22], ["Heinrich Brucaeus", "Heinrich Brucaeus", 17], ["Johann Georg Herwart von Hohenburg", "Johann Georg Herwart von Hohenburg", 17], ["Henrik Rantzau", "Henrik Rantzau", 15], ["Christian 4.", "Christian IV, King of Denmark", 14], ["Ulrich 3., hertug af Mecklenburg", "Ulrich III, Duke of Mecklenburg", 13], ["Anders Sørensen Vedel", "Anders Sørensen Vedel", 12], ["Giovanni Antonio Magini", "Giovanni Antonio Magini", 10], ["Johannes Kepler", "Johannes Kepler", 10], ["John Craig", "John Craig", 9], ["Christen Sørensen Longomontanus", "Christen Sørensen Longomontanus", 8], ["Andreas Meier", "Andreas Meier", 7], ["Anonymus", "Unnamed correspondents (Anonymus)", 7], ["Georg Rollenhagen", "Georg Rollenhagen", 7], ["Hieronymus Wolf", "Hieronymus Wolf", 7], ["Jacob Bording", "Jacob Bording", 6], ["Jakob Bording", "Jacob Bording", 1], ["Peter Young", "Peter Young", 7], ["Eske Bille", "Eske Bille", 6], ["Johannes Pratensis", "Johannes Pratensis", 6], ["Joseph Justus Scaliger", "Joseph Justus Scaliger", 6], ["Martin Brasch", "Martin Brasch", 6], ["Moritz, landgreve af Hessen-Kassel", "Moritz, Landgrave of Hesse-Kassel", 6], ["Rektor og professorer ved Københavns Universitet", "The Rector and Professors of the University of Copenhagen", 1], ["Rektor og professorerne ved Københavns Universitet", "The Rector and Professors of the University of Copenhagen", 3], ["Rektor ved Københavns Universitet", "The Rector and Professors of the University of Copenhagen", 2], ["Rudolf 2.", "Rudolf II, Holy Roman Emperor", 6], ["Veit Winsheim", "Vitus Winshemius", 1], ["Vitus Winshemius", "Vitus Winshemius", 5], ["Bartholomaeus Scultetus", "Bartholomaeus Scultetus", 5], ["Charles de Dançay", "Charles de Dançay", 5], ["Ferdinando I de' Medici", "Ferdinando I de' Medici", 5], ["Jacob Monavius", "Jacob Monau (Monavius)", 5], ["Johannes Major", "Johannes Major", 5], ["Daniel Cramer", "Daniel Cramer", 4], ["Dronning Sophie", "Sophie of Mecklenburg, Queen of Denmark", 4], ["Ernst, kurfyrste, ærkebiskop af Köln", "Ernst of Bavaria, Archbishop-Elector of Cologne", 4], ["Jacob Kurz", "Jacob Kurz", 4], ["Jaques Bongars", "Jacques Bongars", 4], ["Johann Friedrich Hoffmann", "Johann Friedrich Hoffmann", 4], ["Johannes Isacius Pontanus", "Johannes Isacius Pontanus", 1], ["Johannes Isaksen Pontanus", "Johannes Isacius Pontanus", 1], ["Johannes Jessenius", "Johannes Jessenius", 2], ["Johannes Jessenius a Jessen", "Johannes Jessenius", 2], ["Johannes Pontanus", "Johannes Isacius Pontanus", 2], ["Lucas Bacmeister", "Lucas Bacmeister", 4], ["Melchior Jöstelius", "Melchior Jöstelius", 4], ["Niels Krag", "Niels Krag", 4], ["Caspar Peucer", "Caspar Peucer", 3], ["Christian Friis", "Christian Friis", 2], ["Christoffer Valkendorf, Christian Friis", "Christian Friis", 1], ["Christoph Sturtz", "Christoph Sturtz", 3], ["Christophorus Henniochus", "Christophorus Henniochus", 2], ["Cristophorus Henniochus", "Christophorus Henniochus", 1], ["David Chytraeus", "David Chytraeus", 3], ["Frederik 2.", "Frederik II, King of Denmark", 3], ["Joachim Friedrich, kurfyrste af Brandenburg", "Joachim Friedrich, Elector of Brandenburg", 3], ["John Maitland", "John Maitland", 3], ["Paul Hainzel", "Paul Hainzel", 3], ["Rudolf Coraduz", "Rudolf Coraduz (Corraducius)", 3], ["Sophie Brahe", "Sophie Brahe", 3], ["Axel Gyldenstierne", "Axel Gyldenstierne", 2], ["Beate Bille", "Beate Bille", 2], ["Cort Aslaksen", "Cort Aslaksen", 2], ["Cosimo Concini", "Cosimo Concini", 2], ["Gellius Sascerides", "Gellius Sascerides", 2], ["Hans Aalborg", "Hans Aalborg", 2], ["Hartwig von Dassel", "Hartwig von Dassel", 2], ["Hugo Blotius", "Hugo Blotius", 2], ["Joachim Camerarius", "Joachim Camerarius", 2], ["Johann Anton Barwitz", "Johann Anton Barvitius", 1], ["Johann Barwitz", "Johann Anton Barvitius", 1], ["Katharina, kurfyrstinde af Brandenburg", "Katharina, Electress of Brandenburg", 2], ["Kristoffer Valkendorf", "Christoffer Valkendorf", 1], ["Ludolf Riddershusen", "Ludolf Riddershusen", 2], ["Petrus Severinus", "Petrus Severinus", 2], ["Simon von Petkum", "Simon von Petkum", 2], ["Tage Ottesen Thott", "Tage Ottesen Thott", 2], ["The chapter at the cathedral of Magdeburg", "The Chapter of Magdeburg Cathedral", 1], ["The dean of the chapter at the cathedral of Magdeburg", "The Chapter of Magdeburg Cathedral", 1], ["Thomas Craig", "Thomas Craig", 2], ["Tobias Fischer", "Tobias Fischer", 2], ["Vincent Moller", "Vincent Moller", 2], ["Wolfgang Franzius", "Wolfgang Franzius", 2], ["An anonymous lady", "An unnamed lady", 1], ["Anders Christensen", "Anders Christensen", 1], ["Axel Brahe", "Axel Brahe", 1], ["Balthasar Caminaeus", "Balthasar Caminaeus", 1], ["Berka Zbyněk, archbishop of Prague", "Zbyněk Berka z Dubé, Archbishop of Prague", 1], ["Birgitte Bølle", "Birgitte Bølle", 1], ["Borgmestre og råd i Hamborg", "The Mayors and Council of Hamburg", 1], ["Christian II, Elector of Saxony", "Christian II, Elector of Saxony", 1], ["Christina von Halle", "Christina von Halle", 1], ["Claus Mule", "Claus Mule", 1], ["Daniel Bucretius", "Daniel Bucretius", 1], ["Daniel Fels", "Daniel Fels", 1], ["David Fabricius", "David Fabricius", 1], ["Eberhard Schele", "Eberhard Schele", 1], ["Ehrenfried Freiherr von Minckwitz", "Ehrenfried Freiherr von Minckwitz", 1], ["Erik Brahe", "Erik Brahe", 1], ["Erik Sparre", "Erik Sparre", 1], ["Frans Tengnagel", "Frans Tengnagel", 1], ["Friedrich Taubmann", "Friedrich Taubmann", 1], ["Galileo Galilei", "Galileo Galilei", 1], ["Georg von Wolframsdorf", "Georg von Wolframsdorf", 1], ["George Buchanan", "George Buchanan", 1], ["Gottfried von Berbistorf", "Gottfried von Berbistorf", 1], ["Heinrich Ellenberger", "Heinrich Ellenberger", 1], ["Henrik Below", "Henrik Below", 1], ["Henrik Ramel", "Henrik Ramel", 1], ["Jacob Grynaeus", "Jacob Grynaeus", 1], ["Joachim Stralendorff", "Joachim Stralendorff", 1], ["Johann Georg Gödelmann", "Johann Georg Gödelmann", 1], ["Johann Tauchmann", "Johann Tauchmann", 1], ["Johannes Caselius", "Johannes Caselius", 1], ["Johannes Müller", "Johannes Müller", 1], ["Johannes Oswaldus", "Johannes Oswaldus", 1], ["Johannes Stygge", "Johan Stygge", 1], ["Jon Jacobsen Venusinus", "Jon Jacobsen Venusinus", 1], ["Kirsten Lindenov", "Kirsten Lindenov", 1], ["Mads Jørgensen Huus", "Mads Jørgensen Huus", 1], ["Magdalene Brahe", "Magdalene Brahe", 1], ["Martin Bachazek", "Martin Bachazek", 1], ["Matthias, Archduke of Austria", "Matthias, Archduke of Austria", 1], ["Mette Kotte", "Mette Kotte", 1], ["Michael Mästlin", "Michael Mästlin", 1], ["Mikkel Vibe", "Mikkel Vibe", 1], ["Nicolaus Braschius", "Nicolaus Braschius", 1], ["Niels Bild", "Niels Bild", 1], ["Niels Hemmingsen", "Niels Hemmingsen", 1], ["Oluf Rosensparre", "Oluf Rosensparre", 1], ["Ottavio Caurian", "Ottavio Caurian", 1], ["Patrick Gordon", "Patrick Gordon", 1], ["Paulus Melissus", "Paulus Melissus", 1], ["Peder Brahe", "Peder Brahe", 1], ["Poul Madsen", "Poul Madsen", 1], ["Raphael Ciaperenius", "Raphael Ciaperenius", 1], ["Sigfrid Rindschat", "Sigfrid Rindschat", 1], ["Steen Bille", "Steen Bille", 1], ["Steen Brahe", "Steen Brahe", 1], ["Susanne Hájek", "Susanne Hájek", 1], ["The dean and doctors at the college of medicine i Wittenberg", "The Dean and Doctors of the Faculty of Medicine at Wittenberg", 1], ["Thomas Savile", "Thomas Savile", 1], ["Ukendt dansk studerende", "An unknown Danish student", 1], ["Ukendt medicinsk doktor", "An unknown doctor of medicine", 1], ["Vincenzio Pinelli", "Vincenzio Pinelli", 1]]};
 </script>
-<div class="build-stamp">Epistolarium &middot; <a href="data.json" download style="color:#7d6428">data (JSON)</a><br><b>Cite:</b> Westergaard, C., &ldquo;Epistolarium — The Letters&rdquo;, <i>Tychoniana</i> (build 2026-08-04), accessed <span class="acc-date"></span>.<script>document.querySelectorAll(".acc-date").forEach(function(e){e.textContent=new Date().toISOString().slice(0,10);});</script></div>
-</body></html>
+<script>
+(function(){
+ const $=(s,r)=>(r||document).querySelector(s),$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+ /* sortable tables: click a header; data-sort wins over text; empty cells sort last */
+ $$('table.tbl.sortable').forEach(t=>{const ths=$$('thead th',t);ths.forEach((th,i)=>{th.addEventListener('click',()=>{
+   const asc=!th.classList.contains('asc');ths.forEach(x=>x.classList.remove('asc','desc'));th.classList.add(asc?'asc':'desc');
+   const tb=t.tBodies[0];const rows=Array.from(tb.rows);
+   const val=r=>{const c=r.cells[i];if(!c)return '';const d=c.getAttribute('data-sort');return d!=null?d:c.textContent.trim();};
+   const num=rows.every(r=>{const v=val(r);return v===''||!isNaN(parseFloat(v));});
+   rows.sort((a,b)=>{let x=val(a),y=val(b);
+    if(num){x=x===''?Infinity:parseFloat(x);y=y===''?Infinity:parseFloat(y);return asc?x-y:y-x;}
+    if(x===''&&y!=='')return 1;if(y===''&&x!=='')return -1;
+    return asc?x.localeCompare(y,undefined,{numeric:true,sensitivity:'base'}):y.localeCompare(x,undefined,{numeric:true,sensitivity:'base'});});
+   rows.forEach(r=>tb.appendChild(r));});});});
+ /* the catalogue: text search over data-text, facets over data-<facet>, an honest count line, CSV of the rows shown */
+ $$('div.catalogue[data-catalogue]').forEach(cat=>{
+  const tbl=$('table',cat);if(!tbl)return;const rows=Array.from(tbl.tBodies[0].rows);
+  const noun=cat.dataset.noun||'records';const out=$('.count-line',cat);
+  const ctrls=$$('[data-filter]',cat);
+  const apply=()=>{let n=0;
+   const q=ctrls.filter(c=>c.dataset.filter==='q').map(c=>(c.value||'').toLowerCase()).join(' ').split(/\s+/).filter(Boolean);
+   const facets=ctrls.filter(c=>c.dataset.filter!=='q'&&c.value).map(c=>[c.dataset.filter,c.value]);
+   rows.forEach(r=>{let ok=facets.every(([f,v])=>{const d=r.dataset[f]||'';return d===v||d.split(' ').includes(v);});
+    if(ok&&q.length){const h=(r.dataset.text||r.textContent).toLowerCase();ok=q.every(t=>h.includes(t));}
+    r.classList.toggle('hide',!ok);r.hidden=!ok;if(ok)n++;});
+   if(out)out.innerHTML='<b>'+n+'</b> of '+rows.length+' '+noun+' shown';};
+  ctrls.forEach(c=>c.addEventListener(c.dataset.filter==='q'?'input':'change',apply));
+  const clr=$('[data-clear]',cat);if(clr)clr.addEventListener('click',()=>{ctrls.forEach(c=>c.value='');apply();});
+  const exp=$('[data-export]',cat);if(exp)exp.addEventListener('click',()=>{
+   const hdr=Array.from(tbl.tHead.rows[0].cells).map(c=>c.textContent.replace(/[\u2191\u2193\u2195]/g,'').trim());
+   const o=[hdr];rows.forEach(r=>{if(r.hidden)return;o.push(Array.from(r.cells).map(c=>c.textContent.trim()));});
+   const csv=o.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+   a.download=(tbl.id||'table')+'-shown.csv';a.click();});
+  apply();});
+ /* permalinks: ?<param>=<key> (the pillar declares its params) and #<key> highlight a record */
+ const hl=el=>{if(!el)return;$$('.hl').forEach(x=>x.classList.remove('hl'));el.classList.add('hl');};
+ const P=new URLSearchParams(location.search);const params=(document.body.dataset.permalink||'').split(',').filter(Boolean);
+ let key=null;params.forEach(p=>{if(!key&&P.get(p))key=P.get(p);});
+ if(key){const el=document.getElementById(key);if(el){setTimeout(()=>{hl(el);el.scrollIntoView({block:'center'});},50);}}
+ else if(location.hash){const el=document.getElementById(location.hash.slice(1));if(el&&el.classList.contains('rec'))setTimeout(()=>hl(el),50);}
+ window.addEventListener('hashchange',()=>{const el=document.getElementById(location.hash.slice(1));if(el&&el.classList.contains('rec'))hl(el);});
+ /* you are here: the contents marks the section in view */
+ const nav=$('nav.contents');const secs=$$('section.sec');
+ if(nav&&secs.length&&'IntersectionObserver' in window){
+  const items={};$$('li',nav).forEach(li=>{const a=$('a',li);if(a&&a.hash)items[a.hash.slice(1)]=li;});
+  let cur=null;const set=id=>{if(cur===id)return;cur=id;Object.keys(items).forEach(k=>items[k].classList.toggle('cur',k===id));};
+  const vis=new Map();
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{vis.set(en.target.id,en.isIntersecting?en.intersectionRatio:0);});
+   let best=null,bv=0;secs.forEach(s=>{const v=vis.get(s.id)||0;if(v>bv){bv=v;best=s.id;}});
+   if(best)set(best);},{rootMargin:'-10% 0px -70% 0px',threshold:[0,0.1,0.5,1]});
+  secs.forEach(s=>io.observe(s));
+ }
+})();
+
+/* permalinks: ?letter= (the old Reader links) → the letter page; ?corr= → the correspondent entry;
+   ?set=kassel → the Hven–Kassel section; ?year= → the year heading */
+(function(){
+  const KEY2ID={"Hans Aalborg": "COR_HANS_AALBORG", "Anders Sørensen Vedel": "COR_ANDERS_SØRENSEN_VEDEL", "Hieronymus Wolf": "COR_HIERONYMUS_WOLF", "Johannes Pratensis": "PRATENSIS", "Johannes Major": "COR_JOHANNES_MAJOR", "Paul Hainzel": "COR_PAUL_HAINZEL", "George Buchanan": "COR_GEORGE_BUCHANAN", "Heinrich Brucaeus": "COR_HEINRICH_BRUCAEUS", "Charles de Dançay": "COR_CHARLES_DE_DANÇAY", "Thaddaeus Hagecius": "COR_THADDAEUS_HAGECIUS", "Petrus Severinus": "COR_PETRUS_SEVERINUS", "Joachim Camerarius": "COR_JOACHIM_CAMERARIUS", "Steen Bille": "COR_STEEN_BILLE", "Rektor og professorer ved Københavns Universitet": "COR_REKTOR_OG_PROFESSORER_VE", "Bartholomaeus Scultetus": "COR_BARTHOLOMAEUS_SCULTETUS", "Frederik 2.": "COR_FREDERIK_2", "Henrik Rantzau": "COR_HENRIK_RANTZAU", "Christopher Rothmann": "COR_CHRISTOPHER_ROTHMANN", "Wilhelm 4., landgreve af Hessen-Kassel": "COR_WILHELM_4_LANDGREVE_AF_H", "Rudolf 2.": "RUDOLF2", "Birgitte Bølle": "COR_BIRGITTE_BØLLE", "Peter Young": "COR_PETER_YOUNG", "Niels Bild": "COR_NIELS_BILD", "Henrik Below": "COR_HENRIK_BELOW", "Johannes Caselius": "COR_JOHANNES_CASELIUS", "Ulrich 3., hertug af Mecklenburg": "COR_ULRICH_3", "Caspar Peucer": "COR_CASPAR_PEUCER", "John Craig": "CRAIG", "Christian 4.": "CHR4", "Poul Madsen": "COR_POUL_MADSEN", "Dronning Sophie": "COR_DRONNING_SOPHIE", "Jacob Kurz": "COR_JACOB_KURZ", "Giovanni Antonio Magini": "COR_GIOVANNI_ANTONIO_MAGINI", "Gellius Sascerides": "COR_GELLIUS_SASCERIDES", "Thomas Savile": "COR_THOMAS_SAVILE", "Anders Christensen": "COR_ANDERS_CHRISTENSEN", "John Maitland": "COR_JOHN_MAITLAND", "Moritz, landgreve af Hessen-Kassel": "COR_MORITZ_LANDGREVE_AF_HESS", "Hugo Blotius": "COR_HUGO_BLOTIUS", "Ukendt medicinsk doktor": "COR_UKENDT_MEDICINSK_DOKTOR", "Ukendt dansk studerende": "COR_UKENDT_DANSK_STUDERENDE", "Thomas Craig": "COR_THOMAS_CRAIG", "Cort Aslaksen": "COR_CORT_ASLAKSEN", "Rektor og professorerne ved Københavns Universitet": "COR_REKTOR_OG_PROFESSORER_VE", "Johannes Pontanus": "COR_JOHANNES_ISACIUS_PONTANU", "Holger Rosenkrantz": "COR_HOLGER_ROSENKRANTZ", "Hartwig von Dassel": "COR_HARTWIG_VON_DASSEL", "Rektor ved Københavns Universitet": "COR_REKTOR_OG_PROFESSORER_VE", "Mads Jørgensen Huus": "COR_MADS_JØRGENSEN_HUUS", "Christian Friis": "COR_CHRISTIAN_FRIIS", "Claus Mule": "COR_CLAUS_MULE", "Jaques Bongars": "COR_JAQUES_BONGARS", "David Chytraeus": "COR_DAVID_CHYTRAEUS", "Jacob Bording": "COR_JACOB_BORDING", "Erik Sparre": "COR_ERIK_SPARRE", "David Fabricius": "COR_DAVID_FABRICIUS", "Johannes Kepler": "KEPLER", "Joachim Friedrich, kurfyrste af Brandenburg": "COR_JOACHIM_FRIEDRICH_KURFYR", "Johannes Isaksen Pontanus": "COR_JOHANNES_ISACIUS_PONTANU", "Heinrich Ellenberger": "COR_HEINRICH_ELLENBERGER", "Christoffer Valkendorf, Christian Friis": "COR_CHRISTIAN_FRIIS", "Katharina, kurfyrstinde af Brandenburg": "COR_KATHARINA_KURFYRSTINDE_A", "Jacob Monavius": "MONAU", "Vitus Winshemius": "COR_VITUS_WINSHEMIUS", "Joseph Justus Scaliger": "COR_JOSEPH_JUSTUS_SCALIGER", "Christen Sørensen Longomontanus": "LONGO", "Jakob Bording": "COR_JACOB_BORDING", "Daniel Cramer": "COR_DANIEL_CRAMER", "Andreas Meier": "COR_ANDREAS_MEIER", "Georg Rollenhagen": "COR_GEORG_ROLLENHAGEN", "Michael Mästlin": "COR_MICHAEL_MÄSTLIN", "Kristoffer Valkendorf": "COR_KRISTOFFER_VALKENDORF", "Jacob Grynaeus": "COR_JACOB_GRYNAEUS", "Ernst, kurfyrste, ærkebiskop af Köln": "COR_ERNST_KURFYRSTE_ÆRKEBISK", "Johann Anton Barwitz": "COR_JOHANN_ANTON_BARWITZ", "Niels Hemmingsen": "COR_NIELS_HEMMINGSEN", "Frans Tengnagel": "COR_FRANS_TENGNAGEL", "Johannes Stygge": "COR_JOHANNES_STYGGE", "Niels Krag": "COR_NIELS_KRAG", "Ferdinando I de' Medici": "COR_FERDINANDO_I_DE_MEDICI", "Johann Georg Gödelmann": "COR_JOHANN_GEORG_GÖDELMANN", "Rudolf Coraduz": "CORRADUZ", "Veit Winsheim": "COR_VITUS_WINSHEMIUS", "Patrick Gordon": "COR_PATRICK_GORDON", "Jon Jacobsen Venusinus": "COR_JON_JACOBSEN_VENUSINUS", "Johann Georg Herwart von Hohenburg": "COR_JOHANN_GEORG_HERWART_VON", "Henrik Ramel": "COR_HENRIK_RAMEL", "Sophie Brahe": "COR_SOPHIE_BRAHE", "Magdalene Brahe": "COR_MAGDALENE_BRAHE", "Mette Kotte": "COR_METTE_KOTTE", "Borgmestre og råd i Hamborg": "COR_BORGMESTRE_OG_RÅD_I_HAMB", "Vincent Moller": "COR_VINCENT_MOLLER", "Axel Brahe": "COR_AXEL_BRAHE", "Eske Bille": "COR_ESKE_BILLE", "Beate Bille": "COR_BEATE_BILLE", "Axel Gyldenstierne": "COR_AXEL_GYLDENSTIERNE", "Mikkel Vibe": "COR_MIKKEL_VIBE", "Ludolf Riddershusen": "COR_LUDOLF_RIDDERSHUSEN", "Christophorus Henniochus": "COR_CHRISTOPHORUS_HENNIOCHUS", "Sigfrid Rindschat": "COR_SIGFRID_RINDSCHAT", "Simon von Petkum": "COR_SIMON_VON_PETKUM", "Vincenzio Pinelli": "COR_VINCENZIO_PINELLI", "Daniel Fels": "COR_DANIEL_FELS", "Tage Ottesen Thott": "COR_TAGE_OTTESEN_THOTT", "Martin Bachazek": "COR_MARTIN_BACHAZEK", "Anonymus": "COR_ANONYMUS", "Johann Friedrich Hoffmann": "COR_JOHANN_FRIEDRICH_HOFFMAN", "Wolfgang Franzius": "COR_WOLFGANG_FRANZIUS", "Paulus Melissus": "COR_PAULUS_MELISSUS", "Tobias Fischer": "COR_TOBIAS_FISCHER", "Oluf Rosensparre": "COR_OLUF_ROSENSPARRE", "Steen Brahe": "COR_STEEN_BRAHE", "Kirsten Lindenov": "COR_KIRSTEN_LINDENOV", "Johann Tauchmann": "COR_JOHANN_TAUCHMANN", "Peder Brahe": "COR_PEDER_BRAHE", "Johannes Jessenius a Jessen": "COR_JOHANNES_JESSENIUS", "Melchior Jöstelius": "COR_MELCHIOR_JÖSTELIUS", "Johannes Jessenius": "COR_JOHANNES_JESSENIUS", "Martin Brasch": "COR_MARTIN_BRASCH", "The chapter at the cathedral of Magdeburg": "COR_THE_CHAPTER_AT_THE_CATHE", "Cosimo Concini": "COR_COSIMO_CONCINI", "Raphael Ciaperenius": "COR_RAPHAEL_CIAPERENIUS", "Susanne Hájek": "COR_SUSANNE_HÁJEK", "Christina von Halle": "COR_CHRISTINA_VON_HALLE", "Matthias, Archduke of Austria": "MATTHIAS", "Galileo Galilei": "COR_GALILEO_GALILEI", "Christian II, Elector of Saxony": "COR_CHRISTIAN_II_ELECTOR_OF_", "Johann Barwitz": "COR_JOHANN_ANTON_BARWITZ", "Ehrenfried Freiherr von Minckwitz": "COR_EHRENFRIED_FREIHERR_VON_", "Georg von Wolframsdorf": "COR_GEORG_VON_WOLFRAMSDORF", "Johannes Isacius Pontanus": "COR_JOHANNES_ISACIUS_PONTANU", "Erik Brahe": "COR_ERIK_BRAHE", "Gottfried von Berbistorf": "COR_GOTTFRIED_VON_BERBISTORF", "Daniel Bucretius": "COR_DANIEL_BUCRETIUS", "An anonymous lady": "COR_AN_ANONYMOUS_LADY", "Berka Zbyněk, archbishop of Prague": "COR_BERKA_ZBYNĚK_ARCHBISHOP_", "Ottavio Caurian": "COR_OTTAVIO_CAURIAN", "Johannes Oswaldus": "COR_JOHANNES_OSWALDUS", "Nicolaus Braschius": "COR_NICOLAUS_BRASCHIUS", "Lucas Bacmeister": "COR_LUCAS_BACMEISTER", "Friedrich Taubmann": "COR_FRIEDRICH_TAUBMANN", "The dean of the chapter at the cathedral of Magdeburg": "COR_THE_CHAPTER_AT_THE_CATHE", "The dean and doctors at the college of medicine i Wittenberg": "COR_THE_DEAN_AND_DOCTORS_AT_", "Christoph Sturtz": "COR_CHRISTOPH_STURTZ", "Cristophorus Henniochus": "COR_CHRISTOPHORUS_HENNIOCHUS", "Balthasar Caminaeus": "COR_BALTHASAR_CAMINAEUS", "Johannes Müller": "COR_JOHANNES_MÜLLER", "Eberhard Schele": "COR_EBERHARD_SCHELE", "Joachim Stralendorff": "COR_JOACHIM_STRALENDORFF"}, CANON={"brahe-t_16000623001": "brahe-t_16000723001"};
+  const q=new URLSearchParams(location.search);
+  const L=q.get('letter'); if(L){const s=CANON[L]||L; location.replace('letters/'+encodeURIComponent(s)+'.html'); return;}
+  let id=null;
+  const c=q.get('corr'); if(c){id=KEY2ID[c]?'corr-'+KEY2ID[c]:null;}
+  if(q.get('set')==='kassel')id='sec-kassel';
+  const y=q.get('year'); if(y)id='y-'+y;
+  if(!id)return;
+  const el=document.getElementById(id);
+  if(el){el.classList.add('hl');el.scrollIntoView({block:'start'});}
+})();
+</script><script id="keymap" type="application/json">{"sec-intro": "index.html", "sec-catalogue": "catalogue.html", "fQ": "catalogue.html", "fDir": "catalogue.html", "fPer": "catalogue.html", "fKind": "catalogue.html", "fLang": "catalogue.html", "fW": "catalogue.html", "fG": "catalogue.html", "fC": "catalogue.html", "fK": "catalogue.html", "fP": "catalogue.html", "fE": "catalogue.html", "catTable-count": "catalogue.html", "catTable": "catalogue.html", "brahe-t_15680114001": "letters/brahe-t_15680114001.html", "brahe-t_15710518001": "letters/brahe-t_15710518001.html", "brahe-t_15711113001": "letters/brahe-t_15711113001.html", "brahe-t_15720507001": "letters/brahe-t_15720507001.html", "brahe-t_15720517001": "letters/brahe-t_15720517001.html", "brahe-t_15730416001": "letters/brahe-t_15730416001.html", "brahe-t_15730701001": "letters/brahe-t_15730701001.html", "brahe-t_15740310001": "letters/brahe-t_15740310001.html", "brahe-t_15750307001": "letters/brahe-t_15750307001.html", "brahe-t_15750311001": "letters/brahe-t_15750311001.html", "brahe-t_15750406001": "letters/brahe-t_15750406001.html", "brahe-t_15760131001": "letters/brahe-t_15760131001.html", "brahe-t_15760214001": "letters/brahe-t_15760214001.html", "brahe-t_15760215001": "letters/brahe-t_15760215001.html", "brahe-t_15760514001": "letters/brahe-t_15760514001.html", "brahe-t_15760626001": "letters/brahe-t_15760626001.html", "brahe-t_15760714001": "letters/brahe-t_15760714001.html", "brahe-t_15760802001": "letters/brahe-t_15760802001.html", "brahe-t_15760823001": "letters/brahe-t_15760823001.html", "brahe-t_15760903001": "letters/brahe-t_15760903001.html", "brahe-t_15761117001": "letters/brahe-t_15761117001.html", "brahe-t_15761121001": "letters/brahe-t_15761121001.html", "brahe-t_15761208001": "letters/brahe-t_15761208001.html", "brahe-t_15770503001": "letters/brahe-t_15770503001.html", "brahe-t_15770521001": "letters/brahe-t_15770521001.html", "brahe-t_15770920001": "letters/brahe-t_15770920001.html", "brahe-t_15771114001": "letters/brahe-t_15771114001.html", "brahe-t_15780509001": "letters/brahe-t_15780509001.html", "brahe-t_15781204001": "letters/brahe-t_15781204001.html", "brahe-t_15790000001": "letters/brahe-t_15790000001.html", "brahe-t_15790325001": "letters/brahe-t_15790325001.html", "brahe-t_15790325002": "letters/brahe-t_15790325002.html", "brahe-t_15790521001": "letters/brahe-t_15790521001.html", "brahe-t_15790705001": "letters/brahe-t_15790705001.html", "brahe-t_15790705002": "letters/brahe-t_15790705002.html", "brahe-t_15790815001": "letters/brahe-t_15790815001.html", "brahe-t_15800208001": "letters/brahe-t_15800208001.html", "brahe-t_15800314001": "letters/brahe-t_15800314001.html", "brahe-t_15801104001": "letters/brahe-t_15801104001.html", "brahe-t_15811012001": "letters/brahe-t_15811012001.html", "brahe-t_15811012002": "letters/brahe-t_15811012002.html", "brahe-t_15820501001": "letters/brahe-t_15820501001.html", "brahe-t_15820923001": "letters/brahe-t_15820923001.html", "brahe-t_15830821001": "letters/brahe-t_15830821001.html", "brahe-t_15840000001": "letters/brahe-t_15840000001.html", "brahe-t_15840216001": "letters/brahe-t_15840216001.html", "brahe-t_15840608001": "letters/brahe-t_15840608001.html", "brahe-t_15840612001": "letters/brahe-t_15840612001.html", "brahe-t_15840715001": "letters/brahe-t_15840715001.html", "brahe-t_15841210001": "letters/brahe-t_15841210001.html", "brahe-t_15841211001": "letters/brahe-t_15841211001.html", "brahe-t_15850000001": "letters/brahe-t_15850000001.html", "brahe-t_15850108001": "letters/brahe-t_15850108001.html", "brahe-t_15850404001": "letters/brahe-t_15850404001.html", "brahe-t_15850518001": "letters/brahe-t_15850518001.html", "brahe-t_15850526001": "letters/brahe-t_15850526001.html", "brahe-t_15850623001": "letters/brahe-t_15850623001.html", "brahe-t_15850825001": "letters/brahe-t_15850825001.html", "brahe-t_15851020001": "letters/brahe-t_15851020001.html", "brahe-t_15851111001": "letters/brahe-t_15851111001.html", "brahe-t_15851213001": "letters/brahe-t_15851213001.html", "brahe-t_15860000001": "letters/brahe-t_15860000001.html", "brahe-t_15860130001": "letters/brahe-t_15860130001.html", "brahe-t_15860301001": "letters/brahe-t_15860301001.html", "brahe-t_15860315001": "letters/brahe-t_15860315001.html", "brahe-t_15860323001": "letters/brahe-t_15860323001.html", "brahe-t_15860328001": "letters/brahe-t_15860328001.html", "brahe-t_15860414001": "letters/brahe-t_15860414001.html", "brahe-t_15860509001": "letters/brahe-t_15860509001.html", "brahe-t_15860701001": "letters/brahe-t_15860701001.html", "brahe-t_15860818001": "letters/brahe-t_15860818001.html", "brahe-t_15860826001": "letters/brahe-t_15860826001.html", "brahe-t_15860907001": "letters/brahe-t_15860907001.html", "brahe-t_15860907002": "letters/brahe-t_15860907002.html", "brahe-t_15861014001": "letters/brahe-t_15861014001.html", "brahe-t_15870101001": "letters/brahe-t_15870101001.html", "brahe-t_15870117001": "letters/brahe-t_15870117001.html", "brahe-t_15870120001": "letters/brahe-t_15870120001.html", "brahe-t_15870125001": "letters/brahe-t_15870125001.html", "brahe-t_15870522001": "letters/brahe-t_15870522001.html", "brahe-t_15870718001": "letters/brahe-t_15870718001.html", "brahe-t_15870812001": "letters/brahe-t_15870812001.html", "brahe-t_15870911001": "letters/brahe-t_15870911001.html", "brahe-t_15870924001": "letters/brahe-t_15870924001.html", "brahe-t_15871011001": "letters/brahe-t_15871011001.html", "brahe-t_15871019001": "letters/brahe-t_15871019001.html", "brahe-t_15871028001": "letters/brahe-t_15871028001.html", "brahe-t_15871114001": "letters/brahe-t_15871114001.html", "brahe-t_15871207001": "letters/brahe-t_15871207001.html", "brahe-t_15880503001": "letters/brahe-t_15880503001.html", "brahe-t_15880523001": "letters/brahe-t_15880523001.html", "brahe-t_15880611001": "letters/brahe-t_15880611001.html", "brahe-t_15880815001": "letters/brahe-t_15880815001.html", "brahe-t_15880816001": "letters/brahe-t_15880816001.html", "brahe-t_15880817001": "letters/brahe-t_15880817001.html", "brahe-t_15880817002": "letters/brahe-t_15880817002.html", "brahe-t_15880817003": "letters/brahe-t_15880817003.html", "brahe-t_15880913001": "letters/brahe-t_15880913001.html", "brahe-t_15880913002": "letters/brahe-t_15880913002.html", "brahe-t_15880920001": "letters/brahe-t_15880920001.html", "brahe-t_15881013001": "letters/brahe-t_15881013001.html", "brahe-t_15881101001": "letters/brahe-t_15881101001.html", "brahe-t_15881104001": "letters/brahe-t_15881104001.html", "brahe-t_15881221001": "letters/brahe-t_15881221001.html", "brahe-t_15890000001": "letters/brahe-t_15890000001.html", "brahe-t_15890221001": "letters/brahe-t_15890221001.html", "brahe-t_15890221002": "letters/brahe-t_15890221002.html", "brahe-t_15890322001": "letters/brahe-t_15890322001.html", "brahe-t_15890323001": "letters/brahe-t_15890323001.html", "brahe-t_15890500001": "letters/brahe-t_15890500001.html", "brahe-t_15890510001": "letters/brahe-t_15890510001.html", "brahe-t_15890510002": "letters/brahe-t_15890510002.html", "brahe-t_15890520001": "letters/brahe-t_15890520001.html", "brahe-t_15890618001": "letters/brahe-t_15890618001.html", "brahe-t_15890709001": "letters/brahe-t_15890709001.html", "brahe-t_15890726001": "letters/brahe-t_15890726001.html", "brahe-t_15890806001": "letters/brahe-t_15890806001.html", "brahe-t_15890822001": "letters/brahe-t_15890822001.html", "brahe-t_15890920001": "letters/brahe-t_15890920001.html", "brahe-t_15890925001": "letters/brahe-t_15890925001.html", "brahe-t_15891025001": "letters/brahe-t_15891025001.html", "brahe-t_15891101001": "letters/brahe-t_15891101001.html", "brahe-t_15891120001": "letters/brahe-t_15891120001.html", "brahe-t_15891124001": "letters/brahe-t_15891124001.html", "brahe-t_15891130001": "letters/brahe-t_15891130001.html", "brahe-t_15891216001": "letters/brahe-t_15891216001.html", "brahe-t_15900000001": "letters/brahe-t_15900000001.html", "brahe-t_15900000002": "letters/brahe-t_15900000002.html", "brahe-t_15900125001": "letters/brahe-t_15900125001.html", "brahe-t_15900223001": "letters/brahe-t_15900223001.html", "brahe-t_15900223002": "letters/brahe-t_15900223002.html", "brahe-t_15900228001": "letters/brahe-t_15900228001.html", "brahe-t_15900306001": "letters/brahe-t_15900306001.html", "brahe-t_15900401001": "letters/brahe-t_15900401001.html", "brahe-t_15900402001": "letters/brahe-t_15900402001.html", "brahe-t_15900418001": "letters/brahe-t_15900418001.html", "brahe-t_15900501001": "letters/brahe-t_15900501001.html", "brahe-t_15900515001": "letters/brahe-t_15900515001.html", "brahe-t_15900611001": "letters/brahe-t_15900611001.html", "brahe-t_15900628001": "letters/brahe-t_15900628001.html", "brahe-t_15900718001": "letters/brahe-t_15900718001.html", "brahe-t_15900801001": "letters/brahe-t_15900801001.html", "brahe-t_15900803001": "letters/brahe-t_15900803001.html", "brahe-t_15900809001": "letters/brahe-t_15900809001.html", "brahe-t_15900911001": "letters/brahe-t_15900911001.html", "brahe-t_15901000001": "letters/brahe-t_15901000001.html", "brahe-t_15901001001": "letters/brahe-t_15901001001.html", "brahe-t_15901005001": "letters/brahe-t_15901005001.html", "brahe-t_15901021001": "letters/brahe-t_15901021001.html", "brahe-t_15901027001": "letters/brahe-t_15901027001.html", "brahe-t_15901201001": "letters/brahe-t_15901201001.html", "brahe-t_15901201002": "letters/brahe-t_15901201002.html", "brahe-t_15901201003": "letters/brahe-t_15901201003.html", "brahe-t_15901207001": "letters/brahe-t_15901207001.html", "brahe-t_15901208001": "letters/brahe-t_15901208001.html", "brahe-t_15910000001": "letters/brahe-t_15910000001.html", "brahe-t_15910000002": "letters/brahe-t_15910000002.html", "brahe-t_15910203001": "letters/brahe-t_15910203001.html", "brahe-t_15910209001": "letters/brahe-t_15910209001.html", "brahe-t_15910401001": "letters/brahe-t_15910401001.html", "brahe-t_15910522001": "letters/brahe-t_15910522001.html", "brahe-t_15910621001": "letters/brahe-t_15910621001.html", "brahe-t_15910801001": "letters/brahe-t_15910801001.html", "brahe-t_15910829001": "letters/brahe-t_15910829001.html", "brahe-t_15910830001": "letters/brahe-t_15910830001.html", "brahe-t_15910831001": "letters/brahe-t_15910831001.html", "brahe-t_15910908001": "letters/brahe-t_15910908001.html", "brahe-t_15910926001": "letters/brahe-t_15910926001.html", "brahe-t_15911113001": "letters/brahe-t_15911113001.html", "brahe-t_15911114001": "letters/brahe-t_15911114001.html", "brahe-t_15920201001": "letters/brahe-t_15920201001.html", "brahe-t_15920220001": "letters/brahe-t_15920220001.html", "brahe-t_15920220002": "letters/brahe-t_15920220002.html", "brahe-t_15920220003": "letters/brahe-t_15920220003.html", "brahe-t_15920312001": "letters/brahe-t_15920312001.html", "brahe-t_15920314001": "letters/brahe-t_15920314001.html", "brahe-t_15920320001": "letters/brahe-t_15920320001.html", "brahe-t_15920320002": "letters/brahe-t_15920320002.html", "brahe-t_15920322001": "letters/brahe-t_15920322001.html", "brahe-t_15920327001": "letters/brahe-t_15920327001.html", "brahe-t_15920402001": "letters/brahe-t_15920402001.html", "brahe-t_15920402002": "letters/brahe-t_15920402002.html", "brahe-t_15920516001": "letters/brahe-t_15920516001.html", "brahe-t_15920730001": "letters/brahe-t_15920730001.html", "brahe-t_15920805001": "letters/brahe-t_15920805001.html", "brahe-t_15920819001": "letters/brahe-t_15920819001.html", "brahe-t_15920920001": "letters/brahe-t_15920920001.html", "brahe-t_15920921001": "letters/brahe-t_15920921001.html", "brahe-t_15920928001": "letters/brahe-t_15920928001.html", "brahe-t_15921001001": "letters/brahe-t_15921001001.html", "brahe-t_15921105001": "letters/brahe-t_15921105001.html", "brahe-t_15921117001": "letters/brahe-t_15921117001.html", "brahe-t_15921202001": "letters/brahe-t_15921202001.html", "brahe-t_15921222001": "letters/brahe-t_15921222001.html", "brahe-t_15921228001": "letters/brahe-t_15921228001.html", "brahe-t_15930109001": "letters/brahe-t_15930109001.html", "brahe-t_15930419001": "letters/brahe-t_15930419001.html", "brahe-t_15930420001": "letters/brahe-t_15930420001.html", "brahe-t_15930427001": "letters/brahe-t_15930427001.html", "brahe-t_15930801001": "letters/brahe-t_15930801001.html", "brahe-t_15930911001": "letters/brahe-t_15930911001.html", "brahe-t_15931224001": "letters/brahe-t_15931224001.html", "brahe-t_15940000001": "letters/brahe-t_15940000001.html", "brahe-t_15940000002": "letters/brahe-t_15940000002.html", "brahe-t_15940307001": "letters/brahe-t_15940307001.html", "brahe-t_15940422001": "letters/brahe-t_15940422001.html", "brahe-t_15940608001": "letters/brahe-t_15940608001.html", "brahe-t_15940726001": "letters/brahe-t_15940726001.html", "brahe-t_15940810001": "letters/brahe-t_15940810001.html", "brahe-t_15940904001": "letters/brahe-t_15940904001.html", "brahe-t_15940928001": "letters/brahe-t_15940928001.html", "brahe-t_15941023001": "letters/brahe-t_15941023001.html", "brahe-t_15941108001": "letters/brahe-t_15941108001.html", "brahe-t_15941111001": "letters/brahe-t_15941111001.html", "brahe-t_15941207001": "letters/brahe-t_15941207001.html", "brahe-t_15950111001": "letters/brahe-t_15950111001.html", "brahe-t_15950114001": "letters/brahe-t_15950114001.html", "brahe-t_15950812001": "letters/brahe-t_15950812001.html", "brahe-t_15950905001": "letters/brahe-t_15950905001.html", "brahe-t_15960000001": "letters/brahe-t_15960000001.html", "brahe-t_15960000002": "letters/brahe-t_15960000002.html", "brahe-t_15960122001": "letters/brahe-t_15960122001.html", "brahe-t_15960219001": "letters/brahe-t_15960219001.html", "brahe-t_15960325001": "letters/brahe-t_15960325001.html", "brahe-t_15960331001": "letters/brahe-t_15960331001.html", "brahe-t_15960331002": "letters/brahe-t_15960331002.html", "brahe-t_15960402001": "letters/brahe-t_15960402001.html", "brahe-t_15961231001": "letters/brahe-t_15961231001.html", "brahe-t_15970000001": "letters/brahe-t_15970000001.html", "brahe-t_15970120001": "letters/brahe-t_15970120001.html", "brahe-t_15970222001": "letters/brahe-t_15970222001.html", "brahe-t_15970330001": "letters/brahe-t_15970330001.html", "brahe-t_15970331001": "letters/brahe-t_15970331001.html", "brahe-t_15970601001": "letters/brahe-t_15970601001.html", "brahe-t_15970616001": "letters/brahe-t_15970616001.html", "brahe-t_15970617001": "letters/brahe-t_15970617001.html", "brahe-t_15970710001": "letters/brahe-t_15970710001.html", "brahe-t_15970729001": "letters/brahe-t_15970729001.html", "brahe-t_15970802001": "letters/brahe-t_15970802001.html", "brahe-t_15970804001": "letters/brahe-t_15970804001.html", "brahe-t_15970804002": "letters/brahe-t_15970804002.html", "brahe-t_15970907001": "letters/brahe-t_15970907001.html", "brahe-t_15970917001": "letters/brahe-t_15970917001.html", "brahe-t_15971008001": "letters/brahe-t_15971008001.html", "brahe-t_15971107001": "letters/brahe-t_15971107001.html", "brahe-t_15971116001": "letters/brahe-t_15971116001.html", "brahe-t_15971123001": "letters/brahe-t_15971123001.html", "brahe-t_15971213001": "letters/brahe-t_15971213001.html", "brahe-t_15971216001": "letters/brahe-t_15971216001.html", "brahe-t_15971222001": "letters/brahe-t_15971222001.html", "brahe-t_15971226001": "letters/brahe-t_15971226001.html", "brahe-t_15980000001": "letters/brahe-t_15980000001.html", "brahe-t_15980000002": "letters/brahe-t_15980000002.html", "brahe-t_15980102001": "letters/brahe-t_15980102001.html", "brahe-t_15980118001": "letters/brahe-t_15980118001.html", "brahe-t_15980122001": "letters/brahe-t_15980122001.html", "brahe-t_15980125001": "letters/brahe-t_15980125001.html", "brahe-t_15980125002": "letters/brahe-t_15980125002.html", "brahe-t_15980204001": "letters/brahe-t_15980204001.html", "brahe-t_15980207001": "letters/brahe-t_15980207001.html", "brahe-t_15980214001": "letters/brahe-t_15980214001.html", "brahe-t_15980214002": "letters/brahe-t_15980214002.html", "brahe-t_15980218001": "letters/brahe-t_15980218001.html", "brahe-t_15980307001": "letters/brahe-t_15980307001.html", "brahe-t_15980311001": "letters/brahe-t_15980311001.html", "brahe-t_15980314001": "letters/brahe-t_15980314001.html", "brahe-t_15980324001": "letters/brahe-t_15980324001.html", "brahe-t_15980328001": "letters/brahe-t_15980328001.html", "brahe-t_15980329001": "letters/brahe-t_15980329001.html", "brahe-t_15980331001": "letters/brahe-t_15980331001.html", "brahe-t_15980331002": "letters/brahe-t_15980331002.html", "brahe-t_15980400001": "letters/brahe-t_15980400001.html", "brahe-t_15980401001": "letters/brahe-t_15980401001.html", "brahe-t_15980410001": "letters/brahe-t_15980410001.html", "brahe-t_15980421001": "letters/brahe-t_15980421001.html", "brahe-t_15980508001": "letters/brahe-t_15980508001.html", "brahe-t_15980524001": "letters/brahe-t_15980524001.html", "brahe-t_15980528001": "letters/brahe-t_15980528001.html", "brahe-t_15980530001": "letters/brahe-t_15980530001.html", "brahe-t_15980607001": "letters/brahe-t_15980607001.html", "brahe-t_15980618001": "letters/brahe-t_15980618001.html", "brahe-t_15980623001": "letters/brahe-t_15980623001.html", "brahe-t_15980625001": "letters/brahe-t_15980625001.html", "brahe-t_15980625002": "letters/brahe-t_15980625002.html", "brahe-t_15980626001": "letters/brahe-t_15980626001.html", "brahe-t_15980626002": "letters/brahe-t_15980626002.html", "brahe-t_15980627001": "letters/brahe-t_15980627001.html", "brahe-t_15980628001": "letters/brahe-t_15980628001.html", "brahe-t_15980706001": "letters/brahe-t_15980706001.html", "brahe-t_15980709001": "letters/brahe-t_15980709001.html", "brahe-t_15980710001": "letters/brahe-t_15980710001.html", "brahe-t_15980810001": "letters/brahe-t_15980810001.html", "brahe-t_15980816001": "letters/brahe-t_15980816001.html", "brahe-t_15980820001": "letters/brahe-t_15980820001.html", "brahe-t_15980823001": "letters/brahe-t_15980823001.html", "brahe-t_15980905001": "letters/brahe-t_15980905001.html", "brahe-t_15980909001": "letters/brahe-t_15980909001.html", "brahe-t_15980910001": "letters/brahe-t_15980910001.html", "brahe-t_15980914001": "letters/brahe-t_15980914001.html", "brahe-t_15980914002": "letters/brahe-t_15980914002.html", "brahe-t_15980925001": "letters/brahe-t_15980925001.html", "brahe-t_15981007001": "letters/brahe-t_15981007001.html", "brahe-t_15981108001": "letters/brahe-t_15981108001.html", "brahe-t_15981112001": "letters/brahe-t_15981112001.html", "brahe-t_15981128001": "letters/brahe-t_15981128001.html", "brahe-t_15981201001": "letters/brahe-t_15981201001.html", "brahe-t_15981205001": "letters/brahe-t_15981205001.html", "brahe-t_15981205002": "letters/brahe-t_15981205002.html", "brahe-t_15981230001": "letters/brahe-t_15981230001.html", "brahe-t_15981231001": "letters/brahe-t_15981231001.html", "brahe-t_15981231002": "letters/brahe-t_15981231002.html", "brahe-t_15990000001": "letters/brahe-t_15990000001.html", "brahe-t_15990109001": "letters/brahe-t_15990109001.html", "brahe-t_15990110001": "letters/brahe-t_15990110001.html", "brahe-t_15990111001": "letters/brahe-t_15990111001.html", "brahe-t_15990127001": "letters/brahe-t_15990127001.html", "brahe-t_15990128001": "letters/brahe-t_15990128001.html", "brahe-t_15990200001": "letters/brahe-t_15990200001.html", "brahe-t_15990226001": "letters/brahe-t_15990226001.html", "brahe-t_15990302001": "letters/brahe-t_15990302001.html", "brahe-t_15990307001": "letters/brahe-t_15990307001.html", "brahe-t_15990320001": "letters/brahe-t_15990320001.html", "brahe-t_15990321001": "letters/brahe-t_15990321001.html", "brahe-t_15990417001": "letters/brahe-t_15990417001.html", "brahe-t_15990501001": "letters/brahe-t_15990501001.html", "brahe-t_15990507001": "letters/brahe-t_15990507001.html", "brahe-t_15990723001": "letters/brahe-t_15990723001.html", "brahe-t_15990820001": "letters/brahe-t_15990820001.html", "brahe-t_15990831001": "letters/brahe-t_15990831001.html", "brahe-t_15990909001": "letters/brahe-t_15990909001.html", "brahe-t_15990917001": "letters/brahe-t_15990917001.html", "brahe-t_15990918001": "letters/brahe-t_15990918001.html", "brahe-t_15990920001": "letters/brahe-t_15990920001.html", "brahe-t_15990922001": "letters/brahe-t_15990922001.html", "brahe-t_15990925001": "letters/brahe-t_15990925001.html", "brahe-t_15990926001": "letters/brahe-t_15990926001.html", "brahe-t_15990929001": "letters/brahe-t_15990929001.html", "brahe-t_15991008001": "letters/brahe-t_15991008001.html", "brahe-t_15991024001": "letters/brahe-t_15991024001.html", "brahe-t_15991025001": "letters/brahe-t_15991025001.html", "brahe-t_15991029001": "letters/brahe-t_15991029001.html", "brahe-t_15991104001": "letters/brahe-t_15991104001.html", "brahe-t_15991116001": "letters/brahe-t_15991116001.html", "brahe-t_15991126001": "letters/brahe-t_15991126001.html", "brahe-t_15991203001": "letters/brahe-t_15991203001.html", "brahe-t_15991204001": "letters/brahe-t_15991204001.html", "brahe-t_15991205001": "letters/brahe-t_15991205001.html", "brahe-t_15991209001": "letters/brahe-t_15991209001.html", "brahe-t_15991214001": "letters/brahe-t_15991214001.html", "brahe-t_15991216001": "letters/brahe-t_15991216001.html", "brahe-t_15991219001": "letters/brahe-t_15991219001.html", "brahe-t_15991231001": "letters/brahe-t_15991231001.html", "brahe-t_16000000001": "letters/brahe-t_16000000001.html", "brahe-t_16000000002": "letters/brahe-t_16000000002.html", "brahe-t_16000000003": "letters/brahe-t_16000000003.html", "brahe-t_16000103001": "letters/brahe-t_16000103001.html", "brahe-t_16000103002": "letters/brahe-t_16000103002.html", "brahe-t_16000106001": "letters/brahe-t_16000106001.html", "brahe-t_16000107001": "letters/brahe-t_16000107001.html", "brahe-t_16000110001": "letters/brahe-t_16000110001.html", "brahe-t_16000115001": "letters/brahe-t_16000115001.html", "brahe-t_16000117001": "letters/brahe-t_16000117001.html", "brahe-t_16000120001": "letters/brahe-t_16000120001.html", "brahe-t_16000124001": "letters/brahe-t_16000124001.html", "brahe-t_16000126001": "letters/brahe-t_16000126001.html", "brahe-t_16000126002": "letters/brahe-t_16000126002.html", "brahe-t_16000203001": "letters/brahe-t_16000203001.html", "brahe-t_16000212001": "letters/brahe-t_16000212001.html", "brahe-t_16000217001": "letters/brahe-t_16000217001.html", "brahe-t_16000302001": "letters/brahe-t_16000302001.html", "brahe-t_16000304001": "letters/brahe-t_16000304001.html", "brahe-t_16000305001": "letters/brahe-t_16000305001.html", "brahe-t_16000306001": "letters/brahe-t_16000306001.html", "brahe-t_16000306002": "letters/brahe-t_16000306002.html", "brahe-t_16000308001": "letters/brahe-t_16000308001.html", "brahe-t_16000308002": "letters/brahe-t_16000308002.html", "brahe-t_16000309001": "letters/brahe-t_16000309001.html", "brahe-t_16000309002": "letters/brahe-t_16000309002.html", "brahe-t_16000310001": "letters/brahe-t_16000310001.html", "brahe-t_16000314001": "letters/brahe-t_16000314001.html", "brahe-t_16000318001": "letters/brahe-t_16000318001.html", "brahe-t_16000321001": "letters/brahe-t_16000321001.html", "brahe-t_16000321002": "letters/brahe-t_16000321002.html", "brahe-t_16000321003": "letters/brahe-t_16000321003.html", "brahe-t_16000321004": "letters/brahe-t_16000321004.html", "brahe-t_16000321005": "letters/brahe-t_16000321005.html", "brahe-t_16000322001": "letters/brahe-t_16000322001.html", "brahe-t_16000322002": "letters/brahe-t_16000322002.html", "brahe-t_16000322003": "letters/brahe-t_16000322003.html", "brahe-t_16000323001": "letters/brahe-t_16000323001.html", "brahe-t_16000324001": "letters/brahe-t_16000324001.html", "brahe-t_16000324002": "letters/brahe-t_16000324002.html", "brahe-t_16000327001": "letters/brahe-t_16000327001.html", "brahe-t_16000327002": "letters/brahe-t_16000327002.html", "brahe-t_16000328001": "letters/brahe-t_16000328001.html", "brahe-t_16000328002": "letters/brahe-t_16000328002.html", "brahe-t_16000329001": "letters/brahe-t_16000329001.html", "brahe-t_16000329002": "letters/brahe-t_16000329002.html", "brahe-t_16000329003": "letters/brahe-t_16000329003.html", "brahe-t_16000329004": "letters/brahe-t_16000329004.html", "brahe-t_16000331001": "letters/brahe-t_16000331001.html", "brahe-t_16000400001": "letters/brahe-t_16000400001.html", "brahe-t_16000401001": "letters/brahe-t_16000401001.html", "brahe-t_16000403001": "letters/brahe-t_16000403001.html", "brahe-t_16000404001": "letters/brahe-t_16000404001.html", "brahe-t_16000405001": "letters/brahe-t_16000405001.html", "brahe-t_16000405002": "letters/brahe-t_16000405002.html", "brahe-t_16000406001": "letters/brahe-t_16000406001.html", "brahe-t_16000408001": "letters/brahe-t_16000408001.html", "brahe-t_16000411001": "letters/brahe-t_16000411001.html", "brahe-t_16000414001": "letters/brahe-t_16000414001.html", "brahe-t_16000414002": "letters/brahe-t_16000414002.html", "brahe-t_16000417001": "letters/brahe-t_16000417001.html", "brahe-t_16000418001": "letters/brahe-t_16000418001.html", "brahe-t_16000420001": "letters/brahe-t_16000420001.html", "brahe-t_16000420002": "letters/brahe-t_16000420002.html", "brahe-t_16000422001": "letters/brahe-t_16000422001.html", "brahe-t_16000424001": "letters/brahe-t_16000424001.html", "brahe-t_16000426002": "letters/brahe-t_16000426002.html", "brahe-t_16000501001": "letters/brahe-t_16000501001.html", "brahe-t_16000502001": "letters/brahe-t_16000502001.html", "brahe-t_16000504001": "letters/brahe-t_16000504001.html", "brahe-t_16000504002": "letters/brahe-t_16000504002.html", "brahe-t_16000504003": "letters/brahe-t_16000504003.html", "brahe-t_16000506001": "letters/brahe-t_16000506001.html", "brahe-t_16000506002": "letters/brahe-t_16000506002.html", "brahe-t_16000507001": "letters/brahe-t_16000507001.html", "brahe-t_16000507002": "letters/brahe-t_16000507002.html", "brahe-t_16000507003": "letters/brahe-t_16000507003.html", "brahe-t_16000508001": "letters/brahe-t_16000508001.html", "brahe-t_16000511001": "letters/brahe-t_16000511001.html", "brahe-t_16000512001": "letters/brahe-t_16000512001.html", "brahe-t_16000515001": "letters/brahe-t_16000515001.html", "brahe-t_16000515002": "letters/brahe-t_16000515002.html", "brahe-t_16000516001": "letters/brahe-t_16000516001.html", "brahe-t_16000516002": "letters/brahe-t_16000516002.html", "brahe-t_16000516003": "letters/brahe-t_16000516003.html", "brahe-t_16000600001": "letters/brahe-t_16000600001.html", "brahe-t_16000614001": "letters/brahe-t_16000614001.html", "brahe-t_16000619001": "letters/brahe-t_16000619001.html", "brahe-t_16000723001": "letters/brahe-t_16000723001.html", "brahe-t_16000726001": "letters/brahe-t_16000726001.html", "brahe-t_16000727001": "letters/brahe-t_16000727001.html", "brahe-t_16000802001": "letters/brahe-t_16000802001.html", "brahe-t_16000803001": "letters/brahe-t_16000803001.html", "brahe-t_16000804001": "letters/brahe-t_16000804001.html", "brahe-t_16000806001": "letters/brahe-t_16000806001.html", "brahe-t_16000808001": "letters/brahe-t_16000808001.html", "brahe-t_16000813001": "letters/brahe-t_16000813001.html", "brahe-t_16000828001": "letters/brahe-t_16000828001.html", "brahe-t_16000828002": "letters/brahe-t_16000828002.html", "brahe-t_16000908001": "letters/brahe-t_16000908001.html", "brahe-t_16000911001": "letters/brahe-t_16000911001.html", "brahe-t_16000915001": "letters/brahe-t_16000915001.html", "brahe-t_16000916001": "letters/brahe-t_16000916001.html", "brahe-t_16000916002": "letters/brahe-t_16000916002.html", "brahe-t_16000918001": "letters/brahe-t_16000918001.html", "brahe-t_16000919001": "letters/brahe-t_16000919001.html", "brahe-t_16000919002": "letters/brahe-t_16000919002.html", "brahe-t_16000920001": "letters/brahe-t_16000920001.html", "brahe-t_16000920002": "letters/brahe-t_16000920002.html", "brahe-t_16000923001": "letters/brahe-t_16000923001.html", "brahe-t_16000926001": "letters/brahe-t_16000926001.html", "brahe-t_16000926002": "letters/brahe-t_16000926002.html", "brahe-t_16000926003": "letters/brahe-t_16000926003.html", "brahe-t_16001008001": "letters/brahe-t_16001008001.html", "brahe-t_16001009001": "letters/brahe-t_16001009001.html", "brahe-t_16001017001": "letters/brahe-t_16001017001.html", "brahe-t_16001108001": "letters/brahe-t_16001108001.html", "brahe-t_16001110001": "letters/brahe-t_16001110001.html", "brahe-t_16001115001": "letters/brahe-t_16001115001.html", "brahe-t_16001115002": "letters/brahe-t_16001115002.html", "brahe-t_16001116001": "letters/brahe-t_16001116001.html", "brahe-t_16001116002": "letters/brahe-t_16001116002.html", "brahe-t_16001116003": "letters/brahe-t_16001116003.html", "brahe-t_16001118001": "letters/brahe-t_16001118001.html", "brahe-t_16001127001": "letters/brahe-t_16001127001.html", "brahe-t_16001210001": "letters/brahe-t_16001210001.html", "brahe-t_16010124001": "letters/brahe-t_16010124001.html", "brahe-t_16010128001": "letters/brahe-t_16010128001.html", "brahe-t_16010220001": "letters/brahe-t_16010220001.html", "brahe-t_16010308001": "letters/brahe-t_16010308001.html", "brahe-t_16010310001": "letters/brahe-t_16010310001.html", "brahe-t_16010311001": "letters/brahe-t_16010311001.html", "brahe-t_16010321001": "letters/brahe-t_16010321001.html", "brahe-t_16010322001": "letters/brahe-t_16010322001.html", "brahe-t_16010404001": "letters/brahe-t_16010404001.html", "brahe-t_16010405001": "letters/brahe-t_16010405001.html", "brahe-t_16010410001": "letters/brahe-t_16010410001.html", "brahe-t_16010412001": "letters/brahe-t_16010412001.html", "brahe-t_16010414001": "letters/brahe-t_16010414001.html", "brahe-t_16010415001": "letters/brahe-t_16010415001.html", "brahe-t_16010415002": "letters/brahe-t_16010415002.html", "brahe-t_16010415003": "letters/brahe-t_16010415003.html", "brahe-t_16010418001": "letters/brahe-t_16010418001.html", "brahe-t_16010430001": "letters/brahe-t_16010430001.html", "brahe-t_16010515001": "letters/brahe-t_16010515001.html", "brahe-t_16010527001": "letters/brahe-t_16010527001.html", "brahe-t_16010529001": "letters/brahe-t_16010529001.html", "brahe-t_16010604001": "letters/brahe-t_16010604001.html", "brahe-t_16010612001": "letters/brahe-t_16010612001.html", "brahe-t_16010617001": "letters/brahe-t_16010617001.html", "brahe-t_16010718001": "letters/brahe-t_16010718001.html", "brahe-t_16010718002": "letters/brahe-t_16010718002.html", "brahe-t_16010724001": "letters/brahe-t_16010724001.html", "brahe-t_16010724002": "letters/brahe-t_16010724002.html", "brahe-t_16010808001": "letters/brahe-t_16010808001.html", "brahe-t_16010809001": "letters/brahe-t_16010809001.html", "sec-register": "register.html", "y-1568": "register.html", "y-1571": "register.html", "y-1572": "register.html", "y-1573": "register.html", "y-1574": "register.html", "y-1575": "register.html", "y-1576": "register.html", "y-1577": "register.html", "y-1578": "register.html", "y-1579": "register.html", "y-1580": "register.html", "y-1581": "register.html", "y-1582": "register.html", "y-1583": "register.html", "y-1584": "register.html", "y-1585": "register.html", "y-1586": "register.html", "y-1587": "register.html", "y-1588": "register.html", "y-1589": "register.html", "y-1590": "register.html", "y-1591": "register.html", "y-1592": "register.html", "y-1593": "register.html", "y-1594": "register.html", "y-1595": "register.html", "y-1596": "register.html", "y-1597": "register.html", "y-1598": "register.html", "y-1599": "register.html", "y-1600": "register.html", "y-1601": "register.html", "sec-correspondents": "correspondents.html", "corr-COR_HANS_AALBORG": "correspondents.html", "corr-COR_CORT_ASLAKSEN": "correspondents.html", "corr-COR_MARTIN_BACHAZEK": "correspondents.html", "corr-COR_LUCAS_BACMEISTER": "correspondents.html", "corr-COR_JOHANN_ANTON_BARWITZ": "correspondents.html", "corr-COR_HENRIK_BELOW": "correspondents.html", "corr-COR_GOTTFRIED_VON_BERBISTORF": "correspondents.html", "corr-COR_BERKA_ZBYNĚK_ARCHBISHOP_": "correspondents.html", "corr-COR_NIELS_BILD": "correspondents.html", "corr-COR_BEATE_BILLE": "correspondents.html", "corr-COR_ESKE_BILLE": "correspondents.html", "corr-COR_STEEN_BILLE": "correspondents.html", "corr-COR_HUGO_BLOTIUS": "correspondents.html", "corr-COR_JAQUES_BONGARS": "correspondents.html", "corr-COR_JACOB_BORDING": "correspondents.html", "corr-COR_AXEL_BRAHE": "correspondents.html", "corr-COR_ERIK_BRAHE": "correspondents.html", "corr-COR_MAGDALENE_BRAHE": "correspondents.html", "corr-COR_PEDER_BRAHE": "correspondents.html", "corr-COR_SOPHIE_BRAHE": "correspondents.html", "corr-COR_STEEN_BRAHE": "correspondents.html", "corr-COR_MARTIN_BRASCH": "correspondents.html", "corr-COR_NICOLAUS_BRASCHIUS": "correspondents.html", "corr-COR_HEINRICH_BRUCAEUS": "correspondents.html", "corr-COR_GEORGE_BUCHANAN": "correspondents.html", "corr-COR_DANIEL_BUCRETIUS": "correspondents.html", "corr-COR_BIRGITTE_BØLLE": "correspondents.html", "corr-COR_JOACHIM_CAMERARIUS": "correspondents.html", "corr-COR_BALTHASAR_CAMINAEUS": "correspondents.html", "corr-COR_JOHANNES_CASELIUS": "correspondents.html", "corr-COR_OTTAVIO_CAURIAN": "correspondents.html", "corr-COR_ANDERS_CHRISTENSEN": "correspondents.html", "corr-COR_CHRISTIAN_II_ELECTOR_OF_": "correspondents.html", "corr-CHR4": "correspondents.html", "corr-COR_DAVID_CHYTRAEUS": "correspondents.html", "corr-COR_RAPHAEL_CIAPERENIUS": "correspondents.html", "corr-COR_COSIMO_CONCINI": "correspondents.html", "corr-COR_REKTOR_OG_PROFESSORER_VE": "correspondents.html", "corr-CORRADUZ": "correspondents.html", "corr-CRAIG": "correspondents.html", "corr-COR_THOMAS_CRAIG": "correspondents.html", "corr-COR_DANIEL_CRAMER": "correspondents.html", "corr-COR_CHARLES_DE_DANÇAY": "correspondents.html", "corr-COR_HARTWIG_VON_DASSEL": "correspondents.html", "corr-COR_HEINRICH_ELLENBERGER": "correspondents.html", "corr-COR_ERNST_KURFYRSTE_ÆRKEBISK": "correspondents.html", "corr-COR_DAVID_FABRICIUS": "correspondents.html", "corr-COR_DANIEL_FELS": "correspondents.html", "corr-COR_FERDINANDO_I_DE_MEDICI": "correspondents.html", "corr-COR_TOBIAS_FISCHER": "correspondents.html", "corr-COR_WOLFGANG_FRANZIUS": "correspondents.html", "corr-COR_FREDERIK_2": "correspondents.html", "corr-COR_CHRISTIAN_FRIIS": "correspondents.html", "corr-COR_GALILEO_GALILEI": "correspondents.html", "corr-COR_PATRICK_GORDON": "correspondents.html", "corr-COR_JACOB_GRYNAEUS": "correspondents.html", "corr-COR_AXEL_GYLDENSTIERNE": "correspondents.html", "corr-COR_JOHANN_GEORG_GÖDELMANN": "correspondents.html", "corr-COR_THADDAEUS_HAGECIUS": "correspondents.html", "corr-COR_PAUL_HAINZEL": "correspondents.html", "corr-COR_CHRISTINA_VON_HALLE": "correspondents.html", "corr-COR_BORGMESTRE_OG_RÅD_I_HAMB": "correspondents.html", "corr-COR_NIELS_HEMMINGSEN": "correspondents.html", "corr-COR_CHRISTOPHORUS_HENNIOCHUS": "correspondents.html", "corr-COR_JOHANN_GEORG_HERWART_VON": "correspondents.html", "corr-COR_JOHANN_FRIEDRICH_HOFFMAN": "correspondents.html", "corr-COR_MADS_JØRGENSEN_HUUS": "correspondents.html", "corr-COR_SUSANNE_HÁJEK": "correspondents.html", "corr-COR_JOHANNES_JESSENIUS": "correspondents.html", "corr-COR_JOACHIM_FRIEDRICH_KURFYR": "correspondents.html", "corr-COR_MELCHIOR_JÖSTELIUS": "correspondents.html", "corr-COR_KATHARINA_KURFYRSTINDE_A": "correspondents.html", "corr-KEPLER": "correspondents.html", "corr-COR_METTE_KOTTE": "correspondents.html", "corr-COR_NIELS_KRAG": "correspondents.html", "corr-COR_JACOB_KURZ": "correspondents.html", "corr-COR_KIRSTEN_LINDENOV": "correspondents.html", "corr-LONGO": "correspondents.html", "corr-COR_POUL_MADSEN": "correspondents.html", "corr-COR_THE_CHAPTER_AT_THE_CATHE": "correspondents.html", "corr-COR_GIOVANNI_ANTONIO_MAGINI": "correspondents.html", "corr-COR_JOHN_MAITLAND": "correspondents.html", "corr-COR_JOHANNES_MAJOR": "correspondents.html", "corr-MATTHIAS": "correspondents.html", "corr-COR_ANDREAS_MEIER": "correspondents.html", "corr-COR_PAULUS_MELISSUS": "correspondents.html", "corr-COR_EHRENFRIED_FREIHERR_VON_": "correspondents.html", "corr-COR_VINCENT_MOLLER": "correspondents.html", "corr-MONAU": "correspondents.html", "corr-COR_MORITZ_LANDGREVE_AF_HESS": "correspondents.html", "corr-COR_CLAUS_MULE": "correspondents.html", "corr-COR_MICHAEL_MÄSTLIN": "correspondents.html", "corr-COR_JOHANNES_MÜLLER": "correspondents.html", "corr-COR_JOHANNES_OSWALDUS": "correspondents.html", "corr-COR_SIMON_VON_PETKUM": "correspondents.html", "corr-COR_CASPAR_PEUCER": "correspondents.html", "corr-COR_VINCENZIO_PINELLI": "correspondents.html", "corr-COR_JOHANNES_ISACIUS_PONTANU": "correspondents.html", "corr-PRATENSIS": "correspondents.html", "corr-COR_HENRIK_RAMEL": "correspondents.html", "corr-COR_HENRIK_RANTZAU": "correspondents.html", "corr-COR_LUDOLF_RIDDERSHUSEN": "correspondents.html", "corr-COR_SIGFRID_RINDSCHAT": "correspondents.html", "corr-COR_GEORG_ROLLENHAGEN": "correspondents.html", "corr-COR_HOLGER_ROSENKRANTZ": "correspondents.html", "corr-COR_OLUF_ROSENSPARRE": "correspondents.html", "corr-COR_CHRISTOPHER_ROTHMANN": "correspondents.html", "corr-RUDOLF2": "correspondents.html", "corr-COR_GELLIUS_SASCERIDES": "correspondents.html", "corr-COR_THOMAS_SAVILE": "correspondents.html", "corr-COR_JOSEPH_JUSTUS_SCALIGER": "correspondents.html", "corr-COR_EBERHARD_SCHELE": "correspondents.html", "corr-COR_BARTHOLOMAEUS_SCULTETUS": "correspondents.html", "corr-COR_PETRUS_SEVERINUS": "correspondents.html", "corr-COR_DRONNING_SOPHIE": "correspondents.html", "corr-COR_ERIK_SPARRE": "correspondents.html", "corr-COR_JOACHIM_STRALENDORFF": "correspondents.html", "corr-COR_CHRISTOPH_STURTZ": "correspondents.html", "corr-COR_JOHANNES_STYGGE": "correspondents.html", "corr-COR_FRIEDRICH_TAUBMANN": "correspondents.html", "corr-COR_JOHANN_TAUCHMANN": "correspondents.html", "corr-COR_FRANS_TENGNAGEL": "correspondents.html", "corr-COR_TAGE_OTTESEN_THOTT": "correspondents.html", "corr-COR_ULRICH_3": "correspondents.html", "corr-COR_UKENDT_DANSK_STUDERENDE": "correspondents.html", "corr-COR_UKENDT_MEDICINSK_DOKTOR": "correspondents.html", "corr-COR_ANONYMUS": "correspondents.html", "corr-COR_AN_ANONYMOUS_LADY": "correspondents.html", "corr-COR_KRISTOFFER_VALKENDORF": "correspondents.html", "corr-COR_ANDERS_SØRENSEN_VEDEL": "correspondents.html", "corr-COR_JON_JACOBSEN_VENUSINUS": "correspondents.html", "corr-COR_MIKKEL_VIBE": "correspondents.html", "corr-COR_WILHELM_4_LANDGREVE_AF_H": "correspondents.html", "corr-COR_VITUS_WINSHEMIUS": "correspondents.html", "corr-COR_THE_DEAN_AND_DOCTORS_AT_": "correspondents.html", "corr-COR_HIERONYMUS_WOLF": "correspondents.html", "corr-COR_GEORG_VON_WOLFRAMSDORF": "correspondents.html", "corr-COR_PETER_YOUNG": "correspondents.html", "corr-no-addressee": "correspondents.html", "sec-manuscripts": "manuscripts.html", "rep-onb": "manuscripts.html", "rep-ub-basel": "manuscripts.html", "rep-rigsarkivet": "manuscripts.html", "rep-kb": "manuscripts.html", "rep-ub-muenchen": "manuscripts.html", "rep-lhas": "manuscripts.html", "rep-bodleian": "manuscripts.html", "rep-bnc-firenze": "manuscripts.html", "rep-malvezzi": "manuscripts.html", "rep-bnf": "manuscripts.html", "rep-berlin": "manuscripts.html", "rep-schleswig": "manuscripts.html", "rep-prag": "manuscripts.html", "rep-hhsta": "manuscripts.html", "rep-marburg": "manuscripts.html", "rep-bern": "manuscripts.html", "rep-mikulov": "manuscripts.html", "rep-bsb": "manuscripts.html", "rep-odense": "manuscripts.html", "rep-bl": "manuscripts.html", "rep-riksarkivet": "manuscripts.html", "rep-hab": "manuscripts.html", "rep-hamburg": "manuscripts.html", "rep-wroclaw": "manuscripts.html", "rep-pulkovo": "manuscripts.html", "rep-philadelphia": "manuscripts.html", "sec-editions": "editions.html", "sec-kassel": "editions.html", "sec-places": "places.html", "sec-chronology": "chronology.html", "sec-press": "press.html", "sec-translations": "translations.html", "sec-desiderata": "desiderata.html", "sec-sources": "sources.html", "src-tekstnet-2019": "sources.html", "src-tboo": "sources.html", "src-brahe-1596": "sources.html", "src-friis-1875": "sources.html", "src-friis-1876": "sources.html", "src-friis-1900": "sources.html", "src-favaro-1886": "sources.html", "src-norlind-1926": "sources.html", "src-norlind-1954": "sources.html", "src-norlind-1970": "sources.html", "src-christianson-1972": "sources.html", "src-christianson-2000": "sources.html", "src-thoren-1990": "sources.html", "src-mosley-2007": "sources.html", "src-mosley-jardine-tybjerg-2003": "sources.html", "src-rosen-1986": "sources.html", "src-kgw-13-14": "sources.html", "src-baldini-napolitani-1992": "sources.html", "src-emlo": "sources.html"}</script><script>
+(function(){const M=JSON.parse(document.getElementById('keymap').textContent);
+ const P=new URLSearchParams(location.search);const ps=(document.body.dataset.permalink||'').split(',').filter(Boolean);
+ let k=null;ps.forEach(p=>{if(!k&&P.get(p))k=P.get(p);});
+ /* a pillar that resolves its own ?param= (Bibliotheca's ?entry=, Manus's ?specimen=) declares no params: any value that names a key counts */
+ if(!k){P.forEach((v,p)=>{if(!k&&v&&(M[v]||Object.keys(M).filter(x=>x.endsWith('-'+v)).length===1))k=v;});}
+ if(!k&&location.hash)k=decodeURIComponent(location.hash.slice(1));
+ /* a pillar whose ids carry a prefix (spec-, rec-, vc-, place-) is addressed by the bare key: complete it when unambiguous */
+ if(k&&!M[k]){const c=Object.keys(M).filter(x=>x.endsWith('-'+k));if(c.length===1)k=c[0];}
+ const here=location.pathname.split('/').pop()||'index.html';
+ if(k&&M[k]&&M[k]!==here)location.replace(M[k]+'#'+encodeURIComponent(k));})();
+</script>
+</body>
+</html>
