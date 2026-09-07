@@ -116,7 +116,7 @@
    {
     "id": "S_TBOO_X_PROL",
     "label": "Dreyer, Opera Omnia X — Prolegomena (codex descriptions, Codices A–V)",
-    "full": "J. L. E. Dreyer, 'Prolegomena editoris' to Tychonis Brahe Opera Omnia X (Copenhagen, 1923): the codex-by-codex description of the Copenhagen autograph protocols (Codices A–P = GKS 1824–1832 / 306–318) and the Vienna apographa (Codex V = Cod. Vindob. lat. 10657–10675), with the editorial collation rule (Copenhagen original always followed; Vienna used only where the original is incomplete, marked 'From Cod. V'). An English working translation was made for this edition.",
+    "full": "J. L. E. Dreyer, 'Prolegomena editoris' to Tychonis Brahe Opera Omnia X (Copenhagen, 1923): the codex-by-codex description of the Copenhagen autograph protocols (Codices A–P = GKS 1824–1832 / 306–318) and the Vienna apographa (Codex V = Cod. Vindob. lat. 10657–10675), with the editorial collation rule (Copenhagen original always followed; Vienna used only where the original is incomplete, marked 'From Cod. V'). An English working translation was made for this chapter.",
     "url": "https://archive.org/details/operaomniaedidit10brahuoft",
     "url_label": "archive.org (vol. X; the Prolegomena open the volume)",
     "contributes": "the codex-by-codex description of the archive (pp. XII–XXV), the editorial rule (p. XXV) and the history of the books (pp. I–XI); the pillar's principal witness"
@@ -223,7 +223,7 @@
     "full": "D. Hoffleit & W. H. Warren Jr., The Bright Star Catalogue, 5th revised edition (New Haven, 1991); VizieR V/50.",
     "url": "https://cdsarc.cds.unistra.fr/viz-bin/cat/V/50",
     "url_label": "VizieR V/50",
-    "contributes": "the modern reference sky of this edition's accuracy computation (nearest neighbour within 40′)",
+    "contributes": "the modern reference sky of this chapter's accuracy computation (nearest neighbour within 40′)",
     "cited_by": "the accuracy figures"
    },
    {
@@ -3134,7 +3134,7 @@
    {
     "id": "des-crol-eriksen",
     "title": "Hans Crol and Johannes Eriksen in the Familia",
-    "text": "Both are candidate scribes of fair copies (Crol to his death on Hven in November 1591; Eriksen from 1596 and Tycho's secretary by 1601) and neither has a record in the Familia edition, so the attributions naming them cannot link.",
+    "text": "Both are candidate scribes of fair copies (Crol to his death on Hven in November 1591; Eriksen from 1596 and Tycho's secretary by 1601) and neither has a record in the Familia chapter, so the attributions naming them cannot link.",
     "sources": [
      "S_TBOO_X_PROL"
     ]

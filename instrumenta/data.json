@@ -1714,7 +1714,7 @@
    "url": "https://doi.org/10.1177/002182867300400105",
    "url_label": "DOI (SAGE; a scan is held by the ADS under 1973JHA.....4...25T)",
    "kind": "secondary",
-   "contributes": "The redating of individual instruments from the observation logs. Cited here at second hand, through Thoren 1990; not yet read for this edition (see Desiderata)."
+   "contributes": "The redating of individual instruments from the observation logs. Cited here at second hand, through Thoren 1990; not yet read for this chapter (see Desiderata)."
   },
   {
    "id": "S_THOREN_LORD",
@@ -1939,7 +1939,7 @@
   {
    "id": "des-unengraved",
    "title": "The instruments Tycho did not engrave",
-   "text": "Chapter 25 of the Mechanica ('on certain other instruments of ours not yet engraved', TBOO V, 96–101) names a fork-shaped sextant with 155 cm arms of Brazil wood, a large semicircle for distances beyond a sixth of the circle, an astronomical radius, an astronomical ring, a portable armilla of 60 cm radius and an astrolabe, and promises more. Thoren's chart adds an Icelandic quadrant (1589) and a camera-obscura 'canal' (1591), and separates a 'semicirculus' of 1588 that he suspects is the azimuth semicircle under another pivot. None of these has a record here; the edition models the engraved instruments and five documented others.",
+   "text": "Chapter 25 of the Mechanica ('on certain other instruments of ours not yet engraved', TBOO V, 96–101) names a fork-shaped sextant with 155 cm arms of Brazil wood, a large semicircle for distances beyond a sixth of the circle, an astronomical radius, an astronomical ring, a portable armilla of 60 cm radius and an astrolabe, and promises more. Thoren's chart adds an Icelandic quadrant (1589) and a camera-obscura 'canal' (1591), and separates a 'semicirculus' of 1588 that he suspects is the azimuth semicircle under another pivot. None of these has a record here; this chapter models the engraved instruments and five documented others.",
    "sources": [
     "S_MECH_OO5",
     "S_THOREN_LORD"
@@ -1964,7 +1964,7 @@
   {
    "id": "des-thoren-1973",
    "title": "Dates not yet reconciled with Thoren 1973",
-   "text": "The dates follow Wennberg 2007, the 1946 translation and Thoren 1990. Thoren's chart differs for the steel sextant (1576 against 1574 here), the brass azimuthal quadrant (1583 against 1576), the medium quadrant (1577 against 1580, though his own figure caption says 1580) and the zodiacal armillary (1581 against c. 1583–85). His 1973 article, which redates several instruments from the observation logs, has not been read for this edition.",
+   "text": "The dates follow Wennberg 2007, the 1946 translation and Thoren 1990. Thoren's chart differs for the steel sextant (1576 against 1574 here), the brass azimuthal quadrant (1583 against 1576), the medium quadrant (1577 against 1580, though his own figure caption says 1580) and the zodiacal armillary (1581 against c. 1583–85). His 1973 article, which redates several instruments from the observation logs, has not been read for this chapter.",
    "sources": [
     "S_THOREN73",
     "S_THOREN_LORD"

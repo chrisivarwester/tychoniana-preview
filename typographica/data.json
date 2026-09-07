@@ -480,7 +480,7 @@
    "gloss": "Tycho's illustrated catalogue of his instruments and of Uraniborg itself — the masterpiece of scientific self-presentation, dedicated to Rudolf II.",
    "survival": "The first edition; the Nuremberg reprint of 1602 is entered as its own edition below. Most copies are illuminated and carry de Gheyn's engraved portrait pasted to the title-verso; a large group are presentation copies with Tycho's autograph dedication (the surviving copies, below). Hasselberg listed thirty-three copies in 1904, Nielsen added two.",
    "diplomatic": "[black:] TYCHONIS BRAHE | [red:] ASTRONOMIÆ | [black:] INSTAVRATÆ | [red:] MECHANICA | [woodcut, the author's emblem] | [red:] WANDESBVRGI | [black:] ANNO | [red:] CIↃ IↃ. IIC. | [black:] Cum Cæsaris & Regum quorundam Privilegiis. |",
-   "collation": "42 leaves. Signatures: ):(⁴ A⁶ B⁴–F⁴ G⁶ H⁶ (Nielsen 1921, p. 205; the formula in the Dansk Bibliografi entry as transcribed for this edition does not sum to the stated leaf count). Variable line-count. Type-area: 265 × 178 mm. Catchwords. Roman and italic. Every page enclosed in a border (assembled from flowers and rules). Initials, friezes and vignettes. Woodcuts and copper-engravings. Title-leaf and Bl. 2a printed in red and black.",
+   "collation": "42 leaves. Signatures: ):(⁴ A⁶ B⁴–F⁴ G⁶ H⁶ (Nielsen 1921, p. 205; the formula in the Dansk Bibliografi entry as transcribed for this chapter does not sum to the stated leaf count). Variable line-count. Type-area: 265 × 178 mm. Catchwords. Roman and italic. Every page enclosed in a border (assembled from flowers and rules). Initials, friezes and vignettes. Woodcuts and copper-engravings. Title-leaf and Bl. 2a printed in red and black.",
    "contents": "Bl. 1a title; 2–3 dedication to Emperor Rudolf II (dated pridie Calend. Jan. 1598 [= 31 Dec 1597]); 4a a poem by Holger Rosenkrantz; 4b an engraving; Bl. 5a (sign. A) 'Explicatio fabricae et usus' — the instrument descriptions; Bl. 25b a brief notice of further instruments not yet engraved; Bl. 27b on what Tycho has so far achieved and what remains; Bl. 32–35a letters to the author (Curtius, Magini); Bl. 37a (sign. H) the appendix on the architecture of the observatory; Bl. 42b the colophon: 'IMPRESSVM WANDESBVRGI IN ARCE RANZOVIANA … PROPRIA AVTHORIS TYPOGRAPHIA opera Philippi de Ohr Chalcographi Hamburgensis Ineunte ANNO M.D.IIC.' In most copies a portrait of Tycho is pasted onto Bl. 1b.",
    "references": "Facsimile: ed. B. Hasselberg (Holmiæ 1901). T. Brahe, Opera omnia V, pp. 1–162, 317–27. Dreyer, Astronomiæ instauratæ mechanica, 260–64 (German trans. 274–78); Gigas, in Bogvennen 1900, 31–34; L. Nielsen, in Nord. tidskr. VIII, 191–201 and 205–06; Delisle, in Journal des savants 1901, 79–87; Studnička, Prager Tychoniana, 44–48; and a long apparatus of further studies (Richter & Hofmeister; Hasselberg, Friis & Ehwald; Leboyer; Mortensen; Schömer; Deetjen).",
    "nielsen_census": "Berlin (Staatsbibl., 3 copies); Breslau; Cambrai; Danzig; Dessau; Dresden (2 copies); Florence (Bibl. nazion.); Frauenfeld (Kantonsbibl., title-leaf missing); Gotha (2 copies); Göttingen; Kalocsa; Kiel; *Copenhagen, Kgl. Bibl. (3 copies), Univ. Bibl.; Leiden; Leningrad; Liège; London (BM); Lund; München; Oslo (Deichman, Univ. Bibl. defective); Oxford (Bodleian); Paris (BnF 3 copies, Obs.); Prague (Strahov); Rostock; Stockholm (Academy); Weimar; Venice (Bibl. nazion.); Vienna (Nat. Bibl., 2 copies).",
@@ -828,7 +828,7 @@
   "title_genitive": "Theatri Astronomici Opus",
   "title_nominative": "Theatrum astronomicum",
   "tagline": "the work all the rest were fragments of",
-  "intro": "The printings gathered in this edition were never meant to stand alone. Tycho conceived his entire output as one branded <i>restoration of astronomy</i> (<i>instauratio astronomiae</i>) culminating in a single great work he named, in print and in his own hand, with the genitive formula <b>&#8220;Theatri Astronomici Opus&#8221;</b> &mdash; the Work of the Astronomical Theatre. It was never assembled. What survives are the realized fragments &mdash; and the visible scars of the parts that never came.",
+  "intro": "The printings gathered in this chapter were never meant to stand alone. Tycho conceived his entire output as one branded <i>restoration of astronomy</i> (<i>instauratio astronomiae</i>) culminating in a single great work he named, in print and in his own hand, with the genitive formula <b>&#8220;Theatri Astronomici Opus&#8221;</b> &mdash; the Work of the Astronomical Theatre. It was never assembled. What survives are the realized fragments &mdash; and the visible scars of the parts that never came.",
   "structure_note": "The plan had two tiers: an <b>introductory series</b> on &#8220;recent phenomena&#8221; (the 1572 nova, the comets), explicitly a <i>prodromus</i> &mdash; the forerunner that &#8220;prepares the way&#8221; &mdash; and the <b>systematic great work</b>, which Tycho divided in his letter to Caspar Peucer of 13 September 1588 into seven books. The geo-heliocentric cosmology is not a topic inside the opus; it is the organizing principle of the book-division.",
   "tier1": {
    "label": "Tier 1 · The introductory series",
@@ -1723,7 +1723,7 @@
   {
    "id": "des-mechanica-db-collation",
    "title": "The Mechanica's collation in the Dansk Bibliografi",
-   "text": "The formula in DB 432 as transcribed for this edition — ):(:(⁴ A⁴ B⁴–F⁴ G⁸ H⁴ — sums to 40 leaves against the 42 the entry states; Nielsen 1921 (p. 205) gives ):(⁴ A⁶ B⁴–F⁴ G⁶ H⁶, which sums, and is followed here. Whether the DB entry itself or the house transcription carries the error should be checked on the page image.",
+   "text": "The formula in DB 432 as transcribed for this chapter — ):(:(⁴ A⁴ B⁴–F⁴ G⁸ H⁴ — sums to 40 leaves against the 42 the entry states; Nielsen 1921 (p. 205) gives ):(⁴ A⁶ B⁴–F⁴ G⁶ H⁶, which sums, and is followed here. Whether the DB entry itself or the house transcription carries the error should be checked on the page image.",
    "sources": [
     "S_NIELSEN_DB",
     "S_NIELSEN_BT"
@@ -1992,7 +1992,7 @@
    "id": "S_STRANO_TRUFFA",
    "label": "Strano and Truffa 2007",
    "full": "Giorgio Strano and Giancarlo Truffa, 'Tycho Brahe cosmologist: an overview on the genesis, development and fortune of the geo-heliocentric world-system', in Mechanics and Cosmology in the Medieval and Early Modern Period, ed. Massimo Bucciantini, Michele Camerota and Sophie Roux (Florence: Leo S. Olschki, 2007; Biblioteca di Nuncius 64), pp. 73–93; the statement on Book II at p. 82.",
-   "contributes": "the seven-book scheme read as aspirational architecture; the statement that Book II has 'no equivalent among Tycho's works' (p. 82), which this edition contradicts",
+   "contributes": "the seven-book scheme read as aspirational architecture; the statement that Book II has 'no equivalent among Tycho's works' (p. 82), which this chapter contradicts",
    "url": ""
   },
   {

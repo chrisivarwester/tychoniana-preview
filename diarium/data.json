@@ -7889,7 +7889,7 @@
    "id": "ONB10718",
    "label": "ÖNB, Cod. 10718",
    "full": "Österreichische Nationalbibliothek, Vienna, Cod. 10718 (Han), the manuscript of the meteorological diary kept at Uraniborg, 1 October 1582 – 22 April 1597; a 'Sammelhandschrift' of 191 leaves in quarto, bound in a fragment of a thirteenth-century parchment manuscript over pasteboard; bought for the Emperor Rudolf II, probably on 28 October 1601 (Jahrbuch der kunsthistorischen Sammlungen 1894, nos. 11755–11756), and in the Hofbibliothek by 1652 at the latest (Cod. 13555, fol. 154v).",
-   "contributes": "The object itself. Every entry in this edition is a reading of this manuscript at one remove, through the 1876 print; the digitised codex is where a doubtful reading (Rørdam's 'Podbusk' or 'Bilde', the initials 'I. D. I. V.') must finally be settled.",
+   "contributes": "The object itself. Every entry in this chapter is a reading of this manuscript at one remove, through the 1876 print; the digitised codex is where a doubtful reading (Rørdam's 'Podbusk' or 'Bilde', the initials 'I. D. I. V.') must finally be settled.",
    "url": "https://viewer.onb.ac.at/131EA75D",
    "url_label": "ÖNB digital viewer",
    "urls": [
@@ -7907,7 +7907,7 @@
    "id": "FRIIS1876",
    "label": "Friis (ed.) 1876",
    "full": "Tyge Brahes meteorologiske Dagbog, holdt paa Uraniborg for Aarene 1582–1597. Udgiven som Appendix til Collectanea Meteorologica af det Kgl. Danske Videnskabernes Selskab ved dets meteorologiske Comité. Copenhagen: H. H. Thiele, 1876. IV + 263 + LXXV pp. The diary text (pp. 1–263) was edited from the Vienna manuscript by F. R. Friis, with footnotes partly supplied by H. F. Rørdam; corrigenda ('Rettelser og Tillæg') on p. 264.",
-   "contributes": "The text every entry is taken from: the historical notes verbatim, the page on which each stands, and the editors' footnotes identifying persons. This edition's page numbers are the printed pages of this volume.",
+   "contributes": "The text every entry is taken from: the historical notes verbatim, the page on which each stands, and the editors' footnotes identifying persons. This chapter's page numbers are the printed pages of this volume.",
    "url": "http://publ.royalacademy.dk/books/485/3365",
    "url_label": "Royal Danish Academy — the volume's page, with the PDF scan (Særpublikationer)",
    "urls": [
